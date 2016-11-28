@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/skull/Programming/Algorithms/Cpp/stripped_stdlib/list
+memory
+-
+limits
+-
+initializer_list
+-
+iterator
+-
+algorithm
+-
+type_traits
+-
+
+/Users/skull/Programming/Algorithms/Cpp/stripped_stdlib/main.cpp
+algorithm
+-
+iostream
+-
+list
+/Users/skull/Programming/Algorithms/Cpp/stripped_stdlib/list
+

@@ -1,0 +1,5 @@
+/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_5_linked_lists/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_5_linked_lists/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_5_linked_lists/cmake-build-debug/CMakeFiles/frames.dir
+/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_5_linked_lists/cmake-build-debug/CMakeFiles/page.dir
+/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_5_linked_lists/cmake-build-debug/CMakeFiles/main.dir

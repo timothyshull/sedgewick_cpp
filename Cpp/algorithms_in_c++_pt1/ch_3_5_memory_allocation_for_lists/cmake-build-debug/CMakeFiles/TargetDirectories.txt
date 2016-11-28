@@ -1,0 +1,12 @@
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_49.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_54.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_46.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_52.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_50.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_53.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_51.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_48.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/3_47.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_5_memory_allocation_for_lists/cmake-build-debug/CMakeFiles/list.dir

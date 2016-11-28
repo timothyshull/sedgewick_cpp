@@ -1,0 +1,4 @@
+"/Users/skull/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/163.7743.47/CLion.app/Contents/bin/cmake/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/skull/Programming/Algorithms/Cpp/c++_data_structures_from_scratch/part_10_linked_lists
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/skull/Programming/Algorithms/Cpp/c++_data_structures_from_scratch/part_10_linked_lists/cmake-build-debug
