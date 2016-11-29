@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.6)
+project(ch_4_3_stack_adt_clients)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(4_5_postfix_expr_eval 4_5_postfix_expr_eval.cpp STACK.h)
+add_executable(4_6_infix_to_postfix 4_6_infix_to_postfix.cpp STACK.h)
+add_executable(4_12 4_12.cpp)
+add_executable(4_13 4_13.cpp)
+add_executable(4_14 4_14.cpp)
+add_executable(4_15 4_15.cpp)
+add_executable(4_16 4_16.cpp)
+add_executable(4_17 4_17.cpp)
+add_executable(4_18 4_18.cpp)
+add_executable(4_19 4_19.cpp)
+add_executable(4_20 4_20.cpp)

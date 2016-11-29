@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="ch_4_8_first_class_adts" targetName="4_17_complex_numbers_roots_of_unity" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_20_queue_simulation" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_67" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_68" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_69" />
+      <config projectName="ch_4_8_first_class_adts" targetName="ch_4_8_first_class_adts" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_70" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_71" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_72" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_73" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_63" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_74" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_64" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_75" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_65" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_76" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_66" />
+      <config projectName="ch_4_8_first_class_adts" targetName="4_77" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="382595f6-dc86-441d-be05-facb5eb8428f" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ch_4_8_first_class_adts" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="4_17_complex_numbers_roots_of_unity.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4_17_complex_numbers_roots_of_unity.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="complex_adt.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/complex_adt.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="COMPLEX.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/COMPLEX.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="4_20_queue_simulation.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4_20_queue_simulation.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queue_adt.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queue_adt.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QUEUE.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/QUEUE.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="4_77.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4_77.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/4_17_complex_numbers_roots_of_unity.cpp" />
+        <option value="$PROJECT_DIR$/complex_adt.h" />
+        <option value="$PROJECT_DIR$/complex.h" />
+        <option value="$PROJECT_DIR$/COMPLEX.h" />
+        <option value="$PROJECT_DIR$/4_20_queue_simulation.cpp" />
+        <option value="$PROJECT_DIR$/queue_adt.h" />
+        <option value="$PROJECT_DIR$/QUEUE.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="840" />
+    <option name="y" value="23" />
+    <option name="width" value="840" />
+    <option name="height" value="1023" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="false" />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_4_8_first_class_adts" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_4_8_first_class_adts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Application.Build All">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="ch_4_8_first_class_adts" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ch_4_8_first_class_adts" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="ch_4_8_first_class_adts" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="ch_4_8_first_class_adts">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_17_complex_numbers_roots_of_unity" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_17_complex_numbers_roots_of_unity" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_17_complex_numbers_roots_of_unity">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_20_queue_simulation" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_20_queue_simulation" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_20_queue_simulation">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_63" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_63" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_63">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_64" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_64" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_64">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_65" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_65" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_65">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_66" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_66" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_66">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_67" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_67" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_67">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_68" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_68" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_68">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_69" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_69" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_69">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_70" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_70" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_70">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_71" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_71" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_71">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_72" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_72" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_72">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_73" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_73" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_73">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_74" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_74" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_74">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_75" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_75" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_75">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_76" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_76" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_76">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="4_77" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ch_4_8_first_class_adts" TARGET_NAME="4_77" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ch_4_8_first_class_adts" RUN_TARGET_NAME="4_77">
+      <envs />
+      <method />
+    </configuration>
+    <list size="19">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ch_4_8_first_class_adts" />
+      <item index="2" class="java.lang.String" itemvalue="Application.4_17_complex_numbers_roots_of_unity" />
+      <item index="3" class="java.lang.String" itemvalue="Application.4_20_queue_simulation" />
+      <item index="4" class="java.lang.String" itemvalue="Application.4_63" />
+      <item index="5" class="java.lang.String" itemvalue="Application.4_64" />
+      <item index="6" class="java.lang.String" itemvalue="Application.4_65" />
+      <item index="7" class="java.lang.String" itemvalue="Application.4_66" />
+      <item index="8" class="java.lang.String" itemvalue="Application.4_67" />
+      <item index="9" class="java.lang.String" itemvalue="Application.4_68" />
+      <item index="10" class="java.lang.String" itemvalue="Application.4_69" />
+      <item index="11" class="java.lang.String" itemvalue="Application.4_70" />
+      <item index="12" class="java.lang.String" itemvalue="Application.4_71" />
+      <item index="13" class="java.lang.String" itemvalue="Application.4_72" />
+      <item index="14" class="java.lang.String" itemvalue="Application.4_73" />
+      <item index="15" class="java.lang.String" itemvalue="Application.4_74" />
+      <item index="16" class="java.lang.String" itemvalue="Application.4_75" />
+      <item index="17" class="java.lang.String" itemvalue="Application.4_76" />
+      <item index="18" class="java.lang.String" itemvalue="Application.4_77" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="382595f6-dc86-441d-be05-facb5eb8428f" name="Default" comment="" />
+      <created>1480461150746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1480461150746</updated>
+      <workItem from="1480461152059" duration="496000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="496000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="840" y="23" width="840" height="1023" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4_17_complex_numbers_roots_of_unity.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4_17_complex_numbers_roots_of_unity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/complex_adt.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COMPLEX.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4_20_queue_simulation.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queue_adt.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QUEUE.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4_77.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ch_4_7_duplicate_and_index_items"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_62">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_62" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_62"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_62/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_62" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_62/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_59">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_59" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_59"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_59/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_59" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_59/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_60">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_60" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_60"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_60/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_60" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_60/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_57">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_57" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_57"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_57/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_57" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_57/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_61">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_61" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_61"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_61/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_61" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_61/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_54">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_54" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_54"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_54/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_54" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_54/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_56">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_56" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_56"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_56/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_56" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_56/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_58">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_58" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_58"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_58/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_58" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_58/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_55">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_55" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_55"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_55/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/4_55" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_55/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_54.cpp">
+			<Option target="4_54"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_55.cpp">
+			<Option target="4_55"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_56.cpp">
+			<Option target="4_56"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_57.cpp">
+			<Option target="4_57"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_58.cpp">
+			<Option target="4_58"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_59.cpp">
+			<Option target="4_59"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_60.cpp">
+			<Option target="4_60"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_61.cpp">
+			<Option target="4_61"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/4_62.cpp">
+			<Option target="4_62"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_7_duplicate_and_index_items/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,13 @@
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_18.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_16.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_12.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_19.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_14.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_20.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_15.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_13.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_17.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_6_infix_to_postfix.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_3_stack_adt_clients/cmake-build-debug/CMakeFiles/4_5_postfix_expr_eval.dir

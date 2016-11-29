@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ch_4_6_fifo_queues"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_50">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_50" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_50"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_50/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_50" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_50/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_48">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_48" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_48"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_48/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_48" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_48/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_49">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_49" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_49"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_49/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_49" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_49/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_37">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_37" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_37"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_37/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_37" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_37/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_46">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_46" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_46"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_46/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_46" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_46/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_44">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_44" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_44"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_44/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_44" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_44/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_52">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_52" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_52"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_52/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_52" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_52/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_43">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_43" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_43"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_43/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_43" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_43/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_41">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_41" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_41"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_41/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_41" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_41/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_47">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_47" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_47"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_47/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_47" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_47/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_42">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_42" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_42"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_42/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_42" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_42/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_51">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_51" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_51"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_51/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_51" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_51/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_38">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_38" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_38"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_38/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_38" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_38/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_39">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_39" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_39"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_39/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_39" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_39/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_45">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_45" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_45"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_45/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_45" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_45/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_40">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_40" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_40"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_40/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_40" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_40/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_36">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_36" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_36"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="4_36/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/4_36" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 4_36/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_36.cpp">
+			<Option target="4_36"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_37.cpp">
+			<Option target="4_37"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_38.cpp">
+			<Option target="4_38"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_39.cpp">
+			<Option target="4_39"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_40.cpp">
+			<Option target="4_40"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_41.cpp">
+			<Option target="4_41"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_42.cpp">
+			<Option target="4_42"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_43.cpp">
+			<Option target="4_43"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_44.cpp">
+			<Option target="4_44"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_45.cpp">
+			<Option target="4_45"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_46.cpp">
+			<Option target="4_46"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_47.cpp">
+			<Option target="4_47"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_48.cpp">
+			<Option target="4_48"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_49.cpp">
+			<Option target="4_49"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_50.cpp">
+			<Option target="4_50"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_51.cpp">
+			<Option target="4_51"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/4_52.cpp">
+			<Option target="4_52"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_6_fifo_queues/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
