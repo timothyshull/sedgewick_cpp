@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/3_3.cpp
+iostream
+-
+cmath
+-
+vector
+-
+random
+-
+

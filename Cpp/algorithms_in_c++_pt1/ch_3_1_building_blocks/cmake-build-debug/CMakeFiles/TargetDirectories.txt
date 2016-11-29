@@ -1,0 +1,14 @@
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_9.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_1_function_definition.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_8.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_7.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_3.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_5.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_4.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_1.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_2.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_6.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_3_point_data_type_interface.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_3_1_building_blocks/cmake-build-debug/CMakeFiles/3_2_types_of_numbers.dir
