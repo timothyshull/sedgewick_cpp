@@ -1,0 +1,13 @@
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_91.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_85.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_90.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_89.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_20_parse_tree_construction.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_88.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_17_computation_of_tree_params.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_87.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_86.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_19_tournament_construction.dir
+/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug/CMakeFiles/5_18_quick_tree_print.dir

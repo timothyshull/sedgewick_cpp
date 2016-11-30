@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ch_5_5_mathematical_properties_of_trees"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_78">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_78" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_78"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_78/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_78" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_78/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_68">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_68" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_68"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_68/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_68" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_68/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_77">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_77" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_77"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_77/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_77" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_77/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_76">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_76" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_76"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_76/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_76" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_76/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_73">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_73" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_73"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_73/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_73" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_73/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_75">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_75" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_75"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_75/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_75" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_75/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_74">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_74" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_74"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_74/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_74" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_74/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_70">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_70" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_70"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_70/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_70" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_70/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_72">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_72" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_72"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_72/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_72" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_72/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_71">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_71" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_71"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_71/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_71" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_71/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_69">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_69" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_69"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="5_69/fast">
+				<Option output="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/5_69" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 5_69/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_68.cpp">
+			<Option target="5_68"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_69.cpp">
+			<Option target="5_69"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_70.cpp">
+			<Option target="5_70"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_71.cpp">
+			<Option target="5_71"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_72.cpp">
+			<Option target="5_72"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_73.cpp">
+			<Option target="5_73"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_74.cpp">
+			<Option target="5_74"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_75.cpp">
+			<Option target="5_75"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_76.cpp">
+			<Option target="5_76"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_77.cpp">
+			<Option target="5_77"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/5_78.cpp">
+			<Option target="5_78"/>
+		</Unit>
+		<Unit filename="/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_5_mathematical_properties_of_trees/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

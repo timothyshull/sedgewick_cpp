@@ -1,0 +1,4 @@
+"/Users/skull/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/163.7743.47/CLion.app/Contents/bin/cmake/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_5_7_recursive_binary_tree_algorithms/cmake-build-debug

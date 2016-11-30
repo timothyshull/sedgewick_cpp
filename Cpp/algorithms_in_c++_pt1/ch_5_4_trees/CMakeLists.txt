@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.6)
+project(ch_5_4_trees)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(5_56 5_56.cpp)
+add_executable(5_57 5_57.cpp)
+add_executable(5_58 5_58.cpp)
+add_executable(5_59 5_59.cpp)
+add_executable(5_60 5_60.cpp)
+add_executable(5_61 5_61.cpp)
+add_executable(5_62 5_62.cpp)
+add_executable(5_63 5_63.cpp)
+add_executable(5_64 5_64.cpp)
+add_executable(5_65 5_65.cpp)
+add_executable(5_66 5_66.cpp)
+add_executable(5_67 5_67.cpp)
