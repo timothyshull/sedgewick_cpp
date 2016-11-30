@@ -1,43 +1,27 @@
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------- chtbl.h --------------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 #ifndef CHTBL_H
 #define CHTBL_H
 
 #include <stdlib.h>
-
 #include "list.h"
 
-/*****************************************************************************
-*                                                                            *
-*  Define a structure for chained hash tables.                               *
-*                                                                            *
-*****************************************************************************/
 
 typedef struct CHTbl_ {
+    int buckets;
 
-int                buckets;
+    int (*h)(const void *key);
 
-int                (*h)(const void *key);
-int                (*match)(const void *key1, const void *key2);
-void               (*destroy)(void *data);
+    int (*match)(const void *key1, const void *key2);
 
-int                size;
-List               *table;
+    void (*destroy)(void *data);
+
+    int size;
+    List *table;
 
 } CHTbl;
 
-/*****************************************************************************
-*                                                                            *
-*  --------------------------- Public Interface ---------------------------  *
-*                                                                            *
-*****************************************************************************/
 
-int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key), int
-   (*match)(const void *key1, const void *key2), void (*destroy)(void *data));
+int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key), int (*match)(const void *key1, const void *key2),
+               void (*destroy)(void *data));
 
 void chtbl_destroy(CHTbl *htbl);
 

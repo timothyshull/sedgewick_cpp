@@ -4,3 +4,9 @@ int puzzle(int N) {
         return puzzle(N / 2);
     else return puzzle(3 * N + 1);
 }
+
+// 1
+// 2 -> 1
+// 3 -> 10 -> 5 -> 16 -> 8 -> 25 ...
+// 4 -> 2 -> 1
+// 5 -> 16 -> 8 -> 25 -> 76 ->

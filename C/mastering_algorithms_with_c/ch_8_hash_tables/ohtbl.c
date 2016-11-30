@@ -1,328 +1,119 @@
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------- ohtbl.c --------------------------------  *
-*                                                                            *
-*****************************************************************************/
-
 #include <stdlib.h>
 #include <string.h>
 
 #include "ohtbl.h"
 
-/*****************************************************************************
-*                                                                            *
-*  Reserve a sentinel memory address for vacated elements.                   *
-*                                                                            *
-*****************************************************************************/
 
-static char        vacated;
+static char vacated;
 
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------ ohtbl_init ------------------------------  *
-*                                                                            *
-*****************************************************************************/
 
-int ohtbl_init(OHTbl *htbl, int positions, int (*h1)(const void *key), int
-   (*h2)(const void *key), int (*match)(const void *key1, const void *key2),
-   void (*destroy)(void *data)) {
+int ohtbl_init(OHTbl *htbl, int positions, int (*h1)(const void *key), int (*h2)(const void *key),
+               int (*match)(const void *key1, const void *key2), void (*destroy)(void *data)) {
+    int i;
 
-int                i;
+    if ((htbl->table = (void **) malloc(positions * sizeof(void *))) == NULL)
+        return -1;
 
-/*****************************************************************************
-*                                                                            *
-*  Allocate space for the hash table.                                        *
-*                                                                            *
-*****************************************************************************/
+    htbl->positions = positions;
 
-if ((htbl->table = (void **)malloc(positions * sizeof(void *))) == NULL)
-   return -1;
+    for (i = 0; i < htbl->positions; i++)
+        htbl->table[i] = NULL;
 
-/*****************************************************************************
-*                                                                            *
-*  Initialize each position.                                                 *
-*                                                                            *
-*****************************************************************************/
+    htbl->vacated = &vacated;
 
-htbl->positions = positions;
+    htbl->h1 = h1;
+    htbl->h2 = h2;
+    htbl->match = match;
+    htbl->destroy = destroy;
 
-for (i = 0; i < htbl->positions; i++)
-   htbl->table[i] = NULL;
+    htbl->size = 0;
 
-/*****************************************************************************
-*                                                                            *
-*  Set the vacated member to the sentinel memory address reserved for this.  *
-*                                                                            *
-*****************************************************************************/
-
-htbl->vacated = &vacated;
-
-/*****************************************************************************
-*                                                                            *
-*  Encapsulate the functions.                                                *
-*                                                                            *
-*****************************************************************************/
-
-htbl->h1 = h1;
-htbl->h2 = h2;
-htbl->match = match;
-htbl->destroy = destroy;
-
-/*****************************************************************************
-*                                                                            *
-*  Initialize the number of elements in the table.                           *
-*                                                                            *
-*****************************************************************************/
-
-htbl->size = 0;
-
-return 0;
-
+    return 0;
 }
 
-/*****************************************************************************
-*                                                                            *
-*  ---------------------------- ohtbl_destroy -----------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 void ohtbl_destroy(OHTbl *htbl) {
 
-int                i;
- 
-if (htbl->destroy != NULL) {
+    int i;
 
-   /**************************************************************************
-   *                                                                         *
-   *  Call a user-defined function to free dynamically allocated data.       *
-   *                                                                         *
-   **************************************************************************/
+    if (htbl->destroy != NULL) {
+        for (i = 0; i < htbl->positions; i++) {
+            if (htbl->table[i] != NULL && htbl->table[i] != htbl->vacated)
+                htbl->destroy(htbl->table[i]);
+        }
+    }
 
-   for (i = 0; i < htbl->positions; i++) {
-
-      if (htbl->table[i] != NULL && htbl->table[i] != htbl->vacated)
-         htbl->destroy(htbl->table[i]);
-
-   }
-
+    free(htbl->table);
+    memset(htbl, 0, sizeof(OHTbl));
+    return;
 }
 
-/*****************************************************************************
-*                                                                            *
-*  Free the storage allocated for the hash table.                            *
-*                                                                            *
-*****************************************************************************/
-
-free(htbl->table);
-
-/*****************************************************************************
-*                                                                            *
-*  No operations are allowed now, but clear the structure as a precaution.   *
-*                                                                            *
-*****************************************************************************/
-
-memset(htbl, 0, sizeof(OHTbl));
-
-return;
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  ----------------------------- ohtbl_insert -----------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 int ohtbl_insert(OHTbl *htbl, const void *data) {
+    void *temp;
 
-void               *temp;
+    int position, i;
 
-int                position,
-                   i;
- 
-/*****************************************************************************
-*                                                                            *
-*  Do not exceed the number of positions in the table.                       *
-*                                                                            *
-*****************************************************************************/
+    if (htbl->size == htbl->positions)
+        return -1;
 
-if (htbl->size == htbl->positions)
-   return -1;
+    temp = (void *) data;
 
-/*****************************************************************************
-*                                                                            *
-*  Do nothing if the data is already in the table.                           *
-*                                                                            *
-*****************************************************************************/
+    if (ohtbl_lookup(htbl, &temp) == 0)
+        return 1;
 
-temp = (void *)data;
+    for (i = 0; i < htbl->positions; i++) {
 
-if (ohtbl_lookup(htbl, &temp) == 0)
-   return 1;
+        position = (htbl->h1(data) + (i * htbl->h2(data))) % htbl->positions;
 
-/*****************************************************************************
-*                                                                            *
-*  Use double hashing to hash the key.                                       *
-*                                                                            *
-*****************************************************************************/
+        if (htbl->table[position] == NULL || htbl->table[position] == htbl->
+                vacated) {
 
-for (i = 0; i < htbl->positions; i++) {
+            htbl->table[position] = (void *) data;
+            htbl->size++;
+            return 0;
+        }
+    }
 
-   position = (htbl->h1(data) + (i * htbl->h2(data))) % htbl->positions;
-
-   if (htbl->table[position] == NULL || htbl->table[position] == htbl->
-      vacated) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Insert the data into the table.                                     *
-      *                                                                      *
-      ***********************************************************************/
-
-      htbl->table[position] = (void *)data;
-      htbl->size++;
-      return 0;
-
-   }
-
+    return -1;
 }
 
-/*****************************************************************************
-*                                                                            *
-*  Return that the hash functions were selected incorrectly.                 *
-*                                                                            *
-*****************************************************************************/
-
-return -1;
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  ----------------------------- ohtbl_remove -----------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 int ohtbl_remove(OHTbl *htbl, void **data) {
+    int position, i;
 
-int                position,
-                   i;
- 
-/*****************************************************************************
-*                                                                            *
-*  Use double hashing to hash the key.                                       *
-*                                                                            *
-*****************************************************************************/
+    for (i = 0; i < htbl->positions; i++) {
+        position = (htbl->h1(*data) + (i * htbl->h2(*data))) % htbl->positions;
 
-for (i = 0; i < htbl->positions; i++) {
+        if (htbl->table[position] == NULL) {
+            return -1;
+        } else if (htbl->table[position] == htbl->vacated) {
+            continue;
+        } else if (htbl->match(htbl->table[position], *data)) {
+            *data = htbl->table[position];
+            htbl->table[position] = htbl->vacated;
+            htbl->size--;
+            return 0;
+        }
+    }
 
-   position = (htbl->h1(*data) + (i * htbl->h2(*data))) % htbl->positions;
-
-   if (htbl->table[position] == NULL) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Return that the data was not found.                                 *
-      *                                                                      *
-      ***********************************************************************/
-
-      return -1;
-
-      }
-
-   else if (htbl->table[position] == htbl->vacated) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Search beyond vacated positions.                                    *
-      *                                                                      *
-      ***********************************************************************/
-
-      continue;
-
-      }
-
-   else if (htbl->match(htbl->table[position], *data)) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Pass back the data from the table.                                  *
-      *                                                                      *
-      ***********************************************************************/
-
-      *data = htbl->table[position];
-      htbl->table[position] = htbl->vacated;
-      htbl->size--;
-      return 0;
-
-   }
-
+    return -1;
 }
 
-/*****************************************************************************
-*                                                                            *
-*  Return that the data was not found.                                       *
-*                                                                            *
-*****************************************************************************/
-
-return -1;
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  ----------------------------- ohtbl_lookup -----------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 int ohtbl_lookup(const OHTbl *htbl, void **data) {
+    int position, i;
 
-int                position,
-                   i;
- 
-/*****************************************************************************
-*                                                                            *
-*  Use double hashing to hash the key.                                       *
-*                                                                            *
-*****************************************************************************/
+    for (i = 0; i < htbl->positions; i++) {
+        position = (htbl->h1(*data) + (i * htbl->h2(*data))) % htbl->positions;
 
-for (i = 0; i < htbl->positions; i++) {
+        if (htbl->table[position] == NULL) {
+            return -1;
+        } else if (htbl->match(htbl->table[position], *data)) {
+            *data = htbl->table[position];
+            return 0;
+        }
+    }
 
-   position = (htbl->h1(*data) + (i * htbl->h2(*data))) % htbl->positions;
-
-   if (htbl->table[position] == NULL) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Return that the data was not found.                                 *
-      *                                                                      *
-      ***********************************************************************/
-
-      return -1;
-
-      }
-
-   else if (htbl->match(htbl->table[position], *data)) {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Pass back the data from the table.                                  *
-      *                                                                      *
-      ***********************************************************************/
-
-      *data = htbl->table[position];
-      return 0;
-
-   }
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  Return that the data was not found.                                       *
-*                                                                            *
-*****************************************************************************/
-
-return -1;
-
+    return -1;
 }

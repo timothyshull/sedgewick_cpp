@@ -1,8 +1,3 @@
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------- parcels.c ------------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 #include <stdlib.h>
 #include <string.h>
@@ -11,87 +6,35 @@
 #include "parcels.h"
 #include "pqueue.h"
 
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------ get_parcel ------------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 int get_parcel(PQueue *parcels, Parcel *parcel) {
+    Parcel *data;
 
-Parcel             *data;
+    if (pqueue_size(parcels) == 0)
+        return -1;
+    else {
+        if (pqueue_extract(parcels, (void **) &data) != 0)
+            return -1;
+        else {
+            memcpy(parcel, data, sizeof(Parcel));
+            free(data);
+        }
+    }
 
-if (pqueue_size(parcels) == 0)
-
-   /**************************************************************************
-   *                                                                         *
-   *  Return that there are no parcels.                                      *
-   *                                                                         *
-   **************************************************************************/
-
-   return -1;
-
-else {
-
-   if (pqueue_extract(parcels, (void **)&data) != 0)
-
-      /***********************************************************************
-      *                                                                      *
-      *  Return that a parcel could not be retrieved.                        *
-      *                                                                      *
-      ***********************************************************************/
-
-      return -1;
-
-   else {
-
-      /***********************************************************************
-      *                                                                      *
-      *  Pass back the highest-priority parcel.                              *
-      *                                                                      *
-      ***********************************************************************/
-
-      memcpy(parcel, data, sizeof(Parcel));
-      free(data);
-
-   }
-
+    return 0;
 }
 
-return 0;
-
-}
-
-/*****************************************************************************
-*                                                                            *
-*  ------------------------------ put_parcel ------------------------------  *
-*                                                                            *
-*****************************************************************************/
 
 int put_parcel(PQueue *parcels, const Parcel *parcel) {
+    Parcel *data;
 
-Parcel             *data;
+    if ((data = (Parcel *) malloc(sizeof(Parcel))) == NULL)
+        return -1;
 
-/*****************************************************************************
-*                                                                            *
-*  Allocate storage for the parcel.                                          *
-*                                                                            *
-*****************************************************************************/
+    memcpy(data, parcel, sizeof(Parcel));
 
-if ((data = (Parcel *)malloc(sizeof(Parcel))) == NULL)
-   return -1;
+    if (pqueue_insert(parcels, data) != 0)
+        return -1;
 
-/*****************************************************************************
-*                                                                            *
-*  Insert the parcel into the priority queue.                                *
-*                                                                            *
-*****************************************************************************/
-
-memcpy(data, parcel, sizeof(Parcel));
-
-if (pqueue_insert(parcels, data) != 0)
-   return -1;
-
-return 0;
-
+    return 0;
 }
