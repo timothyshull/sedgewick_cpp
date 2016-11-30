@@ -1,5 +1,0 @@
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_2_pushdown_stack_adt/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_2_pushdown_stack_adt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_2_pushdown_stack_adt/cmake-build-debug/CMakeFiles/4_11.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_2_pushdown_stack_adt/cmake-build-debug/CMakeFiles/4_10.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_2_pushdown_stack_adt/cmake-build-debug/CMakeFiles/4_9.dir

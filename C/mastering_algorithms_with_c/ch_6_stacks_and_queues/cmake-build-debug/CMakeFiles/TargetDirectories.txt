@@ -1,5 +1,0 @@
-/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_6_stacks_and_queues/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_6_stacks_and_queues/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_6_stacks_and_queues/cmake-build-debug/CMakeFiles/events.dir
-/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_6_stacks_and_queues/cmake-build-debug/CMakeFiles/queue.dir
-/Users/skull/Programming/Algorithms/C/mastering_algorithms_with_c/ch_6_stacks_and_queues/cmake-build-debug/CMakeFiles/stack.dir

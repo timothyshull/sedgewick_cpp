@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/events.dir/events.c.o CMakeFiles/events.dir/queue.c.o CMakeFiles/events.dir/list.c.o  -o events 

@@ -1,5 +1,0 @@
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_1_abstract_objects_and_collections/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_1_abstract_objects_and_collections/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_1_abstract_objects_and_collections/cmake-build-debug/CMakeFiles/4_8.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_1_abstract_objects_and_collections/cmake-build-debug/CMakeFiles/4_7.dir
-/Users/skull/Programming/Algorithms/Cpp/algorithms_in_c++_pt1/ch_4_1_abstract_objects_and_collections/cmake-build-debug/CMakeFiles/4_6.dir
