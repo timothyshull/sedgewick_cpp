@@ -2,6 +2,7 @@
 #define CH_5_LINKED_LISTS_FRAMES_H
 
 #include <stdlib.h>
+#include "list.h"
 
 int alloc_frame(List *frames);
 

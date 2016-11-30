@@ -1,5 +1,5 @@
-#include <stdlib.h>
 
+#include <stdlib.h>
 #include "list.h"
 #include "queue.h"
 
@@ -9,11 +9,4 @@ int queue_enqueue(Queue *queue, const void *data) {
 
 int queue_dequeue(Queue *queue, void **data) {
     return list_rem_next(queue, NULL, data);
-}
-
-void *queue_peek(Queue * queue) {
-    if (queue == NULL) {
-        return NULL;
-    }
-    return queue->head == NULL ? NULL : queue->head->data;
 }

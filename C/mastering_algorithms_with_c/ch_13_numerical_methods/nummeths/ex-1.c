@@ -1,29 +1,18 @@
-
 #include <math.h>
 #include <stdio.h>
-
 #include "nummeths.h"
-
 
 #define            SIZE                 50
 
-
 static double f(double x) {
-
     return (pow(x, 3.0)) - (pow(x, 2.0)) - (3.0 * x) + 1.8;
-
 }
-
 
 static double g(double x) {
-
     return (3.0 * pow(x, 2.0)) - (2.0 * x) - 3.0;
-
 }
 
-
 int main(int argc, char **argv) {
-
     double x[SIZE],
             fx[SIZE],
             z[SIZE],
@@ -35,10 +24,7 @@ int main(int argc, char **argv) {
     int retval,
             i,
             n;
-
-
     fprintf(stdout, "Perform polynomial interpolation\n");
-
     x[0] = -3.0;
     fx[0] = -5.0;
     x[1] = -2.0;
@@ -47,25 +33,22 @@ int main(int argc, char **argv) {
     fx[2] = 1.9;
     x[3] = 3.0;
     fx[3] = 4.8;
-
     z[0] = -2.5;
     z[1] = -1.0;
     z[2] = 0.0;
     z[3] = 1.0;
     z[4] = 1.5;
     z[5] = 2.5;
-
-    if (interpol(x, fx, 4, z, pz, 6) != 0)
+    if (interpol(x, fx, 4, z, pz, 6) != 0) {
         return 1;
-
+    }
     fprintf(stdout, "Interpolating f(z) with p(z)\n");
-
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 4; i++) {
         fprintf(stdout, "x[%d]=%+1.6e, f(x[%d])=%+1.6e\n", i, x[i], i, fx[i]);
-
-    for (i = 0; i < 6; i++)
+    }
+    for (i = 0; i < 6; i++) {
         fprintf(stdout, "z[%d]=%+1.6e, p(z[%d])=%+1.6e\n", i, z[i], i, pz[i]);
-
+    }
     x[0] = -4.0;
     fx[0] = -3.0;
     x[1] = -3.5;
@@ -84,7 +67,6 @@ int main(int argc, char **argv) {
     fx[7] = 1.5;
     x[8] = 4.0;
     fx[8] = -3.0;
-
     z[0] = -0.50;
     z[1] = -1.00;
     z[2] = -2.00;
@@ -92,21 +74,17 @@ int main(int argc, char **argv) {
     z[4] = -3.25;
     z[5] = -3.50;
     z[6] = -3.75;
-
-    if (interpol(x, fx, 9, z, pz, 7) != 0)
+    if (interpol(x, fx, 9, z, pz, 7) != 0) {
         return 1;
-
+    }
     fprintf(stdout, "Interpolating f(z) with p(z)\n");
-
-    for (i = 0; i < 9; i++)
+    for (i = 0; i < 9; i++) {
         fprintf(stdout, "x[%d]=%+1.6e, f(x[%d])=%+1.6e\n", i, x[i], i, fx[i]);
-
-    for (i = 0; i < 7; i++)
+    }
+    for (i = 0; i < 7; i++) {
         fprintf(stdout, "z[%d]=%+1.6e, p(z[%d])=%+1.6e\n", i, z[i], i, pz[i]);
-
-
+    }
     fprintf(stdout, "Perform least-squares estimation\n");
-
     x[0] = 4.0;
     y[0] = 197.0;
     x[1] = 6.0;
@@ -131,53 +109,44 @@ int main(int argc, char **argv) {
     y[10] = 66.0;
     x[11] = 5.0;
     y[11] = 239.0;
-
-    for (i = 0; i < 12; i++)
+    for (i = 0; i < 12; i++) {
         fprintf(stdout, "x[%02d]=%+1.6e, y[%02d]=%+1.6e\n", i, x[i], i, y[i]);
-
+    }
     lsqe(x, y, 12, &b1, &b0);
-
     fprintf(stdout, "b1=%+1.6e, b0=%+1.6e\n", b1, b0);
-
-
     fprintf(stdout, "Finding the roots of an equation\n");
-
     n = 10;
     x[0] = -2.0;
     retval = root(f, g, x, &n, 0.0001);
-
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++) {
         fprintf(stdout, "x[%d]=%+1.6e\n", i, x[i]);
-
-    if (retval != 0)
+    }
+    if (retval != 0) {
         fprintf(stdout, "Did not find a root\n");
-    else
+    } else {
         fprintf(stdout, "Found a root at %+1.6e\n", x[n - 1]);
-
+    }
     n = 10;
     x[0] = 0.5;
     retval = root(f, g, x, &n, 0.0001);
-
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++) {
         fprintf(stdout, "x[%d]=%+1.6e\n", i, x[i]);
-
-    if (retval != 0)
+    }
+    if (retval != 0) {
         fprintf(stdout, "Did not find a root\n");
-    else
+    } else {
         fprintf(stdout, "Found a root at %+1.6e\n", x[n - 1]);
-
+    }
     n = 10;
     x[0] = 2.0;
     retval = root(f, g, x, &n, 0.0001);
-
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++) {
         fprintf(stdout, "x[%d]=%+1.6e\n", i, x[i]);
-
-    if (retval != 0)
+    }
+    if (retval != 0) {
         fprintf(stdout, "Did not find a root\n");
-    else
+    } else {
         fprintf(stdout, "Found a root at %+1.6e\n", x[n - 1]);
-
+    }
     return 0;
-
 }

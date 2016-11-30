@@ -3,7 +3,6 @@
 
 #include "bitree.h"
 
-
 #define AVL_LFT_HEAVY 1
 #define AVL_BALANCED 0
 #define AVL_RGT_HEAVY -1
@@ -27,5 +26,4 @@ int bistree_remove(BisTree *tree, const void *data);
 int bistree_lookup(BisTree *tree, void **data);
 
 #define bistree_size(tree) ((tree)->size)
-
 #endif

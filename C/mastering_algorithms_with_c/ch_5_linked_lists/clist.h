@@ -1,5 +1,6 @@
-#ifndef CH_5_LINKED_LISTS_CLIST_H
-#define CH_5_LINKED_LISTS_CLIST_H
+
+#ifndef CLIST_H
+#define CLIST_H
 
 #include <stdlib.h>
 
@@ -26,16 +27,8 @@ int clist_ins_next(CList *list, CListElmt *element, const void *data);
 
 int clist_rem_next(CList *list, CListElmt *element, void **data);
 
-// #define clist_size(list) ((list)->size)
-int clist_size(CList *list);
-
-// #define clist_head(list) ((list)->head)
-CListElmt *clist_head(CList *list);
-
-// #define clist_data(element) ((element)->data)
-void *clist_data(CListElmt *element);
-
-// #define clist_next(element) ((element)->next)
-CListElmt *clist_next(CListElmt *element);
-
-#endif //CH_5_LINKED_LISTS_CLIST_H
+#define clist_size(list) ((list)->size)
+#define clist_head(list) ((list)->head)
+#define clist_data(element) ((element)->data)
+#define clist_next(element) ((element)->next)
+#endif
