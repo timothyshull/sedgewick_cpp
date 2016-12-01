@@ -14,20 +14,22 @@ struct node {
 typedef node *link;
 
 int main(int argc, char *argv[]) {
-    int i, N = atoi(argv[1]), M = atoi(argv[2]);
-    link t = new node(1, 0);
+//    int i, N = atoi(argv[1]), M = atoi(argv[2]);
+    int i;
+    int N = 10;
+    int M = 5;
+    link t = new node(1, nullptr);
     t->next = t;
-    link x = t;
     for (i = 2; i <= N; i++) {
-        x = (x->next = new node(i, t));
+        t->next = new node(i, t->next);
+        t = t->next;
     }
-
-    while (x != x->next) {
+    while (t != t->next) {
         for (i = 1; i < M; i++) {
-            x = x->next;
-            x->next = x->next->next;
+            t = t->next;
+            t->next = t->next->next;
         }
-        std::cout << x->item << "\n";
+        std::cout << t->item << "\n";
     }
     return 0;
 }
