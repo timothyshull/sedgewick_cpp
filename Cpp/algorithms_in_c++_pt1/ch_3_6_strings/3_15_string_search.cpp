@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
     for (i = 0; a[i] != '\0'; i++) {
         int j;
-        for (j = 0; p[j] != 0; j++) {
+        for (j = 0; p[j] != '\0'; j++) {
             if (a[i + j] != p[j]) {
                 break;
             }
