@@ -3,11 +3,11 @@ project(ch_4_0_abstract_data_types)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(4_1_point_class POINT.h)
+include_directories(include)
+
 add_executable(4_2_point_client 4_2_point_client.cpp)
-add_executable(4_3_point_adt_interface 4_3_point_adt_interface.h)
 add_executable(4_1 4_1.cpp)
 add_executable(4_2 4_2.cpp)
 add_executable(4_3 4_3.cpp)
 add_executable(4_4 4_4.cpp)
-add_executable(4_5 4_5.cpp)
+add_executable(4_5 4_5.cpp list.h)

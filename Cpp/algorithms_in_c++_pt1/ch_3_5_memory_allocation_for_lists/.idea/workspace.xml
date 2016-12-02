@@ -2,17 +2,17 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
     <generated>
-      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_46" />
+      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="list" />
+      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_49" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_48" />
+      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_47" />
+      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_46" />
+      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="ch_3_5_memory_allocation_for_lists" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_54" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_53" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_52" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_51" />
       <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_50" />
-      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="list" />
-      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_49" />
-      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="ch_3_5_memory_allocation_for_lists" />
-      <config projectName="ch_3_5_memory_allocation_for_lists" targetName="3_47" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -38,7 +38,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -51,18 +51,18 @@
       <file leaf-file-name="list.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/list.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="list.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/list.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+            <state relative-caret-position="0">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="42" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -415,11 +415,12 @@
       <workItem from="1480348151899" duration="70000" />
       <workItem from="1480348301928" duration="780000" />
       <workItem from="1480431430283" duration="511000" />
+      <workItem from="1480705515640" duration="1261000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1361000" />
+    <option name="totallyTimeSpent" value="2622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="840" y="23" width="840" height="1023" extended-state="0" />
@@ -495,8 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp" />
-    <entry file="file://$PROJECT_DIR$/main.cpp" />
     <entry file="file://$PROJECT_DIR$/list.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -523,8 +522,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp" />
+    <entry file="file://$PROJECT_DIR$/main.cpp" />
+    <entry file="file://$PROJECT_DIR$/3_46.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/list.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/list.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="42" selection-end-column="1" />
           <folding />
         </state>
       </provider>
