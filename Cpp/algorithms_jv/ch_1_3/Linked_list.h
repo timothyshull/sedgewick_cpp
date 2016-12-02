@@ -136,7 +136,7 @@ public:
 
     value_type peek() {
         if (empty()) {
-            throw No_such_element_exception("Linked_list underflow");
+            throw utility::No_such_element_exception("Linked_list underflow");
         }
         return first_->value_;
     }
@@ -151,12 +151,12 @@ public:
             o->next_ = last_;
         }
         size_++;
-        lassert(check(), "Linked_list invariant check failed after insert");
+        utility::assert(check(), "Linked_list invariant check failed after insert");
     }
 
     void insert(node_pointer existing, node_pointer to_insert) {
         if (existing == nullptr || to_insert == nullptr) {
-            throw No_such_element_exception("Bad insertion");
+            throw utility::No_such_element_exception("Bad insertion");
         }
         to_insert->next_ = existing->next_;
         existing->next_ = to_insert;
@@ -164,7 +164,7 @@ public:
 
     reference remove(node_pointer remove_after) {
         if (remove_after == nullptr) {
-            throw No_such_element_exception("Bad node removal");
+            throw utility::No_such_element_exception("Bad node removal");
         }
         node_pointer tmp = remove_after->next_;
         value_type item = tmp->value_;
@@ -176,16 +176,17 @@ public:
 
     value_type remove() {
         if (empty()) {
-            throw No_such_element_exception("Remove on empty list");
+            throw utility::No_such_element_exception("remove called on empty list");
         }
         value_type item = first_->value_;
+        node_pointer f = first_;
         first_ = first_->next_;
-        delete first_;
+        delete f;
         size_--;
         if (empty()) {
             last_ = nullptr;
         }
-        lassert(check(), "Linked_list invariant check failed after remove");
+        utility::assert(check(), "Linked_list invariant check failed after remove");
         return item;
     }
 
@@ -241,13 +242,11 @@ public:
     static void main() {
         Linked_list<std::string> list;
 
-        for (std::string line; std::getline(std::cin, line);) {
+        for (std::string line; std::getline(std::cin, line) && line != "";) {
             if (line != "-") {
                 list.insert(line);
             } else if (!list.empty()) {
                 std::cout << list.remove() << "\n";
-            } else {
-                break;
             }
         }
         std::cout << "(" << list.size() << " nodes remaining in list)\n";

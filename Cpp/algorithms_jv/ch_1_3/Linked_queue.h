@@ -35,6 +35,8 @@ struct Linked_queue_node {
     // constructors
     inline Linked_queue_node() : next_{nullptr} {}
 
+    inline Linked_queue_node(T item) : next_{nullptr}, value_{item} {}
+
     // public methods
     std::string to_string() {
         std::stringstream ss;
@@ -136,56 +138,36 @@ public:
 
     value_type peek() {
         if (empty()) {
-            throw No_such_element_exception("Linked_queue underflow");
+            throw utility::No_such_element_exception("Linked_queue underflow");
         }
         return first_->value_;
     }
 
-    void insert(reference item) {
+    void enqueue(reference item) {
         node_pointer o = last_;
-        last_ = new Linked_queue_node<value_type>;
-        last_->value_ = item;
+        last_ = new Linked_queue_node<value_type>{item};
         if (empty()) {
             first_ = last_;
         } else {
             o->next_ = last_;
         }
         size_++;
-        lassert(check(), "Linked_queue invariant check failed after insert");
+        utility::assert(check(), "Linked_queue invariant check failed after enqueue");
     }
 
-    void insert(node_pointer existing, node_pointer to_insert) {
-        if (existing == nullptr || to_insert == nullptr) {
-            throw No_such_element_exception("Bad insertion");
-        }
-        to_insert->next_ = existing->next_;
-        existing->next_ = to_insert;
-    }
-
-    reference remove(node_pointer remove_after) {
-        if (remove_after == nullptr) {
-            throw No_such_element_exception("Bad node removal");
-        }
-        node_pointer tmp = remove_after->next_;
-        value_type item = tmp->value_;
-        remove_after->next_ = tmp->next_;
-        delete tmp;
-        size_--;
-        return item;
-    }
-
-    value_type remove() {
+    value_type dequeue() {
         if (empty()) {
-            throw No_such_element_exception("Remove on empty Linked_queue");
+            throw utility::No_such_element_exception("dequeue called on empty Linked_queue");
         }
         value_type item = first_->value_;
+        node_pointer f = first_;
         first_ = first_->next_;
-        delete first_;
+        delete f;
         size_--;
         if (empty()) {
             last_ = nullptr;
         }
-        lassert(check(), "Linked_queue invariant check failed after remove");
+        utility::assert(check(), "Linked_queue invariant check failed after remove");
         return item;
     }
 
@@ -241,13 +223,11 @@ public:
     static void main() {
         Linked_queue<std::string> queue;
 
-        for (std::string line; std::getline(std::cin, line);) {
+        for (std::string line; std::getline(std::cin, line) && line != "";) {
             if (line != "-") {
-                queue.insert(line);
+                queue.enqueue(line);
             } else if (!queue.empty()) {
-                std::cout << queue.remove() << "\n";
-            } else {
-                break;
+                std::cout << queue.dequeue() << "\n";
             }
         }
         std::cout << "(" << queue.size() << " nodes remaining in queue)\n";

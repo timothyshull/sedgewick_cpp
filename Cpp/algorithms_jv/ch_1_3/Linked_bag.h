@@ -9,8 +9,6 @@
 #include <sstream>
 #include <iostream>
 
-#include "utility.h"
-
 template<typename T>
 struct Linked_bag_node;
 
@@ -35,12 +33,8 @@ struct Linked_bag_node {
     // constructors
     inline Linked_bag_node() : next_{nullptr} {}
 
-    // public methods
-    std::string to_string() {
-        std::stringstream ss;
-        ss << "Linked_bag_node(" << value_ << ")";
-        return ss.str();
-    }
+    inline Linked_bag_node(T item) : next_{nullptr}, value_{item} {}
+
 };
 
 template<typename T>
@@ -115,12 +109,11 @@ private:
     using link_const_pointer = link_pointer;
     // private members
     node_pointer first_;
-    node_pointer last_;
     size_type size_;
 
 public:
 
-    inline Linked_bag() : first_{nullptr}, last_{nullptr}, size_{0} {}
+    inline Linked_bag() : first_{nullptr}, size_{0} {}
 
     ~Linked_bag();
 
@@ -132,106 +125,13 @@ public:
 
     inline iterator begin() noexcept { return iterator{first_}; }
 
-    inline iterator end() noexcept { return iterator{last_->next_}; }
+    inline iterator end() noexcept { return iterator{nullptr}; }
 
-    value_type peek() {
-        if (empty()) {
-            throw No_such_element_exception("Linked_bag underflow");
-        }
-        return first_->value_;
-    }
-
-    void insert(reference item) {
-        node_pointer o = last_;
-        last_ = new Linked_bag_node<value_type>;
-        last_->value_ = item;
-        if (empty()) {
-            first_ = last_;
-        } else {
-            o->next_ = last_;
-        }
+    void add(reference item) {
+        node_pointer o = first_;
+        first_ = new Linked_bag_node<value_type>{item};
+        first_->next_ = o;
         size_++;
-        lassert(check(), "Linked_bag invariant check failed after insert");
-    }
-
-    void insert(node_pointer existing, node_pointer to_insert) {
-        if (existing == nullptr || to_insert == nullptr) {
-            throw No_such_element_exception("Bad insertion");
-        }
-        to_insert->next_ = existing->next_;
-        existing->next_ = to_insert;
-    }
-
-    reference remove(node_pointer remove_after) {
-        if (remove_after == nullptr) {
-            throw No_such_element_exception("Bad node removal");
-        }
-        node_pointer tmp = remove_after->next_;
-        value_type item = tmp->value_;
-        remove_after->next_ = tmp->next_;
-        delete tmp;
-        size_--;
-        return item;
-    }
-
-    value_type remove() {
-        if (empty()) {
-            throw No_such_element_exception("Remove on empty Linked_bag");
-        }
-        value_type item = first_->value_;
-        first_ = first_->next_;
-        delete first_;
-        size_--;
-        if (empty()) {
-            last_ = nullptr;
-        }
-        lassert(check(), "Linked_bag invariant check failed after remove");
-        return item;
-    }
-
-    std::string to_string() {
-        std::stringstream ss;
-        ss << "[\n";
-        for (auto it = this->begin(); it != this->end(); it++) {
-            ss << "    " << it.ptr_->to_string() << "\n";
-        }
-        ss << "[\n";
-        return ss.str();
-    }
-
-    bool check() {
-        if (size_ < 0) {
-            return false;
-        } else if (size_ == 0) {
-            if (first_ != nullptr || last_ != nullptr) {
-                return false;
-            }
-        } else if (size_ == 1) {
-            if (first_ == nullptr || last_ == nullptr) {
-                return false;
-            }
-            if (first_ != last_) {
-                return false;
-            }
-            if (first_->next_ != nullptr) {
-                return false;
-            }
-            int num_nodes = 0;
-            for (node_pointer x = first_; x != nullptr && num_nodes <= size_; x = x->next_) {
-                num_nodes++;
-            }
-            if (num_nodes != size_) {
-                return false;
-            }
-            node_pointer ln = first_;
-            while (ln->next_ != nullptr) {
-                ln = ln->next_;
-            }
-            if (ln != last_) {
-                return false;
-            }
-        }
-        return true;
     }
 };
 
@@ -241,16 +141,14 @@ public:
     static void main() {
         Linked_bag<std::string> bag;
 
-        for (std::string line; std::getline(std::cin, line);) {
-            if (line != "-") {
-                bag.insert(line);
-            } else if (!bag.empty()) {
-                std::cout << bag.remove() << "\n";
-            } else {
-                break;
-            }
+        for (std::string line; std::getline(std::cin, line) && line != "";) {
+            bag.add(line);
         }
-        std::cout << "(" << bag.size() << " nodes remaining in bag)\n";
+        std::cout << "The size of the bag is: " << bag.size() << "\n";
+
+        for (auto s : bag) {
+            std::cout << s << "\n";
+        }
     }
 };
 

@@ -35,6 +35,8 @@ struct Linked_stack_node {
     // constructors
     inline Linked_stack_node() : next_{nullptr} {}
 
+    inline Linked_stack_node(T item) : next_{nullptr}, value_{item} {}
+
     // public methods
     std::string to_string() {
         std::stringstream ss;
@@ -115,12 +117,11 @@ private:
     using link_const_pointer = link_pointer;
     // private members
     node_pointer first_;
-    node_pointer last_;
     size_type size_;
 
 public:
 
-    inline Linked_stack() : first_{nullptr}, last_{nullptr}, size_{0} {}
+    inline Linked_stack() : first_{nullptr}, size_{0} {}
 
     ~Linked_stack();
 
@@ -132,60 +133,26 @@ public:
 
     inline iterator begin() noexcept { return iterator{first_}; }
 
-    inline iterator end() noexcept { return iterator{last_->next_}; }
+    inline iterator end() noexcept { return iterator{nullptr}; }
 
-    value_type peek() {
-        if (empty()) {
-            throw No_such_element_exception("Linked_stack underflow");
-        }
-        return first_->value_;
-    }
-
-    void insert(reference item) {
-        node_pointer o = last_;
-        last_ = new Linked_stack_node<value_type>;
-        last_->value_ = item;
-        if (empty()) {
-            first_ = last_;
-        } else {
-            o->next_ = last_;
-        }
+    void push(reference item) {
+        node_pointer o = first_;
+        first_ = new Linked_stack_node<value_type>{item};
+        first_->next_ = o;
         size_++;
-        lassert(check(), "Linked_stack invariant check failed after insert");
+        utility::assert(check(), "Linked_stack invariant check failed after push");
     }
 
-    void insert(node_pointer existing, node_pointer to_insert) {
-        if (existing == nullptr || to_insert == nullptr) {
-            throw No_such_element_exception("Bad insertion");
-        }
-        to_insert->next_ = existing->next_;
-        existing->next_ = to_insert;
-    }
-
-    reference remove(node_pointer remove_after) {
-        if (remove_after == nullptr) {
-            throw No_such_element_exception("Bad node removal");
-        }
-        node_pointer tmp = remove_after->next_;
-        value_type item = tmp->value_;
-        remove_after->next_ = tmp->next_;
-        delete tmp;
-        size_--;
-        return item;
-    }
-
-    value_type remove() {
+    value_type pop() {
         if (empty()) {
-            throw No_such_element_exception("Remove on empty Linked_stack");
+            throw utility::No_such_element_exception("Linked_stack underflow");
         }
         value_type item = first_->value_;
+        node_pointer f = first_;
         first_ = first_->next_;
-        delete first_;
+        delete f;
         size_--;
-        if (empty()) {
-            last_ = nullptr;
-        }
-        lassert(check(), "Linked_stack invariant check failed after remove");
+        utility::assert(check(), "Linked_stack invariant check failed after pop");
         return item;
     }
 
@@ -202,36 +169,31 @@ public:
     bool check() {
         if (size_ < 0) {
             return false;
-        } else if (size_ == 0) {
-            if (first_ != nullptr || last_ != nullptr) {
+        }
+        if (size_ == 0) {
+            if (first_ != nullptr) {
                 return false;
             }
         } else if (size_ == 1) {
-            if (first_ == nullptr || last_ == nullptr) {
-                return false;
-            }
-            if (first_ != last_) {
+            if (first_ == nullptr) {
                 return false;
             }
             if (first_->next_ != nullptr) {
                 return false;
             }
-            int num_nodes = 0;
-            for (node_pointer x = first_; x != nullptr && num_nodes <= size_; x = x->next_) {
-                num_nodes++;
-            }
-            if (num_nodes != size_) {
+        } else {
+            if (first_ == nullptr) {
                 return false;
             }
-            node_pointer ln = first_;
-            while (ln->next_ != nullptr) {
-                ln = ln->next_;
-            }
-            if (ln != last_) {
+            if (first_->next_ == nullptr) {
                 return false;
             }
         }
-        return true;
+        int num_nodes = 0;
+        for (node_pointer x = first_; x != nullptr && num_nodes <= size_; x = x->next_) {
+            num_nodes++;
+        }
+        return num_nodes == size_;
     }
 };
 
@@ -241,16 +203,14 @@ public:
     static void main() {
         Linked_stack<std::string> stack;
 
-        for (std::string line; std::getline(std::cin, line);) {
+        for (std::string line; std::getline(std::cin, line) && line != "";) {
             if (line != "-") {
-                stack.insert(line);
+                stack.push(line);
             } else if (!stack.empty()) {
-                std::cout << stack.remove() << "\n";
-            } else {
-                break;
+                std::cout << stack.pop() << "\n";
             }
         }
-        std::cout << "(" << stack.size() << " nodes remaining in stack)\n";
+        std::cout << "(" << stack.size() << " nodes remaining on the stack)\n";
     }
 };
 
