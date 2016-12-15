@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.6)
+project(ch_7_3_stack_size)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(7_3_nonrecursive_quicksort 7_3_nonrecursive_quicksort.cpp Stack.h)
+add_executable(7_11 7_11.cpp)
+add_executable(7_12 7_12.cpp)
+add_executable(7_13 7_13.cpp)
+add_executable(7_14 7_14.cpp)
+add_executable(7_15 7_15.cpp)
+add_executable(7_16 7_16.cpp)
+add_executable(7_17 7_17.cpp)
+add_executable(7_18 7_18.cpp)
+add_executable(7_19 7_19.cpp)
+add_executable(7_20 7_20.cpp)
