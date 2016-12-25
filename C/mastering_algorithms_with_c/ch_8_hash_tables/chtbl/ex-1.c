@@ -1,9 +1,7 @@
-
 #include <stdio.h>
 #include "chtbl.h"
-#include "list.h"
 
-#define            TBLSIZ               11
+#define TBLSIZ 11
 
 static int match_char(const void *char1, const void *char2) {
     return (*(const char *) char1 == *(const char *) char2);
@@ -44,7 +42,7 @@ int main(int argc, char **argv) {
         if ((data = (char *) malloc(sizeof(char))) == NULL) {
             return 1;
         }
-        *data = ((5 + (i * 6)) % 23) + 'A';
+        *data = (char) (((5 + (i * 6)) % 23) + 'A');
         if (chtbl_insert(&htbl, data) != 0) {
             return 1;
         }
@@ -54,7 +52,7 @@ int main(int argc, char **argv) {
         if ((data = (char *) malloc(sizeof(char))) == NULL) {
             return 1;
         }
-        *data = ((3 + (i * 4)) % 23) + 'a';
+        *data = (char) (((3 + (i * 4)) % 23) + 'a');
         if (chtbl_insert(&htbl, data) != 0) {
             return 1;
         }

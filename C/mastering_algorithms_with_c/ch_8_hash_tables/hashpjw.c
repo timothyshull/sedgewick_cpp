@@ -5,10 +5,11 @@ int hashpjw(const void *key) {
     int val;
     val = 0;
     ptr = key;
+    int tmp;
     while (*ptr != '\0') {
-        int tmp;
         val = (val << 4) + (*ptr);
-        if (tmp = (val & 0xf0000000)) {
+        tmp = (val & 0xf0000000);
+        if (tmp) {
             val = val ^ (tmp >> 24);
             val = val ^ tmp;
         }

@@ -9,7 +9,8 @@ Token lex(const char *istream, CHTbl *symtbl) {
     Token token;
     Symbol *symbol;
 
-    int length, retval, i;
+    size_t length;
+    int retval, i;
     if ((symbol = (Symbol *) malloc(sizeof(Symbol))) == NULL) {
         return error;
     }

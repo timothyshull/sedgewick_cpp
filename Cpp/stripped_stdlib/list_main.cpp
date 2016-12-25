@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-#include "list"
+#include "list.h"
 
 int main() {
     // Create a list containing integers

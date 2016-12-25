@@ -1,8 +1,7 @@
-
 #include <stdio.h>
 #include "ohtbl.h"
 
-#define            TBLSIZ               11
+#define TBLSIZ 11
 
 static int match_char(const void *char1, const void *char2) {
     return (*(const char *) char1 == *(const char *) char2);
@@ -46,14 +45,7 @@ int main(int argc, char **argv) {
             return 1;
         }
 
-        /**************************************************************************
-        *                                                                         *
-        *  The following expression produces "random" data while avoiding dupli-  *
-        *  cates.                                                                 *
-        *                                                                         *
-        **************************************************************************/
-
-        *data = ((8 + (i * 9)) % 23) + 'A';
+        *data = (char) (((8 + (i * 9)) % 23) + 'A');
         fprintf(stdout, "Hashing %c:", *data);
         for (j = 0; j < TBLSIZ; j++) {
             fprintf(stdout, " %02d", (h1_char(data) + (j * h2_char(data))) % TBLSIZ);
@@ -69,14 +61,7 @@ int main(int argc, char **argv) {
             return 1;
         }
 
-        /**************************************************************************
-        *                                                                         *
-        *  The following expression works similar to the one above but produces   *
-        *  collisions.                                                            *
-        *                                                                         *
-        **************************************************************************/
-
-        *data = ((8 + (i * 9)) % 13) + 'j';
+        *data = (char) (((8 + (i * 9)) % 13) + 'j');
         fprintf(stdout, "Hashing %c:", *data);
         for (j = 0; j < TBLSIZ; j++) {
             fprintf(stdout, " %02d", (h1_char(data) + (j * h2_char(data))) % TBLSIZ);

@@ -29,4 +29,5 @@ int chtbl_remove(CHTbl *htbl, void **data);
 int chtbl_lookup(const CHTbl *htbl, void **data);
 
 #define chtbl_size(htbl) ((htbl)->size)
+
 #endif

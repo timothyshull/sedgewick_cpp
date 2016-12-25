@@ -58,12 +58,6 @@ int chtbl_remove(CHTbl *htbl, void **data) {
                                                                              list_next(element)) {
         if (htbl->match(*data, list_data(element))) {
 
-            /***********************************************************************
-            *                                                                      *
-            *  Remove the data from the bucket.                                    *
-            *                                                                      *
-            ***********************************************************************/
-
             if (list_rem_next(&htbl->table[bucket], prev, data) == 0) {
                 htbl->size--;
                 return 0;
@@ -84,12 +78,6 @@ int chtbl_lookup(const CHTbl *htbl, void **data) {
     for (element = list_head(&htbl->table[bucket]); element != NULL; element =
                                                                              list_next(element)) {
         if (htbl->match(*data, list_data(element))) {
-
-            /***********************************************************************
-            *                                                                      *
-            *  Pass back the data from the table.                                  *
-            *                                                                      *
-            ***********************************************************************/
 
             *data = list_data(element);
             return 0;
