@@ -1,9 +1,16 @@
-static void randE(Graph& G, int E)
+#include<cstdlib>
+#include<random>
+#include"Graph.h"
+
+static void random_edges(Graph& graph, int edge)
 {
-    for (int i = 0; i < E; i++) {
-        int v = int(G.V() * rand() / (1.0 + RAND_MAX));
-        int w = int(G.V() * rand() / (1.0 + RAND_MAX));
-        G.insert(Edge(v, w));
+    std::random_device rd;
+    std::default_random_engine gen(rd());
+    std::uniform_real_distribution<> dis(0, RAND_MAX);
+    for (int i = 0; i < edge; i++) {
+        int v = int(graph.num_vertices() * dis(gen) / (1.0 + RAND_MAX)); // rand()
+        int w = int(graph.num_vertices() * dis(gen) / (1.0 + RAND_MAX)); // rand()
+        graph.insert(Edge(v, w));
     }
 }
 

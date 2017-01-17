@@ -1,38 +1,35 @@
-#include <math.h>
-#include <iostream>
-#include <stdlib.h>
-#include "Point.h"
+#include<cmath>
+#include<iostream>
+#include<cstdlib>
+#include"Point.h"
 
 using std::cin;
 using std::cout;
 
-struct node {
-    point p;
-    node* next;
+struct Node {
+    Point p;
+    Node* next;
 
-    node(point pt, node* t)
-    {
-        p = pt;
-        next = t;
-    }
+    Node(Point pt, Node* t) : p{pt}, next{t} {}
 };
 
-typedef node* link;
+using Link = Node *;
 
-static link** grid;
+static Link** grid;
 
 static int G, cnt = 0;
 
 static float d;
 
-void gridinsert(float x, float y)
+void grid_insert(float x, float y)
 {
     int X = x * G + 1;
     int Y = y * G + 1;
-    point p;
+    Point p;
     p.x = x;
     p.y = y;
-    link s, t = new node(p, grid[X][Y]);
+    Link s;
+    Link t = new Node(p, grid[X][Y]);
     for (int i = X - 1; i <= X + 1; i++) {
         for (int j = Y - 1; j <= Y + 1; j++) {
             for (s = grid[i][j]; s != 0; s = s->next) {
@@ -55,8 +52,9 @@ int main(int argc, char* argv[])
         }
     }
     for (i = 0; i < N; i++) {
-        gridinsert(randFloat(), randFloat());
+        grid_insert(randFloat(), randFloat());
     }
     cout << cnt << " pairs within " << d << "\n";
+    return 0;
 }
 

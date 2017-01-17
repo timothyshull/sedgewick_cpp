@@ -8,7 +8,7 @@ void splay(link& h, Item x)
     }
     if (x.key() < h->item.key()) {
         link& hl = h->l;
-        int N = h->N;
+        int N = h->n;
         if (hl == 0) {
             h = new node(x, 0, h, N + 1);
             return;
@@ -24,7 +24,7 @@ void splay(link& h, Item x)
         rotR(h);
     } else {
         link& hr = h->r;
-        int N = h->N;
+        int N = h->n;
         if (hr == 0) {
             h = new node(x, h, 0, N + 1);
             return;

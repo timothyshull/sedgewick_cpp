@@ -10,7 +10,7 @@ class ST {
         node(int d) : v(-1), d(d), l(0), m(0), r(0) {}
     };
 
-    typedef node* link;
+    using link = node *;
     link head;
 
     link indexR(link h, const string& s, int w)

@@ -13,10 +13,10 @@ private:
         }
     };
 
-    typedef node* link;
+    using link = node *;
     link head, tail;
 public:
-    typedef node* handle;
+    using handle = node *;
 
     PQ(int = 0)
     {

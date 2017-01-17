@@ -1,10 +1,10 @@
-typedef int Item;
+using Item = int;
 
-struct node { Item item; node* next; };
+struct Node { Item item; Node* next; };
 
-typedef node* link;
+typedef Node* link;
 
-typedef link Node;
+using Link = Node*;
 
 void construct(int);
 

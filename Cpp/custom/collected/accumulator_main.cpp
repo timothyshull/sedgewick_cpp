@@ -1,25 +1,23 @@
-#include<iostream>
-#include<string>
-#include<boost/lexical_cast.hpp>
+#include <iostream>
 
-#include"Accumulator.h"
+#include "Accumulator.h"
+#include "Std_in.h"
+#include "Std_out.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
     Accumulator<double> stats;
-    std::string s;
 
-    for (; std::getline(std::cin, s) && s != "";) {
-        try {
-            stats.add_value(boost::lexical_cast<double>(s));
-        } catch (boost::bad_lexical_cast &e) {
-            std::cerr << "Unable to cast " << s << "\n";
-        }
+    double x;
+    while (!Std_in::is_empty()) {
+        x = Std_in::read_double();
+        stats.add_value(x);
     }
 
-    std::cout << "Number of inputs: " << stats.count() << "\n";
-    std::cout << "Mean: " << stats.mean() << "\n";
-    std::cout << "Standard deviation: " << stats.std_dev() << "\n";
-    std::cout << "Variance: " << stats.var() << "\n";
+    Std_out::printf("Number of input values: %d\n", stats.count());
+    Std_out::printf("Mean: %.5f\n", stats.mean());
+    Std_out::printf("Standard deviation: %.5f\n", stats.std_dev());
+    Std_out::printf("Variance: %.5f\n", stats.var());
 
     return 0;
 }

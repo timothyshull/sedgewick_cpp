@@ -1,35 +1,40 @@
-#include <iostream>
-#include <stdlib.h>
+#include<iostream>
+#include<cstdlib>
+#include<memory>
 
 using std::cin;
 using std::cout;
+using std::shared_ptr;
+using std::make_shared;
+using std::size_t;
 
-struct node {
-    int item;
-    node* next;
+template<typename Item>
+struct Node {
+    Item item;
+    shared_ptr<Node> next; // uses shared_ptr over unique_ptr because each can be the head at any time
 
-    node(int x, node* t)
-    {
-        item = x;
-        next = t;
-    }
+    Node(Item x, shared_ptr<Node>& t) : item{x}, next{t} {}
 };
 
-typedef node* link;
+using Link = shared_ptr<Node<int>>;
 
 int main(int argc, char* argv[])
 {
-    int i, N = atoi(argv[1]), M = atoi(argv[2]);
-    link t = new node(1, 0);
+    int i;
+    int n = atoi(argv[1]);
+    int m = atoi(argv[2]);
+    Link t = make_shared(1, nullptr);
     t->next = t;
-    link x = t;
-    for (i = 2; i <= N; i++) {
-        x = (x->next = new node(i, t));
+    auto x = t;
+    for (i = 2; i <= n; i++) {
+        x->next = make_shared(i, t);
+        x = x->next;
     }
     while (x != x->next) {
-        for (i = 1; i < M; i++) { x = x->next; }
+        for (i = 1; i < m; i++) { x = x->next; }
         x->next = x->next->next;
     }
     cout << x->item << "\n";
+    return 0;
 }
 

@@ -1,20 +1,20 @@
 private:
 
-struct node {
-    node** next;
+struct Node {
+    Node** next;
 
-    node()
+    Node()
     {
-        next = new node* [R];
+        next = new Node* [R];
         for (int i = 0; i < R; i++) { next[i] = 0; }
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link head;
+Link head;
 
-Item searchR(link h, Key v, int d)
+Item searchR(Link h, Key v, int d)
 {
     int i = digit(v, d);
     if (h == 0) { return nullItem; }
@@ -25,10 +25,10 @@ Item searchR(link h, Key v, int d)
     return searchR(h->next[i], v, d + 1);
 }
 
-void insertR(link& h, Item x, int d)
+void insertR(Link& h, Item x, int d)
 {
     int i = digit(x.key(), d);
-    if (h == 0) { h = new node; }
+    if (h == 0) { h = new Node; }
     if (i == NULLdigit) { return; }
     insertR(h->next[i], x, d + 1);
 }

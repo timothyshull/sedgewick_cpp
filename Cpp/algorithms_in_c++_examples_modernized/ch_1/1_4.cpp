@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 
 static const int N = 10000;
 
@@ -7,8 +7,8 @@ using std::cout;
 
 int main()
 {
-    int i, j, p, q, id[N], sz[N];
-    for (i = 0; i < N; i++) {
+    int i, j, p, q, id[n], sz[n];
+    for (i = 0; i < n; i++) {
         id[i] = i;
         sz[i] = 1;
     }

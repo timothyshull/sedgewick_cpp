@@ -1,11 +1,11 @@
 private:
 
-struct node {
+struct Node {
     Item item;
     int d;
-    node* l, * m, * r;
+    Node* l, * m, * r;
 
-    node(int k)
+    Node(int k)
     {
         d = k;
         l = 0;
@@ -14,13 +14,13 @@ struct node {
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link head;
+Link head;
 
 Item nullItem;
 
-Item searchR(link h, Key v, int d)
+Item searchR(Link h, Key v, int d)
 {
     int i = digit(v, d);
     if (h == 0) { return nullItem; }
@@ -33,10 +33,10 @@ Item searchR(link h, Key v, int d)
     if (i > h->d) { return searchR(h->r, v, d); }
 }
 
-void insertR(link& h, Item x, int d)
+void insertR(Link& h, Item x, int d)
 {
     int i = digit(x.key(), d);
-    if (h == 0) { h = new node(i); }
+    if (h == 0) { h = new Node(i); }
     if (i == NULLdigit) { return; }
     if (i < h->d) { insertR(h->l, x, d); }
     if (i == h->d) { insertR(h->m, x, d + 1); }

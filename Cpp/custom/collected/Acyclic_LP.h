@@ -1,32 +1,25 @@
-#ifndef COLLECTED_ACYCLICLP_H
-#define COLLECTED_ACYCLICLP_H
+#ifndef ACYCLICLP_H
+#define ACYCLICLP_H
 
-#include<type_traits>
-#include<vector>
+#include <type_traits>
+#include <vector>
+
+#include "Directed_edge.h"
+#include "Edge_weighted_digraph.h"
+#include "Topological.h"
 
 template<class T, class Enable = void>
-class Acyclic_LP {};
+class Acyclic_lp {};
 
 template<typename Float_type>
-class Acyclic_LP<Float_type, typename std::enable_if<std::is_floating_point<Float_type>::value>::type> {
-    std::vector<Float_type> distance_to;
-    std::vector<Directed_edge> edge_to;
-
-    void relax(Directed_edge &e) {
-        int v = e.from();
-        int w = e.to();
-        if (distance_to[w] < distance_to[v] + e.weight()) {
-            distance_to[w] = distance_to[v] + e.weight();
-            edge_to[w] = e;
-        }
-    }
-
+class Acyclic_lp<Float_type, typename std::enable_if<std::is_floating_point<Float_type>::value>::type> {
 public:
-    Acyclic_LP(Edge_weighted_digraph &g, std::size_t size) : distance_to{std::vector<Float_type>(g.num_vertices())}, edge_to{std::vector<Directed_edge>(g.num_vertices())}  {
+    Acyclic_lp(Edge_weighted_digraph& g, int size) : _distance_to{std::vector<Float_type>(g.num_vertices())}, _edge_to{std::vector<Directed_edge>(g.num_vertices())}
+    {
         for (int v = 0; v < g.num_vertices(); v++) {
-            distance_to[v] = std::numeric_limits<Float_type>::infinity();
+            _distance_to[v] = std::numeric_limits<Float_type>::infinity();
         }
-        distance_to[size] = 0.0;
+        _distance_to[size] = 0.0;
 
         Topological topological{g};
 
@@ -36,25 +29,40 @@ public:
 
         for (auto v : topological.order()) {
             for (auto e : g.adjacent(v)) {
-                relax(e);
+                _relax(e);
             }
         }
     }
 
-    inline Float_type get_distance_to(int v) { return distance_to[v]; }
+    inline Float_type distance_to(int v) { return _distance_to[v]; }
 
-    inline bool has_path_to(int v) { return distance_to[v] < std::numeric_limits<Float_type>::infinity(); }
+    inline bool has_path_to(int v) { return _distance_to[v] < std::numeric_limits<Float_type>::infinity(); }
 
-    Stack<Directed_edge> path_to(int v) {
+    Stack<Directed_edge> path_to(int v)
+    {
         Stack<Directed_edge> path;
         if (!has_path_to(v)) {
             return path;
         }
-        for (Directed_edge e = edge_to[v]; ; e = edge_to[e.from()]) {
+        for (Directed_edge e = _edge_to[v];; e = _edge_to[e.from()]) {
             path.push(e);
         }
         return path;
     }
+
+private:
+    std::vector<Float_type> _distance_to;
+    std::vector<Directed_edge> _edge_to;
+
+    void _relax(Directed_edge& e)
+    {
+        int v = e.from();
+        int w = e.to();
+        if (_distance_to[w] < _distance_to[v] + e.weight()) {
+            _distance_to[w] = _distance_to[v] + e.weight();
+            _edge_to[w] = e;
+        }
+    }
 };
 
-#endif //COLLECTED_ACYCLICLP_H
+#endif //ACYCLICLP_H

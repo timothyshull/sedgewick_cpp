@@ -1,25 +1,25 @@
 template<class Item>
-class STACK {
+class Stack {
 private:
-    struct node {
+    struct Node {
         Item item;
-        node* next;
+        Node* next;
 
-        node(Item x, node* t)
+        Node(Item x, Node* t)
         {
             item = x;
             next = t;
         }
     };
 
-    typedef node* link;
+    using link = Node *;
     link head;
 public:
-    STACK(int) { head = 0; }
+    Stack(int) { head = 0; }
 
     int empty() const { return head == 0; }
 
-    void push(Item x) { head = new node(x, head); }
+    void push(Item x) { head = new Node(x, head); }
 
     Item pop()
     {

@@ -16,7 +16,7 @@ private:
         }
     };
 
-    typedef node* link;
+    using link = node *;
     int N;
     link head;
 

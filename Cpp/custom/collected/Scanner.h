@@ -1,17 +1,18 @@
 #ifndef COLLECTED_SCANNER_H
 #define COLLECTED_SCANNER_H
 
-#include<regex>
-#include<istream>
-#include<boost/variant.hpp>
+#include <regex>
+#include <istream>
+#include <boost/variant.hpp>
 
-#include"LRU_cache.h"
+#include "LRU_cache.h"
 
 using boost::variant;
 
 class Scanner_lru_cache : public LRU_cache<std::string, std::regex> {
-    std::regex create(std::string &s) { return std::regex(s); }
-    bool has_name(std::regex &p, std::string &s) { return p == s; }
+    std::regex create(std::string& s) { return std::regex(s); }
+
+    bool has_name(std::regex& p, std::string& s) { return p == s; }
 };
 
 class Scanner {

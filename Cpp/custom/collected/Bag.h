@@ -1,156 +1,181 @@
 #ifndef COLLECTED_BAG_H
 #define COLLECTED_BAG_H
 
-#include<cstdlib>
-#include<cstddef>
-#include<stdexcept>
-#include<iterator>
-#include<memory>
-#include<sstream>
-#include<iostream>
+#include <cstdlib>
+#include <cstddef>
+#include <stdexcept>
+#include <iterator>
+#include <memory>
+#include <sstream>
+#include <iostream>
 
 template<typename T>
-struct Bag_node;
+class Bag_node;
 
 template<typename T>
-struct Bag_node_pointer_traits {
-    using node_pointer = Bag_node<T> *;
-    using link_pointer = node_pointer;
-};
-
-template<typename T>
-struct Bag_node {
-    // traits
-    using Node_traits = Bag_node_pointer_traits<T>;
-    using node_pointer = typename Node_traits::node_pointer;
-    using link_pointer = typename Node_traits::link_pointer;
-
-    // members
-    T value_;
-    node_pointer next_;
-    // link_pointer prev_;
-
-    // constructors
-    inline Bag_node() : next_{nullptr} {}
-
-    inline Bag_node(T item) : next_{nullptr}, value_{item} {}
-
-};
+class Bag_iterator;
 
 template<typename T>
 class Bag;
 
 template<typename T>
+struct Bag_node_pointer_traits {
+    using Node_type = Bag_node<T>;
+    using Node_raw_pointer = Bag_node<T>*;
+    using Node_owning_pointer = std::unique_ptr<Node_type>;
+    using Value_type = T;
+    using Shared_value_pointer = std::shared_ptr<Value_type>;
+};
+
+template<typename T>
+class Bag_node {
+public:
+    using Node_traits = Bag_node_pointer_traits<T>;
+    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
+    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
+    using Value_type = typename Node_traits::Value_type;
+    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
+
+    inline Bag_node() : _next{nullptr} {}
+
+    inline Bag_node(T item) : _next{nullptr}, _item{item} {}
+
+private:
+    Value_type _item;
+    Node_owning_pointer _next;
+
+    template<typename>
+    friend class Bag;
+
+    template<typename>
+    friend class Bag_iterator;
+};
+
+template<typename T>
 class Bag_iterator {
     using Node_traits = Bag_node_pointer_traits<T>;
-    using link_pointer = typename Node_traits::link_pointer;
-    link_pointer ptr_;
+    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
+    Node_raw_pointer _ptr;
 
-    inline explicit Bag_iterator(link_pointer p) noexcept : ptr_{p} {}
-
-    template<class>
-    friend
-    class Bag;
+    template<typename>
+    friend class Bag;
 
 public:
     using iterator_category = std::forward_iterator_tag;
-    using value_type = T;
-    using reference = value_type &;
-    using pointer = value_type *;  // reconsider this
-    using difference_type = typename std::pointer_traits<pointer>::difference_type;
+    using Value_type = typename Node_traits::Value_type;
+    using Reference_type = Value_type&;
 
-    inline Bag_iterator() noexcept : ptr_{nullptr} {}
+    inline Bag_iterator() noexcept : _ptr{nullptr} {}
 
-    inline reference operator*() const {
-        return ptr_->value_;
+    inline explicit Bag_iterator(Node_raw_pointer p) noexcept : _ptr{p} {}
+
+    inline Reference_type operator*() const
+    {
+        return _ptr->_item;
     }
 
-    inline pointer operator->() const {
-        return std::pointer_traits<pointer>::pointer_to(ptr_->value_);
+    inline Node_raw_pointer operator->() const
+    {
+        return _ptr;
     }
 
-    inline Bag_iterator &operator++() {
-        ptr_ = ptr_->next_;
+    inline Bag_iterator& operator++()
+    {
+        _ptr = _ptr->_next.get();
         return *this;
     }
 
-    inline Bag_iterator operator++(int) {
-        Bag_iterator tmp(*this);
+    inline Bag_iterator operator++(int)
+    {
+        Bag_iterator t{*this};
         ++(*this);
-        return tmp;
+        return t;
     }
 
     friend
-    inline bool operator==(const Bag_iterator &x, const Bag_iterator &y) { return x.ptr_ == y.ptr_; }
+    inline bool operator==(const Bag_iterator& x, const Bag_iterator& y)
+    {
+        return x._ptr == y._ptr;
+    }
 
     friend
-    inline bool operator!=(const Bag_iterator &x, const Bag_iterator &y) { return !(x == y); }
+    inline bool operator!=(const Bag_iterator& x, const Bag_iterator& y) { return !(x == y); }
 };
 
 template<typename T>
 class Bag {
 public:
-    using value_type = T;
-    using reference = value_type &;
-    using const_reference = const value_type &;
-    using pointer = value_type *;
-    using const_pointer = value_type const *;
-    using size_type = std::size_t;
-    using difference_type = std::ptrdiff_t;  // check on this because of the relationship with max_size
-    using iterator = Bag_iterator<value_type>;
+    using Node_traits = Bag_node_pointer_traits<T>;
+    using Node_type = typename Node_traits::Node_type;
+    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
+    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
+    using Value_type = typename Node_traits::Value_type;
+    using Pointer_type = Value_type*;
+    using Reference_type = Value_type&;
+    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
+    using Iterator_type = Bag_iterator<T>;
+    using Const_iterator_type = Bag_iterator<T>;
+
+    // inline Bag() = default;
+
+    // ~Bag();
+
+    inline bool is_empty() const noexcept { return _first == nullptr; }
+
+    inline int size() const noexcept { return _n; }
+
+    inline Iterator_type begin() const noexcept { return Iterator_type(_first.get()); }
+
+    inline Iterator_type end() const noexcept { return Iterator_type(nullptr); }
+
+    void add(Reference_type item)
+    {
+        auto old_first = std::move(_first);
+        _first = std::unique_ptr<Node_type>{new Bag_node<Value_type>};
+        _first->_item = item;
+        _first->_next = std::move(old_first);
+        ++_n;
+    }
+
+    std::string to_string() const
+    {
+        std::stringstream ss;
+        ss << "Bag(\n";
+        for (auto i : *this) {
+            ss << "    Node(" << i << "),\n";
+        }
+        ss << ")\n";
+        return ss.str();
+    }
 
 private:
-    // private traits
-    using node = Bag_node<value_type>;
-    using node_pointer = typename node::node_pointer;
-    using node_const_pointer = typename node::node_pointer;
-    using node_pointer_traits = Bag_node_pointer_traits<value_type>;
-    using link_pointer = typename node_pointer_traits::link_pointer;
-    using link_const_pointer = link_pointer;
-    // private members
-    node_pointer first_;
-    size_type size_;
+    Node_owning_pointer _first;
+    int _n;
 
-public:
-
-    inline Bag() : first_{nullptr}, size_{0} {}
-
-    ~Bag();
-
-    void clear() noexcept;
-
-    inline size_type size() const noexcept { return size_; }
-
-    inline bool empty() const noexcept { return first_ == nullptr; }
-
-    inline iterator begin() noexcept { return iterator{first_}; }
-
-    inline iterator end() noexcept { return iterator{nullptr}; }
-
-    void add(reference item) {
-        node_pointer o = first_;
-        first_ = new Bag_node<value_type>{item};
-        first_->next_ = o;
-        size_++;
-    }
+    void _clear() noexcept
+    {
+        if (!is_empty()) {
+            auto f = std::move(_first);
+            _n = 0;
+            while (f != nullptr) {
+                auto np = f.release();
+                f = std::move(f->_next);
+                delete np;
+            }
+        }
+    };
 };
 
 template<typename T>
-Bag<T>::~Bag() {
-    clear();
+std::ostream& operator<<(std::ostream& os, const Bag<T>& out)
+{
+    return os << out.to_string();
 }
 
-template<typename T>
-void Bag<T>::clear() noexcept {
-    if (!empty()) {
-        link_pointer f = first_;
-        size_ = 0;
-        while (f != nullptr) {
-            node_pointer np = f;
-            f = f->next_;
-            delete np;
-        }
-    }
-}
+//template<typename T>
+//Bag<T>::~Bag()
+//{
+//    clear();
+//}
 
 #endif //COLLECTED_BAG_H

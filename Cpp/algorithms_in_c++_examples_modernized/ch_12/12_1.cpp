@@ -3,7 +3,7 @@
 
 static int maxKey = 1000;
 
-typedef int Key;
+using Key = int;
 
 class Item {
 private:

@@ -10,8 +10,8 @@ int main(int argc, char* argv[])
 {
     int i;
     char t;
-    char a[N], * p = argv[1];
-    for (i = 0; i < N - 1; a[i] = t, i++) {
+    char a[n], * p = argv[1];
+    for (i = 0; i < n - 1; a[i] = t, i++) {
         if (!cin.get(t)) { break; }
     }
     a[i] = 0;

@@ -1,9 +1,9 @@
-template<class Item>
-class STACK {
+template<typename Item>
+class Stack {
 private:
     // Implementation-dependent code
 public:
-    STACK(int);
+    Stack(int);
 
     int empty() const;
 

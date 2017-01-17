@@ -2,7 +2,7 @@ private:
 
 Item* st;
 
-int N, M;
+int n, M;
 
 Item nullItem;
 
@@ -10,20 +10,20 @@ public:
 
 ST(int maxN)
 {
-    N = 0;
+    n = 0;
     M = 2 * maxN;
     st = new Item[M];
     for (int i = 0; i < M; i++) { st[i] = nullItem; }
 }
 
-int count() const { return N; }
+int count() const { return n; }
 
 void insert(Item item)
 {
     int i = hash(item.key(), M);
     while (!st[i].null()) { i = (i + 1) % M; }
     st[i] = item;
-    N++;
+    n++;
 }
 
 Item search(Key v)

@@ -1,15 +1,20 @@
+#include<iostream>
+
+template<typename>
+class IO;
+
 template<class Graph>
 void IO<Graph>::show(const Graph& G)
 {
     for (int s = 0; s < G.V(); s++) {
-        cout.width(2);
-        cout << s << ":";
+        std::cout.width(2);
+        std::cout << s << ":";
         typename Graph::adjIterator A(G, s);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            cout.width(2);
-            cout << t << " ";
+            std::cout.width(2);
+            std::cout << t << " ";
         }
-        cout << "\n";
+        std::cout << "\n";
     }
 }
 

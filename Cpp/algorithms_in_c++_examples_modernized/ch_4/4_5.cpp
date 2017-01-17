@@ -1,15 +1,16 @@
-#include <iostream>
-#include <string.h>
-#include "STACK.cxx"
+#include<iostream>
+#include<string>
+#include"Stack.h"
 
 using std::cout;
+using std::string;
 
 int main(int argc, char* argv[])
 {
-    char* a = argv[1];
-    int N = strlen(a);
-    STACK<int> save(N);
-    for (int i = 0; i < N; i++) {
+    string a{argv[1]};
+    int n{a.size()};
+    Stack<int> save{n};
+    for (int i = 0; i < n; i++) {
         if (a[i] == '+') {
             save.push(save.pop() + save.pop());
         }

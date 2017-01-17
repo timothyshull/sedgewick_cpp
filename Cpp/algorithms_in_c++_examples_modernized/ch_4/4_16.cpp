@@ -1,30 +1,30 @@
 template<class Item>
-class STACK {
+class Stack {
 private:
     Item* s, * t;
-    int N;
+    int n;
 public:
-    STACK(int maxN)
+    Stack(int maxN)
     {
         s = new Item[maxN];
-        N = 0;
+        n = 0;
         t = new Item[maxN];
         for (int i = 0; i < maxN; i++) { t[i] = 0; }
     }
 
-    int empty() const { return N == 0; }
+    int empty() const { return n == 0; }
 
     void push(Item item)
     {
         if (t[item] == 1) { return; }
-        s[N++] = item;
+        s[n++] = item;
         t[item] = 1;
     }
 
     Item pop()
     {
-        t[s[--N]] = 0;
-        return s[N];
+        t[s[--n]] = 0;
+        return s[n];
     }
 };
 

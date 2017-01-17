@@ -1,4 +1,4 @@
-struct point { float x; float y; };
+struct Point { float x; float y; };
 
-float distance(point, point);
+float distance(Point&, Point&);
 

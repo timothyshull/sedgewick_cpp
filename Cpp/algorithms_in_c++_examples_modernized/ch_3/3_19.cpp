@@ -1,29 +1,34 @@
-#include <iostream>
+#include<iostream>
+#include<vector>
+#include<memory>
 
 using std::cin;
 using std::cout;
+using std::vector;
+using std::shared_ptr;
+using std::make_shared;
+using std::size_t;
 
-struct node {
-    int v;
-    node* next;
+template<typename Item>
+struct Node {
+    Item v;
+    shared_ptr<Node<Item>> next;
 
-    node(int x, node* t)
-    {
-        v = x;
-        next = t;
-    }
+    Node(Item x, Node* t) : v{x}, next{t} {}
 };
 
-typedef node* link;
+using Link = shared_ptr<Node<int>>;
 
-int main()
+int main(int argc, char* argv[])
 {
-    int i, j;
-    link adj[V];
-    for (i = 0; i < V; i++) { adj[i] = 0; }
+    int i;
+    int j;
+    size_t v = static_cast<size_t>(atoi(argv[1]));
+    vector<Link> adj{v, nullptr};
     while (cin >> i >> j) {
-        adj[j] = new node(i, adj[j]);
-        adj[i] = new node(j, adj[i]);
+        adj[j] = make_shared(i, adj[j]);
+        adj[i] = make_shared(j, adj[i]);
     }
+    return 0;
 }
 

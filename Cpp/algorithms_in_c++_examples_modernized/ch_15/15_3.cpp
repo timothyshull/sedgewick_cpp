@@ -3,7 +3,7 @@ private:
 link split(link p, link q, int d)
 {
     link t = new node(nullItem);
-    t->N = 2;
+    t->n = 2;
     Key v = p->item.key();
     Key w = q->item.key();
     switch (digit(v, d) * 2 + digit(w, d)) {

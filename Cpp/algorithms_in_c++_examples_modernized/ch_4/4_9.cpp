@@ -1,8 +1,8 @@
-class UF {
+class Union_find {
 private:
     // Implementation-dependent code
 public:
-    UF(int);
+    Union_find(int);
 
     int find(int, int);
 

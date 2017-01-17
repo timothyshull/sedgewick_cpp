@@ -6,14 +6,14 @@ void insertR(link& h, Item x)
         h = new node(x);
         return;
     }
-    if (rand() < RAND_MAX / (h->N + 1)) {
+    if (rand() < RAND_MAX / (h->n + 1)) {
         insertT(h, x);
         return;
     }
     if (x.key() < h->item.key()) {
         insertR(h->l, x);
     } else { insertR(h->r, x); }
-    h->N++;
+    h->n++;
 }
 
 public:

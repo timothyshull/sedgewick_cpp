@@ -1,6 +1,8 @@
 struct record { char name[30]; int num; };
 
-typedef struct { record* r; } Item;
+struct { record* r; };
+
+using Item = record;
 
 int operator<(const Item&, const Item&);
 

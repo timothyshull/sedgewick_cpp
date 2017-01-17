@@ -1,3 +1,7 @@
+#include<vector>
+
+using std::vector;
+
 template<class Edge> class SparseMultiGRAPH {
     int Vcnt, Ecnt;
     bool digraph;
@@ -9,7 +13,7 @@ template<class Edge> class SparseMultiGRAPH {
         node(Edge* e, node* next) : e(e), next(next) {}
     };
 
-    typedef node* link;
+    using link = node *;
     vector <link> adj;
 public:
     SparseMultiGRAPH(int V, bool digraph = false) :
@@ -30,8 +34,8 @@ public:
         Ecnt++;
     }
 
-    class adjIterator;
+    class Graph_iterator;
 
-    friend class adjIterator;
+    friend class Graph_iterator;
 };
 

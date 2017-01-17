@@ -1,12 +1,12 @@
 template<class Item, class Key>
-struct entry { Key key; Item item; struct node* next; };
+struct entry { Key key; Item item; struct Node* next; };
 
-struct node {
+struct Node {
     int m;
     entry<Item, Key> b[M];
 
-    node() { m = 0; }
+    Node() { m = 0; }
 };
 
-typedef node* link;
+using Link = Node *;
 

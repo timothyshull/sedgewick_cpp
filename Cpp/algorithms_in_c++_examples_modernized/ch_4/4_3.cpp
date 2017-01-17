@@ -1,9 +1,9 @@
-class POINT {
+class Point {
 private:
     // Implementation-dependent code
 public:
-    POINT();
+    Point();
 
-    float distance(POINT) const;
+    float distance(Point&) const;
 };
 

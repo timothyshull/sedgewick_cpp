@@ -1,21 +1,21 @@
-struct node {
+struct Node {
     Item item;
-    node* next;
+    Node* next;
 
-    node(Item x)
+    Node(Item x)
     {
         item = x;
         next = 0;
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link randlist(int);
+Link randlist(int);
 
-link scanlist(int&);
+Link scanlist(int&);
 
-void showlist(link);
+void showlist(Link);
 
-link sortlist(link);
+Link sortlist(Link);
 

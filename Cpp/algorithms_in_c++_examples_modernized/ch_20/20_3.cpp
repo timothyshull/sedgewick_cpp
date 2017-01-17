@@ -35,8 +35,8 @@ public:
 
     Edge* edge(int v, int w) const { return adj[v][w]; }
 
-    class adjIterator;
+    class Graph_iterator;
 
-    friend class adjIterator;
+    friend class Graph_iterator;
 };
 

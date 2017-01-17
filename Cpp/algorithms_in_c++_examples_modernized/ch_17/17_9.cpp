@@ -1,44 +1,48 @@
-class SparseMultiGRAPH {
-    int Vcnt, Ecnt;
-    bool digraph;
+// See Sparse_multi_graph.h
 
-    struct node {
-        int v;
-        node* next;
-
-        node(int x, node* t)
-        {
-            v = x;
-            next = t;
-        }
-    };
-
-    typedef node* link;
-    vector <link> adj;
-public:
-    SparseMultiGRAPH(int V, bool digraph = false) :
-            adj(V), Vcnt(V), Ecnt(0), digraph(digraph) { adj.assign(V, 0); }
-
-    int V() const { return Vcnt; }
-
-    int E() const { return Ecnt; }
-
-    bool directed() const { return digraph; }
-
-    void insert(Edge e)
-    {
-        int v = e.v, w = e.w;
-        adj[v] = new node(w, adj[v]);
-        if (!digraph) { adj[w] = new node(v, adj[w]); }
-        Ecnt++;
-    }
-
-    void remove(Edge e);
-
-    bool edge(int v, int w) const;
-
-    class adjIterator;
-
-    friend class adjIterator;
-};
-
+//#include<vector>
+//
+//class Graph_iterator;
+//
+//class Sparse_multigraph {
+//    int vertex_cnt;
+//    int edge_cnt;
+//    bool digraph;
+//
+//    struct node {
+//        int v;
+//        node* next;
+//
+//        node(int x, node* t)
+//        {
+//            v = x;
+//            next = t;
+//        }
+//    };
+//
+//    using link = node*;
+//    std::vector<link> adj;
+//public:
+//    Sparse_multigraph(int v, bool digraph = false) :
+//            adj{v}, vertex_cnt{v}, edge_cnt{0}, digraph{digraph} { adj.assign(v, 0); }
+//
+//    int num_vertices() const { return vertex_cnt; }
+//
+//    int num_edges() const { return edge_cnt; }
+//
+//    bool is_directed() const { return digraph; }
+//
+//    void insert(Edge e)
+//    {
+//        int v = e.v, w = e.w;
+//        adj[v] = new node(w, adj[v]);
+//        if (!digraph) { adj[w] = new node(v, adj[w]); }
+//        edge_cnt++;
+//    }
+//
+//    void remove(Edge e);
+//
+//    bool edge(int v, int w) const;
+//
+//    friend class Graph_iterator;
+//};

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "QUEUE.cxx"
+#include "Queue.h"
 
 using std::cout;
 
@@ -9,7 +9,7 @@ static const int M = 4;
 int main(int argc, char* argv[])
 {
     int N = atoi(argv[1]);
-    QUEUE<int> queues[M];
+    Queue<int> queues[M];
     for (int i = 0; i < N; i++, cout << "\n") {
         int in = rand() % M, out = rand() % M;
         queues[in].put(i);

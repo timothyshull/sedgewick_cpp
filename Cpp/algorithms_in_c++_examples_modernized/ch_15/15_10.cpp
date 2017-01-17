@@ -1,9 +1,9 @@
-struct node {
+struct Node {
     Item item;
     int d;
-    node* l, * m, * r;
+    Node* l, * m, * r;
 
-    node(Item x, int k)
+    Node(Item x, int k)
     {
         item = x;
         d = k;
@@ -12,7 +12,7 @@ struct node {
         r = 0;
     }
 
-    node(node* h, int k)
+    Node(Node* h, int k)
     {
         d = k;
         l = 0;
@@ -23,9 +23,9 @@ struct node {
     int internal() { return d != NULLdigit; }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link heads[R];
+Link heads[R];
 
 Item nullItem;
 

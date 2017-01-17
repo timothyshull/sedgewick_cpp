@@ -1,18 +1,24 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 
 #include "Bag.h"
+#include "Std_in.h"
+#include "Std_out.h"
 
-int main() {
+int main()
+{
     Bag<std::string> bag;
-
-    for (std::string line; std::getline(std::cin, line) && line != "";) {
-        bag.add(line);
+    std::vector<std::string> vs = Std_in::read_all_strings();
+    for (auto s : vs) {
+        bag.add(s);
     }
-    std::cout << "The size of the bag is: " << bag.size() << "\n";
 
+    Std_out::printf("The size of the bag is: %d", bag.size());
     for (auto s : bag) {
-        std::cout << s << "\n";
+        Std_out::print_line(s);
     }
+
+    // Std_out::print_line(bag);
 
     return 0;
 }

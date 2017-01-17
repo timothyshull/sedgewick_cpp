@@ -2,11 +2,11 @@ char* a;
 
 int i;
 
-struct node {
+struct Node {
     Item item;
-    node* l, * r;
+    Node* l, * r;
 
-    node(Item x)
+    Node(Item x)
     {
         item = x;
         l = 0;
@@ -14,12 +14,12 @@ struct node {
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link parse()
+Link parse()
 {
     char t = a[i++];
-    link x = new node(t);
+    Link x = new Node(t);
     if ((t == '+') || (t == '*')) {
         x->l = parse();
         x->r = parse();

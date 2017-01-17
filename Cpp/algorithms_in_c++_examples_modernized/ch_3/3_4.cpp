@@ -1,9 +1,10 @@
-#include <math.h>
-#include "Point.h"
+#include<cmath>
+#include"Point.h"
 
-float distance(point a, point b)
+float distance(Point& a, Point& b)
 {
-    float dx = a.x - b.x, dy = a.y - b.y;
-    return sqrt(dx * dx + dy * dy);
+    float dx = a.x - b.x;
+    float dy = a.y - b.y;
+    return static_cast<float>(sqrt(dx * dx + dy * dy));
 }
 

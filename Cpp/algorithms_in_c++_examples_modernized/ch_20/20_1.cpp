@@ -13,11 +13,11 @@ public:
     int other(int) const;
 };
 
-template<class Edge> class GRAPH {
+template<class Edge> class Graph {
 public:
-    GRAPH(int, bool);
+    Graph(int, bool);
 
-    ~GRAPH();
+    ~Graph();
 
     int V() const;
 
@@ -31,9 +31,9 @@ public:
 
     Edge* edge(int, int);
 
-    class adjIterator {
+    class Graph_iterator {
     public:
-        adjIterator(const GRAPH&, int);
+        Graph_iterator(const Graph&, int);
 
         Edge* beg();
 

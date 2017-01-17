@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 
 using std::cin;
 using std::cout;
@@ -7,16 +7,16 @@ int lg(int);
 
 int main()
 {
-    for (int N = 1000; N <= 1000000000; N *= 10) {
-        cout << lg(N) << " " << N << "\n";
+    for (int i = 1000; i <= 1000000000; i *= 10) {
+        cout << lg(i) << " " << i << "\n";
     }
     return 0;
 }
 
-int lg(int N)
+int lg(int n)
 {
     int i;
-    for (i = 0; N > 0; i++, N /= 2) {}
+    for (i = 0; n > 0; i++, n /= 2) {}
     return i;
 }
 

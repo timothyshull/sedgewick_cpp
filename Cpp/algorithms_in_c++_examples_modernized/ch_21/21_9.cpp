@@ -6,7 +6,7 @@
     while (!Q.empty())
     { int v;
       while ((v = Q.get()) == G.V())
-        { if (N++ > G.V()) return; Q.put(G.V()); }
+        { if (n++ > G.V()) return; Q.put(G.V()); }
       typename Graph::adjIterator A(G, v);
       for (Edge* e = A.beg(); !A.end(); e = A.nxt())
         { int w = e->w();

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-template <typename N, typename V>
+template<typename N, typename V>
 class LRU_cache {
 private:
     std::vector<V> oa;
@@ -14,13 +14,14 @@ public:
 
     LRU_cache() = delete;
 
-    virtual V create(N &var1);
+    virtual V create(N& var1);
 
     // TODO: ?
-    virtual bool has_name(V &var1, N &var2);
+    virtual bool has_name(V& var1, N& var2);
 
-    template <typename T>
-    static void move_to_front(std::vector<T> &vec, int front_index) {
+    template<typename T>
+    static void move_to_front(std::vector<T>& vec, int front_index)
+    {
         T tmp = vec[front_index];
         for (int i = front_index; i > 0; --i) {
             vec[i] = vec[i - 1];
@@ -28,12 +29,13 @@ public:
         vec[0] = tmp;
     }
 
-    V &for_name(N &var1) {
+    V& for_name(N& var1)
+    {
         if (oa.empty()) {
             oa.resize(size);
         } else {
             for (int i = 0; i < oa.size(); i++) {
-                V &tmp = oa[i];
+                V& tmp = oa[i];
                 if (tmp && has_name(tmp, var1)) {
                     if (i > 0) {
                         move_to_front(oa, i);

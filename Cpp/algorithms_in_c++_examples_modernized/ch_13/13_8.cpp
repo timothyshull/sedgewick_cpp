@@ -1,22 +1,22 @@
 private:
 
-struct node {
+struct Node {
     Item item;
-    node** next;
+    Node** next;
     int sz;
 
-    node(Item x, int k)
+    Node(Item x, int k)
     {
         item = x;
         sz = k;
-        next = new node* [k];
+        next = new Node* [k];
         for (int i = 0; i < k; i++) { next[i] = 0; }
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link head;
+Link head;
 
 Item nullItem;
 
@@ -26,7 +26,7 @@ public:
 
 ST(int)
 {
-    head = new node(nullItem, lgNmax);
+    head = new Node(nullItem, lgNmax);
     lgN = 0;
 }
 

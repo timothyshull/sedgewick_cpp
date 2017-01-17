@@ -1,7 +1,7 @@
 #ifndef COLLECTED_ACCUMULATOR_H
 #define COLLECTED_ACCUMULATOR_H
 
-#include<cmath>
+#include <cmath>
 
 template<class T, class Enable = void>
 class Accumulator {};
@@ -13,10 +13,11 @@ class Accumulator<Float_type, typename std::enable_if<std::is_floating_point<Flo
     Float_type mu{0.0};
 
 public:
-    void add_value(Float_type x) {
-        n++;
+    void add_value(Float_type x)
+    {
+        ++n;
         Float_type delta{x - mu};
-        mu += delta / n;
+        mu += delta / static_cast<Float_type>(n);
         sum += static_cast<Float_type>(n - 1) / static_cast<Float_type>(n) * delta * delta;
     }
 

@@ -13,7 +13,7 @@ private:
         }
     };
 
-    typedef node* link;
+    using link = node *;
     link* dir;
     Item nullItem;
     int N, d, D;

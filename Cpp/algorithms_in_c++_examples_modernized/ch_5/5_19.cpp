@@ -1,8 +1,8 @@
-struct node {
+struct Node {
     Item item;
-    node* l, * r;
+    Node* l, * r;
 
-    node(Item x)
+    Node(Item x)
     {
         item = x;
         l = 0;
@@ -10,12 +10,12 @@ struct node {
     }
 };
 
-typedef node* link;
+using Link = Node *;
 
-link max(Item a[], int l, int r)
+Link max(Item a[], int l, int r)
 {
     int m = (l + r) / 2;
-    link x = new node(a[m]);
+    Link x = new Node(a[m]);
     if (l == r) { return x; }
     x->l = max(a, l, m);
     x->r = max(a, m + 1, r);

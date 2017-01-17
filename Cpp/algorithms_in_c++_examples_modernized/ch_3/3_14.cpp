@@ -1,7 +1,7 @@
-#include <stdlib.h>
-#include "list.h"
+#include<cstdlib>
+#include"list.h"
 
-link freelist;
+Link freelist;
 
 void construct(int N)
 {
@@ -12,30 +12,30 @@ void construct(int N)
     freelist[N].next = 0;
 }
 
-link newNode(int i)
+Link newNode(int i)
 {
-    link x = remove(freelist);
+    Link x = remove(freelist);
     x->item = i;
     x->next = x;
     return x;
 }
 
-void deleteNode(link x) { insert(freelist, x); }
+void deleteNode(Link x) { insert(freelist, x); }
 
-void insert(link x, link t)
+void insert(Link x, Link t)
 {
     t->next = x->next;
     x->next = t;
 }
 
-link remove(link x)
+Link remove(Link x)
 {
-    link t = x->next;
+    Link t = x->next;
     x->next = t->next;
     return t;
 }
 
-link next(link x) { return x->next; }
+Link next(Link x) { return x->next; }
 
-Item item(link x) { return x->item; }
+Item item(Link x) { return x->item; }
 

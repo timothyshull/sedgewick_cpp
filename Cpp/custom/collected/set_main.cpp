@@ -1,9 +1,10 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
-#include"Set.h"
+#include "Set.h"
 
-int main() {
+int main()
+{
     Set<std::string> s{};
 
     s.add("www.cs.princeton.edu");
