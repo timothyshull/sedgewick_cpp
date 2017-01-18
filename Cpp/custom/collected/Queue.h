@@ -258,4 +258,4 @@ std::ostream& operator<<(std::ostream& os, const Queue<T>& out)
     return os << out.to_string();
 }
 
-#endif //QUEUE_H
+#endif // QUEUE_H

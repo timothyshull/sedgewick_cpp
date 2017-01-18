@@ -1,12 +1,10 @@
-//
-// Created by Tim Shull on 1/17/17.
-//
 
-#ifndef COLLECTED_BINARY_DUMP_H
-#define COLLECTED_BINARY_DUMP_H
+
+#ifndef BINARY_DUMP_H
+#define BINARY_DUMP_H
 
 class Binary_dump {
 
 };
 
-#endif //COLLECTED_BINARY_DUMP_H
+#endif // BINARY_DUMP_H

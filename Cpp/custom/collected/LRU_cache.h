@@ -1,5 +1,5 @@
-#ifndef COLLECTED_LRU_CACHE_H
-#define COLLECTED_LRU_CACHE_H
+#ifndef LRU_CACHE_H
+#define LRU_CACHE_H
 
 #include <vector>
 
@@ -54,4 +54,4 @@ public:
     }
 };
 
-#endif //COLLECTED_LRU_CACHE_H
+#endif // LRU_CACHE_H

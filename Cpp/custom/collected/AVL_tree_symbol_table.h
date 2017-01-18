@@ -1,5 +1,5 @@
-#ifndef COLLECTED_AVL_TREE_SYMBOL_TABLE_H
-#define COLLECTED_AVL_TREE_SYMBOL_TABLE_H
+#ifndef AVL_TREE_SYMBOL_TABLE_H
+#define AVL_TREE_SYMBOL_TABLE_H
 
 #include <cstddef>
 #include <algorithm>
@@ -579,17 +579,19 @@ private:
         return bst_check && avl_check && size_check && rank_check;
     }
 
-    bool _is_bst() const { return _is_bst(_get_root(), min(), max()); }
+    // TODO: check if this achieves the correct result, handle nullptr
+    bool _is_bst() const { return _is_bst(_get_root(), *min(), *max()); }
 
-    bool _is_bst(Raw_node_pointer x, Key_type min, Key_type max) const
+    bool _is_bst(Raw_node_pointer x, Key_type& min, Key_type& max) const
     {
         if (x == nullptr) {
             return true;
         }
-        if (Comparator_type()(*(x->_key), min) <= 0 && _size(x) != 1) {
+        Comparator_type comp{};
+        if (comp(*(x->_key), min) <= 0 && _size(x) != 1) {
             return false;
         }
-        if (Comparator_type()(*(x->_key), min) >= 0 && _size(x) != 1) {
+        if (comp(*(x->_key), min) >= 0 && _size(x) != 1) {
             return false;
         }
         return _is_bst(x->_left.get(), min, *(x->_key)) && _is_bst(x->_right.get(), *(x->_key), max);
@@ -638,4 +640,4 @@ private:
     }
 };
 
-#endif //COLLECTED_AVL_TREE_SYMBOL_TABLE_H
+#endif // AVL_TREE_SYMBOL_TABLE_H

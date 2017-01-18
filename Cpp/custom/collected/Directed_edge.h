@@ -37,4 +37,4 @@ public:
 
 std::ostream& operator<<(std::ostream& os, const Directed_edge& out);
 
-#endif //DIRECTED_EDGE_H
+#endif // DIRECTED_EDGE_H

@@ -36,4 +36,4 @@ private:
     void _validate_vertex(int v) const;
 };
 
-#endif //TOPOLOGICAL_H
+#endif // TOPOLOGICAL_H

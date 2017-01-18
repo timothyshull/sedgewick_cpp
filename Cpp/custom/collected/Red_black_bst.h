@@ -3,37 +3,38 @@
 
 #include <memory>
 #include <cstddef>
+#include <sstream>
+#include <vector>
+#include "utility.h"
+#include "Std_out.h"
 
-enum class Red_black_color : public bool {
+enum class Red_black_color : bool {
     red = true,
     black = false
 };
 
-template<typename Key, typename Value>
-class Red_black_tree_node;
+Red_black_color _not(Red_black_color c);
 
 template<typename Key, typename Value>
-class Red_black_tree_iterator;
-
-template<typename Key, typename Value>
-class Red_black_tree_reverse_iterator;
+class Red_black_bst_node;
 
 template<typename T>
-struct Red_black_tree_key_comparator;
+struct Red_black_bst_key_comparator;
 
-template<typename Key, typename Value, typename Comparator = Red_black_tree_key_comparator<Key>>
-class Red_black_tree_symbol_table;
+template<typename Key, typename Value, typename Comparator = Red_black_bst_key_comparator<Key>>
+class Red_black_bst;
 
 template<typename Key, typename Value>
-struct Red_black_tree_node_pointer_traits {
+struct Red_black_bst_node_pointer_traits {
     using Key_type = Key;
     using Value_type = Value;
     using Raw_key_pointer = Key*;
     using Raw_value_pointer = Value*;
 
-    using Node_type = Red_black_tree_node<Key_type, Value_type>;
-    using Raw_node_pointer = Red_black_tree_node<Key_type, Value_type>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
+    using Node_type = Red_black_bst_node<Key_type, Value_type>;
+    using Raw_node_pointer = Red_black_bst_node<Key_type, Value_type>*;
+    using Node_owning_pointer = Raw_node_pointer;
+    //using Node_owning_pointer = std::unique_ptr<Node_type>;
     using Node_shared_pointer = std::shared_ptr<Node_type>;
     using Shared_value_pointer = std::shared_ptr<Value_type>;
     using Shared_key_pointer = std::shared_ptr<Key_type>;
@@ -41,9 +42,9 @@ struct Red_black_tree_node_pointer_traits {
 };
 
 template<typename Key, typename Value>
-class Red_black_tree_node {
+class Red_black_bst_node {
 public:
-    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_bst_node_pointer_traits<Key, Value>;
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
     using Raw_key_pointer = typename Node_traits::Raw_key_pointer;
@@ -54,23 +55,41 @@ public:
     using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
     using Size_type = typename Node_traits::Size_type;
 
-    Red_black_tree_node(Key_type& key, Value_type& val, Red_black_color color, int size)
+    Red_black_bst_node(Key_type& key, Value_type& val, Red_black_color color, int size)
             : _key{new Key{key}},
               _value{new Value{val}},
               _color{color},
               _size{size} {}
 
-    Red_black_tree_node() = default;
+    Red_black_bst_node() : _key{nullptr}, _value{nullptr}, _color{Red_black_color::black}, _size{0} {}
 
-    Red_black_tree_node(const Red_black_tree_node&) = default;
+    Red_black_bst_node(const Red_black_bst_node&) = default;
 
-    Red_black_tree_node(Red_black_tree_node&&) = default;
+    Red_black_bst_node(Red_black_bst_node&&) = default;
 
-    ~Red_black_tree_node() = default;
+    ~Red_black_bst_node()
+    {
+        if (_key != nullptr) {
+            delete _key;
+            _key = nullptr;
+        }
+        if (_value != nullptr) {
+            delete _value;
+            _value = nullptr;
+        }
+        if (_left != nullptr) {
+            delete _left;
+            _left = nullptr;
+        }
+        if (_right != nullptr) {
+            delete _right;
+            _right = nullptr;
+        }
+    };
 
-    Red_black_tree_node& operator=(const Red_black_tree_node&) = default;
+    Red_black_bst_node& operator=(const Red_black_bst_node&) = default;
 
-    Red_black_tree_node& operator=(Red_black_tree_node&&) = default;
+    Red_black_bst_node& operator=(Red_black_bst_node&&) = default;
 
 private:
     Raw_key_pointer _key;
@@ -79,15 +98,15 @@ private:
     Red_black_color _color; // of parent link
     int _size;
 
-    Raw_node_pointer _left;
-    Raw_node_pointer _right;
+    Node_owning_pointer _left;
+    Node_owning_pointer _right;
 
     template<typename, typename, typename>
-    friend class Red_black_tree_symbol_table;
+    friend class Red_black_bst;
 };
 
 template<typename T>
-struct Red_black_tree_key_comparator {
+struct Red_black_bst_key_comparator {
     int operator()(const T& x, const T& y) const
     {
         if (x < y) {
@@ -100,9 +119,9 @@ struct Red_black_tree_key_comparator {
 };
 
 template<typename Key, typename Value, typename Comparator>
-class Red_black_tree_symbol_table {
+class Red_black_bst {
 public:
-    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_bst_node_pointer_traits<Key, Value>;
     using Node_type = typename Node_traits::Node_type;
     using Raw_node_pointer = typename Node_traits::Raw_node_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
@@ -121,49 +140,51 @@ public:
     using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
     using Difference_type = std::ptrdiff_t;
-    using Iterator_type = Red_black_tree_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = Red_black_tree_reverse_iterator<Key_type, Value_type>;
 
-    Red_black_tree_symbol_table() = default;
+    Red_black_bst() = default;
 
-    Red_black_tree_symbol_table(const Red_black_tree_symbol_table&) = default;
+    Red_black_bst(const Red_black_bst&) = default;
 
-    Red_black_tree_symbol_table(Red_black_tree_symbol_table&&) = default;
+    Red_black_bst(Red_black_bst&&) = default;
 
-    ~Red_black_tree_symbol_table() noexcept
+    ~Red_black_bst() noexcept
     {
         _clear();
     }
 
-    Red_black_tree_symbol_table& operator=(const Red_black_tree_symbol_table&) = default;
+    Red_black_bst& operator=(const Red_black_bst&) = default;
 
-    Red_black_tree_symbol_table& operator=(Red_black_tree_symbol_table&&) = default;
+    Red_black_bst& operator=(Red_black_bst&&) = default;
+
+    bool is_red(Raw_node_pointer n) const
+    {
+        if (n == nullptr) {
+            return false;
+        } else {
+            return n->_color == Red_black_color::red;
+        }
+    }
+
+    inline int size() const { return _size(_root); }
 
     inline bool is_empty() const { return _root == nullptr; }
 
-    inline int size() const { return _size(_get_root()); }
-
-    inline int height() const { return _height(_get_root()); }
-
-    Reverse_iterator_type rbegin() { return Reverse_iterator_type(this, 0); }
-
-    Reverse_iterator_type rend() { return Reverse_iterator_type(this, -1); };
-
     Raw_value_pointer get(Key_type& key) const
     {
-        Raw_node_pointer n = _get(_get_root(), key);
+        Raw_node_pointer n = _get(_root, key);
         if (n == nullptr) {
             return nullptr;
         }
-        return &n->_value;
+        return n->_value;
     }
 
     inline bool contains(Key_type& key) const { return get(key) != nullptr; }
 
     void put(Key_type& key, Value_type& val)
     {
-        _root = std::unique_ptr<Node_type>{_put(_get_root(), key, val)};
-        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"put()\"");
+        _root = _put(_root, key, val);
+        _root->_color = Red_black_color::black;
+        // utility::assert(_check(), "Red_black_bst invariant check failed after \"put()\"");
     }
 
     void delete_min()
@@ -171,8 +192,17 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
         }
-        _root = _delete_min(_get_root());
-        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"delete_min()\"");
+
+        if (!is_red(_root->_left) && is_red(_root->_right)) {
+            _root->_color = Red_black_color::red;
+        }
+
+        _root = _delete_min(_root);
+        if (!is_empty()) {
+            _root->_color = Red_black_color::black;
+        }
+
+        // utility::assert(_check(), "Red_black_bst invariant check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -180,8 +210,33 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
         }
-        _root = _delete_max(_get_root());
-        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"delete_max()\"");
+
+        if (!is_red(_root->_left) && is_red(_root->_right)) {
+            _root->_color = Red_black_color::red;
+        }
+
+        _root = _delete_max(_root);
+        if (!is_empty()) {
+            _root->_color = Red_black_color::black;
+        }
+
+        // utility::assert(_check(), "Red_black_bst invariant check failed after \"delete_max()\"");
+    }
+
+    void remove(Key_type& key)
+    {
+        if (!contains(key)) {
+            return;
+        }
+
+        if (!is_red(_root->_left) && is_red(_root->_right)) {
+            _root->_color = Red_black_color::red;
+        }
+
+        _root = _delete(_root, key);
+        if (!is_empty()) {
+            _root->_color = Red_black_color::black;
+        }
     }
 
     Raw_key_pointer min() const
@@ -189,7 +244,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"min()\" was called on an empty symbol table");
         }
-        return &(_min(_get_root())->_key);
+        return _min(_root)->_key;
     }
 
     Raw_key_pointer max() const
@@ -197,7 +252,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"max()\" was called on an empty symbol table");
         }
-        return &(_max(_get_root())->_key);
+        return _max(_root)->_key;
     }
 
     Raw_key_pointer floor(Key_type& key) const
@@ -205,7 +260,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"floor()\" was called on an empty symbol table");
         }
-        Raw_node_pointer x = _floor(_get_root(), key);
+        Raw_node_pointer x = _floor(_root, key);
         if (x == nullptr) {
             return nullptr;
         } else {
@@ -218,7 +273,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception("The method \"ceiling()\" was called on an empty symbol table");
         }
-        Raw_node_pointer x = _ceiling(_get_root(), key);
+        Raw_node_pointer x = _ceiling(_root, key);
         if (x == nullptr) {
             return nullptr;
         } else {
@@ -233,58 +288,37 @@ public:
             ss << "The argument \"k\" is not in the range 0-" << size() - 1;
             throw utility::Illegal_argument_exception(ss.str());
         }
-        Raw_node_pointer x = _select(_get_root(), k);
+        Raw_node_pointer x = _select(_root, k);
         if (x == nullptr) {
             return nullptr;
         } else {
-            return &(x->_key);
+            return x->_key;
         }
     }
 
     int rank(Key_type& key) const
     {
-        return _rank(key, _get_root());
+        return _rank(key, _root);
     }
 
-    Queue <Raw_key_pointer> keys() const { return keys_in_order(); }
-
-    Queue <Raw_key_pointer> keys_in_order() const
+    std::vector<Key_type> keys() const
     {
-        Queue <Raw_key_pointer> queue;
-        _keys_in_order(_get_root(), queue);
-        return queue;
-    }
-
-    Queue <Raw_key_pointer> keys_in_level_order() const
-    {
-        Queue <Raw_key_pointer> queue;
-        if (!is_empty()) {
-            Queue <Raw_node_pointer> queue2;
-            queue2.enqueue(_get_root());
-            while (!queue2.is_empty()) {
-                Raw_node_pointer x = queue2.dequeue();
-                queue.enqueue(&(x->_key));
-                if (x->_left != nullptr) {
-                    queue2.enqueue(x->_left.get());
-                }
-                if (x->_right != nullptr) {
-                    queue2.enqueue(x->_right.get());
-                }
-            }
+        if (is_empty()) {
+            return {};
         }
-        return queue;
+        return keys(*min(), *max());
     }
 
-    Queue <Raw_key_pointer> keys(Key_type& lo, Key_type& hi) const
+    std::vector<Key_type> keys(Key_type& lo, Key_type& hi) const
     {
-        Queue <Raw_key_pointer> queue;
-        _keys(_get_root(), queue, lo, hi);
-        return queue;
+        std::vector<Key_type> kv;
+        _keys(_root, kv, lo, hi);
+        return kv;
     }
 
     int size(Key_type& lo, Key_type& hi) const
     {
-        if (Comparator_type()(lo, hi) > 0) {
+        if (Comparator_type{}(lo, hi) > 0) {
             return 0;
         }
         if (contains(hi)) {
@@ -298,12 +332,10 @@ private:
     Node_owning_pointer _root;
 
     template<typename, typename>
-    friend class Red_black_tree_iterator;
+    friend class Red_black_bst_iterator;
 
     template<typename, typename>
-    friend class Red_black_tree_reverse_iterator;
-
-    inline Raw_node_pointer _get_root() const { return _root.get(); }
+    friend class Red_black_bst_reverse_iterator;
 
     void _clear() noexcept
     {
@@ -315,13 +347,10 @@ private:
         if (node != nullptr) {
             _clear(node->_left);
             _clear(node->_right);
-            node.reset(nullptr);
+            delete node;
+            node = nullptr;
         }
     }
-
-    const Raw_node_pointer _get_head() const {}
-
-    const Raw_node_pointer _get_tail() const {}
 
     int _size(Raw_node_pointer n) const
     {
@@ -331,168 +360,212 @@ private:
         return n->_size;
     }
 
-    int _height(Raw_node_pointer n) const
-    {
-        if (n == nullptr) {
-            return 0;
-        }
-        return n->_height;
-    }
-
     Raw_node_pointer _get(Raw_node_pointer n, Key_type& key) const
     {
-        if (n == nullptr) {
-            return nullptr;
+        while (n != nullptr) {
+            int cmp = Comparator_type{}(key, *(n->_key));
+            if (cmp < 0) {
+                n = n->_left;
+            } else if (cmp > 0) {
+                n = n->_right;
+            } else {
+                return n;
+            }
         }
-        if (Comparator_type()(key, *(n->_key))) {
-            return _get(n->_left.get(), key);
-        } else if (Comparator_type()(*(n->_key), key)) {
-            return _get(n->_right.get(), key);
+        return nullptr;
+    }
+
+    Raw_node_pointer _put(Raw_node_pointer n, Key_type& key, Value_type& val)
+    {
+        if (n == nullptr) {
+            return new Red_black_bst_node<Key_type, Value_type>(key, val, Red_black_color::red, 1);
+        }
+        int cmp = Comparator_type()(key, *(n->_key));
+        if (cmp < 0) {
+            n->_left = _put(n->_left, key, val);
+        } else if (cmp > 0) {
+            n->_right = _put(n->_right, key, val);
         } else {
+            n->_value = new Value{val};
             return n;
         }
+
+        // fix right-leaning links
+        if (is_red(n->_right) && !is_red(n->_left)) {
+            n = _rotate_left(n);
+        }
+        if (is_red(n->_left) && (n->_left != nullptr && is_red(n->_left->_left))) {
+            n = _rotate_right(n);
+        }
+        if (is_red(n->_left) && is_red(n->_right)) {
+            _flip_colors(n);
+        }
+
+        n->_size = 1 + _size(n->_left) + _size(n->_right);
+        return _balance(n);
     }
 
-    Raw_node_pointer _put(Raw_node_pointer x, Key_type& key, Value_type& val)
+    Raw_node_pointer _balance(Raw_node_pointer n)
     {
-        if (x == nullptr) {
-            return new Red_black_tree_node<Key_type, Value_type>(key, val, 0, 1);
+        if (is_red(n->_right)) {
+            n = _rotate_left(n);
         }
-        int cmp = Comparator_type()(key, *(x->_key));
-        if (cmp < 0) {
-            x->_left = std::unique_ptr<Node_type>{_put(x->_left.get(), key, val)};
-        } else if (cmp > 0) {
-            x->_right = std::unique_ptr<Node_type>{_put(x->_right.get(), key, val)};
-        } else {
-            x->_value = val;
-            return x;
+        if (is_red(n->_left) && is_red(n->_left->_left)) {
+            n = _rotate_right(n);
         }
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        return _balance(x);
+        if (is_red(n->_left) && is_red(n->_right)) { _flip_colors(n); }
+
+        n->_size = 1 + _size(n->_left) + _size(n->_right);
+        return n;
     }
 
-    Raw_node_pointer _balance(Raw_node_pointer x)
+    Raw_node_pointer _rotate_right(Raw_node_pointer n)
     {
-        if (_balance_factor(x) < -1) {
-            if (_balance_factor(x->_right.get()) > 0) {
-                x->_right = std::unique_ptr<Node_type>{_rotate_right(x->_right.get())};
-            }
-            x = _rotate_left(x);
-        } else if (_balance_factor(x) > 1) {
-            if (_balance_factor(x->_left.get()) < 0) {
-                x->_left = std::unique_ptr<Node_type>{_rotate_left(x->_left.get())};
-            }
-            x = _rotate_right(x);
-        }
+        Raw_node_pointer x = n->_left;
+        n->_left = x->_right;
+        x->_right = n;
+        x->_color = x->_right->_color;
+        x->_right->_color = Red_black_color::red;
+        x->_size = n->_size;
+        n->_size = 1 + _size(n->_left) + _size(n->_right);
         return x;
     }
 
-    int _balance_factor(Raw_node_pointer x) const { return _height(x->_left.get()) - _height(x->_right.get()); }
-
-    Raw_node_pointer _rotate_right(Raw_node_pointer x)
+    Raw_node_pointer _rotate_left(Raw_node_pointer n)
     {
-        Raw_node_pointer y = x->_left.get();
-        x->_left = std::move(y->_right);
-        y->_right = std::unique_ptr<Node_type>{x};
-        y->_size = x->_size;
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        y->_height = 1 + std::max(_height(y->_left.get()), _height(y->_right.get()));
-        return y;
+        Raw_node_pointer x = n->_right;
+        n->_right = x->_left;
+        x->_left = n;
+        x->_color = x->_left->_color;
+        x->_left->_color = Red_black_color::red;
+        x->_size = n->_size;
+        n->_size = 1 + _size(n->_left) + _size(n->_right);
+        return x;
     }
 
-    Raw_node_pointer _rotate_left(Raw_node_pointer x)
+    void _flip_colors(Raw_node_pointer n)
     {
-        Raw_node_pointer y = x->_right.get();
-        x->_left = std::move(y->_left);
-        y->_left = std::unique_ptr<Node_type>{x};
-        y->_size = x->_size;
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        y->_height = 1 + std::max(_height(y->_left.get()), _height(y->_right.get()));
-        return y;
+        n->_color = _not(n->_color);
+        n->_left->_color = _not(n->_left->_color);
+        n->_right->_color = _not(n->_right->_color);
     }
 
-    Raw_node_pointer _delete(Raw_node_pointer x, Key_type& key)
+    Raw_node_pointer _move_red_left(Raw_node_pointer n)
     {
-        int cmp = Comparator_type()(key, x->_key);
-        if (cmp < 0) {
-            x->_left = _delete(x->_left.get(), key);
-        } else if (cmp > 0) {
-            x->_right = _delete(x->_right.get(), key);
+        _flip_colors(n);
+        if (is_red(n->_right->_left)) {
+            n->_right = _rotate_right(n->_right);
+            n = _rotate_left(n);
+            _flip_colors(n);
+        }
+        return n;
+    }
+
+    Raw_node_pointer _move_red_right(Raw_node_pointer n)
+    {
+        _flip_colors(n);
+        if (is_red(n->_left->_left)) {
+            n = _rotate_right(n);
+            _flip_colors(n);
+        }
+        return n;
+    }
+
+    Raw_node_pointer _delete(Raw_node_pointer n, Key_type& key)
+    {
+        Comparator_type comp{};
+        if (comp(key, *(n->_key)) < 0) {
+            if (!is_red(n->_left) && !is_red(n->_left->_left)) {
+                n = _move_red_left(n);
+            }
+            n->_left = _delete(n->_left, key);
         } else {
-            if (x->_left == nullptr) {
-                return x->_right.get();
-            } else if (x->_right == nullptr) {
-                return x->_left.get();
+            if (is_red(n->_left)) {
+                n = _rotate_right(n);
+            }
+            if (comp(key, *(n->_key)) == 0 && (n->_right == nullptr)) {
+                return nullptr;
+            }
+            if (!is_red(n->_right) && !is_red(n->_right->_left)) {
+                n = _move_red_right(n);
+            }
+            if (comp(key, *(n->_key)) == 0) {
+                Raw_node_pointer x = _min(n->_right);
+                n->_key = x->_key;
+                n->_value = x->_value;
+                n->_right = _delete_min(n->_right);
             } else {
-                Raw_node_pointer y = x;
-                x = _min(y->_right.get());
-                x->_right = _delete_min(y->_right.get());
-                x->_left = y->_left;
+                n->_right = _delete(n->_right, key);
             }
         }
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        return _balance(x);
+        return _balance(n);
     }
 
-    Raw_node_pointer _delete_min(Raw_node_pointer x)
+    Raw_node_pointer _delete_min(Raw_node_pointer n)
     {
-        if (x->_left == nullptr) {
-            return x->_right.get();
-        }
-        x->_left = _delete_min(x->_left.get());
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        return _balance(x);
-    }
-
-    Raw_node_pointer _delete_max(Raw_node_pointer x)
-    {
-        if (x->_right == nullptr) {
-            return x->_left.get();
-        }
-        x->_right = _delete_min(x->_right.get());
-        x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
-        x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
-        return _balance(x);
-    }
-
-    Raw_node_pointer _min(Raw_node_pointer x) const
-    {
-        if (x->_left == nullptr) {
-            return x;
-        }
-        return _min(x->_left.get());
-    }
-
-    Raw_node_pointer _max(Raw_node_pointer x) const
-    {
-        if (x->_right == nullptr) {
-            return x;
-        }
-        return _max(x->_right.get());
-    }
-
-    Raw_node_pointer _floor(Raw_node_pointer x, Key_type& key) const
-    {
-        if (x == nullptr) {
+        if (n->_left == nullptr) {
             return nullptr;
         }
-        int cmp = Comparator_type()(key, x->_key);
+
+        if (!is_red(_root->_left) && !is_red(_root->_right)) {
+            n = _move_red_left(n);
+        }
+
+        n->_left = _delete_min(n->_left);
+        return _balance(n);
+    }
+
+    Raw_node_pointer _delete_max(Raw_node_pointer n)
+    {
+        if (is_red(n->_left)) {
+            n = _rotate_right(n);
+        }
+
+        if (n->_right == nullptr) {
+            return nullptr;
+        }
+
+        if (!is_red(_root->_right) && is_red(_root->_right->_left)) {
+            n = _move_red_left(n);
+        }
+
+        n->_right = _delete_max(n->_right);
+        return _balance(n);
+    }
+
+    Raw_node_pointer _min(Raw_node_pointer n) const
+    {
+        if (n->_left == nullptr) {
+            return n;
+        }
+        return _min(n->_left);
+    }
+
+    Raw_node_pointer _max(Raw_node_pointer n) const
+    {
+        if (n->_right == nullptr) {
+            return n;
+        }
+        return _max(n->_right);
+    }
+
+    Raw_node_pointer _floor(Raw_node_pointer n, Key_type& key) const
+    {
+        if (n == nullptr) {
+            return nullptr;
+        }
+        int cmp = Comparator_type{}(key, *(n->_key));
         if (cmp == 0) {
-            return x;
+            return n;
         }
         if (cmp < 0) {
-            return _floor(x->_left.get(), key);
+            return _floor(n->_left, key);
         }
-        Raw_node_pointer y = _floor(x->_right.get(), key);
+        Raw_node_pointer y = _floor(n->_right, key);
         if (y != nullptr) {
             return y;
         } else {
-            return x;
+            return n;
         }
     }
 
@@ -501,14 +574,14 @@ private:
         if (x == nullptr) {
             return nullptr;
         }
-        int cmp = Comparator_type()(key, x->_key);
+        int cmp = Comparator_type{}(key, x->_key);
         if (cmp == 0) {
             return x;
         }
         if (cmp > 0) {
-            return _ceiling(x->_right.get(), key);
+            return _ceiling(x->_right, key);
         }
-        Raw_node_pointer y = _ceiling(x->_left.get(), key);
+        Raw_node_pointer y = _ceiling(x->_left, key);
         if (y != nullptr) {
             return y;
         } else {
@@ -521,11 +594,11 @@ private:
         if (x == nullptr) {
             return nullptr;
         }
-        int t = _size(x->_left.get());
+        int t = _size(x->_left);
         if (t > k) {
-            return _select(x->_left.get(), k);
+            return _select(x->_left, k);
         } else if (t < k) {
-            return _select(x->_right.get(), k - t - 1);
+            return _select(x->_right, k - t - 1);
         } else {
             return x;
         }
@@ -536,108 +609,91 @@ private:
         if (x == nullptr) {
             return 0;
         }
-        int cmp = Comparator_type()(key, *(x->_key));
+        int cmp = Comparator_type{}(key, *(x->_key));
         if (cmp < 0) {
-            return _rank(key, x->_left.get());
+            return _rank(key, x->_left);
         } else if (cmp > 0) {
-            return 1 + _size(x->_left.get()) + _rank(key, x->_right.get());
+            return 1 + _size(x->_left) + _rank(key, x->_right);
         } else {
-            return _size(x->_left.get());
+            return _size(x->_left);
         }
     }
 
-    void _keys_in_order(Raw_node_pointer x, Queue <Raw_key_pointer>& queue) const
+    void _keys(Raw_node_pointer x, std::vector<Key_type>& keys, Key_type lo, Key_type hi) const
     {
         if (x == nullptr) {
             return;
         }
-        _keys_in_order(x->_left.get(), queue);
-        queue.enqueue(&(x->_key));
-        _keys_in_order(x->_right.get(), queue);
-    }
-
-    void _keys(Raw_node_pointer x, Queue <Raw_key_pointer> queue, Key_type lo, Key_type hi) const
-    {
-        if (x == nullptr) {
-            return;
-        }
-        int cmplo = Comparator_type()(lo, x->_key);
-        int cmphi = Comparator_type()(hi, x->_key);
+        Comparator_type comp{};
+        int cmplo = comp(lo, *(x->_key));
+        int cmphi = comp(hi, *(x->_key));
         if (cmplo < 0) {
-            _keys(x->_left.get(), queue, lo, hi);
+            _keys(x->_left, keys, lo, hi);
         }
         if (cmplo <= 0 && cmphi >= 0) {
-            queue.enqueue(&(x->_key));
+            keys.emplace_back(*(x->_key));
         }
         if (cmphi > 0) {
-            _keys(x->_right.get(), queue, lo, hi);
+            _keys(x->_right, keys, lo, hi);
         }
     }
 
     bool _check() const
     {
         bool bst_check = _is_bst();
-        bool avl_check = _is_avl();
         bool size_check = _is_size_consistent();
         bool rank_check = _is_rank_consistent();
+        bool two_three_check = _is_two_three();
+        bool balance_check = _is_balanced();
 
         if (!bst_check) {
-            Std_out::print_line("Red_black_tree_symbol_table symmetric order is not consistent");
-        }
-        if (!avl_check) {
-            Std_out::print_line("Red_black_tree_symbol_table AVL property is not consistent");
+            Std_out::print_line("Red_black_bst symmetric order is not consistent");
         }
         if (!size_check) {
-            Std_out::print_line("Red_black_tree_symbol_table subtree size counts are not consistent");
+            Std_out::print_line("Red_black_bst subtree size counts are not consistent");
         }
         if (!rank_check) {
-            Std_out::print_line("Red_black_tree_symbol_table ranks are not consistent");
+            Std_out::print_line("Red_black_bst ranks are not consistent");
+        }
+        if (!two_three_check) {
+            Std_out::print_line("Red_black_bst is not a 2-3 tree");
+        }
+        if (!balance_check) {
+            Std_out::print_line("Red_black_bst is not balanced");
         }
 
-        return bst_check && avl_check && size_check && rank_check;
+        return bst_check && size_check && rank_check && two_three_check && balance_check;
     }
 
-    bool _is_bst() const { return _is_bst(_get_root(), min(), max()); }
+    // TODO: check if this achieves the correct result, handle nullptr
+    inline bool _is_bst() const { return _is_bst(_root, *min(), *max()); }
 
-    bool _is_bst(Raw_node_pointer x, Key_type min, Key_type max) const
+    bool _is_bst(Raw_node_pointer n, Key_type& min, Key_type& max) const
     {
-        if (x == nullptr) {
+        if (n == nullptr) {
             return true;
         }
-        if (Comparator_type()(*(x->_key), min) <= 0 && _size(x) != 1) {
+        Comparator_type comp{};
+        if (comp(*(n->_key), min) <= 0) {
             return false;
         }
-        if (Comparator_type()(*(x->_key), min) >= 0 && _size(x) != 1) {
+        if (comp(*(n->_key), min) >= 0) {
             return false;
         }
-        return _is_bst(x->_left.get(), min, *(x->_key)) && _is_bst(x->_right.get(), *(x->_key), max);
+        return _is_bst(n->_left, min, *(n->_key)) && _is_bst(n->_right, *(n->_key), max);
     }
 
-    bool _is_avl() const { return _is_avl(_get_root()); }
+    inline bool _is_size_consistent() const { return _is_size_consistent(_root); }
 
-    bool _is_avl(Raw_node_pointer x) const
+    bool _is_size_consistent(Raw_node_pointer n) const
     {
-        if (x == nullptr) {
+        if (n == nullptr) {
             return true;
         }
-        int bf = _balance_factor(x);
-        if (bf > 1 || bf < -1) {
+        if (n->_size != _size(n->_left) + _size(n->_right) + 1) {
             return false;
         }
-        return _is_avl(x->_left.get()) && _is_avl(x->_right.get());
-    }
-
-    bool _is_size_consistent() const { return _is_size_consistent(_get_root()); }
-
-    bool _is_size_consistent(Raw_node_pointer x) const
-    {
-        if (x == nullptr) {
-            return true;
-        }
-        if (x->_size != _size(x->_left.get()) + _size(x->_right.get()) + 1) {
-            return false;
-        }
-        return _is_size_consistent(x->_left.get()) && _is_size_consistent(x->_right.get());
+        return _is_size_consistent(n->_left) && _is_size_consistent(n->_right);
     }
 
     bool _is_rank_consistent() const
@@ -654,6 +710,46 @@ private:
         }
         return true;
     }
+
+    inline bool _is_two_three() const { return _is_two_three(_root); }
+
+    bool _is_two_three(Raw_node_pointer n) const
+    {
+        if (n == nullptr) {
+            return true;
+        }
+        if (is_red(n->_right)) {
+            return false;
+        }
+        if (n != _root && is_red(n) && is_red(n->_left)) {
+            return false;
+        }
+        return _is_two_three(n->_left) && _is_two_three(n->_right);
+    }
+
+    bool _is_balanced() const
+    {
+        int black{0};
+        Raw_node_pointer n = _root;
+        while (n != nullptr) {
+            if (!is_red(n)) {
+                ++black;
+            }
+            n = n->_left;
+        }
+        return _is_balanced(_root, black);
+    }
+
+    bool _is_balanced(Raw_node_pointer n, int black) const
+    {
+        if (n == nullptr) {
+            return black == 0;
+        }
+        if (!is_red(n)) {
+            --black;
+        }
+        return _is_balanced(n->_left, black) && _is_balanced(n->_right, black);
+    }
 };
 
-#endif //RED_BLACK_BST_H
+#endif // RED_BLACK_BST_H

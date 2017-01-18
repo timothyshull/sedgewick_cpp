@@ -45,4 +45,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, Complex& out);
 
-#endif //COMPLEX_H
+#endif // COMPLEX_H

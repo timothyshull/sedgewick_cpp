@@ -1,5 +1,5 @@
-#ifndef COLLECTED_SCANNER_H
-#define COLLECTED_SCANNER_H
+#ifndef SCANNER_H
+#define SCANNER_H
 
 #include <regex>
 #include <istream>
@@ -48,4 +48,4 @@ private:
     std::string group_separator{"\\."};
 };
 
-#endif //COLLECTED_SCANNER_H
+#endif // SCANNER_H

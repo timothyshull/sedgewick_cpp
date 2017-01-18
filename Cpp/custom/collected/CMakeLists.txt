@@ -76,6 +76,14 @@ target_link_libraries(adj_matrix_edge_weighted_digraph_main std_random)
 
 add_executable(alphabet_main alphabet_main.cpp Alphabet.h Alphabet.cpp)
 
+# TODO
+add_executable(arbitrage_main arbitrage_main.cpp)
+target_link_libraries(arbitrage_main std_io)
+
+# TODO
+add_executable(assignment_problem_main assignment_problem_main.cpp Assignment_problem.h Assignment_problem.cpp)
+target_link_libraries(assignment_problem_main std_io)
+
 add_executable(average_main average_main.cpp)
 
 add_executable(avl_tree_symbol_table_main avl_tree_symbol_table_main.cpp AVL_tree_symbol_table.h)
@@ -171,3 +179,6 @@ target_link_libraries(union_find_main std_io)
 
 add_executable(weighted_quick_union_uf_main weighted_quick_union_uf_main.cpp Weighted_quick_union_uf.h Weighted_quick_union_uf.cpp)
 target_link_libraries(weighted_quick_union_uf_main std_io)
+
+add_executable(whitelist_main whitelist_main.cpp Static_set_of_ints.h Static_set_of_ints.cpp)
+target_link_libraries(whitelist_main std_io utility)

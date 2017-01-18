@@ -31,4 +31,4 @@ namespace Binary_search {
     }
 }
 
-#endif //BINARY_SEARCH_H
+#endif // BINARY_SEARCH_H

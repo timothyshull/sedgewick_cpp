@@ -1,5 +1,5 @@
-#ifndef COLLECTED_BAG_H
-#define COLLECTED_BAG_H
+#ifndef BAG_H
+#define BAG_H
 
 #include <cstdlib>
 #include <cstddef>
@@ -232,4 +232,4 @@ std::ostream& operator<<(std::ostream& os, const Bag<T>& out)
 //    clear();
 //}
 
-#endif //COLLECTED_BAG_H
+#endif // BAG_H

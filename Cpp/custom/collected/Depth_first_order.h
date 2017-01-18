@@ -51,4 +51,4 @@ private:
     bool _check(Digraph& g);
 };
 
-#endif //DEPTH_FIRST_ORDER_H
+#endif // DEPTH_FIRST_ORDER_H

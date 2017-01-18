@@ -59,4 +59,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Edge_weighted_digraph& out);
 
-#endif //EDGE_WEIGHTED_DIGRAPH_H
+#endif // EDGE_WEIGHTED_DIGRAPH_H

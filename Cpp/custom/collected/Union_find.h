@@ -22,4 +22,4 @@ private:
     void _validate(int p) const;
 };
 
-#endif //UNION_FIND_H
+#endif // UNION_FIND_H

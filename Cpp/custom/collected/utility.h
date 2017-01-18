@@ -1,5 +1,5 @@
-#ifndef COLLECTED_UTILITY_H
-#define COLLECTED_UTILITY_H
+#ifndef UTILITY_H
+#define UTILITY_H
 
 #include <cstdio>
 #include <cstdlib>
@@ -116,4 +116,4 @@ namespace utility {
 #endif  // _LIBCPP_STD_VER < 14
 }
 
-#endif //COLLECTED_UTILITY_H
+#endif // UTILITY_H

@@ -18,4 +18,4 @@ namespace Knuth {
     }
 }
 
-#endif //KNUTH_SHUFFLE_H
+#endif // KNUTH_SHUFFLE_H

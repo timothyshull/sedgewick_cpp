@@ -1,5 +1,5 @@
-#ifndef COLLECTED_KNUTH_MORRIS_PRATT_H
-#define COLLECTED_KNUTH_MORRIS_PRATT_H
+#ifndef KNUTH_MORRIS_PRATT_H
+#define KNUTH_MORRIS_PRATT_H
 
 #include <string>
 #include <vector>
@@ -35,4 +35,4 @@ private:
 
 };
 
-#endif //COLLECTED_KNUTH_MORRIS_PRATT_H
+#endif // KNUTH_MORRIS_PRATT_H

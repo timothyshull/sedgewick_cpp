@@ -80,4 +80,4 @@ namespace Std_out {
 
 };
 
-#endif //STD_OUT_H
+#endif // STD_OUT_H

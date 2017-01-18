@@ -22,4 +22,4 @@ private:
     void _validate(int p) const;
 };
 
-#endif //WEIGHTED_QUICK_UNION_UF_H
+#endif // WEIGHTED_QUICK_UNION_UF_H

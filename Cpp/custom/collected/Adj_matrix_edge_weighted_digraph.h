@@ -92,4 +92,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Adj_matrix_edge_weighted_digraph& out);
 
-#endif //ADJ_MATRIX_EDGE_WEIGHTED_DIGRAPH_H
+#endif // ADJ_MATRIX_EDGE_WEIGHTED_DIGRAPH_H

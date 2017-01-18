@@ -31,4 +31,4 @@ private:
     Float_type _mu{0.0};
 };
 
-#endif //ACCUMULATOR_H
+#endif // ACCUMULATOR_H

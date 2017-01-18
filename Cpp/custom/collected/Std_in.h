@@ -88,4 +88,4 @@ namespace Std_in {
 
 };
 
-#endif //STD_IN_H
+#endif // STD_IN_H

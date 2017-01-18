@@ -56,4 +56,4 @@ namespace Alphabets {
     static const Alphabet unicode16{65536};
 }
 
-#endif //ALPHABET_H
+#endif // ALPHABET_H

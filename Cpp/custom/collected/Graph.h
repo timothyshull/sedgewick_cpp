@@ -32,4 +32,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Graph& out);
 
-#endif //GRAPH_H
+#endif // GRAPH_H

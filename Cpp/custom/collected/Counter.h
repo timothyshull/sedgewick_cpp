@@ -41,4 +41,4 @@ std::ostream& operator<<(std::ostream& os, const Counter& out)
     return os << out.to_string();
 }
 
-#endif //COUNTER_H
+#endif // COUNTER_H

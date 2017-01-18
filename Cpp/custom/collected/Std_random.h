@@ -77,4 +77,4 @@ namespace Std_random {
     }
 };
 
-#endif //STD_RANDOM_H
+#endif // STD_RANDOM_H

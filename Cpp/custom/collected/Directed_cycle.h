@@ -37,4 +37,4 @@ private:
     bool _check() const;
 };
 
-#endif //DIRECTED_CYCLE_H
+#endif // DIRECTED_CYCLE_H

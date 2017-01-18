@@ -37,4 +37,4 @@ private:
     void _relax(Directed_edge& e);
 };
 
-#endif //ACYCLICLP_H
+#endif // ACYCLICLP_H

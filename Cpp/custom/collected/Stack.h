@@ -247,4 +247,4 @@ std::ostream& operator<<(std::ostream& os, const Stack<T>& out)
     return os << out.to_string();
 }
 
-#endif //STACK_H
+#endif // STACK_H

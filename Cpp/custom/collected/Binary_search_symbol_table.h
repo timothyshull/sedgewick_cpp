@@ -284,4 +284,4 @@ private:
     }
 };
 
-#endif //BINARY_SEARCH_SYMBOL_TABLE_H
+#endif // BINARY_SEARCH_SYMBOL_TABLE_H

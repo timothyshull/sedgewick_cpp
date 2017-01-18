@@ -1,5 +1,5 @@
-#ifndef COLLECTED_SET_H
-#define COLLECTED_SET_H
+#ifndef SET_H
+#define SET_H
 
 #include <set>
 #include <exception>
@@ -73,4 +73,4 @@ public:
     }
 };
 
-#endif //COLLECTED_SET_H
+#endif // SET_H

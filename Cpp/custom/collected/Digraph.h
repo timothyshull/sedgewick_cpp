@@ -1,5 +1,5 @@
-#ifndef COLLECTED_DIGRAPH_H
-#define COLLECTED_DIGRAPH_H
+#ifndef DIGRAPH_H
+#define DIGRAPH_H
 
 #include <vector>
 #include "Bag.h"
@@ -51,4 +51,4 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Digraph& out);
 
-#endif //COLLECTED_DIGRAPH_H
+#endif // DIGRAPH_H

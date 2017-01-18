@@ -2,3 +2,9 @@
 - use only key/value pointers in symbol tables
 - fix binary search tree
 - remove all unnecessary using declarations from node based structures
+- check if other trees are missing public delete and use remove for each
+- red black bst has pointer access issues (nullptr being read in is_red)
+- need to handle the empty string case for key comparators separately
+- using a lambda with decltype as a comparator returns no matching constructor, need to handle both cases
+- Std_in may still be passing empty strings in
+- comparator still has issues, may not be setting key everywhere

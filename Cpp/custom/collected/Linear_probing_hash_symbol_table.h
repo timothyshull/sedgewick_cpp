@@ -146,4 +146,4 @@ private:
     }
 };
 
-#endif //LINEAR_PROBING_HASH_SYMBOL_TABLE_H
+#endif // LINEAR_PROBING_HASH_SYMBOL_TABLE_H

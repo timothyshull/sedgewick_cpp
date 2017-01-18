@@ -37,4 +37,4 @@ private:
     bool _check(Edge_weighted_digraph& g) const;
 };
 
-#endif //EDGE_WEIGHTED_DIRECTED_CYCLE_H
+#endif // EDGE_WEIGHTED_DIRECTED_CYCLE_H
