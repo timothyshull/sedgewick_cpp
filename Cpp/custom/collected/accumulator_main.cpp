@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     double x;
     while (!Std_in::is_empty()) {
         x = Std_in::read_double();
-        stats.add_value(x);
+        stats.add_data_value(x);
     }
 
     Std_out::printf("Number of input values: %d\n", stats.count());

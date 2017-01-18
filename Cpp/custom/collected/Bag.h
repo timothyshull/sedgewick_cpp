@@ -116,9 +116,63 @@ public:
     using Iterator_type = Bag_iterator<T>;
     using Const_iterator_type = Bag_iterator<T>;
 
-    // inline Bag() = default;
+    Bag() = default;
 
-    // ~Bag();
+    Bag(const Bag& s) : _n{s._n}
+    {
+        if (!s.is_empty()) {
+            _first = std::unique_ptr<Node_type>{};
+            Node_raw_pointer n1{s._first.get()};
+            Node_raw_pointer n2{_first.get()};
+
+            while (n1 != nullptr) {
+                n2->_item = n1->_item;
+                if (n1->_next != nullptr) {
+                    n2->_next = std::unique_ptr<Node_type>{};
+                } else {
+                    n2->_next = nullptr;
+                }
+                n1 = n1->_next.get();
+                n2 = n2->_next.get();
+            }
+        }
+    }
+
+    Bag(Bag&& s) : _first{std::move(s._first)}, _n{s._n} {}
+
+    ~Bag()
+    {
+        _clear();
+    }
+
+    Bag& operator=(const Bag& rhs)
+    {
+        _n = rhs._n;
+        if (!rhs.is_empty()) {
+            _first = std::unique_ptr<Node_type>{};
+            Node_raw_pointer n1{rhs._first.get()};
+            Node_raw_pointer n2{_first.get()};
+
+            while (n1 != nullptr) {
+                n2->_item = n1->_item;
+                if (n1->_next != nullptr) {
+                    n2->_next = std::unique_ptr<Node_type>{};
+                } else {
+                    n2->_next = nullptr;
+                }
+                n1 = n1->_next.get();
+                n2 = n2->_next.get();
+            }
+        }
+        return *this;
+    };
+
+    Bag& operator=(Bag&& rhs)
+    {
+        _first = std::move(rhs._first);
+        _n = rhs._n;
+        return *this;
+    }
 
     inline bool is_empty() const noexcept { return _first == nullptr; }
 

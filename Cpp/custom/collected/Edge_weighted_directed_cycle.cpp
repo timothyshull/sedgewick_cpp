@@ -2,9 +2,9 @@
 #include "Edge_weighted_directed_cycle.h"
 
 Edge_weighted_directed_cycle::Edge_weighted_directed_cycle(Edge_weighted_digraph& g)
-        : _marked{static_cast<std::deque<bool>::size_type>(g.num_vertices())},
-          _on_stack{static_cast<std::deque<bool>::size_type>(g.num_vertices())},
-          _edge_to{static_cast<std::vector<int>::size_type>(g.num_vertices())}
+        : _marked(static_cast<std::deque<bool>::size_type>(g.num_vertices())),
+          _on_stack(static_cast<std::deque<bool>::size_type>(g.num_vertices())),
+          _edge_to(static_cast<std::vector<int>::size_type>(g.num_vertices()))
 {
     for (int v = 0; v < g.num_vertices(); ++v) {
         if (!_marked[v]) {

@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     int n = atoi(argv[1]);
     int trials = atoi(argv[2]);
 
-    // create n counters
+    // create _n counters
     std::vector<Counter> hits(n);
     for (int i = 0; i < n; i++) {
         std::stringstream ss;

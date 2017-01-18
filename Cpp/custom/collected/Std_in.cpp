@@ -57,7 +57,11 @@ char Std_in::read_char()
 
 std::string Std_in::read_all()
 {
-    return read_line();
+    std::string str;
+    while (!is_empty()) {
+        str += read_line();
+    }
+    return str;
 }
 
 std::string Std_in::read_string()

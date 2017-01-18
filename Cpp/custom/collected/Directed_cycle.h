@@ -24,7 +24,7 @@ public:
 
     inline bool has_cycle() const { return !_cycle.is_empty(); }
 
-    inline Stack<int> cycle() const { return _cycle; }
+    Stack<int> cycle() const;
 
 private:
     std::deque<bool> _marked;

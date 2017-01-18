@@ -37,7 +37,7 @@ namespace Std_random {
     int uniform(int n)
     {
         if (n <= 0) {
-            throw utility::Illegal_argument_exception("Parameter n must be positive");
+            throw utility::Illegal_argument_exception("Parameter _n must be positive");
         }
         std::uniform_int_distribution<int> dist(0, n - 1);
         return dist(rd);
@@ -156,7 +156,7 @@ namespace Std_random {
         }
         if (sum > 1.0 + epsilon || sum < 1.0 - epsilon) {
             std::stringstream ss;
-            ss << "The sum of the array entries does not approximately equal 1.0: " << sum;
+            ss << "The _sum of the array entries does not approximately equal 1.0: " << sum;
             throw utility::Illegal_argument_exception(ss.str());
         }
 
@@ -191,7 +191,7 @@ namespace Std_random {
             throw utility::Illegal_argument_exception("At least one array entry must be positive");
         }
         if (sum >= std::numeric_limits<int>::max()) {
-            throw utility::Illegal_argument_exception("The sum of \"frequencies\" overflows an the int type");
+            throw utility::Illegal_argument_exception("The _sum of \"frequencies\" overflows an the int type");
         }
 
         double r = uniform(static_cast<int>(sum));

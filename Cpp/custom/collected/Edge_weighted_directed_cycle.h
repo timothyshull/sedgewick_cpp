@@ -8,7 +8,7 @@ class Edge_weighted_directed_cycle {
 public:
     Edge_weighted_directed_cycle() = default;
 
-    Edge_weighted_directed_cycle(const Edge_weighted_directed_cycle) = default;
+    Edge_weighted_directed_cycle(const Edge_weighted_directed_cycle&) = default;
 
     Edge_weighted_directed_cycle(Edge_weighted_directed_cycle&&) = default;
 

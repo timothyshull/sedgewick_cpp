@@ -6,19 +6,31 @@
 
 class Digraph {
 public:
+    Digraph() = default;
+
+    Digraph(const Digraph&) = default;
+
+    Digraph(Digraph&&) = default;
+
+    ~Digraph() = default;
+
+    Digraph& operator=(const Digraph&) = default;
+
+    Digraph& operator=(Digraph&&) = default;
+
     explicit Digraph(int num_vertices);
 
     explicit Digraph(std::istream in);
 
     explicit Digraph(Digraph& g);
 
-    inline int num_vertices() const;
+    inline int num_vertices() const { return _num_vertices; };
 
-    inline int num_edges() const;
+    inline int num_edges() const { return _num_edges; };
 
     void add_edge(int v, int w);
 
-    Bag<int> adjacent(int v) const;
+    std::vector<int> adjacent(int v) const;
 
     int outdegree(int v) const;
 
@@ -31,7 +43,7 @@ public:
 private:
     int _num_vertices;
     int _num_edges;
-    std::vector<Bag<int>> _adjacency_lists;
+    std::vector<std::vector<int>> _adjacency_lists;
     std::vector<int> _indegree;
 
     void _validate_vertex(int v) const;

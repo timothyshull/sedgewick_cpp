@@ -2,9 +2,14 @@
 #include <iomanip>
 #include "Directed_edge.h"
 
-Directed_edge::Directed_edge(unsigned source, unsigned destination, double weight) : _source{source}, _destination{destination}, _weight{weight}
+Directed_edge::Directed_edge(int source, int destination, double weight) : _source{source}, _destination{destination}, _weight{weight}
 {
-    // removed check for value by making input unsigned
+    if (source < 0) {
+        throw utility::Index_out_of_bounds_exception("Vertex names must be non-negative integers");
+    }
+    if (destination < 0) {
+        throw utility::Index_out_of_bounds_exception("Vertex names must be non-negative integers");
+    }
     if (std::isnan(_weight)) {
         throw utility::Illegal_argument_exception("Directed_edge weight argument is NaN");
     }

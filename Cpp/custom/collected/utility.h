@@ -4,8 +4,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <stdexcept>
+#include <memory>
+#include <string>
+#include <ios>
+#include <type_traits>
 
-// TODO: move exceptions to exception file
 namespace utility {
     void assert(bool test, const char msg[]);
 
@@ -15,6 +18,17 @@ namespace utility {
         if (n > s.length()) {
             s.append(n - s.length(), c);
         }
+    }
+
+    template<typename Stream_type>
+    void copy_stream(Stream_type& src, Stream_type& dest)
+    {
+        static_assert(std::is_base_of<std::ios_base, Stream_type>::value, "The types passed to copy_stream must be stream types");
+        dest.exceptions(std::ios_base::goodbit);
+        dest.clear(src.rdstate());
+        using Stream_base = std::basic_ios<typename Stream_type::char_type, typename Stream_type::traits_type>;
+        dynamic_cast<Stream_base&>(dest).rdbuf(static_cast<const Stream_base&>(src).rdbuf());
+        dest.copyfmt(src);
     }
 
     class No_such_element_exception : public std::range_error {

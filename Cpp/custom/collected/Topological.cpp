@@ -9,7 +9,7 @@ Topological::Topological(Digraph& g)
     if (!finder.has_cycle()) {
         Depth_first_order dfs{g};
         _order = dfs.reverse_post();
-        _rank = std::vector<int>{static_cast<std::vector<int>::size_type>(g.num_vertices())};
+        _rank = std::vector<int>(static_cast<std::vector<int>::size_type>(g.num_vertices()));
         int i = 0;
         for (int v : _order) {
             _rank[v] = ++i;

@@ -10,14 +10,13 @@ Digraph::Digraph(int num_vertices) : _num_vertices{num_vertices}, _num_edges{0},
 
 Digraph::Digraph(std::istream in)
 {
-    // TODO: handle No_such_element_exception
-    Std_in::std_in = in;
+    utility::copy_stream(in, Std_in::std_in);
     _num_vertices = Std_in::read_int();
     if (_num_vertices < 0) {
         throw utility::Illegal_argument_exception("The number of vertices in a Digraph must be non-negative");
     }
-    _indegree = std::vector<int>(_num_vertices);
-    _adjacency_lists = std::vector<Bag<int>>(_num_vertices);
+    _indegree.reserve(static_cast<std::vector<int>::size_type>(_num_vertices));
+    _adjacency_lists.reserve(static_cast<std::vector<int>::size_type>(_num_vertices));
 
     _num_edges = Std_in::read_int();
     if (_num_edges < 0) {
@@ -32,7 +31,7 @@ Digraph::Digraph(std::istream in)
         add_edge(v, w);
     }
     // reset
-    Std_in::std_in = std::cin;
+    utility::copy_stream(std::cin, Std_in::std_in);
 }
 
 Digraph::Digraph(Digraph& g) : _num_vertices{g._num_vertices}, _num_edges{g._num_edges}, _indegree{g._indegree}, _adjacency_lists(g._num_vertices)
@@ -43,31 +42,21 @@ Digraph::Digraph(Digraph& g) : _num_vertices{g._num_vertices}, _num_edges{g._num
             reverse.push(w);
         }
         for (int w : reverse) {
-            _adjacency_lists[v].add(w);
+            _adjacency_lists[v].emplace_back(w);
         }
     }
-}
-
-int Digraph::num_vertices() const
-{
-    return _num_vertices;
-}
-
-int Digraph::num_edges() const
-{
-    return _num_edges;
 }
 
 void Digraph::add_edge(int v, int w)
 {
     _validate_vertex(v);
     _validate_vertex(w);
-    _adjacency_lists[v].add(w);
+    _adjacency_lists[v].emplace_back(w);
     _indegree[w] += 1;
     ++_num_edges;
 }
 
-Bag<int> Digraph::adjacent(int v) const
+std::vector<int> Digraph::adjacent(int v) const
 {
     _validate_vertex(v);
     return _adjacency_lists[v];
@@ -76,7 +65,7 @@ Bag<int> Digraph::adjacent(int v) const
 int Digraph::outdegree(int v) const
 {
     _validate_vertex(v);
-    return _adjacency_lists[v].size();
+    return static_cast<int>(_adjacency_lists[v].size());
 }
 
 int Digraph::indegree(int v) const
@@ -87,7 +76,7 @@ int Digraph::indegree(int v) const
 
 Digraph Digraph::reverse() const
 {
-    Digraph reverse(_num_vertices);
+    Digraph reverse{_num_vertices};
     for (int v = 0; v < _num_vertices; ++v) {
         for (auto w : adjacent(v)) {
             reverse.add_edge(w, v);

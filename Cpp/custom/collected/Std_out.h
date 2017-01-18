@@ -6,61 +6,9 @@
 #include <iostream>
 
 namespace Std_out {
-    void close();
+    static std::ostream& std_out = std::cout;
 
-//    template<>
-//    void print<double>(const double& f)
-//    {
-//        printf("%.6f", f);
-//    }
-//
-//    template<>
-//    void print<double>(double&& f)
-//    {
-//        printf("%.6f", f);
-//    }
-//
-//    void print_line<bool>(bool b)
-//    {
-//        std::cout << std::boolalpha << b << "\n";
-//    }
-//
-//    template<>
-//    void print<bool>(const bool& b)
-//    {
-//        std::cout << std::boolalpha << b;
-//    }
-//
-//    template<>
-//    void print<bool>(bool&& b)
-//    {
-//        std::cout << std::boolalpha << b << "\n";
-//    }
-//    
-//
-//    template<typename T>
-//    void print_line(const T& t)
-//    {
-//        std::cout << t << "\n";
-//    }
-//
-//    template<typename T>
-//    void print_line(T&& t)
-//    {
-//        std::cout << t << "\n";
-//    }
-//
-//    template<typename T>
-//    void print(const T& t)
-//    {
-//        std::cout << t;
-//    }
-//
-//    template<typename T>
-//    void print(T&& t)
-//    {
-//        std::cout << t;
-//    }
+    void close();
 
     template<typename... Args>
     void printf(const char* format, const Args& ... args)
@@ -89,13 +37,15 @@ namespace Std_out {
     template<typename T>
     void print_line(const T& t)
     {
-        std::cout << t << "\n";
+        std_out << t;
+        std_out << "\n";
     }
 
     template<typename T>
     void print_line(T&& t)
     {
-        std::cout << t << "\n";
+        std_out << t;
+        std_out << "\n";
     }
 
     void print_line();
@@ -117,13 +67,13 @@ namespace Std_out {
     template<typename T>
     void print(const T& t)
     {
-        std::cout << t;
+        std_out << t;
     }
 
     template<typename T>
     void print(T&& t)
     {
-        std::cout << t << "\n";
+        std_out << t << "\n";
     }
 
     void print();

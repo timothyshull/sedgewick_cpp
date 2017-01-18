@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <fstream>
 
 #include "Acyclic_lp.h"
@@ -7,24 +6,12 @@
 
 int main(int argc, char* argv[])
 {
-    std::ifstream f(argv[1]);
+    std::ifstream in(argv[1]);
     int s = std::atoi(argv[2]);
-    Edge_weighted_digraph g{f};
+    // Edge_weighted_digraph g{in};
+    Edge_weighted_digraph g{std::cin};
 
     Acyclic_lp lp{g, s};
-
-//    for (int v = 0; v < g.num_vertices(); v++) {
-//        if (lp.has_path_to(v)) {
-//            std::cout << s << " to " << v << "" << lp.distance_to(v) << "\n";
-//
-//            for (auto e : lp.path_to(v)) {
-//                std::cout << e << "    ";
-//            }
-//            std::cout << "\n";
-//        } else {
-//            std::cout << s << " to " << v << ": no path\n";
-//        }
-//    }
 
     for (int v = 0; v < g.num_vertices(); ++v) {
         if (lp.has_path_to(v)) {

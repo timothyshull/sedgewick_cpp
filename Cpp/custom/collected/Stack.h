@@ -112,7 +112,63 @@ public:
     using Iterator_type = Stack_iterator<T>;
     using Const_iterator_type = Stack_iterator<T>;
 
-    Stack() : _first{nullptr}, _n{0} {}
+    Stack() = default;
+
+    Stack(const Stack& s) : _n{s._n}
+    {
+        if (!s.is_empty()) {
+            _first = std::unique_ptr<Node_type>{};
+            Node_raw_pointer n1{s._first.get()};
+            Node_raw_pointer n2{_first.get()};
+
+            while (n1 != nullptr) {
+                n2->_item = n1->_item;
+                if (n1->_next != nullptr) {
+                    n2->_next = std::unique_ptr<Node_type>{};
+                } else {
+                    n2->_next = nullptr;
+                }
+                n1 = n1->_next.get();
+                n2 = n2->_next.get();
+            }
+        }
+    }
+
+    Stack(Stack&& s) : _first{std::move(s._first)}, _n{s._n} {}
+
+    ~Stack()
+    {
+        _clear();
+    }
+
+    Stack& operator=(const Stack& rhs)
+    {
+        _n = rhs._n;
+        if (!rhs.is_empty()) {
+            _first = std::unique_ptr<Node_type>{};
+            Node_raw_pointer n1{rhs._first.get()};
+            Node_raw_pointer n2{_first.get()};
+
+            while (n1 != nullptr) {
+                n2->_item = n1->_item;
+                if (n1->_next != nullptr) {
+                    n2->_next = std::unique_ptr<Node_type>{};
+                } else {
+                    n2->_next = nullptr;
+                }
+                n1 = n1->_next.get();
+                n2 = n2->_next.get();
+            }
+        }
+        return *this;
+    };
+
+    Stack& operator=(Stack&& rhs)
+    {
+        _first = std::move(rhs._first);
+        _n = rhs._n;
+        return *this;
+    }
 
     inline bool is_empty() const { return _first == nullptr; }
 
@@ -170,6 +226,19 @@ public:
 private:
     Node_owning_pointer _first;
     int _n;
+
+    void _clear() noexcept
+    {
+        _clear(_first);
+    }
+
+    void _clear(Node_owning_pointer& node) noexcept
+    {
+        if (node != nullptr) {
+            _clear(node->_next);
+            node.reset(nullptr);
+        }
+    }
 };
 
 template<typename T>

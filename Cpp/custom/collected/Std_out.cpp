@@ -1,8 +1,6 @@
 #include "Std_out.h"
 
 namespace Std_out {
-    static std::ostream& std_out = std::cout;
-
     void close() {}
 
     void print_line(bool b)

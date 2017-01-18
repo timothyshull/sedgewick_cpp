@@ -1,38 +1,38 @@
-#ifndef COLLECTED_AVL_TREE_SYMBOL_TABLE_H
-#define COLLECTED_AVL_TREE_SYMBOL_TABLE_H
+#ifndef RED_BLACK_BST_H
+#define RED_BLACK_BST_H
 
+#include <memory>
 #include <cstddef>
-#include <algorithm>
-#include <sstream>
 
-#include "Queue.h"
-#include "utility.h"
-#include "Std_out.h"
-
-template<typename Key, typename Value>
-class AVL_tree_node;
+enum class Red_black_color : public bool {
+    red = true,
+    black = false
+};
 
 template<typename Key, typename Value>
-class AVL_tree_iterator;
+class Red_black_tree_node;
 
 template<typename Key, typename Value>
-class AVL_tree_reverse_iterator;
+class Red_black_tree_iterator;
+
+template<typename Key, typename Value>
+class Red_black_tree_reverse_iterator;
 
 template<typename T>
-struct AVL_tree_key_comparator;
+struct Red_black_tree_key_comparator;
 
-template<typename Key, typename Value, typename Comparator = AVL_tree_key_comparator<Key>>
-class AVL_tree_symbol_table;
+template<typename Key, typename Value, typename Comparator = Red_black_tree_key_comparator<Key>>
+class Red_black_tree_symbol_table;
 
 template<typename Key, typename Value>
-struct AVL_tree_node_pointer_traits {
+struct Red_black_tree_node_pointer_traits {
     using Key_type = Key;
     using Value_type = Value;
     using Raw_key_pointer = Key*;
     using Raw_value_pointer = Value*;
 
-    using Node_type = AVL_tree_node<Key_type, Value_type>;
-    using Raw_node_pointer = AVL_tree_node<Key_type, Value_type>*;
+    using Node_type = Red_black_tree_node<Key_type, Value_type>;
+    using Raw_node_pointer = Red_black_tree_node<Key_type, Value_type>*;
     using Node_owning_pointer = std::unique_ptr<Node_type>;
     using Node_shared_pointer = std::shared_ptr<Node_type>;
     using Shared_value_pointer = std::shared_ptr<Value_type>;
@@ -40,78 +40,82 @@ struct AVL_tree_node_pointer_traits {
     using Size_type = std::size_t;
 };
 
-// remove use of shared_ptr for keys and values to make implementation
-// more lightweight
 template<typename Key, typename Value>
-class AVL_tree_node {
+class Red_black_tree_node {
 public:
-    using Node_traits = AVL_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
+    using Raw_key_pointer = typename Node_traits::Raw_key_pointer;
+    using Raw_value_pointer = typename Node_traits::Raw_value_pointer;
     using Node_type = typename Node_traits::Node_type;
     using Raw_node_pointer = typename Node_traits::Raw_node_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
     using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
     using Size_type = typename Node_traits::Size_type;
 
-    AVL_tree_node(Key_type& key, Value_type& val, int height, int size) : _key{std::make_shared<Key_type>(key)}, _value{std::make_shared<Value_type>(val)}, _size{size}, _height{height} {}
+    Red_black_tree_node(Key_type& key, Value_type& val, Red_black_color color, int size)
+            : _key{new Key{key}},
+              _value{new Value{val}},
+              _color{color},
+              _size{size} {}
 
-    AVL_tree_node() = default;
+    Red_black_tree_node() = default;
 
-    AVL_tree_node(const AVL_tree_node&) = default;
+    Red_black_tree_node(const Red_black_tree_node&) = default;
 
-    AVL_tree_node(AVL_tree_node&&) = default;
+    Red_black_tree_node(Red_black_tree_node&&) = default;
 
-    ~AVL_tree_node() = default;
+    ~Red_black_tree_node() = default;
 
-    AVL_tree_node& operator=(const AVL_tree_node&) = default;
+    Red_black_tree_node& operator=(const Red_black_tree_node&) = default;
 
-    AVL_tree_node& operator=(AVL_tree_node&&) = default;
+    Red_black_tree_node& operator=(Red_black_tree_node&&) = default;
 
 private:
-    Key_type _key;
-    Value_type _value;
+    Raw_key_pointer _key;
+    Raw_value_pointer _value;
 
-    int _height;
+    Red_black_color _color; // of parent link
     int _size;
 
-    Node_owning_pointer _left;
-    Node_owning_pointer _right;
+    Raw_node_pointer _left;
+    Raw_node_pointer _right;
 
     template<typename, typename, typename>
-    friend class AVL_tree_symbol_table;
+    friend class Red_black_tree_symbol_table;
 
     template<typename, typename>
-    friend class AVL_tree_iterator;
+    friend class Red_black_tree_iterator;
 
     template<typename, typename>
-    friend class AVL_tree_reverse_iterator;
+    friend class Red_black_tree_reverse_iterator;
 };
 
 // this is implemented in a way that will invalidate the iterator easily
 // and it takes N * size extra space
 // this is due to the fact that the nodes do not have parent pointers
 template<typename Key, typename Value>
-class AVL_tree_iterator {
+class Red_black_tree_iterator {
 public:
     using iterator_category = std::bidirectional_iterator_tag;
-    using Node_traits = AVL_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
     using Raw_node_pointer = typename Node_traits::Raw_node_pointer;
-    using Tree_type = AVL_tree_symbol_table<Key_type, Value_type>;
+    using Tree_type = Red_black_tree_symbol_table<Key_type, Value_type>;
     using Tree_pointer = Tree_type*;
 
     using Reference_type = Value_type&;
 
-    AVL_tree_iterator() noexcept = default;
+    Red_black_tree_iterator() noexcept = default;
 
-    explicit AVL_tree_iterator(Tree_type& tree) noexcept : _index{0}, _root{tree._get_root()}
+    explicit Red_black_tree_iterator(Tree_type& tree) noexcept : _index{0}, _root{tree._get_root()}
     {
         _construct_in_order(_root);
     }
 
-    AVL_tree_iterator(Tree_type& tree, int index) noexcept : _index{index}, _root{tree._get_root()}
+    Red_black_tree_iterator(Tree_type& tree, int index) noexcept : _index{index}, _root{tree._get_root()}
     {
         _construct_in_order(_root);
         if (_index > _in_order.size() || _index < -1) {
@@ -129,7 +133,7 @@ public:
         return _in_order[_index]->_value;
     }
 
-    inline AVL_tree_iterator& operator++()
+    inline Red_black_tree_iterator& operator++()
     {
         ++_index;
         if (_index >= _in_order.size()) {
@@ -138,14 +142,14 @@ public:
         return *this;
     }
 
-    inline AVL_tree_iterator operator++(int)
+    inline Red_black_tree_iterator operator++(int)
     {
-        AVL_tree_iterator t{*this};
+        Red_black_tree_iterator t{*this};
         ++(*this);
         return t;
     }
 
-    inline AVL_tree_iterator& operator--()
+    inline Red_black_tree_iterator& operator--()
     {
         if (_index > 0) {
             --_index;
@@ -153,9 +157,9 @@ public:
         return *this;
     }
 
-    inline AVL_tree_iterator operator--(int)
+    inline Red_black_tree_iterator operator--(int)
     {
-        AVL_tree_iterator t{*this};
+        Red_black_tree_iterator t{*this};
         --(*this);
         return t;
     }
@@ -166,13 +170,13 @@ public:
     }
 
     friend
-    inline bool operator==(const AVL_tree_iterator& x, const AVL_tree_iterator& y)
+    inline bool operator==(const Red_black_tree_iterator& x, const Red_black_tree_iterator& y)
     {
         return x._in_order == y._in_order && x._index == y._index;
     }
 
     friend
-    inline bool operator!=(const AVL_tree_iterator& x, const AVL_tree_iterator& y) { return !(x == y); }
+    inline bool operator!=(const Red_black_tree_iterator& x, const Red_black_tree_iterator& y) { return !(x == y); }
 
 private:
 //    Raw_node_pointer _parent;
@@ -183,7 +187,7 @@ private:
     Raw_node_pointer _root;
 
     template<typename>
-    friend class AVL_tree_symbol_table;
+    friend class Red_black_tree_symbol_table;
 
     void _construct_in_order(Raw_node_pointer x)
     {
@@ -223,23 +227,23 @@ private:
 };
 
 template<typename Key, typename Value>
-class AVL_tree_reverse_iterator {
+class Red_black_tree_reverse_iterator {
     using iterator_category = std::random_access_iterator_tag;
-    using Node_traits = AVL_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
     using Raw_node_pointer = typename Node_traits::Raw_node_pointer;
-    using Tree_type = AVL_tree_symbol_table<Key_type, Value_type>;
+    using Tree_type = Red_black_tree_symbol_table<Key_type, Value_type>;
     using Tree_pointer = Tree_type*;
 
-    AVL_tree_reverse_iterator() noexcept = delete;
+    Red_black_tree_reverse_iterator() noexcept = delete;
 
-    explicit AVL_tree_reverse_iterator(Tree_pointer tree) noexcept : _index{0}, _tree{tree}
+    explicit Red_black_tree_reverse_iterator(Tree_pointer tree) noexcept : _index{0}, _tree{tree}
     {
         _construct_in_order(_tree->_get_root());
     }
 
-    AVL_tree_reverse_iterator(Tree_pointer tree, int index) noexcept : _index{index}, _tree{tree}
+    Red_black_tree_reverse_iterator(Tree_pointer tree, int index) noexcept : _index{index}, _tree{tree}
     {
         _construct_in_order(_tree->_get_root());
         if (index > _in_order.size()) {
@@ -257,7 +261,7 @@ class AVL_tree_reverse_iterator {
         return _in_order[_index];
     }
 
-    inline AVL_tree_reverse_iterator& operator++()
+    inline Red_black_tree_reverse_iterator& operator++()
     {
         ++_index;
         if (_index >= _in_order.size()) {
@@ -266,14 +270,14 @@ class AVL_tree_reverse_iterator {
         return *this;
     }
 
-    inline AVL_tree_reverse_iterator operator++(int)
+    inline Red_black_tree_reverse_iterator operator++(int)
     {
-        AVL_tree_reverse_iterator t{*this};
+        Red_black_tree_reverse_iterator t{*this};
         ++(*this);
         return t;
     }
 
-    inline AVL_tree_reverse_iterator& operator--()
+    inline Red_black_tree_reverse_iterator& operator--()
     {
         if (_index > 0) {
             --_index;
@@ -281,9 +285,9 @@ class AVL_tree_reverse_iterator {
         return *this;
     }
 
-    inline AVL_tree_reverse_iterator operator--(int)
+    inline Red_black_tree_reverse_iterator operator--(int)
     {
-        AVL_tree_reverse_iterator t{*this};
+        Red_black_tree_reverse_iterator t{*this};
         --(*this);
         return t;
     }
@@ -294,13 +298,13 @@ class AVL_tree_reverse_iterator {
     }
 
     friend
-    inline bool operator==(const AVL_tree_reverse_iterator& x, const AVL_tree_reverse_iterator& y)
+    inline bool operator==(const Red_black_tree_reverse_iterator& x, const Red_black_tree_reverse_iterator& y)
     {
         return x._in_order == y._in_order && x._index == y._index;
     }
 
     friend
-    inline bool operator!=(const AVL_tree_reverse_iterator& x, const AVL_tree_reverse_iterator& y) { return !(x == y); }
+    inline bool operator!=(const Red_black_tree_reverse_iterator& x, const Red_black_tree_reverse_iterator& y) { return !(x == y); }
 
 private:
     int _index;
@@ -308,7 +312,7 @@ private:
     Tree_pointer _tree;
 
     template<typename>
-    friend class AVL_tree_symbol_table;
+    friend class Red_black_tree_symbol_table;
 
     void _construct_in_order(Raw_node_pointer x)
     {
@@ -324,7 +328,7 @@ private:
 };
 
 template<typename T>
-struct AVL_tree_key_comparator {
+struct Red_black_tree_key_comparator {
     int operator()(const T& x, const T& y) const
     {
         if (x < y) {
@@ -337,9 +341,9 @@ struct AVL_tree_key_comparator {
 };
 
 template<typename Key, typename Value, typename Comparator>
-class AVL_tree_symbol_table {
+class Red_black_tree_symbol_table {
 public:
-    using Node_traits = AVL_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = Red_black_tree_node_pointer_traits<Key, Value>;
     using Node_type = typename Node_traits::Node_type;
     using Raw_node_pointer = typename Node_traits::Raw_node_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
@@ -358,23 +362,23 @@ public:
     using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
     using Difference_type = std::ptrdiff_t;  // TODO: check on this because of the relationship with max_size
-    using Iterator_type = AVL_tree_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = AVL_tree_reverse_iterator<Key_type, Value_type>;
+    using Iterator_type = Red_black_tree_iterator<Key_type, Value_type>;
+    using Reverse_iterator_type = Red_black_tree_reverse_iterator<Key_type, Value_type>;
 
-    AVL_tree_symbol_table() = default;
+    Red_black_tree_symbol_table() = default;
 
-    AVL_tree_symbol_table(const AVL_tree_symbol_table&) = default;
+    Red_black_tree_symbol_table(const Red_black_tree_symbol_table&) = default;
 
-    AVL_tree_symbol_table(AVL_tree_symbol_table&&) = default;
+    Red_black_tree_symbol_table(Red_black_tree_symbol_table&&) = default;
 
-    ~AVL_tree_symbol_table() noexcept
+    ~Red_black_tree_symbol_table() noexcept
     {
         _clear();
     }
 
-    AVL_tree_symbol_table& operator=(const AVL_tree_symbol_table&) = default;
+    Red_black_tree_symbol_table& operator=(const Red_black_tree_symbol_table&) = default;
 
-    AVL_tree_symbol_table& operator=(AVL_tree_symbol_table&&) = default;
+    Red_black_tree_symbol_table& operator=(Red_black_tree_symbol_table&&) = default;
 
     inline bool is_empty() const { return _root == nullptr; }
 
@@ -404,7 +408,7 @@ public:
     void put(Key_type& key, Value_type& val)
     {
         _root = std::unique_ptr<Node_type>{_put(_get_root(), key, val)};
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"put()\"");
+        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"put()\"");
     }
 
     void delete_min()
@@ -413,7 +417,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
         }
         _root = _delete_min(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_min()\"");
+        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -422,7 +426,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
         }
         _root = _delete_max(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_max()\"");
+        utility::assert(_check(), "Red_black_tree_symbol_table invariant check failed after \"delete_max()\"");
     }
 
     Raw_key_pointer min() const
@@ -487,20 +491,20 @@ public:
         return _rank(key, _get_root());
     }
 
-    Queue<Raw_key_pointer> keys() const { return keys_in_order(); }
+    Queue <Raw_key_pointer> keys() const { return keys_in_order(); }
 
-    Queue<Raw_key_pointer> keys_in_order() const
+    Queue <Raw_key_pointer> keys_in_order() const
     {
-        Queue<Raw_key_pointer> queue;
+        Queue <Raw_key_pointer> queue;
         _keys_in_order(_get_root(), queue);
         return queue;
     }
 
-    Queue<Raw_key_pointer> keys_in_level_order() const
+    Queue <Raw_key_pointer> keys_in_level_order() const
     {
-        Queue<Raw_key_pointer> queue;
+        Queue <Raw_key_pointer> queue;
         if (!is_empty()) {
-            Queue<Raw_node_pointer> queue2;
+            Queue <Raw_node_pointer> queue2;
             queue2.enqueue(_get_root());
             while (!queue2.is_empty()) {
                 Raw_node_pointer x = queue2.dequeue();
@@ -516,9 +520,9 @@ public:
         return queue;
     }
 
-    Queue<Raw_key_pointer> keys(Key_type& lo, Key_type& hi) const
+    Queue <Raw_key_pointer> keys(Key_type& lo, Key_type& hi) const
     {
-        Queue<Raw_key_pointer> queue;
+        Queue <Raw_key_pointer> queue;
         _keys(_get_root(), queue, lo, hi);
         return queue;
     }
@@ -539,10 +543,10 @@ private:
     Node_owning_pointer _root;
 
     template<typename, typename>
-    friend class AVL_tree_iterator;
+    friend class Red_black_tree_iterator;
 
     template<typename, typename>
-    friend class AVL_tree_reverse_iterator;
+    friend class Red_black_tree_reverse_iterator;
 
     inline Raw_node_pointer _get_root() const { return _root.get(); }
 
@@ -597,7 +601,7 @@ private:
     Raw_node_pointer _put(Raw_node_pointer x, Key_type& key, Value_type& val)
     {
         if (x == nullptr) {
-            return new AVL_tree_node<Key_type, Value_type>(key, val, 0, 1);
+            return new Red_black_tree_node<Key_type, Value_type>(key, val, 0, 1);
         }
         int cmp = Comparator_type()(key, *(x->_key));
         if (cmp < 0) {
@@ -787,7 +791,7 @@ private:
         }
     }
 
-    void _keys_in_order(Raw_node_pointer x, Queue<Raw_key_pointer>& queue) const
+    void _keys_in_order(Raw_node_pointer x, Queue <Raw_key_pointer>& queue) const
     {
         if (x == nullptr) {
             return;
@@ -797,7 +801,7 @@ private:
         _keys_in_order(x->_right.get(), queue);
     }
 
-    void _keys(Raw_node_pointer x, Queue<Raw_key_pointer> queue, Key_type lo, Key_type hi) const
+    void _keys(Raw_node_pointer x, Queue <Raw_key_pointer> queue, Key_type lo, Key_type hi) const
     {
         if (x == nullptr) {
             return;
@@ -823,16 +827,16 @@ private:
         bool rank_check = _is_rank_consistent();
 
         if (!bst_check) {
-            Std_out::print_line("AVL_tree_symbol_table symmetric order is not consistent");
+            Std_out::print_line("Red_black_tree_symbol_table symmetric order is not consistent");
         }
         if (!avl_check) {
-            Std_out::print_line("AVL_tree_symbol_table AVL property is not consistent");
+            Std_out::print_line("Red_black_tree_symbol_table AVL property is not consistent");
         }
         if (!size_check) {
-            Std_out::print_line("AVL_tree_symbol_table subtree size counts are not consistent");
+            Std_out::print_line("Red_black_tree_symbol_table subtree size counts are not consistent");
         }
         if (!rank_check) {
-            Std_out::print_line("AVL_tree_symbol_table ranks are not consistent");
+            Std_out::print_line("Red_black_tree_symbol_table ranks are not consistent");
         }
 
         return bst_check && avl_check && size_check && rank_check;
@@ -897,4 +901,4 @@ private:
     }
 };
 
-#endif //COLLECTED_AVL_TREE_SYMBOL_TABLE_H
+#endif //RED_BLACK_BST_H
