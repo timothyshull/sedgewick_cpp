@@ -82,36 +82,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="knuth_shuffle_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/knuth_shuffle_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Linear_probing_hash_symbol_table.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Linear_probing_hash_symbol_table.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Std_random.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Std_random.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Red_black_bst.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Red_black_bst.cpp">
           <provider selected="true" editor-type-id="text-editor">
@@ -125,8 +95,8 @@
       <file leaf-file-name="Red_black_bst.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Red_black_bst.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="82" column="28" lean-forward="true" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+            <state relative-caret-position="795">
+              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -145,9 +115,52 @@
       <file leaf-file-name="AVL_tree_symbol_table.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AVL_tree_symbol_table.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="253">
+              <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Binary_search.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Binary_search.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="binary_search_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/binary_search_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Binary_search_symbol_table.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Binary_search_symbol_table.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3422">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todos.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todos.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="45">
+                <caret line="3" column="70" lean-forward="false" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -157,16 +170,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="linear_probing_hash_symbol_table_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/linear_probing_hash_symbol_table_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -192,7 +195,6 @@
       <find>enable_if</find>
       <find>StdIn.</find>
       <find>_keys</find>
-      <find>AVL_tree</find>
       <find>_Tp</find>
       <find>AVL</find>
       <find>Node_raw_pointer</find>
@@ -206,6 +208,7 @@
       <find>lp</find>
       <find>StdOut.</find>
       <find />
+      <find>AVL_tree</find>
     </findStrings>
     <replaceStrings>
       <replace>include &lt;</replace>
@@ -232,6 +235,7 @@
       <replace>sp</replace>
       <replace>Std_out::</replace>
       <replace>\n</replace>
+      <replace>Red_black_tree</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -240,7 +244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/edge_weighted_directed_cycle_main.cpp" />
         <option value="$PROJECT_DIR$/Accumulator.h" />
         <option value="$PROJECT_DIR$/Acyclic_lp.h" />
         <option value="$PROJECT_DIR$/Directed_edge.h" />
@@ -265,7 +268,6 @@
         <option value="$PROJECT_DIR$/Digraph.h" />
         <option value="$PROJECT_DIR$/Std_in.h" />
         <option value="$PROJECT_DIR$/Std_out.h" />
-        <option value="$PROJECT_DIR$/todos.md" />
         <option value="$PROJECT_DIR$/Std_in.cpp" />
         <option value="$PROJECT_DIR$/Weighted_quick_union_uf.h" />
         <option value="$PROJECT_DIR$/weighted_quick_union_uf_main.cpp" />
@@ -290,6 +292,8 @@
         <option value="$PROJECT_DIR$/Linear_probing_hash_symbol_table.h" />
         <option value="$PROJECT_DIR$/linear_probing_hash_symbol_table_main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/AVL_tree_symbol_table.h" />
+        <option value="$PROJECT_DIR$/todos.md" />
         <option value="$PROJECT_DIR$/Red_black_bst.h" />
       </list>
     </option>
@@ -755,12 +759,12 @@
       <workItem from="1484661353347" duration="8032000" />
       <workItem from="1484682346036" duration="18215000" />
       <workItem from="1484748084975" duration="3827000" />
-      <workItem from="1484751970601" duration="8686000" />
+      <workItem from="1484751970601" duration="9002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147557000" />
+    <option name="totallyTimeSpent" value="147873000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -838,27 +842,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Directed_cycle.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edge_weighted_directed_cycle.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="78" lean-forward="false" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Digraph.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Std_out.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -878,17 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todos.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1217,16 +1189,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AVL_tree_symbol_table.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="253">
+          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Binary_search.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binary_search_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Binary_search_symbol_table.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3422">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todos.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="45">
+            <caret line="3" column="70" lean-forward="false" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Red_black_bst.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="82" column="28" lean-forward="true" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+        <state relative-caret-position="795">
+          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding />
         </state>
       </provider>

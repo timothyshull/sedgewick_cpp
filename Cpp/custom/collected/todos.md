@@ -1,1 +1,4 @@
 - Acyclic_lp has issues
+- use only key/value pointers in symbol tables
+- fix binary search tree
+- remove all unnecessary using declarations from node based structures
