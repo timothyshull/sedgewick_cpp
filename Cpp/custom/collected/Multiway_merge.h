@@ -1,0 +1,8 @@
+#ifndef COLLECTED_MULTIWAY_MERGE_H
+#define COLLECTED_MULTIWAY_MERGE_H
+
+class Multiway_merge {
+
+};
+
+#endif // COLLECTED_MULTIWAY_MERGE_H

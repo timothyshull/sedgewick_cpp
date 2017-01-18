@@ -1,0 +1,8 @@
+#ifndef COLLECTED_LINEAR_PROGRAMMING_H
+#define COLLECTED_LINEAR_PROGRAMMING_H
+
+class Linear_programming {
+
+};
+
+#endif // COLLECTED_LINEAR_PROGRAMMING_H

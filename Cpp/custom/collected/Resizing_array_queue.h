@@ -1,0 +1,8 @@
+#ifndef COLLECTED_RESIZING_ARRAY_QUEUE_H
+#define COLLECTED_RESIZING_ARRAY_QUEUE_H
+
+class Resizing_array_queue {
+
+};
+
+#endif // COLLECTED_RESIZING_ARRAY_QUEUE_H

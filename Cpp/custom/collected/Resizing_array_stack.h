@@ -1,0 +1,8 @@
+#ifndef COLLECTED_RESIZING_ARRAY_STACK_H
+#define COLLECTED_RESIZING_ARRAY_STACK_H
+
+class Resizing_array_stack {
+
+};
+
+#endif // COLLECTED_RESIZING_ARRAY_STACK_H

@@ -1,0 +1,8 @@
+#ifndef COLLECTED_TRANSITIVE_CLOSURE_H
+#define COLLECTED_TRANSITIVE_CLOSURE_H
+
+class Transitive_closure {
+
+};
+
+#endif // COLLECTED_TRANSITIVE_CLOSURE_H

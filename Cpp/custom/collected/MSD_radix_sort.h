@@ -1,0 +1,8 @@
+#ifndef COLLECTED_MSD_RADIX_SORT_H
+#define COLLECTED_MSD_RADIX_SORT_H
+
+class MSD_radix_sort {
+
+};
+
+#endif // COLLECTED_MSD_RADIX_SORT_H

@@ -1,0 +1,8 @@
+#ifndef COLLECTED_LINEAR_REGRESSION_H
+#define COLLECTED_LINEAR_REGRESSION_H
+
+class Linear_regression {
+
+};
+
+#endif // COLLECTED_LINEAR_REGRESSION_H

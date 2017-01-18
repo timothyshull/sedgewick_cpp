@@ -75,8 +75,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Alphabet.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Alphabet.h">
+      <file leaf-file-name="TST.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TST.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -85,8 +85,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Alphabet.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Alphabet.cpp">
+      <file leaf-file-name="TST.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TST.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -95,8 +95,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Adj_matrix_edge_weighted_digraph.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Adj_matrix_edge_weighted_digraph.h">
+      <file leaf-file-name="tst_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tst_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -105,18 +105,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AVL_tree_symbol_table.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AVL_tree_symbol_table.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="868">
-              <caret line="642" column="0" lean-forward="false" selection-start-line="642" selection-start-column="0" selection-end-line="642" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bellman_ford_sp.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bellman_ford_sp.h">
+      <file leaf-file-name="Two_person_zero_sum_game.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Two_person_zero_sum_game.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -125,38 +115,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Acyclic_sp.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Acyclic_sp.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Accumulator.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Accumulator.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="B_tree.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/B_tree.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Acyclic_sp.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Acyclic_sp.h">
+      <file leaf-file-name="Two_person_zero_sum_game.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Two_person_zero_sum_game.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -165,8 +125,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="acyclic_sp_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/acyclic_sp_main.cpp">
+      <file leaf-file-name="two_person_zero_sum_game_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/two_person_zero_sum_game_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vector.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Vector.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vector_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vector_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="white_filter_main.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/white_filter_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -249,57 +249,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Topological.cpp" />
-        <option value="$PROJECT_DIR$/Depth_first_order.h" />
-        <option value="$PROJECT_DIR$/Depth_first_order.cpp" />
-        <option value="$PROJECT_DIR$/utility.h" />
-        <option value="$PROJECT_DIR$/Directed_cycle.h" />
-        <option value="$PROJECT_DIR$/Directed_cycle.cpp" />
-        <option value="$PROJECT_DIR$/Edge_weighted_directed_cycle.cpp" />
-        <option value="$PROJECT_DIR$/Digraph.cpp" />
-        <option value="$PROJECT_DIR$/Digraph.h" />
-        <option value="$PROJECT_DIR$/Std_in.h" />
-        <option value="$PROJECT_DIR$/Std_out.h" />
-        <option value="$PROJECT_DIR$/Std_in.cpp" />
-        <option value="$PROJECT_DIR$/Weighted_quick_union_uf.h" />
-        <option value="$PROJECT_DIR$/weighted_quick_union_uf_main.cpp" />
-        <option value="$PROJECT_DIR$/Union_find.h" />
-        <option value="$PROJECT_DIR$/Weighted_quick_union_uf.cpp" />
-        <option value="$PROJECT_DIR$/Union_find.cpp" />
-        <option value="$PROJECT_DIR$/union_find_main.cpp" />
-        <option value="$PROJECT_DIR$/graph_main.cpp" />
-        <option value="$PROJECT_DIR$/Graph.h" />
-        <option value="$PROJECT_DIR$/Edge_weighted_digraph.cpp" />
-        <option value="$PROJECT_DIR$/Graph.cpp" />
-        <option value="$PROJECT_DIR$/Complex.h" />
-        <option value="$PROJECT_DIR$/Complex.cpp" />
-        <option value="$PROJECT_DIR$/complex_main.cpp" />
-        <option value="$PROJECT_DIR$/heap_main.cpp" />
-        <option value="$PROJECT_DIR$/Heap.h" />
-        <option value="$PROJECT_DIR$/knuth_morris_pratt_main.cpp" />
-        <option value="$PROJECT_DIR$/Knuth_morris_pratt.cpp" />
-        <option value="$PROJECT_DIR$/Knuth_morris_pratt.h" />
-        <option value="$PROJECT_DIR$/Knuth_shuffle.h" />
-        <option value="$PROJECT_DIR$/knuth_shuffle_main.cpp" />
-        <option value="$PROJECT_DIR$/Linear_probing_hash_symbol_table.h" />
-        <option value="$PROJECT_DIR$/linear_probing_hash_symbol_table_main.cpp" />
-        <option value="$PROJECT_DIR$/Red_black_bst.cpp" />
-        <option value="$PROJECT_DIR$/Red_black_bst.h" />
-        <option value="$PROJECT_DIR$/red_black_bst_main.cpp" />
-        <option value="$PROJECT_DIR$/todos.md" />
-        <option value="$PROJECT_DIR$/static_set_of_ints_main.cpp" />
-        <option value="$PROJECT_DIR$/Static_set_of_ints.h" />
-        <option value="$PROJECT_DIR$/Static_set_of_ints.cpp" />
-        <option value="$PROJECT_DIR$/whitelist_main.cpp" />
-        <option value="$PROJECT_DIR$/Draw_listener.h" />
-        <option value="$PROJECT_DIR$/arbitrage_main.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/assignment_problem_main.cpp" />
-        <option value="$PROJECT_DIR$/Assignment_problem.h" />
-        <option value="$PROJECT_DIR$/acyclic_sp_main.cpp" />
-        <option value="$PROJECT_DIR$/Acyclic_sp.cpp" />
         <option value="$PROJECT_DIR$/AVL_tree_symbol_table.h" />
         <option value="$PROJECT_DIR$/Accumulator.h" />
+        <option value="$PROJECT_DIR$/Assignment_problem.h" />
+        <option value="$PROJECT_DIR$/assignment_problem_main.cpp" />
+        <option value="$PROJECT_DIR$/b_tree_main.cpp" />
+        <option value="$PROJECT_DIR$/B_tree.cpp" />
+        <option value="$PROJECT_DIR$/B_tree.h" />
+        <option value="$PROJECT_DIR$/bellman_ford_sp_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_dump_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_in_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_insertion_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_out_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_std_in_main.cpp" />
+        <option value="$PROJECT_DIR$/binary_std_out_main.cpp" />
+        <option value="$PROJECT_DIR$/binomial_min_priority_queue_main.cpp" />
+        <option value="$PROJECT_DIR$/bipartite_main.cpp" />
+        <option value="$PROJECT_DIR$/black_filter_main.cpp" />
+        <option value="$PROJECT_DIR$/boruvka_mst_main.cpp" />
+        <option value="$PROJECT_DIR$/boyer_moore_main.cpp" />
+        <option value="$PROJECT_DIR$/breadth_first_directed_paths_main.cpp" />
+        <option value="$PROJECT_DIR$/breadth_first_paths_main.cpp" />
+        <option value="$PROJECT_DIR$/closest_pair_main.cpp" />
+        <option value="$PROJECT_DIR$/collision_system_main.cpp" />
+        <option value="$PROJECT_DIR$/connected_component_main.cpp" />
+        <option value="$PROJECT_DIR$/cycle_main.cpp" />
+        <option value="$PROJECT_DIR$/cpm_main.cpp" />
+        <option value="$PROJECT_DIR$/date_main.cpp" />
+        <option value="$PROJECT_DIR$/de_dup_main.cpp" />
+        <option value="$PROJECT_DIR$/degrees_of_separation_main.cpp" />
+        <option value="$PROJECT_DIR$/depth_first_directed_paths_main.cpp" />
+        <option value="$PROJECT_DIR$/depth_first_paths_main.cpp" />
+        <option value="$PROJECT_DIR$/depth_first_search_main.cpp" />
+        <option value="$PROJECT_DIR$/digraph_generator_main.cpp" />
+        <option value="$PROJECT_DIR$/dijkstra_all_pairs_sp_main.cpp" />
+        <option value="$PROJECT_DIR$/dijkstra_sp_main.cpp" />
+        <option value="$PROJECT_DIR$/dijkstra_undirected_sp_main.cpp" />
+        <option value="$PROJECT_DIR$/directed_cycle_x_main.cpp" />
+        <option value="$PROJECT_DIR$/directed_dfs_main.cpp" />
+        <option value="$PROJECT_DIR$/directed_eulerian_cycle_main.cpp" />
+        <option value="$PROJECT_DIR$/directed_eulerian_path_main.cpp" />
+        <option value="$PROJECT_DIR$/doubling_ratio_main.cpp" />
+        <option value="$PROJECT_DIR$/doubling_test_main.cpp" />
+        <option value="$PROJECT_DIR$/draw_main.cpp" />
+        <option value="$PROJECT_DIR$/edge_main.cpp" />
+        <option value="$PROJECT_DIR$/edge_weighted_graph_main.cpp" />
+        <option value="$PROJECT_DIR$/eulerian_cycle_main.cpp" />
+        <option value="$PROJECT_DIR$/eulerian_path_main.cpp" />
+        <option value="$PROJECT_DIR$/fenwick_tree_main.cpp" />
+        <option value="$PROJECT_DIR$/fft_main.cpp" />
+        <option value="$PROJECT_DIR$/Fibonacci_min_pq_main.cpp" />
+        <option value="$PROJECT_DIR$/furthest_pair_main.cpp" />
       </list>
     </option>
   </component>
@@ -780,12 +780,12 @@
       <workItem from="1484682346036" duration="18215000" />
       <workItem from="1484748084975" duration="3827000" />
       <workItem from="1484751970601" duration="16012000" />
-      <workItem from="1484774945360" duration="2838000" />
+      <workItem from="1484774945360" duration="5590000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157721000" />
+    <option name="totallyTimeSpent" value="160473000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -868,7 +868,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/directed_eulerian_path_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Stopwatch_cpu.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -876,7 +876,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doubling_ratio.cpp">
+    <entry file="file://$PROJECT_DIR$/stopwatch_cpu_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -884,7 +884,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doubling_ratio.h">
+    <entry file="file://$PROJECT_DIR$/Suffix_array.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -892,7 +892,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doubling_ratio_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Suffix_array.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -900,7 +900,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doubling_test.cpp">
+    <entry file="file://$PROJECT_DIR$/suffix_array_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -908,7 +908,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doubling_test.h">
+    <entry file="file://$PROJECT_DIR$/Suffix_array_x.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -916,7 +916,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doubling_test_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Suffix_array_x.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -924,7 +924,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Draw.cpp">
+    <entry file="file://$PROJECT_DIR$/suffix_array_x_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -932,7 +932,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Draw.h">
+    <entry file="file://$PROJECT_DIR$/Symbol_digraph.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -940,7 +940,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/draw_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Symbol_digraph.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -948,15 +948,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Draw_listener.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="46" lean-forward="false" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Edge_weighted_digraph.cpp">
+    <entry file="file://$PROJECT_DIR$/symbol_digraph_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -964,7 +956,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edge.cpp">
+    <entry file="file://$PROJECT_DIR$/Symbol_graph.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -972,7 +964,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edge.h">
+    <entry file="file://$PROJECT_DIR$/Symbol_graph.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -980,7 +972,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edge_main.cpp">
+    <entry file="file://$PROJECT_DIR$/symbol_graph_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -988,7 +980,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edge_weighted_digraph_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Tarjan_scc.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -996,7 +988,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edge_weighted_graph.cpp">
+    <entry file="file://$PROJECT_DIR$/tarjan_scc_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1004,7 +996,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Edge_weighted_graph.h">
+    <entry file="file://$PROJECT_DIR$/tarjan_scc_main.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1012,7 +1004,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edge_weighted_graph_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Tarjan_scc.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1020,7 +1012,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eulerian_cycle.cpp">
+    <entry file="file://$PROJECT_DIR$/Three_sum.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1028,7 +1020,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eulerian_cycle.h">
+    <entry file="file://$PROJECT_DIR$/Three_sum.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1036,7 +1028,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eulerian_cycle_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Three_sum_fast.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1044,7 +1036,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eulerian_path.cpp">
+    <entry file="file://$PROJECT_DIR$/Three_sum_fast.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1052,7 +1044,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eulerian_path.h">
+    <entry file="file://$PROJECT_DIR$/three_sum_fast_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1060,7 +1052,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eulerian_path_main.cpp">
+    <entry file="file://$PROJECT_DIR$/three_sum_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1068,7 +1060,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Furthest_pair.cpp">
+    <entry file="file://$PROJECT_DIR$/top_m_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1076,7 +1068,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Furthest_pair.h">
+    <entry file="file://$PROJECT_DIR$/Topological.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1084,7 +1076,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/furthest_pair_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Topological_x.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1092,7 +1084,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fenwick_tree.cpp">
+    <entry file="file://$PROJECT_DIR$/Topological_x.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1100,7 +1092,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fenwick_tree.h">
+    <entry file="file://$PROJECT_DIR$/topological_x_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1108,7 +1100,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fenwick_tree_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Transaction.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1116,7 +1108,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FFT.cpp">
+    <entry file="file://$PROJECT_DIR$/Transaction.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1124,7 +1116,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FFT.h">
+    <entry file="file://$PROJECT_DIR$/transaction_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1132,7 +1124,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fft_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Transitive_closure.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1140,7 +1132,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fibonacci_min_pq.cpp">
+    <entry file="file://$PROJECT_DIR$/Transitive_closure.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1148,7 +1140,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fibonacci_min_pq.h">
+    <entry file="file://$PROJECT_DIR$/transitive_closure_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1156,7 +1148,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Fibonacci_min_pq_main.cpp">
+    <entry file="file://$PROJECT_DIR$/Trie_set.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1164,31 +1156,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/arbitrage_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="82" column="2" lean-forward="false" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assignment_problem_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment_problem.h">
+    <entry file="file://$PROJECT_DIR$/Trie_set.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1196,7 +1164,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Alphabet.h">
+    <entry file="file://$PROJECT_DIR$/trie_set_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1204,7 +1172,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Alphabet.cpp">
+    <entry file="file://$PROJECT_DIR$/Trie_st.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1212,7 +1180,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adj_matrix_edge_weighted_digraph.h">
+    <entry file="file://$PROJECT_DIR$/Trie_st.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1220,7 +1188,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bellman_ford_sp.h">
+    <entry file="file://$PROJECT_DIR$/trie_st_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1228,7 +1196,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Acyclic_sp.h">
+    <entry file="file://$PROJECT_DIR$/TST.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1236,7 +1204,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/acyclic_sp_main.cpp">
+    <entry file="file://$PROJECT_DIR$/TST.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1244,34 +1212,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Acyclic_sp.cpp">
+    <entry file="file://$PROJECT_DIR$/tst_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/B_tree.h">
+    <entry file="file://$PROJECT_DIR$/Two_person_zero_sum_game.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AVL_tree_symbol_table.h">
+    <entry file="file://$PROJECT_DIR$/Two_person_zero_sum_game.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="868">
-          <caret line="642" column="0" lean-forward="false" selection-start-line="642" selection-start-column="0" selection-end-line="642" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Accumulator.h">
+    <entry file="file://$PROJECT_DIR$/two_person_zero_sum_game_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vector_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/white_filter_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

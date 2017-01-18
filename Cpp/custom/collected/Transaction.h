@@ -1,0 +1,8 @@
+#ifndef COLLECTED_TRANSACTION_H
+#define COLLECTED_TRANSACTION_H
+
+class Transaction {
+
+};
+
+#endif // COLLECTED_TRANSACTION_H

@@ -1,0 +1,8 @@
+#ifndef COLLECTED_RESIZING_ARRAY_BAG_H
+#define COLLECTED_RESIZING_ARRAY_BAG_H
+
+class Resizing_array_bag {
+
+};
+
+#endif // COLLECTED_RESIZING_ARRAY_BAG_H

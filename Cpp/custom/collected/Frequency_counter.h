@@ -1,0 +1,8 @@
+#ifndef COLLECTED_FREQUENCY_COUNTER_H
+#define COLLECTED_FREQUENCY_COUNTER_H
+
+class Frequency_counter {
+
+};
+
+#endif // COLLECTED_FREQUENCY_COUNTER_H

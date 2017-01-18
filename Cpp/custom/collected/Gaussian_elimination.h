@@ -1,0 +1,8 @@
+#ifndef COLLECTED_GAUSSIAN_ELIMINATION_H
+#define COLLECTED_GAUSSIAN_ELIMINATION_H
+
+class Gaussian_elimination {
+
+};
+
+#endif // COLLECTED_GAUSSIAN_ELIMINATION_H

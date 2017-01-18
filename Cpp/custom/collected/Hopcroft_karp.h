@@ -1,0 +1,8 @@
+#ifndef COLLECTED_HOPCROFT_KARP_H
+#define COLLECTED_HOPCROFT_KARP_H
+
+class Hopcroft_karp {
+
+};
+
+#endif // COLLECTED_HOPCROFT_KARP_H

@@ -1,0 +1,8 @@
+#ifndef COLLECTED_FLOYD_WARSHALL_H
+#define COLLECTED_FLOYD_WARSHALL_H
+
+class Floyd_warshall {
+
+};
+
+#endif // COLLECTED_FLOYD_WARSHALL_H

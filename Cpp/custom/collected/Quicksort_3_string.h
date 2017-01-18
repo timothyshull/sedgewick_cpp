@@ -1,0 +1,8 @@
+#ifndef COLLECTED_QUICKSORT_3_STRING_H
+#define COLLECTED_QUICKSORT_3_STRING_H
+
+class Quicksort_3_string {
+
+};
+
+#endif // COLLECTED_QUICKSORT_3_STRING_H

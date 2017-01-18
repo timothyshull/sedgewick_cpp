@@ -1,0 +1,8 @@
+#ifndef COLLECTED_LSD_RADIX_SORT_H
+#define COLLECTED_LSD_RADIX_SORT_H
+
+class LSD_radix_sort {
+
+};
+
+#endif // COLLECTED_LSD_RADIX_SORT_H

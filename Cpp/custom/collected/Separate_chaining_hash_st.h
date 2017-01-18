@@ -1,0 +1,8 @@
+#ifndef COLLECTED_SEPARATE_CHAINING_HASH_ST_H
+#define COLLECTED_SEPARATE_CHAINING_HASH_ST_H
+
+class Separate_chaining_hash_st {
+
+};
+
+#endif // COLLECTED_SEPARATE_CHAINING_HASH_ST_H

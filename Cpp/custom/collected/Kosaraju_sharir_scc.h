@@ -1,0 +1,8 @@
+#ifndef COLLECTED_KOSARAJU_SHARIR_SCC_H
+#define COLLECTED_KOSARAJU_SHARIR_SCC_H
+
+class Kosaraju_sharir_scc {
+
+};
+
+#endif // COLLECTED_KOSARAJU_SHARIR_SCC_H

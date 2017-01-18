@@ -1,0 +1,8 @@
+#ifndef COLLECTED_QUICKSORT_3_WAY_H
+#define COLLECTED_QUICKSORT_3_WAY_H
+
+class Quicksort_3_way {
+
+};
+
+#endif // COLLECTED_QUICKSORT_3_WAY_H

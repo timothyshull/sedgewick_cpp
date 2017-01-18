@@ -1,0 +1,8 @@
+#ifndef COLLECTED_LZW_COMPRESSION_H
+#define COLLECTED_LZW_COMPRESSION_H
+
+class LZW_compression {
+
+};
+
+#endif // COLLECTED_LZW_COMPRESSION_H

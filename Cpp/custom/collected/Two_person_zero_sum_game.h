@@ -1,0 +1,8 @@
+#ifndef COLLECTED_TWO_PERSON_ZERO_SUM_GAME_H
+#define COLLECTED_TWO_PERSON_ZERO_SUM_GAME_H
+
+class Two_person_zero_sum_game {
+
+};
+
+#endif // COLLECTED_TWO_PERSON_ZERO_SUM_GAME_H

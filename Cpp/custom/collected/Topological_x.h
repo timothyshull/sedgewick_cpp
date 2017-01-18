@@ -1,0 +1,8 @@
+#ifndef COLLECTED_TOPOLOGICAL_X_H
+#define COLLECTED_TOPOLOGICAL_X_H
+
+class Topological_x {
+
+};
+
+#endif // COLLECTED_TOPOLOGICAL_X_H
