@@ -1,8 +1,8 @@
-#ifndef COLLECTED_STOPWATCH_CPU_H
-#define COLLECTED_STOPWATCH_CPU_H
+#ifndef STOPWATCH_CPU_H
+#define STOPWATCH_CPU_H
 
 class Stopwatch_cpu {
 
 };
 
-#endif // COLLECTED_STOPWATCH_CPU_H
+#endif // STOPWATCH_CPU_H

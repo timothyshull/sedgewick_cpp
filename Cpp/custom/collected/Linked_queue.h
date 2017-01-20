@@ -1,8 +1,8 @@
-#ifndef COLLECTED_LINKED_QUEUE_H
-#define COLLECTED_LINKED_QUEUE_H
+#ifndef LINKED_QUEUE_H
+#define LINKED_QUEUE_H
 
 class Linked_queue {
 
 };
 
-#endif // COLLECTED_LINKED_QUEUE_H
+#endif // LINKED_QUEUE_H

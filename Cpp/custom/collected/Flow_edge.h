@@ -1,8 +1,8 @@
-#ifndef COLLECTED_FLOW_EDGE_H
-#define COLLECTED_FLOW_EDGE_H
+#ifndef FLOW_EDGE_H
+#define FLOW_EDGE_H
 
 class Flow_edge {
 
 };
 
-#endif // COLLECTED_FLOW_EDGE_H
+#endif // FLOW_EDGE_H

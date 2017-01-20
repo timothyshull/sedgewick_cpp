@@ -1,8 +1,8 @@
-#ifndef COLLECTED_POINT_2D_H
-#define COLLECTED_POINT_2D_H
+#ifndef POINT_2D_H
+#define POINT_2D_H
 
 class Point_2d {
 
 };
 
-#endif // COLLECTED_POINT_2D_H
+#endif // POINT_2D_H

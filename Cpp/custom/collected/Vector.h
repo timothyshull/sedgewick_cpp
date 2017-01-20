@@ -1,8 +1,8 @@
-#ifndef COLLECTED_VECTOR_H
-#define COLLECTED_VECTOR_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 class Vector {
 
 };
 
-#endif // COLLECTED_VECTOR_H
+#endif // VECTOR_H

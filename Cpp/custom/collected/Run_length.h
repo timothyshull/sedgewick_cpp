@@ -1,8 +1,8 @@
-#ifndef COLLECTED_RUN_LENGTH_H
-#define COLLECTED_RUN_LENGTH_H
+#ifndef RUN_LENGTH_H
+#define RUN_LENGTH_H
 
 class Run_length {
 
 };
 
-#endif // COLLECTED_RUN_LENGTH_H
+#endif // RUN_LENGTH_H

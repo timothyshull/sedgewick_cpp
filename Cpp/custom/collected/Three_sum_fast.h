@@ -1,8 +1,8 @@
-#ifndef COLLECTED_THREE_SUM_FAST_H
-#define COLLECTED_THREE_SUM_FAST_H
+#ifndef THREE_SUM_FAST_H
+#define THREE_SUM_FAST_H
 
 class Three_sum_fast {
 
 };
 
-#endif // COLLECTED_THREE_SUM_FAST_H
+#endif // THREE_SUM_FAST_H

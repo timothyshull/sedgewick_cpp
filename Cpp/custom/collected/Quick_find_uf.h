@@ -1,8 +1,8 @@
-#ifndef COLLECTED_QUICK_FIND_UF_H
-#define COLLECTED_QUICK_FIND_UF_H
+#ifndef QUICK_FIND_UF_H
+#define QUICK_FIND_UF_H
 
 class Quick_find_uf {
 
 };
 
-#endif // COLLECTED_QUICK_FIND_UF_H
+#endif // QUICK_FIND_UF_H

@@ -1,8 +1,8 @@
-#ifndef COLLECTED_SEGMENT_TREE_H
-#define COLLECTED_SEGMENT_TREE_H
+#ifndef SEGMENT_TREE_H
+#define SEGMENT_TREE_H
 
 class Segment_tree {
 
 };
 
-#endif // COLLECTED_SEGMENT_TREE_H
+#endif // SEGMENT_TREE_H

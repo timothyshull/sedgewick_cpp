@@ -1,8 +1,8 @@
-#ifndef COLLECTED_GENOME_H
-#define COLLECTED_GENOME_H
+#ifndef GENOME_H
+#define GENOME_H
 
 class Genome {
 
 };
 
-#endif // COLLECTED_GENOME_H
+#endif // GENOME_H

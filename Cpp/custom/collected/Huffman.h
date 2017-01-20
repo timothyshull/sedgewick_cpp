@@ -1,8 +1,8 @@
-#ifndef COLLECTED_HUFFMAN_H
-#define COLLECTED_HUFFMAN_H
+#ifndef HUFFMAN_H
+#define HUFFMAN_H
 
 class Huffman {
 
 };
 
-#endif // COLLECTED_HUFFMAN_H
+#endif // HUFFMAN_H

@@ -8,3 +8,16 @@
 - using a lambda with decltype as a comparator returns no matching constructor, need to handle both cases
 - Std_in may still be passing empty strings in
 - comparator still has issues, may not be setting key everywhere
+- B_tree needs more work
+- fix overload resolution issues in Insertion_sort
+- review all "effective" guidelines and make code follow them
+  e.g. make comparators (std::less) return false for ==
+- convert all possible classes (with only static members etc) to namespaces (i.e. sorts)
+- LSD_radix_sort has a bug that duplicates strings into the output vector
+- fix Mergesort_x
+- remove unnecessary comments
+- review all uses of static and make sure they are necessary
+- fix whitefilter after In is completed
+- fix or make consistent all comparators, std::less, less, compareTo, etc
+- fix imports between headers and .cpp when imports are in headers
+- make sure all sort mains use a show and that all shows use range based for loop

@@ -3,22 +3,21 @@
 
 #include <vector>
 #include <sstream>
+#include "Std_out.h"
 
-class Heap {
-public:
-    Heap() = delete;
+namespace Heap_sort {
+    template<typename T>
+    static void sink(std::vector<T>& pq, int k, int n);
 
-    Heap(const Heap&) = delete;
+    template<typename T>
+    static bool less(T& v, T& w);
 
-    Heap(Heap&&) = delete;
+    template<typename T>
+    static bool less(std::vector<T>& pq, int i, int j);
 
-    ~Heap() = delete;
+    template<typename T>
+    static void exch(std::vector<T>& pq, int i, int j);
 
-    Heap& operator=(const Heap&) = delete;
-
-    Heap& operator=(Heap&&) = delete;
-
-    // delete all others
     template<typename T>
     static void sort(std::vector<T>& pq)
     {
@@ -50,6 +49,12 @@ public:
     }
 
     template<typename T>
+    static bool less(T& v, T& w)
+    {
+        return v < w;
+    }
+
+    template<typename T>
     static bool less(std::vector<T>& pq, int i, int j)
     {
         return pq[i - 1] < pq[j - 1];
@@ -64,12 +69,6 @@ public:
     }
 
     template<typename T>
-    static bool less(T& v, T& w)
-    {
-        return v < w;
-    }
-
-    template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
         for (int i = 1; i < a.size(); ++i) {
@@ -81,15 +80,11 @@ public:
     }
 
     template<typename T>
-    static std::string to_string(std::vector<T>& a)
+    static void show(std::vector<T>& a)
     {
-        std::stringstream ss;
-        ss << "Heap(\n";
-        for (auto i : a) {
-            ss << "    " << i << "\n";
+        for (int i = 0; i < a.size(); i++) {
+            Std_out::print_line(a[i]);
         }
-        ss << ")\n";
-        return ss.str();
     }
 };
 

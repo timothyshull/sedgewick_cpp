@@ -1,8 +1,8 @@
-#ifndef COLLECTED_RECT_HV_H
-#define COLLECTED_RECT_HV_H
+#ifndef RECT_HV_H
+#define RECT_HV_H
 
 class Rect_hv {
 
 };
 
-#endif // COLLECTED_RECT_HV_H
+#endif // RECT_HV_H

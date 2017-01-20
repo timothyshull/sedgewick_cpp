@@ -1,8 +1,8 @@
-#ifndef COLLECTED_STOPWATCH_H
-#define COLLECTED_STOPWATCH_H
+#ifndef STOPWATCH_H
+#define STOPWATCH_H
 
 class Stopwatch {
 
 };
 
-#endif // COLLECTED_STOPWATCH_H
+#endif // STOPWATCH_H

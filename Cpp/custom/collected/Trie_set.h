@@ -1,8 +1,8 @@
-#ifndef COLLECTED_TRIE_SET_H
-#define COLLECTED_TRIE_SET_H
+#ifndef TRIE_SET_H
+#define TRIE_SET_H
 
 class Trie_set {
 
 };
 
-#endif // COLLECTED_TRIE_SET_H
+#endif // TRIE_SET_H

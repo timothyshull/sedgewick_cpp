@@ -1,8 +1,8 @@
-#ifndef COLLECTED_FILE_INDEX_H
-#define COLLECTED_FILE_INDEX_H
+#ifndef FILE_INDEX_H
+#define FILE_INDEX_H
 
 class File_index {
 
 };
 
-#endif // COLLECTED_FILE_INDEX_H
+#endif // FILE_INDEX_H

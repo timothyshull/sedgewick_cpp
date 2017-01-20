@@ -1,8 +1,8 @@
-#ifndef COLLECTED_GRAHAM_SCAN_H
-#define COLLECTED_GRAHAM_SCAN_H
+#ifndef GRAHAM_SCAN_H
+#define GRAHAM_SCAN_H
 
 class Graham_scan {
 
 };
 
-#endif // COLLECTED_GRAHAM_SCAN_H
+#endif // GRAHAM_SCAN_H

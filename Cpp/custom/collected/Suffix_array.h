@@ -1,8 +1,8 @@
-#ifndef COLLECTED_SUFFIX_ARRAY_H
-#define COLLECTED_SUFFIX_ARRAY_H
+#ifndef SUFFIX_ARRAY_H
+#define SUFFIX_ARRAY_H
 
 class Suffix_array {
 
 };
 
-#endif // COLLECTED_SUFFIX_ARRAY_H
+#endif // SUFFIX_ARRAY_H

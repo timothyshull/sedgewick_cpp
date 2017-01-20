@@ -1,8 +1,8 @@
-#ifndef COLLECTED_SPARSE_VECTOR_H
-#define COLLECTED_SPARSE_VECTOR_H
+#ifndef SPARSE_VECTOR_H
+#define SPARSE_VECTOR_H
 
 class Sparse_vector {
 
 };
 
-#endif // COLLECTED_SPARSE_VECTOR_H
+#endif // SPARSE_VECTOR_H

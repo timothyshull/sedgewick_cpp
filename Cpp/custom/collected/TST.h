@@ -1,8 +1,8 @@
-#ifndef COLLECTED_TST_H
-#define COLLECTED_TST_H
+#ifndef TST_H
+#define TST_H
 
 class TST {
 
 };
 
-#endif // COLLECTED_TST_H
+#endif // TST_H

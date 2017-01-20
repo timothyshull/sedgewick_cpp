@@ -1,8 +1,8 @@
-#ifndef COLLECTED_SYMBOL_DIGRAPH_H
-#define COLLECTED_SYMBOL_DIGRAPH_H
+#ifndef SYMBOL_DIGRAPH_H
+#define SYMBOL_DIGRAPH_H
 
 class Symbol_digraph {
 
 };
 
-#endif // COLLECTED_SYMBOL_DIGRAPH_H
+#endif // SYMBOL_DIGRAPH_H

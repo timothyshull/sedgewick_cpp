@@ -1,8 +1,8 @@
-#ifndef COLLECTED_FORD_FULKERSON_H
-#define COLLECTED_FORD_FULKERSON_H
+#ifndef FORD_FULKERSON_H
+#define FORD_FULKERSON_H
 
 class Ford_fulkerson {
 
 };
 
-#endif // COLLECTED_FORD_FULKERSON_H
+#endif // FORD_FULKERSON_H

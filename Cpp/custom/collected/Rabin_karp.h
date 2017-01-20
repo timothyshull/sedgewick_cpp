@@ -1,8 +1,8 @@
-#ifndef COLLECTED_RABIN_KARP_H
-#define COLLECTED_RABIN_KARP_H
+#ifndef RABIN_KARP_H
+#define RABIN_KARP_H
 
 class Rabin_karp {
 
 };
 
-#endif // COLLECTED_RABIN_KARP_H
+#endif // RABIN_KARP_H

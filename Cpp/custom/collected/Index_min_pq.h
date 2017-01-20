@@ -1,8 +1,8 @@
-#ifndef COLLECTED_INDEX_MIN_PQ_H
-#define COLLECTED_INDEX_MIN_PQ_H
+#ifndef INDEX_MIN_PQ_H
+#define INDEX_MIN_PQ_H
 
 class Index_min_pq {
 
 };
 
-#endif // COLLECTED_INDEX_MIN_PQ_H
+#endif // INDEX_MIN_PQ_H

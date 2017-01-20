@@ -1,8 +1,8 @@
-#ifndef COLLECTED_NFA_H
-#define COLLECTED_NFA_H
+#ifndef NFA_H
+#define NFA_H
 
 class NFA {
 
 };
 
-#endif // COLLECTED_NFA_H
+#endif // NFA_H

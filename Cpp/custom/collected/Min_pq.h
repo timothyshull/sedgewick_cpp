@@ -1,8 +1,8 @@
-#ifndef COLLECTED_MIN_PQ_H
-#define COLLECTED_MIN_PQ_H
+#ifndef MIN_PQ_H
+#define MIN_PQ_H
 
 class Min_pq {
 
 };
 
-#endif // COLLECTED_MIN_PQ_H
+#endif // MIN_PQ_H

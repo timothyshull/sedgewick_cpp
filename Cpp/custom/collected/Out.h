@@ -1,8 +1,8 @@
-#ifndef COLLECTED_OUT_H
-#define COLLECTED_OUT_H
+#ifndef OUT_H
+#define OUT_H
 
 class Out {
 
 };
 
-#endif // COLLECTED_OUT_H
+#endif // OUT_H

@@ -1,8 +1,8 @@
-#ifndef COLLECTED_RANDOM_SEQ_H
-#define COLLECTED_RANDOM_SEQ_H
+#ifndef RANDOM_SEQ_H
+#define RANDOM_SEQ_H
 
 class Random_seq {
 
 };
 
-#endif // COLLECTED_RANDOM_SEQ_H
+#endif // RANDOM_SEQ_H

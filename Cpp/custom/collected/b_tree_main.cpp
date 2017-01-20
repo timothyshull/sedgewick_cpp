@@ -1,5 +1,9 @@
-int main() {
-    BTree<String, String> st = new BTree<String, String>();
+#include "B_tree.h"
+#include "Std_out.h"
+
+int main()
+{
+    B_tree<std::string, std::string> st{};
 
     st.put("www.cs.princeton.edu", "128.112.136.12");
     st.put("www.cs.princeton.edu", "128.112.136.11");
@@ -19,18 +23,17 @@ int main() {
     st.put("www.weather.com", "63.111.66.11");
     st.put("www.yahoo.com", "216.109.118.65");
 
+    Std_out::print_line("cs.princeton.edu:  " + *st.get("www.cs.princeton.edu"));
+    Std_out::print_line("hardvardsucks.com: " + *st.get("www.harvardsucks.com"));
+    Std_out::print_line("simpsons.com:      " + *st.get("www.simpsons.com"));
+    Std_out::print_line("apple.com:         " + *st.get("www.apple.com"));
+    Std_out::print_line("ebay.com:          " + *st.get("www.ebay.com"));
+    Std_out::print_line("dell.com:          " + *st.get("www.dell.com"));
+    Std_out::print_line();
 
-    StdOut.println("cs.princeton.edu:  " + st.get("www.cs.princeton.edu"));
-    StdOut.println("hardvardsucks.com: " + st.get("www.harvardsucks.com"));
-    StdOut.println("simpsons.com:      " + st.get("www.simpsons.com"));
-    StdOut.println("apple.com:         " + st.get("www.apple.com"));
-    StdOut.println("ebay.com:          " + st.get("www.ebay.com"));
-    StdOut.println("dell.com:          " + st.get("www.dell.com"));
-    StdOut.println();
-
-    StdOut.println("size:    " + st.size());
-    StdOut.println("height:  " + st.height());
-    StdOut.println(st);
-    StdOut.println();
+    Std_out::printf("size:    %d\n", st.size());
+    Std_out::printf("height:  %d\n", st.height());
+    Std_out::print_line(st);
+    Std_out::print_line();
     return 0;
 }

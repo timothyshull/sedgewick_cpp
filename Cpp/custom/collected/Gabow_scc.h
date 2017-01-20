@@ -1,8 +1,8 @@
-#ifndef COLLECTED_GABOW_SCC_H
-#define COLLECTED_GABOW_SCC_H
+#ifndef GABOW_SCC_H
+#define GABOW_SCC_H
 
 class Gabow_scc {
 
 };
 
-#endif // COLLECTED_GABOW_SCC_H
+#endif // GABOW_SCC_H

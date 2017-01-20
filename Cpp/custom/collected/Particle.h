@@ -1,8 +1,8 @@
-#ifndef COLLECTED_PARTICLE_H
-#define COLLECTED_PARTICLE_H
+#ifndef PARTICLE_H
+#define PARTICLE_H
 
 class Particle {
 
 };
 
-#endif // COLLECTED_PARTICLE_H
+#endif // PARTICLE_H

@@ -1,8 +1,8 @@
-#ifndef COLLECTED_LOOKUP_INDEX_H
-#define COLLECTED_LOOKUP_INDEX_H
+#ifndef LOOKUP_INDEX_H
+#define LOOKUP_INDEX_H
 
 class Lookup_index {
 
 };
 
-#endif // COLLECTED_LOOKUP_INDEX_H
+#endif // LOOKUP_INDEX_H
