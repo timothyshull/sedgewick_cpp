@@ -1,12 +1,24 @@
-//
-// Created by Tim Shull on 1/18/17.
-//
-
 #ifndef DIRECTED_DFS_H
 #define DIRECTED_DFS_H
 
-class Directed_dfs {
+#include <deque>
+#include "Digraph.h"
 
+class Directed_dfs {
+public:
+    Directed_dfs(Digraph& G, int s);
+
+    Directed_dfs(Digraph& G, std::vector<int>& sources);
+
+    bool marked(int v);
+
+    int count();
+
+private:
+    std::deque<bool> marked;
+    int count;
+
+    void dfs(Digraph& G, int v);
 };
 
 #endif // DIRECTED_DFS_H

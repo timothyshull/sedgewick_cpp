@@ -1,12 +1,19 @@
-//
-// Created by Tim Shull on 1/18/17.
-//
-
 #ifndef DEPTH_FIRST_SEARCH_H
 #define DEPTH_FIRST_SEARCH_H
 
-class Depth_first_search {
+#include <deque>
+#include "Graph.h"
 
+class Depth_first_search {
+public:
+    Depth_first_search(Graph& G, int s);
+    bool marked(int v);
+    int count();
+private:
+    std::deque<bool> marked;
+    int count;
+
+    void dfs(Graph& G, int v);
 };
 
 #endif // DEPTH_FIRST_SEARCH_H

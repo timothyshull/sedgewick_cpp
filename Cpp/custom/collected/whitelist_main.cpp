@@ -6,7 +6,7 @@
 int main(int argc, char* argv[])
 {
     std::ifstream in{argv[1]};
-    std::vector<int> white{in.readAllInts()};
+    std::vector<int> white{in.read_all_ints()};
     Static_set_of_ints set{white};
 
     int key;

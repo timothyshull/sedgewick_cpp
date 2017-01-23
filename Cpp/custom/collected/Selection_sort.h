@@ -1,5 +1,5 @@
-#ifndef COLLECTED_SELECTION_SORT_H
-#define COLLECTED_SELECTION_SORT_H
+#ifndef SELECTION_SORT_H
+#define SELECTION_SORT_H
 
 #include "utility.h"
 #include "Std_out.h"
@@ -33,13 +33,13 @@ namespace Selection_sort {
     // template<typename T>
     // void sort(std::vector<T>& a)
     // {
-    //     int n = a.size();
-    //     for (int i = 0; i < n; ++i) {
+    //     int _size = a.size();
+    //     for (int i = 0; i < _size; ++i) {
     //         int min = i;
-    //         for (int j = i + 1; j < n; ++j) {
-    //             if (less(a[j], a[min])) { min = j; }
+    //         for (int j = i + 1; j < _size; ++j) {
+    //             if (_less(a[j], a[min])) { min = j; }
     //         }
-    //         exch(a, i, min);
+    //         _exch(a, i, min);
     //         utility::assert(is_sorted(a, 0, i), "Selection_sort is_sorted range check failed");
     //     }
     //     utility::assert(is_sorted(a), "Selection_sort is_sorted check failed");
@@ -121,4 +121,4 @@ namespace Selection_sort {
     }
 };
 
-#endif // COLLECTED_SELECTION_SORT_H
+#endif // SELECTION_SORT_H

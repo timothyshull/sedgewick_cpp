@@ -1,12 +1,17 @@
-//
-// Created by Tim Shull on 1/18/17.
-//
-
 #ifndef DIRECTED_CYCLE_X_H
 #define DIRECTED_CYCLE_X_H
 
-class Directed_cycle_x {
+#include <vector>
+#include "Stack.h"
 
+class Directed_cycle_x {
+public:
+    Directed_cycle_x(Digraph& G);
+    std::vector<int> cycle();
+    bool hasCycle();
+private:
+    Stack<int> cycle;
+    bool check();
 };
 
 #endif // DIRECTED_CYCLE_X_H

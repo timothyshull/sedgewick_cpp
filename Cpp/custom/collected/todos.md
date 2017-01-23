@@ -21,3 +21,15 @@
 - fix or make consistent all comparators, std::less, less, compareTo, etc
 - fix imports between headers and .cpp when imports are in headers
 - make sure all sort mains use a show and that all shows use range based for loop
+- put all code in a global namespace
+- any operations on the iterators in Min_pq and Max_pq may invalidate
+  the size member, fix this
+- use the ternary operator to check for nullptr where possible
+```
+std::string tmp(tmpPtrVal ? tmpPtrVal : "");
+```
+- use weak_ptr to return ptrs in structures
+- be sure to fix usage of atoi -> per CERT security docs
+- delete unnecessary iterators from node structures
+- review locations where In and Out are used and replace replacements
+- replace hashCode anywhere with std::hash overload

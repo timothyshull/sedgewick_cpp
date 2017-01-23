@@ -130,7 +130,7 @@ private:
     bool _check()
     {
         if (_table_size < 2 * _num_kv_pairs) {
-            std::cerr << "Hash table size m = " << _table_size << "; vector size n = " << _num_kv_pairs << "\n";
+            std::cerr << "Hash table size m = " << _table_size << "; vector size _size = " << _num_kv_pairs << "\n";
             return false;
         }
 

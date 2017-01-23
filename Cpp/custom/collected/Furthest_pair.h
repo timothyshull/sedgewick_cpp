@@ -1,6 +1,4 @@
-//
-// Created by Tim Shull on 1/18/17.
-//
+
 
 #ifndef FURTHEST_PAIR_H
 #define FURTHEST_PAIR_H

@@ -149,14 +149,14 @@ public:
     Key_type min() const
     {
         // TODO: how to handle null keys
-        // if (isEmpty()) return null;
+        // if (is_empty()) return null;
         return _keys[0];
     }
 
     Key_type max() const
     {
         // TODO: how to handle null keys
-        // if (isEmpty()) return null;
+        // if (is_empty()) return null;
         return _keys[_n - 1];
     }
 
@@ -245,7 +245,7 @@ private:
 
     void _resize(int capacity)
     {
-        utility::assert(capacity >= _n, "The new capacity is not greater than or equal to the original capacity");
+        utility::assert(capacity >= _n, "The new capacity is not _greater than or equal to the original capacity");
         _keys.resize(capacity);
         _values.resize(capacity);
     }

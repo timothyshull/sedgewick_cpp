@@ -11,7 +11,7 @@ void ::MSD_radix_sort::sort(std::vector<std::string>& a)
 int ::MSD_radix_sort::char_at(std::string& s, int d)
 {
     utility::assert(d >= 0 && d <= s.length(),
-                    "char_at assertion failed, d is not >= 0 and less than the length of the string");
+                    "char_at assertion failed, d is not >= 0 and _less than the length of the string");
     if (d == s.length()) { return -1; }
     return s[d];
 }

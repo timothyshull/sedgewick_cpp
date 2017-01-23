@@ -1,12 +1,25 @@
-//
-// Created by Tim Shull on 1/18/17.
-//
-
 #ifndef DIRECTED_EULERIAN_PATH_H
 #define DIRECTED_EULERIAN_PATH_H
 
-class Directed_eulerian_path {
+#include "Stack.h"
+#include "Digraph.h"
 
+class Directed_eulerian_path {
+public:
+    Directed_eulerian_path(Digraph& G);
+
+    std::vector<int> path();
+
+    bool hasEulerianPath();
+
+private:
+    Stack<int> path;
+
+    bool hasEulerianPath(Digraph& G);
+
+    bool check(Digraph& G);
+
+    void unitTest(Digraph& G, std::string& description);
 };
 
 #endif // DIRECTED_EULERIAN_PATH_H

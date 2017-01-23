@@ -36,7 +36,7 @@ namespace Mergesort_x {
         sort(dst, src, lo, mid);
         sort(dst, src, mid + 1, hi);
 
-        // if (!less(src[mid+1], src[mid])) {
+        // if (!_less(src[mid+1], src[mid])) {
         //    for (int i = lo; i <= hi; i++) dst[i] = src[i];
         //    return;
         // }

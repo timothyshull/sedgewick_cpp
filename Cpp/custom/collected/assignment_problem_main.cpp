@@ -1,35 +1,37 @@
 #include <cstdlib>
 #include <vector>
+#include "Assignment_problem.h"
+#include "Std_random.h"
+#include "Std_out.h"
 
 int main(int argc, char* argv[])
 {
     int n = std::atoi(argv[1]);
     std::vector<std::vector<double>> weight;
-    weight.reserve(static_cast<std::vector<std::vector<double>>::size_type>(n));
+    weight.reserve(n);
     for (auto v : weight) {
-        v.reserve(static_cast<std::vector<double>::size_type>(n));
+        v.reserve(n);
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            weight[i][j] = StdRandom.uniform(900) + 100;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            weight[i][j] = Std_random::uniform(900) + 100;
         }
     }
 
-    AssignmentProblem assignment{weight};
-    StdOut.printf("weight = %.0f\n", assignment.weight());
-    StdOut.println();
+    Assignment_problem assignment{weight};
+    Std_out::printf("weight = %.0f\n", assignment.weight());
+    Std_out::print_line();
 
-    // print n-by-n matrix and optimal solution
     if (n >= 20) { return -1; }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            if (j == assignment.sol(i)) {
-                StdOut.printf("*%.0f ", weight[i][j]);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (j == assignment.solution(i)) {
+                Std_out::printf("*%.0f ", weight[i][j]);
             } else {
-                StdOut.printf(" %.0f ", weight[i][j]);
+                Std_out::printf(" %.0f ", weight[i][j]);
             }
         }
-        StdOut.println();
+        Std_out::print_line();
     }
     return 0;
 }
