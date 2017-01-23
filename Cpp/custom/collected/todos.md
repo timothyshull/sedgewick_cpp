@@ -33,3 +33,5 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - delete unnecessary iterators from node structures
 - review locations where In and Out are used and replace replacements
 - replace hashCode anywhere with std::hash overload
+- move all tests/unitTest/checks to separate files and use catch or google test
+- convert Std_in readAll to return one long string

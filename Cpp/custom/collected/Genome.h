@@ -1,8 +1,10 @@
 #ifndef GENOME_H
 #define GENOME_H
 
-class Genome {
+namespace Genome {
+    void compress();
 
+    void expand();
 };
 
 #endif // GENOME_H

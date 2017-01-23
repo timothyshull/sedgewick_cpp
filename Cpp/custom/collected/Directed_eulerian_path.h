@@ -15,6 +15,8 @@ public:
 private:
     Stack<int> path;
 
+    int nonIsolatedVertex(Digraph& G);
+
     bool hasEulerianPath(Digraph& G);
 
     bool check(Digraph& G);

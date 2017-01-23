@@ -3,19 +3,18 @@
 
 #include "Digraph.h"
 
-// TODO: may need to use a different Edge class
-class Edge {
-public:
-    Edge(int v, int w);
-
-    bool operator<(Edge& rhs);
-
-private:
-    int v;
-    int w;
-};
-
 namespace Digraph_generator {
+    class Edge {
+    public:
+        Edge(int v, int w);
+
+        bool operator<(Edge& rhs);
+
+    private:
+        int v;
+        int w;
+    };
+
     Digraph simple(int V, int E);
 
     Digraph simple(int V, double p);
