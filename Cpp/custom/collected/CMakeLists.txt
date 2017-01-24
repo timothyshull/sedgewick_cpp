@@ -248,6 +248,7 @@ target_link_libraries(whitelist_main std_io utility)
 
 
 
+# TODO: 1st Round
 add_executable(bellman_ford_sp_main bellman_ford_sp_main.cpp Bellman_ford_sp.cpp Bellman_ford_sp.h)
 add_executable(binary_dump_main binary_dump_main.cpp)
 add_executable(binary_in_main binary_in_main.cpp Binary_in.cpp Binary_in.h)
@@ -319,13 +320,12 @@ add_executable(interval_2d_main interval_2d_main.cpp Interval_2d.cpp Interval_2d
 add_executable(kosaraju_sharir_scc_main kosaraju_sharir_scc_main.cpp Kosaraju_sharir_scc.cpp Kosaraju_sharir_scc.h)
 add_executable(kruskal_mst_main kruskal_mst_main.cpp Kruskal_mst.cpp Kruskal_mst.h)
 add_executable(kwik_main kwik_main.cpp)
-# TODO: 1st Round
 add_executable(lazy_prim_mst_main lazy_prim_mst_main.cpp Lazy_prim_mst.cpp Lazy_prim_mst.h)
 add_executable(linear_programming_main linear_programming_main.cpp Linear_programming.cpp Linear_programming.h)
 add_executable(linear_regression_main linear_regression_main.cpp Linear_regression.cpp Linear_regression.h)
-add_executable(linked_bag_main linked_bag_main.cpp Linked_bag.cpp Linked_bag.h)
-add_executable(linked_queue_main linked_queue_main.cpp Linked_queue.cpp Linked_queue.h)
-add_executable(linked_stack_main linked_stack_main.cpp Linked_stack.cpp Linked_stack.h)
+add_executable(linked_bag_main linked_bag_main.cpp Linked_bag.cpp Linked_bag.h) # TODO
+add_executable(linked_queue_main linked_queue_main.cpp Linked_queue.cpp Linked_queue.h) # TODO
+add_executable(linked_stack_main linked_stack_main.cpp Linked_stack.cpp Linked_stack.h) # TODO
 add_executable(longest_common_substring_main longest_common_substring_main.cpp Longest_common_substring.cpp Longest_common_substring.h)
 add_executable(longest_repeated_substring_main longest_repeated_substring_main.cpp Longest_repeated_substring.cpp Longest_repeated_substring.h)
 add_executable(lookup_csv_main lookup_csv_main.cpp Lookup_csv.cpp Lookup_csv.h)
@@ -336,12 +336,12 @@ add_executable(multiway_min_pq_main multiway_min_pq_main.cpp Multiway_min_pq.cpp
 add_executable(nfa_main nfa_main.cpp NFA.cpp NFA.h)
 add_executable(nonrecursive_dfs_main nonrecursive_dfs_main.cpp Nonrecursive_dfs.cpp Nonrecursive_dfs.h)
 add_executable(nonrecursive_directed_dfs_main nonrecursive_directed_dfs_main.cpp Nonrecursive_directed_dfs.cpp Nonrecursive_directed_dfs.h)
-add_executable(out_main out_main.cpp Out.cpp Out.h)
+add_executable(out_main out_main.cpp Out.cpp Out.h) # TODO:
 add_executable(particle_main particle_main.cpp Particle.cpp Particle.h)
 add_executable(patricia_set_main patricia_set_main.cpp Patricia_set.cpp Patricia_set.h)
 add_executable(patricia_st_main patricia_st_main.cpp Patricia_st.cpp Patricia_st.h)
-add_executable(picture_dump_main picture_dump_main.cpp)
-add_executable(picture_main picture_main.cpp Picture.cpp Picture.h)
+add_executable(picture_dump_main picture_dump_main.cpp) # TODO
+add_executable(picture_main picture_main.cpp Picture.cpp Picture.h) # TODO
 add_executable(point_2d_main point_2d_main.cpp Point_2d.cpp Point_2d.h)
 add_executable(prim_mst_main prim_mst_main.cpp Prim_mst.cpp Prim_mst.h)
 add_executable(quick_find_uf_main quick_find_uf_main.cpp Quick_find_uf.cpp Quick_find_uf.h)
@@ -358,8 +358,8 @@ add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp
 add_executable(sequential_search_st_main sequential_search_st_main.cpp Sequential_search_st.cpp Sequential_search_st.h)
 add_executable(sparse_vector_main sparse_vector_main.cpp Sparse_vector.cpp Sparse_vector.h)
 add_executable(std_array_io_main std_array_io_main.cpp Std_array_io.cpp Std_array_io.h)
-add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp Std_audio.h)
-add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h)
+add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp Std_audio.h) # TODO
+add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h) # TODO
 add_executable(std_stats_main std_stats_main.cpp Std_stats.cpp Std_stats.h)
 add_executable(stopwatch_cpu_main stopwatch_cpu_main.cpp Stopwatch_cpu.cpp Stopwatch_cpu.h)
 add_executable(stopwatch_main stopwatch_main.cpp Stopwatch.cpp Stopwatch.h)

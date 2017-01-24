@@ -35,3 +35,7 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - replace hashCode anywhere with std::hash overload
 - move all tests/unitTest/checks to separate files and use catch or google test
 - convert Std_in readAll to return one long string
+- come back to Linked_bag, stack, queue etc
+- make the I/O classes look more like std streams
+- add iterators to all classes missing iterators
+- move constants in Trie's to Trie class and make friend classes
