@@ -1,10 +1,10 @@
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    EdgeWeightedGraph G = new EdgeWeightedGraph(in);
+    In in{argv[1]};
+    Edge_weighted_graph G = new Edge_weighted_graph(in);
     LazyPrimMST mst = new LazyPrimMST(G);
     for (Edge e : mst.edges()) {
-        StdOut.println(e);
+        Std_out::print_line(e);
     }
-    StdOut.printf("%.5f\n", mst.weight());
+    Std_out::printf("%.5f\n", mst.weight());
     return 0;
 }

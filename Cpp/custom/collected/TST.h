@@ -31,7 +31,7 @@ public:
         return n;
     }
 
-    boolean contains(String key) {
+    bool contains(String key) {
         return get(key) != null;
     }
 
@@ -48,7 +48,7 @@ public:
         root = put(root, key, val, 0);
     }
 
-    String longestPrefixOf(String query) {
+    std::string longestPrefixOf(String query) {
         if (query == null || query.length() == 0) return null;
         int length = 0;
         Node<Value> x = root;
@@ -66,31 +66,31 @@ public:
         return query.substring(0, length);
     }
 
-    Iterable<String> keys() {
-        Queue<String> queue = new Queue<String>();
-        collect(root, new StringBuilder(), queue);
+    Iterable<std::string> keys() {
+        Queue<std::string> queue = new Queue<std::string>();
+        collect(root, new std::stringstream(), queue);
         return queue;
     }
 
-    Iterable<String> keysWithPrefix(String prefix) {
-        Queue<String> queue = new Queue<String>();
+    Iterable<std::string> keysWithPrefix(String prefix) {
+        Queue<std::string> queue = new Queue<std::string>();
         Node<Value> x = get(root, prefix, 0);
         if (x == null) return queue;
         if (x.val != null) queue.enqueue(prefix);
-        collect(x.mid, new StringBuilder(prefix), queue);
+        collect(x.mid, new std::stringstream(prefix), queue);
         return queue;
     }
 
-    Iterable<String> keysThatMatch(String pattern) {
-        Queue<String> queue = new Queue<String>();
-        collect(root, new StringBuilder(), 0, pattern, queue);
+    Iterable<std::string> keysThatMatch(String pattern) {
+        Queue<std::string> queue = new Queue<std::string>();
+        collect(root, new std::stringstream(), 0, pattern, queue);
         return queue;
     }
 private:
     Raw_node_pointer root;
     int n;
 
-    Node<Value> get(Node<Value> x, String key, int d) {
+    Node<Value> get(Node<Value> x, std::string key, int d) {
         if (key == null) throw new NullPointerException();
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         if (x == null) return null;
@@ -101,7 +101,7 @@ private:
         else return x;
     }
 
-    Node<Value> put(Node<Value> x, String key, Value val, int d) {
+    Node<Value> put(Node<Value> x, std::string key, Value val, int d) {
         char c = key.charAt(d);
         if (x == null) {
             x = new Node<Value>();
@@ -114,21 +114,21 @@ private:
         return x;
     }
 
-    void collect(Node<Value> x, StringBuilder prefix, Queue<String> queue) {
+    void collect(Node<Value> x, std::stringstream prefix, Queue<std::string> queue) {
         if (x == null) return;
         collect(x.left, prefix, queue);
-        if (x.val != null) queue.enqueue(prefix.toString() + x.c);
+        if (x.val != null) queue.enqueue(prefix.to_string() + x.c);
         collect(x.mid, prefix.append(x.c), queue);
         prefix.deleteCharAt(prefix.length() - 1);
         collect(x.right, prefix, queue);
     }
 
-    void collect(Node<Value> x, StringBuilder prefix, int i, String pattern, Queue<String> queue, void) {
+    void collect(Node<Value> x, std::stringstream prefix, int i, std::string pattern, Queue<std::string> queue, void) {
         if (x == null) return;
         char c = pattern.charAt(i);
         if (c == '.' || c < x.c) collect(x.left, prefix, i, pattern, queue);
         if (c == '.' || c == x.c) {
-            if (i == pattern.length() - 1 && x.val != null) queue.enqueue(prefix.toString() + x.c);
+            if (i == pattern.length() - 1 && x.val != null) queue.enqueue(prefix.to_string() + x.c);
             if (i < pattern.length() - 1) {
                 collect(x.mid, prefix.append(x.c), i + 1, pattern, queue);
                 prefix.deleteCharAt(prefix.length() - 1);

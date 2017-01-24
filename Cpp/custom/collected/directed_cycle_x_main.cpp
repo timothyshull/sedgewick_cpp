@@ -1,29 +1,37 @@
-int main(int argc, char *argv[]) {
-    int V = Integer.parseInt(args[0]);
-    int E = Integer.parseInt(args[1]);
-    int F = Integer.parseInt(args[2]);
-    Digraph G = DigraphGenerator.dag(V, E);
+#include "utility.h"
+#include "Digraph.h"
+#include "Std_random.h"
+#include "Std_out.h"
+#include "Digraph_generator.h"
+#include "Directed_cycle_x.h"
 
-    // add F extra edges
-    for (int i = 0; i < F; i++) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
-        G.addEdge(v, w);
+int main(int argc, char* argv[])
+{
+    int num_vertices{utility::safe_convert_integer(argv[1])};
+    int num_edges{utility::safe_convert_integer(argv[2])};
+    int additional_edges{utility::safe_convert_integer(argv[3])};
+    Digraph digraph = Digraph_generator::dag(num_vertices, num_edges);
+
+    int v;
+    int w;
+    for (int i = 0; i < additional_edges; ++i) {
+        v = Std_random::uniform(num_vertices);
+        w = Std_random::uniform(num_vertices);
+        digraph.add_edge(v, w);
     }
 
-    StdOut.println(G);
+    Std_out::print_line(digraph);
 
-
-    DirectedCycleX finder = new DirectedCycleX(G);
-    if (finder.hasCycle()) {
-        StdOut.print("Directed cycle: ");
+    Directed_cycle_x finder{digraph};
+    if (finder.has_cycle()) {
+        Std_out::print("Directed cycle: ");
         for (int v : finder.cycle()) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
-        StdOut.println();
+        Std_out::print_line();
     } else {
-        StdOut.println("No directed cycle");
+        Std_out::print_line("No directed cycle");
     }
-    StdOut.println();
+    Std_out::print_line();
     return 0;
 }

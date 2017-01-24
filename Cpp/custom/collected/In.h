@@ -25,23 +25,23 @@ public:
 
     bool exists();
 
-    bool isEmpty();
+    bool is_empty();
 
     bool hasNextLine();
 
     bool hasNextChar();
 
-    std::string readLine();
+    std::string read_line();
 
     char readChar();
 
     std::string readAll();
 
-    std::string readString();
+    std::string read_string();
 
-    int readInt();
+    int read_int();
 
-    double readDouble();
+    double read_double();
 
     float readFloat();
 
@@ -51,7 +51,7 @@ public:
 
     char readByte();
 
-    bool readBoolean();
+    bool read_boolean();
 
     std::vector<std::string> readAllStrings();
 
@@ -65,17 +65,17 @@ public:
 
     void close();
 
-    std::vector<int> readInts(std::string& filename);
+    std::vector<int> read_ints(std::string& filename);
 
-    std::vector<double> readDoubles(std::string& filename);
+    std::vector<double> read_doubles(std::string& filename);
 
-    std::vector<std::string> readStrings(std::string& filename);
+    std::vector<std::string> read_strings(std::string& filename);
 
-    std::vector<int> readInts();
+    std::vector<int> read_ints();
 
-    std::vector<double> readDoubles();
+    std::vector<double> read_doubles();
 
-    std::vector<std::string> readStrings();
+    std::vector<std::string> read_strings();
 
 };
 

@@ -89,11 +89,11 @@ Sparse_vector Sparse_vector::plus(Sparse_vector& that)
     return c;
 }
 
-std::string Sparse_vector::toString()
+std::string Sparse_vector::to_string()
 {
-    StringBuilder s = new StringBuilder();
+    std::stringstream s = new std::stringstream();
     for (int i : st.keys()) {
         s.append("(" + i + ", " + st.get(i) + ") ");
     }
-    return s.toString();
+    return s.to_string();
 }

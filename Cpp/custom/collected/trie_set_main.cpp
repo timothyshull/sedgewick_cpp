@@ -1,39 +1,39 @@
 int main(int argc, char *argv[]) {
-    TrieSET set = new TrieSET();
-    while (!StdIn.isEmpty()) {
-        String key = StdIn.readString();
+    TrieSet set = new TrieSet();
+    while (!Std_in::is_empty()) {
+        std::string key = Std_in::read_string();
         set.add(key);
     }
 
     // print results
     if (set.size() < 100) {
-        StdOut.println("keys(\"\"):");
+        Std_out::print_line("keys(\"\"):");
         for (String key : set) {
-            StdOut.println(key);
+            Std_out::print_line(key);
         }
-        StdOut.println();
+        Std_out::print_line();
     }
 
-    StdOut.println("longestPrefixOf(\"shellsort\"):");
-    StdOut.println(set.longestPrefixOf("shellsort"));
-    StdOut.println();
+    Std_out::print_line("longestPrefixOf(\"shellsort\"):");
+    Std_out::print_line(set.longestPrefixOf("shellsort"));
+    Std_out::print_line();
 
-    StdOut.println("longestPrefixOf(\"xshellsort\"):");
-    StdOut.println(set.longestPrefixOf("xshellsort"));
-    StdOut.println();
+    Std_out::print_line("longestPrefixOf(\"xshellsort\"):");
+    Std_out::print_line(set.longestPrefixOf("xshellsort"));
+    Std_out::print_line();
 
-    StdOut.println("keysWithPrefix(\"shor\"):");
+    Std_out::print_line("keysWithPrefix(\"shor\"):");
     for (String s : set.keysWithPrefix("shor"))
-        StdOut.println(s);
-    StdOut.println();
+        Std_out::print_line(s);
+    Std_out::print_line();
 
-    StdOut.println("keysWithPrefix(\"shortening\"):");
+    Std_out::print_line("keysWithPrefix(\"shortening\"):");
     for (String s : set.keysWithPrefix("shortening"))
-        StdOut.println(s);
-    StdOut.println();
+        Std_out::print_line(s);
+    Std_out::print_line();
 
-    StdOut.println("keysThatMatch(\".he.l.\"):");
+    Std_out::print_line("keysThatMatch(\".he.l.\"):");
     for (String s : set.keysThatMatch(".he.l."))
-        StdOut.println(s);
+        Std_out::print_line(s);
     return 0;
 }

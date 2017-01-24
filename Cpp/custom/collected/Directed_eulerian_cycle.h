@@ -22,7 +22,7 @@ private:
 
     bool certifySolution(Digraph& G);
 
-    void unitTest(Digraph& G, std::string& description);
+    void unit_test(Digraph& G, std::string& description);
 
 };
 

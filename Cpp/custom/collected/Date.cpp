@@ -42,7 +42,7 @@ Date Date::next()
     else return new Date(1, 1, year + 1);
 }
 
-bool Date::isAfter(Date& that)
+bool Date::is_after(Date& that)
 {
     return compareTo(that) > 0;
 }
@@ -52,7 +52,7 @@ bool Date::isBefore(Date& that)
     return compareTo(that) < 0;
 }
 
-std::string Date::toString()
+std::string Date::to_string()
 {
     return month + "/" + day + "/" + year;
 }

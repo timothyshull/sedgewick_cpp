@@ -49,7 +49,7 @@ double Transaction::amount()
     return amount;
 }
 
-std::string Transaction::toString()
+std::string Transaction::to_string()
 {
     return String.format("%-10s %10s %8.2f", who, when, amount);
 }

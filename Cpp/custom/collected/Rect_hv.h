@@ -31,7 +31,7 @@ public:
 
     int hashCode();
 
-    std::string toString();
+    std::string to_string();
 
     void draw();
 

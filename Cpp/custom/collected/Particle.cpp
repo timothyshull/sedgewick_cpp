@@ -11,10 +11,10 @@ Particle::Particle(double rx, double ry, double vx, double vy, double radius, do
 
 Particle::Particle()
 {
-    rx = StdRandom.uniform(0.0, 1.0);
-    ry = StdRandom.uniform(0.0, 1.0);
-    vx = StdRandom.uniform(-0.005, 0.005);
-    vy = StdRandom.uniform(-0.005, 0.005);
+    rx = Std_random::uniform(0.0, 1.0);
+    ry = Std_random::uniform(0.0, 1.0);
+    vx = Std_random::uniform(-0.005, 0.005);
+    vy = Std_random::uniform(-0.005, 0.005);
     radius = 0.01;
     mass = 0.5;
     color = Color.BLACK;
@@ -28,8 +28,8 @@ void Particle::move(double dt)
 
 void Particle::draw()
 {
-    StdDraw.setPenColor(color);
-    StdDraw.filledCircle(rx, ry, radius);
+    Std_draw::setPenColor(color);
+    Std_draw::filledCircle(rx, ry, radius);
 }
 
 int Particle::count()
@@ -50,7 +50,7 @@ double Particle::timeToHit(Particle& that)
     double drdr = dx * dx + dy * dy;
     double sigma = this.radius + that.radius;
     double d = (dvdr * dvdr) - dvdv * (drdr - sigma * sigma);
-    // if (drdr < sigma*sigma) StdOut.println("overlapping particles");
+    // if (drdr < sigma*sigma) Std_out::print_line("overlapping particles");
     if (d < 0) return INFINITY;
     return -(dvdr + Math.sqrt(d)) / dvdv;
 }

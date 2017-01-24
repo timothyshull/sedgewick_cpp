@@ -8,8 +8,8 @@ Kruskal_mst::Kruskal_mst(Edge_weighted_graph& G)
     }
 
     // run greedy algorithm
-    UF uf = new UF(G.V());
-    while (!pq.isEmpty() && mst.size() < G.V() - 1) {
+    UF uf = new UF(G.num_vertices());
+    while (!pq.is_empty() && mst.size() < G.num_vertices() - 1) {
         Edge e = pq.delMin();
         int v = e.either();
         int w = e.other(v);
@@ -47,11 +47,11 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     }
 
     // check that it is acyclic
-    UF uf = new UF(G.V());
+    UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
         if (uf.connected(v, w)) {
-            System.err.println("Not a forest");
+            System.err.print_line("Not a forest");
             return false;
         }
         uf.
@@ -62,7 +62,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
-            System.err.println("Not a spanning forest");
+            System.err.print_line("Not a spanning forest");
             return false;
         }
     }
@@ -71,7 +71,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
 
         // all edges in MST except e
-        uf = new UF(G.V());
+        uf = new UF(G.num_vertices());
         for (Edge f : mst) {
             int x = f.either(), y = f.other(x);
             if (f != e) { uf. }
@@ -83,7 +83,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {
                 if (f.weight() < e.weight()) {
-                    System.err.println("Edge " + f + " violates cut optimality conditions");
+                    System.err.print_line("Edge " + f + " violates cut optimality conditions");
                     return false;
                 }
             }

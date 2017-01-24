@@ -80,12 +80,12 @@ void Flow_edge::addResidualFlowTo(int vertex, double delta)
     if (!(flow <= capacity)) { throw new IllegalArgumentException("Flow exceeds capacity"); }
 }
 
-std::string Flow_edge::toString()
+std::string Flow_edge::to_string()
 {
     return v + "->" + w + " " + flow + "/" + capacity;
 }
 
 std::ostream& operator<<(std::ostream& os, Flow_edge& out)
 {
-    return os << out.toString();
+    return os << out.to_string();
 }

@@ -38,12 +38,12 @@ public:
         return n;
     }
 
-    boolean isEmpty()
+    bool is_empty()
     {
         return size() == 0;
     }
 
-    boolean contains(Key key)
+    bool contains(Key key)
     {
         if (key == null) { throw new NullPointerException("argument to contains() is null"); }
         return get(key) != null;

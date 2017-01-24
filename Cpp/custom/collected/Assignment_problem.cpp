@@ -108,7 +108,7 @@ void Assignment_problem::_augment()
 
     // update dual variables
     for (int i = 0; i < _dimension; ++i) {
-        _px[i] += spt.distTo(i);
+        _px[i] += spt.distance_to(i);
     }
     for (int j = 0; j < _dimension; ++j) {
         _py[j] += spt.dist_to(_dimension + j);

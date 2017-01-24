@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     Std_random::shuffle(a);
 
     Std_out::print_line();
-    for (int i = 0; i < a.size(); i++) {
+    for (int i = 0; i < a.size(); ++i) {
         std::string ith = Quicksort::select(a, i);
         Std_out::print_line(ith);
     }

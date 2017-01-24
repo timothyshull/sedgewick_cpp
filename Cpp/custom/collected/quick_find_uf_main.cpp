@@ -1,13 +1,13 @@
 int main(int argc, char *argv[]) {
-    int n = StdIn.readInt();
+    int n = Std_in::read_int();
     QuickFindUF uf = new QuickFindUF(n);
-    while (!StdIn.isEmpty()) {
-        int p = StdIn.readInt();
-        int q = StdIn.readInt();
+    while (!Std_in::is_empty()) {
+        int p = Std_in::read_int();
+        int q = Std_in::read_int();
         if (uf.connected(p, q)) continue;
         uf.union(p, q);
-        StdOut.println(p + " " + q);
+        Std_out::print_line(p + " " + q);
     }
-    StdOut.println(uf.count() + " components");
+    Std_out::print_line(uf.count() + " components");
     return 0;
 }

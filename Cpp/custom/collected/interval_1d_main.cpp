@@ -7,31 +7,31 @@ int main(int argc, char* argv[])
     intervals[2] = new Interval1D(20.0, 70.0);
     intervals[3] = new Interval1D(46.0, 55.0);
 
-    StdOut.println("Unsorted");
-    for (int i = 0; i < intervals.length; i++) {
-        StdOut.println(intervals[i]);
+    Std_out::print_line("Unsorted");
+    for (int i = 0; i < intervals.length; ++i) {
+        Std_out::print_line(intervals[i]);
     }
-    StdOut.println();
+    Std_out::print_line();
 
-    StdOut.println("Sort by min endpoint");
+    Std_out::print_line("Sort by min endpoint");
     Arrays.sort(intervals, Interval1D.MIN_ENDPOINT_ORDER);
-    for (int i = 0; i < intervals.length; i++) {
-        StdOut.println(intervals[i]);
+    for (int i = 0; i < intervals.length; ++i) {
+        Std_out::print_line(intervals[i]);
     }
-    StdOut.println();
+    Std_out::print_line();
 
-    StdOut.println("Sort by max endpoint");
+    Std_out::print_line("Sort by max endpoint");
     Arrays.sort(intervals, Interval1D.MAX_ENDPOINT_ORDER);
-    for (int i = 0; i < intervals.length; i++) {
-        StdOut.println(intervals[i]);
+    for (int i = 0; i < intervals.length; ++i) {
+        Std_out::print_line(intervals[i]);
     }
-    StdOut.println();
+    Std_out::print_line();
 
-    StdOut.println("Sort by length");
+    Std_out::print_line("Sort by length");
     Arrays.sort(intervals, Interval1D.LENGTH_ORDER);
-    for (int i = 0; i < intervals.length; i++) {
-        StdOut.println(intervals[i]);
+    for (int i = 0; i < intervals.length; ++i) {
+        Std_out::print_line(intervals[i]);
     }
-    StdOut.println();
+    Std_out::print_line();
     return 0;
 }

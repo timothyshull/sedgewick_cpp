@@ -1,5 +1,5 @@
 int main(int argc, char *argv[]) {
     FlowEdge e = new FlowEdge(12, 23, 4.56);
-    StdOut.println(e);
+    Std_out::print_line(e);
     return 0;
 }

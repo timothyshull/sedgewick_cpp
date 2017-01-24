@@ -24,7 +24,7 @@ namespace Insertion_sort {
     static void sort(std::vector<T>& a)
     {
         int n = a.size();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             for (int j = i; j > 0 && less<T, Comparator>(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
@@ -36,7 +36,7 @@ namespace Insertion_sort {
     template<typename T, typename Comparator>
     static void sort(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i <= hi; ++i) {
             for (int j = i; j > lo && less<T, Comparator>(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
@@ -51,11 +51,11 @@ namespace Insertion_sort {
         int n = a.size();
         std::vector<int> index{};
         index.reserve(n);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             index[i] = i;
         }
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             for (int j = i; j > 0 && less(a[index[j]], a[index[j - 1]]); j--) {
                 exch(index, j, j - 1);
             }
@@ -93,7 +93,7 @@ namespace Insertion_sort {
     template<typename T, typename Comparator>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; i++) {
+        for (int i = lo + 1; i <= hi; ++i) {
             if (less<T, Comparator>(a[i], a[i - 1])) {
                 return false;
             }

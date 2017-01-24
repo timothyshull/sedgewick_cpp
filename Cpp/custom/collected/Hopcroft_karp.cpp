@@ -3,14 +3,14 @@
 Hopcroft_karp::Hopcroft_karp(Graph& G)
 {
     bipartition = new BipartiteX(G);
-    if (!bipartition.isBipartite()) {
+    if (!bipartition.is_bipartite()) {
         throw new IllegalArgumentException("graph is not bipartite");
     }
 
     // initialize empty matching
-    this.V = G.V();
+    this.V = G.num_vertices();
     mate = new int[V];
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         mate[v] = UNMATCHED;
     }
 
@@ -21,19 +21,19 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
         // vertex in each adjacency list needs to be explored next
         Iterator<Integer>[]
         adj = (Iterator<Integer>[])
-        new Iterator[G.V()];
-        for (int v = 0; v < G.V(); v++) {
+        new Iterator[G.num_vertices()];
+        for (int v = 0; v < G.num_vertices(); ++v) {
             adj[v] = G.adj(v).iterator();
         }
 
         // for each unmatched vertex s on one side of bipartition
-        for (int s = 0; s < V; s++) {
-            if (isMatched(s) || !bipartition.color(s)) { continue; }   // or use distTo[s] == 0
+        for (int s = 0; s < V; ++s) {
+            if (isMatched(s) || !bipartition.color(s)) { continue; }   // or use distance_to[s] == 0
 
             // find augmenting path from s using nonrecursive DFS
             Stack <Integer> path = new Stack<Integer>();
             path.push(s);
-            while (!path.isEmpty()) {
+            while (!path.is_empty()) {
                 int v = path.peek();
 
                 // retreat, no more edges in level graph leaving v
@@ -51,9 +51,9 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
 
                     // augmenting path found: update the matching
                     if (!isMatched(w)) {
-                        // StdOut.println("augmenting path: " + toString(path));
+                        // Std_out::print_line("augmenting path: " + to_string(path));
 
-                        while (!path.isEmpty()) {
+                        while (!path.is_empty()) {
                             int x = path.pop();
                             int y = path.pop();
                             mate[x] = y;
@@ -68,7 +68,7 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
 
     // also find a min vertex cover
     inMinVertexCover = new boolean[V];
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (bipartition.color(v) && !marked[v]) { inMinVertexCover[v] = true; }
         if (!bipartition.color(v) && marked[v]) { inMinVertexCover[v] = true; }
     }
@@ -104,20 +104,20 @@ bool Hopcroft_karp::inMinVertexCover(int v)
     return inMinVertexCover[v];
 }
 
-std::string Hopcroft_karp::toString(std::vector<int>& path)
+std::string Hopcroft_karp::to_string(std::vector<int>& path)
 {
-    StringBuilder sb = new StringBuilder();
+    std::stringstream sb = new std::stringstream();
     for (int v : path) {
         sb.append(v + "-");
     }
-    String s = sb.toString();
+    std::string s = sb.to_string();
     s = s.substring(0, s.lastIndexOf('-'));
     return s;
 }
 
 bool Hopcroft_karp::isLevelGraphEdge(int v, int w)
 {
-    return (distTo[w] == distTo[v] + 1) && isResidualGraphEdge(v, w);
+    return (distance_to[w] == distance_to[v] + 1) && isResidualGraphEdge(v, w);
 }
 
 bool Hopcroft_karp::isResidualGraphEdge(int v, int w)
@@ -130,32 +130,32 @@ bool Hopcroft_karp::isResidualGraphEdge(int v, int w)
 bool Hopcroft_karp::hasAugmentingPath(Graph& G)
 {
     marked = new boolean[V];
-    distTo = new int[V];
-    for (int v = 0; v < V; v++) {
-        distTo[v] = Integer.MAX_VALUE;
+    distance_to = new int[V];
+    for (int v = 0; v < V; ++v) {
+        distance_to[v] = Integer.MAX_VALUE;
     }
 
     // breadth-first search (starting from all unmatched vertices on one side of bipartition)
     Queue <Integer> queue = new Queue<Integer>();
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (bipartition.color(v) && !isMatched(v)) {
             queue.enqueue(v);
             marked[v] = true;
-            distTo[v] = 0;
+            distance_to[v] = 0;
         }
     }
 
     // run BFS until an augmenting path is found
     // (and keep going until all vertices at that distance are explored)
-    boolean hasAugmentingPath = false;
-    while (!queue.isEmpty()) {
+    bool hasAugmentingPath = false;
+    while (!queue.is_empty()) {
         int v = queue.dequeue();
         for (int w : G.adj(v)) {
 
             // forward edge not in matching or backwards edge in matching
             if (isResidualGraphEdge(v, w)) {
                 if (!marked[w]) {
-                    distTo[w] = distTo[v] + 1;
+                    distance_to[w] = distance_to[v] + 1;
                     marked[w] = true;
                     if (!isMatched(w)) {
                         hasAugmentingPath = true;
@@ -181,29 +181,29 @@ void Hopcroft_karp::validate(int v)
 
 bool Hopcroft_karp::certifySolution(Graph& G)
 {
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (mate(v) == -1) { continue; }
         if (mate(mate(v)) != v) { return false; }
     }
 
     // check that size() is consistent with mate()
     int matchedVertices = 0;
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (mate(v) != -1) { matchedVertices++; }
     }
     if (2 * size() != matchedVertices) { return false; }
 
     // check that size() is consistent with minVertexCover()
     int sizeOfMinVertexCover = 0;
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (inMinVertexCover(v)) { sizeOfMinVertexCover++; }
     }
     if (size() != sizeOfMinVertexCover) { return false; }
 
     // check that mate() uses each vertex at most once
-    boolean[]
+    std::deque<bool>
     isMatched = new boolean[V];
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         int w = mate[v];
         if (w == -1) { continue; }
         if (v == w) { return false; }
@@ -214,9 +214,9 @@ bool Hopcroft_karp::certifySolution(Graph& G)
     }
 
     // check that mate() uses only edges that appear in the graph
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         if (mate(v) == -1) { continue; }
-        boolean isEdge = false;
+        bool isEdge = false;
         for (int w : G.adj(v)) {
             if (mate(v) == w) { isEdge = true; }
         }
@@ -224,7 +224,7 @@ bool Hopcroft_karp::certifySolution(Graph& G)
     }
 
     // check that inMinVertexCover() is a vertex cover
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         for (int w : G.adj(v)) {
             if (!inMinVertexCover(v) && !inMinVertexCover(w)) { return false; }
         }

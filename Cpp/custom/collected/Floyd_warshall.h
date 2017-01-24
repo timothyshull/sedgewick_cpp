@@ -16,7 +16,7 @@ public:
 
 private:
     bool hasNegativeCycle;
-    std::vector<std::vector<double>> distTo;
+    std::vector<std::vector<double>> distance_to;
     std::vector<std::vector<Directed_edge>> edgeTo;
 
     bool check(Adj_matrix_edge_weighted_digraph& G);

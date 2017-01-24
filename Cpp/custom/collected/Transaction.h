@@ -30,7 +30,7 @@ public:
 
     double amount();
 
-    std::string toString();
+    std::string to_string();
 
     bool operator<(Transaction& rhs);
 

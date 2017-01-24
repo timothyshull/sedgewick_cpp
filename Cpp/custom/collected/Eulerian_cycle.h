@@ -32,7 +32,7 @@ private:
 
     bool certifySolution(Graph& G);
 
-    void unitTest(Graph& G, std::string& description);
+    void unit_test(Graph& G, std::string& description);
 };
 
 #endif // EULERIAN_CYCLE_H

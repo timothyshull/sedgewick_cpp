@@ -29,7 +29,7 @@ public:
 
     Vector direction();
 
-    std::string toString();
+    std::string to_string();
 
 private:
     int d;

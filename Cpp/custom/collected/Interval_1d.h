@@ -37,7 +37,7 @@ public:
 
     double length();
 
-    std::string toString();
+    std::string to_string();
 
     bool operator==(Interval_1d& rhs);
 

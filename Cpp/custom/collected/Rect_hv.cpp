@@ -94,15 +94,15 @@ int Rect_hv::hashCode()
     return 31 * (31 * (31 * hash1 + hash2) + hash3) + hash4;
 }
 
-std::string Rect_hv::toString()
+std::string Rect_hv::to_string()
 {
     return "[" + xmin + ", " + xmax + "] x [" + ymin + ", " + ymax + "]";
 }
 
 void Rect_hv::draw()
 {
-    StdDraw.line(xmin, ymin, xmax, ymin);
-    StdDraw.line(xmax, ymin, xmax, ymax);
-    StdDraw.line(xmax, ymax, xmin, ymax);
-    StdDraw.line(xmin, ymax, xmin, ymin);
+    Std_draw::line(xmin, ymin, xmax, ymin);
+    Std_draw::line(xmax, ymin, xmax, ymax);
+    Std_draw::line(xmax, ymax, xmin, ymax);
+    Std_draw::line(xmin, ymax, xmin, ymin);
 }

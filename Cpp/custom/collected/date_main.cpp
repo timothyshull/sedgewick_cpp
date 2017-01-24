@@ -1,21 +1,24 @@
-int main(int argc, char *argv[]) {
-    Date today = new Date(2, 25, 2004);
-    StdOut.println(today);
-    for (int i = 0; i < 10; i++) {
+#include "Std_out.h"
+#include "Date.h"
+
+int main(int argc, char* argv[])
+{
+    Date today{2, 25, 2004};
+    Std_out::print_line(today);
+    for (int i = 0; i < 10; ++i) {
         today = today.next();
-        StdOut.println(today);
+        Std_out::print_line(today);
     }
 
-    StdOut.println(today.isAfter(today.next()));
-    StdOut.println(today.isAfter(today));
-    StdOut.println(today.next().isAfter(today));
+    Std_out::print_line(today.is_after(today.next()));
+    Std_out::print_line(today.is_after(today));
+    Std_out::print_line(today.next().is_after(today));
 
-
-    Date birthday = new Date(10, 16, 1971);
-    StdOut.println(birthday);
-    for (int i = 0; i < 10; i++) {
+    Date birthday{10, 16, 1971};
+    Std_out::print_line(birthday);
+    for (int i = 0; i < 10; ++i) {
         birthday = birthday.next();
-        StdOut.println(birthday);
+        Std_out::print_line(birthday);
     }
     return 0;
 }

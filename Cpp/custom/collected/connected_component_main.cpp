@@ -1,27 +1,32 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Graph G = new Graph(in);
-    CC cc = new CC(G);
+#include "In.h"
+#include "Graph.h"
+#include "Std_out.h"
+#include "Queue.h"
+#include "Connected_component.h"
 
-    // number of connected components
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Graph graph{in};
+    Connected_component cc{graph};
+
     int m = cc.count();
-    StdOut.println(m + " components");
+    Std_out::print_line(m + " components");
 
-    // compute list of vertices in each connected component
-    Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
-    for (int i = 0; i < m; i++) {
-        components[i] = new Queue<Integer>();
+    std::vector<Queue<int>> components;
+    components.reserve(m);
+    for (int i = 0; i < m; ++i) {
+        components[i] = Queue<int>{};
     }
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < graph.num_vertices(); ++v) {
         components[cc.id(v)].enqueue(v);
     }
 
-    // print results
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; ++i) {
         for (int v : components[i]) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
-        StdOut.println();
+        Std_out::print_line();
     }
     return 0;
 }

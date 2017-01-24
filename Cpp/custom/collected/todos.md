@@ -39,3 +39,9 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - make the I/O classes look more like std streams
 - add iterators to all classes missing iterators
 - move constants in Trie's to Trie class and make friend classes
+- add overloads for ctors in In etc that take strings to take const char *
+- add Stroustrup's args to vector utility function and process all argv with that
+- double check all checks of argc
+- add ostream << support to Point_2d
+- add ostream support to Date
+- Digraph generator Edge needs to be fixed

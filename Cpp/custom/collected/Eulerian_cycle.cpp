@@ -11,11 +11,11 @@ int Edge::other(int vertex)
 
 Eulerian_cycle::Eulerian_cycle(Graph& G)
 {
-    if (G.E() == 0) { return; }
+    if (G.num_edges() == 0) { return; }
 
     // necessary condition: all vertices have even degree
     // (this test is needed or it might find an Eulerian path instead of cycle)
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             return;
         }
@@ -25,12 +25,12 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
     // the helper Edge data type is used to avoid exploring both copies of an edge v-w
     Queue<Edge>[]
     adj = (Queue<Edge>[])
-    new Queue[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    new Queue[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         adj[v] = new Queue<Edge>();
     }
 
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         int selfLoops = 0;
         for (int w : G.adj(v)) {
             // careful with self loops
@@ -56,9 +56,9 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
 
     // greedily search through edges in iterative DFS style
     cycle = new Stack<Integer>();
-    while (!stack.isEmpty()) {
+    while (!stack.is_empty()) {
         int v = stack.pop();
-        while (!adj[v].isEmpty()) {
+        while (!adj[v].is_empty()) {
             Edge edge = adj[v].dequeue();
             if (edge.isUsed) { continue; }
             edge.isUsed = true;
@@ -70,7 +70,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
     }
 
     // check if all edges are used
-    if (cycle.size() != G.E() + 1) {
+    if (cycle.size() != G.num_edges() + 1) {
         cycle = null;
     }
 
@@ -89,7 +89,7 @@ bool Eulerian_cycle::hasEulerianCycle()
 
 int Eulerian_cycle::nonIsolatedVertex(Graph& G)
 {
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (G.degree(v) > 0) {
             return v;
         }
@@ -99,10 +99,10 @@ int Eulerian_cycle::nonIsolatedVertex(Graph& G)
 
 bool Eulerian_cycle::hasEulerianCycle(Graph& G)
 {
-    if (G.E() == 0) { return false; }
+    if (G.num_edges() == 0) { return false; }
 
     // Condition 1: degree(v) is even for every vertex
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             return false;
         }
@@ -110,9 +110,9 @@ bool Eulerian_cycle::hasEulerianCycle(Graph& G)
 
     // Condition 2: graph is connected, ignoring isolated vertices
     int s = nonIsolatedVertex(G);
-    BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
-    for (int v = 0; v < G.V(); v++) {
-        if (G.degree(v) > 0 && !bfs.hasPathTo(v)) {
+    Breadth_first_paths bfs = new Breadth_first_paths(G, s);
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        if (G.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
     }
@@ -131,7 +131,7 @@ bool Eulerian_cycle::certifySolution(Graph& G)
     if (cycle == null) { return true; }
 
     // check that cycle() uses correct number of edges
-    if (cycle.size() != G.E() + 1) { return false; }
+    if (cycle.size() != G.num_edges() + 1) { return false; }
 
     // check that cycle() is a cycle of G
     // TODO
@@ -147,22 +147,22 @@ bool Eulerian_cycle::certifySolution(Graph& G)
     return true;
 }
 
-void Eulerian_cycle::unitTest(Graph& G, std::string& description)
+void Eulerian_cycle::unit_test(Graph& G, std::string& description)
 {
-    StdOut.println(description);
-    StdOut.println("-------------------------------------");
-    StdOut.print(G);
+    Std_out::print_line(description);
+    Std_out::print_line("-------------------------------------");
+    Std_out::print(G);
 
     EulerianCycle euler = new EulerianCycle(G);
 
-    StdOut.print("Eulerian cycle: ");
+    Std_out::print("Eulerian cycle: ");
     if (euler.hasEulerianCycle()) {
         for (int v : euler.cycle()) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
-        StdOut.println();
+        Std_out::print_line();
     } else {
-        StdOut.println("none");
+        Std_out::print_line("none");
     }
-    StdOut.println();
+    Std_out::print_line();
 }

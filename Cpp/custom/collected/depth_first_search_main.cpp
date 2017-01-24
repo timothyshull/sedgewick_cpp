@@ -1,15 +1,23 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Graph G = new Graph(in);
-    int s = Integer.parseInt(args[1]);
-    DepthFirstSearch search = new DepthFirstSearch(G, s);
-    for (int v = 0; v < G.V(); v++) {
-        if (search.marked(v))
-            StdOut.print(v + " ");
+#include "In.h"
+#include "Graph.h"
+#include "utility.h"
+#include "Depth_first_search.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Graph graph{in};
+    int s{utility::safe_convert_integer(argv[1])};
+    Depth_first_search search{graph, s};
+    for (int v = 0; v < graph.num_vertices(); ++v) {
+        if (search.marked(v)) {
+            Std_out::print(v + " ");
+        }
     }
 
-    StdOut.println();
-    if (search.count() != G.V()) StdOut.println("NOT connected");
-    else StdOut.println("connected");
+    Std_out::print_line();
+    if (search.count() != graph.num_vertices()) { Std_out::print_line("NOT connected"); }
+    else { Std_out::print_line("connected"); }
     return 0;
 }

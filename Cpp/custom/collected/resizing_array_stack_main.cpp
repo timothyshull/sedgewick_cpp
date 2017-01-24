@@ -1,10 +1,10 @@
 int main(int argc, char *argv[]) {
-    ResizingArrayStack<String> stack = new ResizingArrayStack<String>();
-    while (!StdIn.isEmpty()) {
-        String item = StdIn.readString();
+    ResizingArrayStack<std::string> stack = new ResizingArrayStack<std::string>();
+    while (!Std_in::is_empty()) {
+        std::string item = Std_in::read_string();
         if (!item.equals("-")) stack.push(item);
-        else if (!stack.isEmpty()) StdOut.print(stack.pop() + " ");
+        else if (!stack.is_empty()) Std_out::print(stack.pop() + " ");
     }
-    StdOut.println("(" + stack.size() + " left on stack)");
+    Std_out::print_line("(" + stack.size() + " left on stack)");
     return 0;
 }

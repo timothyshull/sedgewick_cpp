@@ -6,7 +6,7 @@
 Alphabet::Alphabet(std::string alpha)
 {
     std::deque<bool> unicode(static_cast<typename std::deque<bool>::size_type>(CHAR_MAX));
-    for (int i = 0; i < alpha.length(); i++) {
+    for (int i = 0; i < alpha.length(); ++i) {
         char c = alpha[i];
         if (unicode[c]) {
             std::stringstream ss;
@@ -36,10 +36,10 @@ Alphabet::Alphabet(int radix) : _radix{radix}
     _alphabet = std::vector<char>(radix);
     _inverse = std::vector<int>(radix);
 
-    for (int i = 0; i < radix; i++) {
+    for (int i = 0; i < radix; ++i) {
         _alphabet[i] = static_cast<char>(i);
     }
-    for (int i = 0; i < radix; i++) {
+    for (int i = 0; i < radix; ++i) {
         _inverse[i] = i;
     }
 }

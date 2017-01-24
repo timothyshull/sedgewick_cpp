@@ -9,7 +9,7 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
 
     // first pass
     double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         sumx += x[i];
         sumx2 += x[i] * x[i];
         sumy += y[i];
@@ -19,7 +19,7 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
 
     // second pass: compute summary statistics
     double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         xxbar += (x[i] - xbar) * (x[i] - xbar);
         yybar += (y[i] - ybar) * (y[i] - ybar);
         xybar += (x[i] - xbar) * (y[i] - ybar);
@@ -30,7 +30,7 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
     // more statistical analysis
     double rss = 0.0;      // residual sum of squares
     double ssr = 0.0;      // regression sum of squares
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         double fit = slope * x[i] + intercept;
         rss += (fit - y[i]) * (fit - y[i]);
         ssr += (fit - ybar) * (fit - ybar);
@@ -73,14 +73,14 @@ double Linear_regression::predict()
     return slope * x + intercept;
 }
 
-std::string Linear_regression::toString()
+std::string Linear_regression::to_string()
 {
-    String s = "";
+    std::string s = "";
     s += String.format("%.2f n + %.2f", slope(), intercept());
     return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
 }
 
 std::ostream& operator<<(std::ostream& os, Linear_regression& out)
 {
-    return os << out.toString();
+    return os << out.to_string();
 }

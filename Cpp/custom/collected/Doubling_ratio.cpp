@@ -2,9 +2,9 @@
 
 double ::Doubling_ratio::timeTrial(int n)
 {
-    int[] a = new int[n];
-    for (int i = 0; i < n; i++) {
-        a[i] = StdRandom.uniform(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
+    std::vector<int> a = new int[n];
+    for (int i = 0; i < n; ++i) {
+        a[i] = Std_random::uniform(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
     }
     Stopwatch timer = new Stopwatch();
     ThreeSum.count(a);

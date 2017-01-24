@@ -1,4 +1,5 @@
 #include "Huffman.h"
+#include "Binary_std_in.h"
 
 bool Huffman::Node::operator<(Huffman::Node& rhs)
 {
@@ -13,16 +14,11 @@ bool Huffman::Node::isLeaf()
 
 void ::Huffman::compress()
 {
-    String s = BinaryStdIn.readString();
-    char
-    []
-    input = s.toCharArray();
+    std::string s = Binary_std_in::read_string();
+    std::vector<char> input{utility::str_to_char_vector(s)};
 
-    // tabulate frequency counts
-    int
-    []
-    freq = new int[R];
-    for (int i = 0; i < input.length; i++) {
+    std::vector<int> freq = new int[R];
+    for (int i = 0; i < input.length; ++i) {
         freq[input[i]]++;
     }
 
@@ -38,28 +34,28 @@ void ::Huffman::compress()
     writeTrie(root);
 
     // print number of bytes in original uncompressed message
-    BinaryStdOut.write(input.length);
+    Binary_std_out::write(input.length);
 
     // use Huffman code to encode input
-    for (int i = 0; i < input.length; i++) {
-        String code = st[input[i]];
-        for (int j = 0; j < code.length(); j++) {
+    for (int i = 0; i < input.length; ++i) {
+        std::string code = st[input[i]];
+        for (int j = 0; j < code.length(); ++j) {
             if (code.charAt(j) == '0') {
-                BinaryStdOut.write(false);
+                Binary_std_out::write(false);
             } else if (code.charAt(j) == '1') {
-                BinaryStdOut.write(true);
+                Binary_std_out::write(true);
             } else { throw new IllegalStateException("Illegal state"); }
         }
     }
 
     // close output stream
-    BinaryStdOut.close();
+    Binary_std_out::close();
 }
 
 Huffman::Raw_node_pointer Huffman::buildTrie(std::vector<int>& freq)
 {
     MinPQ <Node> pq = new MinPQ<Node>();
-    for (char i = 0; i < R; i++) {
+    for (char i = 0; i < R; ++i) {
         if (freq[i] > 0) {
             pq.insert(new Node(i, freq[i], null, null));
         }
@@ -84,11 +80,11 @@ Huffman::Raw_node_pointer Huffman::buildTrie(std::vector<int>& freq)
 void ::Huffman::writeTrie(Huffman::Raw_node_pointer x)
 {
     if (x.isLeaf()) {
-        BinaryStdOut.write(true);
-        BinaryStdOut.write(x.ch, 8);
+        Binary_std_out::write(true);
+        Binary_std_out::write(x.ch, 8);
         return;
     }
-    BinaryStdOut.write(false);
+    Binary_std_out::write(false);
     writeTrie(x.left);
     writeTrie(x.right);
 }
@@ -108,26 +104,26 @@ void ::Huffman::expand()
     Node root = readTrie();
 
     // number of bytes to write
-    int length = BinaryStdIn.readInt();
+    int length = Binary_std_in::read_int();
 
     // decode using the Huffman trie
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; ++i) {
         Node x = root;
         while (!x.isLeaf()) {
-            boolean bit = BinaryStdIn.readBoolean();
+            bool bit = Binary_std_in::read_boolean();
             if (bit) { x = x.right; }
             else { x = x.left; }
         }
-        BinaryStdOut.write(x.ch, 8);
+        Binary_std_out::write(x.ch, 8);
     }
-    BinaryStdOut.close();
+    Binary_std_out::close();
 }
 
 Huffman::Raw_node_pointer Huffman::readTrie()
 {
-    boolean isLeaf = BinaryStdIn.readBoolean();
+    bool isLeaf = Binary_std_in::read_boolean();
     if (isLeaf) {
-        return new Node(BinaryStdIn.readChar(), -1, null, null);
+        return new Node(Binary_std_in::readChar(), -1, null, null);
     } else {
         return new Node('\0', -1, readTrie(), readTrie());
     }

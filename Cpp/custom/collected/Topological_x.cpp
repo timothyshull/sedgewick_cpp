@@ -2,22 +2,22 @@
 
 Topological_x::Topological_x(Digraph& G)
 {
-    int[] indegree = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    std::vector<int> indegree = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         indegree[v] = G.indegree(v);
     }
 
     // initialize
-    rank = new int[G.V()];
+    rank = new int[G.num_vertices()];
     order = new Queue<Integer>();
     int count = 0;
 
     // initialize queue to contain all vertices with indegree = 0
     Queue<Integer> queue = new Queue<Integer>();
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (indegree[v] == 0) queue.enqueue(v);
 
-    for (int j = 0; !queue.isEmpty(); j++) {
+    for (int j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         order.enqueue(v);
         rank[v] = count++;
@@ -28,7 +28,7 @@ Topological_x::Topological_x(Digraph& G)
     }
 
     // there is a directed cycle in subgraph of vertices with indegree >= 1.
-    if (count != G.V()) {
+    if (count != G.num_vertices()) {
         order = null;
     }
 
@@ -37,26 +37,26 @@ Topological_x::Topological_x(Digraph& G)
 
 Topological_x::Topological_x(Edge_weighted_digraph& G)
 {
-    int[] indegree = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    std::vector<int> indegree = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         indegree[v] = G.indegree(v);
     }
 
     // initialize
-    rank = new int[G.V()];
+    rank = new int[G.num_vertices()];
     order = new Queue<Integer>();
     int count = 0;
 
     // initialize queue to contain all vertices with indegree = 0
     Queue<Integer> queue = new Queue<Integer>();
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (indegree[v] == 0) queue.enqueue(v);
 
-    for (int j = 0; !queue.isEmpty(); j++) {
+    for (int j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         order.enqueue(v);
         rank[v] = count++;
-        for (DirectedEdge e : G.adj(v)) {
+        for (Directed_edge e : G.adj(v)) {
             int w = e.to();
             indegree[w]--;
             if (indegree[w] == 0) queue.enqueue(w);
@@ -64,7 +64,7 @@ Topological_x::Topological_x(Edge_weighted_digraph& G)
     }
 
     // there is a directed cycle in subgraph of vertices with indegree >= 1.
-    if (count != G.V()) {
+    if (count != G.num_vertices()) {
         order = null;
     }
 
@@ -92,19 +92,19 @@ bool Topological_x::check(Digraph& G)
 {
     if (hasOrder()) {
         // check that ranks are a permutation of 0 to V-1
-        boolean[] found = new boolean[G.V()];
-        for (int i = 0; i < G.V(); i++) {
+        std::deque<bool> found = new boolean[G.num_vertices()];
+        for (int i = 0; i < G.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.num_vertices(); ++i) {
             if (!found[i]) {
-                System.err.println("No vertex with rank " + i);
+                System.err.print_line("No vertex with rank " + i);
                 return false;
             }
         }
 
         // check that ranks provide a valid topological order
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
             for (int w : G.adj(v)) {
                 if (rank(v) > rank(w)) {
                     System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
@@ -118,7 +118,7 @@ bool Topological_x::check(Digraph& G)
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                System.err.println("order() and rank() inconsistent");
+                System.err.print_line("order() and rank() inconsistent");
                 return false;
             }
             r++;
@@ -132,20 +132,20 @@ bool Topological_x::check(Edge_weighted_digraph& G)
 {
     if (hasOrder()) {
         // check that ranks are a permutation of 0 to V-1
-        boolean[] found = new boolean[G.V()];
-        for (int i = 0; i < G.V(); i++) {
+        std::deque<bool> found = new boolean[G.num_vertices()];
+        for (int i = 0; i < G.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.num_vertices(); ++i) {
             if (!found[i]) {
-                System.err.println("No vertex with rank " + i);
+                System.err.print_line("No vertex with rank " + i);
                 return false;
             }
         }
 
         // check that ranks provide a valid topological order
-        for (int v = 0; v < G.V(); v++) {
-            for (DirectedEdge e : G.adj(v)) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
+            for (Directed_edge e : G.adj(v)) {
                 int w = e.to();
                 if (rank(v) > rank(w)) {
                     System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
@@ -159,7 +159,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                System.err.println("order() and rank() inconsistent");
+                System.err.print_line("order() and rank() inconsistent");
                 return false;
             }
             r++;

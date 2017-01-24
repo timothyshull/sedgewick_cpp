@@ -44,7 +44,7 @@ bool Polar_order::operator<(Point_2d& lhs, Point_2d& rhs)
         if (dx1 >= 0 && dx2 < 0) return -1;
         else if (dx2 >= 0 && dx1 < 0) return +1;
         else return 0;
-    } else return -ccw(Point2D.this, q1, q2);
+    } else return -ccw(Point_2d.this, q1, q2);
 }
 
 bool Distance_to_order::operator<(Point_2d& lhs, Point_2d& rhs)
@@ -137,11 +137,11 @@ bool Point_2d::operator==(Point_2d& rhs)
     if (other == this) return true;
     if (other == null) return false;
     if (other.getClass() != this.getClass()) return false;
-    Point2D that = (Point2D) other;
+    Point_2d that = (Point_2d) other;
     return this.x == that.x && this.y == that.y;
 }
 
-std::string Point_2d::toString()
+std::string Point_2d::to_string()
 {
     return "(" + x + ", " + y + ")";
 }
@@ -155,11 +155,11 @@ int Point_2d::hashCode()
 
 void Point_2d::draw()
 {
-    StdDraw.point(x, y);
+    Std_draw::point(x, y);
 }
 
 void Point_2d::drawTo() {
-    StdDraw.line(this.x, this.y, that.x, that.y);
+    Std_draw::line(this.x, this.y, that.x, that.y);
 }
 
 Polar_order Point_2d::polarOrder()

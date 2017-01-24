@@ -248,7 +248,7 @@ target_link_libraries(whitelist_main std_io utility)
 
 
 
-# TODO: 1st Round
+# TODO: 2nd Round
 add_executable(bellman_ford_sp_main bellman_ford_sp_main.cpp Bellman_ford_sp.cpp Bellman_ford_sp.h)
 add_executable(binary_dump_main binary_dump_main.cpp)
 add_executable(binary_in_main binary_in_main.cpp Binary_in.cpp Binary_in.h)
@@ -280,6 +280,7 @@ add_executable(dijkstra_sp_main dijkstra_sp_main.cpp Dijkstra_sp.cpp Dijkstra_sp
 add_executable(dijkstra_undirected_sp_main dijkstra_undirected_sp_main.cpp Dijkstra_undirected_sp.cpp Dijkstra_undirected_sp.h)
 add_executable(directed_cycle_x_main directed_cycle_x_main.cpp Directed_cycle_x.cpp Directed_cycle_x.h)
 add_executable(directed_dfs_main directed_dfs_main.cpp Directed_dfs.cpp Directed_dfs.h)
+# TODO: tmp
 add_executable(directed_eulerian_cycle_main directed_eulerian_cycle_main.cpp Directed_eulerian_cycle.cpp Directed_eulerian_cycle.h)
 add_executable(directed_eulerian_path_main directed_eulerian_path_main.cpp Directed_eulerian_path.cpp Directed_eulerian_path.h)
 add_executable(doubling_ratio_main doubling_ratio_main.cpp Doubling_ratio.cpp Doubling_ratio.h)

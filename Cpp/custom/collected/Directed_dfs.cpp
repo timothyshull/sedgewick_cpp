@@ -2,13 +2,13 @@
 
 Directed_dfs::Directed_dfs(Digraph& G, int s)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
     dfs(G, s);
 }
 
 Directed_dfs::Directed_dfs(Digraph& G, std::vector<int>& sources)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
     for (int v : sources) {
         if (!marked[v]) { dfs(G, v); }
     }

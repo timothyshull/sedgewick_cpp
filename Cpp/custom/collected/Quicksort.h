@@ -96,7 +96,7 @@ public:
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; i++) {
+        for (int i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -105,7 +105,7 @@ public:
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); i++) {
+        for (int i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

@@ -13,7 +13,7 @@ public:
 
     int index(std::string& s);
 
-    int indexOf(std::string& s);
+    int index_of(std::string& s);
 
     std::string name(int v);
 

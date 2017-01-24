@@ -6,15 +6,15 @@ Closest_pair::Closest_pair(std::vector<Point_2d>& points)
     if (n <= 1) { return; }
 
     // sort by x-coordinate (breaking ties by y-coordinate)
-    Point2D[]
-    pointsByX = new Point2D[n];
-    for (int i = 0; i < n; i++) {
+    std::vector<Point_2d>
+    pointsByX = new Point_2d[n];
+    for (int i = 0; i < n; ++i) {
         pointsByX[i] = points[i];
     }
-    Arrays.sort(pointsByX, Point2D.X_ORDER);
+    Arrays.sort(pointsByX, Point_2d.X_ORDER);
 
     // check for coincident points
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n - 1; ++i) {
         if (pointsByX[i].equals(pointsByX[i + 1])) {
             bestDistance = 0.0;
             best1 = pointsByX[i];
@@ -24,15 +24,15 @@ Closest_pair::Closest_pair(std::vector<Point_2d>& points)
     }
 
     // sort by y-coordinate (but not yet sorted)
-    Point2D[]
-    pointsByY = new Point2D[n];
-    for (int i = 0; i < n; i++) {
+    std::vector<Point_2d>
+    pointsByY = new Point_2d[n];
+    for (int i = 0; i < n; ++i) {
         pointsByY[i] = pointsByX[i];
     }
 
     // auxiliary array
-    Point2D[]
-    aux = new Point2D[n];
+    std::vector<Point_2d>
+    aux = new Point_2d[n];
 
     closest(pointsByX, pointsByY, aux, 0, n - 1);
 }
@@ -42,7 +42,7 @@ double Closest_pair::closest(std::vector<Point_2d>& pointsByX, std::vector<Point
     if (hi <= lo) { return Double.POSITIVE_INFINITY; }
 
     int mid = lo + (hi - lo) / 2;
-    Point2D median = pointsByX[mid];
+    Point_2d median = pointsByX[mid];
 
     // compute closest pair with both endpoints in left subarray or both in right subarray
     double delta1 = closest(pointsByX, pointsByY, aux, lo, mid);
@@ -54,16 +54,16 @@ double Closest_pair::closest(std::vector<Point_2d>& pointsByX, std::vector<Point
 
     // aux[0..m-1] = sequence of points closer than delta, sorted by y-coordinate
     int m = 0;
-    for (int i = lo; i <= hi; i++) {
+    for (int i = lo; i <= hi; ++i) {
         if (Math.abs(pointsByY[i].x() - median.x()) < delta) {
             aux[m++] = pointsByY[i];
         }
     }
 
     // compare each point to its neighbors with y-coordinate closer than delta
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; ++i) {
         // a geometric packing argument shows that this loop iterates at most 7 times
-        for (int j = i + 1; (j < m) && (aux[j].y() - aux[i].y() < delta); j++) {
+        for (int j = i + 1; (j < m) && (aux[j].y() - aux[i].y() < delta); ++j) {
             double distance = aux[i].distanceTo(aux[j]);
             if (distance < delta) {
                 delta = distance;
@@ -71,7 +71,7 @@ double Closest_pair::closest(std::vector<Point_2d>& pointsByX, std::vector<Point
                     bestDistance = delta;
                     best1 = aux[i];
                     best2 = aux[j];
-                    // StdOut.println("better distance = " + delta + " from " + best1 + " to " + best2);
+                    // Std_out::print_line("better distance = " + delta + " from " + best1 + " to " + best2);
                 }
             }
         }

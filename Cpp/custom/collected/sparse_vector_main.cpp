@@ -7,9 +7,9 @@ int main(int argc, char *argv[]) {
     a.put(6, 0.00);
     b.put(3, 0.60);
     b.put(4, 0.90);
-    StdOut.println("a = " + a);
-    StdOut.println("b = " + b);
-    StdOut.println("a dot b = " + a.dot(b));
-    StdOut.println("a + b   = " + a.plus(b));
+    Std_out::print_line("a = " + a);
+    Std_out::print_line("b = " + b);
+    Std_out::print_line("a dot b = " + a.dot(b));
+    Std_out::print_line("a + b   = " + a.plus(b));
     return 0;
 }

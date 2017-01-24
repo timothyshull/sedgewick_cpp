@@ -14,7 +14,7 @@ namespace Mergesort_x {
         utility::assert(is_sorted(src, mid + 1, hi), "Mergesort_x is_sorted check failed for mid + 1 to hi");
 
         int i = lo, j = mid + 1;
-        for (int k = lo; k <= hi; k++) {
+        for (int k = lo; k <= hi; ++k) {
             if (i > mid) { dst[k] = src[j++]; }
             else if (j > hi) { dst[k] = src[i++]; }
             else if (less(src[j], src[i])) {
@@ -37,7 +37,7 @@ namespace Mergesort_x {
         sort(dst, src, mid + 1, hi);
 
         // if (!_less(src[mid+1], src[mid])) {
-        //    for (int i = lo; i <= hi; i++) dst[i] = src[i];
+        //    for (int i = lo; i <= hi; ++i) dst[i] = src[i];
         //    return;
         // }
 
@@ -61,7 +61,7 @@ namespace Mergesort_x {
     template<typename T>
     static void insertion_sort(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i <= hi; ++i) {
             for (int j = i; j > lo && less(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
@@ -102,7 +102,7 @@ namespace Mergesort_x {
         utility::assert(is_sorted(src, mid + 1, hi, comparator), "Mergesort_x is_sorted check failed for mid + 1 to hi");
 
         int i = lo, j = mid + 1;
-        for (int k = lo; k <= hi; k++) {
+        for (int k = lo; k <= hi; ++k) {
             if (i > mid) { dst[k] = src[j++]; }
             else if (j > hi) { dst[k] = src[i++]; }
             else if (less(src[j], src[i], comparator)) { dst[k] = src[j++]; }
@@ -135,7 +135,7 @@ namespace Mergesort_x {
     template<typename T>
     static void insertion_sort(std::vector<T>& a, int lo, int hi, Comparator comparator)
     {
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i <= hi; ++i) {
             for (int j = i; j > lo && less(a[j], a[j - 1], comparator); j--) {
                 exch(a, j, j - 1);
             }
@@ -151,7 +151,7 @@ namespace Mergesort_x {
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; i++) {
+        for (int i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -166,7 +166,7 @@ namespace Mergesort_x {
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi, Comparator comparator)
     {
-        for (int i = lo + 1; i <= hi; i++) {
+        for (int i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1], comparator)) { return false; }
         }
         return true;
@@ -175,7 +175,7 @@ namespace Mergesort_x {
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); i++) {
+        for (int i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

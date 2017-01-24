@@ -8,9 +8,106 @@
 #include <string>
 #include <ios>
 #include <type_traits>
+#include <iostream>
 
 namespace utility {
     void assert(bool test, const char msg[]);
+
+    // TODO: add handling for selecting strtoll, stroul, and strtoull based
+    // on template type
+    int safe_read_integer()
+    {
+        // from CERT
+        char buff[25];
+        char* end_ptr;
+        long sl{0};
+        int si{0};
+        int exit{0};
+
+        std::cin.width(24);
+        std::cin >> buff;
+
+        errno = 0;
+
+        sl = strtol(buff, &end_ptr, 0);
+
+        if (ERANGE == errno) {
+            exit = -1;
+            std::cerr << "number out of range\n";
+        } else if (sl > INT_MAX) {
+            exit = -1;
+            std::cerr << sl << " too large!\n";
+        } else if (sl < INT_MIN) {
+            exit = -1;
+            std::cerr << sl << " too small!\n";
+        } else if (end_ptr == buff) {
+            exit = -1;
+            std::cerr << "not valid numeric input\n";
+        } else if (*end_ptr != '\0') {
+            exit = -1;
+            std::cerr << "extra characters on input line\n";
+        } else {
+            si = static_cast<int>(sl);
+        }
+
+        if (exit != 0) {
+            std::exit(exit);
+        } else {
+            return si;
+        }
+    }
+
+    int safe_convert_integer(const char * str)
+    {
+        // from CERT
+        const int buff_size = 25;
+        char buff[buff_size];
+        char* end_ptr;
+        long sl{0};
+        int si{0};
+        int exit{0};
+
+        int i;
+        for (i = 0; i < buff_size && *(str + i) != '\0'; ++i) {
+            *(buff + i) = *(str + i);
+            if (i == buff_size) {
+                exit = -1;
+            }
+        }
+        if (i < buff_size - 1 && buff[i] != '\0') {
+            *(buff + i + 1) = '\0';
+        }
+
+        errno = 0;
+        sl = strtol(buff, &end_ptr, 0);
+
+        if (exit == -1) {
+            std::cerr << "The length of the input string was too large\n";
+        } else if (ERANGE == errno) {
+            exit = -1;
+            std::cerr << "The number was out of range\n";
+        } else if (sl > INT_MAX) {
+            exit = -1;
+            std::cerr << sl << " is too large\n";
+        } else if (sl < INT_MIN) {
+            exit = -1;
+            std::cerr << sl << " is too small\n";
+        } else if (end_ptr == buff) {
+            exit = -1;
+            std::cerr << "is not valid numeric input\n";
+        } else if (*end_ptr != '\0') {
+            exit = -1;
+            std::cerr << "Extra characters were included in the input line\n";
+        } else {
+            si = static_cast<int>(sl);
+        }
+
+        if (exit != 0) {
+            std::exit(exit);
+        } else {
+            return si;
+        }
+    }
 
     template<typename T>
     void pad(std::basic_string<T>& s, typename std::basic_string<T>::size_type n, T c)
@@ -19,6 +116,8 @@ namespace utility {
             s.append(n - s.length(), c);
         }
     }
+
+    std::vector<char> str_to_char_vector(std::string& str);
 
     template<typename Stream_type>
     void copy_stream(Stream_type& src, Stream_type& dest)
@@ -87,9 +186,9 @@ namespace utility {
     template<class T, class... Args>
     inline
     typename __unique_if<T>::__unique_single
-    make_unique(Args&& ... args)
+    make_unique(Args&& ... argv)
     {
-        return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+        return std::unique_ptr<T>(new T(std::forward<Args>(argv)...));
     }
 
     template<class T>

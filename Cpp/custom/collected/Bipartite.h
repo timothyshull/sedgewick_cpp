@@ -9,11 +9,11 @@
 class Bipartite {
 public:
     Bipartite(Graph& G);
-    bool isBipartite();
+    bool is_bipartite();
     bool color(int v);
-    std::vector<int> oddCycle();
+    std::vector<int> odd_cycle();
 private:
-    bool isBipartite;
+    bool is_bipartite;
     std::deque<bool> color;
     std::deque<bool> marked;
     std::vector<int> edgeTo;

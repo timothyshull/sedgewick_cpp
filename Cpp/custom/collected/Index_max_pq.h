@@ -151,17 +151,17 @@ public:
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
         pq = new int[maxN + 1];
         qp = new int[maxN + 1];                   // make this of length maxN??
-        for (int i = 0; i <= maxN; i++) {
+        for (int i = 0; i <= maxN; ++i) {
             qp[i] = -1;
         }
     }
 
-    boolean isEmpty()
+    bool is_empty()
     {
         return n == 0;
     }
 
-    boolean contains(int i)
+    bool contains(int i)
     {
         return qp[i] != -1;
     }
@@ -272,7 +272,7 @@ private:
     template<typename, typename>
     friend class Index_max_pq_reverse_iterator;
 
-    boolean less(int i, int j)
+    bool less(int i, int j)
     {
         return keys[pq[i]].compareTo(keys[pq[j]]) < 0;
     }

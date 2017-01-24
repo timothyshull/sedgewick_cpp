@@ -1,5 +1,5 @@
-#ifndef STATIC_SET_OF_INTS_H
-#define STATIC_SET_OF_INTS_H
+#ifndef STATIC_Set_OF_INTS_H
+#define STATIC_Set_OF_INTS_H
 
 #include <vector>
 
@@ -27,4 +27,4 @@ private:
     std::vector<int> _set;
 };
 
-#endif // STATIC_SET_OF_INTS_H
+#endif // STATIC_Set_OF_INTS_H

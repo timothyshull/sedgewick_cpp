@@ -13,14 +13,14 @@ public:
 
     std::vector<Directed_edge> negativeCycle();
 
-    double distTo(int);
+    double distance_to(int);
 
-    bool hasPathTo(int);
+    bool has_path_to(int);
 
-    std::vector<Directed_edge> pathTo(int);
+    std::vector<Directed_edge> path_to(int);
 
 private:
-    std::vector<double> distTo;
+    std::vector<double> distance_to;
     std::vector<Directed_edge> edgeTo;
     std::deque<bool> onQueue;
     Queue<int> queue;

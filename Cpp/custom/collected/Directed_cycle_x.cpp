@@ -3,17 +3,17 @@
 
 Directed_cycle_x::Directed_cycle_x(Digraph& G)
 {
-    int[] indegree = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    std::vector<int> indegree = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         indegree[v] = G.indegree(v);
     }
 
     // initialize queue to contain all vertices with indegree = 0
     Queue<Integer> queue = new Queue<Integer>();
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (indegree[v] == 0) queue.enqueue(v);
 
-    for (int j = 0; !queue.isEmpty(); j++) {
+    for (int j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         for (int w : G.adj(v)) {
             indegree[w]--;
@@ -22,9 +22,9 @@ Directed_cycle_x::Directed_cycle_x(Digraph& G)
     }
 
     // there is a directed cycle in subgraph of vertices with indegree >= 1.
-    int[] edgeTo = new int[G.V()];
+    std::vector<int> edgeTo = new int[G.num_vertices()];
     int root = -1;  // any vertex with indegree >= -1
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (indegree[v] == 0) continue;
         else root = v;
         for (int w : G.adj(v)) {
@@ -37,7 +37,7 @@ Directed_cycle_x::Directed_cycle_x(Digraph& G)
     if (root != -1) {
 
         // find any vertex on cycle
-        boolean[] visited = new boolean[G.V()];
+        std::deque<bool> visited = new boolean[G.num_vertices()];
         while (!visited[root]) {
             visited[root] = true;
             root = edgeTo[root];
@@ -61,14 +61,14 @@ std::vector<int> Directed_cycle_x::cycle()
     return cycle;
 }
 
-bool Directed_cycle_x::hasCycle()
+bool Directed_cycle_x::has_cycle()
 {
     return cycle != null;
 }
 
 bool Directed_cycle_x::check()
 {
-    if (hasCycle()) {
+    if (has_cycle()) {
         // verify cycle
         int first = -1, last = -1;
         for (int v : cycle()) {

@@ -1,27 +1,27 @@
 int main(int argc, char *argv[]) {
-    int V = Integer.parseInt(args[0]);
-    int E = Integer.parseInt(args[1]);
+    int V = utility::safe_convert_integer(argv[1]);
+    int E = utility::safe_convert_integer(argv[2]);
     int s = 0, t = V - 1;
     FlowNetwork G = new FlowNetwork(V, E);
-    StdOut.println(G);
+    Std_out::print_line(G);
 
     // compute maximum flow and minimum cut
     FordFulkerson maxflow = new FordFulkerson(G, s, t);
-    StdOut.println("Max flow from " + s + " to " + t);
-    for (int v = 0; v < G.V(); v++) {
+    Std_out::print_line("Max flow from " + s + " to " + t);
+    for (int v = 0; v < G.num_vertices(); ++v) {
         for (FlowEdge e : G.adj(v)) {
             if ((v == e.from()) && e.flow() > 0)
-                StdOut.println("   " + e);
+                Std_out::print_line("   " + e);
         }
     }
 
     // print min-cut
-    StdOut.print("Min cut: ");
-    for (int v = 0; v < G.V(); v++) {
-        if (maxflow.inCut(v)) StdOut.print(v + " ");
+    Std_out::print("Min cut: ");
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        if (maxflow.inCut(v)) Std_out::print(v + " ");
     }
-    StdOut.println();
+    Std_out::print_line();
 
-    StdOut.println("Max flow value = " + maxflow.value());
+    Std_out::print_line("Max flow value = " + maxflow.value());
     return 0;
 }

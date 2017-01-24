@@ -33,12 +33,12 @@ public:
         comp = C;
     }
 
-    boolean isEmpty()
+    bool is_empty()
     {
         return n == 0;
     }
 
-    boolean contains(int i)
+    bool contains(int i)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
         return qp[i + d] != -1;
@@ -61,19 +61,19 @@ public:
 
     int minIndex()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         return pq[d];
     }
 
     Key minKey()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         return keys[pq[d] + d];
     }
 
     int delMin()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         int min = pq[d];
         exch(0, --n);
         sink(0);
@@ -146,7 +146,7 @@ private:
     std::vector<Key> keys;
     const Comparator_type comp;
 
-    boolean greater(int i, int j)
+    bool greater(int i, int j)
     {
         return comp.compare(keys[pq[i + d] + d], keys[pq[j + d] + d]) > 0;
     }
@@ -184,7 +184,7 @@ private:
     {
         int loBound = d * i + 1, hiBound = d * i + d;
         int min = loBound;
-        for (int cur = loBound; cur <= hiBound; cur++) {
+        for (int cur = loBound; cur <= hiBound; ++cur) {
             if (cur < n && greater(min, cur)) { min = cur; }
         }
         return min;

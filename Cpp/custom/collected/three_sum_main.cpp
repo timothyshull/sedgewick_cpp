@@ -1,10 +1,12 @@
+#include "In.h"
+
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    int[] a = in.readAllInts();
+    In in{argv[1]};
+    std::vector<int> a = in.readAllInts();
 
     Stopwatch timer = new Stopwatch();
     int count = count(a);
-    StdOut.println("elapsed time = " + timer.elapsedTime());
-    StdOut.println(count);
+    Std_out::print_line("elapsed time = " + timer.elapsedTime());
+    Std_out::print_line(count);
     return 0;
 }

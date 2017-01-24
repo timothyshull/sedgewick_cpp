@@ -1,54 +1,54 @@
 int main(int argc, char *argv[]) {
-    int V = Integer.parseInt(args[0]);
-    int E = Integer.parseInt(args[1]);
-    AdjMatrixEdgeWeightedDigraph G = new AdjMatrixEdgeWeightedDigraph(V);
-    for (int i = 0; i < E; i++) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
-        double weight = Math.round(100 * (StdRandom.uniform() - 0.15)) / 100.0;
-        if (v == w) G.addEdge(new DirectedEdge(v, w, Math.abs(weight)));
-        else G.addEdge(new DirectedEdge(v, w, weight));
+    int V = utility::safe_convert_integer(argv[1]);
+    int E = utility::safe_convert_integer(argv[2]);
+    Adj_matrix_edge_weighted_digraph G = new Adj_matrix_edge_weighted_digraph(V);
+    for (int i = 0; i < E; ++i) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
+        double weight = Math.round(100 * (Std_random::uniform() - 0.15)) / 100.0;
+        if (v == w) G.add_edge(new Directed_edge(v, w, Math.abs(weight)));
+        else G.add_edge(new Directed_edge(v, w, weight));
     }
 
-    StdOut.println(G);
+    Std_out::print_line(G);
 
     // run Floyd-Warshall algorithm
     FloydWarshall spt = new FloydWarshall(G);
 
     // print all-pairs shortest path distances
-    StdOut.printf("  ");
-    for (int v = 0; v < G.V(); v++) {
-        StdOut.printf("%6d ", v);
+    Std_out::printf("  ");
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        Std_out::printf("%6d ", v);
     }
-    StdOut.println();
-    for (int v = 0; v < G.V(); v++) {
-        StdOut.printf("%3d: ", v);
-        for (int w = 0; w < G.V(); w++) {
-            if (spt.hasPath(v, w)) StdOut.printf("%6.2f ", spt.dist(v, w));
-            else StdOut.printf("  Inf ");
+    Std_out::print_line();
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        Std_out::printf("%3d: ", v);
+        for (int w = 0; w < G.num_vertices(); ++w) {
+            if (spt.hasPath(v, w)) Std_out::printf("%6.2f ", spt.dist(v, w));
+            else Std_out::printf("  Inf ");
         }
-        StdOut.println();
+        Std_out::print_line();
     }
 
     // print negative cycle
     if (spt.hasNegativeCycle()) {
-        StdOut.println("Negative cost cycle:");
-        for (DirectedEdge e : spt.negativeCycle())
-            StdOut.println(e);
-        StdOut.println();
+        Std_out::print_line("Negative cost cycle:");
+        for (Directed_edge e : spt.negativeCycle())
+            Std_out::print_line(e);
+        Std_out::print_line();
     }
 
         // print all-pairs shortest paths
     else {
-        for (int v = 0; v < G.V(); v++) {
-            for (int w = 0; w < G.V(); w++) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
+            for (int w = 0; w < G.num_vertices(); ++w) {
                 if (spt.hasPath(v, w)) {
-                    StdOut.printf("%d to %d (%5.2f)  ", v, w, spt.dist(v, w));
-                    for (DirectedEdge e : spt.path(v, w))
-                        StdOut.print(e + "  ");
-                    StdOut.println();
+                    Std_out::printf("%d to %d (%5.2f)  ", v, w, spt.dist(v, w));
+                    for (Directed_edge e : spt.path(v, w))
+                        Std_out::print(e + "  ");
+                    Std_out::print_line();
                 } else {
-                    StdOut.printf("%d to %d no path\n", v, w);
+                    Std_out::printf("%d to %d no path\n", v, w);
                 }
             }
         }

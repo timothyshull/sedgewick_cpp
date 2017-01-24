@@ -2,11 +2,11 @@
 
 Tarjan_scc::Tarjan_scc(Digraph& G)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
     stack = new Stack<Integer>();
-    id = new int[G.V()];
-    low = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    id = new int[G.num_vertices()];
+    low = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) dfs(G, v);
     }
 
@@ -47,7 +47,7 @@ void Tarjan_scc::dfs(Digraph& G, int v)
     do {
         w = stack.pop();
         id[w] = count;
-        low[w] = G.V();
+        low[w] = G.num_vertices();
     } while (w != v);
     count++;
 }
@@ -55,8 +55,8 @@ void Tarjan_scc::dfs(Digraph& G, int v)
 bool Tarjan_scc::check(Digraph& G)
 {
     TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v = 0; v < G.V(); v++) {
-        for (int w = 0; w < G.V(); w++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        for (int w = 0; w < G.num_vertices(); ++w) {
             if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v)))
                 return false;
         }

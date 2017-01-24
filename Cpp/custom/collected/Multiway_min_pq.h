@@ -25,7 +25,7 @@ public:
         for (Key k : a) { insert(k); }
     }
 
-    bool isEmpty() { return n == 0; };
+    bool is_empty() { return n == 0; };
 
     int size() { return n; }
 
@@ -38,12 +38,12 @@ public:
         }
     }
     Key minKey() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         return keys[d];
     }
 
     Key delMin() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         exch(0, --n);
         sink(0);
         Key min = keys[n + d];
@@ -102,7 +102,7 @@ private:
     int minChild(int i) {
         int loBound = d * i + 1, hiBound = d * i + d;
         int min = loBound;
-        for (int cur = loBound; cur <= hiBound; cur++) {
+        for (int cur = loBound; cur <= hiBound; ++cur) {
             if (cur < n && greater(min, cur)) min = cur;
         }
         return min;
@@ -110,7 +110,7 @@ private:
 
     void resize(int N) {
         Key[] array = (Key[]) new Comparable[N];
-        for (int i = 0; i < Math.min(keys.length, array.length); i++) {
+        for (int i = 0; i < Math.min(keys.length, array.length); ++i) {
             array[i] = keys[i];
             keys[i] = null;
         }

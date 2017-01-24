@@ -1,45 +1,56 @@
-int main(int argc, char *argv[]) {
-    StdDraw.setCanvasSize(800, 800);
+#include "utility.h"
+#include "Particle.h"
+#include "Std_in.h"
+#include "Std_draw.h"
+#include "Collision_system.h"
 
-    // remove the border
-    // StdDraw.setXscale(1.0/22.0, 21.0/22.0);
-    // StdDraw.setYscale(1.0/22.0, 21.0/22.0);
+int main(int argc, char* argv[])
+{
+    Std_draw::setCanvasSize(800, 800);
 
-    // enable double buffering
-    StdDraw.enableDoubleBuffering();
+    // Std_draw::setXscale(1.0/22.0, 21.0/22.0);
+    // Std_draw::setYscale(1.0/22.0, 21.0/22.0);
 
-    // the array of particles
-    Particle[] particles;
+    Std_draw::enableDoubleBuffering();
 
-    // create n random particles
-    if (args.length == 1) {
-        int n = Integer.parseInt(args[0]);
-        particles = new Particle[n];
-        for (int i = 0; i < n; i++)
-            particles[i] = new Particle();
-    }
+    std::vector<Particle> particles;
 
-        // or read from standard input
-    else {
-        int n = StdIn.readInt();
-        particles = new Particle[n];
-        for (int i = 0; i < n; i++) {
-            double rx = StdIn.readDouble();
-            double ry = StdIn.readDouble();
-            double vx = StdIn.readDouble();
-            double vy = StdIn.readDouble();
-            double radius = StdIn.readDouble();
-            double mass = StdIn.readDouble();
-            int r = StdIn.readInt();
-            int g = StdIn.readInt();
-            int b = StdIn.readInt();
-            Color color = new Color(r, g, b);
-            particles[i] = new Particle(rx, ry, vx, vy, radius, mass, color);
+    if (argc == 2) {
+        int n = utility::safe_convert_integer(argv[1]);
+        particles.clear();
+        particles.reserve(n);
+        for (int i = 0; i < n; ++i) {
+            particles[i] = Particle{};
+        }
+    } else {
+        int n = Std_in::read_int();
+        particles.clear();
+        particles.reserve(n);
+        double rx;
+        double ry;
+        double vx;
+        double vy;
+        double radius;
+        double mass;
+        int r;
+        int g;
+        int b;
+        for (int i = 0; i < n; ++i) {
+            rx = Std_in::read_double();
+            ry = Std_in::read_double();
+            vx = Std_in::read_double();
+            vy = Std_in::read_double();
+            radius = Std_in::read_double();
+            mass = Std_in::read_double();
+            r = Std_in::read_int();
+            g = Std_in::read_int();
+            b = Std_in::read_int();
+            Color color{r, g, b};
+            particles[i] = Particle{rx, ry, vx, vy, radius, mass, color};
         }
     }
 
-    // create collision system and simulate
-    CollisionSystem system = new CollisionSystem(particles);
+    Collision_system system{particles};
     system.simulate(10000);
     return 0;
 }

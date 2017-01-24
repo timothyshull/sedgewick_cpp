@@ -1,10 +1,10 @@
 int main(int argc, char *argv[]) {
-    ResizingArrayQueue<String> queue = new ResizingArrayQueue<String>();
-    while (!StdIn.isEmpty()) {
-        String item = StdIn.readString();
+    ResizingArrayQueue<std::string> queue = new ResizingArrayQueue<std::string>();
+    while (!Std_in::is_empty()) {
+        std::string item = Std_in::read_string();
         if (!item.equals("-")) queue.enqueue(item);
-        else if (!queue.isEmpty()) StdOut.print(queue.dequeue() + " ");
+        else if (!queue.is_empty()) Std_out::print(queue.dequeue() + " ");
     }
-    StdOut.println("(" + queue.size() + " left on queue)");
+    Std_out::print_line("(" + queue.size() + " left on queue)");
     return 0;
 }

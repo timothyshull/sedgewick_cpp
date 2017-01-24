@@ -9,7 +9,7 @@
 class Cycle {
 public:
     Cycle(Graph& G);
-    bool hasCycle();
+    bool has_cycle();
     std::vector<int> cycle();
 private:
     std::deque<bool> marked;

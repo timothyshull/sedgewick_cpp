@@ -99,7 +99,7 @@ void Patricia_set::remove(std::string& key)
     }
 }
 
-bool Patricia_set::isEmpty()
+bool Patricia_set::is_empty()
 {
     return count == 0;
 }
@@ -109,12 +109,12 @@ int Patricia_set::size()
     return count;
 }
 
-std::string Patricia_set::toString()
+std::string Patricia_set::to_string()
 {
-    StringBuilder s = new StringBuilder();
+    std::stringstream s = new std::stringstream();
     for (String key : this) s.append(key + " ");
     if (s.length() > 0) s.deleteCharAt(s.length() - 1);
-    return s.toString();
+    return s.to_string();
 }
 
 void Patricia_set::collect(Patricia_set::Raw_node_pointer x, int b, Queue<std::string> queue)

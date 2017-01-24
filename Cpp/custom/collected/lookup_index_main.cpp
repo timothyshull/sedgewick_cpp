@@ -1,35 +1,35 @@
 int main(int argc, char *argv[]) {
-    String filename = args[0];
-    String separator = args[1];
+    std::string filename = argv[1];
+    std::string separator = argv[2];
     In in = new In(filename);
 
-    ST<String, Queue<String>> st = new ST<String, Queue<String>>();
-    ST<String, Queue<String>> ts = new ST<String, Queue<String>>();
+    ST<std::string, Queue<std::string>> st = new ST<std::string, Queue<std::string>>();
+    ST<std::string, Queue<std::string>> ts = new ST<std::string, Queue<std::string>>();
 
     while (in.hasNextLine()) {
-        String line = in.readLine();
+        std::string line = in.read_line();
         String[] fields = line.split(separator);
-        String key = fields[0];
-        for (int i = 1; i < fields.length; i++) {
-            String val = fields[i];
-            if (!st.contains(key)) st.put(key, new Queue<String>());
-            if (!ts.contains(val)) ts.put(val, new Queue<String>());
+        std::string key = fields[0];
+        for (int i = 1; i < fields.length; ++i) {
+            std::string val = fields[i];
+            if (!st.contains(key)) st.put(key, new Queue<std::string>());
+            if (!ts.contains(val)) ts.put(val, new Queue<std::string>());
             st.get(key).enqueue(val);
             ts.get(val).enqueue(key);
         }
     }
 
-    StdOut.println("Done indexing");
+    Std_out::print_line("Done indexing");
 
     // read queries from standard input, one per line
-    while (!StdIn.isEmpty()) {
-        String query = StdIn.readLine();
+    while (!Std_in::is_empty()) {
+        std::string query = Std_in::read_line();
         if (st.contains(query))
             for (String vals : st.get(query))
-                StdOut.println("  " + vals);
+                Std_out::print_line("  " + vals);
         if (ts.contains(query))
             for (String keys : ts.get(query))
-                StdOut.println("  " + keys);
+                Std_out::print_line("  " + keys);
     }
     return 0;
 }

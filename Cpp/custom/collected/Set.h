@@ -1,5 +1,5 @@
-#ifndef SET_H
-#define SET_H
+#ifndef Set_H
+#define Set_H
 
 #include <set>
 #include <exception>
@@ -73,4 +73,4 @@ public:
     }
 };
 
-#endif // SET_H
+#endif // Set_H

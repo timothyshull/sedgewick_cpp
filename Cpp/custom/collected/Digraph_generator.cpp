@@ -16,14 +16,14 @@ Digraph Digraph_generator::simple(int V, int E)
     if (E > (long) V * (V - 1)) { throw new IllegalArgumentException("Too many edges"); }
     if (E < 0) { throw new IllegalArgumentException("Too few edges"); }
     Digraph G = new Digraph(V);
-    SET <Edge> set = new SET<Edge>();
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    Set <Edge> set = new Set<Edge>();
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(v, w);
         if ((v != w) && !set.contains(e)) {
             set.add(e);
-            G.addEdge(v, w);
+            G.add_edge(v, w);
         }
     }
     return G;
@@ -35,11 +35,11 @@ Digraph Digraph_generator::simple(int V, double p)
         throw new IllegalArgumentException("Probability must be between 0 and 1");
     }
     Digraph G = new Digraph(V);
-    for (int v = 0; v < V; v++) {
-        for (int w = 0; w < V; w++) {
+    for (int v = 0; v < V; ++v) {
+        for (int w = 0; w < V; ++w) {
             if (v != w) {
-                if (StdRandom.bernoulli(p)) {
-                    G.addEdge(v, w);
+                if (Std_random::bernoulli(p)) {
+                    G.add_edge(v, w);
                 }
             }
         }
@@ -57,21 +57,21 @@ Digraph Digraph_generator::dag(int V, int E)
     if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
     if (E < 0) { throw new IllegalArgumentException("Too few edges"); }
     Digraph G = new Digraph(V);
-    SET <Edge> set = new SET<Edge>();
+    Set <Edge> set = new Set<Edge>();
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    Std_random::shuffle(vertices);
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(v, w);
         if ((v < w) && !set.contains(e)) {
             set.add(e);
-            G.addEdge(vertices[v], vertices[w]);
+            G.add_edge(vertices[v], vertices[w]);
         }
     }
     return G;
@@ -80,95 +80,95 @@ Digraph Digraph_generator::dag(int V, int E)
 Digraph Digraph_generator::tournament(int V)
 {
     Digraph G = new Digraph(V);
-    for (int v = 0; v < G.V(); v++) {
-        for (int w = v + 1; w < G.V(); w++) {
-            if (StdRandom.bernoulli(0.5)) { G.addEdge(v, w); }
-            else { G.addEdge(w, v); }
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        for (int w = v + 1; w < G.num_vertices(); ++w) {
+            if (Std_random::bernoulli(0.5)) { G.add_edge(v, w); }
+            else { G.add_edge(w, v); }
         }
     }
     return G;
 }
 
-Digraph Digraph_generator::rootedInDAG(int V, int E)
+Digraph Digraph_generator::rooted_in_dag(int V, int E)
 {
     if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
     if (E < V - 1) { throw new IllegalArgumentException("Too few edges"); }
     Digraph G = new Digraph(V);
-    SET <Edge> set = new SET<Edge>();
+    Set <Edge> set = new Set<Edge>();
 
     // fix a topological order
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
 
     // one edge pointing from each vertex, other than the root = vertices[V-1]
-    for (int v = 0; v < V - 1; v++) {
-        int w = StdRandom.uniform(v + 1, V);
+    for (int v = 0; v < V - 1; ++v) {
+        int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(v, w);
         set.add(e);
-        G.addEdge(vertices[v], vertices[w]);
+        G.add_edge(vertices[v], vertices[w]);
     }
 
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(v, w);
         if ((v < w) && !set.contains(e)) {
             set.add(e);
-            G.addEdge(vertices[v], vertices[w]);
+            G.add_edge(vertices[v], vertices[w]);
         }
     }
     return G;
 }
 
-Digraph Digraph_generator::rootedOutDAG(int V, int E)
+Digraph Digraph_generator::rooted_out_dag(int V, int E)
 {
     if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
     if (E < V - 1) { throw new IllegalArgumentException("Too few edges"); }
     Digraph G = new Digraph(V);
-    SET <Edge> set = new SET<Edge>();
+    Set <Edge> set = new Set<Edge>();
 
     // fix a topological order
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
 
     // one edge pointing from each vertex, other than the root = vertices[V-1]
-    for (int v = 0; v < V - 1; v++) {
-        int w = StdRandom.uniform(v + 1, V);
+    for (int v = 0; v < V - 1; ++v) {
+        int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(w, v);
         set.add(e);
-        G.addEdge(vertices[w], vertices[v]);
+        G.add_edge(vertices[w], vertices[v]);
     }
 
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(w, v);
         if ((v < w) && !set.contains(e)) {
             set.add(e);
-            G.addEdge(vertices[w], vertices[v]);
+            G.add_edge(vertices[w], vertices[v]);
         }
     }
     return G;
 }
 
-Digraph Digraph_generator::rootedInTree(int V)
+Digraph Digraph_generator::rooted_in_tree(int V)
 {
-    return rootedInDAG(V, V - 1);
+    return rooted_in_dag(V, V - 1);
 }
 
-Digraph Digraph_generator::rootedOutTree(int V)
+Digraph Digraph_generator::rooted_out_tree(int V)
 {
-    return rootedOutDAG(V, V - 1);
+    return rooted_out_dag(V, V - 1);
 }
 
 Digraph Digraph_generator::path(int V)
@@ -177,28 +177,28 @@ Digraph Digraph_generator::path(int V)
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
-    for (int i = 0; i < V - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    Std_random::shuffle(vertices);
+    for (int i = 0; i < V - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
 }
 
-Digraph Digraph_generator::binaryTree(int V)
+Digraph Digraph_generator::binary_tree(int V)
 {
     Digraph G = new Digraph(V);
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
-    for (int i = 1; i < V; i++) {
-        G.addEdge(vertices[i], vertices[(i - 1) / 2]);
+    Std_random::shuffle(vertices);
+    for (int i = 1; i < V; ++i) {
+        G.add_edge(vertices[i], vertices[(i - 1) / 2]);
     }
     return G;
 }
@@ -209,18 +209,18 @@ Digraph Digraph_generator::cycle(int V)
     int
     []
     vertices = new int[V];
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
         vertices[i] = i;
     }
-    StdRandom.shuffle(vertices);
-    for (int i = 0; i < V - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    Std_random::shuffle(vertices);
+    for (int i = 0; i < V - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
-    G.addEdge(vertices[V - 1], vertices[0]);
+    G.add_edge(vertices[V - 1], vertices[0]);
     return G;
 }
 
-Digraph Digraph_generator::eulerianCycle(int V, int E)
+Digraph Digraph_generator::eulerian_cycle(int V, int E)
 {
     if (E <= 0) {
         throw new IllegalArgumentException("An Eulerian cycle must have at least one edge");
@@ -232,17 +232,17 @@ Digraph Digraph_generator::eulerianCycle(int V, int E)
     int
     []
     vertices = new int[E];
-    for (int i = 0; i < E; i++) {
-        vertices[i] = StdRandom.uniform(V);
+    for (int i = 0; i < E; ++i) {
+        vertices[i] = Std_random::uniform(V);
     }
-    for (int i = 0; i < E - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    for (int i = 0; i < E - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
-    G.addEdge(vertices[E - 1], vertices[0]);
+    G.add_edge(vertices[E - 1], vertices[0]);
     return G;
 }
 
-Digraph Digraph_generator::eulerianPath(int V, int E)
+Digraph Digraph_generator::eulerian_path(int V, int E)
 {
     if (E < 0) {
         throw new IllegalArgumentException("negative number of edges");
@@ -254,11 +254,11 @@ Digraph Digraph_generator::eulerianPath(int V, int E)
     int
     []
     vertices = new int[E + 1];
-    for (int i = 0; i < E + 1; i++) {
-        vertices[i] = StdRandom.uniform(V);
+    for (int i = 0; i < E + 1; ++i) {
+        vertices[i] = Std_random::uniform(V);
     }
-    for (int i = 0; i < E; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    for (int i = 0; i < E; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
 }
@@ -279,59 +279,59 @@ Digraph Digraph_generator::strong(int V, int E, int c)
     Digraph G = new Digraph(V);
 
     // edges added to G (to avoid duplicate edges)
-    SET <Edge> set = new SET<Edge>();
+    Set <Edge> set = new Set<Edge>();
 
     int
     []
     label = new int[V];
-    for (int v = 0; v < V; v++) {
-        label[v] = StdRandom.uniform(c);
+    for (int v = 0; v < V; ++v) {
+        label[v] = Std_random::uniform(c);
     }
 
     // make all vertices with label c a strong component by
     // combining a rooted in-tree and a rooted out-tree
-    for (int i = 0; i < c; i++) {
+    for (int i = 0; i < c; ++i) {
         // how many vertices in component c
         int count = 0;
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
             if (label[v] == i) { count++; }
         }
 
-        // if (count == 0) System.err.println("less than desired number of strong components");
+        // if (count == 0) System.err.print_line("less than desired number of strong components");
 
         int
         []
         vertices = new int[count];
         int j = 0;
-        for (int v = 0; v < V; v++) {
+        for (int v = 0; v < V; ++v) {
             if (label[v] == i) { vertices[j++] = v; }
         }
-        StdRandom.shuffle(vertices);
+        Std_random::shuffle(vertices);
 
         // rooted-in tree with root = vertices[count-1]
-        for (int v = 0; v < count - 1; v++) {
-            int w = StdRandom.uniform(v + 1, count);
+        for (int v = 0; v < count - 1; ++v) {
+            int w = Std_random::uniform(v + 1, count);
             Edge e = new Edge(w, v);
             set.add(e);
-            G.addEdge(vertices[w], vertices[v]);
+            G.add_edge(vertices[w], vertices[v]);
         }
 
         // rooted-out tree with root = vertices[count-1]
-        for (int v = 0; v < count - 1; v++) {
-            int w = StdRandom.uniform(v + 1, count);
+        for (int v = 0; v < count - 1; ++v) {
+            int w = Std_random::uniform(v + 1, count);
             Edge e = new Edge(v, w);
             set.add(e);
-            G.addEdge(vertices[v], vertices[w]);
+            G.add_edge(vertices[v], vertices[w]);
         }
     }
 
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(v, w);
         if (!set.contains(e) && v != w && label[v] <= label[w]) {
             set.add(e);
-            G.addEdge(v, w);
+            G.add_edge(v, w);
         }
     }
 

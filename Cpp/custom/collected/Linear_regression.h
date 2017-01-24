@@ -12,7 +12,7 @@ public:
     double interceptStdErr();
     double slopeStdErr();
     double predict();
-    std::string toString();
+    std::string to_string();
 private:
     const int n;
     const double intercept;

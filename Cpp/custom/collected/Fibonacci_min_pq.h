@@ -204,8 +204,7 @@ Fibonacci_min_pq(Comparator<Key> C, Key[] a) {
         comp = C;
         for (Key k : a) insert(k);
     }
-
-boolean isEmpty() {
+ bool is_empty() {
         return size == 0;
     }
 
@@ -223,12 +222,12 @@ int size() {
     }
 
 Key minKey() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         return min.key;
     }
 
 Key delMin() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         head = cut(min, head);
         Node x = min.child;
         Key key = min.key;
@@ -238,7 +237,7 @@ Key delMin() {
             min.child = null;
         }
         size--;
-        if (!isEmpty()) consolidate();
+        if (!is_empty()) consolidate();
         else min = null;
         return key;
     }
@@ -261,8 +260,7 @@ private:
 
     template<typename, typename>
     friend class Fibonacci_min_pq_reverse_iterator;
-
-boolean greater(Key n, Key m) {
+ bool greater(Key n, Key m) {
         if (n == null) return false;
         if (m == null) return true;
         return comp.compare(n, m) > 0;

@@ -1,11 +1,11 @@
 int main(int argc, char *argv[]) {
-    int n = Integer.parseInt(args[0]);
+    int n = utility::safe_convert_integer(argv[1]);
     Complex[] x = new Complex[n];
 
     // original data
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         x[i] = new Complex(i, 0);
-        x[i] = new Complex(StdRandom.uniform(-1.0, 1.0), 0);
+        x[i] = new Complex(Std_random::uniform(-1.0, 1.0), 0);
     }
     show(x, "x");
 

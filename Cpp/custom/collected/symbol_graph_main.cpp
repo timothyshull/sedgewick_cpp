@@ -1,17 +1,17 @@
 int main(int argc, char *argv[]) {
-    String filename = args[0];
-    String delimiter = args[1];
+    std::string filename = argv[1];
+    std::string delimiter = argv[2];
     SymbolGraph sg = new SymbolGraph(filename, delimiter);
     Graph graph = sg.graph();
-    while (StdIn.hasNextLine()) {
-        String source = StdIn.readLine();
+    while (Std_in::hasNextLine()) {
+        std::string source = Std_in::read_line();
         if (sg.contains(source)) {
             int s = sg.index(source);
             for (int v : graph.adj(s)) {
-                StdOut.println("   " + sg.name(v));
+                Std_out::print_line("   " + sg.name(v));
             }
         } else {
-            StdOut.println("input not contain '" + source + "'");
+            Std_out::print_line("input not contain '" + source + "'");
         }
     }
     return 0;

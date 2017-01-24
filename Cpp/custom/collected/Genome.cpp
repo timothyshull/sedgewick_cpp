@@ -3,26 +3,26 @@
 void ::Genome::compress()
 {
     Alphabet DNA = Alphabet.DNA;
-    String s = BinaryStdIn.readString();
+    std::string s = Binary_std_in::read_string();
     int n = s.length();
-    BinaryStdOut.write(n);
+    Binary_std_out::write(n);
 
     // Write two-bit code for char.
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         int d = DNA.toIndex(s.charAt(i));
-        BinaryStdOut.write(d, 2);
+        Binary_std_out::write(d, 2);
     }
-    BinaryStdOut.close();
+    Binary_std_out::close();
 }
 
 void ::Genome::expand()
 {
     Alphabet DNA = Alphabet.DNA;
-    int n = BinaryStdIn.readInt();
+    int n = Binary_std_in::read_int();
     // Read two bits; write char.
-    for (int i = 0; i < n; i++) {
-        char c = BinaryStdIn.readChar(2);
-        BinaryStdOut.write(DNA.toChar(c), 8);
+    for (int i = 0; i < n; ++i) {
+        char c = Binary_std_in::readChar(2);
+        Binary_std_out::write(DNA.toChar(c), 8);
     }
-    BinaryStdOut.close();
+    Binary_std_out::close();
 }

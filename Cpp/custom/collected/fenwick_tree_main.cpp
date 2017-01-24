@@ -1,9 +1,9 @@
 int main(int argc, char *argv[]) {
     FenwickTree ft = null;
 
-    String cmd = "cmp";
+    std::string cmd = "cmp";
     while (true) {
-        String[] line = StdIn.readLine().split(" ");
+        String[] line = Std_in::read_line().split(" ");
 
         if (line[0].equals("exit")) break;
 
@@ -17,36 +17,36 @@ int main(int argc, char *argv[]) {
         }
 
         if ((!line[0].equals("set") && !line[0].equals("init")) && ft == null) {
-            StdOut.println("FenwickTree not initialized");
+            Std_out::print_line("FenwickTree not initialized");
             continue;
         }
 
         if (line[0].equals("init")) {
             ft = new FenwickTree(arg1);
-            for (int i = 1; i <= ft.size(); i++) {
-                StdOut.print(ft.rsq(i, i) + " ");
+            for (int i = 1; i <= ft.size(); ++i) {
+                Std_out::print(ft.rsq(i, i) + " ");
             }
-            StdOut.println();
+            Std_out::print_line();
         } else if (line[0].equals("set")) {
             ft = new FenwickTree(line.length - 1);
-            for (int i = 1; i <= line.length - 1; i++) {
+            for (int i = 1; i <= line.length - 1; ++i) {
                 ft.update(i, Integer.parseInt(line[i]));
             }
         } else if (line[0].equals("up")) {
             ft.update(arg1, arg2);
-            for (int i = 1; i <= ft.size(); i++) {
-                StdOut.print(ft.rsq(i, i) + " ");
+            for (int i = 1; i <= ft.size(); ++i) {
+                Std_out::print(ft.rsq(i, i) + " ");
             }
-            StdOut.println();
+            Std_out::print_line();
         } else if (line[0].equals("rsq")) {
-            StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, ft.rsq(arg1, arg2));
+            Std_out::printf("Sum from %d to %d = %d%n", arg1, arg2, ft.rsq(arg1, arg2));
         } else {
-            StdOut.println("Invalid command");
+            Std_out::print_line("Invalid command");
         }
 
     }
 
 
-    StdOut.close();
+    Std_out::close();
     return 0;
 }

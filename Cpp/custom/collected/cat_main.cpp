@@ -1,10 +1,13 @@
+#include "In.h"
+#include "Out.h"
 
-int main(int argc, char* argv[]) {
-    Out out = new Out(args[args.length - 1]);
-    for (int i = 0; i < args.length - 1; i++) {
-        In in = new In(args[i]);
-        String s = in.readAll();
-        out.println(s);
+int main(int argc, char* argv[])
+{
+    Out out{argv[argc - 1]};
+    for (int i = 0; i < argc; ++i) {
+        In in{argv[i]};
+        std::string s = in.readAll();
+        out.print_line(s);
         in.close();
     }
     out.close();

@@ -32,7 +32,7 @@ private:
 
     bool ceertifySolution(Graph& G);
 
-    void unitTest(Graph& G, std::string& description);
+    void unit_test(Graph& G, std::string& description);
 
 };
 

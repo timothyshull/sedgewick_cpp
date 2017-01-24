@@ -4,7 +4,7 @@ Acyclic_lp::Acyclic_lp(Edge_weighted_digraph& g, int source)
         : _distance_to(static_cast<std::vector<double>::size_type>(g.num_vertices())),
           _edge_to(static_cast<std::vector<Directed_edge>::size_type>(g.num_vertices()))
 {
-    for (int v = 0; v < g.num_vertices(); v++) {
+    for (int v = 0; v < g.num_vertices(); ++v) {
         _distance_to[v] = std::numeric_limits<double>::infinity();
     }
     _distance_to[source] = 0.0;

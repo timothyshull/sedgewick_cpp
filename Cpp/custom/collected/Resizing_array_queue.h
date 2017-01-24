@@ -14,7 +14,7 @@ public:
         last = 0;
     }
 
-    bool isEmpty()
+    bool is_empty()
     {
         return n == 0;
     }
@@ -35,7 +35,7 @@ public:
 
     Item dequeue()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Queue underflow"); }
+        if (is_empty()) { throw new NoSuchElementException("Queue underflow"); }
         Item item = q[first];
         q[first] = null;                            // to avoid loitering
         n--;
@@ -48,7 +48,7 @@ public:
 
     Item peek()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Queue underflow"); }
+        if (is_empty()) { throw new NoSuchElementException("Queue underflow"); }
         return q[first];
     }
 
@@ -65,7 +65,7 @@ private:
         Item[]
         temp = (Item[])
         new Object[capacity];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             temp[i] = q[(first + i) % q.length];
         }
         q = temp;

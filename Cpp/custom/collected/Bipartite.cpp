@@ -2,12 +2,12 @@
 
 Bipartite::Bipartite(Graph& G)
 {
-    isBipartite = true;
-    color = new boolean[G.V()];
-    marked = new boolean[G.V()];
-    edgeTo = new int[G.V()];
+    is_bipartite = true;
+    color = new boolean[G.num_vertices()];
+    marked = new boolean[G.num_vertices()];
+    edgeTo = new int[G.num_vertices()];
 
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, v);
         }
@@ -15,20 +15,20 @@ Bipartite::Bipartite(Graph& G)
     assert check(G);
 }
 
-bool Bipartite::isBipartite()
+bool Bipartite::is_bipartite()
 {
-    return isBipartite;
+    return is_bipartite;
 }
 
 bool Bipartite::color(int v)
 {
-    if (!isBipartite) {
+    if (!is_bipartite) {
         throw new UnsupportedOperationException("Graph is not bipartite");
     }
     return color[v];
 }
 
-std::vector<int> Bipartite::oddCycle()
+std::vector<int> Bipartite::odd_cycle()
 {
     return cycle;
 }
@@ -50,7 +50,7 @@ void Bipartite::dfs(Graph& G, int v)
 
             // if v-w create an odd-length cycle, find it
         else if (color[w] == color[v]) {
-            isBipartite = false;
+            is_bipartite = false;
             cycle = new Stack<Integer>();
             cycle.push(w);  // don't need this unless you want to include start vertex twice
             for (int x = v; x != w; x = edgeTo[x]) {
@@ -63,8 +63,8 @@ void Bipartite::dfs(Graph& G, int v)
 
 bool Bipartite::check(Graph& G)
 {
-    if (isBipartite) {
-        for (int v = 0; v < G.V(); v++) {
+    if (is_bipartite) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
             for (int w : G.adj(v)) {
                 if (color[v] == color[w]) {
                     System.err.printf("edge %d-%d with %d and %d in same side of bipartition\n", v, w, v, w);
@@ -78,7 +78,7 @@ bool Bipartite::check(Graph& G)
     else {
         // verify cycle
         int first = -1, last = -1;
-        for (int v : oddCycle()) {
+        for (int v : odd_cycle()) {
             if (first == -1) { first = v; }
             last = v;
         }

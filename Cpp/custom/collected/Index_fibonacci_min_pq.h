@@ -210,12 +210,12 @@ public:
         comp = C;
     }
 
-    boolean isEmpty()
+    bool is_empty()
     {
         return size == 0;
     }
 
-    boolean contains(int i)
+    bool contains(int i)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
         else { return nodes[i] != null; }
@@ -242,19 +242,19 @@ public:
 
     int minIndex()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         return min.index;
     }
 
     Key minKey()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         return min.key;
     }
 
     int delMin()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         head = cut(min, head);
         Node <Key> x = min.child;
         int index = min.index;
@@ -268,7 +268,7 @@ public:
             min.child = null;            //For garbage collection
         }
         size--;
-        if (!isEmpty()) { consolidate(); }
+        if (!is_empty()) { consolidate(); }
         else { min = null; }
         nodes[index] = null;
         return index;
@@ -335,7 +335,7 @@ public:
             } while (child != x);
             head = meld(head, child);
         }
-        if (!isEmpty()) { consolidate(); }
+        if (!is_empty()) { consolidate(); }
         else { min = null; }
         nodes[i] = null;
         size--;
@@ -353,7 +353,7 @@ private:
     template<typename, typename>
     friend class Index_fibonacci_min_pq_reverse_iterator;
 
-    boolean greater(Key n, Key m)
+    bool greater(Key n, Key m)
     {
         if (n == null) { return false; }
         if (m == null) { return true; }

@@ -8,8 +8,8 @@ Knuth_morris_pratt::Knuth_morris_pratt(std::string& pattern) : _radix{256}, _pat
         _dfa[i].reserve(m);
     }
     _dfa[pattern[0]][0] = 1;
-    for (int x = 0, j = 1; j < m; j++) {
-        for (int c = 0; c < _radix; c++) {
+    for (int x = 0, j = 1; j < m; ++j) {
+        for (int c = 0; c < _radix; ++c) {
             _dfa[c][j] = _dfa[c][x];
         }
         _dfa[pattern[j]][j] = j + 1;
@@ -25,8 +25,8 @@ Knuth_morris_pratt::Knuth_morris_pratt(std::vector<char>& pattern, int radix) : 
         _dfa[i].reserve(m);
     }
     _dfa[pattern[0]][0] = 1;
-    for (int x = 0, j = 1; j < m; j++) {
-        for (int c = 0; c < _radix; c++) {
+    for (int x = 0, j = 1; j < m; ++j) {
+        for (int c = 0; c < _radix; ++c) {
             _dfa[c][j] = _dfa[c][x];
         }
         _dfa[pattern[j]][j] = j + 1;
@@ -55,7 +55,7 @@ int Knuth_morris_pratt::search(std::vector<char>& text)
     int n = text.size();
     int i;
     int j;
-    for (i = 0, j = 0; i < n && j < m; i++) {
+    for (i = 0, j = 0; i < n && j < m; ++i) {
         j = _dfa[text[i]][j];
     }
     if (j == m) {

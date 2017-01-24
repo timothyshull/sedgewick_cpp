@@ -1,11 +1,11 @@
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Digraph G = new Digraph(in);
-    int s = Integer.parseInt(args[1]);
+    In in{argv[1]};
+    Digraph G{in};
+    int s = utility::safe_convert_integer(argv[1]);
     NonrecursiveDirectedDFS dfs = new NonrecursiveDirectedDFS(G, s);
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (dfs.marked(v))
-            StdOut.print(v + " ");
-    StdOut.println();
+            Std_out::print(v + " ");
+    Std_out::print_line();
     return 0;
 }

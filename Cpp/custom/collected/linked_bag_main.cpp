@@ -1,13 +1,13 @@
 int main(int argc, char *argv[]) {
-    LinkedBag<String> bag = new LinkedBag<String>();
-    while (!StdIn.isEmpty()) {
-        String item = StdIn.readString();
+    LinkedBag<std::string> bag = new LinkedBag<std::string>();
+    while (!Std_in::is_empty()) {
+        std::string item = Std_in::read_string();
         bag.add(item);
     }
 
-    StdOut.println("size of bag = " + bag.size());
+    Std_out::print_line("size of bag = " + bag.size());
     for (String s : bag) {
-        StdOut.println(s);
+        Std_out::print_line(s);
     }
     return 0;
 }

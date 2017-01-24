@@ -1,6 +1,6 @@
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
+    In in{argv[1]};
     FlowNetwork G = new FlowNetwork(in);
-    StdOut.println(G);
+    Std_out::print_line(G);
     return 0;
 }

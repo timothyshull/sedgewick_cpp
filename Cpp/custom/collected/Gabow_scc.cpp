@@ -2,16 +2,16 @@
 
 Gabow_scc::Gabow_scc(Digraph& G)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
     stack1 = new Stack<Integer>();
     stack2 = new Stack<Integer>();
-    id = new int[G.V()];
-    preorder = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    id = new int[G.num_vertices()];
+    preorder = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         id[v] = -1;
     }
 
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) { dfs(G, v); }
     }
 
@@ -64,8 +64,8 @@ void Gabow_scc::dfs(Digraph& G, int v)
 bool Gabow_scc::check(Digraph& G)
 {
     TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v = 0; v < G.V(); v++) {
-        for (int w = 0; w < G.V(); w++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        for (int w = 0; w < G.num_vertices(); ++w) {
             if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }

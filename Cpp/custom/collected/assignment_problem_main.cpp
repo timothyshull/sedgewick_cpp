@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-    int n = std::atoi(argv[1]);
+    int n = utility::safe_convert_integer(argv[1]);
     std::vector<std::vector<double>> weight;
     weight.reserve(n);
     for (auto v : weight) {

@@ -9,7 +9,7 @@ Rabin_karp::Rabin_karp(std::string& pat)
 
     // precompute R^(m-1) % q for use in removing leading digit
     RM = 1;
-    for (int i = 1; i <= m - 1; i++)
+    for (int i = 1; i <= m - 1; ++i)
         RM = (R * RM) % q;
     patHash = hash(pat, m);
 }
@@ -25,7 +25,7 @@ int Rabin_karp::search(std::string& txt)
         return 0;
 
     // check for hash match; if hash match, check for exact match
-    for (int i = m; i < n; i++) {
+    for (int i = m; i < n; ++i) {
         // Remove leading digit, add trailing digit, check for match.
         txtHash = (txtHash + q - RM * txt.charAt(i - m) % q) % q;
         txtHash = (txtHash * R + txt.charAt(i)) % q;
@@ -43,14 +43,14 @@ int Rabin_karp::search(std::string& txt)
 long Rabin_karp::hash(std::string& key, int m)
 {
     long h = 0;
-    for (int j = 0; j < m; j++)
+    for (int j = 0; j < m; ++j)
         h = (R * h + key.charAt(j)) % q;
     return h;
 }
 
 bool Rabin_karp::check(std::string& txt, int i)
 {
-    for (int j = 0; j < m; j++)
+    for (int j = 0; j < m; ++j)
         if (pat.charAt(j) != txt.charAt(i + j))
             return false;
     return true;

@@ -23,7 +23,7 @@ double Interval_2d::area()
     return x.length() * y.length();
 }
 
-std::string Interval_2d::toString()
+std::string Interval_2d::to_string()
 {
     return x + " x " + y;
 }
@@ -48,5 +48,5 @@ void Interval_2d::draw()
 {
     double xc = (x.min() + x.max()) / 2.0;
     double yc = (y.min() + y.max()) / 2.0;
-    StdDraw.rectangle(xc, yc, x.length() / 2.0, y.length() / 2.0);
+    Std_draw::rectangle(xc, yc, x.length() / 2.0, y.length() / 2.0);
 }

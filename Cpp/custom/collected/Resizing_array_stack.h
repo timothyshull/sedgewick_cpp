@@ -12,7 +12,7 @@ Resizing_array_stack() {
         n = 0;
     }
 
-bool isEmpty() {
+bool is_empty() {
         return n == 0;
     }
 
@@ -27,7 +27,7 @@ void push(Item item) {
     }
 
 Item pop() {
-        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        if (is_empty()) throw new NoSuchElementException("Stack underflow");
         Item item = a[n - 1];
         a[n - 1] = null;                              // to avoid loitering
         n--;
@@ -37,7 +37,7 @@ Item pop() {
     }
 
 Item peek() {
-        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        if (is_empty()) throw new NoSuchElementException("Stack underflow");
         return a[n - 1];
     }
 private:
@@ -47,7 +47,7 @@ private:
 void resize(int capacity) {
         assert capacity >= n;
         Item[] temp = (Item[]) new Object[capacity];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             temp[i] = a[i];
         }
         a = temp;

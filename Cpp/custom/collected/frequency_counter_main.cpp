@@ -1,11 +1,11 @@
 int main(int argc, char *argv[]) {
     int distinct = 0, words = 0;
-    int minlen = Integer.parseInt(args[0]);
-    ST<String, Integer> st = new ST<String, Integer>();
+    int minlen = utility::safe_convert_integer(argv[1]);
+    ST<std::string, Integer> st = new ST<std::string, Integer>();
 
     // compute frequency counts
-    while (!StdIn.isEmpty()) {
-        String key = StdIn.readString();
+    while (!Std_in::is_empty()) {
+        std::string key = Std_in::read_string();
         if (key.length() < minlen) continue;
         words++;
         if (st.contains(key)) {
@@ -17,15 +17,15 @@ int main(int argc, char *argv[]) {
     }
 
     // find a key with the highest frequency count
-    String max = "";
+    std::string max = "";
     st.put(max, 0);
     for (String word : st.keys()) {
         if (st.get(word) > st.get(max))
             max = word;
     }
 
-    StdOut.println(max + " " + st.get(max));
-    StdOut.println("distinct = " + distinct);
-    StdOut.println("words    = " + words);
+    Std_out::print_line(max + " " + st.get(max));
+    Std_out::print_line("distinct = " + distinct);
+    Std_out::print_line("words    = " + words);
     return 0;
 }

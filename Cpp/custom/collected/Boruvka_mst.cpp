@@ -2,15 +2,15 @@
 
 Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
 {
-    UF uf = new UF(G.V());
+    UF uf = new UF(G.num_vertices());
 
     // repeat at most log V times or until we have V-1 edges
-    for (int t = 1; t < G.V() && mst.size() < G.V() - 1; t = t + t) {
+    for (int t = 1; t < G.num_vertices() && mst.size() < G.num_vertices() - 1; t = t + t) {
 
         // foreach tree in forest, find closest edge
         // if edge weights are equal, ties are broken in favor of first edge in G.edges()
         Edge[]
-        closest = new Edge[G.V()];
+        closest = new Edge[G.num_vertices()];
         for (Edge e : G.edges()) {
             int v = e.either(), w = e.other(v);
             int i = uf.find(v), j = uf.find(w);
@@ -20,7 +20,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
         }
 
         // add newly discovered edges to MST
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.num_vertices(); ++i) {
             Edge e = closest[i];
             if (e != null) {
                 int v = e.either(), w = e.other(v);
@@ -67,11 +67,11 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
     }
 
     // check that it is acyclic
-    UF uf = new UF(G.V());
+    UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
         if (uf.connected(v, w)) {
-            System.err.println("Not a forest");
+            System.err.print_line("Not a forest");
             return false;
         }
         uf.
@@ -82,7 +82,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
-            System.err.println("Not a spanning forest");
+            System.err.print_line("Not a spanning forest");
             return false;
         }
     }
@@ -91,7 +91,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
     for (Edge e : edges()) {
 
         // all edges in MST except e
-        uf = new UF(G.V());
+        uf = new UF(G.num_vertices());
         for (Edge f : mst) {
             int x = f.either(), y = f.other(x);
             if (f != e) { uf. }
@@ -103,7 +103,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {
                 if (f.weight() < e.weight()) {
-                    System.err.println("Edge " + f + " violates cut optimality conditions");
+                    System.err.print_line("Edge " + f + " violates cut optimality conditions");
                     return false;
                 }
             }

@@ -32,12 +32,12 @@ bool bool Edge::operator<(Edge& rhs)
     return this->weight < rhs.weight;
 }
 
-std::string Edge::toString()
+std::string Edge::to_string()
 {
     return String.format("%d-%d %.5f", v, w, weight);
 }
 
 std::ostream& operator<<(std::ostream& os, Edge& out)
 {
-    return os << out.toString();
+    return os << out.to_string();
 }

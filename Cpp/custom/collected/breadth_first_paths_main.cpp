@@ -1,23 +1,29 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Graph G = new Graph(in);
-    // StdOut.println(G);
+#include "In.h"
+#include "Graph.h"
+#include "Std_out.h"
+#include "utility.h"
+#include "Breadth_first_paths.h"
 
-    int s = Integer.parseInt(args[1]);
-    BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Graph g{in};
+    Std_out::print_line(g);
 
-    for (int v = 0; v < G.V(); v++) {
-        if (bfs.hasPathTo(v)) {
-            StdOut.printf("%d to %d (%d):  ", s, v, bfs.distTo(v));
-            for (int x : bfs.pathTo(v)) {
-                if (x == s) StdOut.print(x);
-                else StdOut.print("-" + x);
+    int s{utility::safe_convert_integer(argv[1])};
+    Breadth_first_paths bfs{g, s};
+
+    for (int v = 0; v < g.num_vertices(); ++v) {
+        if (bfs.has_path_to(v)) {
+            Std_out::printf("%d to %d (%d):  ", s, v, bfs.distance_to(v));
+            for (int x : bfs.path_to(v)) {
+                if (x == s) { Std_out::print(x); }
+                else { Std_out::print("-" + x); }
             }
-            StdOut.println();
+            Std_out::print_line();
         } else {
-            StdOut.printf("%d to %d (-):  not connected\n", s, v);
+            Std_out::printf("%d to %d (-):  not connected\n", s, v);
         }
-
     }
     return 0;
 }

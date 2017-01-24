@@ -2,19 +2,19 @@
 
 Bellman_ford_sp::Bellman_ford_sp(Edge_weighted_digraph, int)
 {
-    distTo = new double[G.V()];
-    edgeTo = new DirectedEdge[G.V()];
-    onQueue = new boolean[G.V()];
-    for (int v = 0; v < G.V(); v++) {
-        distTo[v] = Double.POSITIVE_INFINITY;
+    distance_to = new double[G.num_vertices()];
+    edgeTo = new Directed_edge[G.num_vertices()];
+    onQueue = new boolean[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        distance_to[v] = Double.POSITIVE_INFINITY;
     }
-    distTo[s] = 0.0;
+    distance_to[s] = 0.0;
 
     // Bellman-Ford algorithm
     queue = new Queue<Integer>();
     queue.enqueue(s);
     onQueue[s] = true;
-    while (!queue.isEmpty() && !hasNegativeCycle()) {
+    while (!queue.is_empty() && !hasNegativeCycle()) {
         int v = queue.dequeue();
         onQueue[v] = false;
         relax(G, v);
@@ -33,27 +33,27 @@ std::vector<Directed_edge> Bellman_ford_sp::negativeCycle()
     return cycle;
 }
 
-double Bellman_ford_sp::distTo(int)
+double Bellman_ford_sp::distance_to(int)
 {
     if (hasNegativeCycle()) {
         throw new UnsupportedOperationException("Negative cost cycle exists");
     }
-    return distTo[v];
+    return distance_to[v];
 }
 
-bool Bellman_ford_sp::hasPathTo(int)
+bool Bellman_ford_sp::has_path_to(int)
 {
-    return distTo[v] < Double.POSITIVE_INFINITY;
+    return distance_to[v] < Double.POSITIVE_INFINITY;
 }
 
-std::vector<Directed_edge> Bellman_ford_sp::pathTo(int)
+std::vector<Directed_edge> Bellman_ford_sp::path_to(int)
 {
     if (hasNegativeCycle()) {
         throw new UnsupportedOperationException("Negative cost cycle exists");
     }
-    if (!hasPathTo(v)) { return null; }
-    Stack<DirectedEdge> path = new Stack<DirectedEdge>();
-    for (DirectedEdge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
+    if (!has_path_to(v)) { return null; }
+    Stack<Directed_edge> path = new Stack<Directed_edge>();
+    for (Directed_edge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
         path.push(e);
     }
     return path;
@@ -61,17 +61,17 @@ std::vector<Directed_edge> Bellman_ford_sp::pathTo(int)
 
 void Bellman_ford_sp::relax(Edge_weighted_digraph, int)
 {
-    for (DirectedEdge e : G.adj(v)) {
+    for (Directed_edge e : G.adj(v)) {
         int w = e.to();
-        if (distTo[w] > distTo[v] + e.weight()) {
-            distTo[w] = distTo[v] + e.weight();
+        if (distance_to[w] > distance_to[v] + e.weight()) {
+            distance_to[w] = distance_to[v] + e.weight();
             edgeTo[w] = e;
             if (!onQueue[w]) {
                 queue.enqueue(w);
                 onQueue[w] = true;
             }
         }
-        if (cost++ % G.V() == 0) {
+        if (cost++ % G.num_vertices() == 0) {
             findNegativeCycle();
             if (hasNegativeCycle()) { return; }  // found a negative cycle
         }
@@ -81,10 +81,10 @@ void Bellman_ford_sp::relax(Edge_weighted_digraph, int)
 void Bellman_ford_sp::findNegativeCycle()
 {
     int V = edgeTo.length;
-    EdgeWeightedDigraph spt = new EdgeWeightedDigraph(V);
-    for (int v = 0; v < V; v++) {
+    Edge_weighted_digraph spt = new Edge_weighted_digraph(V);
+    for (int v = 0; v < V; ++v) {
         if (edgeTo[v] != null) {
-            spt.addEdge(edgeTo[v]);
+            spt.add_edge(edgeTo[v]);
         }
     }
 
@@ -97,11 +97,11 @@ bool Bellman_ford_sp::check(Edge_weighted_digraph, int)
     // has a negative cycle
     if (hasNegativeCycle()) {
         double weight = 0.0;
-        for (DirectedEdge e : negativeCycle()) {
+        for (Directed_edge e : negativeCycle()) {
             weight += e.weight();
         }
         if (weight >= 0.0) {
-            System.err.println("error: weight of negative cycle = " + weight);
+            System.err.print_line("error: weight of negative cycle = " + weight);
             return false;
         }
     }
@@ -109,44 +109,44 @@ bool Bellman_ford_sp::check(Edge_weighted_digraph, int)
         // no negative cycle reachable from source
     else {
 
-        // check that distTo[v] and edgeTo[v] are consistent
-        if (distTo[s] != 0.0 || edgeTo[s] != null) {
-            System.err.println("distanceTo[s] and edgeTo[s] inconsistent");
+        // check that distance_to[v] and edgeTo[v] are consistent
+        if (distance_to[s] != 0.0 || edgeTo[s] != null) {
+            System.err.print_line("distanceTo[s] and edgeTo[s] inconsistent");
             return false;
         }
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.num_vertices(); ++v) {
             if (v == s) { continue; }
-            if (edgeTo[v] == null && distTo[v] != Double.POSITIVE_INFINITY) {
-                System.err.println("distTo[] and edgeTo[] inconsistent");
+            if (edgeTo[v] == null && distance_to[v] != Double.POSITIVE_INFINITY) {
+                System.err.print_line("distance_to[] and edgeTo[] inconsistent");
                 return false;
             }
         }
 
-        // check that all edges e = v->w satisfy distTo[w] <= distTo[v] + e.weight()
-        for (int v = 0; v < G.V(); v++) {
-            for (DirectedEdge e : G.adj(v)) {
+        // check that all edges e = v->w satisfy distance_to[w] <= distance_to[v] + e.weight()
+        for (int v = 0; v < G.num_vertices(); ++v) {
+            for (Directed_edge e : G.adj(v)) {
                 int w = e.to();
-                if (distTo[v] + e.weight() < distTo[w]) {
-                    System.err.println("edge " + e + " not relaxed");
+                if (distance_to[v] + e.weight() < distance_to[w]) {
+                    System.err.print_line("edge " + e + " not relaxed");
                     return false;
                 }
             }
         }
 
-        // check that all edges e = v->w on SPT satisfy distTo[w] == distTo[v] + e.weight()
-        for (int w = 0; w < G.V(); w++) {
+        // check that all edges e = v->w on SPT satisfy distance_to[w] == distance_to[v] + e.weight()
+        for (int w = 0; w < G.num_vertices(); ++w) {
             if (edgeTo[w] == null) { continue; }
-            DirectedEdge e = edgeTo[w];
+            Directed_edge e = edgeTo[w];
             int v = e.from();
             if (w != e.to()) { return false; }
-            if (distTo[v] + e.weight() != distTo[w]) {
-                System.err.println("edge " + e + " on shortest path not tight");
+            if (distance_to[v] + e.weight() != distance_to[w]) {
+                System.err.print_line("edge " + e + " on shortest path not tight");
                 return false;
             }
         }
     }
 
-    StdOut.println("Satisfies optimality conditions");
-    StdOut.println();
+    Std_out::print_line("Satisfies optimality conditions");
+    Std_out::print_line();
     return true;
 }

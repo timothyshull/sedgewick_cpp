@@ -1,10 +1,10 @@
 int main(int argc, char *argv[]) {
-    int m = Integer.parseInt(args[0]);
+    int m = utility::safe_convert_integer(argv[1]);
     MinPQ<Transaction> pq = new MinPQ<Transaction>(m + 1);
 
-    while (StdIn.hasNextLine()) {
+    while (Std_in::hasNextLine()) {
         // Create an entry from the next line and put on the PQ.
-        String line = StdIn.readLine();
+        std::string line = Std_in::read_line();
         Transaction transaction = new Transaction(line);
         pq.insert(transaction);
 
@@ -18,6 +18,6 @@ int main(int argc, char *argv[]) {
     for (Transaction transaction : pq)
         stack.push(transaction);
     for (Transaction transaction : stack)
-        StdOut.println(transaction);
+        Std_out::print_line(transaction);
     return 0;
 }

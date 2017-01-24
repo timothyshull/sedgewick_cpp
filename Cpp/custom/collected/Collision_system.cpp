@@ -8,14 +8,14 @@ Collision_system::Collision_system(std::vector<Particle>& particles)
 void Collision_system::simulate(double limit)
 {
     pq = new MinPQ<Event>();
-    for (int i = 0; i < particles.length; i++) {
+    for (int i = 0; i < particles.length; ++i) {
         predict(particles[i], limit);
     }
     pq.insert(new Event(0, null, null));        // redraw event
 
 
     // the main event-driven simulation loop
-    while (!pq.isEmpty()) {
+    while (!pq.is_empty()) {
 
         // get impending event, discard if invalidated
         Event e = pq.delMin();
@@ -24,7 +24,7 @@ void Collision_system::simulate(double limit)
         Particle b = e.b;
 
         // physical collision, so update positions, and then simulation clock
-        for (int i = 0; i < particles.length; i++)
+        for (int i = 0; i < particles.length; ++i)
             particles[i].move(e.time - t);
         t = e.time;
 
@@ -45,7 +45,7 @@ void Collision_system::predict(Particle& a, double limit)
     if (a == null) return;
 
     // particle-particle collisions
-    for (int i = 0; i < particles.length; i++) {
+    for (int i = 0; i < particles.length; ++i) {
         double dt = a.timeToHit(particles[i]);
         if (t + dt <= limit)
             pq.insert(new Event(t + dt, a, particles[i]));
@@ -60,12 +60,12 @@ void Collision_system::predict(Particle& a, double limit)
 
 void Collision_system::redraw(double limit)
 {
-    StdDraw.clear();
-    for (int i = 0; i < particles.length; i++) {
+    Std_draw::clear();
+    for (int i = 0; i < particles.length; ++i) {
         particles[i].draw();
     }
-    StdDraw.show();
-    StdDraw.pause(20);
+    Std_draw::show();
+    Std_draw::pause(20);
     if (t < limit) {
         pq.insert(new Event(t + 1.0 / hz, null, null));
     }

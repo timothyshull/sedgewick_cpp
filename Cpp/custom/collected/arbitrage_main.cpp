@@ -30,7 +30,7 @@ int main() {
             Std_out.printf("= %10.5f %s\n", stake, name[e.to()]);
         }
     } else {
-        Std_out.println("No arbitrage opportunity");
+        Std_out.print_line("No arbitrage opportunity");
     }
     return 0;
 }

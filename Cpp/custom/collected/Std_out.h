@@ -11,11 +11,11 @@ namespace Std_out {
     void close();
 
     template<typename... Args>
-    void printf(const char* format, const Args& ... args)
+    void printf(const char* format, const Args& ... argv)
     {
-        int sz = std::snprintf(nullptr, 0, format, args...);
+        int sz = std::snprintf(nullptr, 0, format, argv...);
         std::vector<char> buf(sz + 1);
-        std::snprintf(&buf[0], buf.size(), format, args...);
+        std::snprintf(&buf[0], buf.size(), format, argv...);
         std::cout << std::string(buf.begin(), buf.end() - 1) << "\n";
     }
 

@@ -39,7 +39,7 @@ Value get(String key) {
         return (Value) x.val;
     }
 
-    boolean contains(String key) {
+    bool contains(String key) {
         return get(key) != null;
     }
 
@@ -52,28 +52,28 @@ int size() {
         return n;
     }
 
-    boolean isEmpty() {
+    bool is_empty() {
         return size() == 0;
     }
 
-    Iterable<String> keys() {
+    Iterable<std::string> keys() {
         return keysWithPrefix("");
     }
 
-    Iterable<String> keysWithPrefix(String prefix) {
-        Queue<String> results = new Queue<String>();
+    Iterable<std::string> keysWithPrefix(String prefix) {
+        Queue<std::string> results = new Queue<std::string>();
         Node x = get(root, prefix, 0);
-        collect(x, new StringBuilder(prefix), results);
+        collect(x, new std::stringstream(prefix), results);
         return results;
     }
 
-    Iterable<String> keysThatMatch(String pattern) {
-        Queue<String> results = new Queue<String>();
-        collect(root, new StringBuilder(), pattern, results);
+    Iterable<std::string> keysThatMatch(String pattern) {
+        Queue<std::string> results = new Queue<std::string>();
+        collect(root, new std::stringstream(), pattern, results);
         return results;
     }
 
-    String longestPrefixOf(String query) {
+    std::string longestPrefixOf(String query) {
         int length = longestPrefixOf(root, query, 0, -1);
         if (length == -1) return null;
         else return query.substring(0, length);
@@ -86,14 +86,14 @@ private:
     Raw_node_pointer root;
     int n;
 
-Node get(Node x, String key, int d) {
+Node get(Node x, std::string key, int d) {
         if (x == null) return null;
         if (d == key.length()) return x;
         char c = key.charAt(d);
         return get(x.next[c], key, d + 1);
     }
 
-Node put(Node x, String key, Value val, int d) {
+Node put(Node x, std::string key, Value val, int d) {
         if (x == null) x = new Node();
         if (d == key.length()) {
             if (x.val == null) n++;
@@ -105,26 +105,26 @@ Node put(Node x, String key, Value val, int d) {
         return x;
     }
 
-    void collect(Node x, StringBuilder prefix, Queue<String> results) {
+    void collect(Node x, std::stringstream prefix, Queue<std::string> results) {
         if (x == null) return;
-        if (x.val != null) results.enqueue(prefix.toString());
-        for (char c = 0; c < R; c++) {
+        if (x.val != null) results.enqueue(prefix.to_string());
+        for (char c = 0; c < R; ++c) {
             prefix.append(c);
             collect(x.next[c], prefix, results);
             prefix.deleteCharAt(prefix.length() - 1);
         }
     }
 
-    void collect(Node x, StringBuilder prefix, String pattern, Queue<String> results) {
+    void collect(Node x, std::stringstream prefix, std::string pattern, Queue<std::string> results) {
         if (x == null) return;
         int d = prefix.length();
         if (d == pattern.length() && x.val != null)
-            results.enqueue(prefix.toString());
+            results.enqueue(prefix.to_string());
         if (d == pattern.length())
             return;
         char c = pattern.charAt(d);
         if (c == '.') {
-            for (char ch = 0; ch < R; ch++) {
+            for (char ch = 0; ch < R; ++ch) {
                 prefix.append(ch);
                 collect(x.next[ch], prefix, pattern, results);
                 prefix.deleteCharAt(prefix.length() - 1);
@@ -136,7 +136,7 @@ Node put(Node x, String key, Value val, int d) {
         }
     }
 
-    int longestPrefixOf(Node x, String query, int d, int length) {
+    int longestPrefixOf(Node x, std::string query, int d, int length) {
         if (x == null) return length;
         if (x.val != null) length = d;
         if (d == query.length()) return length;
@@ -144,7 +144,7 @@ Node put(Node x, String key, Value val, int d) {
         return longestPrefixOf(x.next[c], query, d + 1, length);
     }
 
-    Node remove(Node x, String key, int d) {
+    Node remove(Node x, std::string key, int d) {
         if (x == null) return null;
         if (d == key.length()) {
             if (x.val != null) n--;
@@ -156,7 +156,7 @@ Node put(Node x, String key, Value val, int d) {
 
         // remove subtrie rooted at x if it is completely empty
         if (x.val != null) return x;
-        for (int c = 0; c < R; c++)
+        for (int c = 0; c < R; ++c)
             if (x.next[c] != null)
                 return x;
         return null;

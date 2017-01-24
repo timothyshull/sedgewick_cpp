@@ -4,16 +4,16 @@ Cycle::Cycle(Graph& G)
 {
     if (hasSelfLoop(G)) { return; }
     if (hasParallelEdges(G)) { return; }
-    marked = new boolean[G.V()];
-    edgeTo = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    marked = new boolean[G.num_vertices()];
+    edgeTo = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, -1, v);
         }
     }
 }
 
-bool Cycle::hasCycle()
+bool Cycle::has_cycle()
 {
     return cycle != null;
 }
@@ -25,7 +25,7 @@ std::vector<int> Cycle::cycle()
 
 bool Cycle::hasSelfLoop(Graph& G)
 {
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         for (int w : G.adj(v)) {
             if (v == w) {
                 cycle = new Stack<Integer>();
@@ -40,9 +40,9 @@ bool Cycle::hasSelfLoop(Graph& G)
 
 bool Cycle::hasParallelEdges(Graph& G)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
 
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
 
         // check for parallel edges incident to v
         for (int w : G.adj(v)) {

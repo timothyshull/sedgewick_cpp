@@ -11,11 +11,11 @@ public:
     int day();
     int year();
     Date next();
-    bool isAfter(Date& that);
+    bool is_after(Date& that);
     bool isBefore(Date& that);
 
 
-    std::string toString();
+    std::string to_string();
 
     bool operator<(Date& rhs);
     bool operator=(Date& rhs);

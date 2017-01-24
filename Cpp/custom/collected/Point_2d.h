@@ -59,7 +59,7 @@ public:
 
     bool operator==(Point_2d& rhs);
 
-    std::string toString();
+    std::string to_string();
 
     int hashCode();
 

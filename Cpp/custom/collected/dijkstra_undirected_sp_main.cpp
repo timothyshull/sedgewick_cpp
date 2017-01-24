@@ -1,22 +1,26 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    EdgeWeightedGraph G = new EdgeWeightedGraph(in);
-    int s = Integer.parseInt(args[1]);
+#include "In.h"
+#include "Edge_weighted_graph.h"
+#include "utility.h"
+#include "Dijkstra_undirected_sp.h"
+#include "Std_out.h"
 
-    // compute shortest paths
-    DijkstraUndirectedSP sp = new DijkstraUndirectedSP(G, s);
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Edge_weighted_graph edge_weighted_graph{in};
+    int s = utility::safe_convert_integer(argv[1]);
 
+    Dijkstra_undirected_sp sp{edge_weighted_graph, s};
 
-    // print shortest path
-    for (int t = 0; t < G.V(); t++) {
-        if (sp.hasPathTo(t)) {
-            StdOut.printf("%d to %d (%.2f)  ", s, t, sp.distTo(t));
-            for (Edge e : sp.pathTo(t)) {
-                StdOut.print(e + "   ");
+    for (int t = 0; t < edge_weighted_graph.num_vertices(); ++t) {
+        if (sp.has_path_to(t)) {
+            Std_out::printf("%d to %d (%.2f)  ", s, t, sp.distance_to(t));
+            for (auto e : sp.path_to(t)) {
+                Std_out::print(e + "   ");
             }
-            StdOut.println();
+            Std_out::print_line();
         } else {
-            StdOut.printf("%d to %d         no path\n", s, t);
+            Std_out::printf("%d to %d         no path\n", s, t);
         }
     }
     return 0;

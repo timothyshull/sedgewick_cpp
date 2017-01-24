@@ -14,7 +14,7 @@ public:
 
     double area();
 
-    std::string toString();
+    std::string to_string();
 
     bool operator==(Interval_2d& rhs);
 

@@ -14,16 +14,16 @@ public:
     Binary_in(URL& url);
     Binary_in(std::string& name, std::true_type); // just for overload
     bool exists();
-    bool isEmpty();;
-    bool readBoolean();
+    bool is_empty();;
+    bool read_boolean();
     char readChar();
     char readChar(int r);
-    std::string readString();
+    std::string read_string();
     short readShort();
-    int readInt();
-    int readInt(int r);
+    int read_int();
+    int read_int(int r);
     long readLong();
-    double readDouble();
+    double read_double();
     float readFloat();
     char readByte();
 private:

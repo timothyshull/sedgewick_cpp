@@ -1,23 +1,28 @@
+#include "In.h"
+#include "Digraph.h"
+#include "utility.h"
+#include "Depth_first_directed_paths.h"
+#include "Std_out.h"
+
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Digraph G = new Digraph(in);
-    // StdOut.println(G);
+    In in{argv[1]};
+    Digraph digraph{in};
+    // Std_out::print_line(digraph);
 
-    int s = Integer.parseInt(args[1]);
-    DepthFirstDirectedPaths dfs = new DepthFirstDirectedPaths(G, s);
+    int s = utility::safe_convert_integer(argv[1]);
+    Depth_first_directed_paths dfs{digraph, s};
 
-    for (int v = 0; v < G.V(); v++) {
-        if (dfs.hasPathTo(v)) {
-            StdOut.printf("%d to %d:  ", s, v);
-            for (int x : dfs.pathTo(v)) {
-                if (x == s) StdOut.print(x);
-                else StdOut.print("-" + x);
+    for (int v = 0; v < digraph.num_vertices(); ++v) {
+        if (dfs.has_path_to(v)) {
+            Std_out::printf("%d to %d:  ", s, v);
+            for (int x : dfs.path_to(v)) {
+                if (x == s) Std_out::print(x);
+                else Std_out::print("-" + x);
             }
-            StdOut.println();
+            Std_out::print_line();
         } else {
-            StdOut.printf("%d to %d:  not connected\n", s, v);
+            Std_out::printf("%d to %d:  not connected\n", s, v);
         }
-
     }
     return 0;
 }

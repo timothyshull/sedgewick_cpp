@@ -1,24 +1,24 @@
 int main(int argc, char *argv[]) {
-    int keyField = Integer.parseInt(args[1]);
-    int valField = Integer.parseInt(args[2]);
+    int keyField = utility::safe_convert_integer(argv[1]);
+    int valField = utility::safe_convert_integer(argv[2]);
 
     // symbol table
-    ST<String, String> st = new ST<String, String>();
+    ST<std::string, std::string> st = new ST<std::string, std::string>();
 
     // read in the data from csv file
-    In in = new In(args[0]);
+    In in{argv[1]};
     while (in.hasNextLine()) {
-        String line = in.readLine();
+        std::string line = in.read_line();
         String[] tokens = line.split(",");
-        String key = tokens[keyField];
-        String val = tokens[valField];
+        std::string key = tokens[keyField];
+        std::string val = tokens[valField];
         st.put(key, val);
     }
 
-    while (!StdIn.isEmpty()) {
-        String s = StdIn.readString();
-        if (st.contains(s)) StdOut.println(st.get(s));
-        else StdOut.println("Not found");
+    while (!Std_in::is_empty()) {
+        std::string s = Std_in::read_string();
+        if (st.contains(s)) Std_out::print_line(st.get(s));
+        else Std_out::print_line("Not found");
     }
     return 0;
 }

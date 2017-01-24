@@ -10,7 +10,7 @@ public:
     int either();
     int other(int vertex);
     bool operator<(Edge& rhs);
-    std::string toString();
+    std::string to_string();
 private:
     const int v;
     const int w;

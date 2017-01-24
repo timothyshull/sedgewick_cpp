@@ -2,7 +2,7 @@
 
 Depth_first_search::Depth_first_search(Graph& G, int s)
 {
-    marked = new boolean[G.V()];
+    marked = new boolean[G.num_vertices()];
     dfs(G, s);
 }
 

@@ -15,7 +15,7 @@ public:
     int other(int vertex);
     double residualCapacityTo(int vertex);
     void addResidualFlowTo(int vertex, double delta);
-    std::string toString();
+    std::string to_string();
 private:
     const int v;
     const int w;

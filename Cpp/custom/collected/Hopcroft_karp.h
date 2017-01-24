@@ -27,9 +27,9 @@ private:
     std::vector<int> mate;
     std::deque<bool> inMinVertexCover;
     std::deque<bool> marked;
-    std::vector<int> distTo;
+    std::vector<int> distance_to;
 
-    std::string toString(std::vector<int>& path);
+    std::string to_string(std::vector<int>& path);
 
     bool isLevelGraphEdge(int v, int w);
 

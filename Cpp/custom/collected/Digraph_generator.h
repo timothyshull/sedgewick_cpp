@@ -25,23 +25,23 @@ namespace Digraph_generator {
 
     Digraph tournament(int V);
 
-    Digraph rootedInDAG(int V, int E);
+    Digraph rooted_in_dag(int V, int E);
 
-    Digraph rootedOutDAG(int V, int E);
+    Digraph rooted_out_dag(int V, int E);
 
-    Digraph rootedInTree(int V);
+    Digraph rooted_in_tree(int V);
 
-    Digraph rootedOutTree(int V);
+    Digraph rooted_out_tree(int V);
 
     Digraph path(int V);
 
-    Digraph binaryTree(int V);
+    Digraph binary_tree(int V);
 
     Digraph cycle(int V);
 
-    Digraph eulerianCycle(int V, int E);
+    Digraph eulerian_cycle(int V, int E);
 
-    Digraph eulerianPath(int V, int E);
+    Digraph eulerian_path(int V, int E);
 
     Digraph strong(int V, int E, int c);
 };

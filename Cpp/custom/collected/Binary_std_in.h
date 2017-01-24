@@ -7,25 +7,25 @@ class Binary_std_in {
 public:
     void close();
 
-    bool isEmpty();
+    bool is_empty();
 
-    bool readBoolean();
+    bool read_boolean();
 
     char readChar();
 
     char readChar(int r);
 
-    std::string readString();
+    std::string read_string();
 
     short readShort();
 
-    int readInt();
+    int read_int();
 
-    int readInt(int r);
+    int read_int(int r);
 
     long readLong();
 
-    double readDouble();
+    double read_double();
 
     float readFloat();
 

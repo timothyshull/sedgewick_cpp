@@ -1,33 +1,41 @@
-int main(int argc, char *argv[]) {
-    String filename = args[0];
-    String delimiter = args[1];
-    String source = args[2];
+#include <string>
+#include "Graph.h"
+#include "Symbol_graph.h"
+#include "Std_out.h"
+#include "Std_in.h"
+#include "Breadth_first_paths.h"
 
-    // StdOut.println("Source: " + source);
+int main(int argc, char* argv[])
+{
+    std::string filename{argv[1]};
+    std::string delimiter{argv[2]};
+    std::string source{argv[3]};
 
-    SymbolGraph sg = new SymbolGraph(filename, delimiter);
-    Graph G = sg.graph();
+    // Std_out::print_line("Source: " + source);
+
+    Symbol_graph sg{filename, delimiter};
+    Graph graph{sg.graph()};
     if (!sg.contains(source)) {
-        StdOut.println(source + " not in database.");
+        Std_out::print_line(source + " not in database.");
         return;
     }
 
-    int s = sg.indexOf(source);
-    BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
+    int s{sg.index_of(source)};
+    Breadth_first_paths bfs{graph, s};
 
-    while (!StdIn.isEmpty()) {
-        String sink = StdIn.readLine();
+    while (!Std_in::is_empty()) {
+        std::string sink = Std_in::read_line();
         if (sg.contains(sink)) {
-            int t = sg.indexOf(sink);
-            if (bfs.hasPathTo(t)) {
-                for (int v : bfs.pathTo(t)) {
-                    StdOut.println("   " + sg.nameOf(v));
+            int t = sg.index_of(sink);
+            if (bfs.has_path_to(t)) {
+                for (int v : bfs.path_to(t)) {
+                    Std_out::print_line("   " + sg.nameOf(v));
                 }
             } else {
-                StdOut.println("Not connected");
+                Std_out::print_line("Not connected");
             }
         } else {
-            StdOut.println("   Not in database.");
+            Std_out::print_line("   Not in database.");
         }
     }
     return 0;

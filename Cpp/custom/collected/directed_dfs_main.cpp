@@ -1,21 +1,27 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Digraph G = new Digraph(in);
+#include "Digraph.h"
+#include "In.h"
+#include "Directed_dfs.h"
+#include "utility.h"
+#include "Std_out.h"
 
-    // read in sources from command-line arguments
-    Bag<Integer> sources = new Bag<Integer>();
-    for (int i = 1; i < args.length; i++) {
-        int s = Integer.parseInt(args[i]);
-        sources.add(s);
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Digraph digraph{in};
+
+    std::vector<int> sources;
+    sources.reserve(argc - 2);
+    int s;
+    for (int i = 2; i < argc; ++i) {
+        s = utility::safe_convert_integer(argv[i]);
+        sources.push_back(s);
     }
 
-    // multiple-source reachability
-    DirectedDFS dfs = new DirectedDFS(G, sources);
+    Directed_dfs dfs{digraph, sources};
 
-    // print out vertices reachable from sources
-    for (int v = 0; v < G.V(); v++) {
-        if (dfs.marked(v)) StdOut.print(v + " ");
+    for (int v = 0; v < digraph.num_vertices(); ++v) {
+        if (dfs.marked(v)) { Std_out::print(v + " "); }
     }
-    StdOut.println();
+    Std_out::print_line();
     return 0;
 }

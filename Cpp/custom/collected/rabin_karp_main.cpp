@@ -1,17 +1,17 @@
 int main(int argc, char *argv[]) {
-    String pat = args[0];
-    String txt = args[1];
+    std::string pat = argv[1];
+    std::string txt = argv[2];
 
     RabinKarp searcher = new RabinKarp(pat);
     int offset = searcher.search(txt);
 
     // print results
-    StdOut.println("text:    " + txt);
+    Std_out::print_line("text:    " + txt);
 
     // from brute force search method 1
-    StdOut.print("pattern: ");
-    for (int i = 0; i < offset; i++)
-        StdOut.print(" ");
-    StdOut.println(pat);
+    Std_out::print("pattern: ");
+    for (int i = 0; i < offset; ++i)
+        Std_out::print(" ");
+    Std_out::print_line(pat);
     return 0;
 }

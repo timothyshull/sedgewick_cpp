@@ -27,8 +27,7 @@ void remove(Key key) {
         if (key == null) throw new NullPointerException("called delete() with null key");
         st.remove(key);
     }
-
-boolean contains(Key key) {
+ bool contains(Key key) {
         if (key == null) throw new NullPointerException("called contains() with null key");
         return st.containsKey(key);
     }
@@ -36,8 +35,7 @@ boolean contains(Key key) {
 int size() {
         return st.size();
     }
-
-boolean isEmpty() {
+ bool is_empty() {
         return size() == 0;
     }
 
@@ -50,12 +48,12 @@ Iterator<Key> iterator() {
     }
 
 Key min() {
-        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
+        if (is_empty()) throw new NoSuchElementException("called min() with empty symbol table");
         return st.firstKey();
     }
 
 Key max() {
-        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
+        if (is_empty()) throw new NoSuchElementException("called max() with empty symbol table");
         return st.lastKey();
     }
 

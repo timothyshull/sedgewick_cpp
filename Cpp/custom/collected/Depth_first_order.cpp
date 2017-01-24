@@ -9,7 +9,7 @@ Depth_first_order::Depth_first_order(Edge_weighted_digraph& g)
           _post_counter{0}
 {
 
-    for (int v = 0; v < g.num_vertices(); v++) {
+    for (int v = 0; v < g.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(g, v);
         }
@@ -24,7 +24,7 @@ Depth_first_order::Depth_first_order(Digraph& g)
           _post_counter{0}
 {
 
-    for (int v = 0; v < g.num_vertices(); v++) {
+    for (int v = 0; v < g.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(g, v);
         }

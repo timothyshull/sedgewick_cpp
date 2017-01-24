@@ -5,8 +5,8 @@ Kosaraju_sharir_scc::Kosaraju_sharir_scc(Digraph& G)
     DepthFirstOrder dfs = new DepthFirstOrder(G.reverse());
 
     // run DFS on G, using reverse postorder to guide calculation
-    marked = new boolean[G.V()];
-    id = new int[G.V()];
+    marked = new boolean[G.num_vertices()];
+    id = new int[G.num_vertices()];
     for (int v : dfs.reversePost()) {
         if (!marked[v]) {
             dfs(G, v);
@@ -45,8 +45,8 @@ void Kosaraju_sharir_scc::dfs(Digraph& G, int v)
 bool Kosaraju_sharir_scc::check(Digraph& G)
 {
     TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v = 0; v < G.V(); v++) {
-        for (int w = 0; w < G.V(); w++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
+        for (int w = 0; w < G.num_vertices(); ++w) {
             if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }

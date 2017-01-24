@@ -11,13 +11,13 @@ public:
     Edge_weighted_graph(int V, int E);
     Edge_weighted_graph(In& in);
     Edge_weighted_graph(Edge_weighted_graph& G);
-    int V();
-    int E();
-    void addEdge(Edge& e);
+    int num_vertices();
+    int num_edges();
+    void add_edge(Edge& e);
     std::vector<Edge> adj(int v);
     int degree(int v);
     std::vector<Edge> edges();
-    std::string toString();
+    std::string to_string();
 private:
     const int V;
     int E;

@@ -1,10 +1,10 @@
 int main(int argc, char *argv[]) {
-    String regexp = "(.*" + args[0] + ".*)";
+    std::string regexp = "(.*" + argv[1] + ".*)";
     NFA nfa = new NFA(regexp);
-    while (StdIn.hasNextLine()) {
-        String line = StdIn.readLine();
+    while (Std_in::hasNextLine()) {
+        std::string line = Std_in::read_line();
         if (nfa.recognizes(line)) {
-            StdOut.println(line);
+            Std_out::print_line(line);
         }
     }
     return 0;

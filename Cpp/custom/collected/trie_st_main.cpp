@@ -1,34 +1,34 @@
 int main(int argc, char *argv[]) {
     TrieST<Integer> st = new TrieST<Integer>();
-    for (int i = 0; !StdIn.isEmpty(); i++) {
-        String key = StdIn.readString();
+    for (int i = 0; !Std_in::is_empty(); ++i) {
+        std::string key = Std_in::read_string();
         st.put(key, i);
     }
 
     // print results
     if (st.size() < 100) {
-        StdOut.println("keys(\"\"):");
+        Std_out::print_line("keys(\"\"):");
         for (String key : st.keys()) {
-            StdOut.println(key + " " + st.get(key));
+            Std_out::print_line(key + " " + st.get(key));
         }
-        StdOut.println();
+        Std_out::print_line();
     }
 
-    StdOut.println("longestPrefixOf(\"shellsort\"):");
-    StdOut.println(st.longestPrefixOf("shellsort"));
-    StdOut.println();
+    Std_out::print_line("longestPrefixOf(\"shellsort\"):");
+    Std_out::print_line(st.longestPrefixOf("shellsort"));
+    Std_out::print_line();
 
-    StdOut.println("longestPrefixOf(\"quicksort\"):");
-    StdOut.println(st.longestPrefixOf("quicksort"));
-    StdOut.println();
+    Std_out::print_line("longestPrefixOf(\"quicksort\"):");
+    Std_out::print_line(st.longestPrefixOf("quicksort"));
+    Std_out::print_line();
 
-    StdOut.println("keysWithPrefix(\"shor\"):");
+    Std_out::print_line("keysWithPrefix(\"shor\"):");
     for (String s : st.keysWithPrefix("shor"))
-        StdOut.println(s);
-    StdOut.println();
+        Std_out::print_line(s);
+    Std_out::print_line();
 
-    StdOut.println("keysThatMatch(\".he.l.\"):");
+    Std_out::print_line("keysThatMatch(\".he.l.\"):");
     for (String s : st.keysThatMatch(".he.l."))
-        StdOut.println(s);
+        Std_out::print_line(s);
     return 0;
 }

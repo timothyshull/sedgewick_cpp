@@ -31,7 +31,7 @@ public:
 
     Sparse_vector plus(Sparse_vector& that);
 
-    std::string toString();
+    std::string to_string();
 
 private:
     int d;

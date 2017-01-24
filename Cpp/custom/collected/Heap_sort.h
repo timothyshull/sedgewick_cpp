@@ -82,7 +82,7 @@ namespace Heap_sort {
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); i++) {
+        for (int i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

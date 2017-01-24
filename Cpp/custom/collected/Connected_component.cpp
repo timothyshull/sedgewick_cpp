@@ -2,10 +2,10 @@
 
 Connected_component::Connected_component(Graph& G)
 {
-    marked = new boolean[G.V()];
-    id = new int[G.V()];
-    size = new int[G.V()];
-    for (int v = 0; v < G.V(); v++) {
+    marked = new boolean[G.num_vertices()];
+    id = new int[G.num_vertices()];
+    size = new int[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, v);
             count++;

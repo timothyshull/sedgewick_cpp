@@ -1,16 +1,16 @@
+#include "Std_out.h"
+
 int main(int argc, char *argv[]) {
-    double[] a = StdArrayIO.readDouble1D();
+    std::vector<double> a = StdArrayIO.read_double1D();
     StdArrayIO.print(a);
-    StdOut.println();
+    Std_out::print_line();
 
-    // read and print a matrix of doubles
-    double[][] b = StdArrayIO.readDouble2D();
+    std::vector<std::vector<double>> b = StdArrayIO.read_double2D();
     StdArrayIO.print(b);
-    StdOut.println();
+    Std_out::print_line();
 
-    // read and print a matrix of doubles
-    boolean[][] d = StdArrayIO.readBoolean2D();
+    std::vector<std::deque<bool>> d = StdArrayIO.read_boolean2D();
     StdArrayIO.print(d);
-    StdOut.println();
+    Std_out::print_line();
     return 0;
 }

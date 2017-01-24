@@ -7,11 +7,11 @@
 class Dijkstra_undirected_sp {
 public:
     Dijkstra_undirected_sp(Edge_weighted_digraph&G, int s);
-    double distTo(int v);
-    bool hasPathTo(int v);
-    std::vector<Directed_edge> pathTo(int v);
+    double distance_to(int v);
+    bool has_path_to(int v);
+    std::vector<Directed_edge> path_to(int v);
 private:
-    std::vector<double> distTo;
+    std::vector<double> distance_to;
     std::vector<Directed_edge> edgeTo;
     Index_min_pq<double> pq;
 

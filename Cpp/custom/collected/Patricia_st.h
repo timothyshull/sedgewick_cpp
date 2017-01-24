@@ -128,13 +128,12 @@ void remove(String key) {
         }
     }
 
-
-boolean contains(String key) {
+ bool contains(String key) {
         return get(key) != null;
     }
 
 
-    boolean isEmpty() {
+    bool is_empty() {
         return count == 0;
     }
 
@@ -145,7 +144,7 @@ boolean contains(String key) {
 
 
 std::vector<std::string> keys() {
-        Queue<String> queue = new Queue<String>();
+        Queue<std::string> queue = new Queue<std::string>();
         if (head.left != head) keys(head.left, 0, queue);
         if (head.right != head) keys(head.right, 0, queue);
         return queue;
@@ -154,7 +153,7 @@ private:
     Raw_node_pointer head;
     int count;
 
-void keys(Node x, int b, Queue<String> queue) {
+void keys(Node x, int b, Queue<std::string> queue) {
         if (x.b > b) {
             keys(x.left, x.b, queue);
             queue.enqueue(x.key);
@@ -163,7 +162,7 @@ void keys(Node x, int b, Queue<String> queue) {
     }
 
 
-static boolean safeBitTest(String key, int b) {
+static bool safeBitTest(String key, int b) {
         if (b < key.length() * 16) return bitTest(key, b) != 0;
         if (b > key.length() * 16 + 15) return false;   // padding
         /* 16 bits of 0xffff */
@@ -182,7 +181,7 @@ static int safeCharAt(String key, int i) {
     }
 
 
-static int firstDifferingBit(String k1, String k2) {
+static int firstDifferingBit(String k1, std::string k2) {
         int i = 0;
         int c1 = safeCharAt(k1, 0) & ~1;
         int c2 = safeCharAt(k2, 0) & ~1;

@@ -19,7 +19,7 @@ Binary_in::Binary_in(Socket& socket)
         in = new BufferedInputStream(is);
         fillBuffer();
     } catch (IOException ioe) {
-        System.err.println("Could not open " + socket);
+        System.err.print_line("Could not open " + socket);
     }
 }
 
@@ -31,7 +31,7 @@ Binary_in::Binary_in(URL& url)
         in = new BufferedInputStream(is);
         fillBuffer();
     } catch (IOException ioe) {
-        System.err.println("Could not open " + url);
+        System.err.print_line("Could not open " + url);
     }
 }
 
@@ -60,7 +60,7 @@ Binary_in::Binary_in(std::string& name, std::true_type)
         in = new BufferedInputStream(is);
         fillBuffer();
     } catch (IOException ioe) {
-        System.err.println("Could not open " + name);
+        System.err.print_line("Could not open " + name);
     }
 }
 
@@ -69,16 +69,16 @@ bool Binary_in::exists()
     return in != null;
 }
 
-bool Binary_in::isEmpty()
+bool Binary_in::is_empty()
 {
     return buffer == _EOF;
 }
 
-bool Binary_in::readBoolean()
+bool Binary_in::read_boolean()
 {
-    if (isEmpty()) { throw new RuntimeException("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
     n--;
-    boolean bit = ((buffer >> n) & 1) == 1;
+    bool bit = ((buffer >> n) & 1) == 1;
     if (n == 0) { fillBuffer(); }
     return bit;
 }
@@ -96,7 +96,7 @@ char Binary_in::readChar()
     x <<= (8 - n);
     int oldN = n;
     fillBuffer();
-    if (isEmpty()) { throw new RuntimeException("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
     n = oldN;
     x |= (buffer >> > n);
     return (char) (x & 0xff);
@@ -104,36 +104,36 @@ char Binary_in::readChar()
 
 char Binary_in::readChar(int r)
 {
-    if (r < 1 || r > 16) { throw new RuntimeException("Illegal value of r = " + r); }
+    if (r < 1 || r > 16) { throw utility::Runtime_exception("Illegal value of r = " + r); }
 
     // optimize r = 8 case
     if (r == 8) { return readChar(); }
 
     char x = 0;
-    for (int i = 0; i < r; i++) {
+    for (int i = 0; i < r; ++i) {
         x <<= 1;
-        boolean bit = readBoolean();
+        bool bit = read_boolean();
         if (bit) { x |= 1; }
     }
     return x;
 }
 
-std::string Binary_in::readString()
+std::string Binary_in::read_string()
 {
-    if (isEmpty()) { throw new RuntimeException("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
 
-    StringBuilder sb = new StringBuilder();
-    while (!isEmpty()) {
+    std::stringstream sb = new std::stringstream();
+    while (!is_empty()) {
         char c = readChar();
         sb.append(c);
     }
-    return sb.toString();
+    return sb.to_string();
 }
 
 short Binary_in::readShort()
 {
     short x = 0;
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; ++i) {
         char c = readChar();
         x <<= 8;
         x |= c;
@@ -141,10 +141,10 @@ short Binary_in::readShort()
     return x;
 }
 
-int Binary_in::readInt()
+int Binary_in::read_int()
 {
     int x = 0;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; ++i) {
         char c = readChar();
         x <<= 8;
         x |= c;
@@ -152,17 +152,17 @@ int Binary_in::readInt()
     return x;
 }
 
-int Binary_in::readInt(int r)
+int Binary_in::read_int(int r)
 {
-    if (r < 1 || r > 32) { throw new RuntimeException("Illegal value of r = " + r); }
+    if (r < 1 || r > 32) { throw utility::Runtime_exception("Illegal value of r = " + r); }
 
     // optimize r = 32 case
-    if (r == 32) { return readInt(); }
+    if (r == 32) { return read_int(); }
 
     int x = 0;
-    for (int i = 0; i < r; i++) {
+    for (int i = 0; i < r; ++i) {
         x <<= 1;
-        boolean bit = readBoolean();
+        bool bit = read_boolean();
         if (bit) { x |= 1; }
     }
     return x;
@@ -171,7 +171,7 @@ int Binary_in::readInt(int r)
 long Binary_in::readLong()
 {
     long x = 0;
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; ++i) {
         char c = readChar();
         x <<= 8;
         x |= c;
@@ -179,14 +179,14 @@ long Binary_in::readLong()
     return x;
 }
 
-double Binary_in::readDouble()
+double Binary_in::read_double()
 {
     return Double.longBitsToDouble(readLong());
 }
 
 float Binary_in::readFloat()
 {
-    return Float.intBitsToFloat(readInt());
+    return Float.intBitsToFloat(read_int());
 }
 
 char Binary_in::readByte()
@@ -202,7 +202,7 @@ void Binary_in::fillBuffer()
         buffer = in.read();
         n = 8;
     } catch (IOException e) {
-        System.err.println("EOF");
+        System.err.print_line("EOF");
         buffer = EOF;
         n = -1;
     }

@@ -8,7 +8,7 @@ class Directed_cycle_x {
 public:
     Directed_cycle_x(Digraph& G);
     std::vector<int> cycle();
-    bool hasCycle();
+    bool has_cycle();
 private:
     Stack<int> cycle;
     bool check();

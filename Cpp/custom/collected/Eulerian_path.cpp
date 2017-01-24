@@ -13,7 +13,7 @@ Eulerian_path::Eulerian_path(Graph& G)
 {
     int oddDegreeVertices = 0;
     int s = nonIsolatedVertex(G);
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             oddDegreeVertices++;
             s = v;
@@ -29,11 +29,11 @@ Eulerian_path::Eulerian_path(Graph& G)
 
     // create local view of adjacency lists, to iterate one vertex at a time
     // the helper Edge data type is used to avoid exploring both copies of an edge v-w
-    Queue<Edge>[] adj = (Queue<Edge>[]) new Queue[G.V()];
-    for (int v = 0; v < G.V(); v++)
+    Queue<Edge>[] adj = (Queue<Edge>[]) new Queue[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v)
         adj[v] = new Queue<Edge>();
 
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         int selfLoops = 0;
         for (int w : G.adj(v)) {
             // careful with self loops
@@ -58,9 +58,9 @@ Eulerian_path::Eulerian_path(Graph& G)
 
     // greedily search through edges in iterative DFS style
     path = new Stack<Integer>();
-    while (!stack.isEmpty()) {
+    while (!stack.is_empty()) {
         int v = stack.pop();
-        while (!adj[v].isEmpty()) {
+        while (!adj[v].is_empty()) {
             Edge edge = adj[v].dequeue();
             if (edge.isUsed) continue;
             edge.isUsed = true;
@@ -72,7 +72,7 @@ Eulerian_path::Eulerian_path(Graph& G)
     }
 
     // check if all edges are used
-    if (path.size() != G.E() + 1)
+    if (path.size() != G.num_edges() + 1)
         path = null;
 
     assert certifySolution(G);
@@ -90,7 +90,7 @@ bool Eulerian_path::hasEulerianPath()
 
 int Eulerian_path::nonIsolatedVertex(Graph& G)
 {
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (G.degree(v) > 0)
             return v;
     return -1;
@@ -98,20 +98,20 @@ int Eulerian_path::nonIsolatedVertex(Graph& G)
 
 bool Eulerian_path::hasEulerianPath(Graph& G)
 {
-    if (G.E() == 0) return true;
+    if (G.num_edges() == 0) return true;
 
     // Condition 1: degree(v) is even except for possibly two
     int oddDegreeVertices = 0;
-    for (int v = 0; v < G.V(); v++)
+    for (int v = 0; v < G.num_vertices(); ++v)
         if (G.degree(v) % 2 != 0)
             oddDegreeVertices++;
     if (oddDegreeVertices > 2) return false;
 
     // Condition 2: graph is connected, ignoring isolated vertices
     int s = nonIsolatedVertex(G);
-    BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
-    for (int v = 0; v < G.V(); v++)
-        if (G.degree(v) > 0 && !bfs.hasPathTo(v))
+    Breadth_first_paths bfs = new Breadth_first_paths(G, s);
+    for (int v = 0; v < G.num_vertices(); ++v)
+        if (G.degree(v) > 0 && !bfs.has_path_to(v))
             return false;
 
     return true;
@@ -128,7 +128,7 @@ bool Eulerian_path::ceertifySolution(Graph& G)
     if (path == null) return true;
 
     // check that path() uses correct number of edges
-    if (path.size() != G.E() + 1) return false;
+    if (path.size() != G.num_edges() + 1) return false;
 
     // check that path() is a path in G
     // TODO
@@ -136,22 +136,22 @@ bool Eulerian_path::ceertifySolution(Graph& G)
     return true;
 }
 
-void Eulerian_path::unitTest(Graph& G, std::string& description)
+void Eulerian_path::unit_test(Graph& G, std::string& description)
 {
-    StdOut.println(description);
-    StdOut.println("-------------------------------------");
-    StdOut.print(G);
+    Std_out::print_line(description);
+    Std_out::print_line("-------------------------------------");
+    Std_out::print(G);
 
     EulerianPath euler = new EulerianPath(G);
 
-    StdOut.print("Eulerian path:  ");
+    Std_out::print("Eulerian path:  ");
     if (euler.hasEulerianPath()) {
         for (int v : euler.path()) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
-        StdOut.println();
+        Std_out::print_line();
     } else {
-        StdOut.println("none");
+        Std_out::print_line("none");
     }
-    StdOut.println();
+    Std_out::print_line();
 }

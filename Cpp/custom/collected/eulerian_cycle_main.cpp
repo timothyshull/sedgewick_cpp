@@ -1,43 +1,43 @@
 int main(int argc, char *argv[]) {
-    int V = Integer.parseInt(args[0]);
-    int E = Integer.parseInt(args[1]);
+    int V = utility::safe_convert_integer(argv[1]);
+    int E = utility::safe_convert_integer(argv[2]);
 
     // Eulerian cycle
-    Graph G1 = GraphGenerator.eulerianCycle(V, E);
-    unitTest(G1, "Eulerian cycle");
+    Graph G1 = Graph_generator::eulerianCycle(V, E);
+    unit_test(G1, "Eulerian cycle");
 
     // Eulerian path
-    Graph G2 = GraphGenerator.eulerianPath(V, E);
-    unitTest(G2, "Eulerian path");
+    Graph G2 = Graph_generator::eulerianPath(V, E);
+    unit_test(G2, "Eulerian path");
 
     // empty graph
     Graph G3 = new Graph(V);
-    unitTest(G3, "empty graph");
+    unit_test(G3, "empty graph");
 
     // self loop
     Graph G4 = new Graph(V);
-    int v4 = StdRandom.uniform(V);
-    G4.addEdge(v4, v4);
-    unitTest(G4, "single self loop");
+    int v4 = Std_random::uniform(V);
+    G4.add_edge(v4, v4);
+    unit_test(G4, "single self loop");
 
     // union of two disjoint cycles
-    Graph H1 = GraphGenerator.eulerianCycle(V / 2, E / 2);
-    Graph H2 = GraphGenerator.eulerianCycle(V - V / 2, E - E / 2);
-    int[] perm = new int[V];
-    for (int i = 0; i < V; i++)
+    Graph H1 = Graph_generator::eulerianCycle(V / 2, E / 2);
+    Graph H2 = Graph_generator::eulerianCycle(V - V / 2, E - E / 2);
+    std::vector<int> perm = new int[V];
+    for (int i = 0; i < V; ++i)
         perm[i] = i;
-    StdRandom.shuffle(perm);
+    Std_random::shuffle(perm);
     Graph G5 = new Graph(V);
-    for (int v = 0; v < H1.V(); v++)
+    for (int v = 0; v < H1.num_vertices(); ++v)
         for (int w : H1.adj(v))
-            G5.addEdge(perm[v], perm[w]);
-    for (int v = 0; v < H2.V(); v++)
+            G5.add_edge(perm[v], perm[w]);
+    for (int v = 0; v < H2.num_vertices(); ++v)
         for (int w : H2.adj(v))
-            G5.addEdge(perm[V / 2 + v], perm[V / 2 + w]);
-    unitTest(G5, "Union of two disjoint cycles");
+            G5.add_edge(perm[V / 2 + v], perm[V / 2 + w]);
+    unit_test(G5, "Union of two disjoint cycles");
 
     // random digraph
-    Graph G6 = GraphGenerator.simple(V, E);
-    unitTest(G6, "simple graph");
+    Graph G6 = Graph_generator::simple(V, E);
+    unit_test(G6, "simple graph");
     return 0;
 }

@@ -25,14 +25,14 @@ Graph::Graph_generator::simple(int V, int E)
     if (E > (long) V * (V - 1) / 2) throw new IllegalArgumentException("Too many edges");
     if (E < 0) throw new IllegalArgumentException("Too few edges");
     Graph G = new Graph(V);
-    SET<Edge> set = new SET<Edge>();
-    while (G.E() < E) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
+    Set<Edge> set = new Set<Edge>();
+    while (G.num_edges() < E) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
         Edge e = new Edge(v, w);
         if ((v != w) && !set.contains(e)) {
             set.add(e);
-            G.addEdge(v, w);
+            G.add_edge(v, w);
         }
     }
     return G;
@@ -43,10 +43,10 @@ Graph::Graph_generator::simple(int V, double p)
     if (p < 0.0 || p > 1.0)
         throw new IllegalArgumentException("Probability must be between 0 and 1");
     Graph G = new Graph(V);
-    for (int v = 0; v < V; v++)
-        for (int w = v + 1; w < V; w++)
-            if (StdRandom.bernoulli(p))
-                G.addEdge(v, w);
+    for (int v = 0; v < V; ++v)
+        for (int w = v + 1; w < V; ++w)
+            if (Std_random::bernoulli(p))
+                G.add_edge(v, w);
     return G;
 }
 
@@ -66,19 +66,19 @@ Graph::Graph_generator::bipartite(int V1, int V2, int E)
     if (E < 0) throw new IllegalArgumentException("Too few edges");
     Graph G = new Graph(V1 + V2);
 
-    int[] vertices = new int[V1 + V2];
-    for (int i = 0; i < V1 + V2; i++)
+    std::vector<int> vertices = new int[V1 + V2];
+    for (int i = 0; i < V1 + V2; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
 
-    SET<Edge> set = new SET<Edge>();
-    while (G.E() < E) {
-        int i = StdRandom.uniform(V1);
-        int j = V1 + StdRandom.uniform(V2);
+    Set<Edge> set = new Set<Edge>();
+    while (G.num_edges() < E) {
+        int i = Std_random::uniform(V1);
+        int j = V1 + Std_random::uniform(V2);
         Edge e = new Edge(vertices[i], vertices[j]);
         if (!set.contains(e)) {
             set.add(e);
-            G.addEdge(vertices[i], vertices[j]);
+            G.add_edge(vertices[i], vertices[j]);
         }
     }
     return G;
@@ -88,27 +88,27 @@ Graph::Graph_generator::bipartite(int V1, int V2, double p)
 {
     if (p < 0.0 || p > 1.0)
         throw new IllegalArgumentException("Probability must be between 0 and 1");
-    int[] vertices = new int[V1 + V2];
-    for (int i = 0; i < V1 + V2; i++)
+    std::vector<int> vertices = new int[V1 + V2];
+    for (int i = 0; i < V1 + V2; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
     Graph G = new Graph(V1 + V2);
-    for (int i = 0; i < V1; i++)
-        for (int j = 0; j < V2; j++)
-            if (StdRandom.bernoulli(p))
-                G.addEdge(vertices[i], vertices[V1 + j]);
+    for (int i = 0; i < V1; ++i)
+        for (int j = 0; j < V2; ++j)
+            if (Std_random::bernoulli(p))
+                G.add_edge(vertices[i], vertices[V1 + j]);
     return G;
 }
 
 Graph::Graph_generator::path(int V)
 {
     Graph G = new Graph(V);
-    int[] vertices = new int[V];
-    for (int i = 0; i < V; i++)
+    std::vector<int> vertices = new int[V];
+    for (int i = 0; i < V; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
-    for (int i = 0; i < V - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    Std_random::shuffle(vertices);
+    for (int i = 0; i < V - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
 }
@@ -116,12 +116,12 @@ Graph::Graph_generator::path(int V)
 Graph::Graph_generator::binaryTree(int V)
 {
     Graph G = new Graph(V);
-    int[] vertices = new int[V];
-    for (int i = 0; i < V; i++)
+    std::vector<int> vertices = new int[V];
+    for (int i = 0; i < V; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
-    for (int i = 1; i < V; i++) {
-        G.addEdge(vertices[i], vertices[(i - 1) / 2]);
+    Std_random::shuffle(vertices);
+    for (int i = 1; i < V; ++i) {
+        G.add_edge(vertices[i], vertices[(i - 1) / 2]);
     }
     return G;
 }
@@ -129,14 +129,14 @@ Graph::Graph_generator::binaryTree(int V)
 Graph::Graph_generator::cycle(int V)
 {
     Graph G = new Graph(V);
-    int[] vertices = new int[V];
-    for (int i = 0; i < V; i++)
+    std::vector<int> vertices = new int[V];
+    for (int i = 0; i < V; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
-    for (int i = 0; i < V - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    Std_random::shuffle(vertices);
+    for (int i = 0; i < V - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
-    G.addEdge(vertices[V - 1], vertices[0]);
+    G.add_edge(vertices[V - 1], vertices[0]);
     return G;
 }
 
@@ -147,13 +147,13 @@ Graph::Graph_generator::eulerianCycle(int V, int E)
     if (V <= 0)
         throw new IllegalArgumentException("An Eulerian cycle must have at least one vertex");
     Graph G = new Graph(V);
-    int[] vertices = new int[E];
-    for (int i = 0; i < E; i++)
-        vertices[i] = StdRandom.uniform(V);
-    for (int i = 0; i < E - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    std::vector<int> vertices = new int[E];
+    for (int i = 0; i < E; ++i)
+        vertices[i] = Std_random::uniform(V);
+    for (int i = 0; i < E - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
-    G.addEdge(vertices[E - 1], vertices[0]);
+    G.add_edge(vertices[E - 1], vertices[0]);
     return G;
 }
 
@@ -164,11 +164,11 @@ Graph::Graph_generator::eulerianPath(int V, int E)
     if (V <= 0)
         throw new IllegalArgumentException("An Eulerian path must have at least one vertex");
     Graph G = new Graph(V);
-    int[] vertices = new int[E + 1];
-    for (int i = 0; i < E + 1; i++)
-        vertices[i] = StdRandom.uniform(V);
-    for (int i = 0; i < E; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    std::vector<int> vertices = new int[E + 1];
+    for (int i = 0; i < E + 1; ++i)
+        vertices[i] = Std_random::uniform(V);
+    for (int i = 0; i < E; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
 }
@@ -177,20 +177,20 @@ Graph::Graph_generator::wheel(int V)
 {
     if (V <= 1) throw new IllegalArgumentException("Number of vertices must be at least 2");
     Graph G = new Graph(V);
-    int[] vertices = new int[V];
-    for (int i = 0; i < V; i++)
+    std::vector<int> vertices = new int[V];
+    for (int i = 0; i < V; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
 
     // simple cycle on V-1 vertices
-    for (int i = 1; i < V - 1; i++) {
-        G.addEdge(vertices[i], vertices[i + 1]);
+    for (int i = 1; i < V - 1; ++i) {
+        G.add_edge(vertices[i], vertices[i + 1]);
     }
-    G.addEdge(vertices[V - 1], vertices[1]);
+    G.add_edge(vertices[V - 1], vertices[1]);
 
     // connect vertices[0] to every vertex on cycle
-    for (int i = 1; i < V; i++) {
-        G.addEdge(vertices[0], vertices[i]);
+    for (int i = 1; i < V; ++i) {
+        G.add_edge(vertices[0], vertices[i]);
     }
 
     return G;
@@ -200,14 +200,14 @@ Graph::Graph_generator::star(int V)
 {
     if (V <= 0) throw new IllegalArgumentException("Number of vertices must be at least 1");
     Graph G = new Graph(V);
-    int[] vertices = new int[V];
-    for (int i = 0; i < V; i++)
+    std::vector<int> vertices = new int[V];
+    for (int i = 0; i < V; ++i)
         vertices[i] = i;
-    StdRandom.shuffle(vertices);
+    Std_random::shuffle(vertices);
 
     // connect vertices[0] to every other vertex
-    for (int i = 1; i < V; i++) {
-        G.addEdge(vertices[0], vertices[i]);
+    for (int i = 1; i < V; ++i) {
+        G.add_edge(vertices[0], vertices[i]);
     }
 
     return G;
@@ -219,17 +219,17 @@ Graph::Graph_generator::regular(int V, int k)
     Graph G = new Graph(V);
 
     // create k copies of each vertex
-    int[] vertices = new int[V * k];
-    for (int v = 0; v < V; v++) {
-        for (int j = 0; j < k; j++) {
+    std::vector<int> vertices = new int[V * k];
+    for (int v = 0; v < V; ++v) {
+        for (int j = 0; j < k; ++j) {
             vertices[v + V * j] = v;
         }
     }
 
     // pick a random perfect matching
-    StdRandom.shuffle(vertices);
-    for (int i = 0; i < V * k / 2; i++) {
-        G.addEdge(vertices[2 * i], vertices[2 * i + 1]);
+    Std_random::shuffle(vertices);
+    for (int i = 0; i < V * k / 2; ++i) {
+        G.add_edge(vertices[2 * i], vertices[2 * i + 1]);
     }
     return G;
 }
@@ -245,30 +245,30 @@ Graph::Graph_generator::tree(int V)
     // Prufer sequence: sequence of V-2 values between 0 and V-1
     // Prufer's proof of Cayley's theorem: Prufer sequences are in 1-1
     // with labeled trees on V vertices
-    int[] prufer = new int[V - 2];
-    for (int i = 0; i < V - 2; i++)
-        prufer[i] = StdRandom.uniform(V);
+    std::vector<int> prufer = new int[V - 2];
+    for (int i = 0; i < V - 2; ++i)
+        prufer[i] = Std_random::uniform(V);
 
     // degree of vertex v = 1 + number of times it appers in Prufer sequence
-    int[] degree = new int[V];
-    for (int v = 0; v < V; v++)
+    std::vector<int> degree = new int[V];
+    for (int v = 0; v < V; ++v)
         degree[v] = 1;
-    for (int i = 0; i < V - 2; i++)
+    for (int i = 0; i < V - 2; ++i)
         degree[prufer[i]]++;
 
     // pq contains all vertices of degree 1
     MinPQ<Integer> pq = new MinPQ<Integer>();
-    for (int v = 0; v < V; v++)
+    for (int v = 0; v < V; ++v)
         if (degree[v] == 1) pq.insert(v);
 
     // repeatedly delMin() degree 1 vertex that has the minimum index
-    for (int i = 0; i < V - 2; i++) {
+    for (int i = 0; i < V - 2; ++i) {
         int v = pq.delMin();
-        G.addEdge(v, prufer[i]);
+        G.add_edge(v, prufer[i]);
         degree[v]--;
         degree[prufer[i]]--;
         if (degree[prufer[i]] == 1) pq.insert(prufer[i]);
     }
-    G.addEdge(pq.delMin(), pq.delMin());
+    G.add_edge(pq.delMin(), pq.delMin());
     return G;
 }

@@ -7,10 +7,10 @@ Boyer_moore::Boyer_moore(std::string& pat)
 
     // position of rightmost occurrence of c in the pattern
     right = new int[R];
-    for (int c = 0; c < R; c++) {
+    for (int c = 0; c < R; ++c) {
         right[c] = -1;
     }
-    for (int j = 0; j < pat.length(); j++) {
+    for (int j = 0; j < pat.length(); ++j) {
         right[pat.charAt(j)] = j;
     }
 }
@@ -19,16 +19,16 @@ Boyer_moore::Boyer_moore(std::vector<char>& pattern, int R)
 {
     this.R = R;
     this.pattern = new char[pattern.length];
-    for (int j = 0; j < pattern.length; j++) {
+    for (int j = 0; j < pattern.length; ++j) {
         this.pattern[j] = pattern[j];
     }
 
     // position of rightmost occurrence of c in the pattern
     right = new int[R];
-    for (int c = 0; c < R; c++) {
+    for (int c = 0; c < R; ++c) {
         right[c] = -1;
     }
-    for (int j = 0; j < pattern.length; j++) {
+    for (int j = 0; j < pattern.length; ++j) {
         right[pattern[j]] = j;
     }
 }

@@ -202,8 +202,7 @@ BinomialMinPQ(Key[] a) {
 BinomialMinPQ(Comparator<Key> C, Key[] a) {
         comp = C;
         for (Key k : a) insert(k);
-    }
-boolean isEmpty() {
+    } bool is_empty() {
         return head == nullptr;
     }
 
@@ -229,7 +228,7 @@ void insert(Key key) {
     }
 
  Key minKey() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         Node min = head;
         Node current = head;
         while (current.sibling != null) {
@@ -240,7 +239,7 @@ void insert(Key key) {
     }
 
  Key delMin() {
-        if (isEmpty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
         Node min = eraseMin();
         Node x = (min.child == null) ? min : min.child;
         if (min.child != null) {
@@ -296,7 +295,7 @@ private:
     template<typename, typename>
     friend class Binomial_min_pq_reverse_iterator;
 
- boolean greater(Key n, Key m) {
+ bool greater(Key n, Key m) {
         if (n == null) return false;
         if (m == null) return true;
         return comp.compare(n, m) > 0;

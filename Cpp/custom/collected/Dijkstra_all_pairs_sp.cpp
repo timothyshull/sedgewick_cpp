@@ -2,14 +2,14 @@
 
 Dijkstra_all_pairs_sp::Dijkstra_all_pairs_sp(Edge_weighted_digraph& G)
 {
-    all = new DijkstraSP[G.V()];
-    for (int v = 0; v < G.V(); v++)
+    all = new DijkstraSP[G.num_vertices()];
+    for (int v = 0; v < G.num_vertices(); ++v)
         all[v] = new DijkstraSP(G, v);
 }
 
 std::vector<Directed_edge> Dijkstra_all_pairs_sp::path(int s, int t)
 {
-    return all[s].pathTo(t);
+    return all[s].path_to(t);
 }
 
 bool Dijkstra_all_pairs_sp::hasPath(int s, int t)
@@ -19,5 +19,5 @@ bool Dijkstra_all_pairs_sp::hasPath(int s, int t)
 
 double Dijkstra_all_pairs_sp::dist(int s, int t)
 {
-    return all[s].distTo(t);
+    return all[s].distance_to(t);
 }

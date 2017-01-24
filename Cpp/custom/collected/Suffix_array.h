@@ -12,7 +12,7 @@ public:
 
     bool operator<(Suffix& rhs);
 
-    std::string toString();
+    std::string to_string();
 
 private:
     const std::string text;

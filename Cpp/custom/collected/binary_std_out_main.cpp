@@ -1,10 +1,13 @@
-int main(int argc, char *argv[]) {
-    int m = Integer.parseInt(args[0]);
+#include "utility.h"
+#include "Binary_std_out.h"
 
-    // write n integers to binary standard output
-    for (int i = 0; i < m; i++) {
-        BinaryStdOut.write(i);
+int main(int argc, char* argv[])
+{
+    int m = utility::safe_convert_integer(argv[1]);
+
+    for (int i = 0; i < m; ++i) {
+        Binary_std_out::write(i);
     }
-    BinaryStdOut.flush();
+    Binary_std_out::flush();
     return 0;
 }

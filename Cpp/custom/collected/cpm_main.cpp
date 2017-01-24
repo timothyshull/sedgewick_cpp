@@ -1,35 +1,38 @@
-int main(int argc, char *argv[]) {
-    int n = StdIn.readInt();
+#include "Std_in.h"
+#include "Edge_weighted_digraph.h"
+#include "Acyclic_lp.h"
+#include "Std_out.h"
 
-    // source and sink
-    int source = 2 * n;
-    int sink = 2 * n + 1;
+int main(int argc, char* argv[])
+{
+    int n{Std_in::read_int()};
 
-    // build network
-    EdgeWeightedDigraph G = new EdgeWeightedDigraph(2 * n + 2);
-    for (int i = 0; i < n; i++) {
-        double duration = StdIn.readDouble();
-        G.addEdge(new DirectedEdge(source, i, 0.0));
-        G.addEdge(new DirectedEdge(i + n, sink, 0.0));
-        G.addEdge(new DirectedEdge(i, i + n, duration));
+    int source{2 * n};
+    int sink{2 * n + 1};
 
-        // precedence constraints
-        int m = StdIn.readInt();
-        for (int j = 0; j < m; j++) {
-            int precedent = StdIn.readInt();
-            G.addEdge(new DirectedEdge(n + i, precedent, 0.0));
+    Edge_weighted_digraph digraph{2 * n + 2};
+    double duration;
+    int precedent;
+    for (int i = 0; i < n; ++i) {
+        duration = Std_in::read_double();
+        digraph.add_edge(source, i, 0.0);
+        digraph.add_edge(i + n, sink, 0.0);
+        digraph.add_edge(i, i + n, duration);
+
+        int m = Std_in::read_int();
+        for (int j = 0; j < m; ++j) {
+            precedent = Std_in::read_int();
+            digraph.add_edge(n + i, precedent, 0.0);
         }
     }
 
-    // compute longest path
-    AcyclicLP lp = new AcyclicLP(G, source);
+    Acyclic_lp lp{digraph, source};
 
-    // print results
-    StdOut.println(" job   start  finish");
-    StdOut.println("--------------------");
-    for (int i = 0; i < n; i++) {
-        StdOut.printf("%4d %7.1f %7.1f\n", i, lp.distTo(i), lp.distTo(i + n));
+    Std_out::print_line(" job   start  finish");
+    Std_out::print_line("--------------------");
+    for (int i = 0; i < n; ++i) {
+        Std_out::printf("%4d %7.1f %7.1f\n", i, lp.distance_to(i), lp.distance_to(i + n));
     }
-    StdOut.printf("Finish time: %7.1f\n", lp.distTo(sink));
+    Std_out::printf("Finish time: %7.1f\n", lp.distance_to(sink));
     return 0;
 }

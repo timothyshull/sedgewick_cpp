@@ -1,14 +1,14 @@
 int main(int argc, char* argv[])
 {
-    In in = new In(args[0]);
+    In in{argv[1]};
     Graph G = new Graph(in);
-    int s = Integer.parseInt(args[1]);
+    int s = utility::safe_convert_integer(argv[1]);
     NonrecursiveDFS dfs = new NonrecursiveDFS(G, s);
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.num_vertices(); ++v) {
         if (dfs.marked(v)) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
     }
-    StdOut.println();
+    Std_out::print_line();
     return 0;
 }

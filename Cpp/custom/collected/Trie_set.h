@@ -1,5 +1,5 @@
-#ifndef TRIE_SET_H
-#define TRIE_SET_H
+#ifndef TRIE_Set_H
+#define TRIE_Set_H
 
 #include <vector>
 #include "Queue.h"
@@ -33,7 +33,7 @@ public:
 
     int size();
 
-    bool isEmpty();
+    bool is_empty();
 
     std::vector<std::string> iterator();
 
@@ -62,4 +62,4 @@ private:
     Raw_node_pointer remove(Raw_node_pointer x, std::string& key, int d);
 };
 
-#endif // TRIE_SET_H
+#endif // TRIE_Set_H

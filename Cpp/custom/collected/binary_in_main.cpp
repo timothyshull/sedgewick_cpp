@@ -1,9 +1,12 @@
-int main(int argc, char *argv[]) {
-    BinaryIn in = new BinaryIn(args[0]);
-    BinaryOut out = new BinaryOut(args[1]);
+#include "Binary_out.h"
+#include "Binary_in.h"
 
-    // read one 8-bit char at a time
-    while (!in.isEmpty()) {
+int main(int argc, char* argv[])
+{
+    Binary_in in{argv[1]};
+    Binary_out out{argv[2]};
+
+    while (!in.is_empty()) {
         char c = in.readChar();
         out.write(c);
     }

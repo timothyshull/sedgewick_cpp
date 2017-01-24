@@ -301,7 +301,7 @@ private:
         int num_children{_max_num_children / 2};
         Raw_node_pointer t{new B_tree_node<Key_type, Value_type>{num_children}};
         n->_num_children = num_children;
-        for (int j = 0; j < num_children; j++) {
+        for (int j = 0; j < num_children; ++j) {
             t->_children[j] = n->_children[num_children + j];
         }
         return t;

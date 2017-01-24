@@ -1,5 +1,5 @@
 int main(int argc, char *argv[]) {
-    String text = StdIn.readAll().replaceAll("\\s+", " ");
-    StdOut.println("'" + lrs(text) + "'");
+    std::string text = Std_in::readAll().replaceAll("\\s+", " ");
+    Std_out::print_line("'" + lrs(text) + "'");
     return 0;
 }

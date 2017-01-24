@@ -2,14 +2,14 @@
 
 Prim_mst::Prim_mst(Edge_weighted_graph& G)
 {
-    edgeTo = new Edge[G.V()];
-    distTo = new double[G.V()];
-    marked = new boolean[G.V()];
-    pq = new IndexMinPQ<Double>(G.V());
-    for (int v = 0; v < G.V(); v++)
-        distTo[v] = Double.POSITIVE_INFINITY;
+    edgeTo = new Edge[G.num_vertices()];
+    distance_to = new double[G.num_vertices()];
+    marked = new boolean[G.num_vertices()];
+    pq = new IndexMinPQ<Double>(G.num_vertices());
+    for (int v = 0; v < G.num_vertices(); ++v)
+        distance_to[v] = Double.POSITIVE_INFINITY;
 
-    for (int v = 0; v < G.V(); v++)      // run from each vertex to find
+    for (int v = 0; v < G.num_vertices(); ++v)      // run from each vertex to find
         if (!marked[v]) prim(G, v);      // minimum spanning forest
 
     // check optimality conditions
@@ -19,7 +19,7 @@ Prim_mst::Prim_mst(Edge_weighted_graph& G)
 std::vector<Edge> Prim_mst::edges()
 {
     Queue<Edge> mst = new Queue<Edge>();
-    for (int v = 0; v < edgeTo.length; v++) {
+    for (int v = 0; v < edgeTo.length; ++v) {
         Edge e = edgeTo[v];
         if (e != null) {
             mst.enqueue(e);
@@ -38,9 +38,9 @@ double Prim_mst::weight()
 
 void Prim_mst::prim(Edge_weighted_graph& G, int s)
 {
-    distTo[s] = 0.0;
-    pq.insert(s, distTo[s]);
-    while (!pq.isEmpty()) {
+    distance_to[s] = 0.0;
+    pq.insert(s, distance_to[s]);
+    while (!pq.is_empty()) {
         int v = pq.delMin();
         scan(G, v);
     }
@@ -52,11 +52,11 @@ void Prim_mst::scan(Edge_weighted_graph& G, int v)
     for (Edge e : G.adj(v)) {
         int w = e.other(v);
         if (marked[w]) continue;         // v-w is obsolete edge
-        if (e.weight() < distTo[w]) {
-            distTo[w] = e.weight();
+        if (e.weight() < distance_to[w]) {
+            distance_to[w] = e.weight();
             edgeTo[w] = e;
-            if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
-            else pq.insert(w, distTo[w]);
+            if (pq.contains(w)) pq.decreaseKey(w, distance_to[w]);
+            else pq.insert(w, distance_to[w]);
         }
     }
 }
@@ -73,11 +73,11 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     }
 
     // check that it is acyclic
-    UF uf = new UF(G.V());
+    UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
         if (uf.connected(v, w)) {
-            System.err.println("Not a forest");
+            System.err.print_line("Not a forest");
             return false;
         }
         uf.union(v, w);
@@ -87,7 +87,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
-            System.err.println("Not a spanning forest");
+            System.err.print_line("Not a spanning forest");
             return false;
         }
     }
@@ -96,7 +96,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
 
         // all edges in MST except e
-        uf = new UF(G.V());
+        uf = new UF(G.num_vertices());
         for (Edge f : edges()) {
             int x = f.either(), y = f.other(x);
             if (f != e) uf.union(x, y);
@@ -107,7 +107,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {
                 if (f.weight() < e.weight()) {
-                    System.err.println("Edge " + f + " violates cut optimality conditions");
+                    System.err.print_line("Edge " + f + " violates cut optimality conditions");
                     return false;
                 }
             }

@@ -1,29 +1,27 @@
-
+#include "In.h"
+#include "Bellman_ford_sp.h"
+#include "Std_out.h"
 
 int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    int s = Integer.parseInt(args[1]);
-    EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
+    In in{argv[1]};
+    int s = utility::safe_convert_integer(argv[2]);
+    Edge_weighted_digraph g{in};
 
-    BellmanFordSP sp = new BellmanFordSP(G, s);
+    Bellman_ford_sp sp{g, s};
 
-    // print negative cycle
     if (sp.hasNegativeCycle()) {
-        for (DirectedEdge e : sp.negativeCycle())
-            StdOut.println(e);
-    }
-
-        // print shortest paths
-    else {
-        for (int v = 0; v < G.V(); v++) {
-            if (sp.hasPathTo(v)) {
-                StdOut.printf("%d to %d (%5.2f)  ", s, v, sp.distTo(v));
-                for (DirectedEdge e : sp.pathTo(v)) {
-                    StdOut.print(e + "   ");
+        for (Directed_edge e : sp.negativeCycle())
+            Std_out::print_line(e);
+    } else {
+        for (int v = 0; v < g.num_vertices(); ++v) {
+            if (sp.has_path_to(v)) {
+                Std_out::printf("%d to %d (%5.2f)  ", s, v, sp.distance_to(v));
+                for (Directed_edge e : sp.path_to(v)) {
+                    Std_out::print(e + "   ");
                 }
-                StdOut.println();
+                Std_out::print_line();
             } else {
-                StdOut.printf("%d to %d           no path\n", s, v);
+                Std_out::printf("%d to %d           no path\n", s, v);
             }
         }
     }

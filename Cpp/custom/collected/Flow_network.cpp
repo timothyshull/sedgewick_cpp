@@ -6,7 +6,7 @@ Flow_network::Flow_network(int V)
     this.V = V;
     this.E = 0;
     adj = (Bag<FlowEdge>[]) new Bag[V];
-    for (int v = 0; v < V; v++)
+    for (int v = 0; v < V; ++v)
         adj[v] = new Bag<FlowEdge>();
 }
 
@@ -14,42 +14,42 @@ Flow_network::Flow_network(int V, int E)
 {
     this(V);
     if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-    for (int i = 0; i < E; i++) {
-        int v = StdRandom.uniform(V);
-        int w = StdRandom.uniform(V);
-        double capacity = StdRandom.uniform(100);
-        addEdge(new FlowEdge(v, w, capacity));
+    for (int i = 0; i < E; ++i) {
+        int v = Std_random::uniform(V);
+        int w = Std_random::uniform(V);
+        double capacity = Std_random::uniform(100);
+        add_edge(new FlowEdge(v, w, capacity));
     }
 }
 
 Flow_network::Flow_network(In& in)
 {
-    this(in.readInt());
-    int E = in.readInt();
+    this(in.read_int());
+    int E = in.read_int();
     if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-    for (int i = 0; i < E; i++) {
-        int v = in.readInt();
-        int w = in.readInt();
+    for (int i = 0; i < E; ++i) {
+        int v = in.read_int();
+        int w = in.read_int();
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V - 1));
         if (w < 0 || w >= V)
             throw new IndexOutOfBoundsException("vertex " + w + " is not between 0 and " + (V - 1));
-        double capacity = in.readDouble();
-        addEdge(new FlowEdge(v, w, capacity));
+        double capacity = in.read_double();
+        add_edge(new FlowEdge(v, w, capacity));
     }
 }
 
-int Flow_network::V()
+int Flow_network::num_vertices()
 {
     return V;
 }
 
-int Flow_network::E()
+int Flow_network::num_edges()
 {
     return E;
 }
 
-void Flow_network::addEdge(Flow_edge& e)
+void Flow_network::add_edge(Flow_edge& e)
 {
     int v = e.from();
     int w = e.to();
@@ -69,7 +69,7 @@ std::vector<Flow_edge> Flow_network::adj(int v)
 std::vector<Flow_edge> Flow_network::edges()
 {
     Bag<FlowEdge> list = new Bag<FlowEdge>();
-    for (int v = 0; v < V; v++)
+    for (int v = 0; v < V; ++v)
         for (FlowEdge e : adj(v)) {
             if (e.to() != v)
                 list.add(e);
@@ -77,18 +77,18 @@ std::vector<Flow_edge> Flow_network::edges()
     return list;
 }
 
-std::string Flow_network::toString()
+std::string Flow_network::to_string()
 {
-    StringBuilder s = new StringBuilder();
+    std::stringstream s = new std::stringstream();
     s.append(V + " " + E + NEWLINE);
-    for (int v = 0; v < V; v++) {
+    for (int v = 0; v < V; ++v) {
         s.append(v + ":  ");
         for (FlowEdge e : adj[v]) {
             if (e.to() != v) s.append(e + "  ");
         }
         s.append(NEWLINE);
     }
-    return s.toString();
+    return s.to_string();
 }
 
 void Flow_network::validateVertex(int v)
@@ -99,5 +99,5 @@ void Flow_network::validateVertex(int v)
 
 std::ostream& operator<<(std::ostream& os, Flow_network& out)
 {
-    return os << out.toString();
+    return os << out.to_string();
 }

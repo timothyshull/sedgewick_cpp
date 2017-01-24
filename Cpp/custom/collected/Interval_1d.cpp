@@ -83,7 +83,7 @@ double Interval_1d::length()
     return max - min;
 }
 
-std::string Interval_1d::toString()
+std::string Interval_1d::to_string()
 {
     return "[" + min + ", " + max + "]";
 }
@@ -106,5 +106,5 @@ int Interval_1d::hashCode()
 
 std::ostream& operator<<(std::ostream& os, Interval_1d& out)
 {
-    return os << out.toString();
+    return os << out.to_string();
 }

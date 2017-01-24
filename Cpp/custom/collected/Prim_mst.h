@@ -18,7 +18,7 @@ public:
 private:
     const static double FLOATING_POINT_EPSILON = std::numeric_limits<double>::epsilon();
     std::vector<Edge> edgeTo;
-    std::vector<double> distTo;
+    std::vector<double> distance_to;
     std::deque<bool> marked;
     Index_min_pq<double> pq;
 

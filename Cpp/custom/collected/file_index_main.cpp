@@ -1,28 +1,28 @@
 int main(int argc, char *argv[]) {
-    ST<String, SET<File>> st = new ST<String, SET<File>>();
+    ST<std::string, Set<File>> st = new ST<std::string, Set<File>>();
 
     // create inverted index of all files
-    StdOut.println("Indexing files");
-    for (String filename : args) {
-        StdOut.println("  " + filename);
+    Std_out::print_line("Indexing files");
+    for (String filename : argv) {
+        Std_out::print_line("  " + filename);
         File file = new File(filename);
         In in = new In(file);
-        while (!in.isEmpty()) {
-            String word = in.readString();
-            if (!st.contains(word)) st.put(word, new SET<File>());
-            SET<File> set = st.get(word);
+        while (!in.is_empty()) {
+            std::string word = in.read_string();
+            if (!st.contains(word)) st.put(word, new Set<File>());
+            Set<File> set = st.get(word);
             set.add(file);
         }
     }
 
 
     // read queries from standard input, one per line
-    while (!StdIn.isEmpty()) {
-        String query = StdIn.readString();
+    while (!Std_in::is_empty()) {
+        std::string query = Std_in::read_string();
         if (st.contains(query)) {
-            SET<File> set = st.get(query);
+            Set<File> set = st.get(query);
             for (File file : set) {
-                StdOut.println("  " + file.getName());
+                Std_out::print_line("  " + file.getName());
             }
         }
     }

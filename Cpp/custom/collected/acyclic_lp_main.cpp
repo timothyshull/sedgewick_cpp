@@ -7,7 +7,7 @@
 int main(int argc, char* argv[])
 {
     std::ifstream in(argv[1]);
-    int s = std::atoi(argv[2]);
+    int s = utility::safe_convert_integer(argv[2]);
     // Edge_weighted_digraph g{in};
     Edge_weighted_digraph g{std::cin};
 

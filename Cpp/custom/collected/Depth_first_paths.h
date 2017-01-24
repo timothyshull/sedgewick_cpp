@@ -9,9 +9,9 @@ class Depth_first_paths {
 public:
     Depth_first_paths(Digraph& G, int s);
 
-    bool hasPathTo(int v);
+    bool has_path_to(int v);
 
-    std::vector<int> pathTo(int v);
+    std::vector<int> path_to(int v);
 
 private:
     std::deque<bool> marked;

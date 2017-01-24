@@ -21,7 +21,7 @@ private:
 
     bool check(Digraph& G);
 
-    void unitTest(Digraph& G, std::string& description);
+    void unit_test(Digraph& G, std::string& description);
 };
 
 #endif // DIRECTED_EULERIAN_PATH_H

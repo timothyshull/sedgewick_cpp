@@ -1,7 +1,7 @@
 int main(int argc, char *argv[]) {
-    String regexp = "(" + args[0] + ")";
-    String txt = args[1];
+    std::string regexp = "(" + argv[1] + ")";
+    std::string txt = argv[1];
     NFA nfa = new NFA(regexp);
-    StdOut.println(nfa.recognizes(txt));
+    Std_out::print_line(nfa.recognizes(txt));
     return 0;
 }

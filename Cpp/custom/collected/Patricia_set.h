@@ -1,5 +1,5 @@
-#ifndef PATRICIA_SET_H
-#define PATRICIA_SET_H
+#ifndef PATRICIA_Set_H
+#define PATRICIA_Set_H
 
 #include <string>
 #include "Queue.h"
@@ -29,11 +29,11 @@ public:
 
     void remove(std::string& key);
 
-    bool isEmpty();
+    bool is_empty();
 
     int size();
 
-    std::string toString();
+    std::string to_string();
 
 private:
     Raw_node_pointer head;
@@ -50,4 +50,4 @@ private:
     int firstDifferingBit(std::string& k1, std::string& k2);
 };
 
-#endif // PATRICIA_SET_H
+#endif // PATRICIA_Set_H

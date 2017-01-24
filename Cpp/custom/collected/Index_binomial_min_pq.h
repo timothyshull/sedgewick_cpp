@@ -204,12 +204,12 @@ public:
         this.n = N;
     }
 
-    boolean isEmpty()
+    bool is_empty()
     {
         return head == null;
     }
 
-    boolean contains(int i)
+    bool contains(int i)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
         else { return nodes[i] != null; }
@@ -245,7 +245,7 @@ public:
 
     int minIndex()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         Node <Key> min = head;
         Node <Key> current = head;
         while (current.sibling != null) {
@@ -257,7 +257,7 @@ public:
 
     Key minKey()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         Node <Key> min = head;
         Node <Key> current = head;
         while (current.sibling != null) {
@@ -269,7 +269,7 @@ public:
 
     int delMin()
     {
-        if (isEmpty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
         Node <Key> min = eraseMin();
         Node <Key> x = (min.child == null) ? min : min.child;
         if (min.child != null) {
@@ -369,7 +369,7 @@ private:
     template<typename, typename>
     friend class Index_binomial_min_pq_reverse_iterator;
 
-    boolean greater(Key n, Key m)
+    bool greater(Key n, Key m)
     {
         if (n == null) { return false; }
         if (m == null) { return true; }

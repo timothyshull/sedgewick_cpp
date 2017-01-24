@@ -2,7 +2,7 @@
 
 In::In()
 {
-    scanner = new Scanner(new BufferedInputStream(System.in), CHARSET_NAME);
+    scanner = new Scanner(new BufferedInputStream(System.in), CHARSet_NAME);
     scanner.useLocale(LOCALE);
 }
 
@@ -11,7 +11,7 @@ In::In(Socket& socket)
     if (socket == null) throw new NullPointerException("argument is null");
     try {
         InputStream is = socket.getInputStream();
-        scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
+        scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
         throw new IllegalArgumentException("Could not open " + socket);
@@ -24,7 +24,7 @@ In::In(URL& url)
     try {
         URLConnection site = url.openConnection();
         InputStream is = site.getInputStream();
-        scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
+        scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
         throw new IllegalArgumentException("Could not open " + url);
@@ -38,7 +38,7 @@ In::In(std::ifstream& file)
         // for consistency with StdIn, wrap with BufferedInputStream instead of use
         // file as argument to Scanner
         FileInputStream fis = new FileInputStream(file);
-        scanner = new Scanner(new BufferedInputStream(fis), CHARSET_NAME);
+        scanner = new Scanner(new BufferedInputStream(fis), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
         throw new IllegalArgumentException("Could not open " + file);
@@ -55,7 +55,7 @@ In::In(std::string& name, std::true_type)
             // for consistency with StdIn, wrap with BufferedInputStream instead of use
             // file as argument to Scanner
             FileInputStream fis = new FileInputStream(file);
-            scanner = new Scanner(new BufferedInputStream(fis), CHARSET_NAME);
+            scanner = new Scanner(new BufferedInputStream(fis), CHARSet_NAME);
             scanner.useLocale(LOCALE);
             return;
         }
@@ -75,7 +75,7 @@ In::In(std::string& name, std::true_type)
         // site.addRequestProperty("User-Agent", "Mozilla/4.76");
 
         InputStream is = site.getInputStream();
-        scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
+        scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
         throw new IllegalArgumentException("Could not open " + name);
@@ -93,7 +93,7 @@ bool In::exists()
     return scanner != null;
 }
 
-bool In::isEmpty()
+bool In::is_empty()
 {
     return !scanner.hasNext();
 }
@@ -106,14 +106,14 @@ bool In::hasNextLine()
 bool In::hasNextChar()
 {
     scanner.useDelimiter(EMPTY_PATTERN);
-    boolean result = scanner.hasNext();
+    bool result = scanner.hasNext();
     scanner.useDelimiter(WHITESPACE_PATTERN);
     return result;
 }
 
-std::string In::readLine()
+std::string In::read_line()
 {
-    String line;
+    std::string line;
     try {
         line = scanner.nextLine();
     } catch (NoSuchElementException e) {
@@ -125,7 +125,7 @@ std::string In::readLine()
 char In::readChar()
 {
     scanner.useDelimiter(EMPTY_PATTERN);
-    String ch = scanner.next();
+    std::string ch = scanner.next();
     assert ch.length() == 1 : "Internal (Std)In.readChar() error!"
                               + " Please contact the authors.";
     scanner.useDelimiter(WHITESPACE_PATTERN);
@@ -137,23 +137,23 @@ std::string In::readAll()
     if (!scanner.hasNextLine())
         return "";
 
-    String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
+    std::string result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
     // not that important to reset delimeter, since now scanner is empty
     scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
     return result;
 }
 
-std::string In::readString()
+std::string In::read_string()
 {
     return scanner.next();
 }
 
-int In::readInt()
+int In::read_int()
 {
     return scanner.nextInt();
 }
 
-double In::readDouble()
+double In::read_double()
 {
     return scanner.nextDouble();
 }
@@ -178,9 +178,9 @@ char In::readByte()
     return scanner.nextByte();
 }
 
-bool In::readBoolean()
+bool In::read_boolean()
 {
-    String s = readString();
+    std::string s = read_string();
     if (s.equalsIgnoreCase("true")) return true;
     if (s.equalsIgnoreCase("false")) return false;
     if (s.equals("1")) return true;
@@ -194,16 +194,16 @@ std::vector<std::string> In::readAllStrings()
     if (tokens.length == 0 || tokens[0].length() > 0)
         return tokens;
     String[] decapitokens = new String[tokens.length - 1];
-    for (int i = 0; i < tokens.length - 1; i++)
+    for (int i = 0; i < tokens.length - 1; ++i)
         decapitokens[i] = tokens[i + 1];
     return decapitokens;
 }
 
 std::vector<std::string> In::readAllLines()
 {
-    ArrayList<String> lines = new ArrayList<String>();
+    ArrayList<std::string> lines = new ArrayList<std::string>();
     while (hasNextLine()) {
-        lines.add(readLine());
+        lines.add(read_line());
     }
     return lines.toArray(new String[0]);
 }
@@ -211,8 +211,8 @@ std::vector<std::string> In::readAllLines()
 std::vector<int> In::readAllInts()
 {
     String[] fields = readAllStrings();
-    int[] vals = new int[fields.length];
-    for (int i = 0; i < fields.length; i++)
+    std::vector<int> vals = new int[fields.length];
+    for (int i = 0; i < fields.length; ++i)
         vals[i] = Integer.parseInt(fields[i]);
     return vals;
 }
@@ -221,7 +221,7 @@ std::vector<long> In::readAllLongs()
 {
     String[] fields = readAllStrings();
     long[] vals = new long[fields.length];
-    for (int i = 0; i < fields.length; i++)
+    for (int i = 0; i < fields.length; ++i)
         vals[i] = Long.parseLong(fields[i]);
     return vals;
 }
@@ -229,8 +229,8 @@ std::vector<long> In::readAllLongs()
 std::vector<double> In::readAllDoubles()
 {
     String[] fields = readAllStrings();
-    double[] vals = new double[fields.length];
-    for (int i = 0; i < fields.length; i++)
+    std::vector<double> vals = new double[fields.length];
+    for (int i = 0; i < fields.length; ++i)
         vals[i] = Double.parseDouble(fields[i]);
     return vals;
 }
@@ -240,32 +240,32 @@ void In::close()
     scanner.close();
 }
 
-std::vector<int> In::readInts(std::string& filename)
+std::vector<int> In::read_ints(std::string& filename)
 {
     return new In(filename).readAllInts();
 }
 
-std::vector<double> In::readDoubles(std::string& filename)
+std::vector<double> In::read_doubles(std::string& filename)
 {
     return new In(filename).readAllDoubles();
 }
 
-std::vector<std::string> In::readStrings(std::string& filename)
+std::vector<std::string> In::read_strings(std::string& filename)
 {
     return new In(filename).readAllStrings();
 }
 
-std::vector<int> In::readInts()
+std::vector<int> In::read_ints()
 {
     return new In().readAllInts();
 }
 
-std::vector<double> In::readDoubles()
+std::vector<double> In::read_doubles()
 {
     return new In().readAllDoubles();
 }
 
-std::vector<std::string> In::readStrings()
+std::vector<std::string> In::read_strings()
 {
     return new In().readAllStrings();
 }

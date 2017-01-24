@@ -1,14 +1,20 @@
-int main(int argc, char *argv[]) {
-    In in = new In(args[0]);
-    Graph G = new Graph(in);
-    Cycle finder = new Cycle(G);
-    if (finder.hasCycle()) {
+#include "In.h"
+#include "Graph.h"
+#include "Cycle.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Graph graph{in};
+    Cycle finder{graph};
+    if (finder.has_cycle()) {
         for (int v : finder.cycle()) {
-            StdOut.print(v + " ");
+            Std_out::print(v + " ");
         }
-        StdOut.println();
+        Std_out::print_line();
     } else {
-        StdOut.println("Graph is acyclic");
+        Std_out::print_line("Graph is acyclic");
     }
     return 0;
 }
