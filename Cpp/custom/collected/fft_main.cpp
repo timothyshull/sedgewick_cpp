@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     std::vector<Complex> x;
     x.reserve(n);
 
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         x[i] = Complex(i, 0);
         x[i] = Complex(Std_random::uniform(-1.0, 1.0), 0);
     }

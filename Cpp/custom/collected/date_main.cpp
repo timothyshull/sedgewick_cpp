@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 {
     Date today{2, 25, 2004};
     Std_out::print_line(today);
-    for (int i = 0; i < 10; ++i) {
+    for (int i{0}; i < 10; ++i) {
         today = today.next();
         Std_out::print_line(today);
     }
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
     Date birthday{10, 16, 1971};
     Std_out::print_line(birthday);
-    for (int i = 0; i < 10; ++i) {
+    for (int i{0}; i < 10; ++i) {
         birthday = birthday.next();
         Std_out::print_line(birthday);
     }

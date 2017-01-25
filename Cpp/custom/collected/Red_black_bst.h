@@ -184,7 +184,7 @@ public:
     {
         _root = _put(_root, key, val);
         _root->_color = Red_black_color::black;
-        // utility::assert(_check(), "Red_black_bst invariant check failed after \"put()\"");
+        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"put()\"");
     }
 
     void delete_min()
@@ -202,7 +202,7 @@ public:
             _root->_color = Red_black_color::black;
         }
 
-        // utility::assert(_check(), "Red_black_bst invariant check failed after \"delete_min()\"");
+        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -220,7 +220,7 @@ public:
             _root->_color = Red_black_color::black;
         }
 
-        // utility::assert(_check(), "Red_black_bst invariant check failed after \"delete_max()\"");
+        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"delete_max()\"");
     }
 
     void remove(Key_type& key)
@@ -665,7 +665,7 @@ private:
         return bst_check && size_check && rank_check && two_three_check && balance_check;
     }
 
-    // TODO: check if this achieves the correct result, handle nullptr
+    // TODO: _check if this achieves the correct result, handle nullptr
     inline bool _is_bst() const { return _is_bst(_root, *min(), *max()); }
 
     bool _is_bst(Raw_node_pointer n, Key_type& min, Key_type& max) const
@@ -698,7 +698,7 @@ private:
 
     bool _is_rank_consistent() const
     {
-        for (int i = 0; i < size(); ++i) {
+        for (int i{0}; i < size(); ++i) {
             if (i != rank(*(select(i)))) {
                 return false;
             }

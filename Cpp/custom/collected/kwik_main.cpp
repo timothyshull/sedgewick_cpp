@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     int to2;
     while (!Std_in::is_empty()) {
         std::string query = Std_in::read_line();
-        for (int i = sa.rank(query); i < n; ++i) {
+        for (int i{sa.rank(query)}; i < n; ++i) {
             from1 = sa.index(i);
             to1 = std::min(n, from1 + query.length());
             if (query != text.substr(from1, to1)) { break; }

@@ -36,18 +36,18 @@ int main(int argc, char* argv[])
 
         if (line[0] == "init") {
             ft = Fenwick_tree{arg1};
-            for (int i = 1; i <= ft.size(); ++i) {
+            for (int i{1}; i <= ft.size(); ++i) {
                 Std_out::print(ft.rsq(i, i) + " ");
             }
             Std_out::print_line();
         } else if (line[0] == "set") {
             ft = Fenwick_tree{line.size() - 1};
-            for (int i = 1; i <= line.size() - 1; ++i) {
+            for (int i{1}; i <= line.size() - 1; ++i) {
                 ft.update(i, utility::str_to_num(line[i]));
             }
         } else if (line[0] == "up") {
             ft.update(arg1, arg2);
-            for (int i = 1; i <= ft.size(); ++i) {
+            for (int i{1}; i <= ft.size(); ++i) {
                 Std_out::print(ft.rsq(i, i) + " ");
             }
             Std_out::print_line();

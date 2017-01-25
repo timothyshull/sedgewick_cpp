@@ -6,13 +6,13 @@ Edge_weighted_directed_cycle::Edge_weighted_directed_cycle(Edge_weighted_digraph
           _on_stack(static_cast<std::deque<bool>::size_type>(g.num_vertices())),
           _edge_to(static_cast<std::vector<int>::size_type>(g.num_vertices()))
 {
-    for (int v = 0; v < g.num_vertices(); ++v) {
+    for (int v{0}; v < g.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(g, v);
         }
     }
 
-    utility::assert(_check(g), "Edge_weighted_directed_cycle invariant check failed in constructor");
+    utility::assert(_check(g), "Edge_weighted_directed_cycle invariant _check failed in constructor");
 }
 
 void Edge_weighted_directed_cycle::_dfs(Edge_weighted_digraph& g, int v)
@@ -51,7 +51,7 @@ bool Edge_weighted_directed_cycle::_check(Edge_weighted_digraph& g) const
             if (last != nullptr) {
                 if (last->to() != e.from()) {
                     std::stringstream ss;
-                    ss << "The cycle edges " << *last << " and " << e << " are not incident\n";
+                    ss << "The _cycle edges " << *last << " and " << e << " are not incident\n";
                     std::cerr << ss.str();
                     return false;
                 }
@@ -61,7 +61,7 @@ bool Edge_weighted_directed_cycle::_check(Edge_weighted_digraph& g) const
 
         if ((last && first) && (last->to() != first->from())) {
             std::stringstream ss;
-            ss << "The cycle edges " << *last << " and " << *first << " are not incident\n";
+            ss << "The _cycle edges " << *last << " and " << *first << " are not incident\n";
             std::cerr << ss.str();
             return false;
         }

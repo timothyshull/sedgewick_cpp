@@ -9,10 +9,10 @@ Gaussian_elimination::Gaussian_elimination(std::vector<std::vector<double>>& A, 
 
     // build augmented matrix
     a = new double[m][n + 1];
-    for (int i = 0; i < m; ++i)
-        for (int j = 0; j < n; ++j)
+    for (int i{0}; i < m; ++i)
+        for (int j{0}; j < n; ++j)
             a[i][j] = A[i][j];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         a[i][n] = b[i];
 
     forwardElimination();
@@ -23,9 +23,9 @@ Gaussian_elimination::Gaussian_elimination(std::vector<std::vector<double>>& A, 
 std::vector<double> Gaussian_elimination::primal()
 {
     std::vector<double> x = new double[n];
-    for (int i = std::min(n - 1, m - 1); i >= 0; i--) {
+    for (int i{std::min(n - 1, m - 1)}; i >= 0; i--) {
         double sum = 0.0;
-        for (int j = i + 1; j < n; ++j) {
+        for (int j{i + 1}; j < n; ++j) {
             sum += a[i][j] * x[j];
         }
 
@@ -36,9 +36,9 @@ std::vector<double> Gaussian_elimination::primal()
     }
 
     // redundant rows
-    for (int i = n; i < m; ++i) {
+    for (int i{n}; i < m; ++i) {
         double sum = 0.0;
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             sum += a[i][j] * x[j];
         }
         if (std::abs(a[i][n] - sum) > EPSILON)
@@ -54,11 +54,11 @@ bool Gaussian_elimination::isFeasible()
 
 void Gaussian_elimination::forwardElimination()
 {
-    for (int p = 0; p < std::min(m, n); ++p) {
+    for (int p{0}; p < std::min(m, n); ++p) {
 
         // find pivot row using partial pivoting
         int max = p;
-        for (int i = p + 1; i < m; ++i) {
+        for (int i{p + 1}; i < m; ++i) {
             if (std::abs(a[i][p]) > std::abs(a[max][p])) {
                 max = i;
             }
@@ -86,9 +86,9 @@ void Gaussian_elimination::swap(int row1, int row2)
 
 void Gaussian_elimination::pivot(int p, int q)
 {
-    for (int i = p + 1; i < m; ++i) {
+    for (int i{p + 1}; i < m; ++i) {
         double alpha = a[i][p] / a[p][p];
-        for (int j = p; j <= n; ++j) {
+        for (int j{p}; j <= n; ++j) {
             a[i][j] -= alpha * a[p][j];
         }
     }
@@ -98,9 +98,9 @@ bool Gaussian_elimination::certifySolution(std::vector<std::vector<double>>& A, 
 {
     if (!isFeasible()) return true;
     std::vector<double> x = primal();
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         double sum = 0.0;
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             sum += A[i][j] * x[j];
         }
         if (std::abs(sum - b[i]) > EPSILON) {
@@ -120,7 +120,7 @@ void Gaussian_elimination::test(std::string& name, std::vector<std::vector<doubl
     GaussianElimination gaussian = new GaussianElimination(A, b);
     std::vector<double> x = gaussian.primal();
     if (gaussian.isFeasible()) {
-        for (int i = 0; i < x.length; ++i) {
+        for (int i{0}; i < x.length; ++i) {
             Std_out::printf("%.6f\n", x[i]);
         }
     } else {

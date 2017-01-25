@@ -5,7 +5,7 @@
 #include "utility.h"
 #include "Stack.h"
 
-// do not need the negative size check here because the vector ctors will throw
+// do not need the negative size _check here because the vector ctors will throw
 Digraph::Digraph(int num_vertices) : _num_vertices{num_vertices}, _num_edges{0}, _indegree(num_vertices), _adjacency_lists(num_vertices) {}
 
 Digraph::Digraph(std::istream in)
@@ -25,7 +25,7 @@ Digraph::Digraph(std::istream in)
 
     int v;
     int w;
-    for (int i = 0; i < _num_edges; ++i) {
+    for (int i{0}; i < _num_edges; ++i) {
         v = Std_in::read_int();
         w = Std_in::read_int();
         add_edge(v, w);
@@ -36,7 +36,7 @@ Digraph::Digraph(std::istream in)
 
 Digraph::Digraph(Digraph& g) : _num_vertices{g._num_vertices}, _num_edges{g._num_edges}, _indegree{g._indegree}, _adjacency_lists(g._num_vertices)
 {
-    for (int v = 0; v < g._num_vertices; ++v) {
+    for (int v{0}; v < g._num_vertices; ++v) {
         Stack<int> reverse;
         for (int w : g._adjacency_lists[v]) {
             reverse.push(w);
@@ -77,7 +77,7 @@ int Digraph::indegree(int v) const
 Digraph Digraph::reverse() const
 {
     Digraph reverse{_num_vertices};
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         for (auto w : adjacent(v)) {
             reverse.add_edge(w, v);
         }
@@ -89,7 +89,7 @@ std::string Digraph::to_string() const
 {
     std::stringstream ss;
     ss << "Digraph(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         ss << "    Vertex " << v << ": ";
         for (auto w : _adjacency_lists[v]) {
             ss << w << ", ";

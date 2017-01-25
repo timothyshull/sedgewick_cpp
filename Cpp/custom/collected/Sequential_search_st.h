@@ -52,7 +52,7 @@ public:
     Value get(Key key)
     {
         if (key == null) { throw new NullPointerException("argument to get() is null"); }
-        for (Node x = first; x != null; x = x.next) {
+        for (Node x{first}; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 return x.val;
             }
@@ -68,7 +68,7 @@ public:
             return;
         }
 
-        for (Node x = first; x != null; x = x.next) {
+        for (Node x{first}; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 x.val = val;
                 return;
@@ -86,7 +86,7 @@ public:
 
     std::vector<Key_type> keys() {
         Queue<Key> queue = new Queue<Key>();
-        for (Node x = first; x != null; x = x.next)
+        for (Node x{first}; x != null; x = x.next)
             queue.enqueue(x.key);
         return queue;
     }

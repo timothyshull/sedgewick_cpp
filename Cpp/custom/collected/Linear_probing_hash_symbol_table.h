@@ -32,7 +32,7 @@ public:
     void resize(int capacity)
     {
         Linear_probing_hash_symbol_table<Key_type, Value_type> temp{capacity};
-        for (int i = 0; i < _table_size; ++i) {
+        for (int i{0}; i < _table_size; ++i) {
             if (_keys[i] != nullptr) {
                 temp.put(*_keys[i], *_values[i]);
             }
@@ -60,7 +60,7 @@ public:
 
     Value_type* get(Key_type& key)
     {
-        for (int i = _hash(key); _keys[i] != nullptr; i = (i + 1) % _table_size) {
+        for (int i{_hash(key)}; _keys[i] != nullptr; i = (i + 1) % _table_size) {
             if (*_keys[i] == key) {
                 return _values[i];
             }
@@ -102,7 +102,7 @@ public:
             resize(_table_size / 2);
         }
 
-        utility::assert(_check(), "The Linear_probing_hash_symbol_table invariant check failed after delete()");
+        utility::assert(_check(), "The Linear_probing_hash_symbol_table invariant _check failed after delete()");
     }
 
     std::vector<Key_type> keys() {
@@ -134,7 +134,7 @@ private:
             return false;
         }
 
-        for (int i = 0; i < _table_size; ++i) {
+        for (int i{0}; i < _table_size; ++i) {
             if (_keys[i] == nullptr) {
                 continue;
             } else if (*get(*_keys[i]) != *_values[i]) {

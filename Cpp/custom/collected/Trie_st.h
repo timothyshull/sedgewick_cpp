@@ -108,7 +108,7 @@ Node put(Node x, std::string key, Value val, int d) {
     void collect(Node x, std::stringstream prefix, Queue<std::string> results) {
         if (x == null) return;
         if (x.val != null) results.enqueue(prefix.to_string());
-        for (char c = 0; c < R; ++c) {
+        for (char c{0}; c < R; ++c) {
             prefix.append(c);
             collect(x.next[c], prefix, results);
             prefix.deleteCharAt(prefix.length() - 1);
@@ -124,7 +124,7 @@ Node put(Node x, std::string key, Value val, int d) {
             return;
         char c = pattern.charAt(d);
         if (c == '.') {
-            for (char ch = 0; ch < R; ++ch) {
+            for (char ch{0}; ch < R; ++ch) {
                 prefix.append(ch);
                 collect(x.next[ch], prefix, pattern, results);
                 prefix.deleteCharAt(prefix.length() - 1);
@@ -156,7 +156,7 @@ Node put(Node x, std::string key, Value val, int d) {
 
         // remove subtrie rooted at x if it is completely empty
         if (x.val != null) return x;
-        for (int c = 0; c < R; ++c)
+        for (int c{0}; c < R; ++c)
             if (x.next[c] != null)
                 return x;
         return null;

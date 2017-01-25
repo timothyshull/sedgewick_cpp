@@ -6,7 +6,7 @@ Cycle::Cycle(Graph& G)
     if (hasParallelEdges(G)) { return; }
     marked = new boolean[G.num_vertices()];
     edgeTo = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, -1, v);
         }
@@ -25,7 +25,7 @@ std::vector<int> Cycle::cycle()
 
 bool Cycle::hasSelfLoop(Graph& G)
 {
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (int w : G.adj(v)) {
             if (v == w) {
                 cycle = new Stack<Integer>();
@@ -42,9 +42,9 @@ bool Cycle::hasParallelEdges(Graph& G)
 {
     marked = new boolean[G.num_vertices()];
 
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
 
-        // check for parallel edges incident to v
+        // _check for parallel edges incident to v
         for (int w : G.adj(v)) {
             if (marked[w]) {
                 cycle = new Stack<Integer>();
@@ -69,7 +69,7 @@ void Cycle::dfs(Graph& G, int u, int v)
     marked[v] = true;
     for (int w : G.adj(v)) {
 
-        // short circuit if cycle already found
+        // short circuit if _cycle already found
         if (cycle != null) { return; }
 
         if (!marked[w]) {
@@ -77,10 +77,10 @@ void Cycle::dfs(Graph& G, int u, int v)
             dfs(G, v, w);
         }
 
-            // check for cycle (but disregard reverse of edge leading to v)
+            // _check for _cycle (but disregard reverse of edge leading to v)
         else if (w != u) {
             cycle = new Stack<Integer>();
-            for (int x = v; x != w; x = edgeTo[x]) {
+            for (int x{v}; x != w; x = edgeTo[x]) {
                 cycle.push(x);
             }
             cycle.push(w);

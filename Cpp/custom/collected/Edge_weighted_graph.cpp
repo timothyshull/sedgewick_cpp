@@ -7,7 +7,7 @@ Edge_weighted_graph::Edge_weighted_graph(int V)
     this.E = 0;
     adj = (Bag<Edge>[])
     new Bag[V];
-    for (int v = 0; v < V; ++v) {
+    for (int v{0}; v < V; ++v) {
         adj[v] = new Bag<Edge>();
     }
 }
@@ -16,7 +16,7 @@ Edge_weighted_graph::Edge_weighted_graph(int V, int E)
 {
     this(V);
     if (E < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
-    for (int i = 0; i < E; ++i) {
+    for (int i{0}; i < E; ++i) {
         int v = Std_random::uniform(V);
         int w = Std_random::uniform(V);
         double weight = std::round(100 * Std_random::uniform()) / 100.0;
@@ -30,7 +30,7 @@ Edge_weighted_graph::Edge_weighted_graph(In& in)
     this(in.read_int());
     int E = in.read_int();
     if (E < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
-    for (int i = 0; i < E; ++i) {
+    for (int i{0}; i < E; ++i) {
         int v = in.read_int();
         int w = in.read_int();
         double weight = in.read_double();
@@ -43,7 +43,7 @@ Edge_weighted_graph::Edge_weighted_graph(Edge_weighted_graph& G)
 {
     this(G.num_vertices());
     this.E = G.num_edges();
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         // reverse so that adjacency list is in same order as original
         Stack <Edge> reverse = new Stack<Edge>();
         for (Edge e : G.adj[v]) {
@@ -91,7 +91,7 @@ int Edge_weighted_graph::degree(int v)
 std::vector<Edge> Edge_weighted_graph::edges()
 {
     Bag <Edge> list = new Bag<Edge>();
-    for (int v = 0; v < V; ++v) {
+    for (int v{0}; v < V; ++v) {
         int selfLoops = 0;
         for (Edge e : adjacent(v)) {
             if (e.other(v) > v) {
@@ -111,7 +111,7 @@ std::string Edge_weighted_graph::to_string()
 {
     std::stringstream s = new std::stringstream();
     s.append(V + " " + E + NEWLINE);
-    for (int v = 0; v < V; ++v) {
+    for (int v{0}; v < V; ++v) {
         s.append(v + ": ");
         for (Edge e : adj[v]) {
             s.append(e + "  ");

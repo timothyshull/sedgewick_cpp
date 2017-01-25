@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 
     Ford_fulkerson maxflow{network, s, t};
     Std_out::print_line("Max flow from " + s + " to " + t);
-    for (int v = 0; v < network.num_vertices(); ++v) {
+    for (int v{0}; v < network.num_vertices(); ++v) {
         for (auto e : network.adjacent(v)) {
             if ((v == e.from()) && e.flow() > 0) {
                 Std_out::print_line("   " + e);
@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     }
 
     Std_out::print("Min cut: ");
-    for (int v = 0; v < network.num_vertices(); ++v) {
+    for (int v{0}; v < network.num_vertices(); ++v) {
         if (maxflow.inCut(v)) { Std_out::print(v + " "); }
     }
     Std_out::print_line();

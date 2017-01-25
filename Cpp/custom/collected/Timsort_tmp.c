@@ -51,7 +51,7 @@ list_resize(PyListObject* self, Py_ssize_t newsize)
      */
     new_allocated = (newsize >> 3) + (newsize < 9 ? 3 : 6);
 
-    /* check for integer overflow */
+    /* _check for integer overflow */
     if (new_allocated > PY_SIZE_MAX - newsize) {
         PyErr_NoMemory();
         return -1;
@@ -1486,7 +1486,7 @@ merge_getmem(MergeState* ms, Py_ssize_t need)
     if (need <= ms->alloced) {
         return 0;
     }
-    /* Don't realloc!  That can cost cycles to copy the old data, but
+    /* Don't realloc!  That can _cost cycles to copy the old data, but
      * we don't care what's in the block.
      */
     merge_freemem(ms);

@@ -4,7 +4,7 @@ Quick_union_uf::Quick_union_uf(int n)
 {
     parent = new int[n];
     count = n;
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         parent[i] = i;
     }
 }

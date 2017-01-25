@@ -16,6 +16,6 @@ int main()
         }
     }
     Std_out::print_line(queue);
-    Std_out::printf("(%d left on queue)", queue.size());
+    Std_out::printf("(%d left on _queue)", queue.size());
     return 0;
 }

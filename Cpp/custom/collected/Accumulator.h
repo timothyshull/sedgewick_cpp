@@ -11,22 +11,22 @@ class Accumulator<Float_type, typename std::enable_if<std::is_floating_point<Flo
 public:
     void add_data_value(Float_type x)
     {
-        ++_n;
+        ++_size;
         Float_type delta{x - _mu};
-        _mu += delta / static_cast<Float_type>(_n);
-        _sum += static_cast<Float_type>(_n - 1) / static_cast<Float_type>(_n) * delta * delta;
+        _mu += delta / static_cast<Float_type>(_size);
+        _sum += static_cast<Float_type>(_size - 1) / static_cast<Float_type>(_size) * delta * delta;
     }
 
     inline Float_type mean() const { return _mu; }
 
-    inline Float_type var() const { return static_cast<Float_type>(_sum / (_n - 1)); }
+    inline Float_type var() const { return static_cast<Float_type>(_sum / (_size - 1)); }
 
     inline Float_type std_dev() const { return static_cast<Float_type>(std::sqrt(this->var())); }
 
-    inline int count() const { return _n; }
+    inline int count() const { return _size; }
 
 private:
-    int _n{0};
+    int _size{0};
     Float_type _sum{0.0};
     Float_type _mu{0.0};
 };

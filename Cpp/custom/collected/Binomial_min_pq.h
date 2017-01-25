@@ -178,7 +178,7 @@ public:
     using Pointer_type = Value_type*;
     using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: check on this because of the relationship with max_size
+    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
     using Iterator_type = Binomial_min_pq_iterator<Key_type, Value_type>;
     using Reverse_iterator_type = Binomial_min_pq_reverse_iterator<Key_type, Value_type>;
 
@@ -208,9 +208,9 @@ BinomialMinPQ(Comparator<Key> C, Key[] a) {
 
 int size() {
         int result = 0, tmp;
-        for (Node node = head; node != null; node = node.sibling) {
+        for (Node node{head}; node != null; node = node.sibling) {
             if (node.order > 30) {
-                throw new ArithmeticException("The number of elements cannot be evaluated, but the priority queue is still valid.");
+                throw new ArithmeticException("The number of elements cannot be evaluated, but the priority _queue is still valid.");
             }
             tmp = 1 << node.order;
             result |= tmp;
@@ -228,7 +228,7 @@ void insert(Key key) {
     }
 
  Key minKey() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         Node min = head;
         Node current = head;
         while (current.sibling != null) {
@@ -239,7 +239,7 @@ void insert(Key key) {
     }
 
  Key delMin() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         Node min = eraseMin();
         Node x = (min.child == null) ? min : min.child;
         if (min.child != null) {

@@ -13,7 +13,7 @@ void ::utility::assert(bool test, const char* msg)
 std::vector<char> utility::str_to_char_vector(std::string& str)
 {
     std::vector<char> cv;
-    for (int i = 0; i < str.size(); ++i) {
+    for (int i{0}; i < str.size(); ++i) {
         cv.push_back(str[i]);
     }
     return cv;

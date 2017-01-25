@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
         int n = utility::str_to_num(argv[1]);
         particles.clear();
         particles.reserve(n);
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             particles[i] = Particle{};
         }
     } else {
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
         int r;
         int g;
         int b;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             rx = Std_in::read_double();
             ry = Std_in::read_double();
             vx = Std_in::read_double();

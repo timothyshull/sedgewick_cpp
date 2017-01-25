@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
         std::vector<int> vector;
         if (line[0] == "set") {
             vector.reserve(line.size() - 1);
-            for (int i = 0; i < line.size() - 1; ++i) {
+            for (int i{0}; i < line.size() - 1; ++i) {
                 vector[i] = utility::str_to_num(line[i + 1]);
             }
             st = Segment_tree{vector};
@@ -44,13 +44,13 @@ int main(int argc, char* argv[])
             std::fill(vector.begin(), vector.end(), arg2);
             st = Segment_tree{vector};
 
-            for (int i = 0; i < st.size(); ++i) {
+            for (int i{0}; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();
         } else if (line[0] == "up") {
             st.update(arg1, arg2, arg3);
-            for (int i = 0; i < st.size(); ++i) {
+            for (int i{0}; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();

@@ -82,7 +82,7 @@ void Trie_set::collect(Trie_set::Raw_node_pointer x, std::stringstream& prefix, 
 {
     if (x == null) return;
     if (x.isString) results.enqueue(prefix.to_string());
-    for (char c = 0; c < R; ++c) {
+    for (char c{0}; c < R; ++c) {
         prefix.append(c);
         collect(x.next[c], prefix, results);
         prefix.deleteCharAt(prefix.length() - 1);
@@ -99,7 +99,7 @@ void Trie_set::collect(Trie_set::Raw_node_pointer x, std::stringstream& pattern,
         return;
     char c = pattern.charAt(d);
     if (c == '.') {
-        for (char ch = 0; ch < R; ++ch) {
+        for (char ch{0}; ch < R; ++ch) {
             prefix.append(ch);
             collect(x.next[ch], prefix, pattern, results);
             prefix.deleteCharAt(prefix.length() - 1);
@@ -133,7 +133,7 @@ Trie_set::Raw_node_pointer Trie_set::remove(Trie_set::Raw_node_pointer x, std::s
 
     // remove subtrie rooted at x if it is completely empty
     if (x.isString) return x;
-    for (int c = 0; c < R; ++c)
+    for (int c{0}; c < R; ++c)
         if (x.next[c] != null)
             return x;
     return null;

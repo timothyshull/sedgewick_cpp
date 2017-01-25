@@ -110,7 +110,7 @@ char Binary_in::read_char(int r)
     if (r == 8) { return read_char(); }
 
     char x = 0;
-    for (int i = 0; i < r; ++i) {
+    for (int i{0}; i < r; ++i) {
         x <<= 1;
         bool bit = read_boolean();
         if (bit) { x |= 1; }
@@ -133,7 +133,7 @@ std::string Binary_in::read_string()
 short Binary_in::read_short()
 {
     short x = 0;
-    for (int i = 0; i < 2; ++i) {
+    for (int i{0}; i < 2; ++i) {
         char c = read_char();
         x <<= 8;
         x |= c;
@@ -144,7 +144,7 @@ short Binary_in::read_short()
 int Binary_in::read_int()
 {
     int x = 0;
-    for (int i = 0; i < 4; ++i) {
+    for (int i{0}; i < 4; ++i) {
         char c = read_char();
         x <<= 8;
         x |= c;
@@ -160,7 +160,7 @@ int Binary_in::read_int(int r)
     if (r == 32) { return read_int(); }
 
     int x = 0;
-    for (int i = 0; i < r; ++i) {
+    for (int i{0}; i < r; ++i) {
         x <<= 1;
         bool bit = read_boolean();
         if (bit) { x |= 1; }
@@ -171,7 +171,7 @@ int Binary_in::read_int(int r)
 long Binary_in::read_long()
 {
     long x = 0;
-    for (int i = 0; i < 8; ++i) {
+    for (int i{0}; i < 8; ++i) {
         char c = read_char();
         x <<= 8;
         x |= c;

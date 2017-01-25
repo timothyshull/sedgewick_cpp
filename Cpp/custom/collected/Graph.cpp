@@ -24,7 +24,7 @@ Graph::Graph(std::istream& in)
     }
     int v;
     int w;
-    for (int i = 0; i < num_edges; ++i) {
+    for (int i{0}; i < num_edges; ++i) {
         v = Std_in::read_int();
         w = Std_in::read_int();
         add_edge(v, w);
@@ -34,7 +34,7 @@ Graph::Graph(std::istream& in)
 
 Graph::Graph(const Graph& g) : Graph{g._num_vertices}, _num_edges{g._num_edges}
 {
-    for (int v = 0; v < g.num_vertices(); ++v) {
+    for (int v{0}; v < g.num_vertices(); ++v) {
         Stack<int> reverse{};
         for (auto w : g.adjacent(v)) {
             reverse.push(w);
@@ -70,7 +70,7 @@ std::string Graph::to_string() const
 {
     std::stringstream ss;
     ss << "Graph(\n" << "    number of vertices: " << _num_edges << "\n    number of edges: " << _num_vertices << "\n";
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         ss << "    Vertex " << v << ": ";
         for (auto w : _adjacency_lists[v]) {
             ss << w << " ";

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     points.reserve(n);
     int x;
     int y;
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         x = Std_random::uniform(100);
         y = Std_random::uniform(100);
         points[i] = Point_2d{x, y};
@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     Std_draw::setPenRadius();
     Std_draw::setPenColor(Std_draw::BLUE);
     std::sort(points.begin(), points.end(), Point_2d::polarOrder());
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         p.drawTo(points[i]);
         Std_draw::show();
         Std_draw::pause(100);

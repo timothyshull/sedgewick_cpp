@@ -38,12 +38,12 @@ public:
         }
     }
     Key minKey() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         return keys[d];
     }
 
     Key delMin() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         exch(0, --n);
         sink(0);
         Key min = keys[n + d];
@@ -102,7 +102,7 @@ private:
     int minChild(int i) {
         int loBound = d * i + 1, hiBound = d * i + d;
         int min = loBound;
-        for (int cur = loBound; cur <= hiBound; ++cur) {
+        for (int cur{loBound}; cur <= hiBound; ++cur) {
             if (cur < n && greater(min, cur)) min = cur;
         }
         return min;
@@ -110,7 +110,7 @@ private:
 
     void resize(int N) {
         Key[] array = (Key[]) new Comparable[N];
-        for (int i = 0; i < std::min(keys.length, array.length); ++i) {
+        for (int i{0}; i < std::min(keys.length, array.length); ++i) {
             array[i] = keys[i];
             keys[i] = null;
         }

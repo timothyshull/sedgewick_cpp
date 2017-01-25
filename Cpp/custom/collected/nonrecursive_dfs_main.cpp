@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     Graph graph{in};
     int s = utility::str_to_num(argv[1]);
     Nonrecursive_dfs dfs{graph, s};
-    for (int v = 0; v < graph.num_vertices(); ++v) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
         if (dfs.marked(v)) {
             Std_out::print(v + " ");
         }

@@ -33,7 +33,7 @@ private:
 void resize(int capacity) {
         assert capacity >= n;
         Item[] temp = (Item[]) new Object[capacity];
-        for (int i = 0; i < n; ++i)
+        for (int i{0}; i < n; ++i)
             temp[i] = a[i];
         a = temp;
     }

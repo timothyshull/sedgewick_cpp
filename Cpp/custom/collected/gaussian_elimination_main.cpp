@@ -16,16 +16,16 @@ int main(int argc, char* argv[])
     int n{utility::str_to_num(argv[1])};
     std::vector<std::vector<double>> A;
     A.reserve(n);
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         A[i] = std::vector<double>{};
         A[i].reserve(n);
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             A[i][j] = Std_random::uniform(1000);
         }
     }
     std::vector<double> b;
     b.reserve(n);
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
     }
 

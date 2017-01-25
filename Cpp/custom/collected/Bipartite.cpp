@@ -7,7 +7,7 @@ Bipartite::Bipartite(Graph& G)
     marked = new boolean[G.num_vertices()];
     edgeTo = new int[G.num_vertices()];
 
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, v);
         }
@@ -38,7 +38,7 @@ void Bipartite::dfs(Graph& G, int v)
     marked[v] = true;
     for (int w : G.adj(v)) {
 
-        // short circuit if odd-length cycle found
+        // short circuit if odd-length _cycle found
         if (cycle != null) { return; }
 
         // found uncolored vertex, so recur
@@ -48,12 +48,12 @@ void Bipartite::dfs(Graph& G, int v)
             dfs(G, w);
         }
 
-            // if v-w create an odd-length cycle, find it
+            // if v-w create an odd-length _cycle, find it
         else if (color[w] == color[v]) {
             is_bipartite = false;
             cycle = new Stack<Integer>();
             cycle.push(w);  // don't need this unless you want to include start vertex twice
-            for (int x = v; x != w; x = edgeTo[x]) {
+            for (int x{v}; x != w; x = edgeTo[x]) {
                 cycle.push(x);
             }
             cycle.push(w);
@@ -64,7 +64,7 @@ void Bipartite::dfs(Graph& G, int v)
 bool Bipartite::check(Graph& G)
 {
     if (is_bipartite) {
-        for (int v = 0; v < G.num_vertices(); ++v) {
+        for (int v{0}; v < G.num_vertices(); ++v) {
             for (int w : G.adj(v)) {
                 if (color[v] == color[w]) {
                     System.err.printf("edge %d-%d with %d and %d in same side of _bipartition\n", v, w, v, w);
@@ -74,16 +74,16 @@ bool Bipartite::check(Graph& G)
         }
     }
 
-        // graph has an odd-length cycle
+        // graph has an odd-length _cycle
     else {
-        // verify cycle
+        // verify _cycle
         int first = -1, last = -1;
         for (int v : odd_cycle()) {
             if (first == -1) { first = v; }
             last = v;
         }
         if (first != last) {
-            System.err.printf("cycle begins with %d and ends with %d\n", first, last);
+            System.err.printf("_cycle begins with %d and ends with %d\n", first, last);
             return false;
         }
     }

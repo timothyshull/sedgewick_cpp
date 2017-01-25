@@ -37,7 +37,7 @@ namespace Std_random {
     int uniform(int n)
     {
         if (n <= 0) {
-            throw utility::Illegal_argument_exception("Parameter _n must be positive");
+            throw utility::Illegal_argument_exception("Parameter _size must be positive");
         }
         std::uniform_int_distribution<int> dist(0, n - 1);
         return dist(rd);
@@ -146,7 +146,7 @@ namespace Std_random {
         double epsilon = 1E-14;
         double sum = 0.0;
         int n = probabilities.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             if (probabilities[i] < 0.0) {
                 std::stringstream ss;
                 ss << "The \"probabilities\" entry " << i << " must be non-negative: " << probabilities[i];
@@ -163,7 +163,7 @@ namespace Std_random {
         while (true) {
             double r = uniform();
             sum = 0.0;
-            for (int i = 0; i < n; ++i) {
+            for (int i{0}; i < n; ++i) {
                 sum = sum + probabilities[i];
                 if (sum > r) {
                     return i;
@@ -179,7 +179,7 @@ namespace Std_random {
         }
         long sum = 0;
         int n = frequencies.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             if (frequencies[i] < 0) {
                 std::stringstream ss;
                 ss << "The \"frequencies\" vector entry " << i << " must be non-negative: " << frequencies[i];
@@ -196,7 +196,7 @@ namespace Std_random {
 
         double r = uniform(static_cast<int>(sum));
         sum = 0;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             sum += frequencies[i];
             if (sum > r) {
                 return i;

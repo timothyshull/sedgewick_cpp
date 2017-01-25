@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
     for (auto v : weight) {
         v.reserve(n);
     }
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
+    for (int i{0}; i < n; ++i) {
+        for (int j{0}; j < n; ++j) {
             weight[i][j] = Std_random::uniform(900) + 100;
         }
     }
@@ -23,8 +23,8 @@ int main(int argc, char* argv[])
     Std_out::print_line();
 
     if (n >= 20) { return -1; }
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
+    for (int i{0}; i < n; ++i) {
+        for (int j{0}; j < n; ++j) {
             if (j == assignment.solution(i)) {
                 Std_out::printf("*%.0f ", weight[i][j]);
             } else {

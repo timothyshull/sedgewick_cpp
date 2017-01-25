@@ -8,9 +8,9 @@ int main(int argc, char* argv[])
     std::vector<int> frequencies{5, 3, 1, 1};
     std::vector<std::string> a{"A", "B", "C", "D", "E", "F", "G"};
 
-    // Std_out::printf("Seed: %.2f\_n", Std_random::get_seed());
+    // Std_out::printf("Seed: %.2f\_size", Std_random::get_seed());
 
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         Std_out::printf("%2d\n", Std_random::uniform(100));
         Std_out::printf("%8.5f\n", Std_random::uniform(10.0, 99.0));
         Std_out::print(Std_random::bernoulli(0.5));

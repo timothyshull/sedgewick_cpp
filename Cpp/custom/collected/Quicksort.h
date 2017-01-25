@@ -12,7 +12,7 @@ public:
     {
         Std_random::shuffle(a);
         sort(a, 0, a.size() - 1);
-        utility::assert(is_sorted(a), "Quicksort is_sorted check failed");
+        utility::assert(is_sorted(a), "Quicksort is_sorted _check failed");
     }
 
     template<typename T>
@@ -43,7 +43,7 @@ public:
                 if (j == lo) { break; }
             }      // redundant since a[lo] acts as sentinel
 
-            // check if pointers cross
+            // _check if pointers cross
             if (i >= j) { break; }
 
             exch(a, i, j);
@@ -96,7 +96,7 @@ public:
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; ++i) {
+        for (int i{lo + 1}; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -105,7 +105,7 @@ public:
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); ++i) {
+        for (int i{0}; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

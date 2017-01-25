@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     Std_out::print_line("text:    " + txt);
 
     Std_out::print("pattern: ");
-    for (int i = 0; i < offset; ++i) {
+    for (int i{0}; i < offset; ++i) {
         Std_out::print(" ");
     }
     Std_out::print_line(pat);

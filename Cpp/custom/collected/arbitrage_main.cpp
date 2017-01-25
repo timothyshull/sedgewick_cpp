@@ -11,9 +11,9 @@ int main() {
 
     Edge_weighted_digraph g{num_vertices};
     double rate;
-    for (int v = 0; v < num_vertices; ++v) {
+    for (int v{0}; v < num_vertices; ++v) {
         name[v] = Std_in::read_string();
-        for (int w = 0; w < num_vertices; ++w) {
+        for (int w{0}; w < num_vertices; ++w) {
             rate = Std_in::read_double();
             Directed_edge e{v, w, -std::log10(rate)};
             g.add_edge(e);

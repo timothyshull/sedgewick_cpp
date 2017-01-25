@@ -28,15 +28,15 @@ namespace Shellsort {
 
         while (h >= 1) {
             // h-sort the array
-            for (int i = h; i < n; ++i) {
-                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+            for (int i{h}; i < n; ++i) {
+                for (int j{i}; j >= h && less(a[j], a[j - h]); j -= h) {
                     exch(a, j, j - h);
                 }
             }
-            utility::assert(is_h_sorted(a, h), "Shellsort is_h_sorted check failed");
+            utility::assert(is_h_sorted(a, h), "Shellsort is_h_sorted _check failed");
             h /= 3;
         }
-        utility::assert(is_sorted(a), "Shellsort is_sorted check failed");
+        utility::assert(is_sorted(a), "Shellsort is_sorted _check failed");
     }
 
     template<typename T>
@@ -56,7 +56,7 @@ namespace Shellsort {
     template<typename T>
     bool is_sorted(std::vector<T>& a)
     {
-        for (int i = 1; i < a.size(); ++i) {
+        for (int i{1}; i < a.size(); ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -65,7 +65,7 @@ namespace Shellsort {
     template<typename T>
     bool is_h_sorted(std::vector<T>& a, int h)
     {
-        for (int i = h; i < a.size(); ++i) {
+        for (int i{h}; i < a.size(); ++i) {
             if (less(a[i], a[i - h])) { return false; }
         }
         return true;

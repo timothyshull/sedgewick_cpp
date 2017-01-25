@@ -5,7 +5,7 @@ void ::Run_length::expand()
     bool b = false;
     while (!Binary_std_in::is_empty()) {
         int run = Binary_std_in::read_int(LG_R);
-        for (int i = 0; i < run; ++i)
+        for (int i{0}; i < run; ++i)
             Binary_std_out::write(b);
         b = !b;
     }

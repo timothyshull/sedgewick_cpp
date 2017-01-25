@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::path(num_vertices));
     Std_out::print_line();
 
-    Std_out::print_line("cycle");
+    Std_out::print_line("_cycle");
     Std_out::print_line(Digraph_generator::cycle(num_vertices));
     Std_out::print_line();
 
@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::eulerian_path(num_vertices, num_edges));
     Std_out::print_line();
 
-    Std_out::print_line("Eulierian cycle");
+    Std_out::print_line("Eulierian _cycle");
     Std_out::print_line(Digraph_generator::eulerian_cycle(num_vertices, num_edges));
     Std_out::print_line();
 

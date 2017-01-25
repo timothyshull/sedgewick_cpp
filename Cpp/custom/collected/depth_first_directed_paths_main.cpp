@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     int s = utility::str_to_num(argv[1]);
     Depth_first_directed_paths dfs{digraph, s};
 
-    for (int v = 0; v < digraph.num_vertices(); ++v) {
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
         if (dfs.has_path_to(v)) {
             Std_out::printf("%d to %d:  ", s, v);
             for (int x : dfs.path_to(v)) {

@@ -5,7 +5,7 @@ Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& G, int s)
     marked = new boolean[G.num_vertices()];
     distance_to = new int[G.num_vertices()];
     edgeTo = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         distance_to[v] = INFINITY;
     }
     bfs(G, s);
@@ -16,7 +16,7 @@ Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& G, std::vect
     marked = new boolean[G.num_vertices()];
     distance_to = new int[G.num_vertices()];
     edgeTo = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         distance_to[v] = INFINITY;
     }
     bfs(G, sources);

@@ -11,7 +11,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(int num_vertices)
     if (num_vertices < 0) {
         throw utility::Illegal_argument_exception("the number of vertices in an Edge_weighted_digraph must be non-negative");
     }
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Directed_edge>{};
     }
 }
@@ -25,7 +25,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(int num_vertices, int num_edges)
     int v;
     int w;
     double weight;
-    for (int i = 0; i < _num_edges; ++i) {
+    for (int i{0}; i < _num_edges; ++i) {
         v = Std_random::uniform(_num_vertices);
         w = Std_random::uniform(_num_vertices);
         weight = 0.01 * Std_random::uniform(100);
@@ -47,7 +47,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(std::istream& in)
     int v;
     int w;
     double weight;
-    for (int i = 0; i < num_edges; ++i) {
+    for (int i{0}; i < num_edges; ++i) {
         Std_out::print_line("add edge");
         v = Std_in::read_int();
         w = Std_in::read_int();
@@ -66,7 +66,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(const Edge_weighted_digraph& g)
           _num_edges{g._num_edges},
           _indegree{g._indegree}
 {
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         Stack<Directed_edge> reverse;
         for (auto e : g._adjacency_lists[v]) {
             reverse.push(e);
@@ -130,7 +130,7 @@ std::string Edge_weighted_digraph::to_string() const
 {
     std::stringstream ss;
     ss << "Edge_weighted_digraph(\n    number of vertices: " << _num_vertices << ",\n    number of edges: " << _num_edges << "\n";
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         ss << "    edges for vertex " << v << ": ";
         for (auto e : _adjacency_lists[v]) {
             ss << e << " ";

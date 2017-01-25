@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
             count[alphabet.to_index(c)] += 1;
         }
     }
-    for (int c = 0; c < r; ++c) {
+    for (int c{0}; c < r; ++c) {
         // TODO: fix this
         Std_out::printf("Count for char %d: %d\n", alphabet.to_char(c), count[c]);
     }

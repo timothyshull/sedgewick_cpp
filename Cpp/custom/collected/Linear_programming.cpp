@@ -4,27 +4,27 @@ Linear_programming::Linear_programming(std::vector<std::vector<double>>& A, std:
 {
     m = b.length;
     n = c.length;
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         if (!(b[i] >= 0)) throw utility::Illegal_argument_exception("RHS must be nonnegative");
 
     a = new double[m + 1][n + m + 1];
-    for (int i = 0; i < m; ++i)
-        for (int j = 0; j < n; ++j)
+    for (int i{0}; i < m; ++i)
+        for (int j{0}; j < n; ++j)
             a[i][j] = A[i][j];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         a[i][n + i] = 1.0;
-    for (int j = 0; j < n; ++j)
+    for (int j{0}; j < n; ++j)
         a[m][j] = c[j];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         a[i][m + n] = b[i];
 
     basis = new int[m];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         basis[i] = n + i;
 
     solve();
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(A, b, c);
 }
 
@@ -50,7 +50,7 @@ void Linear_programming::solve()
 
 int Linear_programming::bland()
 {
-    for (int j = 0; j < m + n; ++j)
+    for (int j{0}; j < m + n; ++j)
         if (a[m][j] > 0) return j;
     return -1;  // optimal
 }
@@ -58,7 +58,7 @@ int Linear_programming::bland()
 int Linear_programming::dantzig()
 {
     int q = 0;
-    for (int j = 1; j < m + n; ++j)
+    for (int j{1}; j < m + n; ++j)
         if (a[m][j] > a[m][q]) q = j;
 
     if (a[m][q] <= 0) return -1;  // optimal
@@ -68,7 +68,7 @@ int Linear_programming::dantzig()
 int Linear_programming::minRatioRule(int q)
 {
     int p = -1;
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         // if (a[i][q] <= 0) continue;
         if (a[i][q] <= EPSILON) continue;
         else if (p == -1) p = i;
@@ -79,16 +79,16 @@ int Linear_programming::minRatioRule(int q)
 
 void Linear_programming::pivot(int p, int q)
 {
-    for (int i = 0; i <= m; ++i)
-        for (int j = 0; j <= m + n; ++j)
+    for (int i{0}; i <= m; ++i)
+        for (int j{0}; j <= m + n; ++j)
             if (i != p && j != q) a[i][j] -= a[p][j] * a[i][q] / a[p][q];
 
     // zero out column q
-    for (int i = 0; i <= m; ++i)
+    for (int i{0}; i <= m; ++i)
         if (i != p) a[i][q] = 0.0;
 
     // scale row p
-    for (int j = 0; j <= m + n; ++j)
+    for (int j{0}; j <= m + n; ++j)
         if (j != q) a[p][j] /= a[p][q];
     a[p][q] = 1.0;
 }
@@ -101,7 +101,7 @@ double Linear_programming::value()
 std::vector<double> Linear_programming::primal()
 {
     std::vector<double> x = new double[n];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         if (basis[i] < n) x[basis[i]] = a[i][m + n];
     return x;
 }
@@ -109,7 +109,7 @@ std::vector<double> Linear_programming::primal()
 std::vector<double> Linear_programming::dual()
 {
     std::vector<double> y = new double[m];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         y[i] = -a[m][n + i];
     return y;
 }
@@ -118,18 +118,18 @@ bool Linear_programming::isPrimalFeasible(std::vector<std::vector<double>>& A, s
 {
     std::vector<double> x = primal();
 
-    // check that x >= 0
-    for (int j = 0; j < x.length; ++j) {
+    // _check that x >= 0
+    for (int j{0}; j < x.length; ++j) {
         if (x[j] < 0.0) {
             Std_out::print_line("x[" + j + "] = " + x[j] + " is negative");
             return false;
         }
     }
 
-    // check that Ax <= b
-    for (int i = 0; i < m; ++i) {
+    // _check that Ax <= b
+    for (int i{0}; i < m; ++i) {
         double sum = 0.0;
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             sum += A[i][j] * x[j];
         }
         if (sum > b[i] + EPSILON) {
@@ -145,18 +145,18 @@ bool Linear_programming::isDualFeasible(std::vector<std::vector<double>>& A, std
 {
     std::vector<double> y = dual();
 
-    // check that y >= 0
-    for (int i = 0; i < y.length; ++i) {
+    // _check that y >= 0
+    for (int i{0}; i < y.length; ++i) {
         if (y[i] < 0.0) {
             Std_out::print_line("y[" + i + "] = " + y[i] + " is negative");
             return false;
         }
     }
 
-    // check that yA >= c
-    for (int j = 0; j < n; ++j) {
+    // _check that yA >= c
+    for (int j{0}; j < n; ++j) {
         double sum = 0.0;
-        for (int i = 0; i < m; ++i) {
+        for (int i{0}; i < m; ++i) {
             sum += A[i][j] * y[i];
         }
         if (sum < c[j] - EPSILON) {
@@ -174,12 +174,12 @@ bool Linear_programming::isOptimal(std::vector<double>& b, std::vector<double>& 
     std::vector<double> y = dual();
     double value = value();
 
-    // check that value = cx = yb
+    // _check that value = cx = yb
     double value1 = 0.0;
-    for (int j = 0; j < x.length; ++j)
+    for (int j{0}; j < x.length; ++j)
         value1 += c[j] * x[j];
     double value2 = 0.0;
-    for (int i = 0; i < y.length; ++i)
+    for (int i{0}; i < y.length; ++i)
         value2 += y[i] * b[i];
     if (std::abs(value - value1) > EPSILON || std::abs(value - value2) > EPSILON) {
         Std_out::print_line("value = " + value + ", cx = " + value1 + ", yb = " + value2);
@@ -198,15 +198,15 @@ void Linear_programming::show()
 {
     Std_out::print_line("m = " + m);
     Std_out::print_line("_size = " + n);
-    for (int i = 0; i <= m; ++i) {
-        for (int j = 0; j <= m + n; ++j) {
+    for (int i{0}; i <= m; ++i) {
+        for (int j{0}; j <= m + n; ++j) {
             Std_out::printf("%7.2f ", a[i][j]);
             // Std_out::printf("%10.7f ", a[i][j]);
         }
         Std_out::print_line();
     }
     Std_out::print_line("value = " + value());
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         if (basis[i] < n) Std_out::print_line("x_" + basis[i] + " = " + a[i][m + n]);
     Std_out::print_line();
 }
@@ -216,10 +216,10 @@ void Linear_programming::test(std::vector<std::vector<double>>& A, std::vector<d
     LinearProgramming lp = new LinearProgramming(A, b, c);
     Std_out::print_line("value = " + lp.value());
     std::vector<double> x = lp.primal();
-    for (int i = 0; i < x.length; ++i)
+    for (int i{0}; i < x.length; ++i)
         Std_out::print_line("x[" + i + "] = " + x[i]);
     std::vector<double> y = lp.dual();
-    for (int j = 0; j < y.length; ++j)
+    for (int j{0}; j < y.length; ++j)
         Std_out::print_line("y[" + j + "] = " + y[j]);
 }
 

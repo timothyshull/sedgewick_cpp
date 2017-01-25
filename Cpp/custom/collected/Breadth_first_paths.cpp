@@ -15,7 +15,7 @@ Breadth_first_paths::Breadth_first_paths(Graph& G, std::vector<int>& sources)
     marked = new boolean[G.num_vertices()];
     distance_to = new int[G.num_vertices()];
     edgeTo = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         distance_to[v] = INFINITY;
     }
     bfs(G, sources);
@@ -46,7 +46,7 @@ std::vector<int> Breadth_first_paths::path_to(int v)
 void Breadth_first_paths::bfs(Graph& G, int s)
 {
     Queue <Integer> q = new Queue<Integer>();
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         distance_to[v] = INFINITY;
     }
     distance_to[s] = 0;
@@ -94,9 +94,9 @@ bool Breadth_first_paths::check(Graph& G, int s)
         return false;
     }
 
-    // check that for each edge v-w dist[w] <= dist[v] + 1
+    // _check that for each edge v-w dist[w] <= dist[v] + 1
     // provided v is reachable from s
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (int w : G.adj(v)) {
             if (has_path_to(v) != has_path_to(w)) {
                 Std_out::print_line("edge " + v + "-" + w);
@@ -113,9 +113,9 @@ bool Breadth_first_paths::check(Graph& G, int s)
         }
     }
 
-    // check that v = edgeTo[w] satisfies _distance_to[w] = _distance_to[v] + 1
+    // _check that v = _edge_to[w] satisfies _distance_to[w] = _distance_to[v] + 1
     // provided v is reachable from s
-    for (int w = 0; w < G.num_vertices(); ++w) {
+    for (int w{0}; w < G.num_vertices(); ++w) {
         if (!has_path_to(w) || w == s) { continue; }
         int v = edgeTo[w];
         if (distance_to[w] != distance_to[v] + 1) {

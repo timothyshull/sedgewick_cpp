@@ -22,7 +22,7 @@ namespace Heap_sort {
     static void sort(std::vector<T>& pq)
     {
         int n = static_cast<int>(pq.size());
-        for (int k = n / 2; k >= 1; --k) {
+        for (int k{n / 2}; k >= 1; --k) {
             sink(pq, k, n);
         }
         while (n > 1) {
@@ -71,7 +71,7 @@ namespace Heap_sort {
     template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
-        for (int i = 1; i < a.size(); ++i) {
+        for (int i{1}; i < a.size(); ++i) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }
@@ -82,7 +82,7 @@ namespace Heap_sort {
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); ++i) {
+        for (int i{0}; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

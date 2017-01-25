@@ -11,7 +11,7 @@ bool Suffix::operator<(Suffix& rhs)
 {
     if (this == that) return 0;  // optimization
     int n = std::min(this.length(), that.length());
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if (this.charAt(i) < that.charAt(i)) return -1;
         if (this.charAt(i) > that.charAt(i)) return +1;
     }
@@ -32,7 +32,7 @@ Suffix_array::Suffix_array(std::string& text)
 {
     int n = text.length();
     this.suffixes = new Suffix[n];
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         suffixes[i] = new Suffix(text, i);
     Arrays.sort(suffixes);
 }
@@ -76,7 +76,7 @@ int Suffix_array::rank(std::string& query)
 int Suffix_array::lcp(Suffix& s, Suffix& t)
 {
     int n = std::min(s.length(), t.length());
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if (s.charAt(i) != t.charAt(i)) return i;
     }
     return n;
@@ -85,7 +85,7 @@ int Suffix_array::lcp(Suffix& s, Suffix& t)
 int Suffix_array::compar(std::string& query, Suffix& suffix)
 {
     int n = std::min(query.length(), suffix.length());
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if (query.charAt(i) < suffix.charAt(i)) return -1;
         if (query.charAt(i) > suffix.charAt(i)) return +1;
     }

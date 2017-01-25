@@ -5,7 +5,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
     UF uf = new UF(G.num_vertices());
 
     // repeat at most log num_vertices times or until we have _num_vertices-1 edges
-    for (int t = 1; t < G.num_vertices() && mst.size() < G.num_vertices() - 1; t = t + t) {
+    for (int t{1}; t < G.num_vertices() && mst.size() < G.num_vertices() - 1; t = t + t) {
 
         // foreach tree in forest, find closest edge
         // if edge weights are equal, ties are broken in favor of first edge in G.edges()
@@ -20,7 +20,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
         }
 
         // add newly discovered edges to MST
-        for (int i = 0; i < G.num_vertices(); ++i) {
+        for (int i{0}; i < G.num_vertices(); ++i) {
             Edge e = closest[i];
             if (e != null) {
                 int v = e.either(), w = e.other(v);
@@ -35,7 +35,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
         }
     }
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G);
 }
 
@@ -56,7 +56,7 @@ bool Boruvka_mst::less(Edge& e, Edge& f)
 
 bool Boruvka_mst::check(Edge_weighted_digraph& g)
 {
-    // check weight
+    // _check weight
     double totalWeight = 0.0;
     for (Edge e : edges()) {
         totalWeight += e.weight();
@@ -66,7 +66,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
         return false;
     }
 
-    // check that it is acyclic
+    // _check that it is acyclic
     UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
@@ -78,7 +78,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
         union(v, w);
     }
 
-    // check that it is a spanning forest
+    // _check that it is a spanning forest
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
@@ -87,7 +87,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
         }
     }
 
-    // check that it is a minimal spanning forest (cut optimality conditions)
+    // _check that it is a minimal spanning forest (cut optimality conditions)
     for (Edge e : edges()) {
 
         // all edges in MST except e
@@ -98,7 +98,7 @@ bool Boruvka_mst::check(Edge_weighted_digraph& g)
             union(x, y);
         }
 
-        // check that e is min weight edge in crossing cut
+        // _check that e is min weight edge in crossing cut
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {

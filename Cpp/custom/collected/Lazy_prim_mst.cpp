@@ -5,11 +5,11 @@ Lazy_prim_mst::Lazy_prim_mst(Edge_weighted_graph& G)
     mst = new Queue<Edge>();
     pq = new MinPQ<Edge>();
     marked = new boolean[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {     // run Prim from all vertices to
+    for (int v{0}; v < G.num_vertices(); ++v) {     // run Prim from all vertices to
         if (!marked[v]) { prim(G, v); }
     }     // get a minimum spanning forest
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G);
 }
 
@@ -60,7 +60,7 @@ bool Lazy_prim_mst::check(Edge_weighted_graph& G)
         return false;
     }
 
-    // check that it is acyclic
+    // _check that it is acyclic
     UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
@@ -72,7 +72,7 @@ bool Lazy_prim_mst::check(Edge_weighted_graph& G)
         union(v, w);
     }
 
-    // check that it is a spanning forest
+    // _check that it is a spanning forest
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
@@ -81,7 +81,7 @@ bool Lazy_prim_mst::check(Edge_weighted_graph& G)
         }
     }
 
-    // check that it is a minimal spanning forest (cut optimality conditions)
+    // _check that it is a minimal spanning forest (cut optimality conditions)
     for (Edge e : edges()) {
 
         // all edges in MST except e
@@ -92,7 +92,7 @@ bool Lazy_prim_mst::check(Edge_weighted_graph& G)
             union(x, y);
         }
 
-        // check that e is min weight edge in crossing cut
+        // _check that e is min weight edge in crossing cut
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {

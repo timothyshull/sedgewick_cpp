@@ -6,15 +6,15 @@ Gauss_jordan_elimination::Gauss_jordan_elimination(std::vector<std::vector<doubl
 
     // build augmented matrix
     a = new double[n][n + n + 1];
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < n; ++j)
+    for (int i{0}; i < n; ++i)
+        for (int j{0}; j < n; ++j)
             a[i][j] = A[i][j];
 
     // only needed if you want to find certificate of infeasibility (or compute inverse)
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         a[i][n + i] = 1.0;
 
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         a[i][n + n] = b[i];
 
     solve();
@@ -25,7 +25,7 @@ Gauss_jordan_elimination::Gauss_jordan_elimination(std::vector<std::vector<doubl
 std::vector<double> Gauss_jordan_elimination::primal()
 {
     std::vector<double> x = new double[n];
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if (std::abs(a[i][i]) > EPSILON)
             x[i] = a[i][n + n] / a[i][i];
         else if (std::abs(a[i][n + n]) > EPSILON)
@@ -37,9 +37,9 @@ std::vector<double> Gauss_jordan_elimination::primal()
 std::vector<double> Gauss_jordan_elimination::dual()
 {
     std::vector<double> y = new double[n];
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if ((std::abs(a[i][i]) <= EPSILON) && (std::abs(a[i][n + n]) > EPSILON)) {
-            for (int j = 0; j < n; ++j)
+            for (int j{0}; j < n; ++j)
                 y[j] = a[i][n + j];
             return y;
         }
@@ -51,9 +51,9 @@ bool Gauss_jordan_elimination::isFeasible()
 {
     if (isFeasible()) {
         std::vector<double> x = primal();
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             double sum = 0.0;
-            for (int j = 0; j < n; ++j) {
+            for (int j{0}; j < n; ++j) {
                 sum += A[i][j] * x[j];
             }
             if (std::abs(sum - b[i]) > EPSILON) {
@@ -68,9 +68,9 @@ bool Gauss_jordan_elimination::isFeasible()
         // or that yA = 0, yb != 0
     else {
         std::vector<double> y = dual();
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             double sum = 0.0;
-            for (int i = 0; i < n; ++i) {
+            for (int i{0}; i < n; ++i) {
                 sum += A[i][j] * y[i];
             }
             if (std::abs(sum) > EPSILON) {
@@ -80,7 +80,7 @@ bool Gauss_jordan_elimination::isFeasible()
             }
         }
         double sum = 0.0;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             sum += y[i] * b[i];
         }
         if (std::abs(sum) < EPSILON) {
@@ -94,12 +94,12 @@ bool Gauss_jordan_elimination::isFeasible()
 
 void Gauss_jordan_elimination::solve()
 {
-    for (int p = 0; p < n; ++p) {
+    for (int p{0}; p < n; ++p) {
         // show();
 
         // find pivot row using partial pivoting
         int max = p;
-        for (int i = p + 1; i < n; ++i) {
+        for (int i{p + 1}; i < n; ++i) {
             if (std::abs(a[i][p]) > std::abs(a[max][p])) {
                 max = i;
             }
@@ -129,31 +129,31 @@ void Gauss_jordan_elimination::swap(int row1, int row2)
 
 void Gauss_jordan_elimination::pivot(int p, int q)
 {
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         double alpha = a[i][q] / a[p][q];
-        for (int j = 0; j <= n + n; ++j) {
+        for (int j{0}; j <= n + n; ++j) {
             if (i != p && j != q) a[i][j] -= alpha * a[p][j];
         }
     }
 
     // zero out column q
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         if (i != p) a[i][q] = 0.0;
 
     // scale row p (ok to go from q+1 to _size, but do this for consistency with simplex pivot)
-    for (int j = 0; j <= n + n; ++j)
+    for (int j{0}; j <= n + n; ++j)
         if (j != q) a[p][j] /= a[p][q];
     a[p][q] = 1.0;
 }
 
 void Gauss_jordan_elimination::show()
 {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
+    for (int i{0}; i < n; ++i) {
+        for (int j{0}; j < n; ++j) {
             Std_out::printf("%8.3f ", a[i][j]);
         }
         Std_out::printf("| ");
-        for (int j = n; j < n + n; ++j) {
+        for (int j{n}; j < n + n; ++j) {
             Std_out::printf("%8.3f ", a[i][j]);
         }
         Std_out::printf("| %8.3f\n", a[i][n + n]);
@@ -175,13 +175,13 @@ void Gauss_jordan_elimination::test(std::string& name, std::vector<std::vector<d
     if (gaussian.isFeasible()) {
         Std_out::print_line("Solution to Ax = b");
         std::vector<double> x = gaussian.primal();
-        for (int i = 0; i < x.length; ++i) {
+        for (int i{0}; i < x.length; ++i) {
             Std_out::printf("%10.6f\n", x[i]);
         }
     } else {
         Std_out::print_line("Certificate of infeasibility");
         std::vector<double> y = gaussian.dual();
-        for (int j = 0; j < y.length; ++j) {
+        for (int j{0}; j < y.length; ++j) {
             Std_out::printf("%10.6f\n", y[j]);
         }
     }

@@ -4,7 +4,7 @@ Quick_find_uf::Quick_find_uf(int n)
 {
     count = n;
     id = new int[n];
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         id[i] = i;
 }
 
@@ -36,7 +36,7 @@ void Quick_find_uf::create_union(int p, int q)
     // p and q are already in the same component
     if (pID == qID) return;
 
-    for (int i = 0; i < id.length; ++i)
+    for (int i{0}; i < id.length; ++i)
         if (id[i] == pID) id[i] = qID;
     count--;
 }

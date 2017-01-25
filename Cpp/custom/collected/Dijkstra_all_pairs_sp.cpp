@@ -3,7 +3,7 @@
 Dijkstra_all_pairs_sp::Dijkstra_all_pairs_sp(Edge_weighted_digraph& G)
 {
     all = new DijkstraSP[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         all[v] = new DijkstraSP(G, v);
 }
 

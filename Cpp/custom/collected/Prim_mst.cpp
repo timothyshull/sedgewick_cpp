@@ -6,20 +6,20 @@ Prim_mst::Prim_mst(Edge_weighted_graph& G)
     distance_to = new double[G.num_vertices()];
     marked = new boolean[G.num_vertices()];
     pq = new IndexMinPQ<Double>(G.num_vertices());
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         distance_to[v] = Double.POSITIVE_INFINITY;
 
-    for (int v = 0; v < G.num_vertices(); ++v)      // run from each vertex to find
+    for (int v{0}; v < G.num_vertices(); ++v)      // run from each vertex to find
         if (!marked[v]) prim(G, v);      // minimum spanning forest
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G);
 }
 
 std::vector<Edge> Prim_mst::edges()
 {
     Queue<Edge> mst = new Queue<Edge>();
-    for (int v = 0; v < edgeTo.length; ++v) {
+    for (int v{0}; v < edgeTo.length; ++v) {
         Edge e = edgeTo[v];
         if (e != null) {
             mst.enqueue(e);
@@ -72,7 +72,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
         return false;
     }
 
-    // check that it is acyclic
+    // _check that it is acyclic
     UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
@@ -83,7 +83,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
         uf.union(v, w);
     }
 
-    // check that it is a spanning forest
+    // _check that it is a spanning forest
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
@@ -92,7 +92,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
         }
     }
 
-    // check that it is a minimal spanning forest (cut optimality conditions)
+    // _check that it is a minimal spanning forest (cut optimality conditions)
     for (Edge e : edges()) {
 
         // all edges in MST except e
@@ -102,7 +102,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
             if (f != e) uf.union(x, y);
         }
 
-        // check that e is min weight edge in crossing cut
+        // _check that e is min weight edge in crossing cut
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {

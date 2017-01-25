@@ -17,7 +17,7 @@ std::vector<int> Depth_first_directed_paths::path_to(int v)
 {
     if (!has_path_to(v)) { return null; }
     Stack <Integer> path = new Stack<Integer>();
-    for (int x = v; x != s; x = edgeTo[x]) {
+    for (int x{v}; x != s; x = edgeTo[x]) {
         path.push(x);
     }
     path.push(s);

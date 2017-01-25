@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     int num_edges{utility::str_to_num(argv[2])};
 
     Digraph digraph1{Digraph_generator::eulerian_cycle(num_vertices, num_edges)};
-    Directed_eulerian_cycle::unit_test(digraph1, "Eulerian cycle");
+    Directed_eulerian_cycle::unit_test(digraph1, "Eulerian _cycle");
 
     Digraph digraph2{Digraph_generator::eulerian_path(num_vertices, num_edges)};
     Directed_eulerian_cycle::unit_test(digraph2, "Eulerian path");
@@ -28,17 +28,17 @@ int main(int argc, char* argv[])
     Digraph h2{Digraph_generator::eulerian_cycle(num_vertices - num_vertices / 2, num_edges - num_edges / 2)};
     std::vector<int> perm;
     perm.reserve(num_vertices);
-    for (int i = 0; i < num_vertices; ++i) {
+    for (int i{0}; i < num_vertices; ++i) {
         perm[i] = i;
     }
     Std_random::shuffle(perm);
     Digraph digraph5{num_vertices};
-    for (int v = 0; v < h1.num_vertices(); ++v) {
+    for (int v{0}; v < h1.num_vertices(); ++v) {
         for (int w : h1.adjacent(v)) {
             digraph5.add_edge(perm[v], perm[w]);
         }
     }
-    for (int v = 0; v < h2.num_vertices(); ++v) {
+    for (int v{0}; v < h2.num_vertices(); ++v) {
         for (int w : h2.adjacent(v)) {
             digraph5.add_edge(perm[num_vertices / 2 + v], perm[num_vertices / 2 + w]);
         }

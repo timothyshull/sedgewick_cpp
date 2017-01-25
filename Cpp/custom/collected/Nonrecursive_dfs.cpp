@@ -7,7 +7,7 @@ Nonrecursive_dfs::Nonrecursive_dfs(Graph& G, int s)
     // to be able to iterate over each adjacency list, keeping track of which
     // vertex in each adjacency list needs to be explored next
     Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         adj[v] = G.adj(v).iterator();
 
     // depth-first search using an explicit stack
@@ -18,11 +18,11 @@ Nonrecursive_dfs::Nonrecursive_dfs(Graph& G, int s)
         int v = stack.peek();
         if (adj[v].hasNext()) {
             int w = adj[v].next();
-            // Std_out::printf("check %d\_size", w);
+            // Std_out::printf("_check %d\_size", w);
             if (!marked[w]) {
                 // discovered vertex w for the first time
                 marked[w] = true;
-                // edgeTo[w] = v;
+                // _edge_to[w] = v;
                 stack.push(w);
                 // Std_out::printf("dfs(%d)\_size", w);
             }

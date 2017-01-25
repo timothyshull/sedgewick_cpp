@@ -8,23 +8,23 @@ Two_person_zero_sum_game::Two_person_zero_sum_game(std::vector<std::vector<doubl
     std::vector<double> c = new double[n];
     std::vector<double> b = new double[m];
     std::vector<std::vector<double>> A = new double[m][n];
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         b[i] = 1.0;
-    for (int j = 0; j < n; ++j)
+    for (int j{0}; j < n; ++j)
         c[j] = 1.0;
 
     // find smallest entry
     constant = Double.POSITIVE_INFINITY;
-    for (int i = 0; i < m; ++i)
-        for (int j = 0; j < n; ++j)
+    for (int i{0}; i < m; ++i)
+        for (int j{0}; j < n; ++j)
             if (payoff[i][j] < constant)
                 constant = payoff[i][j];
 
     // add constant  to every entry to make strictly positive
     if (constant <= 0) constant = -constant + 1;
     else constant = 0;
-    for (int i = 0; i < m; ++i)
-        for (int j = 0; j < n; ++j)
+    for (int i{0}; i < m; ++i)
+        for (int j{0}; j < n; ++j)
             A[i][j] = payoff[i][j] + constant;
 
     lp = new LinearProgramming(A, b, c);
@@ -41,7 +41,7 @@ std::vector<double> Two_person_zero_sum_game::row()
 {
     double scale = scale();
     std::vector<double> x = lp.primal();
-    for (int j = 0; j < n; ++j)
+    for (int j{0}; j < n; ++j)
         x[j] /= scale;
     return x;
 }
@@ -50,7 +50,7 @@ std::vector<double> Two_person_zero_sum_game::column()
 {
     double scale = scale();
     std::vector<double> y = lp.dual();
-    for (int i = 0; i < m; ++i)
+    for (int i{0}; i < m; ++i)
         y[i] /= scale;
     return y;
 }
@@ -59,7 +59,7 @@ double Two_person_zero_sum_game::scale()
 {
     std::vector<double> x = lp.primal();
     double sum = 0.0;
-    for (int j = 0; j < n; ++j)
+    for (int j{0}; j < n; ++j)
         sum += x[j];
     return sum;
 }
@@ -68,7 +68,7 @@ bool Two_person_zero_sum_game::isPrimalFeasible()
 {
     std::vector<double> x = row();
     double sum = 0.0;
-    for (int j = 0; j < n; ++j) {
+    for (int j{0}; j < n; ++j) {
         if (x[j] < 0) {
             Std_out::print_line("row vector not a probability distribution");
             Std_out::printf("    x[%d] = %f\n", j, x[j]);
@@ -88,7 +88,7 @@ bool Two_person_zero_sum_game::isDualFeasible()
 {
     std::vector<double> y = column();
     double sum = 0.0;
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         if (y[i] < 0) {
             Std_out::print_line("column vector y[] is not a probability distribution");
             Std_out::printf("    y[%d] = %f\n", i, y[i]);
@@ -112,9 +112,9 @@ bool Two_person_zero_sum_game::isNashEquilibrium(std::vector<std::vector<double>
 
     // given row player's mixed strategy, find column player's best pure strategy
     double opt1 = Double.NEGATIVE_INFINITY;
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         double sum = 0.0;
-        for (int j = 0; j < n; ++j) {
+        for (int j{0}; j < n; ++j) {
             sum += payoff[i][j] * x[j];
         }
         if (sum > opt1) opt1 = sum;
@@ -127,9 +127,9 @@ bool Two_person_zero_sum_game::isNashEquilibrium(std::vector<std::vector<double>
 
     // given column player's mixed strategy, find row player's best pure strategy
     double opt2 = Double.POSITIVE_INFINITY;
-    for (int j = 0; j < n; ++j) {
+    for (int j{0}; j < n; ++j) {
         double sum = 0.0;
-        for (int i = 0; i < m; ++i) {
+        for (int i{0}; i < m; ++i) {
             sum += payoff[i][j] * y[i];
         }
         if (sum < opt2) opt2 = sum;
@@ -161,12 +161,12 @@ void Two_person_zero_sum_game::test(std::string& description, std::vector<std::v
     std::vector<double> y = zerosum.column();
 
     Std_out::print("x[] = [");
-    for (int j = 0; j < n - 1; ++j)
+    for (int j{0}; j < n - 1; ++j)
         Std_out::printf("%8.4f, ", x[j]);
     Std_out::printf("%8.4f]\n", x[n - 1]);
 
     Std_out::print("y[] = [");
-    for (int i = 0; i < m - 1; ++i)
+    for (int i{0}; i < m - 1; ++i)
         Std_out::printf("%8.4f, ", y[i]);
     Std_out::printf("%8.4f]\n", y[m - 1]);
     Std_out::print_line("value =  " + zerosum.value());

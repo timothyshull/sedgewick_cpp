@@ -116,7 +116,7 @@ public:
     using Pointer_type = Value_type*;
     using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: check on this because of the relationship with max_size
+    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
     using Iterator_type = AVL_tree_iterator<Key_type, Value_type>;
     using Reverse_iterator_type = AVL_tree_reverse_iterator<Key_type, Value_type>;
 
@@ -155,7 +155,7 @@ public:
     void put(Key_type& key, Value_type& val)
     {
         _root = std::unique_ptr<Node_type>{_put(_get_root(), key, val)};
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"put()\"");
+        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"put()\"");
     }
 
     void delete_min()
@@ -164,7 +164,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
         }
         _root = _delete_min(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_min()\"");
+        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -173,7 +173,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
         }
         _root = _delete_max(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_max()\"");
+        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_max()\"");
     }
 
     Raw_key_pointer min() const
@@ -579,7 +579,7 @@ private:
         return bst_check && avl_check && size_check && rank_check;
     }
 
-    // TODO: check if this achieves the correct result, handle nullptr
+    // TODO: _check if this achieves the correct result, handle nullptr
     bool _is_bst() const { return _is_bst(_get_root(), *min(), *max()); }
 
     bool _is_bst(Raw_node_pointer x, Key_type& min, Key_type& max) const
@@ -626,7 +626,7 @@ private:
 
     bool _is_rank_consistent() const
     {
-        for (int i = 0; i < size(); ++i) {
+        for (int i{0}; i < size(); ++i) {
             if (i != rank(*(select(i)))) {
                 return false;
             }

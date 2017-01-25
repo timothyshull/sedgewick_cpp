@@ -7,30 +7,31 @@
 
 class Bellman_ford_sp {
 public:
-    Bellman_ford_sp(Edge_weighted_digraph, int);
+    Bellman_ford_sp(Edge_weighted_digraph digraph, int source);
 
-    bool hasNegativeCycle();
+    bool has_negative_cycle();
 
-    std::vector<Directed_edge> negativeCycle();
+    std::vector<Directed_edge> negative_cycle();
 
-    double distance_to(int);
+    double distance_to(int vertex);
 
-    bool has_path_to(int);
+    bool has_path_to(int vertex);
 
-    std::vector<Directed_edge> path_to(int);
+    std::vector<Directed_edge> path_to(int vertex);
 
 private:
-    std::vector<double> distance_to;
-    std::vector<Directed_edge> edgeTo;
-    std::deque<bool> onQueue;
-    Queue<int> queue;
-    int cost;
-    std::vector<Directed_edge> cycle;
+    std::vector<double> _distance_to;
+    std::vector<Directed_edge> _edge_to;
+    std::deque<bool> _on_queue;
+    Queue<int> _queue;
+    int _cost;
+    std::vector<Directed_edge> _cycle;
 
-    void relax(Edge_weighted_digraph, int);
+    void _relax(Edge_weighted_digraph digraph, int vertex);
 
-    void findNegativeCycle();
-    bool check(Edge_weighted_digraph, int);
+    void _find_negative_cycle();
+
+    bool _check(Edge_weighted_digraph digraph, int source);
 };
 
 #endif // BELLMAN_FORD_SP_H

@@ -248,7 +248,7 @@ target_link_libraries(whitelist_main std_io utility)
 
 
 
-# TODO: 2nd Round
+# TODO: 3rd Round
 add_executable(bellman_ford_sp_main bellman_ford_sp_main.cpp Bellman_ford_sp.cpp Bellman_ford_sp.h)
 add_executable(binary_dump_main binary_dump_main.cpp)
 add_executable(binary_in_main binary_in_main.cpp Binary_in.cpp Binary_in.h)
@@ -379,5 +379,4 @@ add_executable(trie_set_main trie_set_main.cpp Trie_set.cpp Trie_set.h)
 add_executable(trie_st_main trie_st_main.cpp Trie_st.cpp Trie_st.h)
 add_executable(tst_main tst_main.cpp TST.cpp TST.h)
 add_executable(two_person_zero_sum_game_main two_person_zero_sum_game_main.cpp Two_person_zero_sum_game.cpp Two_person_zero_sum_game.h)
-# TODO: tmp
 add_executable(vector_main vector_main.cpp Vector.cpp Vector.h)

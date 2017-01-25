@@ -91,7 +91,7 @@ public:
 
         // _keys.insert(_keys.begin() + j, key);
         // _values.insert(_values.begin() + j, value);
-        for (int j = _n; j > i; --j) {
+        for (int j{_n}; j > i; --j) {
             _keys[j] = _keys[j - 1];
             _values[j] = _values[j - 1];
         }
@@ -99,7 +99,7 @@ public:
         _values[i] = value;
         ++_n;
 
-        utility::assert(_check(), "Binary_search_symbol_table invariant check failed after \"put()\"");
+        utility::assert(_check(), "Binary_search_symbol_table invariant _check failed after \"put()\"");
     }
 
     void remove(Key_type key)
@@ -114,20 +114,20 @@ public:
 
         // _keys.erase(_keys.begin() + i);
         // _values.erase(_values.begin() + i);
-        for (int j = i; j < _n - 1; ++j) {
+        for (int j{i}; j < _n - 1; ++j) {
             _keys[j] = _keys[j + 1];
             _values[j] = _values[j + 1];
         }
 
         --_n;
-        // _keys[_n] = null;
+        // _keys[_size] = null;
         _values[_n] = nullptr;
 
         if (_n > 0 && _n == _keys.size() / 4) {
             _resize(_keys.size() / 2);
         }
 
-        utility::assert(_check(), "Binary_search_symbol_table invariant check failed after \"remove()\"");
+        utility::assert(_check(), "Binary_search_symbol_table invariant _check failed after \"remove()\"");
     }
 
     void delete_min()
@@ -228,7 +228,7 @@ public:
         if (Comparator_type(lo, hi) > 0) {
             return queue;
         }
-        for (int i = rank(lo); i < rank(hi); ++i) {
+        for (int i{rank(lo)}; i < rank(hi); ++i) {
             queue.enqueue(_keys[i]);
         }
         if (contains(hi)) {
@@ -258,7 +258,7 @@ private:
     bool _is_sorted() const
     {
         Comparator_type comp;
-        for (int i = 1; i < _n; ++i) {
+        for (int i{1}; i < _n; ++i) {
             if (comp(_keys[i], _keys[i - 1]) < 0) {
                 return false;
             }
@@ -268,14 +268,14 @@ private:
 
     bool _rank_check() const
     {
-        for (int i = 0; i < size(); ++i) {
+        for (int i{0}; i < size(); ++i) {
             if (i != rank(select(i))) {
                 return false;
             }
         }
 
         Comparator_type comp;
-        for (int i = 0; i < size(); ++i) {
+        for (int i{0}; i < size(); ++i) {
             if (comp(_keys[i], select(rank(_keys[i]))) != 0) {
                 return false;
             }

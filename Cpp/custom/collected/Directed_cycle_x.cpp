@@ -4,16 +4,16 @@
 Directed_cycle_x::Directed_cycle_x(Digraph& G)
 {
     std::vector<int> indegree = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         indegree[v] = G.indegree(v);
     }
 
-    // initialize queue to contain all vertices with indegree = 0
+    // initialize _queue to contain all vertices with indegree = 0
     Queue<Integer> queue = new Queue<Integer>();
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         if (indegree[v] == 0) queue.enqueue(v);
 
-    for (int j = 0; !queue.is_empty(); ++j) {
+    for (int j{0}; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         for (int w : G.adj(v)) {
             indegree[w]--;
@@ -21,10 +21,10 @@ Directed_cycle_x::Directed_cycle_x(Digraph& G)
         }
     }
 
-    // there is a directed cycle in subgraph of vertices with indegree >= 1.
+    // there is a directed _cycle in subgraph of vertices with indegree >= 1.
     std::vector<int> edgeTo = new int[G.num_vertices()];
     int root = -1;  // any vertex with indegree >= -1
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (indegree[v] == 0) continue;
         else root = v;
         for (int w : G.adj(v)) {
@@ -36,14 +36,14 @@ Directed_cycle_x::Directed_cycle_x(Digraph& G)
 
     if (root != -1) {
 
-        // find any vertex on cycle
+        // find any vertex on _cycle
         std::deque<bool> visited = new boolean[G.num_vertices()];
         while (!visited[root]) {
             visited[root] = true;
             root = edgeTo[root];
         }
 
-        // extract cycle
+        // extract _cycle
         cycle = new Stack<Integer>();
         int v = root;
         do {
@@ -69,14 +69,14 @@ bool Directed_cycle_x::has_cycle()
 bool Directed_cycle_x::check()
 {
     if (has_cycle()) {
-        // verify cycle
+        // verify _cycle
         int first = -1, last = -1;
         for (int v : cycle()) {
             if (first == -1) first = v;
             last = v;
         }
         if (first != last) {
-            System.err.printf("cycle begins with %d and ends with %d\n", first, last);
+            System.err.printf("_cycle begins with %d and ends with %d\n", first, last);
             return false;
         }
     }

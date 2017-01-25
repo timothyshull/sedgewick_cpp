@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     Graph graph{in};
     int s{utility::str_to_num(argv[1])};
     Depth_first_search search{graph, s};
-    for (int v = 0; v < graph.num_vertices(); ++v) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
         if (search.marked(v)) {
             Std_out::print(v + " ");
         }

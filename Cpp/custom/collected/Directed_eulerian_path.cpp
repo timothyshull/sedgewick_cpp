@@ -4,7 +4,7 @@ Directed_eulerian_path::Directed_eulerian_path(Digraph& G)
 {
     int deficit = 0;
     int s = nonIsolatedVertex(G);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) > G.indegree(v)) {
             deficit += (G.outdegree(v) - G.indegree(v));
             s = v;
@@ -22,11 +22,11 @@ Directed_eulerian_path::Directed_eulerian_path(Digraph& G)
     Iterator<Integer>[]
     adj = (Iterator<Integer>[])
     new Iterator[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         adj[v] = G.adj(v).iterator();
     }
 
-    // greedily add to cycle, depth-first search style
+    // greedily add to _cycle, depth-first search style
     Stack<Integer> stack = new Stack<Integer>();
     stack.push(s);
     path = new Stack<Integer>();
@@ -40,7 +40,7 @@ Directed_eulerian_path::Directed_eulerian_path(Digraph& G)
         path.push(v);
     }
 
-    // check if all edges have been used
+    // _check if all edges have been used
     if (path.size() != G.num_edges() + 1) {
         path = null;
     }
@@ -60,7 +60,7 @@ bool Directed_eulerian_path::hasEulerianPath()
 
 int Directed_eulerian_path::nonIsolatedVertex(Digraph& G)
 {
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) > 0) {
             return v;
         }
@@ -75,7 +75,7 @@ bool Directed_eulerian_path::hasEulerianPath(Digraph& G)
     // Condition 1: indegree(v) == outdegree(v) for every vertex,
     // except one vertex may have outdegree(v) = indegree(v) + 1
     int deficit = 0;
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) > G.indegree(v)) {
             deficit += (G.outdegree(v) - G.indegree(v));
         }
@@ -84,16 +84,16 @@ bool Directed_eulerian_path::hasEulerianPath(Digraph& G)
 
     // Condition 2: graph is connected, ignoring isolated vertices
     Graph H = new Graph(G.num_vertices());
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (int w : G.adj(v)) {
             H.add_edge(v, w);
         }
     }
 
-    // check that all non-isolated vertices are connected
+    // _check that all non-isolated vertices are connected
     int s = nonIsolatedVertex(G);
     Breadth_first_paths bfs = new Breadth_first_paths(H, s);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (H.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
@@ -109,13 +109,13 @@ bool Directed_eulerian_path::check(Digraph& G)
     // hashEulerianPath() returns correct value
     if (hasEulerianPath() != hasEulerianPath(G)) { return false; }
 
-    // nothing else to check if no Eulerian path
+    // nothing else to _check if no Eulerian path
     if (path == null) { return true; }
 
-    // check that path() uses correct number of edges
+    // _check that path() uses correct number of edges
     if (path.size() != G.num_edges() + 1) { return false; }
 
-    // check that path() is a directed path in G
+    // _check that path() is a directed path in G
     // TODO
 
     return true;

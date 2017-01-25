@@ -13,19 +13,19 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& G, int s, int t)
 
         // compute bottleneck capacity
         double bottle = Double.POSITIVE_INFINITY;
-        for (int v = t; v != s; v = edgeTo[v].other(v)) {
+        for (int v{t}; v != s; v = edgeTo[v].other(v)) {
             bottle = std::min(bottle, edgeTo[v].residualCapacityTo(v));
         }
 
         // augment flow
-        for (int v = t; v != s; v = edgeTo[v].other(v)) {
+        for (int v{t}; v != s; v = edgeTo[v].other(v)) {
             edgeTo[v].addResidualFlowTo(v, bottle);
         }
 
         value += bottle;
     }
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G, s, t);
 }
 
@@ -88,7 +88,7 @@ double Ford_fulkerson::excess(Flow_network& G, int v)
 
 bool Ford_fulkerson::isFeasible(Flow_network& G, int s, int t)
 {
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (FlowEdge e : G.adj(v)) {
             if (e.flow() < -FLOATING_POINT_EPSILON || e.flow() > e.capacity() + FLOATING_POINT_EPSILON) {
                 System.err.print_line("Edge does not satisfy capacity constraints: " + e);
@@ -97,7 +97,7 @@ bool Ford_fulkerson::isFeasible(Flow_network& G, int s, int t)
         }
     }
 
-    // check that net flow into a vertex equals zero, except at source and sink
+    // _check that net flow into a vertex equals zero, except at source and sink
     if (std::abs(value + excess(G, s)) > FLOATING_POINT_EPSILON) {
         System.err.print_line("Excess at source = " + excess(G, s));
         System.err.print_line("Max flow         = " + value);
@@ -108,7 +108,7 @@ bool Ford_fulkerson::isFeasible(Flow_network& G, int s, int t)
         System.err.print_line("Max flow         = " + value);
         return false;
     }
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (v == s || v == t) continue;
         else if (std::abs(excess(G, v)) > FLOATING_POINT_EPSILON) {
             System.err.print_line("Net flow out of " + v + " doesn't equal zero");
@@ -125,7 +125,7 @@ bool Ford_fulkerson::check(Flow_network& G, int s, int t)
         return false;
     }
 
-    // check that s is on the source side of min cut and that t is not on source side
+    // _check that s is on the source side of min cut and that t is not on source side
     if (!inCut(s)) {
         System.err.print_line("source " + s + " is not on source side of min cut");
         return false;
@@ -135,9 +135,9 @@ bool Ford_fulkerson::check(Flow_network& G, int s, int t)
         return false;
     }
 
-    // check that value of min cut = value of max flow
+    // _check that value of min cut = value of max flow
     double mincutValue = 0.0;
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (FlowEdge e : G.adj(v)) {
             if ((v == e.from()) && inCut(e.from()) && !inCut(e.to()))
                 mincutValue += e.capacity();

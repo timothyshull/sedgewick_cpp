@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 
         Std_out::printf("Creating dataset (%d items)...\n", limit_item);
         std::stringstream ss;
-        for (int i = 0; i < limit_item; ++i) {
+        for (int i{0}; i < limit_item; ++i) {
             ss.str("");
             ss << std::showbase << std::hex << i;
             a[i] = ss.str();
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
         Std_random::shuffle(v);
 
         Std_out::printf("Adding (%d items)...\n", limit_item);
-        for (int i = 0; i < limit_item; ++i) {
+        for (int i{0}; i < limit_item; ++i) {
             st.put(a[v[i]], v[i]);
         }
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 
         int limit_delete{limit_item / 2};
         Std_out::printf("Deleting (%d items)...\n", limit_delete);
-        for (int i = 0; i < limit_delete; ++i) {
+        for (int i{0}; i < limit_delete; ++i) {
             st.remove(a[v[i]]);
         }
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
         int count_delete{0};
         int count_remain{0};
         Std_out::printf("Checking...\n");
-        for (int i = 0; i < limit_item; ++i) {
+        for (int i{0}; i < limit_item; ++i) {
             if (i < limit_delete) {
                 if (!st.contains(a[v[i]])) { ++count_delete; }
             } else {
@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
         if (st.is_empty()) { ok = false; }
 
         Std_out::printf("Deleting the rest (%d items)...\n", limit_item - count_delete);
-        for (int i = count_delete; i < limit_item; ++i) {
+        for (int i{count_delete}; i < limit_item; ++i) {
             st.remove(a[v[i]]);
         }
         if (!st.is_empty()) { ok = false; }

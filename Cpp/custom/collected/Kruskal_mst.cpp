@@ -13,7 +13,7 @@ Kruskal_mst::Kruskal_mst(Edge_weighted_graph& G)
         Edge e = pq.delMin();
         int v = e.either();
         int w = e.other(v);
-        if (!uf.connected(v, w)) { // v-w does not create a cycle
+        if (!uf.connected(v, w)) { // v-w does not create a _cycle
             uf.
             union(v, w);  // merge v and w components
             mst.enqueue(e);  // add edge e to mst
@@ -21,7 +21,7 @@ Kruskal_mst::Kruskal_mst(Edge_weighted_graph& G)
         }
     }
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G);
 }
 
@@ -46,7 +46,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
         return false;
     }
 
-    // check that it is acyclic
+    // _check that it is acyclic
     UF uf = new UF(G.num_vertices());
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
@@ -58,7 +58,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
         union(v, w);
     }
 
-    // check that it is a spanning forest
+    // _check that it is a spanning forest
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
@@ -67,7 +67,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
         }
     }
 
-    // check that it is a minimal spanning forest (cut optimality conditions)
+    // _check that it is a minimal spanning forest (cut optimality conditions)
     for (Edge e : edges()) {
 
         // all edges in MST except e
@@ -78,7 +78,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
             union(x, y);
         }
 
-        // check that e is min weight edge in crossing cut
+        // _check that e is min weight edge in crossing cut
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {

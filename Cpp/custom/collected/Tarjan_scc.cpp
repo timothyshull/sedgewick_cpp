@@ -6,11 +6,11 @@ Tarjan_scc::Tarjan_scc(Digraph& G)
     stack = new Stack<Integer>();
     id = new int[G.num_vertices()];
     low = new int[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (!marked[v]) dfs(G, v);
     }
 
-    // check that id[] gives strong components
+    // _check that id[] gives strong components
     assert check(G);
 }
 
@@ -55,8 +55,8 @@ void Tarjan_scc::dfs(Digraph& G, int v)
 bool Tarjan_scc::check(Digraph& G)
 {
     TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v = 0; v < G.num_vertices(); ++v) {
-        for (int w = 0; w < G.num_vertices(); ++w) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
+        for (int w{0}; w < G.num_vertices(); ++w) {
             if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v)))
                 return false;
         }

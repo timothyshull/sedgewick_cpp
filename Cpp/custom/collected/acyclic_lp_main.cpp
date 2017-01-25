@@ -1,24 +1,24 @@
 #include <iostream>
 #include <fstream>
+#include <boost/lexical_cast.hpp>
 
 #include "Acyclic_lp.h"
 #include "Std_out.h"
+#include "In.h"
 
 int main(int argc, char* argv[])
 {
-    std::ifstream in(argv[1]);
-    int s = utility::str_to_num(argv[2]);
-    // Edge_weighted_digraph g{in};
-    Edge_weighted_digraph g{std::cin};
+    In in{argv[1]};
+    int s{boost::lexical_cast<int>(argv[2])};
+    Edge_weighted_digraph digraph{in};
 
-    Acyclic_lp lp{g, s};
+    Acyclic_lp lp{digraph, s};
 
-    for (int v = 0; v < g.num_vertices(); ++v) {
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
         if (lp.has_path_to(v)) {
             Std_out::printf("%d to %d (%.2f)  ", s, v, lp.distance_to(v));
-            for (Directed_edge e : lp.path_to(v)) {
-                Std_out::print(e);
-                Std_out::print("    ");
+            for (auto e : lp.path_to(v)) {
+                Std_out::print(e.to_string() + "   ");
             }
             Std_out::print_line();
         } else {

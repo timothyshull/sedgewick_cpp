@@ -14,13 +14,13 @@ int main(int argc, char* argv[])
     Digraph digraph1{Digraph_generator::dag(num_vertices, num_edges)};
 
     Edge_weighted_digraph digraph2{num_vertices};
-    for (int v = 0; v < digraph1.num_vertices(); ++v) {
+    for (int v{0}; v < digraph1.num_vertices(); ++v) {
         for (int w : digraph1.adjacent(v)) {
             digraph2.add_edge(v, w, 0.0);
         }
     }
 
-    for (int i = 0; i < additional_edges; ++i) {
+    for (int i{0}; i < additional_edges; ++i) {
         int v = Std_random::uniform(num_vertices);
         int w = Std_random::uniform(num_vertices);
         digraph1.add_edge(v, w);

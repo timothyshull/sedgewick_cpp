@@ -15,14 +15,14 @@ int main(int argc, char* argv[])
 
     std::vector<Queue<int>> components;
     components.reserve(m);
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         components[i] = Queue<int>{};
     }
-    for (int v = 0; v < digraph.num_vertices(); ++v) {
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
         components[scc.id(v)].enqueue(v);
     }
 
-    for (int i = 0; i < m; ++i) {
+    for (int i{0}; i < m; ++i) {
         for (int v : components[i]) {
             Std_out::print(v + " ");
         }

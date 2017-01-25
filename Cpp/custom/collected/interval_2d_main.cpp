@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     Counter counter{"hits"};
     double x;
     double y;
-    for (int t = 0; t < trials; ++t) {
+    for (int t{0}; t < trials; ++t) {
         x = Std_random::uniform(0.0, 1.0);
         y = Std_random::uniform(0.0, 1.0);
         Point_2d point = Point_2d{x, y};

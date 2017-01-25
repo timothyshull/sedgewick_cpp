@@ -5,7 +5,7 @@ Directed_cycle::Directed_cycle(Digraph& g)
           _on_stack(static_cast<std::deque<int>::size_type>(g.num_vertices())),
           _edge_to(static_cast<std::vector<int>::size_type>(g.num_vertices()))
 {
-    for (int v = 0; v < g.num_vertices(); ++v) {
+    for (int v{0}; v < g.num_vertices(); ++v) {
         if (!_marked[v] && _cycle.is_empty()) {
             _dfs(g, v);
         }
@@ -25,12 +25,12 @@ void Directed_cycle::_dfs(Digraph& g, int v)
             _dfs(g, w);
         } else if (_on_stack[w]) {
             _cycle = Stack<int>();
-            for (int x = v; x != w; x = _edge_to[x]) {
+            for (int x{v}; x != w; x = _edge_to[x]) {
                 _cycle.push(x);
             }
             _cycle.push(w);
             _cycle.push(v);
-            utility::assert(_check(), "Directed_cycle invariant check failed after _dfs()");
+            utility::assert(_check(), "Directed_cycle invariant _check failed after _dfs()");
         }
     }
 }
@@ -48,7 +48,7 @@ bool Directed_cycle::_check() const
         }
         if (first != last) {
             std::stringstream ss;
-            ss << "The cycle begins with " << first << " and ends with " << last << "\n";
+            ss << "The _cycle begins with " << first << " and ends with " << last << "\n";
             return false;
         }
     }

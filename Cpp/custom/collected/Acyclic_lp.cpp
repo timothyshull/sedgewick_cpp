@@ -1,12 +1,9 @@
 #include "Acyclic_lp.h"
 
 Acyclic_lp::Acyclic_lp(Edge_weighted_digraph& g, int source)
-        : _distance_to(static_cast<std::vector<double>::size_type>(g.num_vertices())),
+        : _distance_to(static_cast<std::vector<double>::size_type>(g.num_vertices()), std::numeric_limits<double>::infinity()),
           _edge_to(static_cast<std::vector<Directed_edge>::size_type>(g.num_vertices()))
 {
-    for (int v = 0; v < g.num_vertices(); ++v) {
-        _distance_to[v] = std::numeric_limits<double>::infinity();
-    }
     _distance_to[source] = 0.0;
 
     Topological topological{g};
@@ -22,14 +19,14 @@ Acyclic_lp::Acyclic_lp(Edge_weighted_digraph& g, int source)
     }
 }
 
-Stack<Directed_edge> Acyclic_lp::path_to(int v)
+std::vector<Directed_edge> Acyclic_lp::path_to(int vertex)
 {
-    Stack<Directed_edge> path{};
-    if (!has_path_to(v)) {
-        return path;
+    std::vector<Directed_edge> path{};
+    if (!has_path_to(vertex)) {
+        return {};
     }
-    for (Directed_edge* ep = _edge_to[v]; ep != nullptr; ep = _edge_to[ep->from()]) {
-        path.push(*ep);
+    for (Directed_edge e{_edge_to[vertex]}; e != nullptr; e = _edge_to[e.from()]) {
+        path.emplace_back(e);
     }
     return path;
 }
@@ -40,6 +37,6 @@ void Acyclic_lp::_relax(Directed_edge& e)
     int w = e.to();
     if (_distance_to[w] < _distance_to[v] + e.weight()) {
         _distance_to[w] = _distance_to[v] + e.weight();
-        _edge_to[w] = new Directed_edge{e};
+        _edge_to[w] = e;
     }
 }

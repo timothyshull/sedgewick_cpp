@@ -5,8 +5,8 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& G)
     if (G.num_edges() == 0) { return; }
 
     // necessary condition: indegree(v) = outdegree(v) for each vertex v
-    // (without this check, DFS might return a path instead of a cycle)
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    // (without this _check, DFS might return a path instead of a _cycle)
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) != G.indegree(v)) {
             return;
         }
@@ -16,7 +16,7 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& G)
     Iterator<Integer>[]
     adj = (Iterator<Integer>[])
     new Iterator[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         adj[v] = G.adj(v).iterator();
     }
 
@@ -25,7 +25,7 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& G)
     Stack<Integer> stack = new Stack<Integer>();
     stack.push(s);
 
-    // greedily add to putative cycle, depth-first search style
+    // greedily add to putative _cycle, depth-first search style
     cycle = new Stack<Integer>();
     while (!stack.is_empty()) {
         int v = stack.pop();
@@ -33,11 +33,11 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& G)
             stack.push(v);
             v = adj[v].next();
         }
-        // add vertex with no more leaving edges to cycle
+        // add vertex with no more leaving edges to _cycle
         cycle.push(v);
     }
 
-    // check if all edges have been used
+    // _check if all edges have been used
     // (in case there are two or more vertex-disjoint Eulerian cycles)
     if (cycle.size() != G.num_edges() + 1) {
         cycle = null;
@@ -58,7 +58,7 @@ bool Directed_eulerian_cycle::hasEulerianCycle()
 
 int Directed_eulerian_cycle::nonIsolatedVertex(Digraph& G)
 {
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) > 0) {
             return v;
         }
@@ -71,7 +71,7 @@ bool Directed_eulerian_cycle::hasEulerianCycle(Digraph& G)
     if (G.num_edges() == 0) { return false; }
 
     // Condition 1: indegree(v) == outdegree(v) for every vertex
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.outdegree(v) != G.indegree(v)) {
             return false;
         }
@@ -79,16 +79,16 @@ bool Directed_eulerian_cycle::hasEulerianCycle(Digraph& G)
 
     // Condition 2: graph is connected, ignoring isolated vertices
     Graph H = new Graph(G.num_vertices());
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (int w : G.adj(v)) {
             H.add_edge(v, w);
         }
     }
 
-    // check that all non-isolated vertices are conneted
+    // _check that all non-isolated vertices are conneted
     int s = nonIsolatedVertex(G);
     Breadth_first_paths bfs = new Breadth_first_paths(H, s);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (H.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
@@ -104,13 +104,13 @@ bool Directed_eulerian_cycle::certifySolution(Digraph& G)
     // hashEulerianCycle() returns correct value
     if (hasEulerianCycle() != hasEulerianCycle(G)) { return false; }
 
-    // nothing else to check if no Eulerian cycle
+    // nothing else to _check if no Eulerian _cycle
     if (cycle == null) { return true; }
 
-    // check that cycle() uses correct number of edges
+    // _check that _cycle() uses correct number of edges
     if (cycle.size() != G.num_edges() + 1) { return false; }
 
-    // check that cycle() is a directed cycle of G
+    // _check that _cycle() is a directed _cycle of G
     // TODO
 
     return true;
@@ -124,7 +124,7 @@ void Directed_eulerian_cycle::unit_test(Digraph& G, std::string& description)
 
     DirectedEulerianCycle euler = new DirectedEulerianCycle(G);
 
-    Std_out::print("Eulerian cycle: ");
+    Std_out::print("Eulerian _cycle: ");
     if (euler.hasEulerianCycle()) {
         for (int v : euler.cycle()) {
             Std_out::print(v + " ");

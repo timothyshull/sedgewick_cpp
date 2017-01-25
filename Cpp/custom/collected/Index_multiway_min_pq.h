@@ -15,7 +15,7 @@ public:
         qp = new int[nmax + D];
         keys = (Key[])
         new Comparable[nmax + D];
-        for (int i = 0; i < nmax + D; qp[i++] = -1) {}
+        for (int i{0}; i < nmax + D; qp[i++] = -1) {}
         comp = new MyComparator();
     }
 
@@ -29,7 +29,7 @@ public:
         qp = new int[nmax + D];
         keys = (Key[])
         new Comparable[nmax + D];
-        for (int i = 0; i < nmax + D; qp[i++] = -1) {}
+        for (int i{0}; i < nmax + D; qp[i++] = -1) {}
         comp = C;
     }
 
@@ -61,19 +61,19 @@ public:
 
     int minIndex()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
         return pq[d];
     }
 
     Key minKey()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
         return keys[pq[d] + d];
     }
 
     int delMin()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority queue is empty"); }
+        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
         int min = pq[d];
         exch(0, --n);
         sink(0);
@@ -86,14 +86,14 @@ public:
     Key keyOf(int i)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
         return keys[i + d];
     }
 
     void changeKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
         Key tmp = keys[i + d];
         keys[i + d] = key;
         if (comp.compare(key, tmp) <= 0) {
@@ -106,7 +106,7 @@ public:
     void decreaseKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
         if (comp.compare(keys[i + d], key) <= 0) {
             throw utility::Illegal_argument_exception("Calling with this argument would not decrease the Key");
         }
@@ -117,7 +117,7 @@ public:
     void increaseKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
         if (comp.compare(keys[i + d], key) >= 0) {
             throw utility::Illegal_argument_exception("Calling with this argument would not increase the Key");
         }
@@ -128,7 +128,7 @@ public:
     void remove(int i)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
         int idx = qp[i + d];
         exch(idx, --n);
         swim(idx);
@@ -184,7 +184,7 @@ private:
     {
         int loBound = d * i + 1, hiBound = d * i + d;
         int min = loBound;
-        for (int cur = loBound; cur <= hiBound; ++cur) {
+        for (int cur{loBound}; cur <= hiBound; ++cur) {
             if (cur < n && greater(min, cur)) { min = cur; }
         }
         return min;

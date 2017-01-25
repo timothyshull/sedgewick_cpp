@@ -5,7 +5,7 @@ Graham_scan::Graham_scan(std::vector<Point_2d>& pts)
     int n = pts.length;
     std::vector<Point_2d>
     points = new Point_2d[n];
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         points[i] = pts[i];
     }
 
@@ -34,7 +34,7 @@ Graham_scan::Graham_scan(std::vector<Point_2d>& pts)
     hull.push(points[k2 - 1]);    // points[k2-1] is second extreme point
 
     // Graham scan; note that points[_size-1] is extreme point different from points[0]
-    for (int i = k2; i < n; ++i) {
+    for (int i{k2}; i < n; ++i) {
         Point_2d top = hull.pop();
         while (Point_2d.ccw(hull.peek(), top, points[i]) <= 0) {
             top = hull.pop();
@@ -65,7 +65,7 @@ bool Graham_scan::isConvex()
         points[k++] = p;
     }
 
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         if (Point_2d.ccw(points[i], points[(i + 1) % n], points[(i + 2) % n]) <= 0) {
             return false;
         }

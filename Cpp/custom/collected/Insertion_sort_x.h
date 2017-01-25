@@ -21,7 +21,7 @@ namespace Insertion_sort_x {
         int n = a.size();
 
         int exchanges = 0;
-        for (int i = n - 1; i > 0; i--) {
+        for (int i{n - 1}; i > 0; i--) {
             if (less(a[i], a[i - 1])) {
                 exch<T>(a, i, i - 1);
                 ++exchanges;
@@ -29,7 +29,7 @@ namespace Insertion_sort_x {
         }
         if (exchanges == 0) { return; }
 
-        for (int i = 2; i < n; ++i) {
+        for (int i{2}; i < n; ++i) {
             T v = a[i];
             int j = i;
             while (less(v, a[j - 1])) {
@@ -39,7 +39,7 @@ namespace Insertion_sort_x {
             a[j] = v;
         }
 
-        utility::assert(is_sorted(a), "Insertion_sort_x is_sorted check failed");
+        utility::assert(is_sorted(a), "Insertion_sort_x is_sorted _check failed");
     }
 
     template<typename T>
@@ -59,7 +59,7 @@ namespace Insertion_sort_x {
     template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
-        for (int i = 1; i < a.size(); ++i) {
+        for (int i{1}; i < a.size(); ++i) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }
@@ -70,7 +70,7 @@ namespace Insertion_sort_x {
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i = 0; i < a.size(); ++i) {
+        for (int i{0}; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

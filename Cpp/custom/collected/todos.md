@@ -49,3 +49,6 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix up str_to_num issues
 - need Bipartite_x
 - remove unnecesary container ctors where default ctor would be called
+- fix null in Bellman_ford
+- need to make a decision on where to use pointers and other options and
+  be consistent (boost::optional)

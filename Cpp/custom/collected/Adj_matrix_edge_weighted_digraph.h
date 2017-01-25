@@ -56,9 +56,9 @@ class Adj_matrix_edge_weighted_digraph {
 public:
     using Iterator_type = Adj_iterator;
 
-    explicit Adj_matrix_edge_weighted_digraph(unsigned num_vertices);
+    explicit Adj_matrix_edge_weighted_digraph(int num_vertices);
 
-    Adj_matrix_edge_weighted_digraph(unsigned num_vertices, unsigned num_edges);
+    Adj_matrix_edge_weighted_digraph(int num_vertices, int num_edges);
 
     void add_edge(Directed_edge& e);
 
@@ -81,8 +81,8 @@ public:
     std::string to_string() const;
 
 private:
-    unsigned _num_vertices;
-    unsigned _num_edges;
+    int _num_vertices;
+    int _num_edges;
     std::vector<std::vector<Directed_edge_owning_pointer>> _adjacency_matrix;
 
     void _check_vertex(int v);

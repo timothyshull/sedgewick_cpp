@@ -14,8 +14,8 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
     if (G.num_edges() == 0) { return; }
 
     // necessary condition: all vertices have even degree
-    // (this test is needed or it might find an Eulerian path instead of cycle)
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    // (this test is needed or it might find an Eulerian path instead of _cycle)
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             return;
         }
@@ -26,11 +26,11 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
     Queue<Edge>[]
     adj = (Queue<Edge>[])
     new Queue[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         adj[v] = new Queue<Edge>();
     }
 
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         int selfLoops = 0;
         for (int w : G.adj(v)) {
             // careful with self loops
@@ -65,11 +65,11 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
             stack.push(v);
             v = edge.other(v);
         }
-        // push vertex with no more leaving edges to cycle
+        // push vertex with no more leaving edges to _cycle
         cycle.push(v);
     }
 
-    // check if all edges are used
+    // _check if all edges are used
     if (cycle.size() != G.num_edges() + 1) {
         cycle = null;
     }
@@ -89,7 +89,7 @@ bool Eulerian_cycle::hasEulerianCycle()
 
 int Eulerian_cycle::nonIsolatedVertex(Graph& G)
 {
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.degree(v) > 0) {
             return v;
         }
@@ -102,7 +102,7 @@ bool Eulerian_cycle::hasEulerianCycle(Graph& G)
     if (G.num_edges() == 0) { return false; }
 
     // Condition 1: degree(v) is even for every vertex
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             return false;
         }
@@ -111,7 +111,7 @@ bool Eulerian_cycle::hasEulerianCycle(Graph& G)
     // Condition 2: graph is connected, ignoring isolated vertices
     int s = nonIsolatedVertex(G);
     Breadth_first_paths bfs = new Breadth_first_paths(G, s);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
@@ -127,16 +127,16 @@ bool Eulerian_cycle::certifySolution(Graph& G)
     // hashEulerianCycle() returns correct value
     if (hasEulerianCycle() != hasEulerianCycle(G)) { return false; }
 
-    // nothing else to check if no Eulerian cycle
+    // nothing else to _check if no Eulerian _cycle
     if (cycle == null) { return true; }
 
-    // check that cycle() uses correct number of edges
+    // _check that _cycle() uses correct number of edges
     if (cycle.size() != G.num_edges() + 1) { return false; }
 
-    // check that cycle() is a cycle of G
+    // _check that _cycle() is a _cycle of G
     // TODO
 
-    // check that first and last vertices in cycle() are the same
+    // _check that first and last vertices in _cycle() are the same
     int first = -1, last = -1;
     for (int v : cycle()) {
         if (first == -1) { first = v; }
@@ -155,7 +155,7 @@ void Eulerian_cycle::unit_test(Graph& G, std::string& description)
 
     EulerianCycle euler = new EulerianCycle(G);
 
-    Std_out::print("Eulerian cycle: ");
+    Std_out::print("Eulerian _cycle: ");
     if (euler.hasEulerianCycle()) {
         for (int v : euler.cycle()) {
             Std_out::print(v + " ");

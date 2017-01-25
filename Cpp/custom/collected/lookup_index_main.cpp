@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
         std::string line = in.read_line();
         std::vector<std::string> fields = line.split(separator);
         std::string key = fields[0];
-        for (int i = 1; i < fields.size(); ++i) {
+        for (int i{1}; i < fields.size(); ++i) {
             std::string val = fields[i];
             if (!st.contains(key)) { st.put(key, Queue<std::string>()); }
             if (!ts.contains(val)) { ts.put(val, Queue<std::string>()); }

@@ -5,8 +5,8 @@
 
 Alphabet::Alphabet(std::string alpha)
 {
-    std::deque<bool> unicode(static_cast<typename std::deque<bool>::size_type>(CHAR_MAX));
-    for (int i = 0; i < alpha.length(); ++i) {
+    std::deque<bool> unicode(static_cast<typename std::deque<bool>::size_type>(std::numeric_limits<char>::max()));
+    for (int i{0}; i < alpha.length(); ++i) {
         char c = alpha[i];
         if (unicode[c]) {
             std::stringstream ss;
@@ -17,46 +17,46 @@ Alphabet::Alphabet(std::string alpha)
     }
 
     _alphabet = std::vector<char>(alpha.length());
-    for (int i = 0; i < alpha.length(); ++i) {
+    for (int i{0}; i < alpha.length(); ++i) {
         _alphabet[i] = alpha[i];
     }
     _radix = alpha.length();
-    _inverse = std::vector<int>(CHAR_MAX);
-    for (int i = 0; i < _inverse.size(); ++i) {
+    _inverse = std::vector<int>(static_cast<std::vector<int>::size_type>(std::numeric_limits<char>::max()));
+    for (int i{0}; i < _inverse.size(); ++i) {
         _inverse[i] = -1;
     }
 
-    for (int c = 0; c < _radix; ++c) {
+    for (int c{0}; c < _radix; ++c) {
         _inverse[_alphabet[c]] = c;
     }
 }
 
-Alphabet::Alphabet(int radix) : _radix{radix}
+Alphabet::Alphabet(int radix)
+        : _radix{radix},
+          _alphabet(static_cast<std::vector<char>::size_type>(radix)),
+          _inverse(static_cast<std::vector<int>::size_type(radix))
 {
-    _alphabet = std::vector<char>(radix);
-    _inverse = std::vector<int>(radix);
-
-    for (int i = 0; i < radix; ++i) {
+    for (int i{0}; i < radix; ++i) {
         _alphabet[i] = static_cast<char>(i);
     }
-    for (int i = 0; i < radix; ++i) {
+    for (int i{0}; i < radix; ++i) {
         _inverse[i] = i;
     }
 }
 
 int Alphabet::lg_r() const
 {
-    int lgR = 0;
-    for (int t = _radix - 1; t >= 1; t /= 2) {
-        ++lgR;
+    int lg_r{0};
+    for (int t{_radix - 1}; t >= 1; t /= 2) {
+        ++lg_r;
     }
-    return lgR;
+    return lg_r;
 }
 
 std::vector<int> Alphabet::to_indices(std::string s) const
 {
     std::vector<int> target(s.length());
-    for (int i = 0; i < s.length(); ++i) {
+    for (int i{0}; i < s.length(); ++i) {
         target[i] = to_index(s[i]);
     }
     return target;

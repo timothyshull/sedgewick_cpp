@@ -4,7 +4,7 @@ void ::LZW_compression::compress()
 {
     std::string input = Binary_std_in::read_string();
     TST <Integer> st = new TST<Integer>();
-    for (int i = 0; i < R; ++i) {
+    for (int i{0}; i < R; ++i) {
         st.put("" + (char) i, i);
     }
     int code = R + 1;  // R is codeword for EOF

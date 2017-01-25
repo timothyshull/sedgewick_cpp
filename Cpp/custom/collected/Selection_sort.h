@@ -34,30 +34,30 @@ namespace Selection_sort {
     // void sort(std::vector<T>& a)
     // {
     //     int _size = a.size();
-    //     for (int i = 0; i < _size; ++i) {
+    //     for (int i{0}; i < _size; ++i) {
     //         int min = i;
-    //         for (int j = i + 1; j < _size; ++j) {
+    //         for (int j{i + 1}; j < _size; ++j) {
     //             if (_less(a[j], a[min])) { min = j; }
     //         }
     //         _exch(a, i, min);
-    //         utility::assert(is_sorted(a, 0, i), "Selection_sort is_sorted range check failed");
+    //         utility::assert(is_sorted(a, 0, i), "Selection_sort is_sorted range _check failed");
     //     }
-    //     utility::assert(is_sorted(a), "Selection_sort is_sorted check failed");
+    //     utility::assert(is_sorted(a), "Selection_sort is_sorted _check failed");
     // }
 
     template<typename T, typename Comparator>
     void sort(std::vector<T>& a)
     {
         int n = a.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             int min = i;
-            for (int j = i + 1; j < n; ++j) {
+            for (int j{i + 1}; j < n; ++j) {
                 if (less<T, Comparator>(a[j], a[min])) { min = j; }
             }
             exch(a, i, min);
-            utility::assert(is_sorted<T, Comparator>(a, 0, i), "Selection_sort is_sorted range check failed");
+            utility::assert(is_sorted<T, Comparator>(a, 0, i), "Selection_sort is_sorted range _check failed");
         }
-        utility::assert(is_sorted<T, Comparator>(a), "Selection_sort is_sorted check failed");
+        utility::assert(is_sorted<T, Comparator>(a), "Selection_sort is_sorted _check failed");
     }
 
     template<typename T>
@@ -89,7 +89,7 @@ namespace Selection_sort {
     template<typename T>
     bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; ++i) {
+        for (int i{lo + 1}; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -104,7 +104,7 @@ namespace Selection_sort {
     template<typename T, typename Comparator>
     bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i = lo + 1; i <= hi; ++i) {
+        for (int i{lo + 1}; i <= hi; ++i) {
             if (less<T, Comparator>(a[i], a[i - 1])) {
                 return false;
             }

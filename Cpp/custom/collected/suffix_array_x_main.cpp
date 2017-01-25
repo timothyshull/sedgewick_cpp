@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     Suffix_array_x suffix1{s};
     Suffix_array suffix2{s};
     bool check{true};
-    for (int i = 0; check && i < s.length(); ++i) {
+    for (int i{0}; check && i < s.length(); ++i) {
         if (suffix1.index(i) != suffix2.index(i)) {
             Std_out::print_line("suffix1(" + i + ") = " + suffix1.index(i));
             Std_out::print_line("suffix2(" + i + ") = " + suffix2.index(i));
@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     Std_out::print_line("  i ind lcp rnk  select");
     Std_out::print_line("---------------------------");
 
-    for (int i = 0; i < s.length(); ++i) {
+    for (int i{0}; i < s.length(); ++i) {
         int index = suffix2.index(i);
         std::string ith = "\"" + s.substr(index, std::min(index + 50, s.length())) + "\"";
         int rank = suffix2.rank(s.substr(index));

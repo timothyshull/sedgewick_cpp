@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     int num_edges{utility::str_to_num(argv[2])};
 
     Digraph digraph1{Digraph_generator::eulerian_cycle(num_vertices, num_edges)};
-    Directed_eulerian_path::unit_test(digraph1, "Eulerian cycle");
+    Directed_eulerian_path::unit_test(digraph1, "Eulerian _cycle");
 
     Digraph digraph2{Digraph_generator::eulerian_path(num_vertices, num_edges)};
     Directed_eulerian_path::unit_test(digraph2, "Eulerian path");

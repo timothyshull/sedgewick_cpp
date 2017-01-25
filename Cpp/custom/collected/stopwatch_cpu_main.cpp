@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 
     Stopwatch_cpu timer1{};
     double sum1{0.0};
-    for (int i = 1; i <= n; ++i) {
+    for (int i{1}; i <= n; ++i) {
         sum1 += std::sqrt(i);
     }
     double time1 = timer1.elapsedTime();
@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 
     Stopwatch_cpu timer2{};
     double sum2 = 0.0;
-    for (int i = 1; i <= n; ++i) {
+    for (int i{1}; i <= n; ++i) {
         sum2 += std::pow(i, 0.5);
     }
     double time2 = timer2.elapsedTime();

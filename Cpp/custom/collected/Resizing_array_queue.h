@@ -65,7 +65,7 @@ private:
         Item[]
         temp = (Item[])
         new Object[capacity];
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             temp[i] = q[(first + i) % q.length];
         }
         q = temp;

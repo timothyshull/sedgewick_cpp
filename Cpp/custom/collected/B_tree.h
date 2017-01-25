@@ -248,11 +248,11 @@ private:
         std::vector<B_tree_entry<Key_type, Value_type>> children{n->_children};
 
         if (height == 0) {
-            for (int j = 0; j < n->_num_children; ++j) {
+            for (int j{0}; j < n->_num_children; ++j) {
                 if (_eq(key, children[j].key)) { return (Value) children[j].val; }
             }
         } else {
-            for (int j = 0; j < n->_num_children; ++j) {
+            for (int j{0}; j < n->_num_children; ++j) {
                 if (j + 1 == n->_num_children || _less(key, children[j + 1].key)) {
                     return _search(children[j].next, key, height - 1);
                 }
@@ -284,7 +284,7 @@ private:
             }
         }
 
-        for (int i = h->_num_children; i > j; --i) {
+        for (int i{h->_num_children}; i > j; --i) {
             h->_children[i] = h->_children[i - 1];
         }
         h->_children[j] = t;
@@ -301,7 +301,7 @@ private:
         int num_children{_max_num_children / 2};
         Raw_node_pointer t{new B_tree_node<Key_type, Value_type>{num_children}};
         n->_num_children = num_children;
-        for (int j = 0; j < num_children; ++j) {
+        for (int j{0}; j < num_children; ++j) {
             t->_children[j] = n->_children[num_children + j];
         }
         return t;
@@ -313,11 +313,11 @@ private:
         std::vector<B_tree_entry<Key_type, Value_type>> children{h->_children};
 
         if (ht == 0) {
-            for (int j = 0; j < h->_num_children; ++j) {
+            for (int j{0}; j < h->_num_children; ++j) {
                 ss << indent << children[j].key << " " << children[j].val << "\n";
             }
         } else {
-            for (int j = 0; j < h->_num_children; ++j) {
+            for (int j{0}; j < h->_num_children; ++j) {
                 if (j > 0) {
                     ss << indent << "(" << children[j].key << ")\n";
                 }

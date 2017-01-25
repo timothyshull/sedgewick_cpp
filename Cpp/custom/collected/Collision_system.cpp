@@ -8,7 +8,7 @@ Collision_system::Collision_system(std::vector<Particle>& particles)
 void Collision_system::simulate(double limit)
 {
     pq = new MinPQ<Event>();
-    for (int i = 0; i < particles.length; ++i) {
+    for (int i{0}; i < particles.length; ++i) {
         predict(particles[i], limit);
     }
     pq.insert(new Event(0, null, null));        // redraw event
@@ -24,7 +24,7 @@ void Collision_system::simulate(double limit)
         Particle b = e.b;
 
         // physical collision, so update positions, and then simulation clock
-        for (int i = 0; i < particles.length; ++i)
+        for (int i{0}; i < particles.length; ++i)
             particles[i].move(e.time - t);
         t = e.time;
 
@@ -34,7 +34,7 @@ void Collision_system::simulate(double limit)
         else if (a == null && b != null) b.bounceOffHorizontalWall(); // particle-wall collision
         else if (a == null && b == null) redraw(limit);               // redraw event
 
-        // update the priority queue with new collisions involving a or b
+        // update the priority _queue with new collisions involving a or b
         predict(a, limit);
         predict(b, limit);
     }
@@ -45,7 +45,7 @@ void Collision_system::predict(Particle& a, double limit)
     if (a == null) return;
 
     // particle-particle collisions
-    for (int i = 0; i < particles.length; ++i) {
+    for (int i{0}; i < particles.length; ++i) {
         double dt = a.timeToHit(particles[i]);
         if (t + dt <= limit)
             pq.insert(new Event(t + dt, a, particles[i]));
@@ -61,7 +61,7 @@ void Collision_system::predict(Particle& a, double limit)
 void Collision_system::redraw(double limit)
 {
     Std_draw::clear();
-    for (int i = 0; i < particles.length; ++i) {
+    for (int i{0}; i < particles.length; ++i) {
         particles[i].draw();
     }
     Std_draw::show();

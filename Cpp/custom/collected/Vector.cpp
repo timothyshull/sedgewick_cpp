@@ -12,7 +12,7 @@ Vector::Vector(std::initializer_list<double>& a)
 
     // defensive copy so that client can't alter our copy of data[]
     data = new double[d];
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         data[i] = a[i];
 }
 
@@ -30,7 +30,7 @@ double Vector::dot(Vector& that)
 {
     if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     double sum = 0.0;
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         sum = sum + (this.data[i] * that.data[i]);
     return sum;
 }
@@ -50,7 +50,7 @@ Vector Vector::plus(Vector& that)
 {
     if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     Vector c = new Vector(d);
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         c.data[i] = this.data[i] + that.data[i];
     return c;
 }
@@ -58,7 +58,7 @@ Vector Vector::plus(Vector& that)
 Vector Vector::minus(Vector& that) {
     if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     Vector c = new Vector(d);
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         c.data[i] = this.data[i] - that.data[i];
     return c;
 }
@@ -71,7 +71,7 @@ double Vector::cartesian(int i)
 Vector Vector::times(double alpha)
 {
     Vector c = new Vector(d);
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         c.data[i] = alpha * data[i];
     return c;
 }
@@ -79,7 +79,7 @@ Vector Vector::times(double alpha)
 Vector Vector::scale(double alpha)
 {
     Vector c = new Vector(d);
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         c.data[i] = alpha * data[i];
     return c;
 }
@@ -93,7 +93,7 @@ Vector Vector::direction()
 std::string Vector::to_string()
 {
     std::stringstream s = new std::stringstream();
-    for (int i = 0; i < d; ++i)
+    for (int i{0}; i < d; ++i)
         s.append(data[i] + " ");
     return s.to_string();
 }

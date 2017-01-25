@@ -4,12 +4,12 @@ Knuth_morris_pratt::Knuth_morris_pratt(std::string& pattern) : _radix{256}, _pat
 {
     int m = pattern.size();
     _dfa.reserve(_radix);
-    for (int i = 0; i < _radix; ++i) {
+    for (int i{0}; i < _radix; ++i) {
         _dfa[i].reserve(m);
     }
     _dfa[pattern[0]][0] = 1;
-    for (int x = 0, j = 1; j < m; ++j) {
-        for (int c = 0; c < _radix; ++c) {
+    for (int x{0, j = 1}; j < m; ++j) {
+        for (int c{0}; c < _radix; ++c) {
             _dfa[c][j] = _dfa[c][x];
         }
         _dfa[pattern[j]][j] = j + 1;
@@ -21,12 +21,12 @@ Knuth_morris_pratt::Knuth_morris_pratt(std::vector<char>& pattern, int radix) : 
 {
     int m = pattern.size();
     _dfa.reserve(_radix);
-    for (int i = 0; i < _radix; ++i) {
+    for (int i{0}; i < _radix; ++i) {
         _dfa[i].reserve(m);
     }
     _dfa[pattern[0]][0] = 1;
-    for (int x = 0, j = 1; j < m; ++j) {
-        for (int c = 0; c < _radix; ++c) {
+    for (int x{0, j = 1}; j < m; ++j) {
+        for (int c{0}; c < _radix; ++c) {
             _dfa[c][j] = _dfa[c][x];
         }
         _dfa[pattern[j]][j] = j + 1;

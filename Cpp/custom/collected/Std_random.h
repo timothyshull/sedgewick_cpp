@@ -51,7 +51,7 @@ namespace Std_random {
     {
         int n = a.size();
         int r;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             r = i + uniform(n - i);
             T temp = a[i];
             a[i] = a[r];
@@ -68,7 +68,7 @@ namespace Std_random {
         }
 
         int r;
-        for (int i = lo; i <= hi; ++i) {
+        for (int i{lo}; i <= hi; ++i) {
             r = i + uniform(hi - i + 1);
             T temp = a[i];
             a[i] = a[r];

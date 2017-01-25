@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     if (graph.num_vertices() >= 1000) { std::exit(-1); }
 
     Std_out::print("Max matching: ");
-    for (int v = 0; v < graph.num_vertices(); ++v) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
         int w = matching._mate(v);
         if (matching.is_matched(v) && v < w) {
             Std_out::print(v + "-" + w + " ");
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     Std_out::print_line();
 
     Std_out::print("Min vertex cover: ");
-    for (int v = 0; v < graph.num_vertices(); ++v) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
         if (matching.in_min_vertex_cover(v)) {
             Std_out::print(v + " ");
         }

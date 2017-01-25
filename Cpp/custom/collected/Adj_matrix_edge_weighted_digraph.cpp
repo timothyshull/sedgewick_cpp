@@ -6,12 +6,12 @@
 #include "Directed_edge.h"
 #include "Std_random.h"
 
-Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(unsigned num_vertices) : _num_vertices{num_vertices}
+Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(int num_vertices) : _num_vertices{num_vertices}
 {
     _adjacency_matrix.reserve(num_vertices);
-    for (int i = 0; i < _num_vertices; ++i) {
+    for (int i{0}; i < _num_vertices; ++i) {
         _adjacency_matrix[i] = std::vector<Directed_edge_owning_pointer>(num_vertices);
-        for (int j = 0; j < num_vertices; ++j) {
+        for (int j{0}; j < num_vertices; ++j) {
             _adjacency_matrix[i][j] = nullptr;
         }
     }
@@ -26,7 +26,7 @@ Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(unsigned num_
     int v;
     int w;
     double weight;
-    for (int i = 0; i < num_edges; ++i) {
+    for (int i{0}; i < num_edges; ++i) {
         v = Std_random::uniform(num_vertices);
         w = Std_random::uniform(num_vertices);
         weight = 100 * Std_random::uniform() / 100.0;
@@ -75,9 +75,9 @@ std::string Adj_matrix_edge_weighted_digraph::to_string() const
 {
     std::stringstream ss;
     ss << "Adj_matrix_edge_weighted_digraph(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << ",\n";
-    for (int v = 0; v < _num_vertices; ++v) {
+    for (int v{0}; v < _num_vertices; ++v) {
         ss << "    vertex " << std::setw(3) << v << ": ";
-        for (int w = 0; w < _num_vertices; ++w) {
+        for (int w{0}; w < _num_vertices; ++w) {
             auto e = _adjacency_matrix[v][w].get();
             std::string s;
             if (e == nullptr) {
@@ -128,7 +128,7 @@ Adj_iterator::Value_type Adj_iterator::operator*() const
     return _graph._adjacency_matrix[_v][_w].get();
 }
 
-// TODO: check this
+// TODO: _check this
 Adj_iterator::Value_type Adj_iterator::operator->() const
 {
     return _graph._adjacency_matrix[_v][_w].get();

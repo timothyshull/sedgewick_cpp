@@ -194,7 +194,7 @@ std::vector<std::string> In::readAllStrings()
     if (tokens.size() == 0 || tokens[0].length() > 0)
         return tokens;
     std::vector<std::string> decapitokens = new String[tokens.size() - 1];
-    for (int i = 0; i < tokens.size() - 1; ++i)
+    for (int i{0}; i < tokens.size() - 1; ++i)
         decapitokens[i] = tokens[i + 1];
     return decapitokens;
 }
@@ -212,7 +212,7 @@ std::vector<int> In::readAllInts()
 {
     std::vector<std::string> fields = readAllStrings();
     std::vector<int> vals = new int[fields.length];
-    for (int i = 0; i < fields.length; ++i)
+    for (int i{0}; i < fields.length; ++i)
         vals[i] = utility::str_to_num(fields[i]);
     return vals;
 }
@@ -221,7 +221,7 @@ std::vector<long> In::readAllLongs()
 {
     std::vector<std::string> fields = readAllStrings();
     long[] vals = new long[fields.length];
-    for (int i = 0; i < fields.length; ++i)
+    for (int i{0}; i < fields.length; ++i)
         vals[i] = Long.parseLong(fields[i]);
     return vals;
 }
@@ -230,7 +230,7 @@ std::vector<double> In::readAllDoubles()
 {
     std::vector<std::string> fields = readAllStrings();
     std::vector<double> vals = new double[fields.length];
-    for (int i = 0; i < fields.length; ++i)
+    for (int i{0}; i < fields.length; ++i)
         vals[i] = Double.parseDouble(fields[i]);
     return vals;
 }

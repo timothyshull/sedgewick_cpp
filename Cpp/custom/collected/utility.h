@@ -15,20 +15,21 @@ namespace utility {
 
     void assert(bool test, const char msg[]);
 
-    template <typename T, typename std::enable_if<std::is_integral<T>::value>::type>>
+    template<typename T, typename std::enable_if<std::is_integral<T>::value>::type>>
     struct max_numeric_type {
         using type = long long int;
     };
 
-    template <typename T, typename std::enable_if<std::is_floating_point<T>::value>::type>>
+    template<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type>>
     struct max_numeric_type {
         using type = long double;
     };
 
-    template <typename T, typename std::enable_if<std::is_unsigned<T>::value>::type>>
+    template<typename T, typename std::enable_if<std::is_unsigned<T>::value>::type>>
     struct max_numeric_type {
         using type = unsigned long long int;
     };
+
     // still has issues but better
     template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
     int str_to_num(const char* str)
@@ -143,6 +144,15 @@ namespace utility {
         inline explicit Runtime_exception(const char* s) : std::runtime_error{s} {}
 
         virtual ~Runtime_exception() noexcept {};
+    };
+
+    class Unsupported_operation_exception : public std::runtime_error {
+    public:
+        inline explicit Unsupported_operation_exception(const std::string& s) : std::runtime_error{s} {}
+
+        inline explicit Unsupported_operation_exception(const char* s) : std::runtime_error{s} {}
+
+        virtual ~Unsupported_operation_exception() noexcept {};
     };
 
 #if _LIBCPP_STD_VER < 14

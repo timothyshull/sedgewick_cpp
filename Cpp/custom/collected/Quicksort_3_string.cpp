@@ -4,12 +4,12 @@ void ::Quicksort_3_string::sort(std::vector<std::string>& a)
 {
     Std_random::shuffle(a);
     sort(a, 0, a.size() - 1, 0);
-    utility::assert(is_sorted(a), "Quicksort_3_string is_sorted check failed");
+    utility::assert(is_sorted(a), "Quicksort_3_string is_sorted _check failed");
 }
 
 int ::Quicksort_3_string::char_at(std::string& s, int d)
 {
-    utility::assert(d >= 0 && d <= s.length(), "Quicksort_3_string char_at range check for d failed");
+    utility::assert(d >= 0 && d <= s.length(), "Quicksort_3_string char_at range _check for d failed");
     if (d == s.length()) { return -1; }
     return s[d];
 }
@@ -38,8 +38,8 @@ void ::Quicksort_3_string::sort(std::vector<std::string>& a, int lo, int hi, int
 
 void ::Quicksort_3_string::insertion(std::vector<std::string>& a, int lo, int hi, int d)
 {
-    for (int i = lo; i <= hi; ++i) {
-        for (int j = i; j > lo && less(a[j], a[j - 1], d); j--) {
+    for (int i{lo}; i <= hi; ++i) {
+        for (int j{i}; j > lo && less(a[j], a[j - 1], d); j--) {
             exch(a, j, j - 1);
         }
     }
@@ -54,8 +54,8 @@ void ::Quicksort_3_string::exch(std::vector<std::string>& a, int i, int j)
 
 bool ::Quicksort_3_string::less(std::string& v, std::string w, int d)
 {
-    utility::assert(v.substr(0, d) == w.substr(0, d), "Quicksort_3_string v and w substring equivalence check failed");
-    for (int i = d; i < std::min(v.length(), w.length()); ++i) {
+    utility::assert(v.substr(0, d) == w.substr(0, d), "Quicksort_3_string v and w substring equivalence _check failed");
+    for (int i{d}; i < std::min(v.length(), w.length()); ++i) {
         if (v[i] < w[i]) { return true; }
         if (v[i] > w[i]) { return false; }
     }
@@ -64,7 +64,7 @@ bool ::Quicksort_3_string::less(std::string& v, std::string w, int d)
 
 bool ::Quicksort_3_string::is_sorted(std::vector<std::string>& a)
 {
-    for (int i = 1; i < a.size(); ++i) {
+    for (int i{1}; i < a.size(); ++i) {
         if (a[i] < a[i - 1]) {
             return false;
         }

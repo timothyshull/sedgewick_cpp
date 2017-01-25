@@ -11,11 +11,11 @@ int main(int argc, char* argv[])
     int extra_edges = utility::str_to_num(argv[3]);
     Edge_weighted_digraph g{static_cast<unsigned>(num_vertices)};
     std::vector<int> vertices(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i = 0; i < num_vertices; ++i) {
+    for (int i{0}; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i = 0; i < num_edges; ++i) {
+    for (int i{0}; i < num_edges; ++i) {
         int v;
         int w;
         do {
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
         g.add_edge(Directed_edge(v, w, weight));
     }
 
-    for (int i = 0; i < extra_edges; ++i) {
+    for (int i{0}; i < extra_edges; ++i) {
         int v = Std_random::uniform(num_vertices);
         int w = Std_random::uniform(num_vertices);
         double weight = Std_random::uniform(0.0, 1.0);
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
         }
         Std_out::print_line();
     } else {
-        Std_out::print_line("No directed cycle");
+        Std_out::print_line("No directed _cycle");
     }
     return 0;
 }

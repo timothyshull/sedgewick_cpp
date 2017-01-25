@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     int num_edges{utility::str_to_num(argv[2])};
 
     Graph graph1{Graph_generator::eulerian_cycle(num_vertices, num_edges)};
-    Eulerian_path::unit_test(graph1, "Eulerian cycle");
+    Eulerian_path::unit_test(graph1, "Eulerian _cycle");
 
     Graph graph2{Graph_generator::eulerian_path(num_vertices, num_edges)};
     Eulerian_path::unit_test(graph2, "Eulerian path");

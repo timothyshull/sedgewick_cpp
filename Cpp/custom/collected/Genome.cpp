@@ -8,7 +8,7 @@ void ::Genome::compress()
     Binary_std_out::write(n);
 
     // Write two-bit code for char.
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         int d = DNA.toIndex(s.charAt(i));
         Binary_std_out::write(d, 2);
     }
@@ -20,7 +20,7 @@ void ::Genome::expand()
     Alphabet DNA = Alphabet.DNA;
     int n = Binary_std_in::read_int();
     // Read two bits; write char.
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         char c = Binary_std_in::read_char(2);
         Binary_std_out::write(DNA.toChar(c), 8);
     }

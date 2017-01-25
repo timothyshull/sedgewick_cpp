@@ -18,7 +18,7 @@ void ::Huffman::compress()
     std::vector<char> input{utility::str_to_char_vector(s)};
 
     std::vector<int> freq = new int[R];
-    for (int i = 0; i < input.length; ++i) {
+    for (int i{0}; i < input.length; ++i) {
         freq[input[i]]++;
     }
 
@@ -37,9 +37,9 @@ void ::Huffman::compress()
     Binary_std_out::write(input.length);
 
     // use Huffman code to encode input
-    for (int i = 0; i < input.length; ++i) {
+    for (int i{0}; i < input.length; ++i) {
         std::string code = st[input[i]];
-        for (int j = 0; j < code.length(); ++j) {
+        for (int j{0}; j < code.length(); ++j) {
             if (code.charAt(j) == '0') {
                 Binary_std_out::write(false);
             } else if (code.charAt(j) == '1') {
@@ -55,7 +55,7 @@ void ::Huffman::compress()
 Huffman::Raw_node_pointer Huffman::buildTrie(std::vector<int>& freq)
 {
     MinPQ <Node> pq = new MinPQ<Node>();
-    for (char i = 0; i < R; ++i) {
+    for (char i{0}; i < R; ++i) {
         if (freq[i] > 0) {
             pq.insert(new Node(i, freq[i], null, null));
         }
@@ -107,7 +107,7 @@ void ::Huffman::expand()
     int length = Binary_std_in::read_int();
 
     // decode using the Huffman trie
-    for (int i = 0; i < length; ++i) {
+    for (int i{0}; i < length; ++i) {
         Node x = root;
         while (!x.isLeaf()) {
             bool bit = Binary_std_in::read_boolean();

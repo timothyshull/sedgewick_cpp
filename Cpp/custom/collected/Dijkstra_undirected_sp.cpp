@@ -10,12 +10,12 @@ Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& G, int s)
 
     distance_to = new double[G.num_vertices()];
     edgeTo = new Edge[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         distance_to[v] = Double.POSITIVE_INFINITY;
     }
     distance_to[s] = 0.0;
 
-    // relax vertices in order of distance from s
+    // _relax vertices in order of distance from s
     pq = new IndexMinPQ<Double>(G.num_vertices());
     pq.insert(s, distance_to[s]);
     while (!pq.is_empty()) {
@@ -25,7 +25,7 @@ Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& G, int s)
         }
     }
 
-    // check optimality conditions
+    // _check optimality conditions
     assert check(G, s);
 }
 
@@ -44,7 +44,7 @@ std::vector<Directed_edge> Dijkstra_undirected_sp::path_to(int v)
     if (!has_path_to(v)) { return null; }
     Stack<Edge> path = new Stack<Edge>();
     int x = v;
-    for (Edge e = edgeTo[v]; e != null; e = edgeTo[x]) {
+    for (Edge e{edgeTo[v]}; e != null; e = edgeTo[x]) {
         path.push(e);
         x = e.other(x);
     }
@@ -71,21 +71,21 @@ bool Dijkstra_undirected_sp::check(Edge_weighted_digraph& G, int s)
         }
     }
 
-    // check that _distance_to[v] and edgeTo[v] are consistent
+    // _check that _distance_to[v] and _edge_to[v] are consistent
     if (distance_to[s] != 0.0 || edgeTo[s] != null) {
-        System.err.print_line("_distance_to[s] and edgeTo[s] inconsistent");
+        System.err.print_line("_distance_to[s] and _edge_to[s] inconsistent");
         return false;
     }
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (v == s) { continue; }
         if (edgeTo[v] == null && distance_to[v] != Double.POSITIVE_INFINITY) {
-            System.err.print_line("_distance_to[] and edgeTo[] inconsistent");
+            System.err.print_line("_distance_to[] and _edge_to[] inconsistent");
             return false;
         }
     }
 
-    // check that all edges e = v-w satisfy _distance_to[w] <= _distance_to[v] + e.weight()
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    // _check that all edges e = v-w satisfy _distance_to[w] <= _distance_to[v] + e.weight()
+    for (int v{0}; v < G.num_vertices(); ++v) {
         for (Edge e : G.adj(v)) {
             int w = e.other(v);
             if (distance_to[v] + e.weight() < distance_to[w]) {
@@ -95,8 +95,8 @@ bool Dijkstra_undirected_sp::check(Edge_weighted_digraph& G, int s)
         }
     }
 
-    // check that all edges e = v-w on SPT satisfy _distance_to[w] == _distance_to[v] + e.weight()
-    for (int w = 0; w < G.num_vertices(); ++w) {
+    // _check that all edges e = v-w on SPT satisfy _distance_to[w] == _distance_to[v] + e.weight()
+    for (int w{0}; w < G.num_vertices(); ++w) {
         if (edgeTo[w] == null) { continue; }
         Edge e = edgeTo[w];
         if (w != e.either() && w != e.other(e.either())) { return false; }

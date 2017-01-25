@@ -38,7 +38,7 @@ Furthest_pair::Furthest_pair(std::vector<Point_2d>& points)
     }
 
     int j = k;
-    for (int i = 1; i <= k && j <= m; ++i) {
+    for (int i{1}; i <= k && j <= m; ++i) {
         // Std_out::print_line("hull[i] + " and " + hull[j] + " are antipodal");
         if (hull[i].distanceSquaredTo(hull[j]) > bestDistanceSquared) {
             best1 = hull[i];

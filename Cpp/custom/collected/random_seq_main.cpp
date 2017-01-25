@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 
     if (argc == 2) {
         double x;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             x = Std_random::uniform();
             Std_out::print_line(x);
         }
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
         double hi = utility::str_to_num(argv[2]);
 
         double x;
-        for (int i = 0; i < n; ++i) {
+        for (int i{0}; i < n; ++i) {
             x = Std_random::uniform(lo, hi);
             Std_out::printf("%.2f\n", x);
         }

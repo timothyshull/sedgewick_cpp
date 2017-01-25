@@ -179,7 +179,7 @@ public:
     using Pointer_type = Value_type*;
     using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: check on this because of the relationship with max_size
+    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
     using Iterator_type = Fibonacci_min_pq_iterator<Key_type, Value_type>;
     using Reverse_iterator_type = Fibonacci_min_pq_reverse_iterator<Key_type, Value_type>;
 
@@ -222,12 +222,12 @@ int size() {
     }
 
 Key minKey() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         return min.key;
     }
 
 Key delMin() {
-        if (is_empty()) throw new NoSuchElementException("Priority queue is empty");
+        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
         head = cut(min, head);
         Node x = min.child;
         Key key = min.key;

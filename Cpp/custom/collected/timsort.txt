@@ -253,7 +253,7 @@ array then; it's hard to beat that given the overheads of trying something
 fancier.
 
 When N is a power of 2, testing on random data showed that minrun values of
-16, 32, 64 and 128 worked about equally well.  At 256 the data-movement cost
+16, 32, 64 and 128 worked about equally well.  At 256 the data-movement _cost
 in binary insertion sort clearly hurt, and at 8 the increase in the number
 of function calls clearly hurt.  Picking *some* power of 2 is important
 here, so that the merges end up perfectly balanced (see next section).  We
@@ -407,7 +407,7 @@ also be ignored.  This cuts the amount of temp memory needed by the same
 amount.
 
 These preliminary searches may not pay off, and can be expected *not* to
-repay their cost if the data is random.  But they can win huge in all of
+repay their _cost if the data is random.  But they can win huge in all of
 time, copying, and memory savings when they do pay, so this is one of the
 "per-merge overheads" mentioned above that we're happy to endure because
 there is at most one very short run.  It's generally true in this algorithm

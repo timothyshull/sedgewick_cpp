@@ -26,7 +26,7 @@ bool Std_in::is_empty()
             break;
         }
     }
-    for (auto it = str.rbegin(); it != str.rend(); ++it) {
+    for (auto it{str.rbegin()}; it != str.rend(); ++it) {
         std_in.putback(*it);
     }
     return str.size() <= 1;

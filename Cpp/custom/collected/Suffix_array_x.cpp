@@ -7,7 +7,7 @@ Suffix_array_x::Suffix_array_x(std::string& text)
 
     this->text = utility::str_to_char_vector(text);
     this.index = new int[n];
-    for (int i = 0; i < n; ++i)
+    for (int i{0}; i < n; ++i)
         index[i] = i;
 
     sort(0, n - 1, 0);
@@ -89,8 +89,8 @@ void Suffix_array_x::sort(int lo, int hi, int d)
 
 void Suffix_array_x::insertion(int lo, int hi, int d)
 {
-    for (int i = lo; i <= hi; ++i)
-        for (int j = i; j > lo && less(index[j], index[j - 1], d); j--)
+    for (int i{lo}; i <= hi; ++i)
+        for (int j{i}; j > lo && less(index[j], index[j - 1], d); j--)
             exch(j, j - 1);
 }
 

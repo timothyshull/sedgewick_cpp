@@ -9,13 +9,13 @@ int main(int argc, char *argv[]) {
 
     Bellman_ford_sp sp{g, s};
 
-    if (sp.hasNegativeCycle()) {
-        for (Directed_edge e : sp.negativeCycle())
+    if (sp.has_negative_cycle()) {
+        for (Directed_edge e : sp.negative_cycle())
             Std_out::print_line(e);
     } else {
-        for (int v = 0; v < g.num_vertices(); ++v) {
+        for (int v{0}; v < g.num_vertices(); ++v) {
             if (sp.has_path_to(v)) {
-                Std_out::printf("%d to %d (%5.2f)  ", s, v, sp.distance_to(v));
+                Std_out::printf("%d to %d (%5.2f)  ", s, v, sp._distance_to(v));
                 for (Directed_edge e : sp.path_to(v)) {
                     Std_out::print(e + "   ");
                 }

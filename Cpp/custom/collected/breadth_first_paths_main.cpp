@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     int s{utility::str_to_num(argv[1])};
     Breadth_first_paths bfs{g, s};
 
-    for (int v = 0; v < g.num_vertices(); ++v) {
+    for (int v{0}; v < g.num_vertices(); ++v) {
         if (bfs.has_path_to(v)) {
             Std_out::printf("%d to %d (%d):  ", s, v, bfs.distance_to(v));
             for (int x : bfs.path_to(v)) {

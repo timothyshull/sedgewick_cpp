@@ -22,17 +22,17 @@ public:
 
     Acyclic_lp& operator=(Acyclic_lp&&) = default;
 
-    Acyclic_lp(Edge_weighted_digraph& g, int source);
+    Acyclic_lp(Edge_weighted_digraph& digraph, int source);
 
     inline double distance_to(int v) const { return _distance_to[v]; }
 
     inline bool has_path_to(int v) const { return _distance_to[v] < std::numeric_limits<double>::infinity(); }
 
-    Stack<Directed_edge> path_to(int v);
+    std::vector<Directed_edge> path_to(int vertex);
 
 private:
     std::vector<double> _distance_to;
-    std::vector<Directed_edge*> _edge_to;
+    std::vector<Directed_edge> _edge_to;
 
     void _relax(Directed_edge& e);
 };

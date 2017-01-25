@@ -13,7 +13,7 @@ Eulerian_path::Eulerian_path(Graph& G)
 {
     int oddDegreeVertices = 0;
     int s = nonIsolatedVertex(G);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
             ++oddDegreeVertices;
             s = v;
@@ -30,10 +30,10 @@ Eulerian_path::Eulerian_path(Graph& G)
     // create local view of adjacency lists, to iterate one vertex at a time
     // the helper Edge data type is used to avoid exploring both copies of an edge v-w
     Queue<Edge>[] adj = (Queue<Edge>[]) new Queue[G.num_vertices()];
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         adj[v] = new Queue<Edge>();
 
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < G.num_vertices(); ++v) {
         int selfLoops = 0;
         for (int w : G.adj(v)) {
             // careful with self loops
@@ -71,7 +71,7 @@ Eulerian_path::Eulerian_path(Graph& G)
         path.push(v);
     }
 
-    // check if all edges are used
+    // _check if all edges are used
     if (path.size() != G.num_edges() + 1)
         path = null;
 
@@ -90,7 +90,7 @@ bool Eulerian_path::hasEulerianPath()
 
 int Eulerian_path::nonIsolatedVertex(Graph& G)
 {
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         if (G.degree(v) > 0)
             return v;
     return -1;
@@ -102,7 +102,7 @@ bool Eulerian_path::hasEulerianPath(Graph& G)
 
     // Condition 1: degree(v) is even except for possibly two
     int oddDegreeVertices = 0;
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         if (G.degree(v) % 2 != 0)
             ++oddDegreeVertices;
     if (oddDegreeVertices > 2) return false;
@@ -110,7 +110,7 @@ bool Eulerian_path::hasEulerianPath(Graph& G)
     // Condition 2: graph is connected, ignoring isolated vertices
     int s = nonIsolatedVertex(G);
     Breadth_first_paths bfs = new Breadth_first_paths(G, s);
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v{0}; v < G.num_vertices(); ++v)
         if (G.degree(v) > 0 && !bfs.has_path_to(v))
             return false;
 
@@ -124,13 +124,13 @@ bool Eulerian_path::ceertifySolution(Graph& G)
     // hashEulerianPath() returns correct value
     if (hasEulerianPath() != hasEulerianPath(G)) return false;
 
-    // nothing else to check if no Eulerian path
+    // nothing else to _check if no Eulerian path
     if (path == null) return true;
 
-    // check that path() uses correct number of edges
+    // _check that path() uses correct number of edges
     if (path.size() != G.num_edges() + 1) return false;
 
-    // check that path() is a path in G
+    // _check that path() is a path in G
     // TODO
 
     return true;

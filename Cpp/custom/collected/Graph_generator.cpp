@@ -43,8 +43,8 @@ Graph::Graph_generator::simple(int V, double p)
     if (p < 0.0 || p > 1.0)
         throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
     Graph G = new Graph(V);
-    for (int v = 0; v < V; ++v)
-        for (int w = v + 1; w < V; ++w)
+    for (int v{0}; v < V; ++v)
+        for (int w{v + 1}; w < V; ++w)
             if (Std_random::bernoulli(p))
                 G.add_edge(v, w);
     return G;
@@ -67,7 +67,7 @@ Graph::Graph_generator::bipartite(int V1, int V2, int E)
     Graph G = new Graph(V1 + V2);
 
     std::vector<int> vertices = new int[V1 + V2];
-    for (int i = 0; i < V1 + V2; ++i)
+    for (int i{0}; i < V1 + V2; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
 
@@ -89,12 +89,12 @@ Graph::Graph_generator::bipartite(int V1, int V2, double p)
     if (p < 0.0 || p > 1.0)
         throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
     std::vector<int> vertices = new int[V1 + V2];
-    for (int i = 0; i < V1 + V2; ++i)
+    for (int i{0}; i < V1 + V2; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
     Graph G = new Graph(V1 + V2);
-    for (int i = 0; i < V1; ++i)
-        for (int j = 0; j < V2; ++j)
+    for (int i{0}; i < V1; ++i)
+        for (int j{0}; j < V2; ++j)
             if (Std_random::bernoulli(p))
                 G.add_edge(vertices[i], vertices[V1 + j]);
     return G;
@@ -104,10 +104,10 @@ Graph::Graph_generator::path(int V)
 {
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[V];
-    for (int i = 0; i < V; ++i)
+    for (int i{0}; i < V; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
-    for (int i = 0; i < num_vertices - 1; ++i) {
+    for (int i{0}; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
@@ -117,10 +117,10 @@ Graph::Graph_generator::binaryTree(int V)
 {
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[V];
-    for (int i = 0; i < V; ++i)
+    for (int i{0}; i < V; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
-    for (int i = 1; i < V; ++i) {
+    for (int i{1}; i < V; ++i) {
         G.add_edge(vertices[i], vertices[(i - 1) / 2]);
     }
     return G;
@@ -130,10 +130,10 @@ Graph::Graph_generator::cycle(int V)
 {
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[V];
-    for (int i = 0; i < V; ++i)
+    for (int i{0}; i < V; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
-    for (int i = 0; i < num_vertices - 1; ++i) {
+    for (int i{0}; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     G.add_edge(vertices[V - 1], vertices[0]);
@@ -143,14 +143,14 @@ Graph::Graph_generator::cycle(int V)
 Graph::Graph_generator::eulerianCycle(int V, int E)
 {
     if (E <= 0)
-        throw utility::Illegal_argument_exception("An Eulerian cycle must have at least one edge");
+        throw utility::Illegal_argument_exception("An Eulerian _cycle must have at least one edge");
     if (V <= 0)
-        throw utility::Illegal_argument_exception("An Eulerian cycle must have at least one vertex");
+        throw utility::Illegal_argument_exception("An Eulerian _cycle must have at least one vertex");
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[E];
-    for (int i = 0; i < E; ++i)
+    for (int i{0}; i < E; ++i)
         vertices[i] = Std_random::uniform(V);
-    for (int i = 0; i < E - 1; ++i) {
+    for (int i{0}; i < E - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     G.add_edge(vertices[E - 1], vertices[0]);
@@ -165,9 +165,9 @@ Graph::Graph_generator::eulerianPath(int V, int E)
         throw utility::Illegal_argument_exception("An Eulerian path must have at least one vertex");
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[E + 1];
-    for (int i = 0; i < E + 1; ++i)
+    for (int i{0}; i < E + 1; ++i)
         vertices[i] = Std_random::uniform(V);
-    for (int i = 0; i < E; ++i) {
+    for (int i{0}; i < E; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
@@ -178,18 +178,18 @@ Graph::Graph_generator::wheel(int V)
     if (V <= 1) throw utility::Illegal_argument_exception("Number of vertices must be at least 2");
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[V];
-    for (int i = 0; i < V; ++i)
+    for (int i{0}; i < V; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
 
-    // simple cycle on _num_vertices-1 vertices
-    for (int i = 1; i < num_vertices - 1; ++i) {
+    // simple _cycle on _num_vertices-1 vertices
+    for (int i{1}; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     G.add_edge(vertices[V - 1], vertices[1]);
 
-    // connect vertices[0] to every vertex on cycle
-    for (int i = 1; i < V; ++i) {
+    // connect vertices[0] to every vertex on _cycle
+    for (int i{1}; i < V; ++i) {
         G.add_edge(vertices[0], vertices[i]);
     }
 
@@ -201,12 +201,12 @@ Graph::Graph_generator::star(int V)
     if (V <= 0) throw utility::Illegal_argument_exception("Number of vertices must be at least 1");
     Graph G = new Graph(V);
     std::vector<int> vertices = new int[V];
-    for (int i = 0; i < V; ++i)
+    for (int i{0}; i < V; ++i)
         vertices[i] = i;
     Std_random::shuffle(vertices);
 
     // connect vertices[0] to every other vertex
-    for (int i = 1; i < V; ++i) {
+    for (int i{1}; i < V; ++i) {
         G.add_edge(vertices[0], vertices[i]);
     }
 
@@ -220,15 +220,15 @@ Graph::Graph_generator::regular(int V, int k)
 
     // create k copies of each vertex
     std::vector<int> vertices = new int[V * k];
-    for (int v = 0; v < V; ++v) {
-        for (int j = 0; j < k; ++j) {
+    for (int v{0}; v < V; ++v) {
+        for (int j{0}; j < k; ++j) {
             vertices[v + num_vertices * j] = v;
         }
     }
 
     // pick a random perfect matching
     Std_random::shuffle(vertices);
-    for (int i = 0; i < num_vertices * k / 2; ++i) {
+    for (int i{0}; i < num_vertices * k / 2; ++i) {
         G.add_edge(vertices[2 * i], vertices[2 * i + 1]);
     }
     return G;
@@ -246,23 +246,23 @@ Graph::Graph_generator::tree(int V)
     // Prufer's proof of Cayley's theorem: Prufer sequences are in 1-1
     // with labeled trees on num_vertices vertices
     std::vector<int> prufer = new int[V - 2];
-    for (int i = 0; i < num_vertices - 2; ++i)
+    for (int i{0}; i < num_vertices - 2; ++i)
         prufer[i] = Std_random::uniform(V);
 
     // degree of vertex v = 1 + number of times it appers in Prufer sequence
     std::vector<int> degree = new int[V];
-    for (int v = 0; v < V; ++v)
+    for (int v{0}; v < V; ++v)
         degree[v] = 1;
-    for (int i = 0; i < num_vertices - 2; ++i)
+    for (int i{0}; i < num_vertices - 2; ++i)
         degree[prufer[i]]++;
 
     // pq contains all vertices of degree 1
     MinPQ<Integer> pq = new MinPQ<Integer>();
-    for (int v = 0; v < V; ++v)
+    for (int v{0}; v < V; ++v)
         if (degree[v] == 1) pq.insert(v);
 
     // repeatedly delMin() degree 1 vertex that has the minimum index
-    for (int i = 0; i < num_vertices - 2; ++i) {
+    for (int i{0}; i < num_vertices - 2; ++i) {
         int v = pq.delMin();
         G.add_edge(v, prufer[i]);
         degree[v]--;

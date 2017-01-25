@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     std::vector<std::string> strings{"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
 
     Index_max_pq<std::string> pq{strings.size()};
-    for (int i = 0; i < strings.size(); ++i) {
+    for (int i{0}; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 
     Std_out::print_line();
 
-    for (int i = 0; i < strings.size(); ++i) {
+    for (int i{0}; i < strings.size(); ++i) {
         if (Std_random::uniform() < 0.5) {
             pq.increaseKey(i, strings[i] + strings[i]);
         } else {
@@ -34,17 +34,17 @@ int main(int argc, char* argv[])
     }
     Std_out::print_line();
 
-    for (int i = 0; i < strings.size(); ++i) {
+    for (int i{0}; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 
     std::vector<int> perm;
     perm.reserve(strings.size());
-    for (int i = 0; i < strings.size(); ++i) {
+    for (int i{0}; i < strings.size(); ++i) {
         perm[i] = i;
     }
     Std_random::shuffle(perm);
-    for (int i = 0; i < perm.size(); ++i) {
+    for (int i{0}; i < perm.size(); ++i) {
         std::string key = pq.keyOf(perm[i]);
         pq.remove(perm[i]);
         Std_out::print_line(perm[i] + " " + key);

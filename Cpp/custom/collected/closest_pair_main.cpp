@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     points.reserve(n);
     double x;
     double y;
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         x = Std_in::read_double();
         y = Std_in::read_double();
         points[i] = Point_2d{x, y};

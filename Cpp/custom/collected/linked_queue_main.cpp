@@ -14,6 +14,6 @@ int main(int argc, char* argv[])
             Std_out.print(queue.dequeue() + " ");
         }
     }
-    Std_out.println("(" + queue.size() + " left on queue)");
+    Std_out.println("(" + queue.size() + " left on _queue)");
     return 0;
 }
