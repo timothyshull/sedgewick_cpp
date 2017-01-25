@@ -1,23 +1,30 @@
-int main(int argc, char *argv[]) {
-    int m = utility::safe_convert_integer(argv[1]);
-    MinPQ<Transaction> pq = new MinPQ<Transaction>(m + 1);
+#include "Transaction.h"
+#include "Std_in.h"
+#include "Stack.h"
+#include "Min_pq.h"
+#include "Std_out.h"
 
-    while (Std_in::hasNextLine()) {
-        // Create an entry from the next line and put on the PQ.
-        std::string line = Std_in::read_line();
-        Transaction transaction = new Transaction(line);
+int main(int argc, char* argv[])
+{
+    int m{utility::str_to_num(argv[1])};
+    Min_pq<Transaction> pq{m + 1};
+
+    while (!Std_in::is_empty()) {
+        std::string line{Std_in::read_line()};
+        Transaction transaction{line};
         pq.insert(transaction);
 
-        // remove minimum if m+1 entries on the PQ
-        if (pq.size() > m)
-            pq.delMin();
-    }   // top m entries are on the PQ
+        if (pq.size() > m) {
+            pq.delete_min();
+        }
+    }
 
-    // print entries on PQ in reverse order
-    Stack<Transaction> stack = new Stack<Transaction>();
-    for (Transaction transaction : pq)
+    Stack<Transaction> stack{};
+    for (Transaction transaction : pq) {
         stack.push(transaction);
-    for (Transaction transaction : stack)
+    }
+    for (Transaction transaction : stack) {
         Std_out::print_line(transaction);
+    }
     return 0;
 }

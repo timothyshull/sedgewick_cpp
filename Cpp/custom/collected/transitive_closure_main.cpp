@@ -1,22 +1,27 @@
-int main(int argc, char *argv[]) {
+#include "In.h"
+#include "Digraph.h"
+#include "Transitive_closure.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
     In in{argv[1]};
-    Digraph G{in};
+    Digraph digraph{in};
 
-    TransitiveClosure tc = new TransitiveClosure(G);
+    Transitive_closure tc{digraph};
 
-    // print header
     Std_out::print("     ");
-    for (int v = 0; v < G.num_vertices(); ++v)
+    for (int v = 0; v < digraph.num_vertices(); ++v) {
         Std_out::printf("%3d", v);
+    }
     Std_out::print_line();
     Std_out::print_line("--------------------------------------------");
 
-    // print transitive closure
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v = 0; v < digraph.num_vertices(); ++v) {
         Std_out::printf("%3d: ", v);
-        for (int w = 0; w < G.num_vertices(); ++w) {
-            if (tc.reachable(v, w)) Std_out::printf("  T");
-            else Std_out::printf("   ");
+        for (int w = 0; w < digraph.num_vertices(); ++w) {
+            if (tc.reachable(v, w)) { Std_out::printf("  T"); }
+            else { Std_out::printf("   "); }
         }
         Std_out::print_line();
     }

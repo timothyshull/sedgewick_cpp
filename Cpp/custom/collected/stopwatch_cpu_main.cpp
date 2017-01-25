@@ -1,17 +1,21 @@
-int main(int argc, char *argv[]) {
-    int n = utility::safe_convert_integer(argv[1]);
+#include <cmath>
+#include "utility.h"
+#include "Stopwatch_cpu.h"
+#include "Std_out.h"
 
-    // sum of square roots of integers from 1 to _size using std::sqrt(x).
-    StopwatchCPU timer1 = new StopwatchCPU();
-    double sum1 = 0.0;
+int main(int argc, char* argv[])
+{
+    int n{utility::str_to_num(argv[1])};
+
+    Stopwatch_cpu timer1{};
+    double sum1{0.0};
     for (int i = 1; i <= n; ++i) {
         sum1 += std::sqrt(i);
     }
     double time1 = timer1.elapsedTime();
     Std_out::printf("%e (%.2f seconds)\n", sum1, time1);
 
-    // sum of square roots of integers from 1 to _size using std::pow(x, 0.5).
-    StopwatchCPU timer2 = new StopwatchCPU();
+    Stopwatch_cpu timer2{};
     double sum2 = 0.0;
     for (int i = 1; i <= n; ++i) {
         sum2 += std::pow(i, 0.5);

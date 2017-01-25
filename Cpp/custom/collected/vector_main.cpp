@@ -1,8 +1,13 @@
-int main(int argc, char *argv[]) {
-    std::vector<double> xdata = {1.0, 2.0, 3.0, 4.0};
-    std::vector<double> ydata = {5.0, 2.0, 4.0, 1.0};
-    Vector x = new Vector(xdata);
-    Vector y = new Vector(ydata);
+#include <vector>
+#include "Vector.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
+    std::vector<double> x_data{1.0, 2.0, 3.0, 4.0};
+    std::vector<double> y_data{5.0, 2.0, 4.0, 1.0};
+    Vector x{x_data};
+    Vector y{y_data};
 
     Std_out::print_line("   x       = " + x);
     Std_out::print_line("   y       = " + y);

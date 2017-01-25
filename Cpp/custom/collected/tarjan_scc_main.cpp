@@ -1,22 +1,26 @@
-int main(int argc, char *argv[]) {
-    In in{argv[1]};
-    Digraph G{in};
-    TarjanSCC scc = new TarjanSCC(G);
+#include "In.h"
+#include "Tarjan_scc.h"
+#include "Std_out.h"
+#include "Queue.h"
 
-    // number of connected components
-    int m = scc.count();
+int main(int argc, char* argv[])
+{
+    In in{argv[1]};
+    Digraph digraph{in};
+    Tarjan_scc scc{digraph};
+
+    int m{scc.count()};
     Std_out::print_line(m + " components");
 
-    // compute list of vertices in each strong component
-    Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
+    std::vector<Queue<int>> components;
+    components.reserve(m);
     for (int i = 0; i < m; ++i) {
-        components[i] = new Queue<Integer>();
+        components[i] = Queue<int>();
     }
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    for (int v = 0; v < digraph.num_vertices(); ++v) {
         components[scc.id(v)].enqueue(v);
     }
 
-    // print results
     for (int i = 0; i < m; ++i) {
         for (int v : components[i]) {
             Std_out::print(v + " ");

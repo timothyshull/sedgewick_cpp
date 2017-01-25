@@ -1,6 +1,10 @@
-int main(int argc, char *argv[]) {
-    SparseVector a = new SparseVector(10);
-    SparseVector b = new SparseVector(10);
+#include "Sparse_vector.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
+    Sparse_vector a{10};
+    Sparse_vector b{10};
     a.put(3, 0.50);
     a.put(9, 0.75);
     a.put(6, 0.11);

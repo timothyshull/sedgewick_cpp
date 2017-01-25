@@ -356,101 +356,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="347" column="11" lean-forward="false" selection-start-line="347" selection-start-column="11" selection-end-line="347" selection-end-column="11" />
+            <state relative-caret-position="913">
+              <caret line="382" column="35" lean-forward="true" selection-start-line="382" selection-start-column="35" selection-end-line="382" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quick_find_uf_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quick_find_uf_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="prim_mst_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prim_mst_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="point_2d_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/point_2d_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="21" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="picture_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picture_main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="68" lean-forward="false" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="picture_dump_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picture_dump_main.cpp">
+      <file leaf-file-name="vector_main.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vector_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="patricia_st_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patricia_st_main.cpp">
+      <file leaf-file-name="two_person_zero_sum_game_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/two_person_zero_sum_game_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
-              <caret line="80" column="61" lean-forward="false" selection-start-line="80" selection-start-column="61" selection-end-line="80" selection-end-column="61" />
+            <state relative-caret-position="225">
+              <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="patricia_set_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/patricia_set_main.cpp">
+      <file leaf-file-name="tst_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tst_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state relative-caret-position="525">
+              <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="particle_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/particle_main.cpp">
+      <file leaf-file-name="trie_st_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trie_st_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="out_main.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out_main.cpp">
+      <file leaf-file-name="trie_set_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trie_set_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="615">
+              <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transitive_closure_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/transitive_closure_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transaction_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/transaction_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="topological_x_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/topological_x_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="top_m_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/top_m_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -460,11 +460,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unitTest</find>
-      <find>\sadj\(</find>
-      <find>\sV\s</find>
-      <find>EdgeWeightedDirectedCycle</find>
-      <find>unit_test</find>
       <find>\.length\s</find>
       <find>String\[\]</find>
       <find>Integer\.parseInt</find>
@@ -472,7 +467,6 @@
       <find>Integer.parseInt</find>
       <find>FenwickTree</find>
       <find>Complex\[\]</find>
-      <find>Math\.</find>
       <find>\s(\w+)\+</find>
       <find>\s(\w+)\+\+;</find>
       <find>Integer</find>
@@ -487,16 +481,17 @@
       <find>strings.length</find>
       <find>intervals.length</find>
       <find>Interval2D</find>
-      <find>StdIn</find>
       <find>String</find>
       <find>safe_convert_integer</find>
+      <find>.equals(</find>
+      <find>StdOut</find>
+      <find>StdArrayIO\.</find>
+      <find>Math\.</find>
+      <find>double\[\]</find>
+      <find>StdIn</find>
+      <find>println</find>
     </findStrings>
     <replaceStrings>
-      <replace>path_to</replace>
-      <replace>Digraph_generator::</replace>
-      <replace>unit_test</replace>
-      <replace>adjacent\(</replace>
-      <replace>num_vertices</replace>
       <replace>Edge_weighted_directed_cycle</replace>
       <replace>Eulerian_path::unit_test</replace>
       <replace>.size\(\)</replace>
@@ -505,7 +500,6 @@
       <replace>Fenwick_tree</replace>
       <replace>std::vector&lt;Compex&gt;</replace>
       <replace>std::vector&lt;Complex&gt;</replace>
-      <replace>std::</replace>
       <replace>++$1;</replace>
       <replace>int</replace>
       <replace>read_char</replace>
@@ -519,9 +513,15 @@
       <replace>strings.size()</replace>
       <replace>intervals.size()</replace>
       <replace>Interval_2d</replace>
-      <replace>Std_in</replace>
       <replace>std::string</replace>
       <replace>str_to_num</replace>
+      <replace>==</replace>
+      <replace>Std_out</replace>
+      <replace>Std_array_io::</replace>
+      <replace>std::</replace>
+      <replace>std::vector&lt;double&gt;</replace>
+      <replace>Std_in</replace>
+      <replace>print_line</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -530,41 +530,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/floyd_warshall_main.cpp" />
-        <option value="$PROJECT_DIR$/ford_fulkerson_main.cpp" />
-        <option value="$PROJECT_DIR$/frequency_counter_main.cpp" />
-        <option value="$PROJECT_DIR$/Alphabet.cpp" />
-        <option value="$PROJECT_DIR$/furthest_pair_main.cpp" />
-        <option value="$PROJECT_DIR$/gabow_scc_main.cpp" />
-        <option value="$PROJECT_DIR$/gauss_jordan_elimination_main.cpp" />
-        <option value="$PROJECT_DIR$/gaussian_elimination_main.cpp" />
-        <option value="$PROJECT_DIR$/genome_main.cpp" />
-        <option value="$PROJECT_DIR$/graham_scan_main.cpp" />
-        <option value="$PROJECT_DIR$/graph_generator_main.cpp" />
-        <option value="$PROJECT_DIR$/grep_main.cpp" />
-        <option value="$PROJECT_DIR$/Binary_in.cpp" />
-        <option value="$PROJECT_DIR$/Binary_std_in.h" />
-        <option value="$PROJECT_DIR$/Binary_std_in.cpp" />
-        <option value="$PROJECT_DIR$/hex_dump_main.cpp" />
-        <option value="$PROJECT_DIR$/hopcroft_karp_main.cpp" />
-        <option value="$PROJECT_DIR$/Hopcroft_karp.h" />
-        <option value="$PROJECT_DIR$/huffman_main.cpp" />
-        <option value="$PROJECT_DIR$/in_main.cpp" />
-        <option value="$PROJECT_DIR$/index_max_pq_main.cpp" />
-        <option value="$PROJECT_DIR$/index_min_pq_main.cpp" />
-        <option value="$PROJECT_DIR$/interval_1d_main.cpp" />
-        <option value="$PROJECT_DIR$/interval_2d_main.cpp" />
-        <option value="$PROJECT_DIR$/kosaraju_sharir_scc_main.cpp" />
-        <option value="$PROJECT_DIR$/todos.md" />
-        <option value="$PROJECT_DIR$/kruskal_mst_main.cpp" />
-        <option value="$PROJECT_DIR$/kwik_main.cpp" />
-        <option value="$PROJECT_DIR$/lazy_prim_mst_main.cpp" />
-        <option value="$PROJECT_DIR$/linear_programming_main.cpp" />
-        <option value="$PROJECT_DIR$/linked_bag_main.cpp" />
-        <option value="$PROJECT_DIR$/linked_queue_main.cpp" />
-        <option value="$PROJECT_DIR$/linked_stack_main.cpp" />
-        <option value="$PROJECT_DIR$/longest_common_substring_main.cpp" />
-        <option value="$PROJECT_DIR$/longest_repeated_substring_main.cpp" />
         <option value="$PROJECT_DIR$/lookup_csv_main.cpp" />
         <option value="$PROJECT_DIR$/lookup_index_main.cpp" />
         <option value="$PROJECT_DIR$/lzw_compression_main.cpp" />
@@ -580,7 +545,42 @@
         <option value="$PROJECT_DIR$/point_2d_main.cpp" />
         <option value="$PROJECT_DIR$/prim_mst_main.cpp" />
         <option value="$PROJECT_DIR$/quick_find_uf_main.cpp" />
+        <option value="$PROJECT_DIR$/quick_union_uf_main.cpp" />
+        <option value="$PROJECT_DIR$/rabin_karp_main.cpp" />
+        <option value="$PROJECT_DIR$/random_seq_main.cpp" />
+        <option value="$PROJECT_DIR$/resizing_array_bag_main.cpp" />
+        <option value="$PROJECT_DIR$/resizing_array_queue_main.cpp" />
+        <option value="$PROJECT_DIR$/resizing_array_stack_main.cpp" />
+        <option value="$PROJECT_DIR$/run_length_main.cpp" />
+        <option value="$PROJECT_DIR$/segment_tree_main.cpp" />
+        <option value="$PROJECT_DIR$/separate_chaining_hash_st_main.cpp" />
+        <option value="$PROJECT_DIR$/sequential_search_st_main.cpp" />
+        <option value="$PROJECT_DIR$/sparse_vector_main.cpp" />
+        <option value="$PROJECT_DIR$/std_array_io_main.cpp" />
+        <option value="$PROJECT_DIR$/Std_audio.h" />
+        <option value="$PROJECT_DIR$/std_audio_main.cpp" />
+        <option value="$PROJECT_DIR$/std_draw_main.cpp" />
+        <option value="$PROJECT_DIR$/std_stats_main.cpp" />
+        <option value="$PROJECT_DIR$/stopwatch_cpu_main.cpp" />
+        <option value="$PROJECT_DIR$/stopwatch_main.cpp" />
+        <option value="$PROJECT_DIR$/suffix_array_main.cpp" />
+        <option value="$PROJECT_DIR$/suffix_array_x_main.cpp" />
+        <option value="$PROJECT_DIR$/symbol_digraph_main.cpp" />
+        <option value="$PROJECT_DIR$/symbol_graph_main.cpp" />
+        <option value="$PROJECT_DIR$/symbol_table_main.cpp" />
+        <option value="$PROJECT_DIR$/tarjan_scc_main.cpp" />
+        <option value="$PROJECT_DIR$/three_sum_fast_main.cpp" />
+        <option value="$PROJECT_DIR$/three_sum_main.cpp" />
+        <option value="$PROJECT_DIR$/top_m_main.cpp" />
+        <option value="$PROJECT_DIR$/topological_x_main.cpp" />
+        <option value="$PROJECT_DIR$/transaction_main.cpp" />
+        <option value="$PROJECT_DIR$/transitive_closure_main.cpp" />
+        <option value="$PROJECT_DIR$/trie_set_main.cpp" />
+        <option value="$PROJECT_DIR$/trie_st_main.cpp" />
+        <option value="$PROJECT_DIR$/tst_main.cpp" />
+        <option value="$PROJECT_DIR$/two_person_zero_sum_game_main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/vector_main.cpp" />
       </list>
     </option>
   </component>
@@ -2475,12 +2475,12 @@
       <workItem from="1485197664661" duration="27553000" />
       <workItem from="1485267627410" duration="19722000" />
       <workItem from="1485304893696" duration="8214000" />
-      <workItem from="1485355914249" duration="9369000" />
+      <workItem from="1485355914249" duration="12194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276341000" />
+    <option name="totallyTimeSpent" value="279166000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2573,313 +2573,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gauss_jordan_elimination_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gaussian_elimination_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genome_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graham_scan_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/graph_generator_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grep_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binary_in.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binary_std_in.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Binary_std_in.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hex_dump_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hopcroft_karp_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hopcroft_karp.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/huffman_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/in_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="76" column="35" lean-forward="false" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_binomial_min_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_fibonacci_min_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_max_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_min_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_multiway_min_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interval_1d_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interval_2d_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kosaraju_sharir_scc_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todos.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="750">
-            <caret line="50" column="70" lean-forward="false" selection-start-line="50" selection-start-column="70" selection-end-line="50" selection-end-column="70" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kruskal_mst_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kwik_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="18" lean-forward="true" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lazy_prim_mst_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linear_programming_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="10" lean-forward="false" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linear_regression_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linked_bag_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linked_queue_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/linked_stack_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/longest_common_substring_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/longest_repeated_substring_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lookup_csv_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lookup_index_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="44" lean-forward="false" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lzw_compression_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="3" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multiway_merge_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/multiway_min_pq_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nfa_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -2976,10 +2669,314 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quick_union_uf_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="23" lean-forward="false" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabin_karp_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/random_seq_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rect_hv_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resizing_array_bag_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resizing_array_queue_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resizing_array_stack_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="46" lean-forward="false" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_length_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/segment_tree_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Separate_chaining_hash_st.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Separate_chaining_hash_st.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate_chaining_hash_st_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sequential_search_st_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sparse_vector_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/std_array_io_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="15" lean-forward="false" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/std_audio_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Std_audio.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="49" lean-forward="true" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/std_draw_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="25" lean-forward="false" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/std_stats_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stopwatch_cpu_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stopwatch_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suffix_array_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="70" lean-forward="true" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suffix_array_x_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="31" lean-forward="false" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symbol_digraph_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symbol_graph_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symbol_table_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tarjan_scc_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/three_sum_fast_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/three_sum_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/top_m_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/topological_x_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transaction_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transitive_closure_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trie_set_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trie_st_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tst_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/two_person_zero_sum_game_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="347" column="11" lean-forward="false" selection-start-line="347" selection-start-column="11" selection-end-line="347" selection-end-column="11" />
+        <state relative-caret-position="913">
+          <caret line="382" column="35" lean-forward="true" selection-start-line="382" selection-start-column="35" selection-end-line="382" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vector_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding />
         </state>
       </provider>

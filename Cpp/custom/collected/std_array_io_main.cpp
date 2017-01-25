@@ -1,16 +1,19 @@
+#include <deque>
 #include "Std_out.h"
+#include "Std_array_io.h"
 
-int main(int argc, char *argv[]) {
-    std::vector<double> a = StdArrayIO.read_double1D();
-    StdArrayIO.print(a);
+int main(int argc, char* argv[])
+{
+    std::vector<double> a{Std_array_io::read_double1D()};
+    Std_array_io::print(a);
     Std_out::print_line();
 
-    std::vector<std::vector<double>> b = StdArrayIO.read_double2D();
-    StdArrayIO.print(b);
+    std::vector<std::vector<double>> b{Std_array_io::read_double2D()};
+    Std_array_io::print(b);
     Std_out::print_line();
 
-    std::vector<std::deque<bool>> d = StdArrayIO.read_boolean2D();
-    StdArrayIO.print(d);
+    std::vector<std::deque<bool>> d{Std_array_io::read_boolean2D()};
+    Std_array_io::print(d);
     Std_out::print_line();
     return 0;
 }

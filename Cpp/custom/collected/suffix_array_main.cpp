@@ -1,6 +1,13 @@
-int main(int argc, char *argv[]) {
-    std::string s = Std_in::readAll().replaceAll("\\s+", " ").trim();
-    SuffixArray suffix = new SuffixArray(s);
+#include <string>
+#include "Std_out.h"
+#include "Std_in.h"
+#include "utility.h"
+#include "Suffix_array.h"
+
+int main(int argc, char* argv[])
+{
+    std::string s = Std_in::read_all().replaceAll("\\s+", " ").trim();
+    Suffix_array suffix{s};
 
     // Std_out::print_line("rank(" + argv[1] + ") = " + suffix.rank(argv[1]));
 
@@ -9,9 +16,9 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < s.length(); ++i) {
         int index = suffix.index(i);
-        std::string ith = "\"" + s.substring(index, std::min(index + 50, s.length())) + "\"";
-        assert s.substring(index).equals(suffix.select(i));
-        int rank = suffix.rank(s.substring(index));
+        std::string ith = "\"" + s.substr(index, std::min(index + 50, s.length())) + "\"";
+        utility::assert(s.substr(index).equals(suffix.select(i));
+        int rank = suffix.rank(s.substr(index));
         if (i == 0) {
             Std_out::printf("%3d %3d %3s %3d %s\n", i, index, "-", rank, ith);
         } else {

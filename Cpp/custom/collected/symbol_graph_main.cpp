@@ -1,9 +1,15 @@
-int main(int argc, char *argv[]) {
+#include <string>
+#include "Symbol_graph.h"
+#include "Std_in.h"
+#include "Std_out.h"
+
+int main(int argc, char* argv[])
+{
     std::string filename = argv[1];
     std::string delimiter = argv[2];
-    SymbolGraph sg = new SymbolGraph(filename, delimiter);
-    Graph graph = sg.graph();
-    while (Std_in::hasNextLine()) {
+    Symbol_graph sg{filename, delimiter};
+    Graph graph{sg.graph()};
+    while (!Std_in::is_empty()) {
         std::string source = Std_in::read_line();
         if (sg.contains(source)) {
             int s = sg.index(source);

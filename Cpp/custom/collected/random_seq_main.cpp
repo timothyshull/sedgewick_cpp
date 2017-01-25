@@ -1,20 +1,23 @@
-int main(int argc, char *argv[]) {
-    int n = utility::safe_convert_integer(argv[1]);
+#include "Std_random.h"
+#include "Std_out.h"
 
-    // for backward compatibility with Intro to Programming in Java version of RandomSeq
+int main(int argc, char* argv[])
+{
+    int n = utility::str_to_num(argv[1]);
+
     if (argc == 2) {
-        // generate and print _size numbers between 0.0 and 1.0
+        double x;
         for (int i = 0; i < n; ++i) {
-            double x = Std_random::uniform();
+            x = Std_random::uniform();
             Std_out::print_line(x);
         }
     } else if (argc == 4) {
-        double lo = Double.parseDouble(argv[1]);
-        double hi = Double.parseDouble(argv[2]);
+        double lo = utility::str_to_num(argv[1]);
+        double hi = utility::str_to_num(argv[2]);
 
-        // generate and print _size numbers between lo and hi
+        double x;
         for (int i = 0; i < n; ++i) {
-            double x = Std_random::uniform(lo, hi);
+            x = Std_random::uniform(lo, hi);
             Std_out::printf("%.2f\n", x);
         }
     } else {

@@ -1,13 +1,21 @@
-int main(int argc, char *argv[]) {
-    SegmentTree st = null;
+#include "Segment_tree.h"
+#include "Std_in.h"
+#include "utility.h"
+#include "Std_out.h"
 
-    std::string cmd = "cmp";
+int main(int argc, char* argv[])
+{
+    Segment_tree st;
+
+    std::string cmd{"cmp"};
     while (true) {
         std::vector<std::string> line = Std_in::read_line().split(" ");
 
-        if (line[0].equals("exit")) break;
+        if (line[0] == "exit") { break; }
 
-        int arg1 = 0, arg2 = 0, arg3 = 0;
+        int arg1{0};
+        int arg2{0};
+        int arg3{0};
 
         if (line.size() > 1) {
             arg1 = utility::str_to_num(line[1]);
@@ -19,42 +27,42 @@ int main(int argc, char *argv[]) {
             arg3 = utility::str_to_num(line[3]);
         }
 
-        if ((!line[0].equals("set") && !line[0].equals("init")) && st == null) {
+        // TODO: this may not work as expected
+        if ((line[0] != "set" && line[0] != "init") && st.size() == 0) {
             Std_out::print_line("Segment Tree not initialized");
             continue;
         }
-        int array[];
-        if (line[0].equals("set")) {
-            array = new int[line.size() - 1];
+        std::vector<int> vector;
+        if (line[0] == "set") {
+            vector.reserve(line.size() - 1);
             for (int i = 0; i < line.size() - 1; ++i) {
-                array[i] = utility::str_to_num(line[i + 1]);
+                vector[i] = utility::str_to_num(line[i + 1]);
             }
-            st = new SegmentTree(array);
-        } else if (line[0].equals("init")) {
-            array = new int[arg1];
-            Arrays.fill(array, arg2);
-            st = new SegmentTree(array);
+            st = Segment_tree{vector};
+        } else if (line[0] == "init") {
+            vector.reserve(arg1);
+            std::fill(vector.begin(), vector.end(), arg2);
+            st = Segment_tree{vector};
 
             for (int i = 0; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();
-        } else if (line[0].equals("up")) {
+        } else if (line[0] == "up") {
             st.update(arg1, arg2, arg3);
             for (int i = 0; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();
-        } else if (line[0].equals("rsq")) {
-            Std_out::printf("Sum from %d to %d = %d%_size", arg1, arg2, st.rsq(arg1, arg2));
-        } else if (line[0].equals("rmq")) {
-            Std_out::printf("Min from %d to %d = %d%_size", arg1, arg2, st.rMinQ(arg1, arg2));
+        } else if (line[0] == "rsq") {
+            Std_out::printf("Sum from %d to %d = %d size", arg1, arg2, st.rsq(arg1, arg2));
+        } else if (line[0] == "rmq") {
+            Std_out::printf("Min from %d to %d = %d size", arg1, arg2, st.rMinQ(arg1, arg2));
         } else {
             Std_out::print_line("Invalid command");
         }
 
     }
-
 
     Std_out::close();
     return 0;

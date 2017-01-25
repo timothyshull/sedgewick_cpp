@@ -345,7 +345,6 @@ add_executable(picture_main picture_main.cpp Picture.cpp Picture.h) # TODO
 add_executable(point_2d_main point_2d_main.cpp Point_2d.cpp Point_2d.h)
 add_executable(prim_mst_main prim_mst_main.cpp Prim_mst.cpp Prim_mst.h)
 add_executable(quick_find_uf_main quick_find_uf_main.cpp Quick_find_uf.cpp Quick_find_uf.h)
-# TODO: tmp
 add_executable(quick_union_uf_main quick_union_uf_main.cpp Quick_union_uf.cpp Quick_union_uf.h)
 add_executable(rabin_karp_main rabin_karp_main.cpp Rabin_karp.cpp Rabin_karp.h)
 add_executable(random_seq_main random_seq_main.cpp)
@@ -355,7 +354,7 @@ add_executable(resizing_array_queue_main resizing_array_queue_main.cpp Resizing_
 add_executable(resizing_array_stack_main resizing_array_stack_main.cpp Resizing_array_stack.h)
 add_executable(run_length_main run_length_main.cpp Run_length.cpp Run_length.h)
 add_executable(segment_tree_main segment_tree_main.cpp Segment_tree.cpp Segment_tree.h)
-add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp Separate_chaining_hash_st.cpp Separate_chaining_hash_st.h)
+add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp Separate_chaining_hash_st.cpp Separate_chaining_hash_st.h) # TODO
 add_executable(sequential_search_st_main sequential_search_st_main.cpp Sequential_search_st.h)
 add_executable(sparse_vector_main sparse_vector_main.cpp Sparse_vector.cpp Sparse_vector.h)
 add_executable(std_array_io_main std_array_io_main.cpp Std_array_io.cpp Std_array_io.h)
@@ -380,4 +379,5 @@ add_executable(trie_set_main trie_set_main.cpp Trie_set.cpp Trie_set.h)
 add_executable(trie_st_main trie_st_main.cpp Trie_st.cpp Trie_st.h)
 add_executable(tst_main tst_main.cpp TST.cpp TST.h)
 add_executable(two_person_zero_sum_game_main two_person_zero_sum_game_main.cpp Two_person_zero_sum_game.cpp Two_person_zero_sum_game.h)
+# TODO: tmp
 add_executable(vector_main vector_main.cpp Vector.cpp Vector.h)
