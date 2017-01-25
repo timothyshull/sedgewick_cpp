@@ -96,7 +96,7 @@ Node get(Node x, std::string key, int d) {
 Node put(Node x, std::string key, Value val, int d) {
         if (x == null) x = new Node();
         if (d == key.length()) {
-            if (x.val == null) n++;
+            if (x.val == null) ++n;
             x.val = val;
             return x;
         }

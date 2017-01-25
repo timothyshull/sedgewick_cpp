@@ -174,7 +174,7 @@ public:
     void insert(int i, Key key)
     {
         if (contains(i)) { throw utility::Illegal_argument_exception("index is already in the priority queue"); }
-        n++;
+        ++n;
         qp[i] = n;
         pq[n] = i;
         keys[i] = key;
@@ -298,7 +298,7 @@ private:
     {
         while (2 * k <= n) {
             int j = 2 * k;
-            if (j < n && less(j, j + 1)) { j++; }
+            if (j < n && less(j, j + 1)) { ++j; }
             if (!less(k, j)) { break; }
             exch(k, j);
             k = j;

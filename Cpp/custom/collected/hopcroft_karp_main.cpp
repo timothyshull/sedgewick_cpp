@@ -1,33 +1,40 @@
-int main(int argc, char *argv[]) {
-    int V1 = utility::safe_convert_integer(argv[1]);
-    int V2 = utility::safe_convert_integer(argv[2]);
-    int E = utility::safe_convert_integer(argv[3]);
-    Graph G = Graph_generator::bipartite(V1, V2, E);
-    if (G.num_vertices() < 1000) Std_out::print_line(G);
+#include "Std_out.h"
+#include "Graph_generator.h"
+#include "Hopcroft_karp.h"
+#include "utility.h"
 
-    HopcroftKarp matching = new HopcroftKarp(G);
+int main(int argc, char* argv[])
+{
+    int v1{utility::str_to_num(argv[1])};
+    int v2{utility::str_to_num(argv[2])};
+    int num_edges{utility::str_to_num(argv[3])};
+    Graph graph{Graph_generator::bipartite(v1, v2, num_edges)};
+    if (graph.num_vertices() < 1000) { Std_out::print_line(graph); }
 
-    // print maximum matching
+    Hopcroft_karp matching{graph};
+
     Std_out::printf("Number of edges in max matching        = %d\n", matching.size());
     Std_out::printf("Number of vertices in min vertex cover = %d\n", matching.size());
-    Std_out::printf("Graph has a perfect matching           = %b\n", matching.isPerfect());
+    Std_out::printf("Graph has a perfect matching           = %b\n", matching.is_perfect());
     Std_out::print_line();
 
-    if (G.num_vertices() >= 1000) return;
+    if (graph.num_vertices() >= 1000) { std::exit(-1); }
 
     Std_out::print("Max matching: ");
-    for (int v = 0; v < G.num_vertices(); ++v) {
-        int w = matching.mate(v);
-        if (matching.isMatched(v) && v < w)  // print each edge only once
+    for (int v = 0; v < graph.num_vertices(); ++v) {
+        int w = matching._mate(v);
+        if (matching.is_matched(v) && v < w) {
             Std_out::print(v + "-" + w + " ");
+        }
     }
     Std_out::print_line();
 
-    // print minimum vertex cover
     Std_out::print("Min vertex cover: ");
-    for (int v = 0; v < G.num_vertices(); ++v)
-        if (matching.inMinVertexCover(v))
+    for (int v = 0; v < graph.num_vertices(); ++v) {
+        if (matching.in_min_vertex_cover(v)) {
             Std_out::print(v + " ");
+        }
+    }
     Std_out::print_line();
     return 0;
 }

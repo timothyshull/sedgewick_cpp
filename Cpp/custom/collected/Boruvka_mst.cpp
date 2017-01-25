@@ -4,7 +4,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& G)
 {
     UF uf = new UF(G.num_vertices());
 
-    // repeat at most log num_vertices times or until we have V-1 edges
+    // repeat at most log num_vertices times or until we have _num_vertices-1 edges
     for (int t = 1; t < G.num_vertices() && mst.size() < G.num_vertices() - 1; t = t + t) {
 
         // foreach tree in forest, find closest edge

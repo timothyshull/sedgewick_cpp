@@ -197,7 +197,7 @@ bool Linear_programming::check(std::vector<std::vector<double>>& A, std::vector<
 void Linear_programming::show()
 {
     Std_out::print_line("m = " + m);
-    Std_out::print_line("n = " + n);
+    Std_out::print_line("_size = " + n);
     for (int i = 0; i <= m; ++i) {
         for (int j = 0; j <= m + n; ++j) {
             Std_out::printf("%7.2f ", a[i][j]);

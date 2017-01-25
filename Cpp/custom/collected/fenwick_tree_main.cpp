@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
             }
             Std_out::print_line();
         } else if (line[0] == "rsq") {
-            Std_out::printf("Sum from %d to %d = %d%n", arg1, arg2, ft.rsq(arg1, arg2));
+            Std_out::printf("Sum from %d to %d = %d%_size", arg1, arg2, ft.rsq(arg1, arg2));
         } else {
             Std_out::print_line("Invalid command");
         }

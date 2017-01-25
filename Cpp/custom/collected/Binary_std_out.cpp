@@ -119,8 +119,8 @@ void Binary_std_out::writeBit(bool bit)
     buffer <<= 1;
     if (bit) { buffer |= 1; }
 
-    // if buffer is full (8 bits), write out as a single byte
-    n++;
+    // if _buffer is full (8 bits), write out as a single byte
+    ++n;
     if (n == 8) { clearBuffer(); }
 }
 

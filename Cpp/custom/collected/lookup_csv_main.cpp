@@ -1,24 +1,29 @@
-int main(int argc, char *argv[]) {
-    int keyField = utility::safe_convert_integer(argv[1]);
-    int valField = utility::safe_convert_integer(argv[2]);
+#include "Symbol_table.h"
+#include "In.h"
+#include "Std_in.h"
+#include "Std_out.h"
+#include "utility.h"
 
-    // symbol table
-    ST<std::string, std::string> st = new ST<std::string, std::string>();
+int main(int argc, char* argv[])
+{
+    int key_field = utility::str_to_num(argv[1]);
+    int value_field = utility::str_to_num(argv[2]);
 
-    // read in the data from csv file
+    Symbol_table<std::string, std::string> st{};
+
     In in{argv[1]};
     while (in.hasNextLine()) {
         std::string line = in.read_line();
         std::vector<std::string> tokens = line.split(",");
-        std::string key = tokens[keyField];
-        std::string val = tokens[valField];
+        std::string key = tokens[key_field];
+        std::string val = tokens[value_field];
         st.put(key, val);
     }
 
     while (!Std_in::is_empty()) {
         std::string s = Std_in::read_string();
-        if (st.contains(s)) Std_out::print_line(st.get(s));
-        else Std_out::print_line("Not found");
+        if (st.contains(s)) { Std_out::print_line(st.get(s)); }
+        else { Std_out::print_line("Not found"); }
     }
     return 0;
 }

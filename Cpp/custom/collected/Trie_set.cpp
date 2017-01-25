@@ -69,7 +69,7 @@ Trie_set::Raw_node_pointer Trie_set::add(Trie_set::Raw_node_pointer x, std::stri
 {
     if (x == null) x = new Node();
     if (d == key.length()) {
-        if (!x.isString) n++;
+        if (!x.isString) ++n;
         x.isString = true;
     } else {
         char c = key.charAt(d);

@@ -55,8 +55,8 @@ int Suffix_array_x::compare(std::string& query, int i)
     int j = 0;
     while (i < n && j < m) {
         if (query.charAt(j) != text[i]) return query.charAt(j) - text[i];
-        i++;
-        j++;
+        ++i;
+        ++j;
 
     }
     if (i < n) return -1;
@@ -78,7 +78,7 @@ void Suffix_array_x::sort(int lo, int hi, int d)
         char t = text[index[i] + d];
         if (t < v) exch(lt++, i++);
         else if (t > v) exch(i, gt--);
-        else i++;
+        else ++i;
     }
 
     // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
@@ -102,8 +102,8 @@ bool Suffix_array_x::less(int i, int j, int d)
     while (i < n && j < n) {
         if (text[i] < text[j]) return true;
         if (text[i] > text[j]) return false;
-        i++;
-        j++;
+        ++i;
+        ++j;
     }
     return i > j;
 }
@@ -120,9 +120,9 @@ int Suffix_array_x::lcp(int i, int j)
     int length = 0;
     while (i < n && j < n) {
         if (text[i] != text[j]) return length;
-        i++;
-        j++;
-        length++;
+        ++i;
+        ++j;
+        ++length;
     }
     return length;
 }

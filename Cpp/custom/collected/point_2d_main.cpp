@@ -1,7 +1,12 @@
-int main(int argc, char *argv[]) {
-    int x0 = utility::safe_convert_integer(argv[1]);
-    int y0 = utility::safe_convert_integer(argv[2]);
-    int n = utility::safe_convert_integer(argv[3]);
+#include "Point_2d.h"
+#include "Std_random.h"
+#include "Std_draw.h"
+
+int main(int argc, char* argv[])
+{
+    int x0{utility::str_to_num(argv[1])};
+    int y0{utility::str_to_num(argv[2])};
+    int n{utility::str_to_num(argv[3])};
 
     Std_draw::setCanvasSize(800, 800);
     Std_draw::setXscale(0, 100);
@@ -9,25 +14,25 @@ int main(int argc, char *argv[]) {
     Std_draw::setPenRadius(0.005);
     Std_draw::enableDoubleBuffering();
 
-    std::vector<Point_2d> points = new Point_2d[n];
+    std::vector<Point_2d> points;
+    points.reserve(n);
+    int x;
+    int y;
     for (int i = 0; i < n; ++i) {
-        int x = Std_random::uniform(100);
-        int y = Std_random::uniform(100);
-        points[i] = new Point_2d(x, y);
+        x = Std_random::uniform(100);
+        y = Std_random::uniform(100);
+        points[i] = Point_2d{x, y};
         points[i].draw();
     }
 
-    // draw p = (x0, x1) in red
-    Point_2d p = new Point_2d(x0, y0);
+    Point_2d p{x0, y0};
     Std_draw::setPenColor(Std_draw::RED);
     Std_draw::setPenRadius(0.02);
     p.draw();
 
-
-    // draw line segments from p to each point, one at a time, in polar order
     Std_draw::setPenRadius();
     Std_draw::setPenColor(Std_draw::BLUE);
-    Arrays.sort(points, p.polarOrder());
+    std::sort(points.begin(), points.end(), Point_2d::polarOrder());
     for (int i = 0; i < n; ++i) {
         p.drawTo(points[i]);
         Std_draw::show();

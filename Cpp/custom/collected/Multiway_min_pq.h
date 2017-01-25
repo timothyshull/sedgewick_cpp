@@ -34,7 +34,7 @@ public:
         swim(n++);
         if (n == keys.size() - d) {
             resize(getN(order + 1) + d);
-            order++;
+            ++order;
         }
     }
     Key minKey() {

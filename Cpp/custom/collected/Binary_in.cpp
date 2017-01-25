@@ -83,7 +83,7 @@ bool Binary_in::read_boolean()
     return bit;
 }
 
-char Binary_in::readChar()
+char Binary_in::read_char()
 {
     if (n == 8) {
         int x = buffer;
@@ -91,7 +91,7 @@ char Binary_in::readChar()
         return (char) (x & 0xff);
     }
 
-    // combine last N bits of current buffer with first 8-N bits of new buffer
+    // combine last N bits of current _buffer with first 8-N bits of new _buffer
     int x = buffer;
     x <<= (8 - n);
     int oldN = n;
@@ -102,12 +102,12 @@ char Binary_in::readChar()
     return (char) (x & 0xff);
 }
 
-char Binary_in::readChar(int r)
+char Binary_in::read_char(int r)
 {
     if (r < 1 || r > 16) { throw utility::Runtime_exception("Illegal value of r = " + r); }
 
     // optimize r = 8 case
-    if (r == 8) { return readChar(); }
+    if (r == 8) { return read_char(); }
 
     char x = 0;
     for (int i = 0; i < r; ++i) {
@@ -124,17 +124,17 @@ std::string Binary_in::read_string()
 
     std::stringstream sb = new std::stringstream();
     while (!is_empty()) {
-        char c = readChar();
+        char c = read_char();
         sb.append(c);
     }
     return sb.to_string();
 }
 
-short Binary_in::readShort()
+short Binary_in::read_short()
 {
     short x = 0;
     for (int i = 0; i < 2; ++i) {
-        char c = readChar();
+        char c = read_char();
         x <<= 8;
         x |= c;
     }
@@ -145,7 +145,7 @@ int Binary_in::read_int()
 {
     int x = 0;
     for (int i = 0; i < 4; ++i) {
-        char c = readChar();
+        char c = read_char();
         x <<= 8;
         x |= c;
     }
@@ -168,11 +168,11 @@ int Binary_in::read_int(int r)
     return x;
 }
 
-long Binary_in::readLong()
+long Binary_in::read_long()
 {
     long x = 0;
     for (int i = 0; i < 8; ++i) {
-        char c = readChar();
+        char c = read_char();
         x <<= 8;
         x |= c;
     }
@@ -181,17 +181,17 @@ long Binary_in::readLong()
 
 double Binary_in::read_double()
 {
-    return Double.longBitsToDouble(readLong());
+    return Double.longBitsToDouble(read_long());
 }
 
-float Binary_in::readFloat()
+float Binary_in::read_float()
 {
     return Float.intBitsToFloat(read_int());
 }
 
-char Binary_in::readByte()
+char Binary_in::read_byte()
 {
-    char c = readChar();
+    char c = read_char();
     byte x = (byte)(c & 0xff);
     return x;
 }

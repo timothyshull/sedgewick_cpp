@@ -67,7 +67,7 @@ bool Bipartite::check(Graph& G)
         for (int v = 0; v < G.num_vertices(); ++v) {
             for (int w : G.adj(v)) {
                 if (color[v] == color[w]) {
-                    System.err.printf("edge %d-%d with %d and %d in same side of bipartition\n", v, w, v, w);
+                    System.err.printf("edge %d-%d with %d and %d in same side of _bipartition\n", v, w, v, w);
                     return false;
                 }
             }

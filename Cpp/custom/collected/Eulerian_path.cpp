@@ -15,7 +15,7 @@ Eulerian_path::Eulerian_path(Graph& G)
     int s = nonIsolatedVertex(G);
     for (int v = 0; v < G.num_vertices(); ++v) {
         if (G.degree(v) % 2 != 0) {
-            oddDegreeVertices++;
+            ++oddDegreeVertices;
             s = v;
         }
     }
@@ -43,7 +43,7 @@ Eulerian_path::Eulerian_path(Graph& G)
                     adj[v].enqueue(e);
                     adj[w].enqueue(e);
                 }
-                selfLoops++;
+                ++selfLoops;
             } else if (v < w) {
                 Edge e = new Edge(v, w);
                 adj[v].enqueue(e);
@@ -104,7 +104,7 @@ bool Eulerian_path::hasEulerianPath(Graph& G)
     int oddDegreeVertices = 0;
     for (int v = 0; v < G.num_vertices(); ++v)
         if (G.degree(v) % 2 != 0)
-            oddDegreeVertices++;
+            ++oddDegreeVertices;
     if (oddDegreeVertices > 2) return false;
 
     // Condition 2: graph is connected, ignoring isolated vertices

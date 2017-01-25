@@ -1,27 +1,32 @@
-int main(int argc, char *argv[]) {
-    std::vector<std::string> strings = {"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
+#include <string>
+#include <vector>
+#include "Index_max_pq.h"
+#include "Std_out.h"
+#include "Std_random.h"
 
-    IndexMaxPQ<std::string> pq = new IndexMaxPQ<std::string>(strings.length);
-    for (int i = 0; i < strings.length; ++i) {
+int main(int argc, char* argv[])
+{
+    std::vector<std::string> strings{"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
+
+    Index_max_pq<std::string> pq{strings.size()};
+    for (int i = 0; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 
-    // print each key using the iterator
-    for (int i : pq) {
+    for (auto i : pq) {
         Std_out::print_line(i + " " + strings[i]);
     }
 
     Std_out::print_line();
 
-    // increase or decrease the key
-    for (int i = 0; i < strings.length; ++i) {
-        if (Std_random::uniform() < 0.5)
+    for (int i = 0; i < strings.size(); ++i) {
+        if (Std_random::uniform() < 0.5) {
             pq.increaseKey(i, strings[i] + strings[i]);
-        else
-            pq.decreaseKey(i, strings[i].substring(0, 1));
+        } else {
+            pq.decreaseKey(i, strings[i].substr(0, 1));
+        }
     }
 
-    // delete and print each key
     while (!pq.is_empty()) {
         std::string key = pq.maxKey();
         int i = pq.delMax();
@@ -29,19 +34,19 @@ int main(int argc, char *argv[]) {
     }
     Std_out::print_line();
 
-    // reinsert the same strings
-    for (int i = 0; i < strings.length; ++i) {
+    for (int i = 0; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 
-    // delete them in random order
-    std::vector<int> perm = new int[strings.length];
-    for (int i = 0; i < strings.length; ++i)
+    std::vector<int> perm;
+    perm.reserve(strings.size());
+    for (int i = 0; i < strings.size(); ++i) {
         perm[i] = i;
+    }
     Std_random::shuffle(perm);
-    for (int i = 0; i < perm.length; ++i) {
+    for (int i = 0; i < perm.size(); ++i) {
         std::string key = pq.keyOf(perm[i]);
-        pq.delete(perm[i]);
+        pq.remove(perm[i]);
         Std_out::print_line(perm[i] + " " + key);
     }
     return 0;

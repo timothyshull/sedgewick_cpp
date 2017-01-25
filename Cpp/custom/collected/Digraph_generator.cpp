@@ -105,7 +105,7 @@ Digraph Digraph_generator::rooted_in_dag(int V, int E)
     }
     Std_random::shuffle(vertices);
 
-    // one edge pointing from each vertex, other than the root = vertices[V-1]
+    // one edge pointing from each vertex, other than the root = vertices[_num_vertices-1]
     for (int v = 0; v < num_vertices - 1; ++v) {
         int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(v, w);
@@ -141,7 +141,7 @@ Digraph Digraph_generator::rooted_out_dag(int V, int E)
     }
     Std_random::shuffle(vertices);
 
-    // one edge pointing from each vertex, other than the root = vertices[V-1]
+    // one edge pointing from each vertex, other than the root = vertices[_num_vertices-1]
     for (int v = 0; v < num_vertices - 1; ++v) {
         int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(w, v);
@@ -266,10 +266,10 @@ Digraph Digraph_generator::eulerian_path(int V, int E)
 Digraph Digraph_generator::strong(int V, int E, int c)
 {
     if (c >= num_vertices || c <= 0) {
-        throw utility::Illegal_argument_exception("Number of components must be between 1 and V");
+        throw utility::Illegal_argument_exception("Number of components must be between 1 and _num_vertices");
     }
     if (E <= 2 * (V - c)) {
-        throw utility::Illegal_argument_exception("Number of edges must be at least 2(V-c)");
+        throw utility::Illegal_argument_exception("Number of edges must be at least 2(_num_vertices-c)");
     }
     if (E > (long) num_vertices * (V - 1) / 2) {
         throw utility::Illegal_argument_exception("Too many edges");
@@ -294,7 +294,7 @@ Digraph Digraph_generator::strong(int V, int E, int c)
         // how many vertices in component c
         int count = 0;
         for (int v = 0; v < G.num_vertices(); ++v) {
-            if (label[v] == i) { count++; }
+            if (label[v] == i) { ++count; }
         }
 
         // if (count == 0) System.err.print_line("less than desired number of strong components");

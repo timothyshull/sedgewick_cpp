@@ -57,7 +57,7 @@ void Flow_network::add_edge(Flow_edge& e)
     validateVertex(w);
     adj[v].add(e);
     adj[w].add(e);
-    E++;
+    ++E;
 }
 
 std::vector<Flow_edge> Flow_network::adj(int v)

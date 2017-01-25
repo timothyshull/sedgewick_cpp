@@ -40,7 +40,7 @@ namespace Quicksort_3_way {
         while (i <= gt) {
             if (a[i] < v) { exch(a, lt++, i++); }
             else if (a[i] > v) { exch(a, i, gt--); }
-            else { i++; }
+            else { ++i; }
         }
 
         sort(a, lo, lt - 1);

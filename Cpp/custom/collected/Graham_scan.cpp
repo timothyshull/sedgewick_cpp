@@ -33,7 +33,7 @@ Graham_scan::Graham_scan(std::vector<Point_2d>& pts)
         if (Point_2d.ccw(points[0], points[k1], points[k2]) != 0) break;
     hull.push(points[k2 - 1]);    // points[k2-1] is second extreme point
 
-    // Graham scan; note that points[n-1] is extreme point different from points[0]
+    // Graham scan; note that points[_size-1] is extreme point different from points[0]
     for (int i = k2; i < n; ++i) {
         Point_2d top = hull.pop();
         while (Point_2d.ccw(hull.peek(), top, points[i]) <= 0) {

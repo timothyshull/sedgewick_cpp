@@ -99,13 +99,13 @@ void Particle::bounceOff(Particle& that)
 void Particle::bounceOffVerticalWall()
 {
     vx = -vx;
-    count++;
+    ++count;
 }
 
 void Particle::bounceOffHorizontalWall()
 {
     vy = -vy;
-    count++;
+    ++count;
 }
 
 double Particle::kineticEnergy()

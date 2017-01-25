@@ -20,7 +20,7 @@ Topological_x::Topological_x(Digraph& G)
     for (int j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         order.enqueue(v);
-        rank[v] = count++;
+        rank[v] = ++count;
         for (int w : G.adj(v)) {
             indegree[w]--;
             if (indegree[w] == 0) queue.enqueue(w);
@@ -55,7 +55,7 @@ Topological_x::Topological_x(Edge_weighted_digraph& G)
     for (int j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         order.enqueue(v);
-        rank[v] = count++;
+        rank[v] = ++count;
         for (Directed_edge e : G.adj(v)) {
             int w = e.to();
             indegree[w]--;
@@ -91,7 +91,7 @@ int Topological_x::rank(int v)
 bool Topological_x::check(Digraph& G)
 {
     if (hasOrder()) {
-        // check that ranks are a permutation of 0 to V-1
+        // check that ranks are a permutation of 0 to _num_vertices-1
         std::deque<bool> found = new boolean[G.num_vertices()];
         for (int i = 0; i < G.num_vertices(); ++i) {
             found[rank(i)] = true;
@@ -121,7 +121,7 @@ bool Topological_x::check(Digraph& G)
                 System.err.print_line("order() and rank() inconsistent");
                 return false;
             }
-            r++;
+            ++r;
         }
     }
 
@@ -131,7 +131,7 @@ bool Topological_x::check(Digraph& G)
 bool Topological_x::check(Edge_weighted_digraph& G)
 {
     if (hasOrder()) {
-        // check that ranks are a permutation of 0 to V-1
+        // check that ranks are a permutation of 0 to _num_vertices-1
         std::deque<bool> found = new boolean[G.num_vertices()];
         for (int i = 0; i < G.num_vertices(); ++i) {
             found[rank(i)] = true;
@@ -162,7 +162,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
                 System.err.print_line("order() and rank() inconsistent");
                 return false;
             }
-            r++;
+            ++r;
         }
     }
 

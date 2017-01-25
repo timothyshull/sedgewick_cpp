@@ -182,7 +182,7 @@ Graph::Graph_generator::wheel(int V)
         vertices[i] = i;
     Std_random::shuffle(vertices);
 
-    // simple cycle on V-1 vertices
+    // simple cycle on _num_vertices-1 vertices
     for (int i = 1; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
@@ -241,8 +241,8 @@ Graph::Graph_generator::tree(int V)
     // special case
     if (V == 1) return G;
 
-    // Cayley's theorem: there are V^(V-2) labeled trees on num_vertices vertices
-    // Prufer sequence: sequence of V-2 values between 0 and V-1
+    // Cayley's theorem: there are _num_vertices^(_num_vertices-2) labeled trees on num_vertices vertices
+    // Prufer sequence: sequence of _num_vertices-2 values between 0 and _num_vertices-1
     // Prufer's proof of Cayley's theorem: Prufer sequences are in 1-1
     // with labeled trees on num_vertices vertices
     std::vector<int> prufer = new int[V - 2];

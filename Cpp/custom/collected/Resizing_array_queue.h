@@ -30,7 +30,7 @@ public:
         if (n == q.length) { resize(2 * q.length); }   // double size of array if necessary
         q[last++] = item;                        // add item
         if (last == q.length) last = 0;          // wrap-around
-        n++;
+        ++n;
     }
 
     Item dequeue()
@@ -39,7 +39,7 @@ public:
         Item item = q[first];
         q[first] = null;                            // to avoid loitering
         n--;
-        first++;
+        ++first;
         if (first == q.length) { first = 0; }           // wrap-around
         // shrink size of array if necessary
         if (n > 0 && n == q.size() / 4) resize(q.size() / 2);

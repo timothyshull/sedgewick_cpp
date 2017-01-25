@@ -122,11 +122,11 @@ std::string In::read_line()
     return line;
 }
 
-char In::readChar()
+char In::read_char()
 {
     scanner.useDelimiter(EMPTY_PATTERN);
     std::string ch = scanner.next();
-    assert ch.length() == 1 : "Internal (Std)In.readChar() error!"
+    assert ch.length() == 1 : "Internal (Std)In.read_char() error!"
                               + " Please contact the authors.";
     scanner.useDelimiter(WHITESPACE_PATTERN);
     return ch.charAt(0);
@@ -158,22 +158,22 @@ double In::read_double()
     return scanner.nextDouble();
 }
 
-float In::readFloat()
+float In::read_float()
 {
     return scanner.nextFloat();
 }
 
-long In::readLong()
+long In::read_long()
 {
     return scanner.nextLong();
 }
 
-short In::readShort()
+short In::read_short()
 {
     return scanner.nextShort();
 }
 
-char In::readByte()
+char In::read_byte()
 {
     return scanner.nextByte();
 }

@@ -48,7 +48,7 @@ int Alphabet::lg_r() const
 {
     int lgR = 0;
     for (int t = _radix - 1; t >= 1; t /= 2) {
-        lgR++;
+        ++lgR;
     }
     return lgR;
 }

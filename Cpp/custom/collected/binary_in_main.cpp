@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
     Binary_out out{argv[2]};
 
     while (!in.is_empty()) {
-        char c = in.readChar();
+        char c = in.read_char();
         out.write(c);
     }
     out.flush();

@@ -46,9 +46,9 @@ int main(int argc, char *argv[]) {
             }
             Std_out::print_line();
         } else if (line[0].equals("rsq")) {
-            Std_out::printf("Sum from %d to %d = %d%n", arg1, arg2, st.rsq(arg1, arg2));
+            Std_out::printf("Sum from %d to %d = %d%_size", arg1, arg2, st.rsq(arg1, arg2));
         } else if (line[0].equals("rmq")) {
-            Std_out::printf("Min from %d to %d = %d%n", arg1, arg2, st.rMinQ(arg1, arg2));
+            Std_out::printf("Min from %d to %d = %d%_size", arg1, arg2, st.rMinQ(arg1, arg2));
         } else {
             Std_out::print_line("Invalid command");
         }

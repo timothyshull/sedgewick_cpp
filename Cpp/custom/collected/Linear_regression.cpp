@@ -76,7 +76,7 @@ double Linear_regression::predict()
 std::string Linear_regression::to_string()
 {
     std::string s = "";
-    s += String.format("%.2f n + %.2f", slope(), intercept());
+    s += String.format("%.2f _size + %.2f", slope(), intercept());
     return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
 }
 

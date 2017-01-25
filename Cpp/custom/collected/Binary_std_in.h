@@ -11,33 +11,33 @@ public:
 
     bool read_boolean();
 
-    char readChar();
+    char read_char();
 
-    char readChar(int r);
+    char read_char(int r);
 
     std::string read_string();
 
-    short readShort();
+    short read_short();
 
     int read_int();
 
     int read_int(int r);
 
-    long readLong();
+    long read_long();
 
     double read_double();
 
-    float readFloat();
+    float read_float();
 
-    char readByte();
+    char read_byte();
 
 private:
-    const static int _EOF = 1;
-    std::istream&& in;
-    int buffer;
-    int n;
+    const static int _eof = -1;
+    std::istream&& _in;
+    int _buffer;
+    int _size;
 
-    void fillBuffer();
+    void _fill_buffer();
 };
 
 #endif // BINARY_STD_IN_H

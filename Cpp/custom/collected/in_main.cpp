@@ -1,120 +1,113 @@
+#include <string>
+#include <iostream>
+#include "In.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[])
+{
     In in;
-    std::string urlName = "http://introcs.cs.princeton.edu/stdlib/InTest.txt";
+    std::string url_name{"http://introcs.cs.princeton.edu/stdlib/InTest.txt"};
 
-    // read from a URL
-    System.out.print_line("readAll() from URL " + urlName);
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "readAll() from URL " << url_name;
+    std::cout << "---------------------------------------------------------------------------";
     try {
-        in = new In(urlName);
-        System.out.print_line(in.readAll());
-    } catch (Exception e) {
-        System.out.print_line(e);
+        in = In{url_name};
+        std::cout << in.readAll();
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-    // read one line at a time from URL
-    System.out.print_line("read_line() from URL " + urlName);
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_line() from URL " + url_name;
+    std::cout << "---------------------------------------------------------------------------";
     try {
-        in = new In(urlName);
+        in = In{url_name};
         while (!in.is_empty()) {
             std::string s = in.read_line();
-            System.out.print_line(s);
+            std::cout << s;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-    // read one string at a time from URL
-    System.out.print_line("read_string() from URL " + urlName);
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_string() from URL " + url_name;
+    std::cout << "---------------------------------------------------------------------------";
     try {
-        in = new In(urlName);
+        in = In{url_name};
         while (!in.is_empty()) {
             std::string s = in.read_string();
-            System.out.print_line(s);
+            std::cout << s;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-
-    // read one line at a time from file in current directory
-    System.out.print_line("read_line() from current directory");
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_line() from current directory");
+    std::cout << "---------------------------------------------------------------------------");
     try {
-        in = new In("./InTest.txt");
+        in = In{"./InTest.txt"};
         while (!in.is_empty()) {
             std::string s = in.read_line();
-            System.out.print_line(s);
+            std::cout << s;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-
-    // read one line at a time from file using relative path
-    System.out.print_line("read_line() from relative path");
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_line() from relative path");
+    std::cout << "---------------------------------------------------------------------------");
     try {
-        in = new In("../stdlib/InTest.txt");
+        in = In{"../stdlib/InTest.txt"};
         while (!in.is_empty()) {
             std::string s = in.read_line();
-            System.out.print_line(s);
+            std::cout << s;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-    // read one char at a time
-    System.out.print_line("readChar() from file");
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_char() from file");
+    std::cout << "---------------------------------------------------------------------------");
     try {
-        in = new In("InTest.txt");
+        in = In{"InTest.txt"};
         while (!in.is_empty()) {
-            char c = in.readChar();
-            System.out.print(c);
+            char c = in.read_char();
+            std::cout << c;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
-    System.out.print_line();
+    std::cout << "\n";
+    std::cout << "\n";
 
-    // read one line at a time from absolute OS X / Linux path
-    System.out.print_line("read_line() from absolute OS X / Linux path");
-    System.out.print_line("---------------------------------------------------------------------------");
-    in = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
+    std::cout << "read_line() from absolute OS X / Linux path");
+    std::cout << "---------------------------------------------------------------------------");
+    in = new In("/_size/fs/introcs/www/java/stdlib/InTest.txt");
     try {
         while (!in.is_empty()) {
             std::string s = in.read_line();
-            System.out.print_line(s);
+            std::cout << s;
         }
-    } catch (Exception e) {
-        System.out.print_line(e);
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
 
-
-    // read one line at a time from absolute Windows path
-    System.out.print_line("read_line() from absolute Windows path");
-    System.out.print_line("---------------------------------------------------------------------------");
+    std::cout << "read_line() from absolute Windows path");
+    std::cout << "---------------------------------------------------------------------------");
     try {
-        in = new In("G:\\www\\introcs\\stdlib\\InTest.txt");
+        in = In{"G:\\www\\introcs\\stdlib\\InTest.txt"};
         while (!in.is_empty()) {
             std::string s = in.read_line();
-            System.out.print_line(s);
+            std::cout << s;
         }
-        System.out.print_line();
-    } catch (Exception e) {
-        System.out.print_line(e);
+        std::cout << "\n";
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    System.out.print_line();
+    std::cout << "\n";
     return 0;
 }

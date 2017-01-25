@@ -16,16 +16,16 @@ public:
     bool exists();
     bool is_empty();;
     bool read_boolean();
-    char readChar();
-    char readChar(int r);
+    char read_char();
+    char read_char(int r);
     std::string read_string();
-    short readShort();
+    short read_short();
     int read_int();
     int read_int(int r);
-    long readLong();
+    long read_long();
     double read_double();
-    float readFloat();
-    char readByte();
+    float read_float();
+    char read_byte();
 private:
     const static int _EOF = -1;
     std::istream& in;

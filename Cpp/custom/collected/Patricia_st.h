@@ -66,7 +66,7 @@ void put(String key, Value val) {
             }
             if (safeBitTest(key, p.b)) p.right = t;
             else p.left = t;
-            count++;
+            ++count;
         } else x.val = val;
     }
 
@@ -187,12 +187,12 @@ static int firstDifferingBit(String k1, std::string k2) {
         int c2 = safeCharAt(k2, 0) & ~1;
         if (c1 == c2) {
             i = 1;
-            while (safeCharAt(k1, i) == safeCharAt(k2, i)) i++;
+            while (safeCharAt(k1, i) == safeCharAt(k2, i)) ++i;
             c1 = safeCharAt(k1, i);
             c2 = safeCharAt(k2, i);
         }
         int b = 0;
-        while (((c1 >>> b) & 1) == ((c2 >>> b) & 1)) b++;
+        while (((c1 >>> b) & 1) == ((c2 >>> b) & 1)) ++b;
         return i * 16 + b;
     }
 };

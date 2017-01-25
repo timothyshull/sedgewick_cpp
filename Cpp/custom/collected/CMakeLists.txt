@@ -296,7 +296,6 @@ add_executable(file_index_main file_index_main.cpp)
 add_executable(flow_edge_main flow_edge_main.cpp Flow_edge.cpp Flow_edge.h)
 add_executable(flow_network_main flow_network_main.cpp Flow_network.cpp Flow_network.h)
 add_executable(floyd_warshall_main floyd_warshall_main.cpp Floyd_warshall.cpp Floyd_warshall.h)
-# TODO: tmp
 add_executable(ford_fulkerson_main ford_fulkerson_main.cpp Ford_fulkerson.cpp Ford_fulkerson.h)
 add_executable(frequency_counter_main frequency_counter_main.cpp)
 add_executable(furthest_pair_main furthest_pair_main.cpp Furthest_pair.cpp Furthest_pair.h)
@@ -341,11 +340,12 @@ add_executable(out_main out_main.cpp Out.cpp Out.h) # TODO:
 add_executable(particle_main particle_main.cpp Particle.cpp Particle.h)
 add_executable(patricia_set_main patricia_set_main.cpp Patricia_set.cpp Patricia_set.h)
 add_executable(patricia_st_main patricia_st_main.cpp Patricia_st.cpp Patricia_st.h)
-add_executable(picture_dump_main picture_dump_main.cpp) # TODO
+add_executable(picture_dump_main picture_dump_main.cpp)
 add_executable(picture_main picture_main.cpp Picture.cpp Picture.h) # TODO
 add_executable(point_2d_main point_2d_main.cpp Point_2d.cpp Point_2d.h)
 add_executable(prim_mst_main prim_mst_main.cpp Prim_mst.cpp Prim_mst.h)
 add_executable(quick_find_uf_main quick_find_uf_main.cpp Quick_find_uf.cpp Quick_find_uf.h)
+# TODO: tmp
 add_executable(quick_union_uf_main quick_union_uf_main.cpp Quick_union_uf.cpp Quick_union_uf.h)
 add_executable(rabin_karp_main rabin_karp_main.cpp Rabin_karp.cpp Rabin_karp.h)
 add_executable(random_seq_main random_seq_main.cpp)

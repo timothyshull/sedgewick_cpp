@@ -28,7 +28,7 @@ void ::Quicksort_3_string::sort(std::vector<std::string>& a, int lo, int hi, int
         int t = char_at(a[i], d);
         if (t < v) { exch(a, lt++, i++); }
         else if (t > v) { exch(a, i, gt--); }
-        else { i++; }
+        else { ++i; }
     }
 
     sort(a, lo, lt - 1, d);

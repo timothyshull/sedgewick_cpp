@@ -36,7 +36,7 @@ Depth_first_order::Depth_first_order(Digraph& g)
 void Depth_first_order::_dfs(Edge_weighted_digraph& g, int v)
 {
     _marked[v] = true;
-    _pre[v] = _pre_counter++;
+    _pre[v] = ++_pre_counter;
     _preorder.enqueue(v);
     for (auto w : g.adjacent(v)) {
         if (!_marked[w.to()]) {
@@ -44,13 +44,13 @@ void Depth_first_order::_dfs(Edge_weighted_digraph& g, int v)
         }
     }
     _postorder.enqueue(v);
-    _post[v] = _post_counter++;
+    _post[v] = ++_post_counter;
 }
 
 void Depth_first_order::_dfs(Digraph& g, int v)
 {
     _marked[v] = true;
-    _pre[v] = _pre_counter++;
+    _pre[v] = ++_pre_counter;
     _preorder.enqueue(v);
     for (auto w : g.adjacent(v)) {
         if (!_marked[w]) {
@@ -58,7 +58,7 @@ void Depth_first_order::_dfs(Digraph& g, int v)
         }
     }
     _postorder.enqueue(v);
-    _post[v] = _post_counter++;
+    _post[v] = ++_post_counter;
 }
 
 std::vector<int> Depth_first_order::reverse_post() const
@@ -78,7 +78,7 @@ bool Depth_first_order::_check(Digraph& g)
             Std_out::print_line("post(v) and post() are inconsistent");
             return false;
         }
-        r++;
+        ++r;
     }
 
     r = 0;
@@ -87,7 +87,7 @@ bool Depth_first_order::_check(Digraph& g)
             Std_out::print_line("pre(v) and pre() are inconsistent");
             return false;
         }
-        r++;
+        ++r;
     }
 
     return true;

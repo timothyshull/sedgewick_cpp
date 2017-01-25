@@ -8,7 +8,7 @@ int Segment_tree_node::size()
 Segment_tree::Segment_tree(std::vector<int>& array)
 {
     this.array = Arrays.copyOf(array, array.length);
-    //The max size of this array is about 2 * 2 ^ log2(n) + 1
+    //The max size of this array is about 2 * 2 ^ log2(_size) + 1
     size = (int) (2 * std::pow(2.0, std::floor((std::log((double) array.length) / std::log(2.0)) + 1)));
     heap = new Node[size];
     build(1, 0, array.length);

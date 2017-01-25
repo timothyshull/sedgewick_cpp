@@ -40,7 +40,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
                     adj[v].enqueue(e);
                     adj[w].enqueue(e);
                 }
-                selfLoops++;
+                ++selfLoops;
             } else if (v < w) {
                 Edge e = new Edge(v, w);
                 adj[v].enqueue(e);

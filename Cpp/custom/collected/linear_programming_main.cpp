@@ -1,33 +1,48 @@
-int main(int argc, char *argv[]) {
+#include "Std_random.h"
+#include "Std_out.h"
+#include "Linear_programming.h"
+
+int main(int argc, char* argv[])
+{
     Std_out::print_line("----- test 1 --------------------");
-    test1();
+    Linear_programming::test1();
     Std_out::print_line("----- test 2 --------------------");
-    test2();
+    Linear_programming::test2();
     Std_out::print_line("----- test 3 --------------------");
     try {
-        test3();
+        Linear_programming::test3();
     } catch (ArithmeticException e) {
         e.printStackTrace();
     }
 
     Std_out::print_line("----- test 4 --------------------");
-    test4();
-
+    Linear_programming::test4();
 
     Std_out::print_line("----- test random ---------------");
-    int m = utility::safe_convert_integer(argv[1]);
-    int n = utility::safe_convert_integer(argv[2]);
-    std::vector<double> c = new double[n];
-    std::vector<double> b = new double[m];
-    std::vector<std::vector<double>> A = new double[m][n];
-    for (int j = 0; j < n; ++j)
+    int m = utility::str_to_num(argv[1]);
+    int n = utility::str_to_num(argv[2]);
+    std::vector<double> c;
+    c.reserve(n);
+    std::vector<double> b;
+    b.reserve(m);
+    std::vector<std::vector<double>> A;
+    A.reserve(m);
+    for (int i = 0; i < m; ++i) {
+        A[i] = std::vector<double>{};
+        A[i].reserve(n);
+    }
+    for (int j = 0; j < n; ++j) {
         c[j] = Std_random::uniform(1000);
-    for (int i = 0; i < m; ++i)
+    }
+    for (int i = 0; i < m; ++i) {
         b[i] = Std_random::uniform(1000);
-    for (int i = 0; i < m; ++i)
-        for (int j = 0; j < n; ++j)
+    }
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
             A[i][j] = Std_random::uniform(100);
-    LinearProgramming lp = new LinearProgramming(A, b, c);
+        }
+    }
+    Linear_programming lp{A, b, c};
     Std_out::print_line(lp.value());
     return 0;
 }

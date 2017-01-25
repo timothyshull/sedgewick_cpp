@@ -10,7 +10,7 @@ Kosaraju_sharir_scc::Kosaraju_sharir_scc(Digraph& G)
     for (int v : dfs.reversePost()) {
         if (!marked[v]) {
             dfs(G, v);
-            count++;
+            ++count;
         }
     }
 

@@ -32,7 +32,7 @@ int Tarjan_scc::id(int v)
 void Tarjan_scc::dfs(Digraph& G, int v)
 {
     marked[v] = true;
-    low[v] = pre++;
+    low[v] = ++pre;
     int min = low[v];
     stack.push(v);
     for (int w : G.adj(v)) {
@@ -49,7 +49,7 @@ void Tarjan_scc::dfs(Digraph& G, int v)
         id[w] = count;
         low[w] = G.num_vertices();
     } while (w != v);
-    count++;
+    ++count;
 }
 
 bool Tarjan_scc::check(Digraph& G)

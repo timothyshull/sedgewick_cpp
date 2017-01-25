@@ -10,7 +10,7 @@ Furthest_pair::Furthest_pair(std::vector<Point_2d>& points)
     // number of points on the hull
     int m = 0;
     for (Point_2d p : graham.hull())
-        m++;
+        ++m;
 
     // the hull, in counterclockwise order hull[1] to hull[m]
     std::vector<Point_2d> hull = new Point_2d[m + 1];
@@ -34,7 +34,7 @@ Furthest_pair::Furthest_pair(std::vector<Point_2d>& points)
     // k = farthest vertex from edge from hull[1] to hull[m]
     int k = 2;
     while (Point_2d.area2(hull[m], hull[1], hull[k + 1]) > Point_2d.area2(hull[m], hull[1], hull[k])) {
-        k++;
+        ++k;
     }
 
     int j = k;
@@ -46,7 +46,7 @@ Furthest_pair::Furthest_pair(std::vector<Point_2d>& points)
             bestDistanceSquared = hull[i].distanceSquaredTo(hull[j]);
         }
         while ((j < m) && Point_2d.area2(hull[i], hull[i + 1], hull[j + 1]) > Point_2d.area2(hull[i], hull[i + 1], hull[j])) {
-            j++;
+            ++j;
             // Std_out::print_line(hull[i] + " and " + hull[j] + " are antipodal");
             double distanceSquared = hull[i].distanceSquaredTo(hull[j]);
             if (distanceSquared > bestDistanceSquared) {

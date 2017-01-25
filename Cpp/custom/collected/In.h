@@ -33,7 +33,7 @@ public:
 
     std::string read_line();
 
-    char readChar();
+    char read_char();
 
     std::string readAll();
 
@@ -43,13 +43,13 @@ public:
 
     double read_double();
 
-    float readFloat();
+    float read_float();
 
-    long readLong();
+    long read_long();
 
-    short readShort();
+    short read_short();
 
-    char readByte();
+    char read_byte();
 
     bool read_boolean();
 

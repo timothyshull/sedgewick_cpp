@@ -26,7 +26,7 @@ int Directed_dfs::count()
 
 void Directed_dfs::dfs(Digraph& G, int v)
 {
-    count++;
+    ++count;
     marked[v] = true;
     for (int w : G.adj(v)) {
         if (!marked[w]) { dfs(G, w); }

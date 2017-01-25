@@ -28,7 +28,7 @@ void ::Run_length::compress()
                 run = 0;
                 Binary_std_out::write(run, LG_R);
             }
-            run++;
+            ++run;
         }
     }
     Binary_std_out::write(run, LG_R);

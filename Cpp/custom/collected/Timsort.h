@@ -129,12 +129,12 @@ private:
 
         if (c.compare(a[run_hi++], a[lo]) < 0) {
             while (run_hi < hi && c.compare(a[run_hi], a[run_hi - 1]) < 0) {
-                run_hi++;
+                ++run_hi;
             }
             _reverse_range(a, lo, run_hi);
         } else {
             while (run_hi < hi && c.compare(a[run_hi], a[run_hi - 1]) >= 0) {
-                run_hi++;
+                ++run_hi;
             }
         }
         return run_hi - lo;
@@ -165,7 +165,7 @@ private:
     {
         _run_base[_stack_size] = rb;
         _run_length[_stack_size] = rl;
-        _stack_size++;
+        ++_stack_size;
     }
 
     void _merge_collapse()
@@ -371,14 +371,14 @@ private:
                 if (_debug) { utility::assert(len1 > 1 && len2 > 0, ""); }
                 if (new_c.compare(new_a[cursor2], new_tmp[cursor1]) < 0) {
                     new_a[dest++] = new_a[cursor2++];
-                    count2++;
+                    ++count2;
                     count1 = 0;
                     if (--len2 == 0) {
                         goto end_outer;
                     }
                 } else {
                     new_a[dest++] = new_tmp[cursor1++];
-                    count1++;
+                    ++count1;
                     count2 = 0;
                     if (--len1 == 1) {
                         goto end_outer;
@@ -470,14 +470,14 @@ private:
                 if (_debug) { utility::assert(len1 > 0 && len2 > 1, ""); }
                 if (new_c.compare(new_tmp[cursor2], new_a[cursor1]) < 0) {
                     new_a[dest--] = new_a[cursor1--];
-                    count1++;
+                    ++count1;
                     count2 = 0;
                     if (--len1 == 0) {
                         goto end_outer;
                     }
                 } else {
                     new_a[dest--] = new_tmp[cursor2--];
-                    count2++;
+                    ++count2;
                     count1 = 0;
                     if (--len2 == 1) {
                         goto end_outer;
@@ -549,7 +549,7 @@ private:
             new_size |= new_size >> 4;
             new_size |= new_size >> 8;
             new_size |= new_size >> 16;
-            new_size++;
+            ++new_size;
             if (new_size < 0) {
                 new_size = min_capacity;
             } else {

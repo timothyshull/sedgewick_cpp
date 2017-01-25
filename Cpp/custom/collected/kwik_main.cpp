@@ -1,22 +1,37 @@
+#include "In.h"
+#include "Std_in.h"
+#include "Std_out.h"
+#include "Suffix_array.h"
+#include "utility.h"
+
 int main(int argc, char* argv[])
 {
     In in{argv[1]};
-    int context = utility::safe_convert_integer(argv[1]);
+    int context = utility::str_to_num(argv[1]);
 
-    std::string text = in.readAll().replaceAll("\\s+", " ");
-    int n = text.length();
+    std::vector<std::string> all_strings = in.readAllStrings();
+    std::stringstream ss;
+    for (auto s : all_strings) {
+        ss << s << " ";
+    }
+    std::string text{ss.str()};
+    int n{text.length()};
 
-    SuffixArray sa = new SuffixArray(text);
+    Suffix_array sa{text};
 
-    while (Std_in::hasNextLine()) {
+    int from1;
+    int to1;
+    int from2;
+    int to2;
+    while (!Std_in::is_empty()) {
         std::string query = Std_in::read_line();
         for (int i = sa.rank(query); i < n; ++i) {
-            int from1 = sa.index(i);
-            int to1 = std::min(n, from1 + query.length());
-            if (!query.equals(text.substring(from1, to1))) { break; }
-            int from2 = std::max(0, sa.index(i) - context);
-            int to2 = std::min(n, sa.index(i) + context + query.length());
-            Std_out::print_line(text.substring(from2, to2));
+            from1 = sa.index(i);
+            to1 = std::min(n, from1 + query.length());
+            if (query != text.substr(from1, to1)) { break; }
+            from2 = std::max(0, sa.index(i) - context);
+            to2 = std::min(n, sa.index(i) + context + query.length());
+            Std_out::print_line(text.substr(from2, to2));
         }
         Std_out::print_line();
     }

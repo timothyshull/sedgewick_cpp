@@ -215,7 +215,7 @@ int size() {
     void insert(Key key) {
         Node x = new Node();
         x.key = key;
-        size++;
+        ++size;
         head = insert(x, head);
         if (min == null) min = head;
         else min = (greater(min.key, key)) ? head : min;

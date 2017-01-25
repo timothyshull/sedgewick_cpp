@@ -73,7 +73,7 @@ void Edge_weighted_graph::add_edge(Edge& e)
     validateVertex(w);
     adj[v].add(e);
     adj[w].add(e);
-    E++;
+    ++E;
 }
 
 std::vector<Edge> Edge_weighted_graph::adj(int v)
@@ -100,7 +100,7 @@ std::vector<Edge> Edge_weighted_graph::edges()
                 // only add one copy of each self loop (self loops will be consecutive)
             else if (e.other(v) == v) {
                 if (selfLoops % 2 == 0) { list.add(e); }
-                selfLoops++;
+                ++selfLoops;
             }
         }
     }

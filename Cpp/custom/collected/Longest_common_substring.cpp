@@ -35,8 +35,8 @@ std::string Longest_common_substring::lcs(std::string& s, std::string& t){
         int q = suffix2.index(j);
         std::string x = lcp(s, p, t, q);
         if (x.length() > lcs.length()) lcs = x;
-        if (compare(s, p, t, q) < 0) i++;
-        else j++;
+        if (compare(s, p, t, q) < 0) ++i;
+        else ++j;
     }
     return lcs;
 }

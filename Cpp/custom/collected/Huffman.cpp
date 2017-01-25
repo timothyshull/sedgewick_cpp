@@ -123,7 +123,7 @@ Huffman::Raw_node_pointer Huffman::readTrie()
 {
     bool isLeaf = Binary_std_in::read_boolean();
     if (isLeaf) {
-        return new Node(Binary_std_in::readChar(), -1, null, null);
+        return new Node(Binary_std_in::read_char(), -1, null, null);
     } else {
         return new Node('\0', -1, readTrie(), readTrie());
     }

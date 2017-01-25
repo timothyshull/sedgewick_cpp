@@ -109,7 +109,7 @@ bool Bellman_ford_sp::check(Edge_weighted_digraph, int)
         // no negative cycle reachable from source
     else {
 
-        // check that distance_to[v] and edgeTo[v] are consistent
+        // check that _distance_to[v] and edgeTo[v] are consistent
         if (distance_to[s] != 0.0 || edgeTo[s] != null) {
             System.err.print_line("distanceTo[s] and edgeTo[s] inconsistent");
             return false;
@@ -117,12 +117,12 @@ bool Bellman_ford_sp::check(Edge_weighted_digraph, int)
         for (int v = 0; v < G.num_vertices(); ++v) {
             if (v == s) { continue; }
             if (edgeTo[v] == null && distance_to[v] != Double.POSITIVE_INFINITY) {
-                System.err.print_line("distance_to[] and edgeTo[] inconsistent");
+                System.err.print_line("_distance_to[] and edgeTo[] inconsistent");
                 return false;
             }
         }
 
-        // check that all edges e = v->w satisfy distance_to[w] <= distance_to[v] + e.weight()
+        // check that all edges e = v->w satisfy _distance_to[w] <= _distance_to[v] + e.weight()
         for (int v = 0; v < G.num_vertices(); ++v) {
             for (Directed_edge e : G.adj(v)) {
                 int w = e.to();
@@ -133,7 +133,7 @@ bool Bellman_ford_sp::check(Edge_weighted_digraph, int)
             }
         }
 
-        // check that all edges e = v->w on SPT satisfy distance_to[w] == distance_to[v] + e.weight()
+        // check that all edges e = v->w on SPT satisfy _distance_to[w] == _distance_to[v] + e.weight()
         for (int w = 0; w < G.num_vertices(); ++w) {
             if (edgeTo[w] == null) { continue; }
             Directed_edge e = edgeTo[w];

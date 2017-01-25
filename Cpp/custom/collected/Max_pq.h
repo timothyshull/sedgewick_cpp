@@ -98,7 +98,7 @@ private:
     {
         while (2 * k <= _size) {
             int j = 2 * k;
-            if (j < _size && _less(j, j + 1)) { j++; }
+            if (j < _size && _less(j, j + 1)) { ++j; }
             if (!_less(k, j)) { break; }
             _exch(k, j);
             k = j;

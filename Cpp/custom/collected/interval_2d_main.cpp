@@ -1,24 +1,35 @@
+#include "Counter.h"
+#include "Std_random.h"
+#include "Interval_1d.h"
+#include "Interval_2d.h"
+#include "Std_out.h"
+
 int main(int argc, char* argv[])
 {
-    double xmin = Double.parseDouble(argv[1]);
-    double xmax = Double.parseDouble(argv[2]);
-    double ymin = Double.parseDouble(argv[3]);
-    double ymax = Double.parseDouble(argv[4]);
-    int trials = utility::safe_convert_integer(argv[5]);
+    double x_min{utility::str_to_num<double>(argv[1])};
+    double x_max{utility::str_to_num<double>(argv[2])};
+    double y_min{utility::str_to_num<double>(argv[3])};
+    double y_max{utility::str_to_num<double>(argv[4])};
+    int trials{utility::str_to_num<int>(argv[5])};
 
-    Interval1D xInterval = new Interval1D(xmin, xmax);
-    Interval1D yInterval = new Interval1D(ymin, ymax);
-    Interval2D box = new Interval2D(xInterval, yInterval);
+    Interval_1d x_interval{x_min, x_max};
+    Interval_1d y_interval{y_min, y_max};
+    Interval_2d box{x_interval, y_interval};
     box.draw();
 
-    Counter counter = new Counter("hits");
+    Counter counter{"hits"};
+    double x;
+    double y;
     for (int t = 0; t < trials; ++t) {
-        double x = Std_random::uniform(0.0, 1.0);
-        double y = Std_random::uniform(0.0, 1.0);
-        Point_2d point = new Point_2d(x, y);
+        x = Std_random::uniform(0.0, 1.0);
+        y = Std_random::uniform(0.0, 1.0);
+        Point_2d point = Point_2d{x, y};
 
-        if (box.contains(point)) { counter.increment(); }
-        else { point.draw(); }
+        if (box.contains(point)) {
+            counter.increment();
+        } else {
+            point.draw();
+        }
     }
 
     Std_out::print_line(counter);

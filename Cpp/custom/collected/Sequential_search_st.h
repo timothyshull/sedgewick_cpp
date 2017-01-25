@@ -75,7 +75,7 @@ public:
             }
         }
         first = new Node(key, val, first);
-        n++;
+        ++n;
     }
 
     void remove(Key key)

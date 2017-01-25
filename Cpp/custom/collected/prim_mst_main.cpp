@@ -1,7 +1,13 @@
-int main(int argc, char *argv[]) {
+#include "In.h"
+#include "Edge_weighted_graph.h"
+#include "Std_out.h"
+#include "Prim_mst.h"
+
+int main(int argc, char* argv[])
+{
     In in{argv[1]};
-    Edge_weighted_graph G = new Edge_weighted_graph(in);
-    PrimMST mst = new PrimMST(G);
+    Edge_weighted_graph edge_weighted_graph{in};
+    Prim_mst mst{edge_weighted_graph};
     for (Edge e : mst.edges()) {
         Std_out::print_line(e);
     }

@@ -24,7 +24,7 @@ namespace Insertion_sort_x {
         for (int i = n - 1; i > 0; i--) {
             if (less(a[i], a[i - 1])) {
                 exch<T>(a, i, i - 1);
-                exchanges++;
+                ++exchanges;
             }
         }
         if (exchanges == 0) { return; }

@@ -106,22 +106,22 @@ bool Breadth_first_paths::check(Graph& G, int s)
             }
             if (has_path_to(v) && (distance_to[w] > distance_to[v] + 1)) {
                 Std_out::print_line("edge " + v + "-" + w);
-                Std_out::print_line("distance_to[" + v + "] = " + distance_to[v]);
-                Std_out::print_line("distance_to[" + w + "] = " + distance_to[w]);
+                Std_out::print_line("_distance_to[" + v + "] = " + distance_to[v]);
+                Std_out::print_line("_distance_to[" + w + "] = " + distance_to[w]);
                 return false;
             }
         }
     }
 
-    // check that v = edgeTo[w] satisfies distance_to[w] = distance_to[v] + 1
+    // check that v = edgeTo[w] satisfies _distance_to[w] = _distance_to[v] + 1
     // provided v is reachable from s
     for (int w = 0; w < G.num_vertices(); ++w) {
         if (!has_path_to(w) || w == s) { continue; }
         int v = edgeTo[w];
         if (distance_to[w] != distance_to[v] + 1) {
             Std_out::print_line("shortest path edge " + v + "-" + w);
-            Std_out::print_line("distance_to[" + v + "] = " + distance_to[v]);
-            Std_out::print_line("distance_to[" + w + "] = " + distance_to[w]);
+            Std_out::print_line("_distance_to[" + v + "] = " + distance_to[v]);
+            Std_out::print_line("_distance_to[" + w + "] = " + distance_to[w]);
             return false;
         }
     }

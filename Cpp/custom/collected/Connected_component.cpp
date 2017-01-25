@@ -8,7 +8,7 @@ Connected_component::Connected_component(Graph& G)
     for (int v = 0; v < G.num_vertices(); ++v) {
         if (!marked[v]) {
             dfs(G, v);
-            count++;
+            ++count;
         }
     }
 }

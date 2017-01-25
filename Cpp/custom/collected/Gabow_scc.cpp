@@ -37,7 +37,7 @@ int Gabow_scc::id(int v)
 void Gabow_scc::dfs(Digraph& G, int v)
 {
     marked[v] = true;
-    preorder[v] = pre++;
+    preorder[v] = ++pre;
     stack1.push(v);
     stack2.push(v);
     for (int w : G.adj(v)) {
@@ -57,7 +57,7 @@ void Gabow_scc::dfs(Digraph& G, int v)
             w = stack1.pop();
             id[w] = count;
         } while (w != v);
-        count++;
+        ++count;
     }
 }
 

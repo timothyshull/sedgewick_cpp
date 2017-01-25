@@ -44,7 +44,7 @@ public:
     }
 
     void put(String key, Value val) {
-        if (!contains(key)) n++;
+        if (!contains(key)) ++n;
         root = put(root, key, val, 0);
     }
 
@@ -58,7 +58,7 @@ public:
             if (c < x.c) x = x.left;
             else if (c > x.c) x = x.right;
             else {
-                i++;
+                ++i;
                 if (x.val != null) length = i;
                 x = x.mid;
             }

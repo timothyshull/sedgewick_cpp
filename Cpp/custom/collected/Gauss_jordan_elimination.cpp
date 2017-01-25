@@ -140,7 +140,7 @@ void Gauss_jordan_elimination::pivot(int p, int q)
     for (int i = 0; i < n; ++i)
         if (i != p) a[i][q] = 0.0;
 
-    // scale row p (ok to go from q+1 to n, but do this for consistency with simplex pivot)
+    // scale row p (ok to go from q+1 to _size, but do this for consistency with simplex pivot)
     for (int j = 0; j <= n + n; ++j)
         if (j != q) a[p][j] /= a[p][q];
     a[p][q] = 1.0;

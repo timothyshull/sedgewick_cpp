@@ -4,7 +4,7 @@
 int main(int argc, char* argv[])
 {
     while (!Binary_std_in::is_empty()) {
-        char c = Binary_std_in::readChar();
+        char c = Binary_std_in::read_char();
         Binary_std_out::write(c);
     }
     Binary_std_out::flush();

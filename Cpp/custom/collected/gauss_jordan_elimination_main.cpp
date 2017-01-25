@@ -1,37 +1,51 @@
-int main(int argc, char *argv[]) {
-    test1();
-    test2();
-    test3();
-    test4();
-    test5();
-    test6();
+#include "Std_random.h"
+#include "Gauss_jordan_elimination.h"
 
-    // n-by-n random system (likely full rank)
-    int n = utility::safe_convert_integer(argv[1]);
-    std::vector<std::vector<double>> A = new double[n][n];
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < n; ++j)
-            A[i][j] = Std_random::uniform(1000);
-    std::vector<double> b = new double[n];
-    for (int i = 0; i < n; ++i)
+int main(int argc, char* argv[])
+{
+    Gauss_jordan_elimination::test1();
+    Gauss_jordan_elimination::test2();
+    Gauss_jordan_elimination::test3();
+    Gauss_jordan_elimination::test4();
+    Gauss_jordan_elimination::test5();
+    Gauss_jordan_elimination::test6();
+
+    int n{utility::str_to_num(argv[1])};
+    std::vector<std::vector<double>> a;
+    a.reserve(n);
+    for (int i = 0; i < n; ++i) {
+        a[i] = std::vector<double>{};
+        a[i].reserve(n);
+        for (int j = 0; j < n; ++j) {
+            a[i][j] = Std_random::uniform(1000);
+        }
+    }
+    std::vector<double> b;
+    b.reserve(n);
+    for (int i = 0; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
-    test("random " + n + "-by-" + n + " (likely full rank)", A, b);
+    }
+    Gauss_jordan_elimination::test("random " + n + "-by-" + n + " (likely full rank)", a, b);
 
-
-    // n-by-n random system (likely infeasible)
-    A = new double[n][n];
-    for (int i = 0; i < n - 1; ++i)
-        for (int j = 0; j < n; ++j)
-            A[i][j] = Std_random::uniform(1000);
+    a.clear();
+    a.reserve(n);
+    for (int i = 0; i < n - 1; ++i) {
+        a[i] = std::vector<double>{};
+        a[i].reserve(n);
+        for (int j = 0; j < n; ++j) {
+            a[i][j] = Std_random::uniform(1000);
+        }
+    }
     for (int i = 0; i < n - 1; ++i) {
         double alpha = Std_random::uniform(11) - 5.0;
         for (int j = 0; j < n; ++j) {
-            A[n - 1][j] += alpha * A[i][j];
+            a[n - 1][j] += alpha * a[i][j];
         }
     }
     b = new double[n];
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
-    test("random " + n + "-by-" + n + " (likely infeasible)", A, b);
+    }
+    Gauss_jordan_elimination::test("random " + n + "-by-" + n + " (likely infeasible)", a, b);
     return 0;
 }

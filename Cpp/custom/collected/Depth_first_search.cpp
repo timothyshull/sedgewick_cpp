@@ -18,7 +18,7 @@ int Depth_first_search::count()
 
 void Depth_first_search::dfs(Graph& G, int v)
 {
-    count++;
+    ++count;
     marked[v] = true;
     for (int w : G.adj(v)) {
         if (!marked[w]) {

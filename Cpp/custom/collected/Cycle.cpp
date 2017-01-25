@@ -56,7 +56,7 @@ bool Cycle::hasParallelEdges(Graph& G)
             marked[w] = true;
         }
 
-        // reset so marked[v] = false for all v
+        // reset so _marked[v] = false for all v
         for (int w : G.adj(v)) {
             marked[w] = false;
         }

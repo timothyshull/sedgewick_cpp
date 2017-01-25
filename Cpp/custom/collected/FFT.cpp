@@ -14,7 +14,7 @@ std::vector<Complex> FFT::fft(std::vector<Complex>& x)
 
     // radix 2 Cooley-Tukey FFT
     if (n % 2 != 0) {
-        throw utility::Illegal_argument_exception("n is not a power of 2");
+        throw utility::Illegal_argument_exception("_size is not a power of 2");
     }
 
     // fft of even terms
@@ -60,7 +60,7 @@ std::vector<Complex> FFT::ifft(std::vector<Complex>& x)
         y[i] = y[i].conjugate();
     }
 
-    // divide by n
+    // divide by _size
     for (int i = 0; i < n; ++i) {
         y[i] = y[i].scale(1.0 / n);
     }

@@ -29,7 +29,7 @@ int ::Three_sum_fast::count(std::vector<int>& a)
     for (int i = 0; i < n; ++i) {
         for (int j = i + 1; j < n; ++j) {
             int k = Arrays.binarySearch(a, -(a[i] + a[j]));
-            if (k > j) count++;
+            if (k > j) ++count;
         }
     }
     return count;

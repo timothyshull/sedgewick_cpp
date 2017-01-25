@@ -4,6 +4,7 @@
 #include <vector>
 #include <deque>
 #include "Graph.h"
+#include "Bipartite_x.h"
 
 class Hopcroft_karp {
 public:
@@ -11,35 +12,37 @@ public:
 
     int mate(int v);
 
-    bool isMatched(int v);
+    bool is_matched(int v);
 
     int size();
 
-    bool isPerfect();
+    bool is_perfect();
 
-    bool inMinVertexCover(int v);
-
-private:
-    const static int UNMATCHED = -1;
-    const int V;
-    Bipartite_x bipartition;
-    int cardinality;
-    std::vector<int> mate;
-    std::deque<bool> inMinVertexCover;
-    std::deque<bool> marked;
-    std::vector<int> distance_to;
+    bool in_min_vertex_cover(int v);
 
     std::string to_string(std::vector<int>& path);
 
-    bool isLevelGraphEdge(int v, int w);
+private:
+    const static int _unmatched = -1;
+    const int _num_vertices;
+    Bipartite_x _bipartition;
+    int cardinality;
+    std::vector<int> _mate;
+    std::deque<bool> _in_min_vertex_cover;
+    std::deque<bool> _marked;
+    std::vector<int> _distance_to;
 
-    bool isResidualGraphEdge(int v, int w);
+    bool _is_level_graph_edge(int v, int w);
 
-    bool hasAugmentingPath(Graph& G);
+    bool _is_residual_graph_edge(int v, int w);
+
+    bool _has_augmenting_path(Graph& G);
 
     void validate(int v);
 
-    bool certifySolution(Graph& G);
+    bool _certify_solution(Graph& G);
 };
+
+std::ostream& operator<<(std::ostream& os, Hopcroft_karp& out);
 
 #endif // HOPCROFT_KARP_H

@@ -18,16 +18,16 @@ Nonrecursive_directed_dfs::Nonrecursive_directed_dfs(Digraph& G, int s)
         int v = stack.peek();
         if (adj[v].hasNext()) {
             int w = adj[v].next();
-            // Std_out::printf("check %d\n", w);
+            // Std_out::printf("check %d\_size", w);
             if (!marked[w]) {
                 // discovered vertex w for the first time
                 marked[w] = true;
                 // edgeTo[w] = v;
                 stack.push(w);
-                // Std_out::printf("dfs(%d)\n", w);
+                // Std_out::printf("dfs(%d)\_size", w);
             }
         } else {
-            // Std_out::printf("%d done\n", v);
+            // Std_out::printf("%d done\_size", v);
             stack.pop();
         }
     }

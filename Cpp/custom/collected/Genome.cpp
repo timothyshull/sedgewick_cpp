@@ -21,7 +21,7 @@ void ::Genome::expand()
     int n = Binary_std_in::read_int();
     // Read two bits; write char.
     for (int i = 0; i < n; ++i) {
-        char c = Binary_std_in::readChar(2);
+        char c = Binary_std_in::read_char(2);
         Binary_std_out::write(DNA.toChar(c), 8);
     }
     Binary_std_out::close();

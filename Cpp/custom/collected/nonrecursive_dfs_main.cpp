@@ -1,10 +1,16 @@
+#include "Std_out.h"
+#include "Graph.h"
+#include "In.h"
+#include "utility.h"
+#include "Nonrecursive_dfs.h"
+
 int main(int argc, char* argv[])
 {
     In in{argv[1]};
-    Graph G = new Graph(in);
-    int s = utility::safe_convert_integer(argv[1]);
-    NonrecursiveDFS dfs = new NonrecursiveDFS(G, s);
-    for (int v = 0; v < G.num_vertices(); ++v) {
+    Graph graph{in};
+    int s = utility::str_to_num(argv[1]);
+    Nonrecursive_dfs dfs{graph, s};
+    for (int v = 0; v < graph.num_vertices(); ++v) {
         if (dfs.marked(v)) {
             Std_out::print(v + " ");
         }

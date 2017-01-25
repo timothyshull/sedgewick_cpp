@@ -16,7 +16,7 @@ Lazy_prim_mst::Lazy_prim_mst(Edge_weighted_graph& G)
 void Lazy_prim_mst::prim(Edge_weighted_graph& G, int s)
 {
     scan(G, s);
-    while (!pq.is_empty()) {                        // better to stop when mst has V-1 edges
+    while (!pq.is_empty()) {                        // better to stop when mst has _num_vertices-1 edges
         Edge e = pq.delMin();                      // smallest edge on pq
         int v = e.either(), w = e.other(v);        // two endpoints
         assert

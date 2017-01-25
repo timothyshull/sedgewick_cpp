@@ -1,7 +1,7 @@
 int main(int argc, char *argv[]) {
     int n = utility::safe_convert_integer(argv[1]);
 
-    // sum of square roots of integers from 1 to n using std::sqrt(x).
+    // sum of square roots of integers from 1 to _size using std::sqrt(x).
     Stopwatch timer1 = new Stopwatch();
     double sum1 = 0.0;
     for (int i = 1; i <= n; ++i) {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     double time1 = timer1.elapsedTime();
     Std_out::printf("%e (%.2f seconds)\n", sum1, time1);
 
-    // sum of square roots of integers from 1 to n using std::pow(x, 0.5).
+    // sum of square roots of integers from 1 to _size using std::pow(x, 0.5).
     Stopwatch timer2 = new Stopwatch();
     double sum2 = 0.0;
     for (int i = 1; i <= n; ++i) {
