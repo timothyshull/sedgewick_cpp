@@ -7,7 +7,9 @@ namespace Graph_generator {
     class Edge {
     public:
         Edge(int v, int w);
+
         bool operator<(Edge& rhs);
+
     private:
         int v;
         int w;
@@ -19,7 +21,7 @@ namespace Graph_generator {
 
     Graph complete(int V);
 
-    Graph compleBipartitie(int V1, int V2);
+    Graph complete_bipartite(int V1, int V2);
 
     Graph bipartite(int V1, int V2, int E);
 
@@ -27,13 +29,13 @@ namespace Graph_generator {
 
     Graph path(int V);
 
-    Graph binaryTree(int V);
+    Graph binary_tree(int V);
 
     Graph cycle(int V);
 
-    Graph eulerianCycle(int V, int E);
+    Graph eulerian_cycle(int V, int E);
 
-    Graph eulerianPath(int V, int E);
+    Graph eulerian_path(int V, int E);
 
     Graph wheel(int V);
 

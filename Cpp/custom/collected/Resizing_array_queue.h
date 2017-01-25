@@ -42,7 +42,7 @@ public:
         first++;
         if (first == q.length) { first = 0; }           // wrap-around
         // shrink size of array if necessary
-        if (n > 0 && n == q.length / 4) resize(q.length / 2);
+        if (n > 0 && n == q.size() / 4) resize(q.size() / 2);
         return item;
     }
 

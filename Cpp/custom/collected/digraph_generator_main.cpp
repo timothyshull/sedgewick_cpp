@@ -4,8 +4,8 @@
 
 int main(int argc, char* argv[])
 {
-    int num_vertices{utility::safe_convert_integer(argv[1])};
-    int num_edges{utility::safe_convert_integer(argv[2])};
+    int num_vertices{utility::str_to_num(argv[1])};
+    int num_edges{utility::str_to_num(argv[2])};
     Std_out::print_line("complete graph");
     Std_out::print_line(Digraph_generator::complete(num_vertices));
     Std_out::print_line();

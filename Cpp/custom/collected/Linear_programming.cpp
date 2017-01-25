@@ -5,7 +5,7 @@ Linear_programming::Linear_programming(std::vector<std::vector<double>>& A, std:
     m = b.length;
     n = c.length;
     for (int i = 0; i < m; ++i)
-        if (!(b[i] >= 0)) throw new IllegalArgumentException("RHS must be nonnegative");
+        if (!(b[i] >= 0)) throw utility::Illegal_argument_exception("RHS must be nonnegative");
 
     a = new double[m + 1][n + m + 1];
     for (int i = 0; i < m; ++i)
@@ -181,7 +181,7 @@ bool Linear_programming::isOptimal(std::vector<double>& b, std::vector<double>& 
     double value2 = 0.0;
     for (int i = 0; i < y.length; ++i)
         value2 += y[i] * b[i];
-    if (Math.abs(value - value1) > EPSILON || Math.abs(value - value2) > EPSILON) {
+    if (std::abs(value - value1) > EPSILON || std::abs(value - value2) > EPSILON) {
         Std_out::print_line("value = " + value + ", cx = " + value1 + ", yb = " + value2);
         return false;
     }

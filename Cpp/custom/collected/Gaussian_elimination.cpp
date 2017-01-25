@@ -5,7 +5,7 @@ Gaussian_elimination::Gaussian_elimination(std::vector<std::vector<double>>& A, 
     m = A.length;
     n = A[0].length;
 
-    if (b.length != m) throw new IllegalArgumentException("Dimensions disagree");
+    if (b.size() != m) throw utility::Illegal_argument_exception("Dimensions disagree");
 
     // build augmented matrix
     a = new double[m][n + 1];
@@ -23,15 +23,15 @@ Gaussian_elimination::Gaussian_elimination(std::vector<std::vector<double>>& A, 
 std::vector<double> Gaussian_elimination::primal()
 {
     std::vector<double> x = new double[n];
-    for (int i = Math.min(n - 1, m - 1); i >= 0; i--) {
+    for (int i = std::min(n - 1, m - 1); i >= 0; i--) {
         double sum = 0.0;
         for (int j = i + 1; j < n; ++j) {
             sum += a[i][j] * x[j];
         }
 
-        if (Math.abs(a[i][i]) > EPSILON)
+        if (std::abs(a[i][i]) > EPSILON)
             x[i] = (a[i][n] - sum) / a[i][i];
-        else if (Math.abs(a[i][n] - sum) > EPSILON)
+        else if (std::abs(a[i][n] - sum) > EPSILON)
             return null;
     }
 
@@ -41,7 +41,7 @@ std::vector<double> Gaussian_elimination::primal()
         for (int j = 0; j < n; ++j) {
             sum += a[i][j] * x[j];
         }
-        if (Math.abs(a[i][n] - sum) > EPSILON)
+        if (std::abs(a[i][n] - sum) > EPSILON)
             return null;
     }
     return x;
@@ -54,12 +54,12 @@ bool Gaussian_elimination::isFeasible()
 
 void Gaussian_elimination::forwardElimination()
 {
-    for (int p = 0; p < Math.min(m, n); ++p) {
+    for (int p = 0; p < std::min(m, n); ++p) {
 
         // find pivot row using partial pivoting
         int max = p;
         for (int i = p + 1; i < m; ++i) {
-            if (Math.abs(a[i][p]) > Math.abs(a[max][p])) {
+            if (std::abs(a[i][p]) > std::abs(a[max][p])) {
                 max = i;
             }
         }
@@ -68,7 +68,7 @@ void Gaussian_elimination::forwardElimination()
         swap(p, max);
 
         // singular or nearly singular
-        if (Math.abs(a[p][p]) <= EPSILON) {
+        if (std::abs(a[p][p]) <= EPSILON) {
             continue;
         }
 
@@ -103,7 +103,7 @@ bool Gaussian_elimination::certifySolution(std::vector<std::vector<double>>& A, 
         for (int j = 0; j < n; ++j) {
             sum += A[i][j] * x[j];
         }
-        if (Math.abs(sum - b[i]) > EPSILON) {
+        if (std::abs(sum - b[i]) > EPSILON) {
             Std_out::print_line("not feasible");
             Std_out::print_line("b[" + i + "] = " + b[i] + ", sum = " + sum);
             return false;

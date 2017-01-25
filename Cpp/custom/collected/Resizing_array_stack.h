@@ -32,7 +32,7 @@ Item pop() {
         a[n - 1] = null;                              // to avoid loitering
         n--;
         // shrink size of array if necessary
-        if (n > 0 && n == a.length / 4) resize(a.length / 2);
+        if (n > 0 && n == a.size() / 4) resize(a.size() / 2);
         return item;
     }
 

@@ -6,8 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-    int n = utility::safe_convert_integer(argv[1]);
-    int trials = utility::safe_convert_integer(argv[2]);
+    int n = utility::str_to_num(argv[1]);
+    int trials = utility::str_to_num(argv[2]);
 
     // create _n counters
     std::vector<Counter> hits(n);

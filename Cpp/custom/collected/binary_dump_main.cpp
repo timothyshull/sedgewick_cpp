@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 {
     int bitsPerLine = 16;
     if (argc > 1) {
-        bitsPerLine = utility::safe_convert_integer(argv[1]);
+        bitsPerLine = utility::str_to_num(argv[1]);
     }
 
     int count;

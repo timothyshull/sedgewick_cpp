@@ -7,8 +7,8 @@ int main(int argc, char *argv[]) {
     test4();
     test5();
 
-    int m = utility::safe_convert_integer(argv[1]);
-    int n = utility::safe_convert_integer(argv[2]);
+    int m = utility::str_to_num(argv[1]);
+    int n = utility::str_to_num(argv[2]);
     std::vector<std::vector<double>> payoff = new double[m][n];
     for (int i = 0; i < m; ++i)
         for (int j = 0; j < n; ++j)

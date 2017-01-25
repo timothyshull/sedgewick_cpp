@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     if (argc > 1) limitPass = utility::safe_convert_integer(argv[2]);
 
     do {
-        String[] a = new String[limitItem];
+        std::vector<std::string> a = new String[limitItem];
         std::vector<int> v = new int[limitItem];
 
         Std_out::printf("Creating dataset (%d items)...\n", limitItem);

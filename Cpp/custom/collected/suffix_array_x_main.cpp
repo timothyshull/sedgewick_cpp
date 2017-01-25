@@ -7,8 +7,8 @@ int main(int argc, char *argv[]) {
         if (suffix1.index(i) != suffix2.index(i)) {
             Std_out::print_line("suffix1(" + i + ") = " + suffix1.index(i));
             Std_out::print_line("suffix2(" + i + ") = " + suffix2.index(i));
-            std::string ith = "\"" + s.substring(suffix1.index(i), Math.min(suffix1.index(i) + 50, s.length())) + "\"";
-            std::string jth = "\"" + s.substring(suffix2.index(i), Math.min(suffix2.index(i) + 50, s.length())) + "\"";
+            std::string ith = "\"" + s.substring(suffix1.index(i), std::min(suffix1.index(i) + 50, s.length())) + "\"";
+            std::string jth = "\"" + s.substring(suffix2.index(i), std::min(suffix2.index(i) + 50, s.length())) + "\"";
             Std_out::print_line(ith);
             Std_out::print_line(jth);
             check = false;
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < s.length(); ++i) {
         int index = suffix2.index(i);
-        std::string ith = "\"" + s.substring(index, Math.min(index + 50, s.length())) + "\"";
+        std::string ith = "\"" + s.substring(index, std::min(index + 50, s.length())) + "\"";
         int rank = suffix2.rank(s.substring(index));
         assert s.substring(index).equals(suffix2.select(i));
         if (i == 0) {

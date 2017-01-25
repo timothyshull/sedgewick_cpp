@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 
     while (in.hasNextLine()) {
         std::string line = in.read_line();
-        String[] fields = line.split(separator);
+        std::vector<std::string> fields = line.split(separator);
         std::string key = fields[0];
         for (int i = 1; i < fields.length; ++i) {
             std::string val = fields[i];

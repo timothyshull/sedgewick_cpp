@@ -1,8 +1,8 @@
 int main(int argc, char *argv[]) {
-    int V = utility::safe_convert_integer(argv[1]);
+    int num_vertices = utility::safe_convert_integer(argv[1]);
     int E = utility::safe_convert_integer(argv[2]);
-    int V1 = V / 2;
-    int V2 = V - V1;
+    int V1 = num_vertices / 2;
+    int V2 = num_vertices - V1;
 
     Std_out::print_line("complete graph");
     Std_out::print_line(complete(V));

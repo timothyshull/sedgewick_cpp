@@ -12,10 +12,10 @@ int main(int argc, char* argv[])
         std::string query = Std_in::read_line();
         for (int i = sa.rank(query); i < n; ++i) {
             int from1 = sa.index(i);
-            int to1 = Math.min(n, from1 + query.length());
+            int to1 = std::min(n, from1 + query.length());
             if (!query.equals(text.substring(from1, to1))) { break; }
-            int from2 = Math.max(0, sa.index(i) - context);
-            int to2 = Math.min(n, sa.index(i) + context + query.length());
+            int from2 = std::max(0, sa.index(i) - context);
+            int to2 = std::min(n, sa.index(i) + context + query.length());
             Std_out::print_line(text.substring(from2, to2));
         }
         Std_out::print_line();

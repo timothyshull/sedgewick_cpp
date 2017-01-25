@@ -12,7 +12,7 @@ Patricia_set::Patricia_set() : count{0}
 void Patricia_set::add(std::string& key)
 {
     if (key == null) throw new NullPointerException("called add(null)");
-    if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+    if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
     Node p;
     Node x = head;
     do {
@@ -45,7 +45,7 @@ void Patricia_set::add(std::string& key)
 bool Patricia_set::contains(std::string& key)
 {
     if (key == null) throw new NullPointerException("called contains(null)");
-    if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+    if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
     Node p;
     Node x = head;
     do {
@@ -59,7 +59,7 @@ bool Patricia_set::contains(std::string& key)
 void Patricia_set::remove(std::string& key)
 {
     if (key == null) throw new NullPointerException("called delete(null)");
-    if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+    if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
     Node g;             // previous previous (grandparent)
     Node p = head;      // previous (parent)
     Node x = head;      // node to delete

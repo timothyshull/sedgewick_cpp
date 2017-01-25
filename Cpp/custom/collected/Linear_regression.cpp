@@ -2,8 +2,8 @@
 
 Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>& y)
 {
-    if (x.length != y.length) {
-        throw new IllegalArgumentException("array lengths are not equal");
+    if (x.size() != y.length) {
+        throw utility::Illegal_argument_exception("array lengths are not equal");
     }
     n = x.length;
 
@@ -60,12 +60,12 @@ double Linear_regression::R2()
 
 double Linear_regression::interceptStdErr()
 {
-    return Math.sqrt(svar0);
+    return std::sqrt(svar0);
 }
 
 double Linear_regression::slopeStdErr()
 {
-    return Math.sqrt(svar1);
+    return std::sqrt(svar1);
 }
 
 double Linear_regression::predict()

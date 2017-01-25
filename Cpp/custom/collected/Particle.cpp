@@ -52,7 +52,7 @@ double Particle::timeToHit(Particle& that)
     double d = (dvdr * dvdr) - dvdv * (drdr - sigma * sigma);
     // if (drdr < sigma*sigma) Std_out::print_line("overlapping particles");
     if (d < 0) return INFINITY;
-    return -(dvdr + Math.sqrt(d)) / dvdv;
+    return -(dvdr + std::sqrt(d)) / dvdv;
 }
 
 double Particle::timeToHitVerticalWall()

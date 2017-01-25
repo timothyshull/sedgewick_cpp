@@ -7,9 +7,9 @@
 
 int main(int argc, char* argv[])
 {
-    int num_vertices{utility::safe_convert_integer(argv[1])};
-    int num_edges{utility::safe_convert_integer(argv[2])};
-    int additional_edges{utility::safe_convert_integer(argv[3])};
+    int num_vertices{utility::str_to_num(argv[1])};
+    int num_edges{utility::str_to_num(argv[2])};
+    int additional_edges{utility::str_to_num(argv[3])};
     Digraph digraph = Digraph_generator::dag(num_vertices, num_edges);
 
     int v;

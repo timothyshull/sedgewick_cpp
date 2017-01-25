@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
     In in{argv[1]};
-    int s = utility::safe_convert_integer(argv[2]);
+    int s = utility::str_to_num(argv[2]);
     Edge_weighted_digraph g{in};
 
     Bellman_ford_sp sp{g, s};

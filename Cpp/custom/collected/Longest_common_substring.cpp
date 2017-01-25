@@ -3,7 +3,7 @@
 #include "Longest_common_substring.h"
 
 std::string Longest_common_substring::lcp(std::string& s, int p, std::string& t, int q){
-    int n = Math.min(s.length() - p, t.length() - q);
+    int n = std::min(s.length() - p, t.length() - q);
     for (int i = 0; i < n; ++i) {
         if (s.charAt(p + i) != t.charAt(q + i))
             return s.substring(p, p + i);
@@ -13,7 +13,7 @@ std::string Longest_common_substring::lcp(std::string& s, int p, std::string& t,
 
 int ::Longest_common_substring::compare(std::string& s, int p, std::string& t, int q)
 {
-    int n = Math.min(s.length() - p, t.length() - q);
+    int n = std::min(s.length() - p, t.length() - q);
     for (int i = 0; i < n; ++i) {
         if (s.charAt(p + i) != t.charAt(q + i))
             return s.charAt(p + i) - t.charAt(q + i);

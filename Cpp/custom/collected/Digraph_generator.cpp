@@ -13,8 +13,8 @@ bool Edge::operator<(Edge& rhs)
 
 Digraph Digraph_generator::simple(int V, int E)
 {
-    if (E > (long) V * (V - 1)) { throw new IllegalArgumentException("Too many edges"); }
-    if (E < 0) { throw new IllegalArgumentException("Too few edges"); }
+    if (E > (long) num_vertices * (V - 1)) { throw utility::Illegal_argument_exception("Too many edges"); }
+    if (E < 0) { throw utility::Illegal_argument_exception("Too few edges"); }
     Digraph G = new Digraph(V);
     Set <Edge> set = new Set<Edge>();
     while (G.num_edges() < E) {
@@ -32,7 +32,7 @@ Digraph Digraph_generator::simple(int V, int E)
 Digraph Digraph_generator::simple(int V, double p)
 {
     if (p < 0.0 || p > 1.0) {
-        throw new IllegalArgumentException("Probability must be between 0 and 1");
+        throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
     }
     Digraph G = new Digraph(V);
     for (int v = 0; v < V; ++v) {
@@ -49,13 +49,13 @@ Digraph Digraph_generator::simple(int V, double p)
 
 Digraph Digraph_generator::complete(int V)
 {
-    return simple(V, V * (V - 1));
+    return simple(V, num_vertices * (V - 1));
 }
 
 Digraph Digraph_generator::dag(int V, int E)
 {
-    if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
-    if (E < 0) { throw new IllegalArgumentException("Too few edges"); }
+    if (E > (long) num_vertices * (V - 1) / 2) { throw utility::Illegal_argument_exception("Too many edges"); }
+    if (E < 0) { throw utility::Illegal_argument_exception("Too few edges"); }
     Digraph G = new Digraph(V);
     Set <Edge> set = new Set<Edge>();
     int
@@ -91,8 +91,8 @@ Digraph Digraph_generator::tournament(int V)
 
 Digraph Digraph_generator::rooted_in_dag(int V, int E)
 {
-    if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
-    if (E < V - 1) { throw new IllegalArgumentException("Too few edges"); }
+    if (E > (long) num_vertices * (V - 1) / 2) { throw utility::Illegal_argument_exception("Too many edges"); }
+    if (E < num_vertices - 1) { throw utility::Illegal_argument_exception("Too few edges"); }
     Digraph G = new Digraph(V);
     Set <Edge> set = new Set<Edge>();
 
@@ -106,7 +106,7 @@ Digraph Digraph_generator::rooted_in_dag(int V, int E)
     Std_random::shuffle(vertices);
 
     // one edge pointing from each vertex, other than the root = vertices[V-1]
-    for (int v = 0; v < V - 1; ++v) {
+    for (int v = 0; v < num_vertices - 1; ++v) {
         int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(v, w);
         set.add(e);
@@ -127,8 +127,8 @@ Digraph Digraph_generator::rooted_in_dag(int V, int E)
 
 Digraph Digraph_generator::rooted_out_dag(int V, int E)
 {
-    if (E > (long) V * (V - 1) / 2) { throw new IllegalArgumentException("Too many edges"); }
-    if (E < V - 1) { throw new IllegalArgumentException("Too few edges"); }
+    if (E > (long) num_vertices * (V - 1) / 2) { throw utility::Illegal_argument_exception("Too many edges"); }
+    if (E < num_vertices - 1) { throw utility::Illegal_argument_exception("Too few edges"); }
     Digraph G = new Digraph(V);
     Set <Edge> set = new Set<Edge>();
 
@@ -142,7 +142,7 @@ Digraph Digraph_generator::rooted_out_dag(int V, int E)
     Std_random::shuffle(vertices);
 
     // one edge pointing from each vertex, other than the root = vertices[V-1]
-    for (int v = 0; v < V - 1; ++v) {
+    for (int v = 0; v < num_vertices - 1; ++v) {
         int w = Std_random::uniform(v + 1, V);
         Edge e = new Edge(w, v);
         set.add(e);
@@ -163,12 +163,12 @@ Digraph Digraph_generator::rooted_out_dag(int V, int E)
 
 Digraph Digraph_generator::rooted_in_tree(int V)
 {
-    return rooted_in_dag(V, V - 1);
+    return rooted_in_dag(V, num_vertices - 1);
 }
 
 Digraph Digraph_generator::rooted_out_tree(int V)
 {
-    return rooted_out_dag(V, V - 1);
+    return rooted_out_dag(V, num_vertices - 1);
 }
 
 Digraph Digraph_generator::path(int V)
@@ -181,7 +181,7 @@ Digraph Digraph_generator::path(int V)
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i = 0; i < V - 1; ++i) {
+    for (int i = 0; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     return G;
@@ -213,7 +213,7 @@ Digraph Digraph_generator::cycle(int V)
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i = 0; i < V - 1; ++i) {
+    for (int i = 0; i < num_vertices - 1; ++i) {
         G.add_edge(vertices[i], vertices[i + 1]);
     }
     G.add_edge(vertices[V - 1], vertices[0]);
@@ -223,10 +223,10 @@ Digraph Digraph_generator::cycle(int V)
 Digraph Digraph_generator::eulerian_cycle(int V, int E)
 {
     if (E <= 0) {
-        throw new IllegalArgumentException("An Eulerian cycle must have at least one edge");
+        throw utility::Illegal_argument_exception("An Eulerian cycle must have at least one edge");
     }
     if (V <= 0) {
-        throw new IllegalArgumentException("An Eulerian cycle must have at least one vertex");
+        throw utility::Illegal_argument_exception("An Eulerian cycle must have at least one vertex");
     }
     Digraph G = new Digraph(V);
     int
@@ -245,10 +245,10 @@ Digraph Digraph_generator::eulerian_cycle(int V, int E)
 Digraph Digraph_generator::eulerian_path(int V, int E)
 {
     if (E < 0) {
-        throw new IllegalArgumentException("negative number of edges");
+        throw utility::Illegal_argument_exception("negative number of edges");
     }
     if (V <= 0) {
-        throw new IllegalArgumentException("An Eulerian path must have at least one vertex");
+        throw utility::Illegal_argument_exception("An Eulerian path must have at least one vertex");
     }
     Digraph G = new Digraph(V);
     int
@@ -265,14 +265,14 @@ Digraph Digraph_generator::eulerian_path(int V, int E)
 
 Digraph Digraph_generator::strong(int V, int E, int c)
 {
-    if (c >= V || c <= 0) {
-        throw new IllegalArgumentException("Number of components must be between 1 and V");
+    if (c >= num_vertices || c <= 0) {
+        throw utility::Illegal_argument_exception("Number of components must be between 1 and V");
     }
     if (E <= 2 * (V - c)) {
-        throw new IllegalArgumentException("Number of edges must be at least 2(V-c)");
+        throw utility::Illegal_argument_exception("Number of edges must be at least 2(V-c)");
     }
-    if (E > (long) V * (V - 1) / 2) {
-        throw new IllegalArgumentException("Too many edges");
+    if (E > (long) num_vertices * (V - 1) / 2) {
+        throw utility::Illegal_argument_exception("Too many edges");
     }
 
     // the digraph

@@ -2,7 +2,7 @@
 
 Edge_weighted_graph::Edge_weighted_graph(int V)
 {
-    if (V < 0) { throw new IllegalArgumentException("Number of vertices must be nonnegative"); }
+    if (V < 0) { throw utility::Illegal_argument_exception("Number of vertices must be nonnegative"); }
     this.V = V;
     this.E = 0;
     adj = (Bag<Edge>[])
@@ -15,11 +15,11 @@ Edge_weighted_graph::Edge_weighted_graph(int V)
 Edge_weighted_graph::Edge_weighted_graph(int V, int E)
 {
     this(V);
-    if (E < 0) { throw new IllegalArgumentException("Number of edges must be nonnegative"); }
+    if (E < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
     for (int i = 0; i < E; ++i) {
         int v = Std_random::uniform(V);
         int w = Std_random::uniform(V);
-        double weight = Math.round(100 * Std_random::uniform()) / 100.0;
+        double weight = std::round(100 * Std_random::uniform()) / 100.0;
         Edge e = new Edge(v, w, weight);
         add_edge(e);
     }
@@ -29,7 +29,7 @@ Edge_weighted_graph::Edge_weighted_graph(In& in)
 {
     this(in.read_int());
     int E = in.read_int();
-    if (E < 0) { throw new IllegalArgumentException("Number of edges must be nonnegative"); }
+    if (E < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
     for (int i = 0; i < E; ++i) {
         int v = in.read_int();
         int w = in.read_int();
@@ -93,7 +93,7 @@ std::vector<Edge> Edge_weighted_graph::edges()
     Bag <Edge> list = new Bag<Edge>();
     for (int v = 0; v < V; ++v) {
         int selfLoops = 0;
-        for (Edge e : adj(v)) {
+        for (Edge e : adjacent(v)) {
             if (e.other(v) > v) {
                 list.add(e);
             }

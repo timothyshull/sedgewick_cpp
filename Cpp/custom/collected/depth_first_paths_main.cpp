@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
     In in{argv[1]};
     Graph graph{in};
-    int s{utility::safe_convert_integer(argv[1])};
+    int s{utility::str_to_num(argv[1])};
     Depth_first_paths dfs{graph, s};
 
     for (int v = 0; v < graph.num_vertices(); ++v) {

@@ -55,7 +55,7 @@ bool Lazy_prim_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
         totalWeight += e.weight();
     }
-    if (Math.abs(totalWeight - weight()) > FLOATING_POINT_EPSILON) {
+    if (std::abs(totalWeight - weight()) > FLOATING_POINT_EPSILON) {
         System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", totalWeight, weight());
         return false;
     }

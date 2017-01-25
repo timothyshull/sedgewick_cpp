@@ -84,8 +84,8 @@ void Binary_out::write(int x, int r)
         write(x);
         return;
     }
-    if (r < 1 || r > 32) { throw new IllegalArgumentException("Illegal value for r = " + r); }
-    if (x >= (1 << r)) { throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x); }
+    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value for r = " + r); }
+    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + r + "-bit char = " + x); }
     for (int i = 0; i < r; ++i) {
         bool bit = ((x >> (r - i - 1)) & 1) == 1;
         writeBit(bit);
@@ -122,7 +122,7 @@ void Binary_out::write(short x)
 
 void Binary_out::write(char x, std::true_type)
 {
-    if (x < 0 || x >= 256) { throw new IllegalArgumentException("Illegal 8-bit char = " + x); }
+    if (x < 0 || x >= 256) { throw utility::Illegal_argument_exception("Illegal 8-bit char = " + x); }
     writeByte(x);
 }
 
@@ -132,8 +132,8 @@ void Binary_out::write(char x, int r)
         write(x);
         return;
     }
-    if (r < 1 || r > 16) { throw new IllegalArgumentException("Illegal value for r = " + r); }
-    if (x >= (1 << r)) { throw new IllegalArgumentException("Illegal " + r + "-bit char = " + x); }
+    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value for r = " + r); }
+    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + r + "-bit char = " + x); }
     for (int i = 0; i < r; ++i) {
         bool bit = ((x >> > (r - i - 1)) & 1) == 1;
         writeBit(bit);

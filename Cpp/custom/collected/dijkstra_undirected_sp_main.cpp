@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
     In in{argv[1]};
     Edge_weighted_graph edge_weighted_graph{in};
-    int s = utility::safe_convert_integer(argv[1]);
+    int s = utility::str_to_num(argv[1]);
 
     Dijkstra_undirected_sp sp{edge_weighted_graph, s};
 

@@ -80,7 +80,7 @@ void Bellman_ford_sp::relax(Edge_weighted_digraph, int)
 
 void Bellman_ford_sp::findNegativeCycle()
 {
-    int V = edgeTo.length;
+    int num_vertices = edgeTo.length;
     Edge_weighted_digraph spt = new Edge_weighted_digraph(V);
     for (int v = 0; v < V; ++v) {
         if (edgeTo[v] != null) {
@@ -88,7 +88,7 @@ void Bellman_ford_sp::findNegativeCycle()
         }
     }
 
-    EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(spt);
+    Edge_weighted_directed_cycle finder = new Edge_weighted_directed_cycle(spt);
     cycle = finder.cycle();
 }
 

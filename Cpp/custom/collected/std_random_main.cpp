@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-    int n = utility::safe_convert_integer(argv[1]);
+    int n = utility::str_to_num(argv[1]);
     std::vector<double> probabilities{0.5, 0.3, 0.1, 0.1};
     std::vector<int> frequencies{5, 3, 1, 1};
     std::vector<std::string> a{"A", "B", "C", "D", "E", "F", "G"};

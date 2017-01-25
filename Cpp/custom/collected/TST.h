@@ -37,7 +37,7 @@ public:
 
     Value get(String key) {
         if (key == null) throw new NullPointerException();
-        if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
+        if (key.length() == 0) throw utility::Illegal_argument_exception("key must have length >= 1");
         Node<Value> x = get(root, key, 0);
         if (x == null) return null;
         return x.val;
@@ -92,7 +92,7 @@ private:
 
     Node<Value> get(Node<Value> x, std::string key, int d) {
         if (key == null) throw new NullPointerException();
-        if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
+        if (key.length() == 0) throw utility::Illegal_argument_exception("key must have length >= 1");
         if (x == null) return null;
         char c = key.charAt(d);
         if (c < x.c) return get(x.left, key, d);

@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     Digraph g{in};
     Std_out::print_line(g);
 
-    int s = utility::safe_convert_integer(argv[1]);
+    int s = utility::str_to_num(argv[1]);
     Breadth_first_directed_paths bfs{g, s};
 
     for (int v = 0; v < g.num_vertices(); ++v) {

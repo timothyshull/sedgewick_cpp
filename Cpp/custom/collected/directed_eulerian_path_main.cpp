@@ -1,41 +1,41 @@
 #include "utility.h"
+#include "Digraph.h"
+#include "Digraph_generator.h"
+#include "Std_random.h"
+#include "Directed_eulerian_path.h"
+#include "In.h"
 
-int main(int argc, char *argv[]) {
-    int V = utility::safe_convert_integer(argv[1]);
-    int E = utility::safe_convert_integer(argv[2]);
+int main(int argc, char* argv[])
+{
+    int num_vertices{utility::str_to_num(argv[1])};
+    int num_edges{utility::str_to_num(argv[2])};
 
-    Digraph G1 = Digraph_generator::eulerianCycle(V, E);
-    unit_test(G1, "Eulerian cycle");
+    Digraph digraph1{Digraph_generator::eulerian_cycle(num_vertices, num_edges)};
+    Directed_eulerian_path::unit_test(digraph1, "Eulerian cycle");
 
-    Digraph G2 = Digraph_generator::eulerianPath(V, E);
-    unit_test(G2, "Eulerian path");
+    Digraph digraph2{Digraph_generator::eulerian_path(num_vertices, num_edges)};
+    Directed_eulerian_path::unit_test(digraph2, "Eulerian path");
 
-    // add one random edge
-    Digraph G3 = new Digraph(G2);
-    G3.add_edge(Std_random::uniform(V), Std_random::uniform(V));
-    unit_test(G3, "one random edge added to Eulerian path");
+    Digraph digraph3{digraph2};
+    digraph3.add_edge(Std_random::uniform(num_vertices), Std_random::uniform(num_vertices));
+    Directed_eulerian_path::unit_test(digraph3, "one random edge added to Eulerian path");
 
-    // self loop
-    Digraph G4 = new Digraph(V);
-    int v4 = Std_random::uniform(V);
-    G4.add_edge(v4, v4);
-    unit_test(G4, "single self loop");
+    Digraph graph4{num_vertices};
+    int v4{Std_random::uniform(num_vertices)};
+    graph4.add_edge(v4, v4);
+    Directed_eulerian_path::unit_test(graph4, "single self loop");
 
-    // single edge
-    Digraph G5 = new Digraph(V);
-    G5.add_edge(Std_random::uniform(V), Std_random::uniform(V));
-    unit_test(G5, "single edge");
+    Digraph digraph5{num_vertices};
+    digraph5.add_edge(Std_random::uniform(num_vertices), Std_random::uniform(num_vertices));
+    Directed_eulerian_path::unit_test(digraph5, "single edge");
 
-    // empty digraph
-    Digraph G6 = new Digraph(V);
-    unit_test(G6, "empty digraph");
+    Digraph digraph6{num_vertices};
+    Directed_eulerian_path::unit_test(digraph6, "empty digraph");
 
-    // random digraph
-    Digraph G7 = Digraph_generator::simple(V, E);
-    unit_test(G7, "simple digraph");
+    Digraph digraph7{Digraph_generator::simple(num_vertices, num_edges)};
+    Directed_eulerian_path::unit_test(digraph7, "simple digraph");
 
-    // 4-vertex digraph
-    Digraph G8 = new Digraph(new In("eulerianD.txt"));
-    unit_test(G8, "4-vertex Eulerian digraph");
+    Digraph digraph8{In{"eulerianD.txt"}};
+    Directed_eulerian_path::unit_test(digraph8, "4-vertex Eulerian digraph");
     return 0;
 }

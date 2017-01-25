@@ -42,7 +42,7 @@ int Boyer_moore::search(std::string& txt)
         skip = 0;
         for (int j = m - 1; j >= 0; j--) {
             if (pat.charAt(j) != txt.charAt(i + j)) {
-                skip = Math.max(1, j - right[txt.charAt(i + j)]);
+                skip = std::max(1, j - right[txt.charAt(i + j)]);
                 break;
             }
         }
@@ -60,7 +60,7 @@ int Boyer_moore::search(std::vector<char>& text)
         skip = 0;
         for (int j = m - 1; j >= 0; j--) {
             if (pattern[j] != text[i + j]) {
-                skip = Math.max(1, j - right[text[i + j]]);
+                skip = std::max(1, j - right[text[i + j]]);
                 break;
             }
         }

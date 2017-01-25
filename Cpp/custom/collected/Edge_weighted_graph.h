@@ -14,7 +14,7 @@ public:
     int num_vertices();
     int num_edges();
     void add_edge(Edge& e);
-    std::vector<Edge> adj(int v);
+    std::vector<Edge> adjacent(int v);
     int degree(int v);
     std::vector<Edge> edges();
     std::string to_string();

@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
             Std_out::printf("%.2f\n", x);
         }
     } else {
-        throw new IllegalArgumentException("Invalid number of arguments");
+        throw utility::Illegal_argument_exception("Invalid number of arguments");
     }
     return 0;
 }

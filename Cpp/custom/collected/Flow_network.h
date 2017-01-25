@@ -13,7 +13,7 @@ public:
     int num_vertices();
     int num_edges();
     void add_edge(Flow_edge& e);
-    std::vector<Flow_edge> adj(int v);
+    std::vector<Flow_edge> adjacent(int v);
     std::vector<Flow_edge> edges();
     std::string to_string();
 private:

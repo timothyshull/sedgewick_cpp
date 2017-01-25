@@ -4,8 +4,8 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& G, int s, int t)
 {
     validate(s, G.num_vertices());
     validate(t, G.num_vertices());
-    if (s == t) throw new IllegalArgumentException("Source equals sink");
-    if (!isFeasible(G, s, t)) throw new IllegalArgumentException("Initial flow is infeasible");
+    if (s == t) throw utility::Illegal_argument_exception("Source equals sink");
+    if (!isFeasible(G, s, t)) throw utility::Illegal_argument_exception("Initial flow is infeasible");
 
     // while there exists an augmenting path, use it
     value = excess(G, t);
@@ -14,7 +14,7 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& G, int s, int t)
         // compute bottleneck capacity
         double bottle = Double.POSITIVE_INFINITY;
         for (int v = t; v != s; v = edgeTo[v].other(v)) {
-            bottle = Math.min(bottle, edgeTo[v].residualCapacityTo(v));
+            bottle = std::min(bottle, edgeTo[v].residualCapacityTo(v));
         }
 
         // augment flow
@@ -98,19 +98,19 @@ bool Ford_fulkerson::isFeasible(Flow_network& G, int s, int t)
     }
 
     // check that net flow into a vertex equals zero, except at source and sink
-    if (Math.abs(value + excess(G, s)) > FLOATING_POINT_EPSILON) {
+    if (std::abs(value + excess(G, s)) > FLOATING_POINT_EPSILON) {
         System.err.print_line("Excess at source = " + excess(G, s));
         System.err.print_line("Max flow         = " + value);
         return false;
     }
-    if (Math.abs(value - excess(G, t)) > FLOATING_POINT_EPSILON) {
+    if (std::abs(value - excess(G, t)) > FLOATING_POINT_EPSILON) {
         System.err.print_line("Excess at sink   = " + excess(G, t));
         System.err.print_line("Max flow         = " + value);
         return false;
     }
     for (int v = 0; v < G.num_vertices(); ++v) {
         if (v == s || v == t) continue;
-        else if (Math.abs(excess(G, v)) > FLOATING_POINT_EPSILON) {
+        else if (std::abs(excess(G, v)) > FLOATING_POINT_EPSILON) {
             System.err.print_line("Net flow out of " + v + " doesn't equal zero");
             return false;
         }
@@ -144,7 +144,7 @@ bool Ford_fulkerson::check(Flow_network& G, int s, int t)
         }
     }
 
-    if (Math.abs(mincutValue - value) > FLOATING_POINT_EPSILON) {
+    if (std::abs(mincutValue - value) > FLOATING_POINT_EPSILON) {
         System.err.print_line("Max flow value = " + value + ", min cut value = " + mincutValue);
         return false;
     }

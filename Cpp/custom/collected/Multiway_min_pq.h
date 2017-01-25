@@ -8,7 +8,7 @@ class Multiway_min_pq {
 public:
     Multiway_min_pq(int D)
     {
-        if (D < 2) { throw new IllegalArgumentException("Dimension should be 2 or over"); }
+        if (D < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
         this.d = D;
         order = 1;
         keys = (Key[]) new Comparable[D << 1];
@@ -17,7 +17,7 @@ public:
 
     Multiway_min_pq(std::vector<Key>& a, int D)
     {
-        if (D < 2) { throw new IllegalArgumentException("Dimension should be 2 or over"); }
+        if (D < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
         this.d = D;
         order = 1;
         keys = (Key[]) new Comparable[D << 1];
@@ -32,7 +32,7 @@ public:
     void insert(Key& key) {
         keys[n + d] = key;
         swim(n++);
-        if (n == keys.length - d) {
+        if (n == keys.size() - d) {
             resize(getN(order + 1) + d);
             order++;
         }
@@ -50,7 +50,7 @@ public:
         keys[n + d] = null;
         int number = getN(order - 2);
         if (order > 1 && n == number) {
-            resize(number + (int) Math.pow(d, order - 1) + d);
+            resize(number + (int) std::pow(d, order - 1) + d);
             order--;
         }
         return min;
@@ -78,7 +78,7 @@ private:
     }
 
     int getN(int order) {
-        return (1 - ((int) Math.pow(d, order + 1))) / (1 - d);
+        return (1 - ((int) std::pow(d, order + 1))) / (1 - d);
     }
 
     void swim(int i) {
@@ -110,7 +110,7 @@ private:
 
     void resize(int N) {
         Key[] array = (Key[]) new Comparable[N];
-        for (int i = 0; i < Math.min(keys.length, array.length); ++i) {
+        for (int i = 0; i < std::min(keys.length, array.length); ++i) {
             array[i] = keys[i];
             keys[i] = null;
         }

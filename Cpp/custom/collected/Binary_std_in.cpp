@@ -45,7 +45,7 @@ char Binary_std_in::readChar()
 
 char Binary_std_in::readChar(int r)
 {
-    if (r < 1 || r > 16) { throw new IllegalArgumentException("Illegal value of r = " + r); }
+    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value of r = " + r); }
 
     // optimize r = 8 case
     if (r == 8) { return readChar(); }
@@ -95,7 +95,7 @@ int Binary_std_in::read_int()
 
 int Binary_std_in::read_int(int r)
 {
-    if (r < 1 || r > 32) { throw new IllegalArgumentException("Illegal value of r = " + r); }
+    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value of r = " + r); }
 
     // optimize r = 32 case
     if (r == 32) { return read_int(); }

@@ -41,7 +41,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
         total += e.weight();
     }
-    if (Math.abs(total - weight()) > FLOATING_POINT_EPSILON) {
+    if (std::abs(total - weight()) > FLOATING_POINT_EPSILON) {
         System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", total, weight());
         return false;
     }

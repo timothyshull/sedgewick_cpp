@@ -14,7 +14,7 @@ In::In(Socket& socket)
         scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
-        throw new IllegalArgumentException("Could not open " + socket);
+        throw utility::Illegal_argument_exception("Could not open " + socket);
     }
 }
 
@@ -27,7 +27,7 @@ In::In(URL& url)
         scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
-        throw new IllegalArgumentException("Could not open " + url);
+        throw utility::Illegal_argument_exception("Could not open " + url);
     }
 }
 
@@ -41,7 +41,7 @@ In::In(std::ifstream& file)
         scanner = new Scanner(new BufferedInputStream(fis), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
-        throw new IllegalArgumentException("Could not open " + file);
+        throw utility::Illegal_argument_exception("Could not open " + file);
     }
 }
 
@@ -78,7 +78,7 @@ In::In(std::string& name, std::true_type)
         scanner = new Scanner(new BufferedInputStream(is), CHARSet_NAME);
         scanner.useLocale(LOCALE);
     } catch (IOException ioe) {
-        throw new IllegalArgumentException("Could not open " + name);
+        throw utility::Illegal_argument_exception("Could not open " + name);
     }
 }
 
@@ -190,11 +190,11 @@ bool In::read_boolean()
 
 std::vector<std::string> In::readAllStrings()
 {
-    String[] tokens = WHITESPACE_PATTERN.split(readAll());
-    if (tokens.length == 0 || tokens[0].length() > 0)
+    std::vector<std::string> tokens = WHITESPACE_PATTERN.split(readAll());
+    if (tokens.size() == 0 || tokens[0].length() > 0)
         return tokens;
-    String[] decapitokens = new String[tokens.length - 1];
-    for (int i = 0; i < tokens.length - 1; ++i)
+    std::vector<std::string> decapitokens = new String[tokens.size() - 1];
+    for (int i = 0; i < tokens.size() - 1; ++i)
         decapitokens[i] = tokens[i + 1];
     return decapitokens;
 }
@@ -210,16 +210,16 @@ std::vector<std::string> In::readAllLines()
 
 std::vector<int> In::readAllInts()
 {
-    String[] fields = readAllStrings();
+    std::vector<std::string> fields = readAllStrings();
     std::vector<int> vals = new int[fields.length];
     for (int i = 0; i < fields.length; ++i)
-        vals[i] = Integer.parseInt(fields[i]);
+        vals[i] = utility::str_to_num(fields[i]);
     return vals;
 }
 
 std::vector<long> In::readAllLongs()
 {
-    String[] fields = readAllStrings();
+    std::vector<std::string> fields = readAllStrings();
     long[] vals = new long[fields.length];
     for (int i = 0; i < fields.length; ++i)
         vals[i] = Long.parseLong(fields[i]);
@@ -228,7 +228,7 @@ std::vector<long> In::readAllLongs()
 
 std::vector<double> In::readAllDoubles()
 {
-    String[] fields = readAllStrings();
+    std::vector<std::string> fields = readAllStrings();
     std::vector<double> vals = new double[fields.length];
     for (int i = 0; i < fields.length; ++i)
         vals[i] = Double.parseDouble(fields[i]);

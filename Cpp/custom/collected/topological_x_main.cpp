@@ -1,9 +1,9 @@
 #include "utility.h"
 
 int main(int argc, char *argv[]) {
-    int V = utility::safe_convert_integer(argv[1]);
-    int E = utility::safe_convert_integer(argv[2]);
-    int F = utility::safe_convert_integer(argv[3]);
+    int num_vertices = utility::str_to_num(argv[1]);
+    int E = utility::str_to_num(argv[2]);
+    int F = utility::str_to_num(argv[3]);
 
     Digraph G1 = Digraph_generator::dag(V, E);
 

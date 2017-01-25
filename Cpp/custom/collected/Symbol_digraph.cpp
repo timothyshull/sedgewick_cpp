@@ -8,7 +8,7 @@ Symbol_digraph::Symbol_digraph(std::string& filename, std::string& delimiter)
     // distinct strings with an index
     In in = new In(filename);
     while (in.hasNextLine()) {
-        String[] a = in.read_line().split(delimiter);
+        std::vector<std::string> a = in.read_line().split(delimiter);
         for (int i = 0; i < a.length; ++i) {
             if (!st.contains(a[i]))
                 st.put(a[i], st.size());
@@ -26,7 +26,7 @@ Symbol_digraph::Symbol_digraph(std::string& filename, std::string& delimiter)
     graph = new Digraph(st.size());
     in = new In(filename);
     while (in.hasNextLine()) {
-        String[] a = in.read_line().split(delimiter);
+        std::vector<std::string> a = in.read_line().split(delimiter);
         int v = st.get(a[0]);
         for (int i = 1; i < a.length; ++i) {
             int w = st.get(a[i]);

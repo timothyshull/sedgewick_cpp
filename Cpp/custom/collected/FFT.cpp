@@ -14,7 +14,7 @@ std::vector<Complex> FFT::fft(std::vector<Complex>& x)
 
     // radix 2 Cooley-Tukey FFT
     if (n % 2 != 0) {
-        throw new IllegalArgumentException("n is not a power of 2");
+        throw utility::Illegal_argument_exception("n is not a power of 2");
     }
 
     // fft of even terms
@@ -34,8 +34,8 @@ std::vector<Complex> FFT::fft(std::vector<Complex>& x)
     // combine
     std::vector<Complex> y = new Complex[n];
     for (int k = 0; k < n / 2; ++k) {
-        double kth = -2 * k * Math.PI / n;
-        Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
+        double kth = -2 * k * std::PI / n;
+        Complex wk = new Complex(std::cos(kth), std::sin(kth));
         y[k] = q[k].plus(wk.times(r[k]));
         y[k + n / 2] = q[k].minus(wk.times(r[k]));
     }
@@ -70,8 +70,8 @@ std::vector<Complex> FFT::ifft(std::vector<Complex>& x)
 
 std::vector<Complex> FFT::cconvolve(std::vector<Complex>& x, std::vector<Complex>& y)
 {
-    if (x.length != y.length) {
-        throw new IllegalArgumentException("Dimensions don't agree");
+    if (x.size() != y.length) {
+        throw utility::Illegal_argument_exception("Dimensions don't agree");
     }
 
     int n = x.length;

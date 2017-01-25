@@ -76,7 +76,7 @@ bool Two_person_zero_sum_game::isPrimalFeasible()
         }
         sum += x[j];
     }
-    if (Math.abs(sum - 1.0) > EPSILON) {
+    if (std::abs(sum - 1.0) > EPSILON) {
         Std_out::print_line("row vector x[] is not a probability distribution");
         Std_out::print_line("    sum = " + sum);
         return false;
@@ -96,7 +96,7 @@ bool Two_person_zero_sum_game::isDualFeasible()
         }
         sum += y[i];
     }
-    if (Math.abs(sum - 1.0) > EPSILON) {
+    if (std::abs(sum - 1.0) > EPSILON) {
         Std_out::print_line("column vector not a probability distribution");
         Std_out::print_line("    sum = " + sum);
         return false;
@@ -119,7 +119,7 @@ bool Two_person_zero_sum_game::isNashEquilibrium(std::vector<std::vector<double>
         }
         if (sum > opt1) opt1 = sum;
     }
-    if (Math.abs(opt1 - value) > EPSILON) {
+    if (std::abs(opt1 - value) > EPSILON) {
         Std_out::print_line("Optimal value = " + value);
         Std_out::print_line("Optimal best response for column player = " + opt1);
         return false;
@@ -134,7 +134,7 @@ bool Two_person_zero_sum_game::isNashEquilibrium(std::vector<std::vector<double>
         }
         if (sum < opt2) opt2 = sum;
     }
-    if (Math.abs(opt2 - value) > EPSILON) {
+    if (std::abs(opt2 - value) > EPSILON) {
         Std_out::print_line("Optimal value = " + value);
         Std_out::print_line("Optimal best response for row player = " + opt2);
         return false;

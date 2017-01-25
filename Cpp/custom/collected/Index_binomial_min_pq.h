@@ -188,7 +188,7 @@ public:
 
     Index_binomial_min_pq(int N)
     {
-        if (N < 0) { throw new IllegalArgumentException("Cannot create a priority queue of negative size"); }
+        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority queue of negative size"); }
         comparator = new MyComparator();
         nodes = (Node<Key>[])
         new Node[N];
@@ -197,7 +197,7 @@ public:
 
     Index_binomial_min_pq(int N, Comparator<Key> comparator)
     {
-        if (N < 0) { throw new IllegalArgumentException("Cannot create a priority queue of negative size"); }
+        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority queue of negative size"); }
         this.comparator = comparator;
         nodes = (Node<Key>[])
         new Node[N];
@@ -231,7 +231,7 @@ public:
     void insert(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (contains(i)) { throw new IllegalArgumentException("Specified index is already in the queue"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already in the queue"); }
         Node <Key> x = new Node<Key>();
         x.key = key;
         x.index = i;
@@ -295,14 +295,14 @@ public:
     Key keyOf(int i)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new IllegalArgumentException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw utility::Illegal_argument_exception("Specified index is not in the queue"); }
         return nodes[i].key;
     }
 
     void changeKey(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new IllegalArgumentException("Specified index is not in the queue"); }
+        if (!contains(i)) { throw utility::Illegal_argument_exception("Specified index is not in the queue"); }
         if (greater(nodes[i].key, key)) { decreaseKey(i, key); }
         else { increaseKey(i, key); }
     }
@@ -312,7 +312,7 @@ public:
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
         if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
         if (greater(key, nodes[i].key)) {
-            throw new IllegalArgumentException("Calling with this argument would not decrease the key");
+            throw utility::Illegal_argument_exception("Calling with this argument would not decrease the key");
         }
         Node <Key> x = nodes[i];
         x.key = key;
@@ -324,7 +324,7 @@ public:
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
         if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the queue"); }
         if (greater(nodes[i].key, key)) {
-            throw new IllegalArgumentException("Calling with this argument would not increase the key");
+            throw utility::Illegal_argument_exception("Calling with this argument would not increase the key");
         }
         delete (i);
         insert(i, key);

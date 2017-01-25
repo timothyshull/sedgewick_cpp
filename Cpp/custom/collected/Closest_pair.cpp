@@ -47,7 +47,7 @@ double Closest_pair::closest(std::vector<Point_2d>& pointsByX, std::vector<Point
     // compute closest pair with both endpoints in left subarray or both in right subarray
     double delta1 = closest(pointsByX, pointsByY, aux, lo, mid);
     double delta2 = closest(pointsByX, pointsByY, aux, mid + 1, hi);
-    double delta = Math.min(delta1, delta2);
+    double delta = std::min(delta1, delta2);
 
     // merge back so that pointsByY[lo..hi] are sorted by y-coordinate
     merge(pointsByY, aux, lo, mid, hi);
@@ -55,7 +55,7 @@ double Closest_pair::closest(std::vector<Point_2d>& pointsByX, std::vector<Point
     // aux[0..m-1] = sequence of points closer than delta, sorted by y-coordinate
     int m = 0;
     for (int i = lo; i <= hi; ++i) {
-        if (Math.abs(pointsByY[i].x() - median.x()) < delta) {
+        if (std::abs(pointsByY[i].x() - median.x()) < delta) {
             aux[m++] = pointsByY[i];
         }
     }

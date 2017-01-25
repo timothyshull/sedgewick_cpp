@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     std::vector<Particle> particles;
 
     if (argc == 2) {
-        int n = utility::safe_convert_integer(argv[1]);
+        int n = utility::str_to_num(argv[1]);
         particles.clear();
         particles.reserve(n);
         for (int i = 0; i < n; ++i) {

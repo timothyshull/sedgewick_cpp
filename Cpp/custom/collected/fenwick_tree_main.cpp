@@ -1,51 +1,62 @@
-int main(int argc, char *argv[]) {
-    FenwickTree ft = null;
+#include <string>
+#include <vector>
+#include "Std_in.h"
+#include "Std_out.h"
+#include "Fenwick_tree.h"
+#include "utility.h"
 
-    std::string cmd = "cmp";
+int main(int argc, char* argv[])
+{
+    Fenwick_tree ft;
+
+    std::string cmd{"cmp"};
+    int arg1;
+    int arg2;
     while (true) {
-        String[] line = Std_in::read_line().split(" ");
+        std::vector<std::string> line;
+        utility::split_string(Std_in::read_line(), ' ', line);
 
-        if (line[0].equals("exit")) break;
+        if (line[0] == "exit") { break; }
 
-        int arg1 = 0, arg2 = 0;
+        arg1 = 0;
+        arg2 = 0;
 
-        if (line.length > 1) {
-            arg1 = Integer.parseInt(line[1]);
+        if (line.size() > 1) {
+            arg1 = utility::str_to_num(line[1]);
         }
-        if (line.length > 2) {
-            arg2 = Integer.parseInt(line[2]);
+        if (line.size() > 2) {
+            arg2 = utility::str_to_num(line[2]);
         }
 
-        if ((!line[0].equals("set") && !line[0].equals("init")) && ft == null) {
-            Std_out::print_line("FenwickTree not initialized");
+        // TODO: this might always return false
+        if ((line[0] != "set" && line[0] != "init") && ft.size() == 0) {
+            Std_out::print_line("Fenwick_tree not initialized");
             continue;
         }
 
-        if (line[0].equals("init")) {
-            ft = new FenwickTree(arg1);
+        if (line[0] == "init") {
+            ft = Fenwick_tree{arg1};
             for (int i = 1; i <= ft.size(); ++i) {
                 Std_out::print(ft.rsq(i, i) + " ");
             }
             Std_out::print_line();
-        } else if (line[0].equals("set")) {
-            ft = new FenwickTree(line.length - 1);
-            for (int i = 1; i <= line.length - 1; ++i) {
-                ft.update(i, Integer.parseInt(line[i]));
+        } else if (line[0] == "set") {
+            ft = Fenwick_tree{line.size() - 1};
+            for (int i = 1; i <= line.size() - 1; ++i) {
+                ft.update(i, utility::str_to_num(line[i]));
             }
-        } else if (line[0].equals("up")) {
+        } else if (line[0] == "up") {
             ft.update(arg1, arg2);
             for (int i = 1; i <= ft.size(); ++i) {
                 Std_out::print(ft.rsq(i, i) + " ");
             }
             Std_out::print_line();
-        } else if (line[0].equals("rsq")) {
+        } else if (line[0] == "rsq") {
             Std_out::printf("Sum from %d to %d = %d%n", arg1, arg2, ft.rsq(arg1, arg2));
         } else {
             Std_out::print_line("Invalid command");
         }
-
     }
-
 
     Std_out::close();
     return 0;

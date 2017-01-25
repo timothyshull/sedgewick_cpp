@@ -28,7 +28,7 @@ int Vector::dimension()
 
 double Vector::dot(Vector& that)
 {
-    if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");
+    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     double sum = 0.0;
     for (int i = 0; i < d; ++i)
         sum = sum + (this.data[i] * that.data[i]);
@@ -37,18 +37,18 @@ double Vector::dot(Vector& that)
 
 double Vector::magnitude()
 {
-    return Math.sqrt(this.dot(this));
+    return std::sqrt(this.dot(this));
 }
 
 double Vector::distanceTo(Vector& that)
 {
-    if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");
+    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     return this.minus(that).magnitude();
 }
 
 Vector Vector::plus(Vector& that)
 {
-    if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");
+    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     Vector c = new Vector(d);
     for (int i = 0; i < d; ++i)
         c.data[i] = this.data[i] + that.data[i];
@@ -56,7 +56,7 @@ Vector Vector::plus(Vector& that)
 }
 
 Vector Vector::minus(Vector& that) {
-    if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");
+    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
     Vector c = new Vector(d);
     for (int i = 0; i < d; ++i)
         c.data[i] = this.data[i] - that.data[i];

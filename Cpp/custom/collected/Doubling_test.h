@@ -6,7 +6,7 @@
 namespace Doubling_test {
     const static int MAXIMUM_INTEGER = std::numeric_limits<int>::max();
 
-    double timeTrial(int n);
+    double time_trial(int n);
 };
 
 #endif // DOUBLING_TEST_H

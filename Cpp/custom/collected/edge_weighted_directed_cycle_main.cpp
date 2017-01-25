@@ -6,9 +6,9 @@
 int main(int argc, char* argv[])
 {
 
-    int num_vertices = utility::safe_convert_integer(argv[1]);
-    int num_edges = utility::safe_convert_integer(argv[2]);
-    int extra_edges = utility::safe_convert_integer(argv[3]);
+    int num_vertices = utility::str_to_num(argv[1]);
+    int num_edges = utility::str_to_num(argv[2]);
+    int extra_edges = utility::str_to_num(argv[3]);
     Edge_weighted_digraph g{static_cast<unsigned>(num_vertices)};
     std::vector<int> vertices(static_cast<std::vector<int>::size_type>(num_vertices));
     for (int i = 0; i < num_vertices; ++i) {

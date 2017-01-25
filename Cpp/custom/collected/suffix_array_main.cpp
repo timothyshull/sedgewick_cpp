@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < s.length(); ++i) {
         int index = suffix.index(i);
-        std::string ith = "\"" + s.substring(index, Math.min(index + 50, s.length())) + "\"";
+        std::string ith = "\"" + s.substring(index, std::min(index + 50, s.length())) + "\"";
         assert s.substring(index).equals(suffix.select(i));
         int rank = suffix.rank(s.substring(index));
         if (i == 0) {

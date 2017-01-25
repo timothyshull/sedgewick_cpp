@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     sources.reserve(argc - 2);
     int s;
     for (int i = 2; i < argc; ++i) {
-        s = utility::safe_convert_integer(argv[i]);
+        s = utility::str_to_num(argv[i]);
         sources.push_back(s);
     }
 

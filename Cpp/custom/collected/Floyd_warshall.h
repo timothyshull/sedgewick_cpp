@@ -8,16 +8,21 @@
 class Floyd_warshall {
 public:
     Floyd_warshall(Adj_matrix_edge_weighted_digraph& G);
-    bool hasNegativeCycle();
-    std::vector<Directed_edge> negativeCycle();
-    bool hasPath(int s, int t);
-    double dist(int s, int t);
+
+    bool has_negative_cycle();
+
+    std::vector<Directed_edge> negative_cycle();
+
+    bool has_path(int s, int t);
+
+    double distance(int s, int t);
+
     std::vector<Directed_edge> path(int s, int t);
 
 private:
-    bool hasNegativeCycle;
-    std::vector<std::vector<double>> distance_to;
-    std::vector<std::vector<Directed_edge>> edgeTo;
+    bool _has_negative_cycle;
+    std::vector<std::vector<double>> _distances;
+    std::vector<std::vector<Directed_edge>> _edge_to;
 
     bool check(Adj_matrix_edge_weighted_digraph& G);
 };

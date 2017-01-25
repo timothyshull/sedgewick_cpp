@@ -1,6 +1,6 @@
 #include "Doubling_test.h"
 
-double ::Doubling_test::timeTrial(int n)
+double ::Doubling_test::time_trial(int n)
 {
     std::vector<int> a = new int[n];
     for (int i = 0; i < n; ++i) {

@@ -9,7 +9,7 @@ Symbol_graph::Symbol_graph(std::string& filename, std::string& delimiter)
     In in = new In(filename);
     // while (in.hasNextLine()) {
     while (!in.is_empty()) {
-        String[] a = in.read_line().split(delimiter);
+        std::vector<std::string> a = in.read_line().split(delimiter);
         for (int i = 0; i < a.length; ++i) {
             if (!st.contains(a[i]))
                 st.put(a[i], st.size());
@@ -28,7 +28,7 @@ Symbol_graph::Symbol_graph(std::string& filename, std::string& delimiter)
     graph = new Graph(st.size());
     in = new In(filename);
     while (in.hasNextLine()) {
-        String[] a = in.read_line().split(delimiter);
+        std::vector<std::string> a = in.read_line().split(delimiter);
         int v = st.get(a[0]);
         for (int i = 1; i < a.length; ++i) {
             int w = st.get(a[i]);

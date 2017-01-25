@@ -2,7 +2,7 @@
 
 Flow_network::Flow_network(int V)
 {
-    if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be nonnegative");
+    if (V < 0) throw utility::Illegal_argument_exception("Number of vertices in a Graph must be nonnegative");
     this.V = V;
     this.E = 0;
     adj = (Bag<FlowEdge>[]) new Bag[V];
@@ -13,7 +13,7 @@ Flow_network::Flow_network(int V)
 Flow_network::Flow_network(int V, int E)
 {
     this(V);
-    if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+    if (E < 0) throw utility::Illegal_argument_exception("Number of edges must be nonnegative");
     for (int i = 0; i < E; ++i) {
         int v = Std_random::uniform(V);
         int w = Std_random::uniform(V);
@@ -26,7 +26,7 @@ Flow_network::Flow_network(In& in)
 {
     this(in.read_int());
     int E = in.read_int();
-    if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+    if (E < 0) throw utility::Illegal_argument_exception("Number of edges must be nonnegative");
     for (int i = 0; i < E; ++i) {
         int v = in.read_int();
         int w = in.read_int();
@@ -70,7 +70,7 @@ std::vector<Flow_edge> Flow_network::edges()
 {
     Bag<FlowEdge> list = new Bag<FlowEdge>();
     for (int v = 0; v < V; ++v)
-        for (FlowEdge e : adj(v)) {
+        for (FlowEdge e : adjacent(v)) {
             if (e.to() != v)
                 list.add(e);
         }

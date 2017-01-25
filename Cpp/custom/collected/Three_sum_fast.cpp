@@ -11,7 +11,7 @@ void ::Three_sum_fast::printAll(std::vector<int>& a)
 {
     int n = a.length;
     Arrays.sort(a);
-    if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
+    if (containsDuplicates(a)) throw utility::Illegal_argument_exception("array contains duplicate integers");
     for (int i = 0; i < n; ++i) {
         for (int j = i + 1; j < n; ++j) {
             int k = Arrays.binarySearch(a, -(a[i] + a[j]));
@@ -24,7 +24,7 @@ int ::Three_sum_fast::count(std::vector<int>& a)
 {
     int n = a.length;
     Arrays.sort(a);
-    if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
+    if (containsDuplicates(a)) throw utility::Illegal_argument_exception("array contains duplicate integers");
     int count = 0;
     for (int i = 0; i < n; ++i) {
         for (int j = i + 1; j < n; ++j) {

@@ -38,7 +38,7 @@ int Sparse_vector::dimension()
 
 double Sparse_vector::dot(Sparse_vector that)
 {
-    if (this.d != that.d) { throw new IllegalArgumentException("Vector lengths disagree"); }
+    if (this.d != that.d) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
     double sum = 0.0;
 
 // iterate over the vector with the fewest nonzeros
@@ -65,12 +65,12 @@ double Sparse_vector::dot(std::vector<double> that)
 
 double Sparse_vector::magnitude()
 {
-    return Math.sqrt(this.dot(this));
+    return std::sqrt(this.dot(this));
 }
 
 double Sparse_vector::norm()
 {
-    return Math.sqrt(this.dot(this));
+    return std::sqrt(this.dot(this));
 }
 
 Sparse_vector Sparse_vector::scale(double alpha)
@@ -82,7 +82,7 @@ Sparse_vector Sparse_vector::scale(double alpha)
 
 Sparse_vector Sparse_vector::plus(Sparse_vector& that)
 {
-    if (this.d != that.d) { throw new IllegalArgumentException("Vector lengths disagree"); }
+    if (this.d != that.d) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
     SparseVector c = new SparseVector(d);
     for (int i : this.st.keys()) { c.put(i, this.get(i)); }                // c = this
     for (int i : that.st.keys()) c.put(i, that.get(i) + c.get(i));     // c = c + that

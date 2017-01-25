@@ -7,48 +7,48 @@
 
 int main(int argc, char* argv[])
 {
-    int V = utility::safe_convert_integer(argv[1]);
-    int E = utility::safe_convert_integer(argv[2]);
+    int num_vertices{utility::str_to_num(argv[1])};
+    int num_edges{utility::str_to_num(argv[2])};
 
-    Digraph G1{Digraph_generator::eulerian_cycle(V, E)};
-    Directed_eulerian_cycle::unit_test(G1, "Eulerian cycle");
+    Digraph digraph1{Digraph_generator::eulerian_cycle(num_vertices, num_edges)};
+    Directed_eulerian_cycle::unit_test(digraph1, "Eulerian cycle");
 
-    Digraph G2{Digraph_generator::eulerian_path(V, E)};
-    Directed_eulerian_cycle::unit_test(G2, "Eulerian path");
+    Digraph digraph2{Digraph_generator::eulerian_path(num_vertices, num_edges)};
+    Directed_eulerian_cycle::unit_test(digraph2, "Eulerian path");
 
-    Digraph G3{V};
-    Directed_eulerian_cycle::unit_test(G3, "empty digraph");
+    Digraph digraph3{num_vertices};
+    Directed_eulerian_cycle::unit_test(digraph3, "empty digraph");
 
-    Digraph G4{V};
-    int v4{Std_random::uniform(V)};
-    G4.add_edge(v4, v4);
-    Directed_eulerian_cycle::unit_test(G4, "single self loop");
+    Digraph digraph4{num_vertices};
+    int v4{Std_random::uniform(num_vertices)};
+    digraph4.add_edge(v4, v4);
+    Directed_eulerian_cycle::unit_test(digraph4, "single self loop");
 
-    Digraph H1 = Digraph_generator::eulerian_cycle(V / 2, E / 2);
-    Digraph H2 = Digraph_generator::eulerian_cycle(V - V / 2, E - E / 2);
+    Digraph h1{Digraph_generator::eulerian_cycle(num_vertices / 2, num_edges / 2)};
+    Digraph h2{Digraph_generator::eulerian_cycle(num_vertices - num_vertices / 2, num_edges - num_edges / 2)};
     std::vector<int> perm;
-    perm.reserve(V);
-    for (int i = 0; i < V; ++i) {
+    perm.reserve(num_vertices);
+    for (int i = 0; i < num_vertices; ++i) {
         perm[i] = i;
     }
     Std_random::shuffle(perm);
-    Digraph G5{V};
-    for (int v = 0; v < H1.num_vertices(); ++v) {
-        for (int w : H1.adj(v)) {
-            G5.add_edge(perm[v], perm[w]);
+    Digraph digraph5{num_vertices};
+    for (int v = 0; v < h1.num_vertices(); ++v) {
+        for (int w : h1.adjacent(v)) {
+            digraph5.add_edge(perm[v], perm[w]);
         }
     }
-    for (int v = 0; v < H2.num_vertices(); ++v) {
-        for (int w : H2.adj(v)) {
-            G5.add_edge(perm[V / 2 + v], perm[V / 2 + w]);
+    for (int v = 0; v < h2.num_vertices(); ++v) {
+        for (int w : h2.adjacent(v)) {
+            digraph5.add_edge(perm[num_vertices / 2 + v], perm[num_vertices / 2 + w]);
         }
     }
-    Directed_eulerian_cycle::unit_test(G5, "Union of two disjoint cycles");
+    Directed_eulerian_cycle::unit_test(digraph5, "Union of two disjoint cycles");
 
-    Digraph G6 = Digraph_generator::simple(V, E);
-    Directed_eulerian_cycle::unit_test(G6, "simple digraph");
+    Digraph digraph6{Digraph_generator::simple(num_vertices, num_edges)};
+    Directed_eulerian_cycle::unit_test(digraph6, "simple digraph");
 
-    Digraph G7 = new Digraph(new In("eulerianD.txt"));
-    Directed_eulerian_cycle::unit_test(G7, "4-vertex Eulerian digraph");
+    Digraph digraph7{In{"eulerianD.txt"}};
+    Directed_eulerian_cycle::unit_test(digraph7, "4-vertex Eulerian digraph");
     return 0;
 }

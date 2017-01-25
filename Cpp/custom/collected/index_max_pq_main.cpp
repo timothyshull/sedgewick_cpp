@@ -1,5 +1,5 @@
 int main(int argc, char *argv[]) {
-    String[] strings = {"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
+    std::vector<std::string> strings = {"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
 
     IndexMaxPQ<std::string> pq = new IndexMaxPQ<std::string>(strings.length);
     for (int i = 0; i < strings.length; ++i) {

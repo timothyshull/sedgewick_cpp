@@ -1,6 +1,11 @@
-int main(int argc, char *argv[]) {
+#include "Std_out.h"
+#include "In.h"
+#include "Flow_network.h"
+
+int main(int argc, char* argv[])
+{
     In in{argv[1]};
-    FlowNetwork G = new FlowNetwork(in);
-    Std_out::print_line(G);
+    Flow_network network{in};
+    Std_out::print_line(network);
     return 0;
 }

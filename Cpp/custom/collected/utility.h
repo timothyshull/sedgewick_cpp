@@ -11,101 +11,80 @@
 #include <iostream>
 
 namespace utility {
+    const static int max_num_str_len = 25;
+
     void assert(bool test, const char msg[]);
 
-    // TODO: add handling for selecting strtoll, stroul, and strtoull based
-    // on template type
-    int safe_read_integer()
+    template <typename T, typename std::enable_if<std::is_integral<T>::value>::type>>
+    struct max_numeric_type {
+        using type = long long int;
+    };
+
+    template <typename T, typename std::enable_if<std::is_floating_point<T>::value>::type>>
+    struct max_numeric_type {
+        using type = long double;
+    };
+
+    template <typename T, typename std::enable_if<std::is_unsigned<T>::value>::type>>
+    struct max_numeric_type {
+        using type = unsigned long long int;
+    };
+    // still has issues but better
+    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
+    int str_to_num(const char* str)
     {
         // from CERT
-        char buff[25];
+        char buff[max_num_str_len];
         char* end_ptr;
-        long sl{0};
-        int si{0};
-        int exit{0};
-
-        std::cin.width(24);
-        std::cin >> buff;
-
-        errno = 0;
-
-        sl = strtol(buff, &end_ptr, 0);
-
-        if (ERANGE == errno) {
-            exit = -1;
-            std::cerr << "number out of range\n";
-        } else if (sl > INT_MAX) {
-            exit = -1;
-            std::cerr << sl << " too large!\n";
-        } else if (sl < INT_MIN) {
-            exit = -1;
-            std::cerr << sl << " too small!\n";
-        } else if (end_ptr == buff) {
-            exit = -1;
-            std::cerr << "not valid numeric input\n";
-        } else if (*end_ptr != '\0') {
-            exit = -1;
-            std::cerr << "extra characters on input line\n";
-        } else {
-            si = static_cast<int>(sl);
-        }
-
-        if (exit != 0) {
-            std::exit(exit);
-        } else {
-            return si;
-        }
-    }
-
-    int safe_convert_integer(const char * str)
-    {
-        // from CERT
-        const int buff_size = 25;
-        char buff[buff_size];
-        char* end_ptr;
-        long sl{0};
-        int si{0};
-        int exit{0};
+        typename max_numeric_type<T>::type sl{0};
 
         int i;
-        for (i = 0; i < buff_size && *(str + i) != '\0'; ++i) {
+        for (i = 0; i < max_num_str_len && *(str + i) != '\0'; ++i) {
             *(buff + i) = *(str + i);
-            if (i == buff_size) {
-                exit = -1;
-            }
         }
-        if (i < buff_size - 1 && buff[i] != '\0') {
+        if (i < max_num_str_len - 1 && buff[i] != '\0') {
             *(buff + i + 1) = '\0';
         }
 
         errno = 0;
         sl = strtol(buff, &end_ptr, 0);
 
-        if (exit == -1) {
-            std::cerr << "The length of the input string was too large\n";
-        } else if (ERANGE == errno) {
-            exit = -1;
-            std::cerr << "The number was out of range\n";
-        } else if (sl > INT_MAX) {
-            exit = -1;
-            std::cerr << sl << " is too large\n";
-        } else if (sl < INT_MIN) {
-            exit = -1;
-            std::cerr << sl << " is too small\n";
-        } else if (end_ptr == buff) {
-            exit = -1;
-            std::cerr << "is not valid numeric input\n";
-        } else if (*end_ptr != '\0') {
-            exit = -1;
-            std::cerr << "Extra characters were included in the input line\n";
-        } else {
-            si = static_cast<int>(sl);
+        if (i == max_num_str_len || errno == ERANGE || sl > std::numeric_limits<T>::max() || sl < std::numeric_limits<T>::min() || end_ptr == buff || *end_ptr != '\0') {
+            std::cerr << "An error occurred while parsing the number: " << str << "\n";
+            std::exit(-1);
         }
+        return static_cast<T>(sl);
+    }
 
-        if (exit != 0) {
-            std::exit(exit);
-        } else {
-            return si;
+    template<typename T>
+    T str_to_num(std::string& str)
+    {
+        return str_to_num<T>(str.c_str());
+    }
+
+    template<typename T>
+    int safe_read_num()
+    {
+        char buff[max_num_str_len];
+        std::cin.width(max_num_str_len - 1);
+        std::cin >> buff;
+        return str_to_num<T>(buff);
+    }
+
+    template<typename T>
+    void split_string(const std::basic_string<T>& str, T c, std::vector<std::basic_string<T>>& v)
+    {
+        std::basic_string<T>::size_type j{str.find(c)};
+        std::basic_string<T>::size_type i{0};
+
+        while (j != std::basic_string<T>::npos) {
+            v.push_back(str.substr(i, j - i));
+            i = ++j;
+            j = str.find(c, j);
+
+            if (j == std::basic_string<T>::npos) {
+                v.push_back(str.substr(i, str.size()));
+            }
         }
     }
 

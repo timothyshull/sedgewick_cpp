@@ -4,7 +4,7 @@ Edge::Edge(int v, int w, double weight)
 {
     if (v < 0) { throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer"); }
     if (w < 0) { throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer"); }
-    if (Double.isNaN(weight)) { throw new IllegalArgumentException("Weight is NaN"); }
+    if (Double.isNaN(weight)) { throw utility::Illegal_argument_exception("Weight is NaN"); }
     this.v = v;
     this.w = w;
     this.weight = weight;
@@ -24,7 +24,7 @@ int Edge::other(int vertex)
 {
     if (vertex == v) { return w; }
     else if (vertex == w) { return v; }
-    else { throw new IllegalArgumentException("Illegal endpoint"); }
+    else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
 }
 
 bool bool Edge::operator<(Edge& rhs)

@@ -26,7 +26,7 @@ void ::Huffman::compress()
     Node root = buildTrie(freq);
 
     // build code table
-    String[]
+    std::vector<std::string>
     st = new String[R];
     buildCode(st, root, "");
 

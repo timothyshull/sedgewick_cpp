@@ -18,7 +18,7 @@ bool How_much_order::operator<(Transaction& v, Transaction& w)
 Transaction::Transaction(std::string& who, Date& when, double amount)
 {
     if (Double.isNaN(amount) || Double.isInfinite(amount))
-        throw new IllegalArgumentException("Amount cannot be NaN or infinite");
+        throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
     this.who = who;
     this.when = when;
     this.amount = amount;
@@ -26,12 +26,12 @@ Transaction::Transaction(std::string& who, Date& when, double amount)
 
 Transaction::Transaction(std::string& transaction)
 {
-    String[] a = transaction.split("\\s+");
+    std::vector<std::string> a = transaction.split("\\s+");
     who = a[0];
     when = new Date(a[1]);
     amount = Double.parseDouble(a[2]);
     if (Double.isNaN(amount) || Double.isInfinite(amount))
-        throw new IllegalArgumentException("Amount cannot be NaN or infinite");
+        throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
 }
 
 std::string Transaction::who()

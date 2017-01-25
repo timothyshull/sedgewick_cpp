@@ -260,7 +260,7 @@ void insert(Key key) {
     }
 
  BinomialMinPQ<Key> get_union(BinomialMinPQ<Key> heap) {
-        if (heap == null) throw new IllegalArgumentException("Cannot merge a Binomial Heap with null");
+        if (heap == null) throw utility::Illegal_argument_exception("Cannot merge a Binomial Heap with null");
         this.head = merge(new Node(), this.head, heap.head).sibling;
         Node x = this.head;
         Node prevx = null, nextx = x.sibling;

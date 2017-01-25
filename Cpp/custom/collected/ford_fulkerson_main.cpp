@@ -1,7 +1,7 @@
 int main(int argc, char *argv[]) {
-    int V = utility::safe_convert_integer(argv[1]);
+    int num_vertices = utility::safe_convert_integer(argv[1]);
     int E = utility::safe_convert_integer(argv[2]);
-    int s = 0, t = V - 1;
+    int s = 0, t = num_vertices - 1;
     FlowNetwork G = new FlowNetwork(V, E);
     Std_out::print_line(G);
 

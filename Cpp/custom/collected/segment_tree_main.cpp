@@ -3,20 +3,20 @@ int main(int argc, char *argv[]) {
 
     std::string cmd = "cmp";
     while (true) {
-        String[] line = Std_in::read_line().split(" ");
+        std::vector<std::string> line = Std_in::read_line().split(" ");
 
         if (line[0].equals("exit")) break;
 
         int arg1 = 0, arg2 = 0, arg3 = 0;
 
-        if (line.length > 1) {
-            arg1 = Integer.parseInt(line[1]);
+        if (line.size() > 1) {
+            arg1 = utility::str_to_num(line[1]);
         }
-        if (line.length > 2) {
-            arg2 = Integer.parseInt(line[2]);
+        if (line.size() > 2) {
+            arg2 = utility::str_to_num(line[2]);
         }
-        if (line.length > 3) {
-            arg3 = Integer.parseInt(line[3]);
+        if (line.size() > 3) {
+            arg3 = utility::str_to_num(line[3]);
         }
 
         if ((!line[0].equals("set") && !line[0].equals("init")) && st == null) {
@@ -25,9 +25,9 @@ int main(int argc, char *argv[]) {
         }
         int array[];
         if (line[0].equals("set")) {
-            array = new int[line.length - 1];
-            for (int i = 0; i < line.length - 1; ++i) {
-                array[i] = Integer.parseInt(line[i + 1]);
+            array = new int[line.size() - 1];
+            for (int i = 0; i < line.size() - 1; ++i) {
+                array[i] = utility::str_to_num(line[i + 1]);
             }
             st = new SegmentTree(array);
         } else if (line[0].equals("init")) {

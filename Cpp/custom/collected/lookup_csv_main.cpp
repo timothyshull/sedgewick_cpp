@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     In in{argv[1]};
     while (in.hasNextLine()) {
         std::string line = in.read_line();
-        String[] tokens = line.split(",");
+        std::vector<std::string> tokens = line.split(",");
         std::string key = tokens[keyField];
         std::string val = tokens[valField];
         st.put(key, val);

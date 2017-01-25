@@ -6,10 +6,10 @@
 #include "Bipartite.h"
 
 int main(int argc, char *argv[]) {
-    int v1 = utility::safe_convert_integer(argv[1]);
-    int v2 = utility::safe_convert_integer(argv[2]);
-    int e = utility::safe_convert_integer(argv[3]);
-    int f = utility::safe_convert_integer(argv[4]);
+    int v1 = utility::str_to_num(argv[1]);
+    int v2 = utility::str_to_num(argv[2]);
+    int e = utility::str_to_num(argv[3]);
+    int f = utility::str_to_num(argv[4]);
 
     Graph g = Graph_generator::bipartite(v1, v2, e);
     for (int i = 0; i < f; ++i) {

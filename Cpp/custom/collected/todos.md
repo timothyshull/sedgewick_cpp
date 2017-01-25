@@ -45,3 +45,5 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - add ostream << support to Point_2d
 - add ostream support to Date
 - Digraph generator Edge needs to be fixed
+- check math_errorhandling and handle errno/MATH_ERRNO after cmath calls
+- fix up str_to_num issues

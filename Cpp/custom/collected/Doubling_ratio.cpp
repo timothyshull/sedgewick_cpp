@@ -1,6 +1,6 @@
 #include "Doubling_ratio.h"
 
-double ::Doubling_ratio::timeTrial(int n)
+double ::Doubling_ratio::time_trial(int n)
 {
     std::vector<int> a = new int[n];
     for (int i = 0; i < n; ++i) {

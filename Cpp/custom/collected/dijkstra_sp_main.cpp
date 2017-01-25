@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 {
     In in{argv[1]};
     Edge_weighted_digraph edge_weighted_digraph{in};
-    int s{utility::safe_convert_integer(argv[1])};
+    int s{utility::str_to_num(argv[1])};
 
     Dijkstra_sp sp{edge_weighted_digraph, s};
 

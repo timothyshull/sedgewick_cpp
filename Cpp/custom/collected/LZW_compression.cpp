@@ -24,7 +24,7 @@ void ::LZW_compression::compress()
 
 void ::LZW_compression::expand()
 {
-    String[] st = new String[L];
+    std::vector<std::string> st = new String[L];
     int i; // next available codeword value
 
     // initialize symbol table with all 1-character strings

@@ -172,7 +172,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
 
 void Topological_x::validateVertex(int v)
 {
-    int V = rank.length;
+    int num_vertices = rank.length;
     if (v < 0 || v >= V)
         throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V - 1));
 }

@@ -3,11 +3,11 @@
 Rect_hv::Rect_hv(double xmin, double ymin, double xmax, double ymax)
 {
     if (Double.isNaN(xmin) || Double.isNaN(xmax))
-        throw new IllegalArgumentException("x-coordinate cannot be NaN");
+        throw utility::Illegal_argument_exception("x-coordinate cannot be NaN");
     if (Double.isNaN(ymin) || Double.isNaN(ymax))
-        throw new IllegalArgumentException("y-coordinates cannot be NaN");
+        throw utility::Illegal_argument_exception("y-coordinates cannot be NaN");
     if (xmax < xmin || ymax < ymin) {
-        throw new IllegalArgumentException("Invalid rectangle");
+        throw utility::Illegal_argument_exception("Invalid rectangle");
     }
     this.xmin = xmin;
     this.ymin = ymin;
@@ -59,7 +59,7 @@ bool Rect_hv::contains(Point_2d& p)
 
 double Rect_hv::distanceTo(Point_2d& p)
 {
-    return Math.sqrt(this.distanceSquaredTo(p));
+    return std::sqrt(this.distanceSquaredTo(p));
 }
 
 double Rect_hv::distanceSquaredTo(Point_2d& p)

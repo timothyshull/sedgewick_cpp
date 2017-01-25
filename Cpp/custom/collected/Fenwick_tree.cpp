@@ -35,5 +35,5 @@ void Fenwick_tree::update(int ind, int value)
 
 int Fenwick_tree::size()
 {
-    return array.length - 1;
+    return array.size() - 1;
 }

@@ -1,8 +1,9 @@
 #include "Date.h"
+#include "utility.h"
 
 Date::Date(int month, int day, int year)
 {
-    if (!isValid(month, day, year)) throw new IllegalArgumentException("Invalid date");
+    if (!isValid(month, day, year)) throw utility::Illegal_argument_exception("Invalid date");
     this.month = month;
     this.day = day;
     this.year = year;
@@ -10,14 +11,14 @@ Date::Date(int month, int day, int year)
 
 Date::Date(std::string& date)
 {
-    String[] fields = date.split("/");
-    if (fields.length != 3) {
-        throw new IllegalArgumentException("Invalid date");
+    std::vector<std::string> fields = date.split("/");
+    if (fields.size() != 3) {
+        throw utility::Illegal_argument_exception("Invalid date");
     }
-    month = Integer.parseInt(fields[0]);
-    day = Integer.parseInt(fields[1]);
-    year = Integer.parseInt(fields[2]);
-    if (!isValid(month, day, year)) throw new IllegalArgumentException("Invalid date");
+    month = utility::str_to_num(fields[0]);
+    day = utility::str_to_num(fields[1]);
+    year = utility::str_to_num(fields[2]);
+    if (!isValid(month, day, year)) throw utility::Illegal_argument_exception("Invalid date");
 }
 
 int Date::month()

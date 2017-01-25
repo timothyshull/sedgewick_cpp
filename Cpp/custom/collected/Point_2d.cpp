@@ -59,9 +59,9 @@ bool Distance_to_order::operator<(Point_2d& lhs, Point_2d& rhs)
 Point_2d::Point_2d(double c, double y)
 {
     if (Double.isInfinite(x) || Double.isInfinite(y))
-        throw new IllegalArgumentException("Coordinates must be finite");
+        throw utility::Illegal_argument_exception("Coordinates must be finite");
     if (Double.isNaN(x) || Double.isNaN(y))
-        throw new IllegalArgumentException("Coordinates cannot be NaN");
+        throw utility::Illegal_argument_exception("Coordinates cannot be NaN");
     if (x == 0.0) this.x = 0.0;  // convert -0.0 to +0.0
     else this.x = x;
 
@@ -81,19 +81,19 @@ double Point_2d::y()
 
 double Point_2d::r()
 {
-    return Math.sqrt(x * x + y * y);
+    return std::sqrt(x * x + y * y);
 }
 
 double Point_2d::theta()
 {
-    return Math.atan2(y, x);
+    return std::atan2(y, x);
 }
 
 double Point_2d::angleTo(Point_2d& that)
 {
     double dx = that.x - this.x;
     double dy = that.y - this.y;
-    return Math.atan2(dy, dx);
+    return std::atan2(dy, dx);
 }
 
 int Point_2d::ccw(Point_2d& a, Point_2d& b, Point_2d& c)
@@ -113,7 +113,7 @@ double Point_2d::distanceTo(Point_2d& that)
 {
     double dx = this.x - that.x;
     double dy = this.y - that.y;
-    return Math.sqrt(dx * dx + dy * dy);
+    return std::sqrt(dx * dx + dy * dy);
 }
 
 double Point_2d::distanceSquaredTo(Point_2d& that)

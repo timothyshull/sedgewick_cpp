@@ -6,7 +6,7 @@ int Edge::other(int vertex)
 {
     if (vertex == v) { return w; }
     else if (vertex == w) { return v; }
-    else { throw new IllegalArgumentException("Illegal endpoint"); }
+    else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
 }
 
 Eulerian_cycle::Eulerian_cycle(Graph& G)

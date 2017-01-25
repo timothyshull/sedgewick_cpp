@@ -5,7 +5,7 @@ Furthest_pair::Furthest_pair(std::vector<Point_2d>& points)
     GrahamScan graham = new GrahamScan(points);
 
     // single point
-    if (points.length <= 1) return;
+    if (points.size() <= 1) return;
 
     // number of points on the hull
     int m = 0;
@@ -70,5 +70,5 @@ Point_2d Furthest_pair::other()
 
 double Furthest_pair::distance()
 {
-    return Math.sqrt(bestDistanceSquared);
+    return std::sqrt(bestDistanceSquared);
 }

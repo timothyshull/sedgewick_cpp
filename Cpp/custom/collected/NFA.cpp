@@ -32,7 +32,7 @@ NFA::NFA(std::string& regexp)
             graph.add_edge(i, i + 1);
     }
     if (ops.size() != 0)
-        throw new IllegalArgumentException("Invalid regular expression");
+        throw utility::Illegal_argument_exception("Invalid regular expression");
 }
 
 bool NFA::recognizes(std::string& txt)
@@ -45,7 +45,7 @@ bool NFA::recognizes(std::string& txt)
     // Compute possible NFA states for txt[i+1]
     for (int i = 0; i < txt.length(); ++i) {
         if (txt.charAt(i) == '*' || txt.charAt(i) == '|' || txt.charAt(i) == '(' || txt.charAt(i) == ')')
-            throw new IllegalArgumentException("text contains the metacharacter '" + txt.charAt(i) + "'");
+            throw utility::Illegal_argument_exception("text contains the metacharacter '" + txt.charAt(i) + "'");
 
         Bag<Integer> match = new Bag<Integer>();
         for (int v : pc) {

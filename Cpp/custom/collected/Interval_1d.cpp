@@ -30,10 +30,10 @@ bool Length_comparator::operator()(Interval_1d& a, Interval_1d& b)
 Interval_1d::Interval_1d(double min, double max)
 {
     if (Double.isInfinite(min) || Double.isInfinite(max)) {
-        throw new IllegalArgumentException("Endpoints must be finite");
+        throw utility::Illegal_argument_exception("Endpoints must be finite");
     }
     if (Double.isNaN(min) || Double.isNaN(max)) {
-        throw new IllegalArgumentException("Endpoints cannot be NaN");
+        throw utility::Illegal_argument_exception("Endpoints cannot be NaN");
     }
 
     // convert -0.0 to +0.0
@@ -43,7 +43,7 @@ Interval_1d::Interval_1d(double min, double max)
     if (min <= max) {
         this.min = min;
         this.max = max;
-    } else { throw new IllegalArgumentException("Illegal interval"); }
+    } else { throw utility::Illegal_argument_exception("Illegal interval"); }
 }
 
 double Interval_1d::left()

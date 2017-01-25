@@ -9,7 +9,7 @@ Segment_tree::Segment_tree(std::vector<int>& array)
 {
     this.array = Arrays.copyOf(array, array.length);
     //The max size of this array is about 2 * 2 ^ log2(n) + 1
-    size = (int) (2 * Math.pow(2.0, Math.floor((Math.log((double) array.length) / Math.log(2.0)) + 1)));
+    size = (int) (2 * std::pow(2.0, std::floor((std::log((double) array.length) / std::log(2.0)) + 1)));
     heap = new Node[size];
     build(1, 0, array.length);
 }
@@ -74,7 +74,7 @@ void Segment_tree::build(int v, int from, int size)
 
         heap[v].sum = heap[2 * v].sum + heap[2 * v + 1].sum;
         //min = min of the children
-        heap[v].min = Math.min(heap[2 * v].min, heap[2 * v + 1].min);
+        heap[v].min = std::min(heap[2 * v].min, heap[2 * v + 1].min);
     }
 }
 
@@ -96,7 +96,7 @@ int Segment_tree::rMinQ(int v, int from, int to)
         int leftMin = rMinQ(2 * v, from, to);
         int rightMin = rMinQ(2 * v + 1, from, to);
 
-        return Math.min(leftMin, rightMin);
+        return std::min(leftMin, rightMin);
     }
 
     return Integer.MAX_VALUE;
@@ -119,7 +119,7 @@ void Segment_tree::update(int v, int from, int to, int value)
         update(2 * v + 1, from, to, value);
 
         n.sum = heap[2 * v].sum + heap[2 * v + 1].sum;
-        n.min = Math.min(heap[2 * v].min, heap[2 * v + 1].min);
+        n.min = std::min(heap[2 * v].min, heap[2 * v + 1].min);
     }
 }
 

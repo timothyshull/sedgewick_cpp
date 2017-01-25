@@ -39,7 +39,7 @@ public:
 
 void put(String key, Value val) {
         if (key == null) throw new NullPointerException("called put(null)");
-        if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+        if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
         if (val == null) delete(key);
         Node p;
         Node x = head;
@@ -73,7 +73,7 @@ void put(String key, Value val) {
 
 Value get(String key) {
         if (key == null) throw new NullPointerException("called get(null)");
-        if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+        if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
         Node p;
         Node x = head;
         do {
@@ -88,7 +88,7 @@ Value get(String key) {
 
 void remove(String key) {
         if (key == null) throw new NullPointerException("called delete(null)");
-        if (key.length() == 0) throw new IllegalArgumentException("invalid key");
+        if (key.length() == 0) throw utility::Illegal_argument_exception("invalid key");
         Node g;             // previous previous (grandparent)
         Node p = head;      // previous (parent)
         Node x = head;      // node to delete

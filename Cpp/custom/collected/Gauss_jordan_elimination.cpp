@@ -26,9 +26,9 @@ std::vector<double> Gauss_jordan_elimination::primal()
 {
     std::vector<double> x = new double[n];
     for (int i = 0; i < n; ++i) {
-        if (Math.abs(a[i][i]) > EPSILON)
+        if (std::abs(a[i][i]) > EPSILON)
             x[i] = a[i][n + n] / a[i][i];
-        else if (Math.abs(a[i][n + n]) > EPSILON)
+        else if (std::abs(a[i][n + n]) > EPSILON)
             return null;
     }
     return x;
@@ -38,7 +38,7 @@ std::vector<double> Gauss_jordan_elimination::dual()
 {
     std::vector<double> y = new double[n];
     for (int i = 0; i < n; ++i) {
-        if ((Math.abs(a[i][i]) <= EPSILON) && (Math.abs(a[i][n + n]) > EPSILON)) {
+        if ((std::abs(a[i][i]) <= EPSILON) && (std::abs(a[i][n + n]) > EPSILON)) {
             for (int j = 0; j < n; ++j)
                 y[j] = a[i][n + j];
             return y;
@@ -56,7 +56,7 @@ bool Gauss_jordan_elimination::isFeasible()
             for (int j = 0; j < n; ++j) {
                 sum += A[i][j] * x[j];
             }
-            if (Math.abs(sum - b[i]) > EPSILON) {
+            if (std::abs(sum - b[i]) > EPSILON) {
                 Std_out::print_line("not feasible");
                 Std_out::printf("b[%d] = %8.3f, sum = %8.3f\n", i, b[i], sum);
                 return false;
@@ -73,7 +73,7 @@ bool Gauss_jordan_elimination::isFeasible()
             for (int i = 0; i < n; ++i) {
                 sum += A[i][j] * y[i];
             }
-            if (Math.abs(sum) > EPSILON) {
+            if (std::abs(sum) > EPSILON) {
                 Std_out::print_line("invalid certificate of infeasibility");
                 Std_out::printf("sum = %8.3f\n", sum);
                 return false;
@@ -83,7 +83,7 @@ bool Gauss_jordan_elimination::isFeasible()
         for (int i = 0; i < n; ++i) {
             sum += y[i] * b[i];
         }
-        if (Math.abs(sum) < EPSILON) {
+        if (std::abs(sum) < EPSILON) {
             Std_out::print_line("invalid certificate of infeasibility");
             Std_out::printf("yb  = %8.3f\n", sum);
             return false;
@@ -100,7 +100,7 @@ void Gauss_jordan_elimination::solve()
         // find pivot row using partial pivoting
         int max = p;
         for (int i = p + 1; i < n; ++i) {
-            if (Math.abs(a[i][p]) > Math.abs(a[max][p])) {
+            if (std::abs(a[i][p]) > std::abs(a[max][p])) {
                 max = i;
             }
         }
@@ -109,7 +109,7 @@ void Gauss_jordan_elimination::solve()
         swap(p, max);
 
         // singular or nearly singular
-        if (Math.abs(a[p][p]) <= EPSILON) {
+        if (std::abs(a[p][p]) <= EPSILON) {
             continue;
             // throw new ArithmeticException("Matrix is singular or nearly singular");
         }

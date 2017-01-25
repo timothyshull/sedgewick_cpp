@@ -4,7 +4,7 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
 {
     bipartition = new BipartiteX(G);
     if (!bipartition.is_bipartite()) {
-        throw new IllegalArgumentException("graph is not bipartite");
+        throw utility::Illegal_argument_exception("graph is not bipartite");
     }
 
     // initialize empty matching
