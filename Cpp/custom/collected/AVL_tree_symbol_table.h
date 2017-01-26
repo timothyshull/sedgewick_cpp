@@ -155,7 +155,7 @@ public:
     void put(Key_type& key, Value_type& val)
     {
         _root = std::unique_ptr<Node_type>{_put(_get_root(), key, val)};
-        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"put()\"");
+        utility::alg_assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"put()\"");
     }
 
     void delete_min()
@@ -164,7 +164,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
         }
         _root = _delete_min(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_min()\"");
+        utility::alg_assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -173,7 +173,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
         }
         _root = _delete_max(_get_root());
-        utility::assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_max()\"");
+        utility::alg_assert(_check(), "AVL_tree_symbol_table invariant _check failed after \"delete_max()\"");
     }
 
     Raw_key_pointer min() const
@@ -222,7 +222,7 @@ public:
     {
         if (k < 0 || k >= size()) {
             std::stringstream ss;
-            ss << "The argument \"k\" is not in the range 0-" << size() - 1;
+            ss << "The argument \"k\" is not _in the range 0-" << size() - 1;
             throw utility::Illegal_argument_exception(ss.str());
         }
         Raw_node_pointer x = _select(_get_root(), k);

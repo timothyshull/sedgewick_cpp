@@ -30,11 +30,11 @@ Assignment_problem::Assignment_problem(std::vector<std::vector<double>>& weight)
     }
 
     for (int k{0}; k < _dimension; ++k) {
-        utility::assert(_is_dual_feasible(), "Assignment_problem _is_dual_feasible _check failed");
-        utility::assert(_is_complementary_slack(), "Assignment_problem _is_complementary_slack _check failed");
+        utility::alg_assert(_is_dual_feasible(), "Assignment_problem _is_dual_feasible _check failed");
+        utility::alg_assert(_is_complementary_slack(), "Assignment_problem _is_complementary_slack _check failed");
         _augment();
     }
-    utility::assert(_certify_solution(), "Assignment_problem _certify_solution _check failed");
+    utility::alg_assert(_certify_solution(), "Assignment_problem _certify_solution _check failed");
 }
 
 double Assignment_problem::dual_row(int i) const

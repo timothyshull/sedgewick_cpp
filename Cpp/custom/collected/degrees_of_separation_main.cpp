@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     Symbol_graph sg{filename, delimiter};
     Graph graph{sg.graph()};
     if (!sg.contains(source)) {
-        Std_out::print_line(source + " not in database.");
+        Std_out::print_line(source + " not _in database.");
         return;
     }
 
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
                 Std_out::print_line("Not connected");
             }
         } else {
-            Std_out::print_line("   Not in database.");
+            Std_out::print_line("   Not _in database.");
         }
     }
     return 0;

@@ -229,7 +229,7 @@ public:
     void insert(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already in the _queue"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already _in the _queue"); }
         Node <Key> x = new Node<Key>();
         x.key = key;
         x.index = i;
@@ -277,14 +277,14 @@ public:
     Key keyOf(int i)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         return nodes[i].key;
     }
 
     void changeKey(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (greater(key, nodes[i].key)) { increaseKey(i, key); }
         else { decreaseKey(i, key); }
     }
@@ -292,7 +292,7 @@ public:
     void decreaseKey(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (greater(key, nodes[i].key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not decrease the key");
         }
@@ -307,7 +307,7 @@ public:
     void increaseKey(int i, Key key)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (greater(nodes[i].key, key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not increase the key");
         }
@@ -318,7 +318,7 @@ public:
     void remove(int i)
     {
         if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         Node <Key> x = nodes[i];
         x.key = null;                //For garbage collection
         if (x.parent != null) {

@@ -81,7 +81,7 @@ private:
     friend class Binary_search_tree_reverse_iterator;
 };
 
-// this is implemented in a way that will invalidate the iterator easily
+// this is implemented _in a way that will invalidate the iterator easily
 // and it takes N * size extra space
 // this is due to the fact that the nodes do not have parent pointers
 template<typename Key, typename Value>
@@ -354,7 +354,7 @@ public:
     void put(Key_type key, Value_type& val)
     {
         _root = std::unique_ptr<Node_type>{_put(_get_root(), key, val)};
-        utility::assert(_check(), "Binary_search_tree invariant _check failed after \"put()\"");
+        utility::alg_assert(_check(), "Binary_search_tree invariant _check failed after \"put()\"");
     }
 
     void delete_min()
@@ -363,7 +363,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
         }
         _root = _delete_min(_get_root());
-        utility::assert(_check(), "Binary_search_tree invariant _check failed after \"delete_min()\"");
+        utility::alg_assert(_check(), "Binary_search_tree invariant _check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -372,7 +372,7 @@ public:
             throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
         }
         _root = _delete_max(_get_root());
-        utility::assert(_check(), "Binary_search_tree invariant _check failed after \"delete_max()\"");
+        utility::alg_assert(_check(), "Binary_search_tree invariant _check failed after \"delete_max()\"");
     }
 
     Key_type min() const
@@ -391,7 +391,7 @@ public:
         return *(_max(_get_root())->_key);
     }
 
-    // TODO: may need to wrap keys in shared_ptr also
+    // TODO: may need to wrap keys _in shared_ptr also
     Key_type floor(Key_type key) const
     {
         if (is_empty()) {
@@ -422,7 +422,7 @@ public:
     {
         if (k < 0 || k >= size()) {
             std::stringstream ss;
-            ss << "The argument \"k\" is not in the range 0-" << size() - 1;
+            ss << "The argument \"k\" is not _in the range 0-" << size() - 1;
             throw utility::Illegal_argument_exception(ss.str());
         }
         Node_raw_pointer x = _select(_get_root(), k);
@@ -587,7 +587,7 @@ private:
         x->_left = std::move(y->_left);
         y->_left = std::unique_ptr<Node_type>{x};
         y->_size = x->_size;
-        // TODO: change these into utility functions in the node class
+        // TODO: change these into utility functions _in the node class
         x->_size = 1 + _size(x->_left.get()) + _size(x->_right.get());
         x->_height = 1 + std::max(_height(x->_left.get()), _height(x->_right.get()));
         y->_height = 1 + std::max(_height(y->_left.get()), _height(y->_right.get()));

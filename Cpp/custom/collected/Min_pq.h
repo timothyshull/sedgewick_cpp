@@ -25,7 +25,7 @@ public:
         for (int k{_size / 2}; k >= 1; --k) {
             _sink(k);
         }
-        utility::assert(_is_min_heap(), "Min_pq is_min_heap _check failed");
+        utility::alg_assert(_is_min_heap(), "Min_pq is_min_heap _check failed");
     }
 
     inline bool is_empty() const { return _size == 0; }
@@ -44,7 +44,7 @@ public:
 
         _priority_queue[++_size] = x;
         _swim(_size);
-        utility::assert(_is_min_heap(), "Min_pq _is_min_heap _check failed");
+        utility::alg_assert(_is_min_heap(), "Min_pq _is_min_heap _check failed");
     }
 
     T delete_min()
@@ -56,7 +56,7 @@ public:
         std::remove(_priority_queue.begin() + _size + 1);
         // _priority_queue[_size + 1] = null;         // avoid loitering and help with garbage collection
         if ((_size > 0) && (_size == (_priority_queue.size() - 1) / 4)) { _resize(_priority_queue.size() / 2); }
-        utility::assert(_is_min_heap(), "Min_pq _is_min_heap _check failed");
+        utility::alg_assert(_is_min_heap(), "Min_pq _is_min_heap _check failed");
         return min;
     }
 
@@ -71,7 +71,7 @@ private:
 
     void _resize(int capacity)
     {
-        utility::assert(capacity > _size, "Min_pq capacity _check failed");
+        utility::alg_assert(capacity > _size, "Min_pq capacity _check failed");
         std::vector<T> temp{};
         temp.reserve(capacity);
         for (int i{1}; i <= _size; ++i) {

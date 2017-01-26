@@ -243,13 +243,13 @@ Graph::Graph_generator::tree(int V)
 
     // Cayley's theorem: there are _num_vertices^(_num_vertices-2) labeled trees on num_vertices vertices
     // Prufer sequence: sequence of _num_vertices-2 values between 0 and _num_vertices-1
-    // Prufer's proof of Cayley's theorem: Prufer sequences are in 1-1
+    // Prufer's proof of Cayley's theorem: Prufer sequences are _in 1-1
     // with labeled trees on num_vertices vertices
     std::vector<int> prufer = new int[V - 2];
     for (int i{0}; i < num_vertices - 2; ++i)
         prufer[i] = Std_random::uniform(V);
 
-    // degree of vertex v = 1 + number of times it appers in Prufer sequence
+    // degree of vertex v = 1 + number of times it appers _in Prufer sequence
     std::vector<int> degree = new int[V];
     for (int v{0}; v < V; ++v)
         degree[v] = 1;

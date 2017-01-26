@@ -9,20 +9,22 @@
 class Closest_pair {
 public:
     Closest_pair(std::vector<Point_2d>& points);
-    double closest(std::vector<Point_2d>& pointsByX, std::vector<Point_2d>& pointsByY, std::vector<Point_2d>& aux, int lo, int hi);
-    Point_2d either();
-    Point_2d other();
-    double distance();
+
+    double closest(std::vector<Point_2d>& points_by_x, std::vector<Point_2d>& points_by_y, std::vector<Point_2d>& aux, int lo, int hi);
+
+    inline Point_2d either() const noexcept { return _best1; }
+
+    inline Point_2d other() const noexcept { return _best2; }
+
+    inline double distance() const noexcept { return _best_distance; }
+
 private:
-    Point_2d best1;
-    Point_2d best2;
-    double bestDistance = std::numeric_limits<double>::infinity();
+    Point_2d _best1;
+    Point_2d _best2;
+    double _best_distance = std::numeric_limits<double>::infinity();
 
     template<typename T>
-    bool less(T& v, T& w)
-    {
-        return v < w;
-    }
+    inline bool less(T& v, T& w) const { return v < w; }
 
     template<typename T>
     void merge(std::vector<T>& a, std::vector<T>& aux, int lo, int mid, int hi)
@@ -31,7 +33,6 @@ private:
             aux[k] = a[k];
         }
 
-        // merge back to a[]
         int i = lo, j = mid + 1;
         for (int k{lo}; k <= hi; ++k) {
             if (i > mid) { a[k] = aux[j++]; }

@@ -19,7 +19,7 @@ Floyd_warshall::Floyd_warshall(Adj_matrix_edge_weighted_digraph& G)
             _distances[e.from()][e.to()] = e.weight();
             _edge_to[e.from()][e.to()] = e;
         }
-        // in case of self-loops
+        // _in case of self-loops
         if (_distances[v][v] >= 0.0) {
             _distances[v][v] = 0.0;
             _edge_to[v][v] = null;
@@ -55,7 +55,7 @@ bool Floyd_warshall::has_negative_cycle()
 std::vector<Directed_edge> Floyd_warshall::negative_cycle()
 {
     for (int v{0}; v < _distances.length; ++v) {
-        // negative _cycle in v's predecessor graph
+        // negative _cycle _in v's predecessor graph
         if (_distances[v][v] < 0.0) {
             int num_vertices = _edge_to.length;
             Edge_weighted_digraph spt = new Edge_weighted_digraph(V);

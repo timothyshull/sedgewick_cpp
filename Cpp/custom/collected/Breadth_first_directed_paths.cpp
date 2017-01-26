@@ -1,83 +1,74 @@
 #include "Breadth_first_directed_paths.h"
+#include "Queue.h"
 
-Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& G, int s)
+Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& digraph, int source)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+          _distance_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
+          _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    distance_to = new int[G.num_vertices()];
-    edgeTo = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        distance_to[v] = INFINITY;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        _distance_to[v] = _infinity;
     }
-    bfs(G, s);
+    _bfs(digraph, source);
 }
 
-Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& G, std::vector<int>& sources)
+Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& digraph, std::vector<int>& sources)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+          _distance_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
+          _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    distance_to = new int[G.num_vertices()];
-    edgeTo = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        distance_to[v] = INFINITY;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        _distance_to[v] = _infinity;
     }
-    bfs(G, sources);
+    _bfs(digraph, sources);
 }
 
-bool Breadth_first_directed_paths::has_path_to(int v)
+Stack<int> Breadth_first_directed_paths::path_to(int v)
 {
-    return marked[v];
-}
-
-int Breadth_first_directed_paths::distance_to(int v)
-{
-    return distance_to[v];
-}
-
-std::vector<int> Breadth_first_directed_paths::path_to(int v)
-{
-    if (!has_path_to(v)) { return null; }
-    Stack <Integer> path = new Stack<Integer>();
+    if (!has_path_to(v)) { return {}; }
+    Stack<int> path;
     int x;
-    for (x = v; distance_to[x] != 0; x = edgeTo[x]) {
+    for (x = v; _distance_to[x] != 0; x = _edge_to[x]) {
         path.push(x);
     }
     path.push(x);
     return path;
 }
 
-void Breadth_first_directed_paths::bfs(Digraph& G, int s)
+void Breadth_first_directed_paths::_bfs(Digraph& digraph, int source)
 {
-    Queue <Integer> q = new Queue<Integer>();
-    marked[s] = true;
-    distance_to[s] = 0;
-    q.enqueue(s);
+    Queue<int> q;
+    _marked[source] = true;
+    _distance_to[source] = 0;
+    q.enqueue(source);
     while (!q.is_empty()) {
         int v = q.dequeue();
-        for (int w : G.adj(v)) {
-            if (!marked[w]) {
-                edgeTo[w] = v;
-                distance_to[w] = distance_to[v] + 1;
-                marked[w] = true;
+        for (int w : digraph.adjacent(v)) {
+            if (!_marked[w]) {
+                _edge_to[w] = v;
+                _distance_to[w] = _distance_to[v] + 1;
+                _marked[w] = true;
                 q.enqueue(w);
             }
         }
     }
 }
 
-void Breadth_first_directed_paths::bfs(Digraph& G, std::vector<int>& sources)
+void Breadth_first_directed_paths::_bfs(Digraph& digraph, std::vector<int>& sources)
 {
-    Queue <Integer> q = new Queue<Integer>();
+    Queue<int> q;
     for (int s : sources) {
-        marked[s] = true;
-        distance_to[s] = 0;
+        _marked[s] = true;
+        _distance_to[s] = 0;
         q.enqueue(s);
     }
     while (!q.is_empty()) {
         int v = q.dequeue();
-        for (int w : G.adj(v)) {
-            if (!marked[w]) {
-                edgeTo[w] = v;
-                distance_to[w] = distance_to[v] + 1;
-                marked[w] = true;
+        for (int w : digraph.adjacent(v)) {
+            if (!_marked[w]) {
+                _edge_to[w] = v;
+                _distance_to[w] = _distance_to[v] + 1;
+                _marked[w] = true;
                 q.enqueue(w);
             }
         }

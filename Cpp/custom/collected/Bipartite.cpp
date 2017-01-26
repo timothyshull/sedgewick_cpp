@@ -1,89 +1,70 @@
 #include "Bipartite.h"
 
-Bipartite::Bipartite(Graph& G)
+Bipartite::Bipartite(Graph& graph)
+        : _is_bipartite{true},
+          _color(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+          _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+          _marked(static_cast<std::vector<int>::size_type>(graph.num_vertices()))
 {
-    is_bipartite = true;
-    color = new boolean[G.num_vertices()];
-    marked = new boolean[G.num_vertices()];
-    edgeTo = new int[G.num_vertices()];
-
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (!marked[v]) {
-            dfs(G, v);
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (!_marked[v]) {
+            _dfs(graph, v);
         }
     }
-    assert check(G);
+    utility::alg_assert(_check(graph), "Bipartite invariant check failed in ctor");
 }
 
-bool Bipartite::is_bipartite()
+bool Bipartite::color(int vertex) const
 {
-    return is_bipartite;
-}
-
-bool Bipartite::color(int v)
-{
-    if (!is_bipartite) {
-        throw new UnsupportedOperationException("Graph is not bipartite");
+    if (!_is_bipartite) {
+        throw utility::Unsupported_operation_exception{"Graph is not bipartite"};
     }
-    return color[v];
+    return _color[vertex];
 }
 
-std::vector<int> Bipartite::odd_cycle()
+void Bipartite::_dfs(Graph& graph, int vertex)
 {
-    return cycle;
-}
+    _marked[vertex] = true;
+    for (int w : graph.adjacent(vertex)) {
 
-void Bipartite::dfs(Graph& G, int v)
-{
-    marked[v] = true;
-    for (int w : G.adj(v)) {
+        if (!_cycle.is_empty()) { return; }
 
-        // short circuit if odd-length _cycle found
-        if (cycle != null) { return; }
-
-        // found uncolored vertex, so recur
-        if (!marked[w]) {
-            edgeTo[w] = v;
-            color[w] = !color[v];
-            dfs(G, w);
-        }
-
-            // if v-w create an odd-length _cycle, find it
-        else if (color[w] == color[v]) {
-            is_bipartite = false;
-            cycle = new Stack<Integer>();
-            cycle.push(w);  // don't need this unless you want to include start vertex twice
-            for (int x{v}; x != w; x = edgeTo[x]) {
-                cycle.push(x);
+        if (!_marked[w]) {
+            _edge_to[w] = vertex;
+            _color[w] = !_color[vertex];
+            _dfs(graph, w);
+        } else if (_color[w] == _color[vertex]) {
+            _is_bipartite = false;
+            _cycle = Stack<int>{};
+            _cycle.push(w);
+            for (int x{vertex}; x != w; x = _edge_to[x]) {
+                _cycle.push(x);
             }
-            cycle.push(w);
+            _cycle.push(w);
         }
     }
 }
 
-bool Bipartite::check(Graph& G)
+bool Bipartite::_check(Graph& graph) const
 {
-    if (is_bipartite) {
-        for (int v{0}; v < G.num_vertices(); ++v) {
-            for (int w : G.adj(v)) {
-                if (color[v] == color[w]) {
-                    System.err.printf("edge %d-%d with %d and %d in same side of _bipartition\n", v, w, v, w);
+    if (_is_bipartite) {
+        for (int v{0}; v < graph.num_vertices(); ++v) {
+            for (int w : graph.adjacent(v)) {
+                if (_color[v] == _color[w]) {
+                    std::cerr << "There is an edge " << v << "-" << w << " with " << v << " and " << w << " in the same side of bipartition\n";
                     return false;
                 }
             }
         }
-    }
-
-        // graph has an odd-length _cycle
-    else {
-        // verify _cycle
-        int first = -1, last = -1;
+    } else {
+        int first{-1};
+        int last{-1};
         for (int v : odd_cycle()) {
             if (first == -1) { first = v; }
             last = v;
         }
         if (first != last) {
-            System.err.printf("_cycle begins with %d and ends with %d\n", first, last);
+            std::cerr << "The cycle begins with " << first << " and ends with " << last << "\n";
             return false;
         }
     }

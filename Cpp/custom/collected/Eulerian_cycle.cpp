@@ -54,7 +54,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& G)
     Stack<Integer> stack = new Stack<Integer>();
     stack.push(s);
 
-    // greedily search through edges in iterative DFS style
+    // greedily search through edges _in iterative DFS style
     cycle = new Stack<Integer>();
     while (!stack.is_empty()) {
         int v = stack.pop();
@@ -136,7 +136,7 @@ bool Eulerian_cycle::certifySolution(Graph& G)
     // _check that _cycle() is a _cycle of G
     // TODO
 
-    // _check that first and last vertices in _cycle() are the same
+    // _check that first and last vertices _in _cycle() are the same
     int first = -1, last = -1;
     for (int v : cycle()) {
         if (first == -1) { first = v; }

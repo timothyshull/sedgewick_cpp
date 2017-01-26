@@ -16,7 +16,7 @@ void ::LZW_compression::compress()
         if (t < input.length() && code < L) {    // Add s to symbol table.
             st.put(input.substring(0, t + 1), code++);
         }
-        input = input.substring(t);            // Scan past s in input.
+        input = input.substring(t);            // Scan past s _in input.
     }
     Binary_std_out::write(R, W);
     Binary_std_out::close();

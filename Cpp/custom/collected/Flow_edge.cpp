@@ -75,7 +75,7 @@ void Flow_edge::addResidualFlowTo(int vertex, double delta)
     } else if (vertex == w) {
         flow += delta;           // forward edge
     } else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
-    if (Double.isNaN(delta)) { throw utility::Illegal_argument_exception("Change in flow = NaN"); }
+    if (Double.isNaN(delta)) { throw utility::Illegal_argument_exception("Change _in flow = NaN"); }
     if (!(flow >= 0.0)) { throw utility::Illegal_argument_exception("Flow is negative"); }
     if (!(flow <= capacity)) { throw utility::Illegal_argument_exception("Flow exceeds capacity"); }
 }

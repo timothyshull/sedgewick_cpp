@@ -9,59 +9,69 @@
 #include <ios>
 #include <type_traits>
 #include <iostream>
+#include <boost/lexical_cast>
 
 namespace utility {
     const static int max_num_str_len = 25;
 
-    void assert(bool test, const char msg[]);
-
-    template<typename T, typename std::enable_if<std::is_integral<T>::value>::type>>
-    struct max_numeric_type {
-        using type = long long int;
+    // not portable
+    union Binary_double {
+        double d;
+        long l;
     };
 
-    template<typename T, typename std::enable_if<std::is_floating_point<T>::value>::type>>
-    struct max_numeric_type {
-        using type = long double;
+    union Binary_float {
+        float f;
+        int i;
     };
 
-    template<typename T, typename std::enable_if<std::is_unsigned<T>::value>::type>>
-    struct max_numeric_type {
-        using type = unsigned long long int;
-    };
+    void alg_assert(bool test, const char* msg);
 
     // still has issues but better
+//    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
+//    T str_to_num(const char* str)
+//    {
+//        // from CERT
+//        char buff[max_num_str_len];
+//        char* end_ptr;
+//        typename max_numeric_type<T>::type sl{0};
+//
+//        int i;
+//        for (i = 0; i < max_num_str_len && *(str + i) != '\0'; ++i) {
+//            *(buff + i) = *(str + i);
+//        }
+//        if (i < max_num_str_len - 1 && buff[i] != '\0') {
+//            *(buff + i + 1) = '\0';
+//        }
+//
+//        errno = 0;
+//        sl = strtol(buff, &end_ptr, 0);
+//
+//        if (i == max_num_str_len || errno == ERANGE || sl > std::numeric_limits<T>::max() || sl < std::numeric_limits<T>::min() || end_ptr == buff || *end_ptr != '\0') {
+//            std::cerr << "An error occurred while parsing the number: " << str << "\_size";
+//            std::exit(-1);
+//        }
+//        return static_cast<T>(sl);
+//    }
+
     template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
-    int str_to_num(const char* str)
+    T str_to_num(const char* str)
     {
-        // from CERT
-        char buff[max_num_str_len];
-        char* end_ptr;
-        typename max_numeric_type<T>::type sl{0};
-
-        int i;
-        for (i = 0; i < max_num_str_len && *(str + i) != '\0'; ++i) {
-            *(buff + i) = *(str + i);
-        }
-        if (i < max_num_str_len - 1 && buff[i] != '\0') {
-            *(buff + i + 1) = '\0';
-        }
-
-        errno = 0;
-        sl = strtol(buff, &end_ptr, 0);
-
-        if (i == max_num_str_len || errno == ERANGE || sl > std::numeric_limits<T>::max() || sl < std::numeric_limits<T>::min() || end_ptr == buff || *end_ptr != '\0') {
-            std::cerr << "An error occurred while parsing the number: " << str << "\n";
+        T tmp;
+        try {
+            tmp = boost::lexical_cast<T>(str);
+        } catch (const boost::bad_lexical_cast& e) {
+            std::cerr << "An error occurred while parsing the number: " << str << ", " << e.what() << "\n";
             std::exit(-1);
         }
-        return static_cast<T>(sl);
+        return tmp;
     }
 
-    template<typename T>
-    T str_to_num(std::string& str)
-    {
-        return str_to_num<T>(str.c_str());
-    }
+//    template<typename T>
+//    T str_to_num(std::string& str)
+//    {
+//        return str_to_num<T>(str.c_str());
+//    }
 
     template<typename T>
     int safe_read_num()
@@ -99,6 +109,7 @@ namespace utility {
 
     std::vector<char> str_to_char_vector(std::string& str);
 
+    // TODO: can use stream swap from C++11
     template<typename Stream_type>
     void copy_stream(Stream_type& src, Stream_type& dest)
     {
@@ -155,53 +166,15 @@ namespace utility {
         virtual ~Unsupported_operation_exception() noexcept {};
     };
 
-#if _LIBCPP_STD_VER < 14
+    class Arithmetic_exception : public std::runtime_error {
+    public:
+        inline explicit Arithmetic_exception(const std::string& s) : std::runtime_error{s} {}
 
-    template<class T>
-    struct __unique_if {
-        using __unique_single = std::unique_ptr<T>;
+        inline explicit Arithmetic_exception(const char* s) : std::runtime_error{s} {}
+
+        virtual ~Arithmetic_exception() noexcept {};
     };
 
-    template<class T>
-    struct __unique_if<T[]> {
-        using __unique_array_unknown_bound = std::unique_ptr<T[]>;
-    };
-
-    template<class T, std::size_t num_ptrs>
-    struct __unique_if<T[num_ptrs]> {
-        typedef void __unique_array_known_bound;
-    };
-
-    template<class T, class... Args>
-    inline
-    typename __unique_if<T>::__unique_single
-    make_unique(Args&& ... argv)
-    {
-        return std::unique_ptr<T>(new T(std::forward<Args>(argv)...));
-    }
-
-    template<class T>
-    inline
-    typename __unique_if<T>::__unique_array_unknown_bound
-    make_unique(size_t n)
-    {
-        using Unique_ptr = typename std::remove_extent<T>::type;
-        return std::unique_ptr<T>(new Unique_ptr[n]());
-    }
-
-    template<class T, class... Args>
-    typename __unique_if<T>::__unique_array_known_bound
-    make_unique(Args&& ...) = delete;
-
-#else
-
-    template<class T, class... Args>
-    using make_unique<T, Args...> = std::make_unique<T, Args...>;
-
-    template<class T>
-    using make_unique<T> = std::make_unique<T>;
-
-#endif  // _LIBCPP_STD_VER < 14
 }
 
 #endif // UTILITY_H

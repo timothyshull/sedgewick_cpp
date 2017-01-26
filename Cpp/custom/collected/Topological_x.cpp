@@ -27,7 +27,7 @@ Topological_x::Topological_x(Digraph& G)
         }
     }
 
-    // there is a directed _cycle in subgraph of vertices with indegree >= 1.
+    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
     if (count != G.num_vertices()) {
         order = null;
     }
@@ -63,7 +63,7 @@ Topological_x::Topological_x(Edge_weighted_digraph& G)
         }
     }
 
-    // there is a directed _cycle in subgraph of vertices with indegree >= 1.
+    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
     if (count != G.num_vertices()) {
         order = null;
     }

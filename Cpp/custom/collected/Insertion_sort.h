@@ -28,9 +28,9 @@ namespace Insertion_sort {
             for (int j{i}; j > 0 && less<T, Comparator>(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
-            // utility::assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
+            // utility::alg_assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
         }
-        utility::assert(is_sorted<T, Comparator>(a), "The Insertion_sort is_sorted _check failed");
+        utility::alg_assert(is_sorted<T, Comparator>(a), "The Insertion_sort is_sorted _check failed");
     }
 
     template<typename T, typename Comparator>
@@ -40,9 +40,9 @@ namespace Insertion_sort {
             for (int j{i}; j > lo && less<T, Comparator>(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
-            // utility::assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
+            // utility::alg_assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
         }
-        utility::assert(is_sorted<T, Comparator>(a, lo, hi), "The Insertion_sort is_sorted _check failed");
+        utility::alg_assert(is_sorted<T, Comparator>(a, lo, hi), "The Insertion_sort is_sorted _check failed");
     }
 
     template<typename T>

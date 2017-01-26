@@ -1,178 +1,142 @@
+#include <cmath>
+#include <sstream>
+
 #include "Point_2d.h"
+#include "Std_draw.h"
+#include "utility.h"
 
 bool X_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    if (p.x < q.x) return -1;
-    if (p.x > q.x) return +1;
-    return 0;
+    return lhs._x < rhs._x;
 }
 
 bool Y_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    if (p.y < q.y) return -1;
-    if (p.y > q.y) return +1;
-    return 0;
+    return lhs._y < rhs._y;
 }
 
 bool R_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    double delta = (p.x * p.x + p.y * p.y) - (q.x * q.x + q.y * q.y);
-    if (delta < 0) return -1;
-    if (delta > 0) return +1;
-    return 0;
+    double delta{(lhs._x * lhs._x + lhs._y * lhs._y) - (rhs._x * rhs._x + rhs._y * rhs._y)};
+    return delta < 0;
 }
 
 bool Atan_2_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    double angle1 = angleTo(q1);
-    double angle2 = angleTo(q2);
-    if (angle1 < angle2) return -1;
-    else if (angle1 > angle2) return +1;
-    else return 0;
+    double angle1{_comparison_point.angle_to(lhs)};
+    double angle2{_comparison_point.angle_to(rhs)};
+    return angle1 < angle2;
 }
 
-bool Polar_order::operator<(Point_2d& lhs, Point_2d& rhs)
+int Polar_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    double dx1 = q1.x - x;
-    double dy1 = q1.y - y;
-    double dx2 = q2.x - x;
-    double dy2 = q2.y - y;
+    double dx1{lhs._x - _comparison_point._x};
+    double dy1{lhs._y - _comparison_point._y};
+    double dx2{rhs._x - _comparison_point._x};
+    double dy2{rhs._y - _comparison_point._y};
 
-    if (dy1 >= 0 && dy2 < 0) return -1;    // q1 above; q2 below
-    else if (dy2 >= 0 && dy1 < 0) return +1;    // q1 below; q2 above
-    else if (dy1 == 0 && dy2 == 0) {            // 3-collinear and horizontal
-        if (dx1 >= 0 && dx2 < 0) return -1;
-        else if (dx2 >= 0 && dx1 < 0) return +1;
-        else return 0;
-    } else return -ccw(Point_2d.this, q1, q2);
+    if (dy1 >= 0 && dy2 < 0) { return -1; }
+    else if (dy2 >= 0 && dy1 < 0) { return +1; }
+    else if (dy1 == 0 && dy2 == 0) {
+        if (dx1 >= 0 && dx2 < 0) { return -1; }
+        else if (dx2 >= 0 && dx1 < 0) { return +1; }
+        else { return 0; }
+    } else {
+        Point_2d tmp{_comparison_point};
+        return -Point_2d::ccw(tmp, lhs, rhs);
+    }
 }
 
 bool Distance_to_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
-    double dist1 = distanceSquaredTo(p);
-    double dist2 = distanceSquaredTo(q);
-    if (dist1 < dist2) return -1;
-    else if (dist1 > dist2) return +1;
-    else return 0;
+    double dist1{_comparison_point.distance_squared_to(lhs)};
+    double dist2{_comparison_point.distance_squared_to(rhs)};
+    return dist1 < dist2;
 }
 
-Point_2d::Point_2d(double c, double y)
+Point_2d::Point_2d(double x, double y) : _x{x == 0.0 ? 0.0 : x}, _y{y == 0.0 ? 0.0 : y}
 {
-    if (Double.isInfinite(x) || Double.isInfinite(y))
-        throw utility::Illegal_argument_exception("Coordinates must be finite");
-    if (Double.isNaN(x) || Double.isNaN(y))
-        throw utility::Illegal_argument_exception("Coordinates cannot be NaN");
-    if (x == 0.0) this.x = 0.0;  // convert -0.0 to +0.0
-    else this.x = x;
-
-    if (y == 0.0) this.y = 0.0;  // convert -0.0 to +0.0
-    else this.y = y;
+    if (std::isinf(_x) || std::isinf(y)) {
+        throw utility::Illegal_argument_exception{"Coordinates must be finite"};
+    }
+    if (std::isnan(_x) || std::isnan(y)) {
+        throw utility::Illegal_argument_exception{"Coordinates cannot be NaN"};
+    }
 }
 
-double Point_2d::x()
+double Point_2d::angle_to(Point_2d& rhs) const
 {
-    return x;
-}
-
-double Point_2d::y()
-{
-    return y;
-}
-
-double Point_2d::r()
-{
-    return std::sqrt(x * x + y * y);
-}
-
-double Point_2d::theta()
-{
-    return std::atan2(y, x);
-}
-
-double Point_2d::angleTo(Point_2d& that)
-{
-    double dx = that.x - this.x;
-    double dy = that.y - this.y;
+    double dx{rhs._x - _x};
+    double dy{rhs._y - _y};
     return std::atan2(dy, dx);
 }
 
 int Point_2d::ccw(Point_2d& a, Point_2d& b, Point_2d& c)
 {
-    double area2 = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
-    if (area2 < 0) return -1;
-    else if (area2 > 0) return +1;
-    else return 0;
+    double area2{(b._x - a._x) * (c._y - a._y) - (b._y - a._y) * (c._x - a._x)};
+    if (area2 < 0) { return -1; }
+    else if (area2 > 0) { return +1; }
+    else { return 0; }
 }
 
 double Point_2d::area2(Point_2d& a, Point_2d& b, Point_2d& c)
 {
-    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+    return (b._x - a._x) * (c._y - a._y) - (b._y - a._y) * (c._x - a._x);
 }
 
-double Point_2d::distanceTo(Point_2d& that)
+double Point_2d::distance_to(Point_2d& rhs) const
 {
-    double dx = this.x - that.x;
-    double dy = this.y - that.y;
+    double dx{_x - rhs._x};
+    double dy{_y - rhs._y};
     return std::sqrt(dx * dx + dy * dy);
 }
 
-double Point_2d::distanceSquaredTo(Point_2d& that)
+double Point_2d::distance_squared_to(Point_2d& rhs) const
 {
-    double dx = this.x - that.x;
-    double dy = this.y - that.y;
+    double dx{_x - rhs._x};
+    double dy{_y - rhs._y};
     return dx * dx + dy * dy;
 }
 
 bool Point_2d::operator<(Point_2d& rhs)
 {
-    if (this.y < that.y) return -1;
-    if (this.y > that.y) return +1;
-    if (this.x < that.x) return -1;
-    if (this.x > that.x) return +1;
+    if (_y < rhs._y) { return -1; }
+    if (_y > rhs._y) { return +1; }
+    if (_x < rhs._x) { return -1; }
+    if (_x > rhs._x) { return +1; }
     return 0;
 }
 
 bool Point_2d::operator==(Point_2d& rhs)
 {
-    if (other == this) return true;
-    if (other == null) return false;
-    if (other.getClass() != this.getClass()) return false;
-    Point_2d that = (Point_2d) other;
-    return this.x == that.x && this.y == that.y;
+    return _x == rhs._x && _y == rhs._y;
 }
 
 std::string Point_2d::to_string()
 {
-    return "(" + x + ", " + y + ")";
+    std::stringstream ss;
+    ss << "Point_2d(x: " << _x << ", y: " << _y << ")";
+    return ss.str();
 }
 
-int Point_2d::hashCode()
+std::size_t Point_2d::hash_code()
 {
-    int hashX = ((Double) x).hashCode();
-    int hashY = ((Double) y).hashCode();
-    return 31 * hashX + hashY;
+    std::size_t hash_x{std::hash<double>{}(_x)};
+    std::size_t hash_y{std::hash<double>{}(_y)};
+    return 31 * hash_x + hash_y;
 }
 
 void Point_2d::draw()
 {
-    Std_draw::point(x, y);
+    Std_draw::point(_x, _y);
 }
 
-void Point_2d::drawTo() {
-    Std_draw::line(this.x, this.y, that.x, that.y);
-}
-
-Polar_order Point_2d::polarOrder()
+void Point_2d::draw_to(Point_2d& rhs)
 {
-    return Polar_order{};
+    Std_draw::line(_x, _y, rhs._x, rhs._y);
 }
 
-Atan_2_order Point_2d::atan2Order()
+std::ostream& operator<<(std::ostream& os, Point_2d& out)
 {
-    return Atan_2_order{};
-}
-
-Distance_to_order Point_2d::distanceToOrder()
-{
-    return Distance_to_order{};
+    return os << out.to_string();
 }

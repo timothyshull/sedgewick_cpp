@@ -102,7 +102,7 @@ public:
             resize(_table_size / 2);
         }
 
-        utility::assert(_check(), "The Linear_probing_hash_symbol_table invariant _check failed after delete()");
+        utility::alg_assert(_check(), "The Linear_probing_hash_symbol_table invariant _check failed after delete()");
     }
 
     std::vector<Key_type> keys() {

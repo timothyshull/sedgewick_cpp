@@ -12,7 +12,7 @@ public:
     {
         Std_random::shuffle(a);
         sort(a, 0, a.size() - 1);
-        utility::assert(is_sorted(a), "Quicksort is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Quicksort is_sorted _check failed");
     }
 
     template<typename T>
@@ -22,7 +22,7 @@ public:
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
         sort(a, j + 1, hi);
-        utility::assert(is_sorted(a, lo, hi);
+        utility::alg_assert(is_sorted(a, lo, hi);
     }
 
     template<typename T>

@@ -13,14 +13,14 @@ Digraph::Digraph(std::istream in)
     utility::copy_stream(in, Std_in::std_in);
     _num_vertices = Std_in::read_int();
     if (_num_vertices < 0) {
-        throw utility::Illegal_argument_exception("The number of vertices in a Digraph must be non-negative");
+        throw utility::Illegal_argument_exception("The number of vertices _in a Digraph must be non-negative");
     }
     _indegree.reserve(static_cast<std::vector<int>::size_type>(_num_vertices));
     _adjacency_lists.reserve(static_cast<std::vector<int>::size_type>(_num_vertices));
 
     _num_edges = Std_in::read_int();
     if (_num_edges < 0) {
-        throw utility::Illegal_argument_exception("The number of edges in a Digraph must be non-negative");
+        throw utility::Illegal_argument_exception("The number of edges _in a Digraph must be non-negative");
     }
 
     int v;

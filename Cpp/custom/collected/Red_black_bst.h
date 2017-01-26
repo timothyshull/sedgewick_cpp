@@ -184,7 +184,7 @@ public:
     {
         _root = _put(_root, key, val);
         _root->_color = Red_black_color::black;
-        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"put()\"");
+        // utility::alg_assert(_check(), "Red_black_bst invariant _check failed after \"put()\"");
     }
 
     void delete_min()
@@ -202,7 +202,7 @@ public:
             _root->_color = Red_black_color::black;
         }
 
-        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"delete_min()\"");
+        // utility::alg_assert(_check(), "Red_black_bst invariant _check failed after \"delete_min()\"");
     }
 
     void delete_max()
@@ -220,7 +220,7 @@ public:
             _root->_color = Red_black_color::black;
         }
 
-        // utility::assert(_check(), "Red_black_bst invariant _check failed after \"delete_max()\"");
+        // utility::alg_assert(_check(), "Red_black_bst invariant _check failed after \"delete_max()\"");
     }
 
     void remove(Key_type& key)
@@ -285,7 +285,7 @@ public:
     {
         if (k < 0 || k >= size()) {
             std::stringstream ss;
-            ss << "The argument \"k\" is not in the range 0-" << size() - 1;
+            ss << "The argument \"k\" is not _in the range 0-" << size() - 1;
             throw utility::Illegal_argument_exception(ss.str());
         }
         Raw_node_pointer x = _select(_root, k);

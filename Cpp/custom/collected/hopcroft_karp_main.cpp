@@ -13,8 +13,8 @@ int main(int argc, char* argv[])
 
     Hopcroft_karp matching{graph};
 
-    Std_out::printf("Number of edges in max matching        = %d\n", matching.size());
-    Std_out::printf("Number of vertices in min vertex cover = %d\n", matching.size());
+    Std_out::printf("Number of edges _in max matching        = %d\n", matching.size());
+    Std_out::printf("Number of vertices _in min vertex cover = %d\n", matching.size());
     Std_out::printf("Graph has a perfect matching           = %b\n", matching.is_perfect());
     Std_out::print_line();
 

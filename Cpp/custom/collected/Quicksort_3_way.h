@@ -27,7 +27,7 @@ namespace Quicksort_3_way {
     {
         Std_random::shuffle(a);
         sort(a, 0, a.size() - 1);
-        utility::assert(is_sorted(a), "Quicksort_3_way is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Quicksort_3_way is_sorted _check failed");
     }
 
     template<typename T>
@@ -45,7 +45,7 @@ namespace Quicksort_3_way {
 
         sort(a, lo, lt - 1);
         sort(a, gt + 1, hi);
-        utility::assert(is_sorted(a, lo, hi), "Quicksort_3_way is_sorted _check failed");
+        utility::alg_assert(is_sorted(a, lo, hi), "Quicksort_3_way is_sorted _check failed");
     }
 
     template<typename T>

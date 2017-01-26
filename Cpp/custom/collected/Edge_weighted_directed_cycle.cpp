@@ -12,7 +12,7 @@ Edge_weighted_directed_cycle::Edge_weighted_directed_cycle(Edge_weighted_digraph
         }
     }
 
-    utility::assert(_check(g), "Edge_weighted_directed_cycle invariant _check failed in constructor");
+    utility::alg_assert(_check(g), "Edge_weighted_directed_cycle invariant _check failed _in constructor");
 }
 
 void Edge_weighted_directed_cycle::_dfs(Edge_weighted_digraph& g, int v)

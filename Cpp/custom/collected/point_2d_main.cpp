@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     Std_draw::setPenColor(Std_draw::BLUE);
     std::sort(points.begin(), points.end(), Point_2d::polarOrder());
     for (int i{0}; i < n; ++i) {
-        p.drawTo(points[i]);
+        p.draw_to(points[i]);
         Std_draw::show();
         Std_draw::pause(100);
     }

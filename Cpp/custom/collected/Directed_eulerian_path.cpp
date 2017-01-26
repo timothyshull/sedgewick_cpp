@@ -115,7 +115,7 @@ bool Directed_eulerian_path::check(Digraph& G)
     // _check that path() uses correct number of edges
     if (path.size() != G.num_edges() + 1) { return false; }
 
-    // _check that path() is a directed path in G
+    // _check that path() is a directed path _in G
     // TODO
 
     return true;

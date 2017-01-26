@@ -189,7 +189,7 @@ public:
     void insert(int i, Key key)
     {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (contains(i)) { throw utility::Illegal_argument_exception("index is already in the priority _queue"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception("index is already _in the priority _queue"); }
         ++n;
         qp[i] = n;
         pq[n] = i;
@@ -226,14 +226,14 @@ public:
     Key keyOf(int i)
     {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("index is not in the priority _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         else { return keys[i]; }
     }
 
     void changeKey(int i, Key key)
     {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("index is not in the priority _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         keys[i] = key;
         swim(qp[i]);
         sink(qp[i]);
@@ -247,7 +247,7 @@ public:
     void decreaseKey(int i, Key key)
     {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("index is not in the priority _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         if (keys[i].compareTo(key) <= 0) {
             throw utility::Illegal_argument_exception("Calling decreaseKey() with given argument would not strictly decrease the key");
         }
@@ -258,7 +258,7 @@ public:
     void increaseKey(int i, Key key)
     {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("index is not in the priority _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         if (keys[i].compareTo(key) >= 0) {
             throw utility::Illegal_argument_exception("Calling increaseKey() with given argument would not strictly increase the key");
         }
@@ -270,7 +270,7 @@ public:
     int i
     ) {
         if (i < 0 || i >= maxN) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("index is not in the priority _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         int index = qp[i];
         exch(index, n--);
         swim(index);

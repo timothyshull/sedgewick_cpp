@@ -56,7 +56,7 @@ Eulerian_path::Eulerian_path(Graph& G)
     Stack<Integer> stack = new Stack<Integer>();
     stack.push(s);
 
-    // greedily search through edges in iterative DFS style
+    // greedily search through edges _in iterative DFS style
     path = new Stack<Integer>();
     while (!stack.is_empty()) {
         int v = stack.pop();
@@ -130,7 +130,7 @@ bool Eulerian_path::ceertifySolution(Graph& G)
     // _check that path() uses correct number of edges
     if (path.size() != G.num_edges() + 1) return false;
 
-    // _check that path() is a path in G
+    // _check that path() is a path _in G
     // TODO
 
     return true;

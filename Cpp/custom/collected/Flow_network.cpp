@@ -2,7 +2,7 @@
 
 Flow_network::Flow_network(int V)
 {
-    if (V < 0) throw utility::Illegal_argument_exception("Number of vertices in a Graph must be nonnegative");
+    if (V < 0) throw utility::Illegal_argument_exception("Number of vertices _in a Graph must be nonnegative");
     this.V = V;
     this.E = 0;
     adj = (Bag<FlowEdge>[]) new Bag[V];

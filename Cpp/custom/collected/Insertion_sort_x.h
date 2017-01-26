@@ -39,7 +39,7 @@ namespace Insertion_sort_x {
             a[j] = v;
         }
 
-        utility::assert(is_sorted(a), "Insertion_sort_x is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Insertion_sort_x is_sorted _check failed");
     }
 
     template<typename T>

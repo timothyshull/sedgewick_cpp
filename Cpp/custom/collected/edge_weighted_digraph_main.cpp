@@ -6,8 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-//    std::ifstream in{argv[1]};
-//    Edge_weighted_digraph g{in};
+//    std::ifstream _in{argv[1]};
+//    Edge_weighted_digraph g{_in};
     Edge_weighted_digraph g{std::cin};
     Std_out::print_line(g);
     return 0;

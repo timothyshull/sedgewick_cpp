@@ -53,8 +53,8 @@ bool Rect_hv::intersects(Rect_hv& that)
 
 bool Rect_hv::contains(Point_2d& p)
 {
-    return (p.x() >= xmin) && (p.x() <= xmax)
-           && (p.y() >= ymin) && (p.y() <= ymax);
+    return (p._x() >= xmin) && (p._x() <= xmax)
+           && (p._y() >= ymin) && (p._y() <= ymax);
 }
 
 double Rect_hv::distanceTo(Point_2d& p)
@@ -65,10 +65,10 @@ double Rect_hv::distanceTo(Point_2d& p)
 double Rect_hv::distanceSquaredTo(Point_2d& p)
 {
     double dx = 0.0, dy = 0.0;
-    if (p.x() < xmin) dx = p.x() - xmin;
-    else if (p.x() > xmax) dx = p.x() - xmax;
-    if (p.y() < ymin) dy = p.y() - ymin;
-    else if (p.y() > ymax) dy = p.y() - ymax;
+    if (p._x() < xmin) dx = p._x() - xmin;
+    else if (p._x() > xmax) dx = p._x() - xmax;
+    if (p._y() < ymin) dy = p._y() - ymin;
+    else if (p._y() > ymax) dy = p._y() - ymax;
     return dx * dx + dy * dy;
 }
 

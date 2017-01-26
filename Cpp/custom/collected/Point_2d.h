@@ -17,43 +17,73 @@ struct R_order {
     bool operator<(Point_2d& lhs, Point_2d& rhs);
 };
 
-struct Atan_2_order {
+class Atan_2_order {
+public:
+    inline explicit Atan_2_order(const Point_2d c) : _comparison_point{c} {}
+
     bool operator<(Point_2d& lhs, Point_2d& rhs);
+
+private:
+    const Point_2d _comparison_point;
 };
 
-struct Polar_order {
-    bool operator<(Point_2d& lhs, Point_2d& rhs);
+class Polar_order {
+public:
+    inline explicit Polar_order(const Point_2d c) : _comparison_point{c} {}
+
+    int operator<(Point_2d& lhs, Point_2d& rhs);
+
+private:
+    const Point_2d _comparison_point;
 };
 
-struct Distance_to_order {
+class Distance_to_order {
+public:
+    inline explicit Distance_to_order(const Point_2d c) : _comparison_point{c} {}
+
     bool operator<(Point_2d& lhs, Point_2d& rhs);
+
+private:
+    const Point_2d _comparison_point;
 };
 
 class Point_2d {
 public:
-    const static X_order X_ORDER = X_order{};
-    const static Y_order Y_ORDER = Y_order{};
-    const static R_order R_ORDER = R_order{};
+    const static X_order x_order = X_order{};
+    const static Y_order y_order = Y_order{};
+    const static R_order r_order = R_order{};
+
+    Point_2d() = default;
+
+    Point_2d(const Point_2d&) = default;
+
+    Point_2d(Point_2d&&) = default;
+
+    ~Point_2d() = default;
+
+    Point_2d& operator=(const Point_2d&) = default;
+
+    Point_2d& operator=(Point_2d&&) = default;
 
     Point_2d(double c, double y);
 
-    double x();
+    inline double x() const noexcept { return _x; }
 
-    double y();
+    inline double y() const noexcept { return _y; }
 
-    double r();
+    inline double r() const { return std::sqrt(_x * _x + _y * _y); }
 
-    double theta();
+    inline double Point_2d::theta() const { return std::atan2(_y, _x); }
 
-    double angleTo(Point_2d& that);
+    double angle_to(Point_2d& that) const;
 
-    int ccw(Point_2d& a, Point_2d& b, Point_2d& c);
+    static int ccw(Point_2d& a, Point_2d& b, Point_2d& c);
 
-    double area2(Point_2d& a, Point_2d& b, Point_2d& c);
+    static double area2(Point_2d& a, Point_2d& b, Point_2d& c);
 
-    double distanceTo(Point_2d& that);
+    double distance_to(Point_2d& rhs) const;
 
-    double distanceSquaredTo(Point_2d& that);
+    double distance_squared_to(Point_2d& rhs) const;
 
     bool operator<(Point_2d& rhs);
 
@@ -61,21 +91,35 @@ public:
 
     std::string to_string();
 
-    int hashCode();
+    std::size_t hash_code();
 
     void draw();
 
-    void drawTo(Point_2d& that);
+    void draw_to(Point_2d& rhs);
 
-    Polar_order polarOrder();
+    inline Polar_order polar_order() const { return Polar_order{*this}; }
 
-    Atan_2_order atan2Order();
+    inline Atan_2_order atan_2_order() const { return Atan_2_order{*this}; }
 
-    Distance_to_order distanceToOrder();
+    inline Distance_to_order distance_to_order() const { return Distance_to_order{*this}; }
 
 private:
-    const double x;
-    const double y;
+    const double _x;
+    const double _y;
+
+    friend class X_order;
+
+    friend class Y_order;
+
+    friend class R_order;
+
+    friend class Atan_2_order;
+
+    friend class Polar_order;
+
+    friend class Distance_to_order;
 };
+
+std::ostream& operator<<(std::ostream& os, Point_2d& out);
 
 #endif // POINT_2D_H

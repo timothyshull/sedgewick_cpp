@@ -15,7 +15,7 @@ Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& G, int s)
     }
     distance_to[s] = 0.0;
 
-    // _relax vertices in order of distance from s
+    // _relax vertices _in order of distance from s
     pq = new IndexMinPQ<Double>(G.num_vertices());
     pq.insert(s, distance_to[s]);
     while (!pq.is_empty()) {

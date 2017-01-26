@@ -30,7 +30,7 @@ void Directed_cycle::_dfs(Digraph& g, int v)
             }
             _cycle.push(w);
             _cycle.push(v);
-            utility::assert(_check(), "Directed_cycle invariant _check failed after _dfs()");
+            utility::alg_assert(_check(), "Directed_cycle invariant _check failed after _dfs()");
         }
     }
 }

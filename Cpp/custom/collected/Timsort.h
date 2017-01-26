@@ -17,7 +17,7 @@ public:
     void sort(std::vector<T> a, int lo, int hi)
     {
         if (std::is_same<Comparator, void>::value) {
-            // uses a legacy mergesort in Java
+            // uses a legacy mergesort _in Java
             // Mergesort::sort(a, lo, hi); // TODO: fix
             Mergesort::sort(a);
             return;
@@ -52,9 +52,9 @@ public:
             n_remaining -= run_length;
         } while (n_remaining != 0);
 
-        if (_debug) { utility::assert(lo == hi, ""); }
+        if (_debug) { utility::alg_assert(lo == hi, ""); }
         ts._merge_force_collapse();
-        if (_debug) { utility::assert(ts._stack_size == 1, ""); }
+        if (_debug) { utility::alg_assert(ts._stack_size == 1, ""); }
     }
 
 private:
@@ -84,7 +84,7 @@ private:
 
     void _binary_sort(std::vector<T> a, int lo, int hi, int start, Comparator<T> c)
     {
-        if (_debug) { utility::assert(lo <= start && start <= hi, ""); }
+        if (_debug) { utility::alg_assert(lo <= start && start <= hi, ""); }
         if (start == lo) {
             ++start;
         }
@@ -93,7 +93,7 @@ private:
 
             int left = lo;
             int right = start;
-            if (_debug) { utility::assert(left <= right, ""); }
+            if (_debug) { utility::alg_assert(left <= right, ""); }
 
             while (left < right) {
                 int mid = (left + right) >> 1;
@@ -103,7 +103,7 @@ private:
                     left = mid + 1;
                 }
             }
-            if (_debug) { utility::assert(left == right, ""); }
+            if (_debug) { utility::alg_assert(left == right, ""); }
             int n = start - left;
 
             switch (n) {
@@ -121,7 +121,7 @@ private:
 
     int _count_run_and_make_ascending(std::vector<T> a, int lo, int hi, Comparator<T> c)
     {
-        if (_debug) { utility::assert(lo < hi, ""); }
+        if (_debug) { utility::alg_assert(lo < hi, ""); }
         int run_hi = lo + 1;
         if (run_hi == hi) {
             return 1;
@@ -152,7 +152,7 @@ private:
 
     static int _min_run_length(int n)
     {
-        if (_debug) { utility::assert(n >= 0, ""); }
+        if (_debug) { utility::alg_assert(n >= 0, ""); }
         int r = 0;
         while (n >= _min_merge) {
             r |= (n & 1);
@@ -198,15 +198,15 @@ private:
 
     void _merge_at(int i)
     {
-        if (_debug) { utility::assert(_stack_size >= 2, ""); }
-        if (_debug) { utility::assert(i >= 0, ""); }
-        if (_debug) { utility::assert(i == _stack_size - 2 || i == _stack_size - 3, ""); }
+        if (_debug) { utility::alg_assert(_stack_size >= 2, ""); }
+        if (_debug) { utility::alg_assert(i >= 0, ""); }
+        if (_debug) { utility::alg_assert(i == _stack_size - 2 || i == _stack_size - 3, ""); }
         int base1 = _run_base[i];
         int len1 = _run_length[i];
         int base2 = _run_base[i + 1];
         int len2 = _run_length[i + 1];
-        if (_debug) { utility::assert(len1 > 0 && len2 > 0, ""); }
-        if (_debug) { utility::assert(base1 + len1 == base2, ""); }
+        if (_debug) { utility::alg_assert(len1 > 0 && len2 > 0, ""); }
+        if (_debug) { utility::alg_assert(base1 + len1 == base2, ""); }
         _run_length[i] = len1 + len2;
         if (i == _stack_size - 3) {
             _run_base[i + 1] = _run_base[i + 2];
@@ -214,14 +214,14 @@ private:
         }
         _stack_size--;
         int k = _gallop_right(a[base2], a, base1, len1, 0, _comparator);
-        if (_debug) { utility::assert(k >= 0, ""); }
+        if (_debug) { utility::alg_assert(k >= 0, ""); }
         base1 += k;
         len1 -= k;
         if (len1 == 0) {
             return;
         }
         len2 = _gallop_left(a[base1 + len1 - 1], a, base2, len2, len2 - 1, _comparator);
-        if (_debug) { utility::assert(len2 >= 0, ""); }
+        if (_debug) { utility::alg_assert(len2 >= 0, ""); }
         if (len2 == 0) {
             return;
         }
@@ -235,7 +235,7 @@ private:
 
     int _gallop_left(T key, std::vector<T> a, int base, int length, int hint, Comparator<T> c)
     {
-        if (_debug) { utility::assert(length > 0 && hint >= 0 && hint < length, ""); }
+        if (_debug) { utility::alg_assert(length > 0 && hint >= 0 && hint < length, ""); }
         int last_of_s = 0;
         int ofs = 1;
         if (c.compare(key, a[base + hint]) > 0) {
@@ -272,7 +272,7 @@ private:
             last_of_s = hint - ofs;
             ofs = hint - tmp;
         }
-        if (_debug) { utility::assert(-1 <= last_of_s && last_of_s < ofs && ofs <= length, ""); }
+        if (_debug) { utility::alg_assert(-1 <= last_of_s && last_of_s < ofs && ofs <= length, ""); }
 
         ++last_of_s;
         while (last_of_s < ofs) {
@@ -283,13 +283,13 @@ private:
                 ofs = m;
             }          // key <= a[base + m]
         }
-        if (_debug) { utility::assert(last_of_s == ofs, ""); }    // so a[base + ofs - 1] < key <= a[base + ofs]
+        if (_debug) { utility::alg_assert(last_of_s == ofs, ""); }    // so a[base + ofs - 1] < key <= a[base + ofs]
         return ofs;
     }
 
     int _gallop_right(T key, std::vector<T> a, int base, int length, int hint, Comparator<T> c)
     {
-        if (_debug) { utility::assert(length > 0 && hint >= 0 && hint < length, ""); }
+        if (_debug) { utility::alg_assert(length > 0 && hint >= 0 && hint < length, ""); }
         int ofs = 1;
         int last_of_s = 0;
         if (c.compare(key, a[base + hint]) < 0) {
@@ -326,7 +326,7 @@ private:
             last_of_s += hint;
             ofs += hint;
         }
-        if (_debug) { utility::assert(-1 <= last_of_s && last_of_s < ofs && ofs <= length, ""); }
+        if (_debug) { utility::alg_assert(-1 <= last_of_s && last_of_s < ofs && ofs <= length, ""); }
         ++last_of_s;
         while (last_of_s < ofs) {
             int m = last_of_s + ((ofs - last_of_s) >> 1);
@@ -336,13 +336,13 @@ private:
                 last_of_s = m + 1;
             }
         }
-        if (_debug) { utility::assert(last_of_s == ofs, ""); }
+        if (_debug) { utility::alg_assert(last_of_s == ofs, ""); }
         return ofs;
     }
 
     void _merge_lo(int base1, int len1, int base2, int len2)
     {
-        if (_debug) { utility::assert(len1 > 0 && len2 > 0 && base1 + len1 == base2, ""); }
+        if (_debug) { utility::alg_assert(len1 > 0 && len2 > 0 && base1 + len1 == base2, ""); }
         std::vector<T> new_a{a};
         std::vector<T> new_tmp = _ensure_capacity(len1);
         std::copy_n(new_a.begin() + base1, len1, new_tmp.begin());
@@ -368,7 +368,7 @@ private:
             int count2 = 0;
 
             do {
-                if (_debug) { utility::assert(len1 > 1 && len2 > 0, ""); }
+                if (_debug) { utility::alg_assert(len1 > 1 && len2 > 0, ""); }
                 if (new_c.compare(new_a[cursor2], new_tmp[cursor1]) < 0) {
                     new_a[dest++] = new_a[cursor2++];
                     ++count2;
@@ -387,7 +387,7 @@ private:
             } while ((count1 | count2) < new_min_gallop);
 
             do {
-                if (_debug) { utility::assert(len1 > 1 && len2 > 0, ""); }
+                if (_debug) { utility::alg_assert(len1 > 1 && len2 > 0, ""); }
                 count1 = _gallop_right(new_a[cursor2], new_tmp, cursor1, len1, 0, new_c);
                 if (count1 != 0) {
                     std::copy_n(new_tmp.begin() + cursor1, count1, new_a.begin() + dest);
@@ -426,21 +426,21 @@ private:
         end_outer:
         _min_gallop = new_min_gallop < 1 ? 1 : new_min_gallop;
         if (len1 == 1) {
-            if (_debug) { utility::assert(len2 > 0, ""); }
+            if (_debug) { utility::alg_assert(len2 > 0, ""); }
             std::copy_n(new_a.begin() + cursor2, len2, new_a.begin() + dest);
             new_a[dest + len2] = new_tmp[cursor1];
         } else if (len1 == 0) {
             throw utility::Illegal_argument_exception("Comparison method violates its general contract!");
         } else {
-            if (_debug) { utility::assert(len2 == 0, ""); }
-            if (_debug) { utility::assert(len1 > 1, ""); }
+            if (_debug) { utility::alg_assert(len2 == 0, ""); }
+            if (_debug) { utility::alg_assert(len1 > 1, ""); }
             std::copy_n(new_tmp.begin() + cursor1, len1, new_a.begin() + dest);
         }
     }
 
     void _merge_hi(int base1, int len1, int base2, int len2)
     {
-        if (_debug) { utility::assert(len1 > 0 && len2 > 0 && base1 + len1 == base2, ""); }
+        if (_debug) { utility::alg_assert(len1 > 0 && len2 > 0 && base1 + len1 == base2, ""); }
         std::vector<T> new_a{a};
         std::vector<T> new_tmp = _ensure_capacity(len2);
         std::copy_n(new_a.begin() + base2, len2, new_tmp.begin());
@@ -467,7 +467,7 @@ private:
             int count2 = 0;
 
             do {
-                if (_debug) { utility::assert(len1 > 0 && len2 > 1, ""); }
+                if (_debug) { utility::alg_assert(len1 > 0 && len2 > 1, ""); }
                 if (new_c.compare(new_tmp[cursor2], new_a[cursor1]) < 0) {
                     new_a[dest--] = new_a[cursor1--];
                     ++count1;
@@ -486,7 +486,7 @@ private:
             } while ((count1 | count2) < new_min_gallop);
 
             do {
-                if (_debug) { utility::assert(len1 > 0 && len2 > 1, ""); }
+                if (_debug) { utility::alg_assert(len1 > 0 && len2 > 1, ""); }
                 count1 = len1 - _gallop_right(new_tmp[cursor2], new_a, base1, len1, len1 - 1, new_c);
                 if (count1 != 0) {
                     dest -= count1;
@@ -526,7 +526,7 @@ private:
         end_outer:
         _min_gallop = new_min_gallop < 1 ? 1 : new_min_gallop;
         if (len2 == 1) {
-            if (_debug) { utility::assert(len1 > 0, ""); }
+            if (_debug) { utility::alg_assert(len1 > 0, ""); }
             dest -= len1;
             cursor1 -= len1;
             std::copy_n(new_a.begin() + cursor1 + 1, len1, new_a.begin() + dest + 1);
@@ -534,8 +534,8 @@ private:
         } else if (len2 == 0) {
             throw utility::Illegal_argument_exception("Comparison method violates its general contract!");
         } else {
-            if (_debug) { utility::assert(len1 == 0, ""); }
-            if (_debug) { utility::assert(len2 > 0, ""); }
+            if (_debug) { utility::alg_assert(len1 == 0, ""); }
+            if (_debug) { utility::alg_assert(len2 > 0, ""); }
             std::copy_n(new_tmp.begin(), len2, new_a.begin() + (dest = -(len2 - 1)));
         }
     }

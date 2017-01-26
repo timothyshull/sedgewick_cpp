@@ -9,7 +9,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(int num_vertices)
           _indegree(static_cast<std::vector<int>::size_type>(num_vertices))
 {
     if (num_vertices < 0) {
-        throw utility::Illegal_argument_exception("the number of vertices in an Edge_weighted_digraph must be non-negative");
+        throw utility::Illegal_argument_exception("the number of vertices _in an Edge_weighted_digraph must be non-negative");
     }
     for (int v{0}; v < _num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Directed_edge>{};

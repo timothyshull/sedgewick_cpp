@@ -60,7 +60,7 @@ In::In(std::string& name, std::true_type)
             return;
         }
 
-        // next try for files included in jar
+        // next try for files included _in jar
         URL url = getClass().getResource(name);
 
         // or URL from web
@@ -70,7 +70,7 @@ In::In(std::string& name, std::true_type)
 
         URLConnection site = url.openConnection();
 
-        // in order to set User-Agent, replace above line with these two
+        // _in order to set User-Agent, replace above line with these two
         // HttpURLConnection site = (HttpURLConnection) url.openConnection();
         // site.addRequestProperty("User-Agent", "Mozilla/4.76");
 

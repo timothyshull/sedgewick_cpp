@@ -5,7 +5,7 @@ Nonrecursive_dfs::Nonrecursive_dfs(Graph& G, int s)
     marked = new boolean[G.num_vertices()];
 
     // to be able to iterate over each adjacency list, keeping track of which
-    // vertex in each adjacency list needs to be explored next
+    // vertex _in each adjacency list needs to be explored next
     Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.num_vertices()];
     for (int v{0}; v < G.num_vertices(); ++v)
         adj[v] = G.adj(v).iterator();

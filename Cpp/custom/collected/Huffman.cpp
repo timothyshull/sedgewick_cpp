@@ -33,7 +33,7 @@ void ::Huffman::compress()
     // print trie for decoder
     writeTrie(root);
 
-    // print number of bytes in original uncompressed message
+    // print number of bytes _in original uncompressed message
     Binary_std_out::write(input.length);
 
     // use Huffman code to encode input
@@ -61,7 +61,7 @@ Huffman::Raw_node_pointer Huffman::buildTrie(std::vector<int>& freq)
         }
     }
 
-    // special case in case there is only one character with a nonzero frequency
+    // special case _in case there is only one character with a nonzero frequency
     if (pq.size() == 1) {
         if (freq['\0'] == 0) { pq.insert(new Node('\0', 0, null, null)); }
         else { pq.insert(new Node('\1', 0, null, null)); }

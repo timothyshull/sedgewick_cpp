@@ -18,7 +18,7 @@ Bellman_ford_sp::Bellman_ford_sp(Edge_weighted_digraph digraph, int source)
         _relax(digraph, v);
     }
 
-    utility::assert(_check(digraph, source), "Bellman_ford_sp invariant check failed after construction");
+    utility::alg_assert(_check(digraph, source), "Bellman_ford_sp invariant check failed after construction");
 }
 
 bool Bellman_ford_sp::has_negative_cycle()

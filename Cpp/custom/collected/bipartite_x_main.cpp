@@ -3,7 +3,7 @@
 #include "Graph_generator.h"
 #include "Std_random.h"
 #include "Std_out.h"
-#include "Bipartite.h"
+#include "Bipartite_x.h"
 
 int main(int argc, char* argv[])
 {
@@ -22,11 +22,11 @@ int main(int argc, char* argv[])
 
     Std_out::print_line(graph);
 
-    Bipartite b{graph};
+    Bipartite_x b{graph};
     if (b.is_bipartite()) {
         Std_out::print_line("Graph is bipartite");
         for (int v{0}; v < graph.num_vertices(); ++v) {
-            Std_out::print_line(v + ": " + b.color(v));
+            Std_out::print_line(v + ": " + static_cast<bool>(b.color(v)));
         }
     } else {
         Std_out::print("Graph has an odd-length cycle: ");

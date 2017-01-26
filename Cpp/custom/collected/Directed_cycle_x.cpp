@@ -21,7 +21,7 @@ Directed_cycle_x::Directed_cycle_x(Digraph& G)
         }
     }
 
-    // there is a directed _cycle in subgraph of vertices with indegree >= 1.
+    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
     std::vector<int> edgeTo = new int[G.num_vertices()];
     int root = -1;  // any vertex with indegree >= -1
     for (int v{0}; v < G.num_vertices(); ++v) {

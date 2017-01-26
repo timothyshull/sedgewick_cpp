@@ -11,52 +11,54 @@ public:
 
     Binary_out(std::ostream& os);
 
-    Binary_out(std::string filename);
+    Binary_out(std::string& filename);
 
-    Binary_out(Socket& socket);
+    Binary_out(const char* filename);
 
-    void writeBit(bool x);
+    // Binary_out(Socket& socket);
 
-    void writeByte(int x);
+    static void write_bit(bool x);
 
-    void flush();
+    static void write_byte(int x);
 
-    void close();
+    static void flush();
 
-    void write(bool x);
+    static void close();
 
-    void write(char x);
+    static void write(bool x);
 
-    void write(int x);
+    static void write(char x);
 
-    void write(int x, int r);
+    static void write(int x);
 
-    void write(double x);
+    static void write(int x, int r);
 
-    void write(long x);
+    static void write(double x);
 
-    void write(float x);
+    static void write(long x);
 
-    void write(short x);
+    static void write(float x);
 
-    void write(char x, std::true_type);
+    static void write(short x);
 
-    void write(char x, int r);
+    static void write(char x, void);
 
-    void write(std::string& s);
+    static void write(char x, int r);
 
-    void write(std::string& s, int r);
+    static void write(std::string& s);
+
+    static void write(std::string& s, int r);
 
 private:
-    std::ostream& out;
-    int buffer;
-    int n;
+    static std::ostream& _out;
+    static int _buffer;
+    static int _size;
 
-    void writeBit(bool x, std::false_type);
+    static void _write_bit(bool x);
 
-    void writeByte(int x, std::false_type);
+    static void _write_byte(int x);
 
-    void clearBuffer();
+    static void _clear_buffer();
 };
 
 #endif // BINARY_OUT_H

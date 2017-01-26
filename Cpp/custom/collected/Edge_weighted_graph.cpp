@@ -44,7 +44,7 @@ Edge_weighted_graph::Edge_weighted_graph(Edge_weighted_graph& G)
     this(G.num_vertices());
     this.E = G.num_edges();
     for (int v{0}; v < G.num_vertices(); ++v) {
-        // reverse so that adjacency list is in same order as original
+        // reverse so that adjacency list is _in same order as original
         Stack <Edge> reverse = new Stack<Edge>();
         for (Edge e : G.adj[v]) {
             reverse.push(e);

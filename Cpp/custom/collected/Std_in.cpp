@@ -13,7 +13,7 @@ bool Std_in::is_empty()
     Traits_type::int_type i;
     Traits_type::char_type ch;
     while (true) {
-        i = std_in.get(); // sentry setup and EOF handled in get, no need to handle again here
+        i = std_in.get(); // sentry setup and EOF handled _in get, no need to handle again here
         ch = Traits_type::to_char_type(i);
         str += ch;
         if (Traits_type::eq(ch, '\n')) {

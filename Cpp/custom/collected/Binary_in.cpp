@@ -1,104 +1,65 @@
+#include <iostream>
+#include <sstream>
+
 #include "Binary_in.h"
+#include "utility.h"
 
-Binary_in::Binary_in()
+Binary_in::Binary_in() : _in{std::cin}
 {
-    in = new BufferedInputStream(System.in);
-    fillBuffer();
+    _fill_buffer();
 }
 
-Binary_in::Binary_in(std::istream& is)
+Binary_in::Binary_in(std::istream& is) : _in{is}
 {
-    in = new BufferedInputStream(is);
-    fillBuffer();
+    _fill_buffer();
 }
 
-Binary_in::Binary_in(Socket& socket)
-{
-    try {
-        InputStream is = socket.getInputStream();
-        in = new BufferedInputStream(is);
-        fillBuffer();
-    } catch (IOException ioe) {
-        System.err.print_line("Could not open " + socket);
-    }
-}
+// TODO: implement with boost::iostreams
+//Binary_in::Binary_in(Socket& socket)
 
-Binary_in::Binary_in(URL& url)
-{
-    try {
-        URLConnection site = url.openConnection();
-        InputStream is = site.getInputStream();
-        in = new BufferedInputStream(is);
-        fillBuffer();
-    } catch (IOException ioe) {
-        System.err.print_line("Could not open " + url);
-    }
-}
+// TODO: implement with boost::asio::ip::tcp::iostream
+//Binary_in::Binary_in(URL& url) : _in{boost::asio::ip::tcp::istream {url}}
 
-Binary_in::Binary_in(std::string& name, std::true_type)
-{
-    try {
-        // first try to read file from local file system
-        File file = new File(name);
-        if (file.exists()) {
-            FileInputStream fis = new FileInputStream(file);
-            in = new BufferedInputStream(fis);
-            fillBuffer();
-            return;
-        }
+// leaves error handling to istream
+Binary_in::Binary_in(std::string& name) : _in{name} {}
 
-        // next try for files included in jar
-        URL url = getClass().getResource(name);
-
-        // or URL from web
-        if (url == null) {
-            url = new URL(name);
-        }
-
-        URLConnection site = url.openConnection();
-        InputStream is = site.getInputStream();
-        in = new BufferedInputStream(is);
-        fillBuffer();
-    } catch (IOException ioe) {
-        System.err.print_line("Could not open " + name);
-    }
-}
+Binary_in::Binary_in(const char* name) : _in{name} {}
 
 bool Binary_in::exists()
 {
-    return in != null;
+    return !_in.good();
 }
 
 bool Binary_in::is_empty()
 {
-    return buffer == _EOF;
+    return _buffer == _eof;
 }
 
 bool Binary_in::read_boolean()
 {
     if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
-    n--;
-    bool bit = ((buffer >> n) & 1) == 1;
-    if (n == 0) { fillBuffer(); }
+    _size--;
+    bool bit = ((_buffer >> _size) & 1) == 1;
+    if (_size == 0) { _fill_buffer(); }
     return bit;
 }
 
 char Binary_in::read_char()
 {
-    if (n == 8) {
-        int x = buffer;
-        fillBuffer();
+    if (_size == 8) {
+        int x = _buffer;
+        _fill_buffer();
         return (char) (x & 0xff);
     }
 
     // combine last N bits of current _buffer with first 8-N bits of new _buffer
-    int x = buffer;
-    x <<= (8 - n);
-    int oldN = n;
-    fillBuffer();
+    int x = _buffer;
+    x <<= (8 - _size);
+    int oldN = _size;
+    _fill_buffer();
     if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
-    n = oldN;
-    x |= (buffer >> > n);
+    _size = oldN;
+    x |= (_buffer >> _size);
     return (char) (x & 0xff);
 }
 
@@ -106,7 +67,6 @@ char Binary_in::read_char(int r)
 {
     if (r < 1 || r > 16) { throw utility::Runtime_exception("Illegal value of r = " + r); }
 
-    // optimize r = 8 case
     if (r == 8) { return read_char(); }
 
     char x = 0;
@@ -122,12 +82,12 @@ std::string Binary_in::read_string()
 {
     if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
 
-    std::stringstream sb = new std::stringstream();
+    std::stringstream ss;
     while (!is_empty()) {
         char c = read_char();
-        sb.append(c);
+        ss << c;
     }
-    return sb.to_string();
+    return ss.str();
 }
 
 short Binary_in::read_short()
@@ -155,8 +115,6 @@ int Binary_in::read_int()
 int Binary_in::read_int(int r)
 {
     if (r < 1 || r > 32) { throw utility::Runtime_exception("Illegal value of r = " + r); }
-
-    // optimize r = 32 case
     if (r == 32) { return read_int(); }
 
     int x = 0;
@@ -181,29 +139,33 @@ long Binary_in::read_long()
 
 double Binary_in::read_double()
 {
-    return Double.longBitsToDouble(read_long());
+    long l{read_long()};
+    utility::Binary_double bd;
+    bd.l = l;
+    return bd.d;
 }
 
 float Binary_in::read_float()
 {
-    return Float.intBitsToFloat(read_int());
+    int i{read_int()};
+    utility::Binary_float bf;
+    bf.i = i;
+    return bf.f;
 }
 
 char Binary_in::read_byte()
 {
-    char c = read_char();
-    byte x = (byte)(c & 0xff);
-    return x;
+    return read_char();
 }
 
-void Binary_in::fillBuffer()
+void Binary_in::_fill_buffer()
 {
     try {
-        buffer = in.read();
-        n = 8;
-    } catch (IOException e) {
-        System.err.print_line("EOF");
-        buffer = EOF;
-        n = -1;
+        _buffer = _in.get();
+        _size = 8;
+    } catch (std::exception& e) {
+        std::cerr << "EOF " << e.what() << "\n";
+        _buffer = _eof;
+        _size = -1;
     }
 }

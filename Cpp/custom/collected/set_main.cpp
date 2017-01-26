@@ -24,7 +24,7 @@ int main()
     s.add("www.snopes.com");
     s.add("www.movies.com");
     s.add("www.cnn.com");
-    s.add("www.iitb.ac.in");
+    s.add("www.iitb.ac._in");
 
     std::cout << std::boolalpha << s.contains("www.cs.princeton.edu") << "\n";
     std::cout << s.contains("www.cs.princeton.edu") << "\n";
@@ -42,7 +42,7 @@ int main()
     std::cout << "\n";
 
 
-    // print out all keys in this set in lexicographic order
+    // print out all keys _in this set _in lexicographic order
     for (auto k : s) {
         std::cout << k << "\n";
     }

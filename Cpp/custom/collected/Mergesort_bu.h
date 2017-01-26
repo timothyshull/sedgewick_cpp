@@ -39,7 +39,7 @@ namespace Mergesort_bu {
                 merge(a, aux, lo, mid, hi);
             }
         }
-        utility::assert(is_sorted(a), "Mergesort_bu is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Mergesort_bu is_sorted _check failed");
     }
 
     template<typename T>

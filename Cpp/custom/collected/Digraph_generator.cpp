@@ -289,9 +289,9 @@ Digraph Digraph_generator::strong(int V, int E, int c)
     }
 
     // make all vertices with label c a strong component by
-    // combining a rooted in-tree and a rooted out-tree
+    // combining a rooted _in-tree and a rooted out-tree
     for (int i{0}; i < c; ++i) {
-        // how many vertices in component c
+        // how many vertices _in component c
         int count = 0;
         for (int v{0}; v < G.num_vertices(); ++v) {
             if (label[v] == i) { ++count; }
@@ -308,7 +308,7 @@ Digraph Digraph_generator::strong(int V, int E, int c)
         }
         Std_random::shuffle(vertices);
 
-        // rooted-in tree with root = vertices[count-1]
+        // rooted-_in tree with root = vertices[count-1]
         for (int v{0}; v < count - 1; ++v) {
             int w = Std_random::uniform(v + 1, count);
             Edge e = new Edge(w, v);

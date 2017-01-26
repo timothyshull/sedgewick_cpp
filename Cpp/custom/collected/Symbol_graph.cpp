@@ -7,7 +7,7 @@ Symbol_graph::Symbol_graph(std::string& filename, std::string& delimiter)
     // First pass builds the index by reading strings to associate
     // distinct strings with an index
     In in = new In(filename);
-    // while (in.hasNextLine()) {
+    // while (_in.hasNextLine()) {
     while (!in.is_empty()) {
         std::vector<std::string> a = in.read_line().split(delimiter);
         for (int i{0}; i < a.length; ++i) {
@@ -17,7 +17,7 @@ Symbol_graph::Symbol_graph(std::string& filename, std::string& delimiter)
     }
     Std_out::print_line("Done reading " + filename);
 
-    // inverted index to get string keys in an aray
+    // inverted index to get string keys _in an aray
     keys = new String[st.size()];
     for (String name : st.keys()) {
         keys[st.get(name)] = name;

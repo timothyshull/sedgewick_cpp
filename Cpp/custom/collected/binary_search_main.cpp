@@ -12,9 +12,9 @@ int main(int argc, char* argv[])
 
     for (auto key : to_check) {
         if (Binary_search::index_of(whitelist, key) == -1) {
-            Std_out::printf("The key %d is not in the whitelisted values", key);
+            Std_out::printf("The key %d is not _in the whitelisted values", key);
         } else {
-            Std_out::printf("The key %d is in the whitelisted values", key);
+            Std_out::printf("The key %d is _in the whitelisted values", key);
         }
     }
 

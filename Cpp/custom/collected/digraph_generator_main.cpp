@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::dag(num_vertices, num_edges));
     Std_out::print_line();
 
-    Std_out::print_line("rooted-in DAG");
+    Std_out::print_line("rooted-_in DAG");
     Std_out::print_line(Digraph_generator::rooted_in_dag(num_vertices, num_edges));
     Std_out::print_line();
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::rooted_out_dag(num_vertices, num_edges));
     Std_out::print_line();
 
-    Std_out::print_line("rooted-in tree");
+    Std_out::print_line("rooted-_in tree");
     Std_out::print_line(Digraph_generator::rooted_in_tree(num_vertices));
     Std_out::print_line();
 

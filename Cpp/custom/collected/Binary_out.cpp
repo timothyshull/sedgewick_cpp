@@ -1,52 +1,53 @@
+#include <iostream>
 #include "Binary_out.h"
+#include "utility.h"
 
-Binary_out::Binary_out()
+Binary_out::Binary_out() : _out{std::cout} {}
+
+Binary_out::Binary_out(std::ostream& os) : _out{os} {}
+
+Binary_out::Binary_out(std::string& filename) : _out{filename} {}
+
+Binary_out::Binary_out(const char* filename) : _out{filename} {}
+
+// Binary_out::Binary_out(Socket& socket)
+
+void Binary_out::write_bit(bool x)
 {
-    out = new BufferedOutputStream(System.out);
+    _buffer <<= 1;
+    if (x) { _buffer |= 1; }
+
+    _size++;
+    if (_size == 8) { _clear_buffer(); }
 }
 
-Binary_out::Binary_out(std::ostream& os)
+void Binary_out::write_byte(int x)
 {
-    out = new BufferedOutputStream(os);
-}
+    utility::alg_assert(x >= 0 && x < 256, "Binary_out value check failed");
 
-Binary_out::Binary_out(std::string filename)
-{
-    try {
-        OutputStream os = new FileOutputStream(filename);
-        out = new BufferedOutputStream(os);
-    } catch (IOException e) {
-        e.printStackTrace();
+    if (_size == 0) {
+        try {
+            _out << x;
+        } catch (std::exception& e) {
+            std::cerr << e.what();
+        }
+        return;
     }
-}
 
-Binary_out::Binary_out(Socket& socket)
-{
-    try {
-        OutputStream os = socket.getOutputStream();
-        out = new BufferedOutputStream(os);
-    } catch (IOException e) {
-        e.printStackTrace();
+    bool bit;
+    for (int i = 0; i < 8; ++i) {
+        bit = ((x >> (8 - i - 1)) & 1) == 1;
+        write_bit(bit);
     }
-}
-
-void Binary_out::writeBit(bool x)
-{
-
-}
-
-void Binary_out::writeByte(int x)
-{
-
 }
 
 void Binary_out::flush()
 {
-    clearBuffer();
+    _clear_buffer();
     try {
-        out.flush();
-    } catch (IOException e) {
-        e.printStackTrace();
+        _out.flush();
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
 }
 
@@ -54,28 +55,28 @@ void Binary_out::close()
 {
     flush();
     try {
-        out.close();
-    } catch (IOException e) {
-        e.printStackTrace();
+        _out.clear(); // no ostream close
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
 }
 
 void Binary_out::write(bool x)
 {
-    writeBit(x);
+    write_bit(x);
 }
 
 void Binary_out::write(char x)
 {
-    writeByte(x & 0xff);
+    write_byte(x & 0xff);
 }
 
 void Binary_out::write(int x)
 {
-    writeByte((x >> 24) & 0xff);
-    writeByte((x >> 16) & 0xff);
-    writeByte((x >> 8) & 0xff);
-    writeByte((x >> 0) & 0xff);
+    write_byte((x >> 24) & 0xff);
+    write_byte((x >> 16) & 0xff);
+    write_byte((x >> 8) & 0xff);
+    write_byte((x >> 0) & 0xff);
 }
 
 void Binary_out::write(int x, int r)
@@ -84,46 +85,50 @@ void Binary_out::write(int x, int r)
         write(x);
         return;
     }
-    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value for r = " + r); }
-    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + r + "-bit char = " + x); }
+    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value for r = " + std::to_string(r)); }
+    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + std::to_string(r) + "-bit char = " + std::to_string(x)); }
     for (int i{0}; i < r; ++i) {
         bool bit = ((x >> (r - i - 1)) & 1) == 1;
-        writeBit(bit);
+        write_bit(bit);
     }
 }
 
 void Binary_out::write(double x)
 {
-    write(Double.doubleToRawLongBits(x));
+    utility::Binary_double bd;
+    bd.d = x;
+    write(bd.l);
 }
 
 void Binary_out::write(long x)
 {
-    writeByte((int) ((x >> 56) & 0xff));
-    writeByte((int) ((x >> 48) & 0xff));
-    writeByte((int) ((x >> 40) & 0xff));
-    writeByte((int) ((x >> 32) & 0xff));
-    writeByte((int) ((x >> 24) & 0xff));
-    writeByte((int) ((x >> 16) & 0xff));
-    writeByte((int) ((x >> 8) & 0xff));
-    writeByte((int) ((x >> 0) & 0xff));
+    write_byte((int) ((x >> 56) & 0xff));
+    write_byte((int) ((x >> 48) & 0xff));
+    write_byte((int) ((x >> 40) & 0xff));
+    write_byte((int) ((x >> 32) & 0xff));
+    write_byte((int) ((x >> 24) & 0xff));
+    write_byte((int) ((x >> 16) & 0xff));
+    write_byte((int) ((x >> 8) & 0xff));
+    write_byte((int) ((x >> 0) & 0xff));
 }
 
 void Binary_out::write(float x)
 {
-    write(Float.floatToRawIntBits(x));
+    utility::Binary_float bf;
+    bf.f = x;
+    write(bf.i);
 }
 
 void Binary_out::write(short x)
 {
-    writeByte((x >> 8) & 0xff);
-    writeByte((x >> 0) & 0xff);
+    write_byte((x >> 8) & 0xff);
+    write_byte((x >> 0) & 0xff);
 }
 
-void Binary_out::write(char x, std::true_type)
+void Binary_out::write(char x, void)
 {
     if (x < 0 || x >= 256) { throw utility::Illegal_argument_exception("Illegal 8-bit char = " + x); }
-    writeByte(x);
+    write_byte(x);
 }
 
 void Binary_out::write(char x, int r)
@@ -132,69 +137,65 @@ void Binary_out::write(char x, int r)
         write(x);
         return;
     }
-    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value for r = " + r); }
-    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + r + "-bit char = " + x); }
+    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value for r = " + std::to_string(r)); }
+    if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + std::to_string(r) + "-bit char = " + std::to_string(x)); }
     for (int i{0}; i < r; ++i) {
-        bool bit = ((x >> > (r - i - 1)) & 1) == 1;
-        writeBit(bit);
+        bool bit = ((x >> (r - i - 1)) & 1) == 1;
+        write_bit(bit);
     }
 }
 
 void Binary_out::write(std::string& s)
 {
     for (int i{0}; i < s.length(); ++i) {
-        write(s.charAt(i));
+        write(s[i]);
     }
 }
 
 void Binary_out::write(std::string& s, int r)
 {
     for (int i{0}; i < s.length(); ++i) {
-        write(s.charAt(i), r);
+        write(s[i], r);
     }
 }
 
-void Binary_out::writeBit(bool x, std::false_type)
+void Binary_out::_write_bit(bool x)
 {
-    buffer <<= 1;
-    if (x) { buffer |= 1; }
+    _buffer <<= 1;
+    if (x) { _buffer |= 1; }
 
-    // if _buffer is full (8 bits), write out as a single byte
-    ++n;
-    if (n == 8) { clearBuffer(); }
+    ++_size;
+    if (_size == 8) { _clear_buffer(); }
 }
 
-void Binary_out::writeByte(int x, std::false_type)
+void Binary_out::_write_byte(int x)
 {
-    assert
-    x >= 0 && x < 256;
+    utility::alg_assert(x >= 0 && x < 256, "Binary_out _write_byte int value check failed");
 
-    // optimized if byte-aligned
-    if (n == 0) {
+    if (_size == 0) {
         try {
-            out.write(x);
-        } catch (IOException e) {
-            e.printStackTrace();
+            _out << x;
+        } catch (std::exception& e) {
+            std::cerr << e.what();
         }
         return;
     }
 
-    // otherwise write one bit at a time
     for (int i{0}; i < 8; ++i) {
-        bool bit = ((x >> > (8 - i - 1)) & 1) == 1;
-        writeBit(bit);
+        bool bit = ((x >> (8 - i - 1)) & 1) == 1;
+        write_bit(bit);
     }
 }
 
-void Binary_out::clearBuffer()
+void Binary_out::_clear_buffer()
 {
-    if (n == 0) { return; }
-    if (n > 0) { buffer <<= (8 - n); }
+    if (_size == 0) { return; }
+    if (_size > 0) { _buffer <<= (8 - _size); }
     try {
-        out.write(buffer);
-    } catch (IOException e) {
-        e.printStackTrace();
+        _out << _buffer;
+    } catch (std::exception& e) {
+        std::cerr << e.what();
     }
-    n = 0;
-    buffer = 0;
+    _size = 0;
+    _buffer = 0;
 }

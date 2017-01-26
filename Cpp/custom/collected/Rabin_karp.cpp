@@ -7,7 +7,7 @@ Rabin_karp::Rabin_karp(std::string& pat)
     m = pat.length();
     q = longRandomPrime();
 
-    // precompute R^(m-1) % q for use in removing leading digit
+    // precompute R^(m-1) % q for use _in removing leading digit
     RM = 1;
     for (int i{1}; i <= m - 1; ++i)
         RM = (R * RM) % q;

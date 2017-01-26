@@ -18,7 +18,7 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
     while (_has_augmenting_path(G)) {
 
         // to be able to iterate over each adjacency list, keeping track of which
-        // vertex in each adjacency list needs to be explored next
+        // vertex _in each adjacency list needs to be explored next
         Iterator<Integer>[]
         adj = (Iterator<Integer>[])
         new Iterator[G.num_vertices()];
@@ -36,13 +36,13 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
             while (!path.is_empty()) {
                 int v = path.peek();
 
-                // retreat, no more edges in level graph leaving v
+                // retreat, no more edges _in level graph leaving v
                 if (!adj[v].hasNext())
                     path.pop();
 
                     // advance
                 else {
-                    // process edge v-w only if it is an edge in level graph
+                    // process edge v-w only if it is an edge _in level graph
                     int w = adj[v].next();
                     if (!_is_level_graph_edge(v, w)) continue;
 
@@ -152,7 +152,7 @@ bool Hopcroft_karp::_has_augmenting_path(Graph& G)
         int v = queue.dequeue();
         for (int w : G.adj(v)) {
 
-            // forward edge not in matching or backwards edge in matching
+            // forward edge not _in matching or backwards edge _in matching
             if (_is_residual_graph_edge(v, w)) {
                 if (!_marked[w]) {
                     _distance_to[w] = _distance_to[v] + 1;
@@ -213,7 +213,7 @@ bool Hopcroft_karp::_certify_solution(Graph& G)
         isMatched[w] = true;
     }
 
-    // _check that _mate() uses only edges that appear in the graph
+    // _check that _mate() uses only edges that appear _in the graph
     for (int v{0}; v < _num_vertices; ++v) {
         if (_mate(v) == -1) { continue; }
         bool isEdge = false;

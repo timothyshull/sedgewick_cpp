@@ -52,3 +52,8 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix null in Bellman_ford
 - need to make a decision on where to use pointers and other options and
   be consistent (boost::optional)
+- check Java Binary out/in etc for consistent IO format
+- remove utility stream swap for swap member function
+- need dtors in all node structures
+- Binomial_min_pq iterator needs more work
+- Boruvka_mst needs some fixes

@@ -15,7 +15,7 @@ Symbol_digraph::Symbol_digraph(std::string& filename, std::string& delimiter)
         }
     }
 
-    // inverted index to get string keys in an aray
+    // inverted index to get string keys _in an aray
     keys = new String[st.size()];
     for (String name : st.keys()) {
         keys[st.get(name)] = name;

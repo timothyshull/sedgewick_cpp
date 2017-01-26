@@ -99,7 +99,7 @@ public:
         _values[i] = value;
         ++_n;
 
-        utility::assert(_check(), "Binary_search_symbol_table invariant _check failed after \"put()\"");
+        utility::alg_assert(_check(), "Binary_search_symbol_table invariant _check failed after \"put()\"");
     }
 
     void remove(Key_type key)
@@ -127,7 +127,7 @@ public:
             _resize(_keys.size() / 2);
         }
 
-        utility::assert(_check(), "Binary_search_symbol_table invariant _check failed after \"remove()\"");
+        utility::alg_assert(_check(), "Binary_search_symbol_table invariant _check failed after \"remove()\"");
     }
 
     void delete_min()
@@ -245,7 +245,7 @@ private:
 
     void _resize(int capacity)
     {
-        utility::assert(capacity >= _n, "The new capacity is not _greater than or equal to the original capacity");
+        utility::alg_assert(capacity >= _n, "The new capacity is not _greater than or equal to the original capacity");
         _keys.resize(capacity);
         _values.resize(capacity);
     }

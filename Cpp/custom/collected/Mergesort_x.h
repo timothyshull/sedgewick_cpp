@@ -10,8 +10,8 @@ namespace Mergesort_x {
     template<typename T>
     static void merge(std::vector<T>& src, std::vector<T>& dst, int lo, int mid, int hi)
     {
-        utility::assert(is_sorted(src, lo, mid), "Mergesort_x is_sorted _check failed for lo to mid");
-        utility::assert(is_sorted(src, mid + 1, hi), "Mergesort_x is_sorted _check failed for mid + 1 to hi");
+        utility::alg_assert(is_sorted(src, lo, mid), "Mergesort_x is_sorted _check failed for lo to mid");
+        utility::alg_assert(is_sorted(src, mid + 1, hi), "Mergesort_x is_sorted _check failed for mid + 1 to hi");
 
         int i = lo, j = mid + 1;
         for (int k{lo}; k <= hi; ++k) {
@@ -22,7 +22,7 @@ namespace Mergesort_x {
             } else { dst[k] = src[i++]; }
         }
 
-        utility::assert(is_sorted(dst, lo, hi), "Mergesort_x is_sorted _check failed");
+        utility::alg_assert(is_sorted(dst, lo, hi), "Mergesort_x is_sorted _check failed");
     }
 
     template<typename T>
@@ -55,7 +55,7 @@ namespace Mergesort_x {
     {
         std::vector<T> aux{a};
         sort(aux, a, 0, a.size() - 1);
-        utility::assert(is_sorted(a), "Mergesort_x is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Mergesort_x is_sorted _check failed");
     }
 
     template<typename T>
@@ -92,14 +92,14 @@ namespace Mergesort_x {
     {
         std::vector<T> aux{a};
         sort(aux, a, 0, a.size() - 1, comparator);
-        utility::assert(is_sorted(a, comparator);
+        utility::alg_assert(is_sorted(a, comparator);
     }
 
     template<typename T>
     static void merge(std::vector<T>& src, std::vector<T>& dst, int lo, int mid, int hi, Comparator comparator)
     {
-        utility::assert(is_sorted(src, lo, mid, comparator), "Mergesort_x is_sorted _check failed for lo to mid");
-        utility::assert(is_sorted(src, mid + 1, hi, comparator), "Mergesort_x is_sorted _check failed for mid + 1 to hi");
+        utility::alg_assert(is_sorted(src, lo, mid, comparator), "Mergesort_x is_sorted _check failed for lo to mid");
+        utility::alg_assert(is_sorted(src, mid + 1, hi, comparator), "Mergesort_x is_sorted _check failed for mid + 1 to hi");
 
         int i = lo, j = mid + 1;
         for (int k{lo}; k <= hi; ++k) {
@@ -109,7 +109,7 @@ namespace Mergesort_x {
             else { dst[k] = src[i++]; }
         }
 
-        utility::assert(is_sorted(dst, lo, hi, comparator), "Mergesort_x is_sorted _check failed");
+        utility::alg_assert(is_sorted(dst, lo, hi, comparator), "Mergesort_x is_sorted _check failed");
     }
 
     template<typename T>

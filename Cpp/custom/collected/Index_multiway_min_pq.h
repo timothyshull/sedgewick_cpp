@@ -86,14 +86,14 @@ public:
     Key keyOf(int i)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         return keys[i + d];
     }
 
     void changeKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         Key tmp = keys[i + d];
         keys[i + d] = key;
         if (comp.compare(key, tmp) <= 0) {
@@ -106,7 +106,7 @@ public:
     void decreaseKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (comp.compare(keys[i + d], key) <= 0) {
             throw utility::Illegal_argument_exception("Calling with this argument would not decrease the Key");
         }
@@ -117,7 +117,7 @@ public:
     void increaseKey(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (comp.compare(keys[i + d], key) >= 0) {
             throw utility::Illegal_argument_exception("Calling with this argument would not increase the Key");
         }
@@ -128,7 +128,7 @@ public:
     void remove(int i)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not in the _queue"); }
+        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         int idx = qp[i + d];
         exch(idx, --n);
         swim(idx);

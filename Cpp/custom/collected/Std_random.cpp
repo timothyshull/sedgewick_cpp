@@ -203,7 +203,7 @@ namespace Std_random {
             }
         }
 
-        utility::assert(false, "Unreachable code");
+        utility::alg_assert(false, "Unreachable code");
         return -1;
     }
 

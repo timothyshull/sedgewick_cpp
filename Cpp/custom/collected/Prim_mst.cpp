@@ -95,14 +95,14 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     // _check that it is a minimal spanning forest (cut optimality conditions)
     for (Edge e : edges()) {
 
-        // all edges in MST except e
+        // all edges _in MST except e
         uf = new UF(G.num_vertices());
         for (Edge f : edges()) {
             int x = f.either(), y = f.other(x);
             if (f != e) uf.union(x, y);
         }
 
-        // _check that e is min weight edge in crossing cut
+        // _check that e is min weight edge _in crossing cut
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {

@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     std::vector<std::string> a{Std_in::read_all_strings()};
     int w = a[0].size();
     for (auto s : a) {
-        utility::assert(s.size() == w, "Strings must have fixed length");
+        utility::alg_assert(s.size() == w, "Strings must have fixed length");
     }
 
     LSD_radix_sort::sort(a, w);

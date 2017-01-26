@@ -45,7 +45,7 @@ list_resize(PyListObject* self, Py_ssize_t newsize)
     /* This over-allocates proportional to the list size, making room
      * for additional growth.  The over-allocation is mild, but is
      * enough to give linear-time amortized behavior over a long
-     * sequence of appends() in the presence of a poorly-performing
+     * sequence of appends() _in the presence of a poorly-performing
      * system realloc().
      * The growth pattern is:  0, 4, 8, 16, 25, 35, 46, 58, 72, 88, ...
      */
@@ -642,7 +642,7 @@ list_ass_slice(PyListObject* a, Py_ssize_t ilow, Py_ssize_t ihigh, PyObject* v)
 {
     /* Because [X]DECREF can recursively invoke list operations on
        this list, we must postpone all [X]DECREF activity until
-       after the list is back in its canonical shape.  Therefore
+       after the list is back _in its canonical shape.  Therefore
        we must allocate an additional array, 'recycle', into which
        we temporarily copy the items that are deleted from the
        list. :-( */
@@ -651,9 +651,9 @@ list_ass_slice(PyListObject* a, Py_ssize_t ilow, Py_ssize_t ihigh, PyObject* v)
     PyObject** item;
     PyObject** vitem = NULL;
     PyObject* v_as_SF = NULL; /* PySequence_Fast(v) */
-    Py_ssize_t n; /* # of elements in replacement list */
-    Py_ssize_t norig; /* # of elements in list getting replaced */
-    Py_ssize_t d; /* Change in size */
+    Py_ssize_t n; /* # of elements _in replacement list */
+    Py_ssize_t norig; /* # of elements _in list getting replaced */
+    Py_ssize_t d; /* Change _in size */
     Py_ssize_t k;
     size_t s;
     int result = -1;    /* guilty until proved innocent */
@@ -865,7 +865,7 @@ listextend(PyListObject* self, PyObject* b)
         }
         /* note that we may still have self == b here for the
          * situation a.extend(a), but the following code works
-         * in that case too.  Just make sure to _resize self
+         * _in that case too.  Just make sure to _resize self
          * before calling PySequence_Fast_ITEMS.
          */
         /* populate the end of self with b's items */
@@ -998,7 +998,7 @@ listpop(PyListObject* self, PyObject* args)
     Py_INCREF(v);
     status = list_ass_slice(self, i, i + 1, (PyObject*) NULL);
     assert(status >= 0);
-    /* Use status, so that in a release build compilers don't
+    /* Use status, so that _in a release build compilers don't
      * complain about the unused name.
      */
     (void) status;
@@ -1006,7 +1006,7 @@ listpop(PyListObject* self, PyObject* args)
     return v;
 }
 
-/* Reverse a slice of a list in place, from lo up to (exclusive) hi. */
+/* Reverse a slice of a list _in place, from lo up to (exclusive) hi. */
 static void
 reverse_slice(PyObject** lo, PyObject** hi)
 {
@@ -1071,7 +1071,7 @@ islt(PyObject* x, PyObject* y, PyObject* compare)
 }
 
 /* If COMPARE is NULL, calls PyObject_RichCompareBool with Py_LT, else calls
- * islt.  This avoids a layer of function call in the usual case, and
+ * islt.  This avoids a layer of function call _in the usual case, and
  * sorting does many comparisons.
  * Returns -1 on error, 1 if x < y, 0 if x >= y.
  */
@@ -1081,20 +1081,20 @@ islt(PyObject* x, PyObject* y, PyObject* compare)
 
 /* Compare X to Y via "<".  Goto "fail" if the comparison raises an
    error.  Else "k" is set to true iff X<Y, and an "if (k)" block is
-   started.  It makes more sense in context <wink>.  X and Y are PyObject*s.
+   started.  It makes more sense _in context <wink>.  X and Y are PyObject*s.
 */
 #define IFLT(X, Y) if ((k = ISLT(X, Y, compare)) < 0) goto fail;  \
            if (k)
 
 /* binarysort is the best method for sorting small arrays: it does
-   few compares, but can do data movement quadratic in the number of
+   few compares, but can do data movement quadratic _in the number of
    elements.
    [lo, hi) is a contiguous slice of a list, and is sorted via
    binary insertion.  This sort is stable.
    On entry, must have lo <= start <= hi, and that [lo, start) is already
    sorted (pass start == lo if you don't know!).
    If islt() complains return -1, else 0.
-   Even in case of error, the output slice will be some permutation of
+   Even _in case of error, the output slice will be some permutation of
    the input (nothing is lost or duplicated).
 */
 static int
@@ -1106,7 +1106,7 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
     register PyObject* pivot;
 
     assert(lo <= start && start <= hi);
-    /* assert [lo, start) is sorted */
+    /* alg_assert [lo, start) is sorted */
     if (lo == start) {
         ++start;
     }
@@ -1116,8 +1116,8 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
         r = start;
         pivot = *r;
         /* Invariants:
-         * pivot >= all in [lo, l).
-         * pivot  < all in [r, start).
+         * pivot >= all _in [lo, l).
+         * pivot  < all _in [r, start).
          * The second is vacuously true at the start.
          */
         assert(l < r);
@@ -1129,8 +1129,8 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
             }
         } while (l < r);
         assert(l == r);
-        /* The invariants still hold, so pivot >= all in [lo, l) and
-           pivot < all in [l, start), so pivot belongs at l.  Note
+        /* The invariants still hold, so pivot >= all _in [lo, l) and
+           pivot < all _in [l, start), so pivot belongs at l.  Note
            that if there are elements equal to pivot, l points to the
            first slot after them -- that's why this sort is stable.
            Slide over to make room.
@@ -1148,7 +1148,7 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
 }
 
 /*
-Return the length of the run beginning at lo, in the slice [lo, hi).  lo < hi
+Return the length of the run beginning at lo, _in the slice [lo, hi).  lo < hi
 is required on entry.  "A run" is the longest ascending sequence, with
 
     lo[0] <= lo[1] <= lo[2] <= ...
@@ -1157,13 +1157,13 @@ or the longest descending sequence, with
 
     lo[0] > lo[1] > lo[2] > ...
 
-Boolean *descending is set to 0 in the former case, or to 1 in the latter.
-For its intended use in a stable mergesort, the strictness of the defn of
+Boolean *descending is set to 0 _in the former case, or to 1 _in the latter.
+For its intended use _in a stable mergesort, the strictness of the defn of
 "descending" is needed so that the caller can safely reverse a descending
 sequence without violating stability (strict > ensures there are no equal
 elements to get out of order).
 
-Returns -1 in case of error.
+Returns -1 _in case of error.
 */
 static Py_ssize_t
 count_run(PyObject** lo, PyObject** hi, PyObject* compare, int* descending)
@@ -1199,7 +1199,7 @@ count_run(PyObject** lo, PyObject** hi, PyObject* compare, int* descending)
 }
 
 /*
-Locate the proper position of key in a sorted vector; if the vector contains
+Locate the proper position of key _in a sorted vector; if the vector contains
 an element equal to key, return the position immediately to the left of
 the leftmost equal element.  [gallop_right() does the same except returns
 the position to the right of the rightmost equal element (if any).]
@@ -1209,7 +1209,7 @@ the position to the right of the rightmost equal element (if any).]
 "hint" is an index at which to begin the search, 0 <= hint < _size.  The closer
 hint is to the final result, the faster this runs.
 
-The return value is the int k in 0.._size such that
+The return value is the int k _in 0.._size such that
 
     a[k-1] < key <= a[k]
 
@@ -1300,10 +1300,10 @@ gallop_left(PyObject* key, PyObject** a, Py_ssize_t n, Py_ssize_t hint, PyObject
 }
 
 /*
-Exactly like gallop_left(), except that if key already exists in a[0:_size],
+Exactly like gallop_left(), except that if key already exists _in a[0:_size],
 finds the position immediately to the right of the rightmost equal value.
 
-The return value is the int k in 0.._size such that
+The return value is the int k _in 0.._size such that
 
     a[k-1] <= key < a[k]
 
@@ -1393,7 +1393,7 @@ gallop_right(PyObject* key, PyObject** a, Py_ssize_t n, Py_ssize_t hint, PyObjec
     return -1;
 }
 
-/* The maximum number of entries in a MergeState's pending-runs stack.
+/* The maximum number of entries _in a MergeState's pending-runs stack.
  * This is enough to sort arrays of size up to about
  *     32 * phi ** MAX_MERGE_PENDING
  * where phi ~= 1.618.  85 is ridiculouslylarge enough, good for an array
@@ -1435,7 +1435,7 @@ typedef struct s_MergeState {
 
     /* A stack of _size pending runs yet to be merged.  Run #i starts at
      * address base[i] and extends for len[i] elements.  It's always
-     * true (so long as the indices are in bounds) that
+     * true (so long as the indices are _in bounds) that
      *
      *     pending[i].base + pending[i].len == pending[i+1].base
      *
@@ -1487,7 +1487,7 @@ merge_getmem(MergeState* ms, Py_ssize_t need)
         return 0;
     }
     /* Don't realloc!  That can _cost cycles to copy the old data, but
-     * we don't care what's in the block.
+     * we don't care what's _in the block.
      */
     merge_freemem(ms);
     if (need > PY_SSIZE_T_MAX / sizeof(PyObject*)) {
@@ -1508,7 +1508,7 @@ merge_getmem(MergeState* ms, Py_ssize_t need)
                 merge_getmem(MS, NEED))
 
 /* Merge the na elements starting at pa with the nb elements starting at pb
- * in a stable way, in-place.  na and nb must be > 0, and pa + na == pb.
+ * _in a stable way, _in-place.  na and nb must be > 0, and pa + na == pb.
  * Must also have that *pb < *pa, that pa[na-1] belongs at the end of the
  * merge, and should have na <= nb.  See listsort.txt for more info.
  * Return 0 if successful, -1 if error.
@@ -1543,8 +1543,8 @@ merge_lo(MergeState* ms, PyObject** pa, Py_ssize_t na,
     min_gallop = ms->min_gallop;
     compare = ms->compare;
     for (;;) {
-        Py_ssize_t acount = 0;    /* # of times A won in a row */
-        Py_ssize_t bcount = 0;    /* # of times B won in a row */
+        Py_ssize_t acount = 0;    /* # of times A won _in a row */
+        Py_ssize_t bcount = 0;    /* # of times B won _in a row */
 
         /* Do the straightforward thing until (if ever) one run
          * appears to win consistently.
@@ -1656,7 +1656,7 @@ merge_lo(MergeState* ms, PyObject** pa, Py_ssize_t na,
 }
 
 /* Merge the na elements starting at pa with the nb elements starting at pb
- * in a stable way, in-place.  na and nb must be > 0, and pa + na == pb.
+ * _in a stable way, _in-place.  na and nb must be > 0, and pa + na == pb.
  * Must also have that *pb < *pa, that pa[na-1] belongs at the end of the
  * merge, and should have na >= nb.  See listsort.txt for more info.
  * Return 0 if successful, -1 if error.
@@ -1695,8 +1695,8 @@ merge_hi(MergeState* ms, PyObject** pa, Py_ssize_t na, PyObject** pb, Py_ssize_t
     min_gallop = ms->min_gallop;
     compare = ms->compare;
     for (;;) {
-        Py_ssize_t acount = 0;    /* # of times A won in a row */
-        Py_ssize_t bcount = 0;    /* # of times B won in a row */
+        Py_ssize_t acount = 0;    /* # of times A won _in a row */
+        Py_ssize_t bcount = 0;    /* # of times B won _in a row */
 
         /* Do the straightforward thing until (if ever) one run
          * appears to win consistently.
@@ -1836,7 +1836,7 @@ merge_at(MergeState* ms, Py_ssize_t i)
 
     /* Record the length of the combined runs; if i is the 3rd-last
      * run now, also slide over the last run (which isn't involved
-     * in this merge).  The current run i+1 goes away in any case.
+     * _in this merge).  The current run i+1 goes away _in any case.
      */
     ms->pending[i].len = na + nb;
     if (i == ms->n - 3) {
@@ -1844,8 +1844,8 @@ merge_at(MergeState* ms, Py_ssize_t i)
     }
     --ms->n;
 
-    /* Where does b start in a?  Elements in a before that can be
-     * ignored (already in place).
+    /* Where does b start _in a?  Elements _in a before that can be
+     * ignored (already _in place).
      */
     compare = ms->compare;
     k = gallop_right(*pb, pa, na, 0, compare);
@@ -1858,8 +1858,8 @@ merge_at(MergeState* ms, Py_ssize_t i)
         return 0;
     }
 
-    /* Where does a end in b?  Elements in b after that can be
-     * ignored (already in place).
+    /* Where does a end _in b?  Elements _in b after that can be
+     * ignored (already _in place).
      */
     nb = gallop_left(pa[na - 1], pb, nb, nb - 1, compare);
     if (nb <= 0) {
@@ -2062,7 +2062,7 @@ sortwrapper_getvalue(PyObject* so)
     return value;
 }
 
-/* Wrapper for user specified cmp functions in combination with a
+/* Wrapper for user specified cmp functions _in combination with a
    specified key function.  Makes sure the cmp function is presented
    with the actual key instead of the sortwrapper */
 
@@ -2142,7 +2142,7 @@ build_cmpwrapper(PyObject* cmpfunc)
 
 // TODO: listsort starts here
 /* An adaptive, stable, natural mergesort.  See listsort.txt.
- * Returns Py_None on success, NULL on error.  Even in case of error, the
+ * Returns Py_None on success, NULL on error.  Even _in case of error, the
  * list will be some permutation of its input state (nothing is lost or
  * duplicated).
  */
@@ -2176,7 +2176,7 @@ listsort(PyListObject* self, PyObject* args, PyObject* kwds)
         compare = NULL;
     }
     if (compare != NULL &&
-        PyErr_WarnPy3k("the cmp argument is not supported in 3.x", 1) < 0) {
+        PyErr_WarnPy3k("the cmp argument is not supported _in 3.x", 1) < 0) {
         return NULL;
     }
     if (keyfunc == Py_None) {
@@ -2430,7 +2430,7 @@ listindex(PyListObject* self, PyObject* args)
             return NULL;
         }
     }
-    PyErr_SetString(PyExc_ValueError, "list.index(x): x not in list");
+    PyErr_SetString(PyExc_ValueError, "list.index(x): x not _in list");
     return NULL;
 }
 
@@ -2468,7 +2468,7 @@ listremove(PyListObject* self, PyObject* v)
             return NULL;
         }
     }
-    PyErr_SetString(PyExc_ValueError, "list.remove(x): x not in list");
+    PyErr_SetString(PyExc_ValueError, "list.remove(x): x not _in list");
     return NULL;
 }
 
@@ -2726,7 +2726,7 @@ PyDoc_STRVAR(reversed_doc,
 
 PyDoc_STRVAR(sizeof_doc,
 
-             "L.__sizeof__() -- size of L in memory, in bytes");
+             "L.__sizeof__() -- size of L _in memory, _in bytes");
 
 PyDoc_STRVAR(append_doc,
 

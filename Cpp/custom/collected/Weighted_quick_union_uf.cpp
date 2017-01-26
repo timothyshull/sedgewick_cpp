@@ -8,7 +8,7 @@ Weighted_quick_union_uf::Weighted_quick_union_uf(int n)
           _size(static_cast<std::vector<int>::size_type>(n))
 {
     if (n < 0) {
-        throw utility::Illegal_argument_exception("The number of sites in a Weighted_quick_union_uf must be non-negative");
+        throw utility::Illegal_argument_exception("The number of sites _in a Weighted_quick_union_uf must be non-negative");
     }
     for (int i{0}; i < n; ++i) {
         _parent[i] = i;

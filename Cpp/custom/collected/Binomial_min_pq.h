@@ -2,6 +2,7 @@
 #define BINOMIAL_MIN_PRIORITY_QUEUE_H
 
 #include <memory>
+#include "utility.h"
 
 template<typename Key>
 class Binomial_min_pq_node;
@@ -21,11 +22,9 @@ class Binomial_min_pq;
 template<typename Key>
 struct Binomial_min_pq_node_pointer_traits {
     using Key_type = Key;
-
     using Node_type = Binomial_min_pq_node<Key_type>;
-    using Node_raw_pointer = Binomial_min_pq_node<Key_type>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Node_shared_pointer = std::shared_ptr<Node_type>;
+    using Node_raw_pointer = Node_type*;
+    using Node_owning_pointer = Node_type*;
     using Shared_key_pointer = std::shared_ptr<Key_type>;
     using Size_type = std::size_t;
 };
@@ -38,8 +37,7 @@ public:
     using Node_type = typename Node_traits::Node_type;
     using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
+    using Shared_key_pointer = typename Node_traits::Shared_key_pointer;
     using Size_type = typename Node_traits::Size_type;
 
 private:
@@ -63,47 +61,47 @@ private:
 template<typename Key, typename Value>
 class Binomial_min_pq_iterator {
 public:
-    using iterator_category = std::random_access_iterator_tag;
-    using Node_traits = Binomial_min_pq_node_pointer_traits<Key, Value>;
+    using iterator_category = std::forward_iterator_tag;
+    using Node_traits = Binomial_min_pq_node_pointer_traits<Key>;
     using Key_type = typename Node_traits::Key_type;
-    using Value_type = typename Node_traits::Value_type;
     using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Tree_type = Binomial_min_pq<Key_type, Value_type>;
-    using Tree_pointer = Tree_type*;
-
-    using Reference_type = Value_type&;
 
     Binomial_min_pq_iterator() noexcept = delete;
 
-    explicit Binomial_min_pq_iterator(Tree_pointer tree) noexcept : _index{0}, _tree{tree}
+    Binomial_min_pq_iterator(const Binomial_min_pq_iterator&) = default;
+
+    Binomial_min_pq_iterator(Binomial_min_pq_iterator&&) = default;
+
+    ~Binomial_min_pq_iterator() = default;
+
+    Binomial_min_pq_iterator& operator=(const Binomial_min_pq_iterator&) = default;
+
+    Binomial_min_pq_iterator& operator=(Binomial_min_pq_iterator&&) = default;
+
+    explicit Binomial_min_pq_iterator(Binomial_min_pq<Key_type>& pq) noexcept : _data{}, _current{pq._head}
     {
-        _construct_in_order(_tree->_get_root());
+        _clone(pq._head, false, false, nullptr);
     }
 
-    Binomial_min_pq_iterator(Tree_pointer tree, int index) noexcept : _index{index}, _tree{tree}
+    Binomial_min_pq_iterator(Binomial_min_pq<Key_type>& pq, Node_raw_pointer current) noexcept : _data{}, _current{current}
     {
-        _construct_in_order(_tree->_get_root());
-        if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
-        }
+        _clone(pq._head, false, false, nullptr);
     }
 
     inline Node_raw_pointer operator*() const
     {
-        return _in_order[_index];
+        return _current;
     }
 
     inline Node_raw_pointer operator->() const
     {
-        return _in_order[_index];
+        return _current;
     }
 
     inline Binomial_min_pq_iterator& operator++()
     {
-        ++_index;
-        if (_index >= _in_order.size()) {
-            _index = -1;
-        }
+        _data.delete_min();
+        _current = _data._head;
         return *this;
     }
 
@@ -114,36 +112,29 @@ public:
         return t;
     }
 
-    inline Binomial_min_pq_iterator& operator--()
-    {
-        if (_index > 0) {
-            --_index;
-        }
-        return *this;
-    }
-
-    inline Binomial_min_pq_iterator operator--(int)
-    {
-        Binomial_min_pq_iterator t{*this};
-        --(*this);
-        return t;
-    }
-
-    Node_raw_pointer operator[](const int& index)
-    {
-        return _in_order[index];
-    }
-
     friend
     inline bool operator==(const Binomial_min_pq_iterator& x, const Binomial_min_pq_iterator& y)
     {
-        return x._in_order == y._in_order && x._index == y._index;
+        return x._data._head == y._data._head && x._current == y._current;
     }
 
     friend
     inline bool operator!=(const Binomial_min_pq_iterator& x, const Binomial_min_pq_iterator& y) { return !(x == y); }
 
 private:
+    Binomial_min_pq<Key_type> _data;
+    Node_raw_pointer _current;
+
+    Node_raw_pointer _clone(Node_raw_pointer x, bool is_parent, bool is_child, Node_raw_pointer parent)
+    {
+        if (x == nullptr) { return nullptr; }
+        Node_raw_pointer node{new Binomial_min_pq_node<Key_type>};
+        node->_key = x->_key;
+        node->_sibling = _clone(x->_sibling, false, false, parent);
+        node->_child = _clone(x->_child, false, true, node);
+        return node;
+    }
+
     template<typename>
     friend class Binomial_min_pq;
 };
@@ -161,174 +152,167 @@ struct Binomial_min_pq_key_comparator {
     }
 };
 
-template<typename Key, typename Value, typename Comparator>
+template<typename Key, typename Comparator = Binomial_min_pq_key_comparator<Key>>
 class Binomial_min_pq {
 public:
     using Node_traits = Binomial_min_pq_node_pointer_traits<Key>;
     using Node_type = typename Node_traits::Node_type;
     using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
     using Shared_key_pointer = typename Node_traits::Shared_key_pointer;
     using Key_type = typename Node_traits::Key_type;
     using Comparator_type = Comparator;
 
-    using Reference_type = Value_type&;
-    using Const_reference_type = const Value_type&;
-    using Pointer_type = Value_type*;
-    using Const_pointer_type = Value_type const*;
     using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
-    using Iterator_type = Binomial_min_pq_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = Binomial_min_pq_reverse_iterator<Key_type, Value_type>;
+    using Difference_type = std::ptrdiff_t;
+    using Iterator_type = Binomial_min_pq_iterator<Key_type>;
 
-    Iterator_type begin() { return Iterator_type(this, 0); }
+    Binomial_min_pq() : _comp{} {}
 
-    Iterator_type end() { return Iterator_type(this, -1); }
-
-public BinomialMinPQ() {
-        comp = new MyComparator();
+    Binomial_min_pq(std::vector<Key_type>& a) : _comp{}
+    {
+        for (auto k : a) { insert(k); }
     }
 
-BinomialMinPQ(Comparator<Key> C) {
-        comp = C;
+    bool is_empty()
+    {
+        return _head == nullptr;
     }
 
-BinomialMinPQ(Key[] a) {
-        comp = new MyComparator();
-        for (Key k : a) insert(k);
-    }
-
-BinomialMinPQ(Comparator<Key> C, Key[] a) {
-        comp = C;
-        for (Key k : a) insert(k);
-    } bool is_empty() {
-        return head == nullptr;
-    }
-
-int size() {
-        int result = 0, tmp;
-        for (Node node{head}; node != null; node = node.sibling) {
-            if (node.order > 30) {
-                throw new ArithmeticException("The number of elements cannot be evaluated, but the priority _queue is still valid.");
+    int size()
+    {
+        int result{0};
+        int tmp;
+        for (Node_raw_pointer node = _head; node != nullptr; node = node->_sibling) {
+            if (node->_order > 30) {
+                throw utility::Arithmetic_exception{"The number of elements cannot be evaluated, but the priority _queue is still valid."};
             }
-            tmp = 1 << node.order;
+            tmp = 1 << node->_order;
             result |= tmp;
         }
         return result;
     }
 
-void insert(Key key) {
-        Node x = new Node();
-        x.key = key;
-        x.order = 0;
-        BinomialMinPQ<Key> H = new BinomialMinPQ<Key>(); //The Comparator oh the H heap is not used
-        H.head = x;
-        this.head = this.union(H).head;
+    void insert(Key_type& key)
+    {
+        Node_raw_pointer x{new Binomial_min_pq_node<Key_type>{}};
+        x->_key = key;
+        x->_order = 0;
+        Binomial_min_pq<Key> h;
+        h._head = x;
+        this->_head = this->create_union(h)._head;
     }
 
- Key minKey() {
-        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
-        Node min = head;
-        Node current = head;
-        while (current.sibling != null) {
-            min = (greater(min.key, current.sibling.key)) ? current : min;
-            current = current.sibling;
+    Key min_key()
+    {
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        Node_raw_pointer min = _head;
+        Node_raw_pointer current = _head;
+        while (current->_sibling != nullptr) {
+            min = (_greater(min->_key, current->_sibling->_key)) ? current : min;
+            current = current->_sibling;
         }
-        return min.key;
+        return min->_key;
     }
 
- Key delMin() {
-        if (is_empty()) throw new NoSuchElementException("Priority _queue is empty");
-        Node min = eraseMin();
-        Node x = (min.child == null) ? min : min.child;
-        if (min.child != null) {
-            min.child = null;
-            Node prevx = null, nextx = x.sibling;
-            while (nextx != null) {
-                x.sibling = prevx;
+    Key delete_min()
+    {
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        Node_raw_pointer min = _erase_min();
+        Node_raw_pointer x = (min->_child == nullptr) ? min : min->_child;
+        if (min->_child != nullptr) {
+            min->_child = nullptr;
+            Node_raw_pointer prevx = nullptr;
+            Node_raw_pointer nextx = x->_sibling;
+            while (nextx != nullptr) {
+                x->_sibling = prevx;
                 prevx = x;
                 x = nextx;
-                nextx = nextx.sibling;
+                nextx = nextx->_sibling;
             }
-            x.sibling = prevx;
-            BinomialMinPQ<Key> H = new BinomialMinPQ<Key>();
-            H.head = x;
-            head = union(H).head;
+            x->_sibling = prevx;
+            Binomial_min_pq<Key> h;
+            h._head = x;
+            _head = create_union(h)._head;
         }
-        return min.key;
+        return min->_key;
     }
 
- BinomialMinPQ<Key> get_union(BinomialMinPQ<Key> heap) {
-        if (heap == null) throw utility::Illegal_argument_exception("Cannot merge a Binomial Heap with null");
-        this.head = merge(new Node(), this.head, heap.head).sibling;
-        Node x = this.head;
-        Node prevx = null, nextx = x.sibling;
-        while (nextx != null) {
-            if (x.order < nextx.order ||
-                (nextx.sibling != null && nextx.sibling.order == x.order)) {
-                prevx = x;
-                x = nextx;
-            } else if (greater(nextx.key, x.key)) {
-                x.sibling = nextx.sibling;
-                link(nextx, x);
+    Binomial_min_pq<Key>& create_union(Binomial_min_pq<Key>& heap)
+    {
+        _head = _merge(new Binomial_min_pq_node<Key_type>, this->_head, heap._head)->_sibling;
+        Node_raw_pointer x{_head};
+        Node_raw_pointer prev_x{nullptr};
+        Node_raw_pointer next_x{x->_sibling};
+        while (next_x != nullptr) {
+            if (x->_order < next_x->_order ||
+                (next_x->_sibling != nullptr && next_x->_sibling->_order == x->_order)) {
+                prev_x = x;
+                x = next_x;
+            } else if (_greater(next_x->_key, x->_key)) {
+                x->_sibling = next_x->_sibling;
+                _link(next_x, x);
             } else {
-                if (prevx == null) {
-                    this.head = nextx;
+                if (prev_x == nullptr) {
+                    this->_head = next_x;
                 } else {
-                    prevx.sibling = nextx;
+                    prev_x->_sibling = next_x;
                 }
-                link(x, nextx);
-                x = nextx;
+                _link(x, next_x);
+                x = next_x;
             }
-            nextx = x.sibling;
+            next_x = x->_sibling;
         }
-        return this;
+        return *this;
     }
+
+    Iterator_type begin() { return Iterator_type{*this}; }
+
+    Iterator_type end() { return Iterator_type(nullptr); }
+
 private:
-    Node_owning_pointer head;
-    Comparator_type comp;
+    Node_owning_pointer _head;
+    Comparator_type _comp;
 
     template<typename, typename>
     friend class Binomial_min_pq_iterator;
 
-    template<typename, typename>
-    friend class Binomial_min_pq_reverse_iterator;
-
- bool greater(Key n, Key m) {
-        if (n == null) return false;
-        if (m == null) return true;
-        return comp.compare(n, m) > 0;
+    bool _greater(Key_type& n, Key_type& m)
+    {
+        return _comp(m, n);
     }
 
-void link(Node root1, Node root2) {
-        root1.sibling = root2.child;
-        root2.child = root1;
-        root2.order++;
+    void _link(Node_raw_pointer root1, Node_raw_pointer root2)
+    {
+        root1->_sibling = root2->_child;
+        root2->_child = root1;
+        root2->_order++;
     }
 
-Node eraseMin() {
-        Node min = head;
-        Node previous = null;
-        Node current = head;
-        while (current.sibling != null) {
-            if (greater(min.key, current.sibling.key)) {
+    Node_raw_pointer _erase_min()
+    {
+        Node_raw_pointer min{_head};
+        Node_raw_pointer previous{nullptr};
+        Node_raw_pointer current{_head};
+        while (current->_sibling != nullptr) {
+            if (_greater(min->_key, current->_sibling->_key)) {
                 previous = current;
-                min = current.sibling;
+                min = current->_sibling;
             }
-            current = current.sibling;
+            current = current->_sibling;
         }
-        previous.sibling = min.sibling;
-        if (min == head) head = min.sibling;
+        previous->_sibling = min->_sibling;
+        if (min == _head) { _head = min->_sibling; }
         return min;
     }
 
-Node merge(Node h, Node x, Node y) {
-        if (x == null && y == null) return h;
-        else if (x == null) h.sibling = merge(y, null, y.sibling);
-        else if (y == null) h.sibling = merge(x, x.sibling, null);
-        else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
-        else h.sibling = merge(y, x, y.sibling);
+    Node_raw_pointer _merge(Node_raw_pointer h, Node_raw_pointer x, Node_raw_pointer y)
+    {
+        if (x == nullptr && y == nullptr) { return h; }
+        else if (x == nullptr) { h->_sibling = _merge(y, nullptr, y->_sibling); }
+        else if (y == nullptr) { h->_sibling = _merge(x, x->_sibling, nullptr); }
+        else if (x->_order < y->_order) { h->_sibling = _merge(x, x->_sibling, y); }
+        else { h->_sibling = _merge(y, x, y->_sibling); }
         return h;
     }
 

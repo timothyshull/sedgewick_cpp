@@ -30,7 +30,7 @@ Depth_first_order::Depth_first_order(Digraph& g)
         }
     }
 
-    utility::assert(_check(g), "Depth_first_order invariant _check for a Digraph failed after construction");
+    utility::alg_assert(_check(g), "Depth_first_order invariant _check for a Digraph failed after construction");
 }
 
 void Depth_first_order::_dfs(Edge_weighted_digraph& g, int v)

@@ -11,7 +11,7 @@ Graham_scan::Graham_scan(std::vector<Point_2d>& pts)
 
     // preprocess so that points[0] has lowest y-coordinate; break ties by x-coordinate
     // points[0] is an extreme point of the convex hull
-    // (alternatively, could do easily in linear time)
+    // (alternatively, could do easily _in linear time)
     Arrays.sort(points);
 
     // sort by polar angle with respect to base point points[0],

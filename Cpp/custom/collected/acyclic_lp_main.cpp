@@ -1,7 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <boost/lexical_cast.hpp>
-
 #include "Acyclic_lp.h"
 #include "Std_out.h"
 #include "In.h"
@@ -9,7 +5,7 @@
 int main(int argc, char* argv[])
 {
     In in{argv[1]};
-    int s{boost::lexical_cast<int>(argv[2])};
+    int s{utility::str_to_num<int>(argv[2])};
     Edge_weighted_digraph digraph{in};
 
     Acyclic_lp lp{digraph, s};

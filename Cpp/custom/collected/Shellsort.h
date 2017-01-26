@@ -33,10 +33,10 @@ namespace Shellsort {
                     exch(a, j, j - h);
                 }
             }
-            utility::assert(is_h_sorted(a, h), "Shellsort is_h_sorted _check failed");
+            utility::alg_assert(is_h_sorted(a, h), "Shellsort is_h_sorted _check failed");
             h /= 3;
         }
-        utility::assert(is_sorted(a), "Shellsort is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "Shellsort is_sorted _check failed");
     }
 
     template<typename T>

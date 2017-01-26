@@ -18,7 +18,7 @@ namespace Binary_insertion_sort {
     template<typename T>
     static void sort(std::vector<T>& a)
     {
-        int n = a.size();
+        int n{static_cast<int>(a.size())};
         for (int i{1}; i < n; ++i) {
             T v = a[i];
             int lo = 0, hi = i;
@@ -33,7 +33,7 @@ namespace Binary_insertion_sort {
             }
             a[lo] = v;
         }
-        utility::assert(is_sorted(a), "The Binary_insertion_sort is_sorted _check failed");
+        utility::alg_assert(is_sorted(a), "The Binary_insertion_sort is_sorted _check failed");
     }
 
     template<typename T>
@@ -45,7 +45,7 @@ namespace Binary_insertion_sort {
     template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
-        return is_sorted(a, 0, a.size() - 1);
+        return is_sorted(a, 0, static_cast<int>(a.size()) - 1);
     }
 
     template<typename T>

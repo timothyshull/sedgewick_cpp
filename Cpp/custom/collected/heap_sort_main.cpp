@@ -8,6 +8,6 @@ int main()
     std::vector<std::string> a{Std_in::read_all_strings()};
     Heap_sort::sort(a);
     Heap_sort::show(a);
-    utility::assert(Heap_sort::is_sorted(a), "The Heap_sort is_sorted _check failed");
+    utility::alg_assert(Heap_sort::is_sorted(a), "The Heap_sort is_sorted _check failed");
     return 0;
 }

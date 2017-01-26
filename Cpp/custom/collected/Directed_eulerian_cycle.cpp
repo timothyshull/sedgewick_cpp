@@ -38,7 +38,7 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& G)
     }
 
     // _check if all edges have been used
-    // (in case there are two or more vertex-disjoint Eulerian cycles)
+    // (_in case there are two or more vertex-disjoint Eulerian cycles)
     if (cycle.size() != G.num_edges() + 1) {
         cycle = null;
     }

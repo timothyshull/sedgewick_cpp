@@ -33,7 +33,7 @@ void Quick_find_uf::create_union(int p, int q)
     int pID = id[p];   // needed for correctness
     int qID = id[q];   // to reduce the number of array accesses
 
-    // p and q are already in the same component
+    // p and q are already _in the same component
     if (pID == qID) return;
 
     for (int i{0}; i < id.length; ++i)

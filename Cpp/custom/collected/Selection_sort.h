@@ -40,9 +40,9 @@ namespace Selection_sort {
     //             if (_less(a[j], a[min])) { min = j; }
     //         }
     //         _exch(a, i, min);
-    //         utility::assert(is_sorted(a, 0, i), "Selection_sort is_sorted range _check failed");
+    //         utility::alg_assert(is_sorted(a, 0, i), "Selection_sort is_sorted range _check failed");
     //     }
-    //     utility::assert(is_sorted(a), "Selection_sort is_sorted _check failed");
+    //     utility::alg_assert(is_sorted(a), "Selection_sort is_sorted _check failed");
     // }
 
     template<typename T, typename Comparator>
@@ -55,9 +55,9 @@ namespace Selection_sort {
                 if (less<T, Comparator>(a[j], a[min])) { min = j; }
             }
             exch(a, i, min);
-            utility::assert(is_sorted<T, Comparator>(a, 0, i), "Selection_sort is_sorted range _check failed");
+            utility::alg_assert(is_sorted<T, Comparator>(a, 0, i), "Selection_sort is_sorted range _check failed");
         }
-        utility::assert(is_sorted<T, Comparator>(a), "Selection_sort is_sorted _check failed");
+        utility::alg_assert(is_sorted<T, Comparator>(a), "Selection_sort is_sorted _check failed");
     }
 
     template<typename T>

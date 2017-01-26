@@ -3,8 +3,8 @@
 
 int main(int argc, char* argv[])
 {
-//    std::istream in{argv[1]};
-//    Graph g{in};
+//    std::istream _in{argv[1]};
+//    Graph g{_in};
     Graph g{std::cin};
     Std_out::print_line(g);
     return 0;
