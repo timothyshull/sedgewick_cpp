@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
     Stopwatch timer{};
     int count{Three_sum::count(a)};
-    Std_out::print_line("elapsed time = " + timer.elapsedTime());
+    Std_out::print_line("elapsed time = " + timer.elapsed_time());
     Std_out::print_line(count);
     return 0;
 }

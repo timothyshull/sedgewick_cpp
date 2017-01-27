@@ -7,9 +7,10 @@ class Stopwatch {
 public:
     Stopwatch();
 
-    double elapsedTime();
+    double elapsed_time();
+
 private:
-    const std::chrono::time_point start;
+    const std::chrono::system_clock::time_point _start;
 };
 
 #endif // STOPWATCH_H

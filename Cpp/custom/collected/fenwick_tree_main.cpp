@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
-#include "Std_in.h"
 #include "Std_out.h"
 #include "Fenwick_tree.h"
 #include "utility.h"
+#include "Std_in.h"
 
 int main(int argc, char* argv[])
 {
@@ -22,10 +22,10 @@ int main(int argc, char* argv[])
         arg2 = 0;
 
         if (line.size() > 1) {
-            arg1 = utility::str_to_num(line[1]);
+            arg1 = utility::str_to_num<int>(line[1].c_str());
         }
         if (line.size() > 2) {
-            arg2 = utility::str_to_num(line[2]);
+            arg2 = utility::str_to_num<int>(line[2].c_str());
         }
 
         // TODO: this might always return false
@@ -41,9 +41,9 @@ int main(int argc, char* argv[])
             }
             Std_out::print_line();
         } else if (line[0] == "set") {
-            ft = Fenwick_tree{line.size() - 1};
+            ft = Fenwick_tree{static_cast<int>(line.size()) - 1};
             for (int i{1}; i <= line.size() - 1; ++i) {
-                ft.update(i, utility::str_to_num(line[i]));
+                ft.update(i, utility::str_to_num<int>(line[i].c_str()));
             }
         } else if (line[0] == "up") {
             ft.update(arg1, arg2);
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
             }
             Std_out::print_line();
         } else if (line[0] == "rsq") {
-            Std_out::printf("Sum from %d to %d = %d%_size", arg1, arg2, ft.rsq(arg1, arg2));
+            Std_out::printf("Sum from %d to %d = %d size", arg1, arg2, ft.rsq(arg1, arg2));
         } else {
             Std_out::print_line("Invalid command");
         }

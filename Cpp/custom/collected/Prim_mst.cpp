@@ -49,7 +49,7 @@ void Prim_mst::prim(Edge_weighted_graph& G, int s)
 void Prim_mst::scan(Edge_weighted_graph& G, int v)
 {
     marked[v] = true;
-    for (Edge e : G.adj(v)) {
+    for (Edge e : G._adjacency_lists(v)) {
         int w = e.other(v);
         if (marked[w]) continue;         // v-w is obsolete edge
         if (e._weight() < distance_to[w]) {

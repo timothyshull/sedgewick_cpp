@@ -3,8 +3,8 @@
 
 #include <vector>
 
-class Three_sum {
-    void printAll(std::vector<int>& a);
+namespace Three_sum {
+    void print_all(std::vector<int>& a);
 
     int count(std::vector<int>& a);
 };

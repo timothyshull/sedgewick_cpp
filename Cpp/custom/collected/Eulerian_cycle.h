@@ -5,34 +5,40 @@
 #include "Graph.h"
 #include "Stack.h"
 
-class Edge {
-public:
-    Edge(int v, int w);
-    int other(int vertex);
-private:
-    const int _v;
-    const int _w;
-    bool isUsed;
-};
-
 class Eulerian_cycle {
+private:
+    class Edge {
+    public:
+        Edge(int v, int w);
+
+        int other(int vertex);
+
+    private:
+        const int _v;
+        const int _w;
+        bool _is_used;
+
+        friend class Eulerian_cycle;
+    };
+
 public:
-    Eulerian_cycle(Graph& G);
+    Eulerian_cycle(Graph& graph);
 
-    std::vector<int> cycle();
+    inline Stack<int> cycle() const { return _cycle; }
 
-    bool hasEulerianCycle();
+    inline bool has_eulerian_cycle() const { return !_cycle.is_empty(); }
+
+    // make accessible from main
+    static void unit_test(Graph& graph, std::string&& description);
 
 private:
-    Stack<int> cycle;
+    Stack<int> _cycle;
 
-    int nonIsolatedVertex(Graph& G);
+    int _non_isolated_vertex(Graph& graph);
 
-    bool hasEulerianCycle(Graph& G);
+    bool _has_eulerian_cycle(Graph& graph);
 
-    bool certifySolution(Graph& G);
-
-    void unit_test(Graph& G, std::string& description);
+    bool _certify_solution(Graph& graph);
 };
 
 #endif // EULERIAN_CYCLE_H

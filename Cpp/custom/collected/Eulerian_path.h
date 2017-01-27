@@ -5,35 +5,40 @@
 #include "Stack.h"
 #include "Graph.h"A
 
-class Edge {
-public:
-    Edge(int v, int w);
-    int other(int vertex);
-private:
-    const int _v;
-    const int _w;
-    bool isUsed;
-};
-
 class Eulerian_path {
+private:
+    class Edge {
+    public:
+        Edge(int v, int w);
+
+        int other(int vertex);
+
+    private:
+        const int _v;
+        const int _w;
+        bool _is_used;
+
+        friend class Eulerian_path;
+    };
+
 public:
-    Eulerian_path(Graph& G);
+    Eulerian_path(Graph& graph);
 
-    std::vector<int> path();
+    inline Stack<int> path() const { return _path; }
 
-    bool hasEulerianPath();
+    inline bool has_eulerian_path() const { return !_path.is_empty(); }
+
+    // make available in main
+    static void unit_test(Graph& graph, std::string&& description);
 
 private:
-    Stack<int> path;
+    Stack<int> _path;
 
-    int nonIsolatedVertex(Graph& G);
+    int _non_isolated_vertex(Graph& graph);
 
-    bool hasEulerianPath(Graph& G);
+    bool _has_eulerian_path(Graph& graph);
 
-    bool ceertifySolution(Graph& G);
-
-    void unit_test(Graph& G, std::string& description);
-
+    bool _certify_solution(Graph& graph);
 };
 
 #endif // EULERIAN_PATH_H

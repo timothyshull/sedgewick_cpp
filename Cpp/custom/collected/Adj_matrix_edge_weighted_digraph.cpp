@@ -164,7 +164,7 @@ Adj_iterator Adj_iterator::operator++(int)
 Adj_iterator& Adj_iterator::operator--()
 {
     if (_v == 0 || _w == 0) {
-        throw utility::No_such_element_exception("Cannot decrement iterator before the start");
+        throw utility::No_such_element_exception("Cannot decrement iterator before the _start");
     }
     if (_v == -1 && _w == -1) {
         // at end

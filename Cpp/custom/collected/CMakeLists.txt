@@ -379,9 +379,8 @@ target_link_libraries(directed_eulerian_cycle_main std_io utility ${Boost_LIBRAR
 add_executable(directed_eulerian_path_main directed_eulerian_path_main.cpp Directed_eulerian_path.cpp Directed_eulerian_path.h)
 target_link_libraries(directed_eulerian_path_main std_io utility ${Boost_LIBRARIES})
 
-# TODO: 3rd Round
-add_executable(doubling_ratio_main doubling_ratio_main.cpp Doubling_ratio.cpp Doubling_ratio.h)
-target_link_libraries(doubling_ratio_main std_io utility ${Boost_LIBRARIES})
+add_executable(doubling_ratio_main doubling_ratio_main.cpp Doubling_ratio.cpp Doubling_ratio.h Stopwatch.h Stopwatch.cpp Three_sum.h Three_sum.cpp)
+target_link_libraries(doubling_ratio_main std_io std_random utility ${Boost_LIBRARIES})
 
 add_executable(doubling_test_main doubling_test_main.cpp Doubling_test.cpp Doubling_test.h)
 target_link_libraries(doubling_test_main std_io utility ${Boost_LIBRARIES})
@@ -407,6 +406,7 @@ target_link_libraries(fenwick_tree_main std_io utility ${Boost_LIBRARIES})
 add_executable(fft_main fft_main.cpp FFT.cpp FFT.h)
 target_link_libraries(fft_main std_io utility ${Boost_LIBRARIES})
 
+# TODO: 3rd Round
 add_executable(fibonacci_min_pq_main fibonacci_min_pq_main.cpp Fibonacci_min_pq.cpp Fibonacci_min_pq.h)
 target_link_libraries(fibonacci_min_pq_main std_io utility ${Boost_LIBRARIES})
 

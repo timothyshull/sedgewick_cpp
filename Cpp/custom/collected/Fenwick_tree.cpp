@@ -1,39 +1,33 @@
 #include "Fenwick_tree.h"
+#include "utility.h"
 
-Fenwick_tree::Fenwick_tree(int size){
-    array = new int[size + 1];
-}
+Fenwick_tree::Fenwick_tree(int size) : _vector(static_cast<std::vector<int>::size_type>(size)) {}
 
-int Fenwick_tree::rsq(int a, int b)
+int Fenwick_tree::rsq(int index)
 {
-    assert ind > 0;
+    utility::alg_assert(index > 0, "Fenwick_tree range sum query must be passed an index greater than 0");
     int sum = 0;
-    while (ind > 0) {
-        sum += array[ind];
-        //Extracting the portion up to the first significant one of the binary representation of 'ind' and decrementing ind by that number
-        ind -= ind & (-ind);
+    while (index > 0) {
+        sum += _vector[index];
+        index -= index & (-index);
     }
 
     return sum;
 }
 
-int Fenwick_tree::rsq(int a, int b) {
-    assert b >= a && a > 0 && b > 0;
-
+int Fenwick_tree::rsq(int a, int b)
+{
+    utility::alg_assert(b >= a && a > 0 && b > 0, "Fenwick_tree range sum query index value check failed");
     return rsq(b) - rsq(a - 1);
 }
 
-void Fenwick_tree::update(int ind, int value)
+void Fenwick_tree::update(int index, int value)
 {
-    assert ind > 0;
-    while (ind < array.length) {
-        array[ind] += value;
-        //Extracting the portion up to the first significant one of the binary representation of 'ind' and incrementing ind by that number
-        ind += ind & (-ind);
+    utility::alg_assert(index > 0, "Fenwick_tree range sum query must be passed an index greater than 0");
+    while (index < _vector.size()) {
+        _vector[index] += value;
+        index += index & (-index);
     }
 }
 
-int Fenwick_tree::size()
-{
-    return array.size() - 1;
-}
+

@@ -1,118 +1,101 @@
 #include "Eulerian_cycle.h"
+#include "Queue.h"
+#include "Breadth_first_paths.h"
+#include "Std_out.h"
 
-Edge::Edge(int v, int w) : _v{v}, _w{w}, isUsed{false} {}
+Eulerian_cycle::Edge::Edge(int v, int w) : _v{v}, _w{w}, _is_used{false} {}
 
-int Edge::other(int vertex)
+int Eulerian_cycle::Edge::other(int vertex)
 {
     if (vertex == _v) { return _w; }
     else if (vertex == _w) { return _v; }
     else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
 }
 
-Eulerian_cycle::Eulerian_cycle(Graph& G)
+Eulerian_cycle::Eulerian_cycle(Graph& graph)
 {
-    if (G.num_edges() == 0) { return; }
+    if (graph.num_edges() == 0) { return; }
 
-    // necessary condition: all vertices have even degree
-    // (this test is needed or it might find an Eulerian path instead of _cycle)
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.degree(v) % 2 != 0) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (graph.degree(v) % 2 != 0) {
             return;
         }
     }
 
-    // create local view of adjacency lists, to iterate one vertex at a time
-    // the helper Edge data type is used to avoid exploring both copies of an edge v-w
-    Queue<Edge>[]
-    adj = (Queue<Edge>[])
-    new Queue[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        adj[v] = new Queue<Edge>();
+    std::vector<Queue<Edge>> adj;
+    adj.reserve(static_cast<std::vector<Queue<int>>::size_type>(graph.num_vertices()));
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        adj[v] = Queue<Edge>{};
     }
 
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        int selfLoops = 0;
-        for (int w : G.adj(v)) {
-            // careful with self loops
+    int self_loops;
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        self_loops = 0;
+        for (auto w : graph.adjacent(v)) {
             if (v == w) {
-                if (selfLoops % 2 == 0) {
-                    Edge e = new Edge(v, w);
+                if (self_loops % 2 == 0) {
+                    Edge e{v, w};
                     adj[v].enqueue(e);
                     adj[w].enqueue(e);
                 }
-                ++selfLoops;
+                ++self_loops;
             } else if (v < w) {
-                Edge e = new Edge(v, w);
+                Edge e{v, w};
                 adj[v].enqueue(e);
                 adj[w].enqueue(e);
             }
         }
     }
 
-    // initialize stack with any non-isolated vertex
-    int s = nonIsolatedVertex(G);
-    Stack<Integer> stack = new Stack<Integer>();
+    int s{_non_isolated_vertex(graph)};
+    Stack<int> stack;
     stack.push(s);
 
-    // greedily search through edges _in iterative DFS style
-    cycle = new Stack<Integer>();
+    _cycle = Stack<int>{};
+    int v;
     while (!stack.is_empty()) {
-        int v = stack.pop();
+        v = stack.pop();
         while (!adj[v].is_empty()) {
             Edge edge = adj[v].dequeue();
-            if (edge.isUsed) { continue; }
-            edge.isUsed = true;
+            if (edge._is_used) { continue; }
+            edge._is_used = true;
             stack.push(v);
             v = edge.other(v);
         }
-        // push vertex with no more leaving edges to _cycle
-        cycle.push(v);
+        _cycle.push(v);
     }
 
-    // _check if all edges are used
-    if (cycle.size() != G.num_edges() + 1) {
-        cycle = null;
+    if (_cycle.size() != graph.num_edges() + 1) {
+        _cycle = Stack<int>{};
     }
 
-    assert certifySolution(G);
+    utility::alg_assert(_certify_solution(graph), "Eulerian_cycle solution verification failed");
 }
 
-std::vector<int> Eulerian_cycle::cycle()
+int Eulerian_cycle::_non_isolated_vertex(Graph& graph)
 {
-    return cycle;
-}
-
-bool Eulerian_cycle::hasEulerianCycle()
-{
-    return cycle != null;
-}
-
-int Eulerian_cycle::nonIsolatedVertex(Graph& G)
-{
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.degree(v) > 0) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (graph.degree(v) > 0) {
             return v;
         }
     }
     return -1;
 }
 
-bool Eulerian_cycle::hasEulerianCycle(Graph& G)
+bool Eulerian_cycle::_has_eulerian_cycle(Graph& graph)
 {
-    if (G.num_edges() == 0) { return false; }
+    if (graph.num_edges() == 0) { return false; }
 
-    // Condition 1: degree(v) is even for every vertex
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.degree(v) % 2 != 0) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (graph.degree(v) % 2 != 0) {
             return false;
         }
     }
 
-    // Condition 2: graph is connected, ignoring isolated vertices
-    int s = nonIsolatedVertex(G);
-    Breadth_first_paths bfs = new Breadth_first_paths(G, s);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.degree(v) > 0 && !bfs.has_path_to(v)) {
+    int s{_non_isolated_vertex(graph)};
+    Breadth_first_paths bfs{graph, s};
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
     }
@@ -120,43 +103,34 @@ bool Eulerian_cycle::hasEulerianCycle(Graph& G)
     return true;
 }
 
-bool Eulerian_cycle::certifySolution(Graph& G)
+bool Eulerian_cycle::_certify_solution(Graph& graph)
 {
-    if (hasEulerianCycle() == (cycle() == null)) { return false; }
+    if (has_eulerian_cycle() == (_cycle.is_empty())) { return false; }
 
-    // hashEulerianCycle() returns correct value
-    if (hasEulerianCycle() != hasEulerianCycle(G)) { return false; }
+    if (has_eulerian_cycle() != _has_eulerian_cycle(graph)) { return false; }
 
-    // nothing else to _check if no Eulerian _cycle
-    if (cycle == null) { return true; }
+    if (_cycle.is_empty()) { return true; }
 
-    // _check that _cycle() uses correct number of edges
-    if (cycle.size() != G.num_edges() + 1) { return false; }
+    if (_cycle.size() != graph.num_edges() + 1) { return false; }
 
-    // _check that _cycle() is a _cycle of G
-    // TODO
-
-    // _check that first and last vertices _in _cycle() are the same
     int first = -1, last = -1;
-    for (int v : cycle()) {
+    for (int v : _cycle) {
         if (first == -1) { first = v; }
         last = v;
     }
-    if (first != last) { return false; }
-
-    return true;
+    return first == last;
 }
 
-void Eulerian_cycle::unit_test(Graph& G, std::string& description)
+void Eulerian_cycle::unit_test(Graph& graph, std::string&& description)
 {
     Std_out::print_line(description);
     Std_out::print_line("-------------------------------------");
-    Std_out::print(G);
+    Std_out::print(graph);
 
-    EulerianCycle euler = new EulerianCycle(G);
+    Eulerian_cycle euler{graph};
 
     Std_out::print("Eulerian _cycle: ");
-    if (euler.hasEulerianCycle()) {
+    if (euler.has_eulerian_cycle()) {
         for (int v : euler.cycle()) {
             Std_out::print(v + " ");
         }

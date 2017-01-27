@@ -1091,8 +1091,8 @@ islt(PyObject* x, PyObject* y, PyObject* compare)
    elements.
    [lo, hi) is a contiguous slice of a list, and is sorted via
    binary insertion.  This sort is stable.
-   On entry, must have lo <= start <= hi, and that [lo, start) is already
-   sorted (pass start == lo if you don't know!).
+   On entry, must have lo <= _start <= hi, and that [lo, _start) is already
+   sorted (pass _start == lo if you don't know!).
    If islt() complains return -1, else 0.
    Even _in case of error, the output slice will be some permutation of
    the input (nothing is lost or duplicated).
@@ -1106,19 +1106,19 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
     register PyObject* pivot;
 
     assert(lo <= start && start <= hi);
-    /* alg_assert [lo, start) is sorted */
+    /* alg_assert [lo, _start) is sorted */
     if (lo == start) {
         ++start;
     }
     for (; start < hi; ++start) {
-        /* set l to where *start belongs */
+        /* set l to where *_start belongs */
         l = lo;
         r = start;
         pivot = *r;
         /* Invariants:
          * pivot >= all _in [lo, l).
-         * pivot  < all _in [r, start).
-         * The second is vacuously true at the start.
+         * pivot  < all _in [r, _start).
+         * The second is vacuously true at the _start.
          */
         assert(l < r);
         do {
@@ -1130,7 +1130,7 @@ binarysort(PyObject** lo, PyObject** hi, PyObject** start, PyObject* compare)
         } while (l < r);
         assert(l == r);
         /* The invariants still hold, so pivot >= all _in [lo, l) and
-           pivot < all _in [l, start), so pivot belongs at l.  Note
+           pivot < all _in [l, _start), so pivot belongs at l.  Note
            that if there are elements equal to pivot, l points to the
            first slot after them -- that's why this sort is stable.
            Slide over to make room.
@@ -1844,7 +1844,7 @@ merge_at(MergeState* ms, Py_ssize_t i)
     }
     --ms->n;
 
-    /* Where does b start _in a?  Elements _in a before that can be
+    /* Where does b _start _in a?  Elements _in a before that can be
      * ignored (already _in place).
      */
     compare = ms->compare;
@@ -2752,7 +2752,7 @@ PyDoc_STRVAR(remove_doc,
 
 PyDoc_STRVAR(index_doc,
 
-             "L.index(value, [start, [stop]]) -> integer -- return first index of value.\n"
+             "L.index(value, [_start, [stop]]) -> integer -- return first index of value.\n"
                      "Raises ValueError if the value is not present.");
 
 PyDoc_STRVAR(count_doc,

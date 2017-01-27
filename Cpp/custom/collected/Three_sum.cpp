@@ -1,13 +1,14 @@
 #include "Three_sum.h"
+#include "Std_out.h"
 
-void Three_sum::printAll(std::vector<int>& a)
+void Three_sum::print_all(std::vector<int>& a)
 {
-    int n = a.length;
+    auto n = a.size();
     for (int i{0}; i < n; ++i) {
         for (int j{i + 1}; j < n; ++j) {
             for (int k{j + 1}; k < n; ++k) {
                 if (a[i] + a[j] + a[k] == 0) {
-                    Std_out::print_line(a[i] + " " + a[j] + " " + a[k]);
+                    Std_out::print_line(std::to_string(a[i]) + " " + std::to_string(a[j]) + " " + std::to_string(a[k]));
                 }
             }
         }
@@ -16,7 +17,7 @@ void Three_sum::printAll(std::vector<int>& a)
 
 int Three_sum::count(std::vector<int>& a)
 {
-    int n = a.length;
+    auto n = a.size();
     int count = 0;
     for (int i{0}; i < n; ++i) {
         for (int j{i + 1}; j < n; ++j) {

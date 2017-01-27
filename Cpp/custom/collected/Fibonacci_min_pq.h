@@ -9,9 +9,6 @@ class Fibonacci_min_pq_node;
 template<typename Key>
 class Fibonacci_min_pq_iterator;
 
-template<typename Key>
-class Fibonacci_min_pq_reverse_iterator;
-
 template<typename T>
 struct Fibonacci_min_pq_key_comparator;
 
@@ -25,8 +22,6 @@ struct Fibonacci_min_pq_node_pointer_traits {
     using Node_type = Fibonacci_min_pq_node<Key_type>;
     using Node_raw_pointer = Fibonacci_min_pq_node<Key_type>*;
     using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Node_shared_pointer = std::shared_ptr<Node_type>;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
     using Size_type = std::size_t;
 };
 
@@ -38,18 +33,15 @@ public:
     using Node_type = typename Node_traits::Node_type;
     using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
     using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
-    using Size_type = typename Node_traits::Size_type;
 
 private:
-    Shared_key_pointer _key;
+    Key_type key;
 
-    int _order;
+    int order;
 
     Node_owning_pointer prev;
     Node_owning_pointer next;
-    Node_owning_pointer _child;
+    Node_owning_pointer child;
 
     template<typename, typename, typename>
     friend class Fibonacci_min_pq;
@@ -61,18 +53,15 @@ private:
     friend class Fibonacci_min_pq_reverse_iterator;
 };
 
-template<typename Key, typename Value>
+template<typename Key>
 class Fibonacci_min_pq_iterator {
 public:
-    using iterator_category = std::random_access_iterator_tag;
-    using Node_traits = Fibonacci_min_pq_node_pointer_traits<Key, Value>;
+    using iterator_category = std::forward_iterator_tag;
+    using Node_traits = Fibonacci_min_pq_node_pointer_traits<Key>;
     using Key_type = typename Node_traits::Key_type;
-    using Value_type = typename Node_traits::Value_type;
     using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Tree_type = Fibonacci_min_pq<Key_type, Value_type>;
+    using Tree_type = Fibonacci_min_pq<Key_type>;
     using Tree_pointer = Tree_type*;
-
-    using Reference_type = Value_type&;
 
     Fibonacci_min_pq_iterator() noexcept = delete;
 
@@ -162,7 +151,7 @@ struct Fibonacci_min_pq_key_comparator {
     }
 };
 
-template<typename Key, typename Value, typename Comparator>
+template<typename Key, typename Comparator>
 class Fibonacci_min_pq {
 public:
     using Node_traits = Fibonacci_min_pq_node_pointer_traits<Key>;
@@ -174,14 +163,7 @@ public:
     using Key_type = typename Node_traits::Key_type;
     using Comparator_type = Comparator;
 
-    using Reference_type = Value_type&;
-    using Const_reference_type = const Value_type&;
-    using Pointer_type = Value_type*;
-    using Const_pointer_type = Value_type const*;
-    using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
-    using Iterator_type = Fibonacci_min_pq_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = Fibonacci_min_pq_reverse_iterator<Key_type, Value_type>;
+    using Iterator_type = Fibonacci_min_pq_iterator<Key_type>;
 
     Iterator_type begin() { return Iterator_type(this, 0); }
 

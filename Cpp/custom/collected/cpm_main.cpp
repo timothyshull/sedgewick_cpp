@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
     Acyclic_lp lp{digraph, source};
 
-    Std_out::print_line(" job   start  finish");
+    Std_out::print_line(" job   _start  finish");
     Std_out::print_line("--------------------");
     for (int i{0}; i < n; ++i) {
         Std_out::printf("%4d %7.1f %7.1f\n", i, lp.distance_to(i), lp.distance_to(i + n));

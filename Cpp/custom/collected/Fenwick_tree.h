@@ -19,16 +19,16 @@ public:
 
     explicit Fenwick_tree(int size);
 
-    int rsq(int ind);
+    int rsq(int index);
 
     int rsq(int a, int b);
 
-    void update(int ind, int value);
+    void update(int index, int value);
 
-    int size();
+    inline int size() const { return _vector.size() - 1; }
 
 private:
-    std::vector<int> array;
+    std::vector<int> _vector;
 };
 
 #endif // FENWICK_TREE_H

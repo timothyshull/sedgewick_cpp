@@ -61,3 +61,5 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix Stack, Queue, Etc and add const to all references that can be const
 - Dijkstra_sp/undirected needs work
 - fix iterator deal in Directed_eulerian_path and Directed_eulerian_cycle
+- fix Doubling_ratio and Std_random::uniform(int, int) issues
+- fix range for loops in Edge_weighted_graph

@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     Graph h1{Graph_generator::eulerian_cycle(num_vertices / 2, num_edges / 2)};
     Graph h2{Graph_generator::eulerian_cycle(num_vertices - num_vertices / 2, num_edges - num_edges / 2)};
     std::vector<int> perm;
-    perm.reserve(num_vertices);
+    perm.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
     for (int i{0}; i < num_vertices; ++i) {
         perm[i] = i;
     }

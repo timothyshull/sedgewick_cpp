@@ -37,7 +37,7 @@ namespace Std_random {
     int uniform(int n)
     {
         if (n <= 0) {
-            throw utility::Illegal_argument_exception("Parameter _size must be positive");
+            throw utility::Illegal_argument_exception("Parameter size must be positive");
         }
         std::uniform_int_distribution<int> dist(0, n - 1);
         return dist(rd);

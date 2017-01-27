@@ -34,7 +34,7 @@ void Lazy_prim_mst::scan(Edge_weighted_graph& G, int v)
     assert
     !marked[v];
     marked[v] = true;
-    for (Edge e : G.adj(v)) {
+    for (Edge e : G._adjacency_lists(v)) {
         if (!marked[e.other(v)]) { pq.insert(e); }
     }
 }

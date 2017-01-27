@@ -4,7 +4,7 @@
 #include <limits>
 
 namespace Doubling_test {
-    const static int MAXIMUM_INTEGER = std::numeric_limits<int>::max();
+    const static int max_int = std::numeric_limits<int>::max();
 
     double time_trial(int n);
 };

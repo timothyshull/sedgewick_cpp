@@ -218,7 +218,7 @@ or "descending", which means strictly decreasing:
 
     a0 > a1 > a2 > ...
 
-Note that a run is always at least 2 long, unless we start at the array's
+Note that a run is always at least 2 long, unless we _start at the array's
 last element.
 
 The definition of descending is strict, because the main routine reverses
@@ -387,7 +387,7 @@ If A is smaller (function merge_lo), copy A to a temp array, leave B alone,
 and then we can do the obvious merge algorithm left to right, from the temp
 area and B, starting the stores into where A used to live.  There's always a
 free area _in the original area comprising a number of elements equal to the
-number not yet merged from the temp array (trivially true at the start;
+number not yet merged from the temp array (trivially true at the _start;
 proceed by induction).  The only tricky bit is that if a comparison raises an
 exception, we have to remember to copy the remaining elements back _in from
 the temp area, lest the array end up with duplicate entries from B.  But
@@ -558,7 +558,7 @@ _in cases like ~sort, galloping always pays, and _initial_min_gallop is larger t
 that merge_lo and merge_hi adjust:  the longer we stay _in galloping mode,
 the smaller _min_gallop gets, making it easier to transition back to
 galloping mode (if we ever leave it _in the current merge, and at the
-start of the next merge).  But whenever the gallop loop doesn't pay,
+_start of the next merge).  But whenever the gallop loop doesn't pay,
 _min_gallop is increased by one, making it harder to transition back
 to galloping mode (and again both within a merge and across merges).  For
 random data, this all but eliminates the gallop penalty:  _min_gallop grows
@@ -575,7 +575,7 @@ instead of the first.  Galloping from the first still works, but does more
 comparisons than it should (this is significant -- I timed it both ways).
 For this reason, the gallop_left() and gallop_right() functions have a
 "hint" argument, which is the index at which galloping should begin.  So
-galloping can actually start at any index, and proceed at offsets of 1, 3,
+galloping can actually _start at any index, and proceed at offsets of 1, 3,
 7, 15, ... or -1, -3, -7, -15, ... from the starting index.
 
 In the code as I type it's always called with either 0 or _size-1 (where _size is
@@ -669,7 +669,7 @@ that's enough <wink>.
 
 For random arrays of size 2 (yes, there are only 2 interesting ones),
 samplesort has a 50%(!) comparison disadvantage.  This is a consequence of
-samplesort special-casing at most one ascending run at the start, then
+samplesort special-casing at most one ascending run at the _start, then
 falling back to the general case if it doesn't find an ascending run
 immediately.  The consequence is that it ends up using two compares to sort
 [2, 1].  Gratifyingly, timsort doesn't do any special-casing, so had to be
