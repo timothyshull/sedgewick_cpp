@@ -9,9 +9,13 @@
 #include <ios>
 #include <type_traits>
 #include <iostream>
-#include <boost/lexical_cast>
+#include <vector>
+#include <boost/lexical_cast.hpp>
+#include <QColor>
 
 namespace utility {
+    using Color = QColor;
+
     const static int max_num_str_len = 25;
 
     // not portable
@@ -54,7 +58,8 @@ namespace utility {
 //        return static_cast<T>(sl);
 //    }
 
-    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
+//    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
+    template<typename T>
     T str_to_num(const char* str)
     {
         T tmp;
@@ -85,18 +90,37 @@ namespace utility {
     template<typename T>
     void split_string(const std::basic_string<T>& str, T c, std::vector<std::basic_string<T>>& v)
     {
-        std::basic_string<T>::size_type j{str.find(c)};
-        std::basic_string<T>::size_type i{0};
+        typename std::basic_string<T>::size_type j{str.find(c)};
+        typename std::basic_string<T>::size_type i{0};
 
         while (j != std::basic_string<T>::npos) {
-            v.push_back(str.substr(i, j - i));
+            v.emplace_back(str.substr(i, j - i));
             i = ++j;
             j = str.find(c, j);
 
             if (j == std::basic_string<T>::npos) {
-                v.push_back(str.substr(i, str.size()));
+                v.emplace_back(str.substr(i, str.size()));
             }
         }
+    }
+
+    template<typename T>
+    std::vector<std::string> split_string_r(const std::basic_string<T>& str, T c)
+    {
+        std::vector<std::basic_string<T>> v;
+        typename std::basic_string<T>::size_type j{str.find(c)};
+        typename std::basic_string<T>::size_type i{0};
+
+        while (j != std::basic_string<T>::npos) {
+            v.emplace_back(str.substr(i, j - i));
+            i = ++j;
+            j = str.find(c, j);
+
+            if (j == std::basic_string<T>::npos) {
+                v.emplace_back(str.substr(i, str.size()));
+            }
+        }
+        return v;
     }
 
     template<typename T>

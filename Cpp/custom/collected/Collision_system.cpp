@@ -1,72 +1,98 @@
 #include "Collision_system.h"
+#include "Std_draw.h"
 
-Collision_system::Collision_system(std::vector<Particle>& particles)
+Event::Event(double time, Raw_particle_pointer a, Raw_particle_pointer b)
+        : _time{time},
+          _a{a},
+          _b{b},
+          _count_a{a ? a->count() : -1},
+          _count_b{b ? b->count() : -1} {}
+
+// clears the original to release ownership
+Collision_system::Collision_system(std::vector<Owning_particle_pointer>&& particles) : _particles{particles}
 {
-    this.particles = particles.clone();
+    particles.clear();
+}
+
+Collision_system::~Collision_system()
+{
+    for (auto it = _particles.begin(); it != _particles.end(); ++it) {
+        if (*it != nullptr) {
+            delete *it;
+            *it = nullptr;
+        }
+    }
 }
 
 void Collision_system::simulate(double limit)
 {
-    pq = new MinPQ<Event>();
-    for (int i{0}; i < particles.length; ++i) {
-        predict(particles[i], limit);
+    _pq = Min_pq<Event>{};
+    for (int i{0}; i < _particles.size(); ++i) {
+        _predict(_particles[i], limit);
     }
-    pq.insert(new Event(0, null, null));        // redraw event
+    Event tmp{0, nullptr, nullptr};
+    _pq.insert(tmp);
 
+    while (!_pq.is_empty()) {
+        Event e = _pq.delete_min();
+        if (!e.is_valid()) { continue; }
+        Raw_particle_pointer a = e._a;
+        Raw_particle_pointer b = e._b;
 
-    // the main event-driven simulation loop
-    while (!pq.is_empty()) {
+        for (int i{0}; i < _particles.size(); ++i) {
+            if (_particles[i]) {
+                _particles[i]->move(e._time - _time);
+            }
+        }
+        _time = e._time;
 
-        // get impending event, discard if invalidated
-        Event e = pq.delMin();
-        if (!e.isValid()) continue;
-        Particle a = e.a;
-        Particle b = e.b;
+        if (a != nullptr && b != nullptr) { a->bounce_off(*b); }
+        else if (a != nullptr) { a->bounce_off_vertical_wall(); }
+        else if (b != nullptr) { b->bounce_off_horizontal_wall(); }
+        else { _redraw(limit); }
 
-        // physical collision, so update positions, and then simulation clock
-        for (int i{0}; i < particles.length; ++i)
-            particles[i].move(e.time - t);
-        t = e.time;
-
-        // process event
-        if (a != null && b != null) a.bounceOff(b);              // particle-particle collision
-        else if (a != null && b == null) a.bounceOffVerticalWall();   // particle-wall collision
-        else if (a == null && b != null) b.bounceOffHorizontalWall(); // particle-wall collision
-        else if (a == null && b == null) redraw(limit);               // redraw event
-
-        // update the priority _queue with new collisions involving a or b
-        predict(a, limit);
-        predict(b, limit);
+        _predict(a, limit);
+        _predict(b, limit);
     }
 }
 
-void Collision_system::predict(Particle& a, double limit)
+void Collision_system::_predict(Raw_particle_pointer a, double limit)
 {
-    if (a == null) return;
-
-    // particle-particle collisions
-    for (int i{0}; i < particles.length; ++i) {
-        double dt = a.timeToHit(particles[i]);
-        if (t + dt <= limit)
-            pq.insert(new Event(t + dt, a, particles[i]));
+    if (a == nullptr) { return; }
+    for (int i{0}; i < _particles.size(); ++i) {
+        if (_particles[i]) {
+            double dt{a->time_to_hit(*_particles[i])};
+            if (_time + dt <= limit) {
+                Event tmp{_time + dt, a, _particles[i]};
+                _pq.insert(tmp);
+            }
+        }
     }
 
-    // particle-wall collisions
-    double dtX = a.timeToHitVerticalWall();
-    double dtY = a.timeToHitHorizontalWall();
-    if (t + dtX <= limit) pq.insert(new Event(t + dtX, a, null));
-    if (t + dtY <= limit) pq.insert(new Event(t + dtY, null, a));
+    double dt_x{a->time_to_hit_vertical_wall()};
+    double dt_y{a->time_to_hit_horizontal_wall()};
+    if (_time + dt_x <= limit) {
+        Event tmp{_time + dt_x, a, nullptr};
+        _pq.insert(tmp);
+    }
+    if (_time + dt_y <= limit) {
+        Event tmp{_time + dt_y, nullptr, a};
+        _pq.insert(tmp);
+    }
 }
 
-void Collision_system::redraw(double limit)
+void Collision_system::_redraw(double limit)
 {
     Std_draw::clear();
-    for (int i{0}; i < particles.length; ++i) {
-        particles[i].draw();
+    for (int i{0}; i < _particles.size(); ++i) {
+        if (_particles[i]) {
+            _particles[i]->draw();
+        }
     }
     Std_draw::show();
     Std_draw::pause(20);
-    if (t < limit) {
-        pq.insert(new Event(t + 1.0 / hz, null, null));
+    if (_time < limit) {
+        Event tmp{_time + 1.0 / _hz, nullptr, nullptr};
+        _pq.insert(tmp);
     }
 }

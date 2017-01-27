@@ -1,108 +1,95 @@
 #include "Dijkstra_undirected_sp.h"
+#include "Edge.h"
 
-Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& G, int s)
+Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& digraph, int source)
+        : _distance_to(static_cast<std::vector<double>::size_type>(digraph.num_vertices())),
+          _edge_to(static_cast<std::vector<Edge>::size_type>(digraph.num_vertices())),
+          _pq{digraph.num_vertices()}
 {
-    for (Edge e : G.edges()) {
+    for (auto e : digraph.edges()) {
         if (e.weight() < 0) {
-            throw utility::Illegal_argument_exception("edge " + e + " has negative weight");
+            std::string s{"edge " + e.to_string() + " has negative weight"};
+            throw utility::Illegal_argument_exception(s);
         }
     }
 
-    distance_to = new double[G.num_vertices()];
-    edgeTo = new Edge[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        distance_to[v] = Double.POSITIVE_INFINITY;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        _distance_to[v] = std::numeric_limits<double>::infinity();
     }
-    distance_to[s] = 0.0;
+    _distance_to[source] = 0.0;
 
-    // _relax vertices _in order of distance from s
-    pq = new IndexMinPQ<Double>(G.num_vertices());
-    pq.insert(s, distance_to[s]);
-    while (!pq.is_empty()) {
-        int v = pq.delMin();
-        for (Edge e : G.adj(v)) {
-            relax(e, v);
+    _pq.insert(source, _distance_to[source]);
+    while (!_pq.is_empty()) {
+        int v = _pq.delMin();
+        for (auto e : digraph.adjacent(v)) {
+            _relax(e, v);
         }
     }
 
-    // _check optimality conditions
-    assert check(G, s);
+    utility::alg_assert(_check(digraph, source), "Dijkstra_undirected_sp invariant check failed after construction");
 }
 
-double Dijkstra_undirected_sp::distance_to(int v)
+Stack<Directed_edge> Dijkstra_undirected_sp::path_to(int v)
 {
-    return distance_to[v];
-}
-
-bool Dijkstra_undirected_sp::has_path_to(int v)
-{
-    return distance_to[v] < Double.POSITIVE_INFINITY;
-}
-
-std::vector<Directed_edge> Dijkstra_undirected_sp::path_to(int v)
-{
-    if (!has_path_to(v)) { return null; }
-    Stack<Edge> path = new Stack<Edge>();
-    int x = v;
-    for (Edge e{edgeTo[v]}; e != null; e = edgeTo[x]) {
+    if (!has_path_to(v)) { return nullptr; }
+    Stack<Edge> path;
+    int x{v};
+    for (Edge e{_edge_to[v]}; e != nullptr; e = _edge_to[x]) {
         path.push(e);
         x = e.other(x);
     }
     return path;
 }
 
-void Dijkstra_undirected_sp::relax(Directed_edge& e)
+void Dijkstra_undirected_sp::_relax(Directed_edge& e, int v)
 {
-    int w = e.other(v);
-    if (distance_to[w] > distance_to[v] + e.weight()) {
-        distance_to[w] = distance_to[v] + e.weight();
-        edgeTo[w] = e;
-        if (pq.contains(w)) { pq.decreaseKey(w, distance_to[w]); }
-        else { pq.insert(w, distance_to[w]); }
+    int w{e.other(v)};
+    if (_distance_to[w] > _distance_to[v] + e.weight()) {
+        _distance_to[w] = _distance_to[v] + e.weight();
+        _edge_to[w] = e;
+        if (_pq.contains(w)) { _pq.decreaseKey(w, _distance_to[w]); }
+        else { _pq.insert(w, _distance_to[w]); }
     }
 }
 
-bool Dijkstra_undirected_sp::check(Edge_weighted_digraph& G, int s)
+bool Dijkstra_undirected_sp::_check(Edge_weighted_digraph& digraph, int source)
 {
-    for (Edge e : G.edges()) {
+    for (auto e : digraph.edges()) {
         if (e.weight() < 0) {
-            System.err.print_line("negative edge weight detected");
+            std::cerr << "negative edge weight detected";
             return false;
         }
     }
 
-    // _check that _distance_to[v] and _edge_to[v] are consistent
-    if (distance_to[s] != 0.0 || edgeTo[s] != null) {
-        System.err.print_line("_distance_to[s] and _edge_to[s] inconsistent");
+    if (_distance_to[source] != 0.0 || _edge_to[source] != nullptr) {
+        std::cerr << "_distance_to[s] and _edge_to[s] inconsistent";
         return false;
     }
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (v == s) { continue; }
-        if (edgeTo[v] == null && distance_to[v] != Double.POSITIVE_INFINITY) {
-            System.err.print_line("_distance_to[] and _edge_to[] inconsistent");
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (v == source) { continue; }
+        if (_edge_to[v] == nullptr && _distance_to[v] != std::numeric_limits<double>::infinity()) {
+            std::cerr << "_distance_to[] and _edge_to[] inconsistent";
             return false;
         }
     }
 
-    // _check that all edges e = v-w satisfy _distance_to[w] <= _distance_to[v] + e.weight()
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (Edge e : G.adj(v)) {
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto e : digraph.adjacent(v)) {
             int w = e.other(v);
-            if (distance_to[v] + e.weight() < distance_to[w]) {
-                System.err.print_line("edge " + e + " not relaxed");
+            if (_distance_to[v] + e.weight() < _distance_to[w]) {
+                std::cerr << "edge " << e << " not relaxed";
                 return false;
             }
         }
     }
 
-    // _check that all edges e = v-w on SPT satisfy _distance_to[w] == _distance_to[v] + e.weight()
-    for (int w{0}; w < G.num_vertices(); ++w) {
-        if (edgeTo[w] == null) { continue; }
-        Edge e = edgeTo[w];
+    for (int w{0}; w < digraph.num_vertices(); ++w) {
+        if (_edge_to[w] == nullptr) { continue; }
+        Edge e = _edge_to[w];
         if (w != e.either() && w != e.other(e.either())) { return false; }
         int v = e.other(w);
-        if (distance_to[v] + e.weight() != distance_to[w]) {
-            System.err.print_line("edge " + e + " on shortest path not tight");
+        if (_distance_to[v] + e.weight() != _distance_to[w]) {
+            std::cerr << "edge " << e.to_string() << " on shortest path not tight";
             return false;
         }
     }

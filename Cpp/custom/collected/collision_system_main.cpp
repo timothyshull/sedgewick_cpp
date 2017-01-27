@@ -6,12 +6,12 @@
 
 int main(int argc, char* argv[])
 {
-    Std_draw::setCanvasSize(800, 800);
+    Std_draw::set_canvas_size(800, 800);
 
-    // Std_draw::setXscale(1.0/22.0, 21.0/22.0);
-    // Std_draw::setYscale(1.0/22.0, 21.0/22.0);
+    // Std_draw::set_x_scale(1.0/22.0, 21.0/22.0);
+    // Std_draw::set_y_scale(1.0/22.0, 21.0/22.0);
 
-    Std_draw::enableDoubleBuffering();
+    Std_draw::enable_double_buffering();
 
     std::vector<Particle> particles;
 

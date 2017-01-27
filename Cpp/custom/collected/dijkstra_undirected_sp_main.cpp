@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 
     for (int t{0}; t < edge_weighted_graph.num_vertices(); ++t) {
         if (sp.has_path_to(t)) {
-            Std_out::printf("%d to %d (%.2f)  ", s, t, sp.distance_to(t));
+            Std_out::printf("%d to %d (%.2f)  ", s, t, sp._distance_to(t));
             for (auto e : sp.path_to(t)) {
                 Std_out::print(e + "   ");
             }

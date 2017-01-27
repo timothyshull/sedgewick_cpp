@@ -5,17 +5,23 @@
 int main(int argc, char* argv[])
 {
     Alphabet alphabet{argv[1]};
-    int r = alphabet.radix();
-    std::vector<int> count(r);
+    int r{alphabet.radix()};
+    std::vector<int> count;
+    count.reserve(static_cast<std::vector<int>::size_type>(r));
+
+    char c;
     while (Std_in::has_next_char()) {
-        char c = Std_in::read_char();
+        c = Std_in::read_char();
         if (alphabet.contains(c)) {
             count[alphabet.to_index(c)] += 1;
         }
     }
-    for (int c{0}; c < r; ++c) {
-        // TODO: fix this
-        Std_out::printf("Count for char %d: %d\n", alphabet.to_char(c), count[c]);
+
+    std::stringstream ss;
+    for (int i{0}; i < r; ++i) {
+        ss.str("");
+        ss << "Count for char " << alphabet.to_char(i) << ": " << count[i];
+        Std_out::print_line(ss.str());
     }
     return 0;
 }

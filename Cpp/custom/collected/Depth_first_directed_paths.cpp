@@ -1,36 +1,32 @@
 #include "Depth_first_directed_paths.h"
 
-Depth_first_directed_paths::Depth_first_directed_paths(Digraph& G, int s)
+Depth_first_directed_paths::Depth_first_directed_paths(Digraph& digraph, int source)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+          _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
+          _source{source}
 {
-    marked = new boolean[G.num_vertices()];
-    edgeTo = new int[G.num_vertices()];
-    this.s = s;
-    dfs(G, s);
+    _dfs(digraph, source);
 }
 
-bool Depth_first_directed_paths::has_path_to(int v)
+Stack<int> Depth_first_directed_paths::path_to(int vertex) const
 {
-    return marked[v];
-}
-
-std::vector<int> Depth_first_directed_paths::path_to(int v)
-{
-    if (!has_path_to(v)) { return null; }
-    Stack <Integer> path = new Stack<Integer>();
-    for (int x{v}; x != s; x = edgeTo[x]) {
+    if (!has_path_to(vertex)) { return {}; }
+    Stack<int> path;
+    for (int x{vertex}; x != _source; x = _edge_to[x]) {
         path.push(x);
     }
-    path.push(s);
+    int tmp{_source};
+    path.push(tmp);
     return path;
 }
 
-void Depth_first_directed_paths::dfs(Digraph& G, int v)
+void Depth_first_directed_paths::_dfs(Digraph& digraph, int vertex)
 {
-    marked[v] = true;
-    for (int w : G.adj(v)) {
-        if (!marked[w]) {
-            edgeTo[w] = v;
-            dfs(G, w);
+    _marked[vertex] = true;
+    for (int w : digraph.adjacent(vertex)) {
+        if (!_marked[w]) {
+            _edge_to[w] = vertex;
+            _dfs(digraph, w);
         }
     }
 }

@@ -9,5 +9,5 @@ Transitive_closure::Transitive_closure(Digraph& G)
 
 bool Transitive_closure::reachable(int v, int w)
 {
-    return tc[v].marked(w);
+    return tc[v]._marked(w);
 }

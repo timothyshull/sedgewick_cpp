@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-    Set<std::string> set{};
+    Set<std::string> set;
 
     while (!Std_in::is_empty()) {
         std::string key = Std_in::read_string();

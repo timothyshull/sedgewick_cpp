@@ -10,8 +10,8 @@ public:
     Edge(int v, int w);
     int other(int vertex);
 private:
-    const int v;
-    const int w;
+    const int _v;
+    const int _w;
     bool isUsed;
 };
 

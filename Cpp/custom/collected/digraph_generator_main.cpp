@@ -4,8 +4,8 @@
 
 int main(int argc, char* argv[])
 {
-    int num_vertices{utility::str_to_num(argv[1])};
-    int num_edges{utility::str_to_num(argv[2])};
+    int num_vertices = utility::str_to_num<int>(argv[1]);
+    int num_edges = utility::str_to_num<int>(argv[2]);
     Std_out::print_line("complete graph");
     Std_out::print_line(Digraph_generator::complete(num_vertices));
     Std_out::print_line();
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::path(num_vertices));
     Std_out::print_line();
 
-    Std_out::print_line("_cycle");
+    Std_out::print_line("cycle");
     Std_out::print_line(Digraph_generator::cycle(num_vertices));
     Std_out::print_line();
 
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::dag(num_vertices, num_edges));
     Std_out::print_line();
 
-    Std_out::print_line("rooted-_in DAG");
+    Std_out::print_line("rooted-in DAG");
     Std_out::print_line(Digraph_generator::rooted_in_dag(num_vertices, num_edges));
     Std_out::print_line();
 
@@ -50,11 +50,11 @@ int main(int argc, char* argv[])
     Std_out::print_line(Digraph_generator::rooted_out_dag(num_vertices, num_edges));
     Std_out::print_line();
 
-    Std_out::print_line("rooted-_in tree");
+    Std_out::print_line("rooted-in tree");
     Std_out::print_line(Digraph_generator::rooted_in_tree(num_vertices));
     Std_out::print_line();
 
-    Std_out::print_line("rooted-out DAG");
+    Std_out::print_line("rooted-out tree");
     Std_out::print_line(Digraph_generator::rooted_out_tree(num_vertices));
     Std_out::print_line();
     return 0;

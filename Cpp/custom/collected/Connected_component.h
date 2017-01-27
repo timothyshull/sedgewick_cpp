@@ -7,25 +7,37 @@
 
 class Connected_component {
 public:
-    Connected_component(Graph& G);
+    Connected_component() = default;
 
-    int id(int v);
+    Connected_component(const Connected_component&) = default;
 
-    int size(int v);
+    Connected_component(Connected_component&&) = default;
 
-    int count();
+    ~Connected_component() = default;
 
-    bool connected(int v, int w);
+    Connected_component& operator=(const Connected_component&) = default;
 
-    bool areConnected(int v, int w);
+    Connected_component& operator=(Connected_component&&) = default;
+
+    Connected_component(Graph& graph);
+
+    inline int id(int v) const { return _id[v]; }
+
+    inline int size(int v) const { return _size[_id[v]]; }
+
+    inline int count() const noexcept { return _count; }
+
+    inline bool connected(int v, int w) const { return _id(v) == _id(w); }
+
+    inline bool are_connected(int v, int w) const { return _id(v) == _id(w); }
 
 private:
-    std::deque<bool> marked;
-    std::vector<int> id;
-    std::vector<int> size;
-    int count;
+    std::deque<bool> _marked;
+    std::vector<int> _id;
+    std::vector<int> _size;
+    int _count;
 
-    void dfs(Graph& G, int v);
+    void _dfs(Graph& G, int v);
 
 };
 

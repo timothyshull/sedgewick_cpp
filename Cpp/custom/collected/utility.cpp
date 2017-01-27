@@ -1,8 +1,7 @@
-#include <tclDecls.h>
 #include <vector>
 #include "utility.h"
 
-void ::utility::alg_assert(bool test, const char* msg)
+void utility::alg_assert(bool test, const char* msg)
 {
     if (!test) {
         std::fprintf(stderr, "%s\n", msg);

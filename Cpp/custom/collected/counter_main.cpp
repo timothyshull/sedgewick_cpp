@@ -6,26 +6,23 @@
 
 int main(int argc, char* argv[])
 {
-    int n = utility::str_to_num(argv[1]);
-    int trials = utility::str_to_num(argv[2]);
+    int n{utility::str_to_num(argv[1])};
+    int trials{utility::str_to_num(argv[2])};
 
-    // create _size counters
-    std::vector<Counter> hits(n);
+    std::vector<Counter> hits;
+    hits.reserve(static_cast<std::vector<Counter>::size_type>(n));
+
     for (int i{0}; i < n; ++i) {
-        std::stringstream ss;
-        ss << "Counter: " << i;
-        auto s = ss.str();
-        hits[i] = Counter(s);
+        std::string s{"Counter: " + std::to_string(i)};
+        hits[i] = Counter{s};
     }
 
-    // increment trials counters at uniform
     for (int t{0}; t < trials; ++t) {
         hits[Std_random::uniform(n)].increment();
     }
 
-    // print results
-    for (int i{0}; i < n; ++i) {
-        Std_out::print_line(hits[i]);
+    for (auto c : hits) {
+        Std_out::print_line(c);
     }
     return 0;
 }

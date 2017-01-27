@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     Digraph digraph{in};
     // Std_out::print_line(digraph);
 
-    int s = utility::str_to_num(argv[1]);
+    int s{utility::str_to_num<int>(argv[1])};
     Depth_first_directed_paths dfs{digraph, s};
 
     for (int v{0}; v < digraph.num_vertices(); ++v) {

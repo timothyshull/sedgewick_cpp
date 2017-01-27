@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     Graph graph{in};
     Cycle finder{graph};
     if (finder.has_cycle()) {
-        for (int v : finder.cycle()) {
+        for (auto v : finder.cycle()) {
             Std_out::print(v + " ");
         }
         Std_out::print_line();

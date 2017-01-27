@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     Graph graph{sg.graph()};
     if (!sg.contains(source)) {
         Std_out::print_line(source + " not _in database.");
-        return;
+        return -1;
     }
 
     int s{sg.index_of(source)};

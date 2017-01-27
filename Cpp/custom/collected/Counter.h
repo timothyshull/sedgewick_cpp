@@ -5,40 +5,24 @@
 #include <sstream>
 
 class Counter {
-private:
-    std::string _name;
-    int _count;
-
 public:
-    explicit Counter(std::string id) : _name{id}, _count{0} {}
+    inline explicit Counter(std::string& id) : _name{id}, _count{0} {}
 
-    Counter() : _name{""}, _count{0} {}
+    inline Counter() : _name{""}, _count{0} {}
 
-    void increment() { ++_count; }
+    inline void increment() { ++_count; }
 
     inline int tally() const { return _count; }
 
-    std::string to_string() const
-    {
-        std::stringstream ss;
-        ss << "Counter(count: " << _count << ", name: " << _name << ")";
-        return ss.str();
-    }
+    std::string to_string() const;
 
-    int compare_to(Counter& that) const
-    {
-        if (this->_count < that._count) {
-            return -1;
-        } else if (this->_count > that._count) {
-            return 1;
-        }
-        return 0;
-    }
+    bool operator<(Counter& rhs) const;
+
+private:
+    std::string _name;
+    int _count;
 };
 
-std::ostream& operator<<(std::ostream& os, const Counter& out)
-{
-    return os << out.to_string();
-}
+std::ostream& operator<<(std::ostream& os, const Counter& out);
 
 #endif // COUNTER_H

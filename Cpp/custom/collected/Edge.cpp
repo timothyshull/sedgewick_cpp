@@ -1,40 +1,18 @@
+#include <cmath>
+
 #include "Edge.h"
+#include "utility.h"
 
-Edge::Edge(int v, int w, double weight)
+Edge::Edge(int v, int w, double weight) : _v{v}, _w{w}, _weight{weight}
 {
-    if (v < 0) { throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer"); }
-    if (w < 0) { throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer"); }
-    if (Double.isNaN(weight)) { throw utility::Illegal_argument_exception("Weight is NaN"); }
-    this.v = v;
-    this.w = w;
-    this.weight = weight;
-}
-
-double Edge::weight()
-{
-    return weight;
-}
-
-int Edge::either()
-{
-    return v;
+    if (std::isnan(weight)) { throw utility::Illegal_argument_exception{"Weight is NaN"}; }
 }
 
 int Edge::other(int vertex)
 {
-    if (vertex == v) { return w; }
-    else if (vertex == w) { return v; }
-    else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
-}
-
-bool bool Edge::operator<(Edge& rhs)
-{
-    return this->weight < rhs.weight;
-}
-
-std::string Edge::to_string()
-{
-    return String.format("%d-%d %.5f", v, w, weight);
+    if (vertex == _v) { return _w; }
+    else if (vertex == _w) { return _v; }
+    else { throw utility::Illegal_argument_exception{"Illegal endpoint"}; }
 }
 
 std::ostream& operator<<(std::ostream& os, Edge& out)

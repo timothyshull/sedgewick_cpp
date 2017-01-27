@@ -1,34 +1,26 @@
 #include "Directed_dfs.h"
 
-Directed_dfs::Directed_dfs(Digraph& G, int s)
+Directed_dfs::Directed_dfs(Digraph& digraph, int source)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    dfs(G, s);
+    _dfs(digraph, source);
 }
 
-Directed_dfs::Directed_dfs(Digraph& G, std::vector<int>& sources)
+Directed_dfs::Directed_dfs(Digraph& digraph, std::vector<int>& sources)
+: _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    for (int v : sources) {
-        if (!marked[v]) { dfs(G, v); }
+    for (auto v : sources) {
+        if (!_marked[v]) {
+            _dfs(digraph, v);
+        }
     }
 }
 
-bool Directed_dfs::marked(int v)
+void Directed_dfs::_dfs(Digraph& digraph, int vertex)
 {
-    return marked[v];
-}
-
-int Directed_dfs::count()
-{
-    return count;
-}
-
-void Directed_dfs::dfs(Digraph& G, int v)
-{
-    ++count;
-    marked[v] = true;
-    for (int w : G.adj(v)) {
-        if (!marked[w]) { dfs(G, w); }
+    ++_count;
+    _marked[vertex] = true;
+    for (int w : digraph.adjacent(vertex)) {
+        if (!_marked[w]) { _dfs(digraph, w); }
     }
 }

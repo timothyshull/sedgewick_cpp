@@ -6,19 +6,19 @@
 
 class Directed_dfs {
 public:
-    Directed_dfs(Digraph& G, int s);
+    Directed_dfs(Digraph& digraph, int source);
 
-    Directed_dfs(Digraph& G, std::vector<int>& sources);
+    Directed_dfs(Digraph& digraph, std::vector<int>& sources);
 
-    bool marked(int v);
+    inline bool marked(int v) const { return _marked[v]; }
 
-    int count();
+    inline int count() const noexcept { return _count; }
 
 private:
-    std::deque<bool> marked;
-    int count;
+    std::deque<bool> _marked;
+    int _count;
 
-    void dfs(Digraph& G, int v);
+    void _dfs(Digraph& digraph, int vertex);
 };
 
 #endif // DIRECTED_DFS_H

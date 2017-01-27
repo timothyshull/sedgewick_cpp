@@ -4,73 +4,196 @@
 #include <set>
 #include <exception>
 #include <iterator>
+#include <string>
+#include <sstream>
 
-template<typename Key_type>
+#include "utility.h"
+
+template<typename Key>
 class Set {
-private:
-    std::set<Key_type> set_;
-
 public:
-    Set() : set_{std::set<Key_type>{}} {}
+    using Key_type = Key;
+    using Iterator_type = typename std::set<Key_type>::iterator;
 
-    Set(std::set<Key_type>& x) : set_{x} {}
+    Set() = default;
 
-    void add(Key_type key)
+    Set(const Set&) = default;
+
+    Set(Set&&) = default;
+
+    ~Set() = default;
+
+    Set& operator=(const Set&) = default;
+
+    Set& operator=(Set&&) = default;
+
+    inline Iterator_type begin() { return _set.begin(); }
+
+    inline Iterator_type end() { return _set.end(); }
+
+    inline bool operator==(const Set<Key_type>& rhs) const { return _set == rhs._set; }
+
+    inline void add(Key_type& key) { _set.insert(key); }
+
+    inline void add(Key_type&& key) { _set.insert(key); }
+
+    inline bool contains(Key_type& key) const { return _set.count(key) > 0; }
+
+    inline bool contains(Key_type&& key) const { return _set.count(key) > 0; }
+
+    inline int size() const { return static_cast<int>(_set.size()); }
+
+    inline bool is_empty() const { return _set.empty(); }
+
+    void remove(Key_type& key)
     {
-        set_.insert(key);
-    }
-
-    void add(Key_type& key)
-    {
-        set_.insert(key);
-    }
-
-    bool contains(Key_type& key)
-    {
-        auto search = set_.find(key);
-        return search != set_.end();
-    }
-
-    bool contains(Key_type key)
-    {
-        auto search = set_.find(key);
-        return search != set_.end();
-    }
-
-    inline typename std::set<Key_type>::size_type size() { return set_.size(); }
-
-    bool is_empty() { return set_.empty(); }
-
-    Key_type& max()
-    {
-        if (set_.empty()) {
-            throw std::exception{};
+        for (auto it = _set.begin(); it != _set.end(); ++it) {
+            if (*it == key) {
+                _set.erase(it);
+            }
         }
-        return *std::max_element(set_.begin(), set_.end());
     }
 
-    Key_type& min()
+    void remove(Key_type&& key)
     {
-        if (set_.empty()) {
-            throw std::exception{};
+        for (auto it = _set.begin(); it != _set.end(); ++it) {
+            if (*it == key) {
+                _set.erase(it);
+            }
         }
-        return *std::min_element(set_.begin(), set_.end());
     }
 
-    Key_type& ceiling(Key_type& key)
+    Key_type max()
     {
-        if (set_.empty()) {
-            throw std::exception{};
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called max() with empty set"};
         }
-        auto result = set_.find(key);
-        auto next = result;
-        auto end = set_.end();
-        std::advance(next, 1);
-        if (result == end || next == end) {
-            throw std::exception{};
-        }
-        return *next;
+        return *std::max_element(_set.begin(), _set.end());
     }
+
+    Key_type min()
+    {
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called min() with empty set"};
+        }
+        return *std::min_element(_set.begin(), _set.end());
+    }
+
+    Key_type ceiling(Key_type& key)
+    {
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called ceiling() with empty set"};
+        }
+        auto result = _set.upper_bound(key);
+        if (result == _set.end()) {
+            std::stringstream ss;
+            ss << "all keys are less than " << key << " or the key is not in the set";
+            throw utility::No_such_element_exception{ss.str()};
+        }
+        if (*(--result) == key) {
+            return *result;
+        }
+        return *(++result);
+    }
+
+    Key_type ceiling(Key_type&& key)
+    {
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called ceiling() with empty set"};
+        }
+        auto result = _set.upper_bound(key);
+        if (result == _set.end()) {
+            std::stringstream ss;
+            ss << "all keys are less than " << key << " or the key is not in the set";
+            throw utility::No_such_element_exception{ss.str()};
+        }
+        if (*(--result) == key) {
+            return *result;
+        }
+        return *(++result);
+    }
+
+    Key_type floor(Key_type& key)
+    {
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called floor() with empty set"};
+        }
+        auto result = _set.lower_bound(key);
+        if (*result == key) {
+            return *result;
+        } else if (result != _set.begin()) {
+            return *(--result);
+        } else {
+            std::stringstream ss;
+            ss << "all keys are greater than " << key;
+            throw utility::No_such_element_exception{ss.str()};
+        }
+    }
+
+    Key_type floor(Key_type&& key)
+    {
+        if (_set.empty()) {
+            throw utility::No_such_element_exception{"called floor() with empty set"};
+        }
+        auto result = _set.lower_bound(key);
+        if (*result == key) {
+            return *result;
+        } else if (result != _set.begin()) {
+            return *(--result);
+        } else {
+            std::stringstream ss;
+            ss << "all keys are greater than " << key;
+            throw utility::No_such_element_exception{ss.str()};
+        }
+    }
+
+//    Key_type floor(Key_type&& key)
+//    {
+//        if (_set.empty()) {
+//            throw utility::No_such_element_exception{"called floor() with empty set"};
+//        }
+//        auto result = _set.find(key);
+//        if (result == _set.end()) {
+//            std::stringstream ss;
+//            ss << key << " is not in the set";
+//            throw utility::No_such_element_exception{ss.str()};
+//        } else if (result == _set.begin()) {
+//            std::stringstream ss;
+//            ss << "all keys are greater than " << key;
+//            throw utility::No_such_element_exception{ss.str()};
+//        }
+//        return *(--result);
+//    }
+
+    Set<Key_type> create_union(Set<Key_type>& rhs)
+    {
+        std::set<Key_type> dest;
+        std::set_union(_set.begin(), _set.end(), rhs.begin(), rhs.end(), std::back_inserter(dest));
+        return {dest};
+    }
+
+    Set<Key_type> intersection(Set<Key_type>& rhs)
+    {
+        std::set<Key_type> dest;
+        std::set_intersection(_set.begin(), _set.end(), rhs.begin(), rhs.end(), std::back_inserter(dest));
+        return {dest};
+    }
+
+    std::string to_string()
+    {
+        std::stringstream ss;
+        ss << "Set(\n";
+        for (auto key : _set) {
+            ss << "    " << key << ",\n";
+        }
+        ss << ")";
+        return ss.str();
+    }
+
+private:
+    std::set<Key_type> _set;
+
+    Set(std::set<Key_type>& x) : _set{x} {}
 };
 
 #endif // Set_H

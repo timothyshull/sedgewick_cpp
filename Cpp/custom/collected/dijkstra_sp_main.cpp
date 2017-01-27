@@ -15,7 +15,8 @@ int main(int argc, char* argv[])
         if (sp.has_path_to(t)) {
             Std_out::printf("%d to %d (%.2f)  ", s, t, sp.distance_to(t));
             for (Directed_edge e : sp.path_to(t)) {
-                Std_out::print(e + "   ");
+                std::string str{e.to_string() + "    "};
+                Std_out::print(str);
             }
             Std_out::print_line();
         } else {

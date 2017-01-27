@@ -1,11 +1,11 @@
 #include "Eulerian_cycle.h"
 
-Edge::Edge(int v, int w) : v{v}, w{w}, isUsed{false} {}
+Edge::Edge(int v, int w) : _v{v}, _w{w}, isUsed{false} {}
 
 int Edge::other(int vertex)
 {
-    if (vertex == v) { return w; }
-    else if (vertex == w) { return v; }
+    if (vertex == _v) { return _w; }
+    else if (vertex == _w) { return _v; }
     else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
 }
 

@@ -7,20 +7,20 @@ class Edge {
 public:
     Edge(int v, int w, double weight);
 
-    double weight();
+    inline double weight() const noexcept { return _weight; }
 
-    int either();
+    inline int either() const noexcept { return _v; }
 
     int other(int vertex);
 
-    bool operator<(Edge& rhs);
+    inline bool operator<(const Edge& rhs) const noexcept { return this->_weight < rhs._weight; }
 
-    std::string to_string();
+    std::string to_string() { return "Edge(source: " + std::to_string(_v) + ", destination: " + std::to_string(_w) + ", weight: " + std::to_string(_weight) + ")"; }
 
 private:
-    const int v;
-    const int w;
-    const double weight;
+    const int _v;
+    const int _w;
+    const double _weight;
 };
 
 std::ostream& operator<<(std::ostream& os, Edge& out);

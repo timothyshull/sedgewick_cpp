@@ -1,100 +1,82 @@
 #include "Directed_eulerian_path.h"
+#include "Std_out.h"
+#include "Breadth_first_paths.h"
 
-Directed_eulerian_path::Directed_eulerian_path(Digraph& G)
+Directed_eulerian_path::Directed_eulerian_path(Digraph& digraph)
 {
-    int deficit = 0;
-    int s = nonIsolatedVertex(G);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.outdegree(v) > G.indegree(v)) {
-            deficit += (G.outdegree(v) - G.indegree(v));
+    int deficit{0};
+    int s{_non_isolated_vertex(digraph)};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (digraph.outdegree(v) > digraph.indegree(v)) {
+            deficit += (digraph.outdegree(v) - digraph.indegree(v));
             s = v;
         }
     }
 
-    // digraph can't have an Eulerian path
-    // (this condition is needed)
     if (deficit > 1) { return; }
 
-    // special case for digraph with zero edges (has a degenerate Eulerian path)
     if (s == -1) { s = 0; }
 
-    // create local view of adjacency lists, to iterate one vertex at a time
-    Iterator<Integer>[]
-    adj = (Iterator<Integer>[])
-    new Iterator[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        adj[v] = G.adj(v).iterator();
+    std::vector<std::vector<int>::iterator> adj;
+    adj.reserve(static_cast<std::vector<std::vector<int>::iterator>::size_type>(digraph.num_vertices()));
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        adj[v] = digraph.adjacent(v).begin();
     }
 
-    // greedily add to _cycle, depth-first search style
-    Stack<Integer> stack = new Stack<Integer>();
+    Stack<int> stack;
     stack.push(s);
-    path = new Stack<Integer>();
+    _path = Stack<int>{};
+    int v;
     while (!stack.is_empty()) {
-        int v = stack.pop();
-        while (adj[v].hasNext()) {
-            stack.push(v);
-            v = adj[v].next();
+        v = stack.pop();
+        for (auto it = adj[v]; it != digraph.adjacent(v).end(); ++it) {
+            stack.push(v); // TODO: fix all of this
+            v = *(adj[v]++);
         }
         // push vertex with no more available edges to path
-        path.push(v);
+        _path.push(v);
     }
 
-    // _check if all edges have been used
-    if (path.size() != G.num_edges() + 1) {
-        path = null;
+    if (_path.size() != digraph.num_edges() + 1) {
+        _path = Stack<int>{};
     }
 
-    assert check(G);
+    utility::alg_assert(_check(digraph), "Directed_eulerian_path invariant check failed after construction");
 }
 
-std::vector<int> Directed_eulerian_path::path()
+int Directed_eulerian_path::_non_isolated_vertex(Digraph& digraph)
 {
-    return path;
-}
-
-bool Directed_eulerian_path::hasEulerianPath()
-{
-    path != null;
-}
-
-int Directed_eulerian_path::nonIsolatedVertex(Digraph& G)
-{
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.outdegree(v) > 0) {
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (digraph.outdegree(v) > 0) {
             return v;
         }
     }
     return -1;
 }
 
-bool Directed_eulerian_path::hasEulerianPath(Digraph& G)
+bool Directed_eulerian_path::_has_eulerian_path(Digraph& digraph)
 {
-    if (G.num_edges() == 0) { return true; }
+    if (digraph.num_edges() == 0) { return true; }
 
-    // Condition 1: indegree(v) == outdegree(v) for every vertex,
-    // except one vertex may have outdegree(v) = indegree(v) + 1
-    int deficit = 0;
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (G.outdegree(v) > G.indegree(v)) {
-            deficit += (G.outdegree(v) - G.indegree(v));
+    int deficit{0};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (digraph.outdegree(v) > digraph.indegree(v)) {
+            deficit += (digraph.outdegree(v) - digraph.indegree(v));
         }
     }
     if (deficit > 1) { return false; }
 
-    // Condition 2: graph is connected, ignoring isolated vertices
-    Graph H = new Graph(G.num_vertices());
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (int w : G.adj(v)) {
-            H.add_edge(v, w);
+    Graph graph{digraph.num_vertices()};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto w : digraph.adjacent(v)) {
+            graph.add_edge(v, w);
         }
     }
 
-    // _check that all non-isolated vertices are connected
-    int s = nonIsolatedVertex(G);
-    Breadth_first_paths bfs = new Breadth_first_paths(H, s);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (H.degree(v) > 0 && !bfs.has_path_to(v)) {
+    int s{_non_isolated_vertex(digraph)};
+    Breadth_first_paths bfs{graph, s};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }
     }
@@ -102,35 +84,27 @@ bool Directed_eulerian_path::hasEulerianPath(Digraph& G)
     return true;
 }
 
-bool Directed_eulerian_path::check(Digraph& G)
+bool Directed_eulerian_path::_check(Digraph& digraph)
 {
-    if (hasEulerianPath() == (path() == null)) { return false; }
+    if (has_eulerian_path() == (path().is_empty())) { return false; }
 
-    // hashEulerianPath() returns correct value
-    if (hasEulerianPath() != hasEulerianPath(G)) { return false; }
+    if (has_eulerian_path() != _has_eulerian_path(digraph)) { return false; }
 
-    // nothing else to _check if no Eulerian path
-    if (path == null) { return true; }
+    if (_path.is_empty()) { return true; }
 
-    // _check that path() uses correct number of edges
-    if (path.size() != G.num_edges() + 1) { return false; }
-
-    // _check that path() is a directed path _in G
-    // TODO
-
-    return true;
+    return _path.size() == digraph.num_edges() + 1;
 }
 
-void Directed_eulerian_path::unit_test(Digraph& G, std::string& description)
+void Directed_eulerian_path::unit_test(Digraph& digraph, std::string&& description)
 {
     Std_out::print_line(description);
     Std_out::print_line("-------------------------------------");
-    Std_out::print(G);
+    Std_out::print(digraph);
 
-    DirectedEulerianPath euler = new DirectedEulerianPath(G);
+    Directed_eulerian_path euler{digraph};
 
     Std_out::print("Eulerian path:  ");
-    if (euler.hasEulerianPath()) {
+    if (euler.has_eulerian_path()) {
         for (int v : euler.path()) {
             Std_out::print(v + " ");
         }

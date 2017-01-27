@@ -6,22 +6,22 @@
 
 class Directed_eulerian_path {
 public:
-    Directed_eulerian_path(Digraph& G);
+    Directed_eulerian_path(Digraph& digraph);
 
-    std::vector<int> path();
+    inline Stack<int> path() const { return _path; }
 
-    bool hasEulerianPath();
+    inline bool has_eulerian_path() const { return !_path.is_empty(); }
 
+    static void unit_test(Digraph& digraph, std::string&& description);
 private:
-    Stack<int> path;
+    Stack<int> _path;
 
-    int nonIsolatedVertex(Digraph& G);
+    int _non_isolated_vertex(Digraph& digraph);
 
-    bool hasEulerianPath(Digraph& G);
+    bool _has_eulerian_path(Digraph& digraph);
 
-    bool check(Digraph& G);
+    bool _check(Digraph& digraph);
 
-    void unit_test(Digraph& G, std::string& description);
 };
 
 #endif // DIRECTED_EULERIAN_PATH_H

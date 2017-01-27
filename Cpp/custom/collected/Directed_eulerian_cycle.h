@@ -7,22 +7,22 @@
 
 class Directed_eulerian_cycle {
 public:
-    Directed_eulerian_cycle(Digraph& G);
+    Directed_eulerian_cycle(Digraph& digraph);
 
-    std::vector<int> cycle();
+    inline Stack<int> cycle() const { return _cycle; }
 
-    bool hasEulerianCycle();
+    inline bool has_eulerian_cycle() { return !_cycle.is_empty(); }
 
+    // made public to allow running in main
+    static void unit_test(Digraph& digraph, std::string&& description);
 private:
-    Stack<int> cycle;
+    Stack<int> _cycle;
 
-    int nonIsolatedVertex(Digraph& G);
+    int _non_isolated_vertex(Digraph& digraph);
 
-    bool hasEulerianCycle(Digraph& G);
+    bool _has_eulerian_cycle(Digraph& digraph);
 
-    bool certifySolution(Digraph& G);
-
-    void unit_test(Digraph& G, std::string& description);
+    bool _certify_solution(Digraph& digraph);
 
 };
 

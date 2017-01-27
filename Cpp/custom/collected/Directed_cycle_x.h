@@ -3,15 +3,20 @@
 
 #include <vector>
 #include "Stack.h"
+#include "Digraph.h"
 
 class Directed_cycle_x {
 public:
-    Directed_cycle_x(Digraph& G);
-    std::vector<int> cycle();
-    bool has_cycle();
+    Directed_cycle_x(Digraph& digraph);
+
+    inline Stack<int> cycle() const { return _cycle; }
+
+    inline bool has_cycle() const { return !_cycle.is_empty(); }
+
 private:
-    Stack<int> cycle;
-    bool check();
+    Stack<int> _cycle;
+
+    bool _check();
 };
 
 #endif // DIRECTED_CYCLE_X_H

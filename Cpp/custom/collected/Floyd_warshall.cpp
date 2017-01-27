@@ -107,7 +107,7 @@ bool Floyd_warshall::check(Adj_matrix_edge_weighted_digraph& G)
                 int w = e.to();
                 for (int i{0}; i < G.num_vertices(); ++i) {
                     if (_distances[i][w] > _distances[i][v] + e.weight()) {
-                        System.err.print_line("edge " + e + " is eligible");
+                        std::cerr << "edge " + e + " is eligible";
                         return false;
                     }
                 }

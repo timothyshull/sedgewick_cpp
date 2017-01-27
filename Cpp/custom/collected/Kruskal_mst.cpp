@@ -17,7 +17,7 @@ Kruskal_mst::Kruskal_mst(Edge_weighted_graph& G)
             uf.
             union(v, w);  // merge v and w components
             mst.enqueue(e);  // add edge e to mst
-            weight += e.weight();
+            weight += e._weight();
         }
     }
 
@@ -39,10 +39,10 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
 {
     double total = 0.0;
     for (Edge e : edges()) {
-        total += e.weight();
+        total += e._weight();
     }
     if (std::abs(total - weight()) > FLOATING_POINT_EPSILON) {
-        System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", total, weight());
+        std::cerr << "Weight of edges does not equal weight(): %f vs. %f\n", total, weight();
         return false;
     }
 
@@ -51,7 +51,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
         if (uf.connected(v, w)) {
-            System.err.print_line("Not a forest");
+            std::cerr << "Not a forest";
             return false;
         }
         uf.
@@ -62,7 +62,7 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
-            System.err.print_line("Not a spanning forest");
+            std::cerr << "Not a spanning forest";
             return false;
         }
     }
@@ -82,8 +82,8 @@ bool Kruskal_mst::check(Edge_weighted_graph& G)
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {
-                if (f.weight() < e.weight()) {
-                    System.err.print_line("Edge " + f + " violates cut optimality conditions");
+                if (f._weight() < e._weight()) {
+                    std::cerr << "Edge " + f + " violates cut optimality conditions";
                     return false;
                 }
             }

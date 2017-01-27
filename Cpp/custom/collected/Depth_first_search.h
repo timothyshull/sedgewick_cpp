@@ -6,14 +6,17 @@
 
 class Depth_first_search {
 public:
-    Depth_first_search(Graph& G, int s);
-    bool marked(int v);
-    int count();
-private:
-    std::deque<bool> marked;
-    int count;
+    Depth_first_search(Graph& graph, int source);
 
-    void dfs(Graph& G, int v);
+    inline bool marked(int vertex) const { return _marked[vertex]; }
+
+    inline int count() const noexcept { return _count; }
+
+private:
+    std::deque<bool> _marked;
+    int _count;
+
+    void _dfs(Graph& G, int v);
 };
 
 #endif // DEPTH_FIRST_SEARCH_H

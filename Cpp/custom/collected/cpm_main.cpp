@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
     int sink{2 * n + 1};
 
     Edge_weighted_digraph digraph{2 * n + 2};
+
     double duration;
     int precedent;
     for (int i{0}; i < n; ++i) {

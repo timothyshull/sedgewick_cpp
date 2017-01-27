@@ -1,86 +1,75 @@
+#include <deque>
 #include "Directed_cycle_x.h"
-#include "Digraph.h"
+#include "Queue.h"
+#include "Stack.h"
 
-Directed_cycle_x::Directed_cycle_x(Digraph& G)
+Directed_cycle_x::Directed_cycle_x(Digraph& digraph)
 {
-    std::vector<int> indegree = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        indegree[v] = G.indegree(v);
+    std::vector<int> indegree;
+    indegree.reserve(static_cast<std::vector<int>::size_type>(digraph.num_vertices()));
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        indegree[v] = digraph.indegree(v);
     }
 
-    // initialize _queue to contain all vertices with indegree = 0
-    Queue<Integer> queue = new Queue<Integer>();
-    for (int v{0}; v < G.num_vertices(); ++v)
-        if (indegree[v] == 0) queue.enqueue(v);
+    Queue<int> queue;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (indegree[v] == 0) { queue.enqueue(v); }
+    }
 
     for (int j{0}; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
-        for (int w : G.adj(v)) {
+        for (auto w : digraph.adjacent(v)) {
             indegree[w]--;
-            if (indegree[w] == 0) queue.enqueue(w);
+            if (indegree[w] == 0) { queue.enqueue(w); }
         }
     }
 
-    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
-    std::vector<int> edgeTo = new int[G.num_vertices()];
-    int root = -1;  // any vertex with indegree >= -1
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (indegree[v] == 0) continue;
-        else root = v;
-        for (int w : G.adj(v)) {
+    std::vector<int> edge_to;
+    edge_to.reserve(static_cast<std::vector<int>::size_type>(digraph.num_vertices()));
+    int root{-1};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (indegree[v] == 0) { continue; }
+        else { root = v; }
+        for (auto w : digraph.adjacent(v)) {
             if (indegree[w] > 0) {
-                edgeTo[w] = v;
+                edge_to[w] = v;
             }
         }
     }
 
     if (root != -1) {
-
-        // find any vertex on _cycle
-        std::deque<bool> visited = new boolean[G.num_vertices()];
+        std::deque<bool> visited{static_cast<std::deque<bool>::size_type>(digraph.num_vertices())};
         while (!visited[root]) {
             visited[root] = true;
-            root = edgeTo[root];
+            root = edge_to[root];
         }
 
-        // extract _cycle
-        cycle = new Stack<Integer>();
+        _cycle = Stack<int>{};
         int v = root;
         do {
-            cycle.push(v);
-            v = edgeTo[v];
+            _cycle.push(v);
+            v = edge_to[v];
         } while (v != root);
-        cycle.push(root);
+        _cycle.push(root);
     }
 
-    assert check();
+    utility::alg_assert(_check(), "Directed_cycle_x invariant check failed after construction");
 }
 
-std::vector<int> Directed_cycle_x::cycle()
-{
-    return cycle;
-}
-
-bool Directed_cycle_x::has_cycle()
-{
-    return cycle != null;
-}
-
-bool Directed_cycle_x::check()
+bool Directed_cycle_x::_check()
 {
     if (has_cycle()) {
-        // verify _cycle
-        int first = -1, last = -1;
-        for (int v : cycle()) {
-            if (first == -1) first = v;
+        int first{-1};
+        int last{-1};
+        for (auto v : _cycle()) {
+            if (first == -1) { first = v; }
             last = v;
         }
         if (first != last) {
-            System.err.printf("_cycle begins with %d and ends with %d\n", first, last);
+            std::cerr << "_cycle begins with " << first << " and ends with " << last << "\n";
             return false;
         }
     }
-
 
     return true;
 }

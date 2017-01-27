@@ -1,28 +1,19 @@
 #include "Depth_first_search.h"
 
-Depth_first_search::Depth_first_search(Graph& G, int s)
+Depth_first_search::Depth_first_search(Graph& graph, int source)
+        : _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+          _count{0}
 {
-    marked = new boolean[G.num_vertices()];
-    dfs(G, s);
+    _dfs(graph, source);
 }
 
-bool Depth_first_search::marked(int v)
+void Depth_first_search::_dfs(Graph& G, int v)
 {
-    return marked[v];
-}
-
-int Depth_first_search::count()
-{
-    return count;
-}
-
-void Depth_first_search::dfs(Graph& G, int v)
-{
-    ++count;
-    marked[v] = true;
-    for (int w : G.adj(v)) {
-        if (!marked[w]) {
-            dfs(G, w);
+    ++_count;
+    _marked[v] = true;
+    for (int w : G.adjacent(v)) {
+        if (!_marked[w]) {
+            _dfs(G, w);
         }
     }
 }

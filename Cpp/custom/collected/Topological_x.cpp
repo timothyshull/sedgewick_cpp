@@ -98,7 +98,7 @@ bool Topological_x::check(Digraph& G)
         }
         for (int i{0}; i < G.num_vertices(); ++i) {
             if (!found[i]) {
-                System.err.print_line("No vertex with rank " + i);
+                std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
@@ -118,7 +118,7 @@ bool Topological_x::check(Digraph& G)
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                System.err.print_line("order() and rank() inconsistent");
+                std::cerr << "order() and rank() inconsistent";
                 return false;
             }
             ++r;
@@ -138,7 +138,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
         }
         for (int i{0}; i < G.num_vertices(); ++i) {
             if (!found[i]) {
-                System.err.print_line("No vertex with rank " + i);
+                std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
@@ -159,7 +159,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                System.err.print_line("order() and rank() inconsistent");
+                std::cerr << "order() and rank() inconsistent";
                 return false;
             }
             ++r;

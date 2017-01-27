@@ -27,7 +27,7 @@ public:
 
     inline double weight() const noexcept { return _weight; };
 
-    inline static bool less(Edge& e, Edge& f) noexcept { return e.weight() < f.weight(); }
+    inline static bool less(Edge& e, Edge& f) noexcept { return e._weight() < f._weight(); }
 
 private:
     const static double _epsilon = std::numeric_limits<double>::epsilon();

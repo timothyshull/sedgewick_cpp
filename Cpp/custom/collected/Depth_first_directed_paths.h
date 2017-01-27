@@ -4,21 +4,34 @@
 #include <vector>
 #include <deque>
 #include "Digraph.h"
+#include "Stack.h"
 
 class Depth_first_directed_paths {
 public:
-    Depth_first_directed_paths(Digraph& G, int s);
+    Depth_first_directed_paths() = delete;
 
-    bool has_path_to(int v);
+    Depth_first_directed_paths(const Depth_first_directed_paths&) = default;
 
-    std::vector<int> path_to(int v);
+    Depth_first_directed_paths(Depth_first_directed_paths&&) = default;
+
+    ~Depth_first_directed_paths() = default;
+
+    Depth_first_directed_paths& operator=(const Depth_first_directed_paths&) = default;
+
+    Depth_first_directed_paths& operator=(Depth_first_directed_paths&&) = default;
+
+    Depth_first_directed_paths(Digraph& digraph, int source);
+
+    inline bool has_path_to(int v) const { return _marked[v]; }
+
+    Stack<int> path_to(int vertex) const;
 
 private:
-    std::deque<bool> marked;
-    std::vector<int> edgeTo;
-    const int s;
+    std::deque<bool> _marked;
+    std::vector<int> _edge_to;
+    const int _source;
 
-    void dfs(Digraph& G, int v);
+    void _dfs(Digraph& digraph, int vertex);
 };
 
 #endif // DEPTH_FIRST_DIRECTED_PATHS_H

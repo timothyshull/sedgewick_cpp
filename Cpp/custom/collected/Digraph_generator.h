@@ -3,47 +3,65 @@
 
 #include "Digraph.h"
 
-namespace Digraph_generator {
+class Digraph_generator {
+public:
     class Edge {
     public:
         Edge(int v, int w);
 
-        bool operator<(Edge& rhs);
+        bool operator<(const Edge& rhs) const;
+
+        inline bool operator==(const Edge& rhs) const { return _v == rhs._v && _w == rhs._w; };
 
     private:
-        int v;
-        int w;
+        int _v;
+        int _w;
     };
 
-    Digraph simple(int V, int E);
+    Digraph_generator() = delete;
 
-    Digraph simple(int V, double p);
+    Digraph_generator(const Digraph_generator&) = delete;
 
-    Digraph complete(int V);
+    Digraph_generator(Digraph_generator&&) = delete;
 
-    Digraph dag(int V, int E);
+    ~Digraph_generator() = delete;
 
-    Digraph tournament(int V);
+    Digraph_generator& operator=(const Digraph_generator&) = delete;
 
-    Digraph rooted_in_dag(int V, int E);
+    Digraph_generator& operator=(Digraph_generator&&) = delete;
 
-    Digraph rooted_out_dag(int V, int E);
+    static Digraph simple(int num_vertices, int num_edges);
 
-    Digraph rooted_in_tree(int V);
+    static Digraph simple(int num_vertices, double probability);
 
-    Digraph rooted_out_tree(int V);
+    static Digraph complete(int num_vertices);
 
-    Digraph path(int V);
+    static Digraph dag(int num_vertices, int num_edges);
 
-    Digraph binary_tree(int V);
+    static Digraph tournament(int num_vertices);
 
-    Digraph cycle(int V);
+    static Digraph rooted_in_dag(int num_vertices, int num_edges);
 
-    Digraph eulerian_cycle(int V, int E);
+    static Digraph rooted_out_dag(int num_vertices, int num_edges);
 
-    Digraph eulerian_path(int V, int E);
+    static Digraph rooted_in_tree(int num_vertices);
 
-    Digraph strong(int V, int E, int c);
+    static Digraph rooted_out_tree(int num_vertices);
+
+    static Digraph path(int num_vertices);
+
+    static Digraph binary_tree(int num_vertices);
+
+    static Digraph cycle(int num_vertices);
+
+    static Digraph eulerian_cycle(int num_vertices, int num_edges);
+
+    static Digraph eulerian_path(int num_vertices, int num_edges);
+
+    static Digraph strong(int num_vertices, int num_edges, int c);
+
+private:
+    static void _check_vertices_and_edges(int num_vertices, int num_edges);
 };
 
 #endif // DIGRAPH_GENERATOR_H

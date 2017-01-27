@@ -8,11 +8,11 @@ int main(int argc, char* argv[])
     int y0{utility::str_to_num(argv[2])};
     int n{utility::str_to_num(argv[3])};
 
-    Std_draw::setCanvasSize(800, 800);
-    Std_draw::setXscale(0, 100);
-    Std_draw::setYscale(0, 100);
-    Std_draw::setPenRadius(0.005);
-    Std_draw::enableDoubleBuffering();
+    Std_draw::set_canvas_size(800, 800);
+    Std_draw::set_x_scale(0, 100);
+    Std_draw::set_y_scale(0, 100);
+    Std_draw::set_pen_radius(0.005);
+    Std_draw::enable_double_buffering();
 
     std::vector<Point_2d> points;
     points.reserve(n);
@@ -26,12 +26,12 @@ int main(int argc, char* argv[])
     }
 
     Point_2d p{x0, y0};
-    Std_draw::setPenColor(Std_draw::RED);
-    Std_draw::setPenRadius(0.02);
+    Std_draw::set_pen_color(Std_draw::red);
+    Std_draw::set_pen_radius(0.02);
     p.draw();
 
-    Std_draw::setPenRadius();
-    Std_draw::setPenColor(Std_draw::BLUE);
+    Std_draw::set_pen_radius();
+    Std_draw::set_pen_color(Std_draw::blue);
     std::sort(points.begin(), points.end(), Point_2d::polarOrder());
     for (int i{0}; i < n; ++i) {
         p.draw_to(points[i]);

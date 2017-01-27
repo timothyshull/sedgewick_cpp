@@ -1,3 +1,5 @@
+#include <string>
+
 #include "In.h"
 #include "Graph.h"
 #include "Std_out.h"
@@ -10,11 +12,11 @@ int main(int argc, char* argv[])
     Graph graph{in};
     Connected_component cc{graph};
 
-    int m = cc.count();
-    Std_out::print_line(m + " components");
+    int m{cc.count()};
+    Std_out::print_line(std::to_string(m) + " components");
 
     std::vector<Queue<int>> components;
-    components.reserve(m);
+    components.reserve(static_cast<std::vector<Queue<int>>::size_type>(m));
     for (int i{0}; i < m; ++i) {
         components[i] = Queue<int>{};
     }
@@ -23,8 +25,8 @@ int main(int argc, char* argv[])
     }
 
     for (int i{0}; i < m; ++i) {
-        for (int v : components[i]) {
-            Std_out::print(v + " ");
+        for (auto v : components[i]) {
+            Std_out::print(std::to_string(v) + " ");
         }
         Std_out::print_line();
     }

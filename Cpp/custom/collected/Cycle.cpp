@@ -1,36 +1,26 @@
 #include "Cycle.h"
 
-Cycle::Cycle(Graph& G)
+Cycle::Cycle(Graph& graph)
+        : _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+          _edge_to(static_cast<std::vector<int>::size_type>(graph.num_vertices()))
 {
-    if (hasSelfLoop(G)) { return; }
-    if (hasParallelEdges(G)) { return; }
-    marked = new boolean[G.num_vertices()];
-    edgeTo = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (!marked[v]) {
-            dfs(G, -1, v);
+    if (_has_self_loop(graph)) { throw utility::Illegal_argument_exception{"The graph passed to the Cycle object has a self loop"}; }
+    if (_has_parallel_edges(graph)) { throw utility::Illegal_argument_exception{"The graph passed to the Cycle object has parallel edges"}; }
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (!_marked[v]) {
+            _dfs(graph, -1, v);
         }
     }
 }
 
-bool Cycle::has_cycle()
+bool Cycle::_has_self_loop(Graph& graph)
 {
-    return cycle != null;
-}
-
-std::vector<int> Cycle::cycle()
-{
-    return cycle;
-}
-
-bool Cycle::hasSelfLoop(Graph& G)
-{
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (int w : G.adj(v)) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto w : graph.adjacent(v)) {
             if (v == w) {
-                cycle = new Stack<Integer>();
-                cycle.push(v);
-                cycle.push(v);
+                _cycle = Stack<int>{};
+                _cycle.push(v);
+                _cycle.push(v);
                 return true;
             }
         }
@@ -38,53 +28,48 @@ bool Cycle::hasSelfLoop(Graph& G)
     return false;
 }
 
-bool Cycle::hasParallelEdges(Graph& G)
+bool Cycle::_has_parallel_edges(Graph& graph)
 {
-    marked = new boolean[G.num_vertices()];
+    _marked = std::deque<bool>{};
+    _marked.reserve(static_cast<std::deque<bool>::size_type>(graph.num_vertices()));
 
-    for (int v{0}; v < G.num_vertices(); ++v) {
+    for (int v{0}; v < graph.num_vertices(); ++v) {
 
-        // _check for parallel edges incident to v
-        for (int w : G.adj(v)) {
-            if (marked[w]) {
-                cycle = new Stack<Integer>();
-                cycle.push(v);
-                cycle.push(w);
-                cycle.push(v);
+        for (auto w : graph.adjacent(v)) {
+            if (_marked[w]) {
+                _cycle = Stack<int>{};
+                _cycle.push(v);
+                _cycle.push(w);
+                _cycle.push(v);
                 return true;
             }
-            marked[w] = true;
+            _marked[w] = true;
         }
 
-        // reset so _marked[v] = false for all v
-        for (int w : G.adj(v)) {
-            marked[w] = false;
+        for (int w : graph.adjacent(v)) {
+            _marked[w] = false;
         }
     }
     return false;
 }
 
-void Cycle::dfs(Graph& G, int u, int v)
+void Cycle::_dfs(Graph& graph, int u, int v)
 {
-    marked[v] = true;
-    for (int w : G.adj(v)) {
+    _marked[v] = true;
+    for (auto w : graph.adjacent(v)) {
 
-        // short circuit if _cycle already found
-        if (cycle != null) { return; }
+        if (!_cycle.is_empty()) { return; }
 
-        if (!marked[w]) {
-            edgeTo[w] = v;
-            dfs(G, v, w);
-        }
-
-            // _check for _cycle (but disregard reverse of edge leading to v)
-        else if (w != u) {
-            cycle = new Stack<Integer>();
-            for (int x{v}; x != w; x = edgeTo[x]) {
-                cycle.push(x);
+        if (!_marked[w]) {
+            _edge_to[w] = v;
+            _dfs(graph, v, w);
+        } else if (w != u) {
+            _cycle = Stack<int{};
+            for (int x{v}; x != w; x = _edge_to[x]) {
+                _cycle.push(x);
             }
-            cycle.push(w);
-            cycle.push(v);
+            _cycle.push(w);
+            _cycle.push(v);
         }
     }
 }

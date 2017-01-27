@@ -8,17 +8,34 @@
 
 class Cycle {
 public:
-    Cycle(Graph& G);
-    bool has_cycle();
-    std::vector<int> cycle();
-private:
-    std::deque<bool> marked;
-    std::vector<int> edgeTo;
-    Stack<int> cycle;
+    Cycle() = delete;
 
-    bool hasSelfLoop(Graph& G);
-    bool hasParallelEdges(Graph& G);
-    void dfs(Graph& G, int u, int v);
+    Cycle(const Cycle&) = delete;
+
+    Cycle(Cycle&&) = delete;
+
+    ~Cycle() = default;
+
+    Cycle& operator=(const Cycle&) = delete;
+
+    Cycle& operator=(Cycle&&) = delete;
+
+    Cycle(Graph& graph);
+
+    inline bool has_cycle() const { return !_cycle.is_empty(); }
+
+    inline Stack<int> cycle() const { return _cycle; }
+
+private:
+    std::deque<bool> _marked;
+    std::vector<int> _edge_to;
+    Stack<int> _cycle;
+
+    bool _has_self_loop(Graph& graph);
+
+    bool _has_parallel_edges(Graph& graph);
+
+    void _dfs(Graph& graph, int u, int v);
 };
 
 #endif // CYCLE_H

@@ -32,7 +32,7 @@ double Prim_mst::weight()
 {
     double weight = 0.0;
     for (Edge e : edges())
-        weight += e.weight();
+        weight += e._weight();
     return weight;
 }
 
@@ -52,8 +52,8 @@ void Prim_mst::scan(Edge_weighted_graph& G, int v)
     for (Edge e : G.adj(v)) {
         int w = e.other(v);
         if (marked[w]) continue;         // v-w is obsolete edge
-        if (e.weight() < distance_to[w]) {
-            distance_to[w] = e.weight();
+        if (e._weight() < distance_to[w]) {
+            distance_to[w] = e._weight();
             edgeTo[w] = e;
             if (pq.contains(w)) pq.decreaseKey(w, distance_to[w]);
             else pq.insert(w, distance_to[w]);
@@ -65,10 +65,10 @@ bool Prim_mst::check(Edge_weighted_graph& G)
 {
     double totalWeight = 0.0;
     for (Edge e : edges()) {
-        totalWeight += e.weight();
+        totalWeight += e._weight();
     }
     if (std::abs(totalWeight - weight()) > FLOATING_POINT_EPSILON) {
-        System.err.printf("Weight of edges does not equal weight(): %f vs. %f\n", totalWeight, weight());
+        std::cerr << "Weight of edges does not equal weight(): %f vs. %f\n", totalWeight, weight();
         return false;
     }
 
@@ -77,7 +77,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     for (Edge e : edges()) {
         int v = e.either(), w = e.other(v);
         if (uf.connected(v, w)) {
-            System.err.print_line("Not a forest");
+            std::cerr << "Not a forest";
             return false;
         }
         uf.union(v, w);
@@ -87,7 +87,7 @@ bool Prim_mst::check(Edge_weighted_graph& G)
     for (Edge e : G.edges()) {
         int v = e.either(), w = e.other(v);
         if (!uf.connected(v, w)) {
-            System.err.print_line("Not a spanning forest");
+            std::cerr << "Not a spanning forest";
             return false;
         }
     }
@@ -106,8 +106,8 @@ bool Prim_mst::check(Edge_weighted_graph& G)
         for (Edge f : G.edges()) {
             int x = f.either(), y = f.other(x);
             if (!uf.connected(x, y)) {
-                if (f.weight() < e.weight()) {
-                    System.err.print_line("Edge " + f + " violates cut optimality conditions");
+                if (f._weight() < e._weight()) {
+                    std::cerr << "Edge " + f + " violates cut optimality conditions";
                     return false;
                 }
             }

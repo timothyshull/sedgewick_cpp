@@ -25,7 +25,7 @@ Boruvka_mst::Boruvka_mst(Edge_weighted_digraph& digraph)
                 int w{e.other(v)};
                 if (!uf.connected(v, w)) {
                     _mst.add(e);
-                    _weight += e.weight();
+                    _weight += e._weight();
                     uf.create_union(v, w);
                 }
             }
@@ -39,7 +39,7 @@ bool Boruvka_mst::_check(Edge_weighted_digraph& digraph)
 {
     double total_weight{0.0};
     for (auto e : edges()) {
-        total_weight += e.weight();
+        total_weight += e._weight();
     }
     if (std::abs(total_weight - _weight) > _epsilon) {
         std::cerr << "Weight of edges does not equal weight(): " << total_weight << " vs. " << _weight << "\n";
@@ -77,7 +77,7 @@ bool Boruvka_mst::_check(Edge_weighted_digraph& digraph)
             int x{f.either()};
             int y{f.other(x)};
             if (!uf.connected(x, y)) {
-                if (f.weight() < e.weight()) {
+                if (f.weight() < e._weight()) {
                     std::cerr << "Edge " << f << " violates cut optimality conditions";
                     return false;
                 }

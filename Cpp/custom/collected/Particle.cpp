@@ -1,114 +1,107 @@
+#include <cmath>
+
 #include "Particle.h"
+#include "Std_random.h"
+#include "Std_draw.h"
 
 Particle::Particle(double rx, double ry, double vx, double vy, double radius, double mass, Color& color)
-        : rx{rx},
-          ry{ry},
-          vx{vx},
-          vy{vy},
-          radius{radius},
-          mass{mass},
-          color{color} {}
+        : _rx{rx},
+          _ry{ry},
+          _vx{vx},
+          _vy{vy},
+          _radius{radius},
+          _mass{mass},
+          _color{color} {}
 
 Particle::Particle()
-{
-    rx = Std_random::uniform(0.0, 1.0);
-    ry = Std_random::uniform(0.0, 1.0);
-    vx = Std_random::uniform(-0.005, 0.005);
-    vy = Std_random::uniform(-0.005, 0.005);
-    radius = 0.01;
-    mass = 0.5;
-    color = Color.BLACK;
-}
+        : _rx{Std_random::uniform(0.0, 1.0)},
+          _ry{Std_random::uniform(0.0, 1.0)},
+          _vx{Std_random::uniform(-0.005, 0.005)},
+          _vy{Std_random::uniform(-0.005, 0.005)},
+          _radius{0.01},
+          _mass{0.5},
+          _color{Color{0, 0, 0, 255}} {}
 
 void Particle::move(double dt)
 {
-    rx += vx * dt;
-    ry += vy * dt;
+    _rx += _vx * dt;
+    _ry += _vy * dt;
 }
 
 void Particle::draw()
 {
-    Std_draw::setPenColor(color);
-    Std_draw::filledCircle(rx, ry, radius);
+    Std_draw::set_pen_color(_color);
+    Std_draw::filled_circle(_rx, _ry, _radius);
 }
 
-int Particle::count()
+double Particle::time_to_hit(Particle& that)
 {
-    return count;
-}
-
-double Particle::timeToHit(Particle& that)
-{
-    if (this == that) return INFINITY;
-    double dx = that.rx - this.rx;
-    double dy = that.ry - this.ry;
-    double dvx = that.vx - this.vx;
-    double dvy = that.vy - this.vy;
-    double dvdr = dx * dvx + dy * dvy;
-    if (dvdr > 0) return INFINITY;
-    double dvdv = dvx * dvx + dvy * dvy;
-    double drdr = dx * dx + dy * dy;
-    double sigma = this.radius + that.radius;
-    double d = (dvdr * dvdr) - dvdv * (drdr - sigma * sigma);
+    if (*this == that) { return _infinity; }
+    double dx{that._rx - _rx};
+    double dy{that._ry - _ry};
+    double dvx{that._vx - _vx};
+    double dvy{that._vy - _vy};
+    double dvdr{dx * dvx + dy * dvy};
+    if (dvdr > 0) { return _infinity; }
+    double dvdv{dvx * dvx + dvy * dvy};
+    double drdr{dx * dx + dy * dy};
+    double sigma{_radius + that._radius};
+    double d{(dvdr * dvdr) - dvdv * (drdr - sigma * sigma)};
     // if (drdr < sigma*sigma) Std_out::print_line("overlapping particles");
-    if (d < 0) return INFINITY;
+    if (d < 0) { return _infinity; }
     return -(dvdr + std::sqrt(d)) / dvdv;
 }
 
-double Particle::timeToHitVerticalWall()
+double Particle::time_to_hit_vertical_wall()
 {
-    if (vx > 0) return (1.0 - rx - radius) / vx;
-    else if (vx < 0) return (radius - rx) / vx;
-    else return INFINITY;
+    if (_vx > 0) { return (1.0 - _rx - _radius) / _vx; }
+    else if (_vx < 0) { return (_radius - _rx) / _vx; }
+    else { return _infinity; }
 }
 
-double Particle::timeToHitHorizontalWall()
+double Particle::time_to_hit_horizontal_wall()
 {
-    if (vy > 0) return (1.0 - ry - radius) / vy;
-    else if (vy < 0) return (radius - ry) / vy;
-    else return INFINITY;
+    if (_vy > 0) { return (1.0 - _ry - _radius) / _vy; }
+    else if (_vy < 0) { return (_radius - _ry) / _vy; }
+    else { return _infinity; }
 }
 
-void Particle::bounceOff(Particle& that)
+void Particle::bounce_off(Particle& that)
 {
-    double dx = that.rx - this.rx;
-    double dy = that.ry - this.ry;
-    double dvx = that.vx - this.vx;
-    double dvy = that.vy - this.vy;
-    double dvdr = dx * dvx + dy * dvy;             // dv dot dr
-    double dist = this.radius + that.radius;   // distance between particle centers at collison
+    double dx{that._rx - _rx};
+    double dy{that._ry - _ry};
+    double dvx{that._vx - _vx};
+    double dvy{that._vy - _vy};
+    double dvdr{dx * dvx + dy * dvy};
+    double dist{_radius + that._radius};
 
-    // magnitude of normal force
-    double magnitude = 2 * this.mass * that.mass * dvdr / ((this.mass + that.mass) * dist);
+    double magnitude{2 * _mass * that._mass * dvdr / ((_mass + that._mass) * dist)};
 
-    // normal force, and _in x and y directions
-    double fx = magnitude * dx / dist;
-    double fy = magnitude * dy / dist;
+    double fx{magnitude * dx / dist};
+    double fy{magnitude * dy / dist};
 
-    // update velocities according to normal force
-    this.vx += fx / this.mass;
-    this.vy += fy / this.mass;
-    that.vx -= fx / that.mass;
-    that.vy -= fy / that.mass;
+    _vx += fx / _mass;
+    _vy += fy / _mass;
+    that._vx -= fx / that._mass;
+    that._vy -= fy / that._mass;
 
-    // update collision counts
-    this.count++;
-    that.count++;
+    ++_count;
+    ++that._count;
 }
 
-void Particle::bounceOffVerticalWall()
+void Particle::bounce_off_vertical_wall()
 {
-    vx = -vx;
-    ++count;
+    _vx = -_vx;
+    ++_count;
 }
 
-void Particle::bounceOffHorizontalWall()
+void Particle::bounce_off_horizontal_wall()
 {
-    vy = -vy;
-    ++count;
+    _vy = -_vy;
+    ++_count;
 }
 
-double Particle::kineticEnergy()
+double Particle::kinetic_energy()
 {
-    return 0.5 * mass * (vx * vx + vy * vy);
+    return 0.5 * _mass * (_vx * _vx + _vy * _vy);
 }

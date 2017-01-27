@@ -57,3 +57,7 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - need dtors in all node structures
 - Binomial_min_pq iterator needs more work
 - Boruvka_mst needs some fixes
+- replace all old style for loops with iterators and range for loops where possible
+- fix Stack, Queue, Etc and add const to all references that can be const
+- Dijkstra_sp/undirected needs work
+- fix iterator deal in Directed_eulerian_path and Directed_eulerian_cycle

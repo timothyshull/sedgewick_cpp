@@ -1,6 +1,10 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
+#include "utility.h"
+
+using utility::Color;
+
 class Particle {
 public:
     Particle(double rx, double ry, double vx, double vy, double radius, double mass, Color& color);
@@ -11,31 +15,34 @@ public:
 
     void draw();
 
-    int count();
+    inline int count() const noexcept { return _count; }
 
-    double timeToHit(Particle& that);
+    double time_to_hit(Particle& that);
 
-    double timeToHitVerticalWall();
+    double time_to_hit_vertical_wall();
 
-    double timeToHitHorizontalWall();
+    double time_to_hit_horizontal_wall();
 
-    void bounceOff(Particle& that);
+    void bounce_off(Particle& that);
 
-    void bounceOffVerticalWall();
+    void bounce_off_vertical_wall();
 
-    void bounceOffHorizontalWall();
+    void bounce_off_horizontal_wall();
 
-    double kineticEnergy();
+    double kinetic_energy();
+
+    bool operator==(const Particle& rhs);
 
 private:
-    double rx;
-    double ry;
-    double vx;
-    double vy;
-    double radius;
-    double mass;
-    Color color;
-    int count;
+    static const double _infinity = std::numeric_limits<double>::infinity();
+    double _rx;
+    double _ry;
+    double _vx;
+    double _vy;
+    double _radius;
+    double _mass;
+    Color _color;
+    int _count;
 };
 
 #endif // PARTICLE_H

@@ -1,55 +1,49 @@
-#include <iostream>
-#include <string>
-
 #include "Set.h"
+#include "Std_out.h"
 
 int main()
 {
-    Set<std::string> s{};
+    Set<std::string> set;
 
-    s.add("www.cs.princeton.edu");
-    s.add("www.cs.princeton.edu");
-    s.add("www.princeton.edu");
-    s.add("www.math.princeton.edu");
-    s.add("www.yale.edu");
-    s.add("www.amazon.com");
-    s.add("www.simpsons.com");
-    s.add("www.stanford.edu");
-    s.add("www.google.com");
-    s.add("www.ibm.com");
-    s.add("www.apple.com");
-    s.add("www.slashdot.com");
-    s.add("www.whitehouse.gov");
-    s.add("www.espn.com");
-    s.add("www.snopes.com");
-    s.add("www.movies.com");
-    s.add("www.cnn.com");
-    s.add("www.iitb.ac._in");
+    set.add("www.cs.princeton.edu");
+    set.add("www.cs.princeton.edu");
+    set.add("www.princeton.edu");
+    set.add("www.math.princeton.edu");
+    set.add("www.yale.edu");
+    set.add("www.amazon.com");
+    set.add("www.simpsons.com");
+    set.add("www.stanford.edu");
+    set.add("www.google.com");
+    set.add("www.ibm.com");
+    set.add("www.apple.com");
+    set.add("www.slashdot.com");
+    set.add("www.whitehouse.gov");
+    set.add("www.espn.com");
+    set.add("www.snopes.com");
+    set.add("www.movies.com");
+    set.add("www.cnn.com");
+    set.add("www.iitb.ac.in");
 
-    std::cout << std::boolalpha << s.contains("www.cs.princeton.edu") << "\n";
-    std::cout << s.contains("www.cs.princeton.edu") << "\n";
+    Std_out::print_line(set.contains("www.cs.princeton.edu"));
+    Std_out::print_line(!set.contains("www.harvardsucks.com"));
+    Std_out::print_line(set.contains("www.simpsons.com"));
+    Std_out::print_line();
 
-    std::cout << !s.contains("www.harvardsucks.com");
-    std::cout << s.contains("www.simpsons.com");
-    std::cout << "\n";
+    Std_out::print_line("ceiling(www.simpsonr.com) = " + set.ceiling("www.simpsonr.com"));
+    Std_out::print_line("ceiling(www.simpsons.com) = " + set.ceiling("www.simpsons.com"));
+    Std_out::print_line("ceiling(www.simpsont.com) = " + set.ceiling("www.simpsont.com"));
+    Std_out::print_line("floor(www.simpsonr.com)   = " + set.floor("www.simpsonr.com"));
+    Std_out::print_line("floor(www.simpsons.com)   = " + set.floor("www.simpsons.com"));
+    Std_out::print_line("floor(www.simpsont.com)   = " + set.floor("www.simpsont.com"));
+    Std_out::print_line();
 
-    std::cout << "ceiling(www.simpsonr.com) = " << s.ceiling("www.simpsonr.com") << "\n";
-    std::cout << "ceiling(www.simpsons.com) = " << s.ceiling("www.simpsons.com") << "\n";
-    std::cout << "ceiling(www.simpsont.com) = " << s.ceiling("www.simpsont.com") << "\n";
-    std::cout << "floor(www.simpsonr.com)   = " << s.floor("www.simpsonr.com") << "\n";
-    std::cout << "floor(www.simpsons.com)   = " << s.floor("www.simpsons.com") << "\n";
-    std::cout << "floor(www.simpsont.com)   = " << s.floor("www.simpsont.com") << "\n";
-    std::cout << "\n";
-
-
-    // print out all keys _in this set _in lexicographic order
-    for (auto k : s) {
-        std::cout << k << "\n";
+    for (auto s : set) {
+        Std_out::print_line(s);
     }
 
-    std::cout << "\n";
+    Std_out::print_line();
     Set<std::string> set2{set};
-    std::cout << s.equals(set2));
+    Std_out::print_line(set == set2);
 
     return 0;
 }

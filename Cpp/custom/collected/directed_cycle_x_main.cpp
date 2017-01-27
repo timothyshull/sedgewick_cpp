@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
     Directed_cycle_x finder{digraph};
     if (finder.has_cycle()) {
         Std_out::print("Directed _cycle: ");
-        for (int v : finder.cycle()) {
-            Std_out::print(v + " ");
+        for (auto vx : finder.cycle()) {
+            Std_out::print(vx + " ");
         }
         Std_out::print_line();
     } else {
