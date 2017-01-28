@@ -48,7 +48,7 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - check math_errorhandling and handle errno/MATH_ERRNO after cmath calls
 - fix up str_to_num issues
 - need Bipartite_x
-- remove unnecesary container ctors where default ctor would be called
+- remove unnecessary container ctors where default ctor would be called
 - fix null in Bellman_ford
 - need to make a decision on where to use pointers and other options and
   be consistent (boost::optional)
@@ -63,3 +63,6 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix iterator deal in Directed_eulerian_path and Directed_eulerian_cycle
 - fix Doubling_ratio and Std_random::uniform(int, int) issues
 - fix range for loops in Edge_weighted_graph
+- fix up index_file
+- fix up Adj_matrix_edge_weighted_digraph
+- fix up Floyd_warshall

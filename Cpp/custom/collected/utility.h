@@ -199,6 +199,15 @@ namespace utility {
         virtual ~Arithmetic_exception() noexcept {};
     };
 
+    class Null_pointer_exception : public std::runtime_error {
+    public:
+        inline explicit Null_pointer_exception(const std::string& s) : std::runtime_error{s} {}
+
+        inline explicit Null_pointer_exception(const char* s) : std::runtime_error{s} {}
+
+        virtual ~Null_pointer_exception() noexcept {};
+    };
+
 }
 
 #endif // UTILITY_H

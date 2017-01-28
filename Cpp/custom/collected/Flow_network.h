@@ -7,20 +7,32 @@
 
 class Flow_network {
 public:
-    Flow_network(int V);
-    Flow_network(int V, int E);
+    Flow_network(int num_vertices);
+
+    Flow_network(int num_vertices, int num_edges);
+
     Flow_network(In& in);
-    int num_vertices();
-    int num_edges();
+
+    inline int num_vertices() const noexcept { return _num_vertices; }
+
+    inline int num_edges() const noexcept { return _num_edges; }
+
     void add_edge(Flow_edge& e);
+
+    void add_edge(int v, int w, double capacity);
+
     std::vector<Flow_edge> adjacent(int v);
+
     std::vector<Flow_edge> edges();
+
     std::string to_string();
+
 private:
-    const int V;
-    int E;
-    std::vector<std::vector<Flow_edge>> adj;
-    void validateVertex(int v);
+    const int _num_vertices;
+    int _num_edges;
+    std::vector<std::vector<Flow_edge>> _adjacency_lists;
+
+    void _validate_vertex(int v);
 };
 
 std::ostream& operator<<(std::ostream& os, Flow_network& out);

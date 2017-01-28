@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    Min_pq<std::string> pq{};
+    Min_pq<std::string> pq;
     std::string item;
     while (!Std_in::is_empty()) {
         item = Std_in::read_string();

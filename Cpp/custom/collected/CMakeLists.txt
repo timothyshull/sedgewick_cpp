@@ -4,10 +4,10 @@ project(collected)
 set(CMAKE_CXX_STANDARD 14)
 
 # for Qt
-#set(CMAKE_INCLUDE_CURRENT_DIR ON)
-#set(CMAKE_AUTOMOC ON)
-#set(CMAKE_AUTOUIC ON)
-#set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
 set(QT_PATH "/usr/local/opt/qt5")
 
@@ -15,14 +15,20 @@ set(QT_LIB_DIR ${QT_PATH}/lib/cmake)
 
 set(Qt5Core_DIR "${QT_LIB_DIR}/Qt5Core")
 set(Qt5Gui_DIR "${QT_LIB_DIR}/Qt5Gui")
+set(Qt5Multimedia_DIR "${QT_LIB_DIR}/Qt5Multimedia")
+set(Qt5Widgets_DIR "${QT_LIB_DIR}/Qt5Widgets")
 
 set(QT_LIBRARIES
         Qt5::Core
-        Qt5::Gui)
+        Qt5::Gui
+        Qt5::Multimedia
+        Qt5::Widgets)
 
 set(QT_LIBRARIES_REQUIRED
         Qt5Core
-        Qt5Gui)
+        Qt5Gui
+        Qt5Multimedia
+        Qt5Widgets)
 
 foreach (QT_LIBRARIES_REQUIRED ${QT_LIBRARIES_REQUIRED})
     find_package(${QT_LIBRARIES_REQUIRED} REQUIRED)
@@ -406,8 +412,7 @@ target_link_libraries(fenwick_tree_main std_io utility ${Boost_LIBRARIES})
 add_executable(fft_main fft_main.cpp FFT.cpp FFT.h)
 target_link_libraries(fft_main std_io utility ${Boost_LIBRARIES})
 
-# TODO: 3rd Round
-add_executable(fibonacci_min_pq_main fibonacci_min_pq_main.cpp Fibonacci_min_pq.cpp Fibonacci_min_pq.h)
+add_executable(fibonacci_min_pq_main fibonacci_min_pq_main.cpp Fibonacci_min_pq.h)
 target_link_libraries(fibonacci_min_pq_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(file_index_main file_index_main.cpp)
@@ -422,6 +427,7 @@ target_link_libraries(flow_network_main std_io utility ${Boost_LIBRARIES})
 add_executable(floyd_warshall_main floyd_warshall_main.cpp Floyd_warshall.cpp Floyd_warshall.h)
 target_link_libraries(floyd_warshall_main std_io utility ${Boost_LIBRARIES})
 
+# TODO: 3rd Round
 add_executable(ford_fulkerson_main ford_fulkerson_main.cpp Ford_fulkerson.cpp Ford_fulkerson.h)
 target_link_libraries(ford_fulkerson_main std_io utility ${Boost_LIBRARIES})
 
@@ -609,7 +615,7 @@ add_executable(std_array_io_main std_array_io_main.cpp Std_array_io.cpp Std_arra
 target_link_libraries(std_array_io_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp Std_audio.h) # TODO)
-target_link_libraries(std_audio_main std_io utility ${Boost_LIBRARIES})
+target_link_libraries(std_audio_main utility ${Boost_LIBRARIES} ${QT_LIBRARIES})
 
 add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h) # TODO)
 target_link_libraries(std_draw_main std_io utility ${Boost_LIBRARIES})

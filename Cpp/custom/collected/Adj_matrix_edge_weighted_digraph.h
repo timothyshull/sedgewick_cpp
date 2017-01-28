@@ -12,12 +12,6 @@ using Directed_edge_owning_pointer = std::unique_ptr<Directed_edge>;
 using Directed_edge_raw_pointer = Directed_edge*;
 
 class Adj_iterator {
-private:
-    // to allow -1
-    int _v;
-    int _w;
-    Adj_matrix_edge_weighted_digraph& _graph;
-
 public:
     using iterator_category = std::random_access_iterator_tag;
     using Value_type = Directed_edge_raw_pointer;
@@ -50,6 +44,11 @@ public:
 
     friend
     bool operator!=(const Adj_iterator& x, const Adj_iterator& y);
+private:
+    // to allow -1
+    int _v;
+    int _w;
+    Adj_matrix_edge_weighted_digraph& _graph;
 };
 
 class Adj_matrix_edge_weighted_digraph {
@@ -77,6 +76,8 @@ public:
 
     friend
     bool operator!=(const Adj_matrix_edge_weighted_digraph& x, const Adj_matrix_edge_weighted_digraph& y);
+
+    std::vector<Directed_edge> adjacent(int v);
 
     std::string to_string() const;
 

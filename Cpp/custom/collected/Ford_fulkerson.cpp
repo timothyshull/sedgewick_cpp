@@ -14,12 +14,12 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& G, int s, int t)
         // compute bottleneck capacity
         double bottle = Double.POSITIVE_INFINITY;
         for (int v{t}; v != s; v = edgeTo[v].other(v)) {
-            bottle = std::min(bottle, edgeTo[v].residualCapacityTo(v));
+            bottle = std::min(bottle, edgeTo[v].residual_capacity_to(v));
         }
 
         // augment flow
         for (int v{t}; v != s; v = edgeTo[v].other(v)) {
-            edgeTo[v].addResidualFlowTo(v, bottle);
+            edgeTo[v].add_residual_flow_to(v, bottle);
         }
 
         value += bottle;
@@ -58,7 +58,7 @@ bool Ford_fulkerson::hasAugmentingPath(Flow_network& G, int s, int t)
     while (!queue.is_empty() && !marked[t]) {
         int v = queue.dequeue();
 
-        for (FlowEdge e : G.adj(v)) {
+        for (FlowEdge e : G._adjacency_lists(v)) {
             int w = e.other(v);
 
             // if residual capacity from v to w
@@ -79,7 +79,7 @@ bool Ford_fulkerson::hasAugmentingPath(Flow_network& G, int s, int t)
 double Ford_fulkerson::excess(Flow_network& G, int v)
 {
     double excess = 0.0;
-    for (FlowEdge e : G.adj(v)) {
+    for (FlowEdge e : G._adjacency_lists(v)) {
         if (v == e.from()) excess -= e.flow();
         else excess += e.flow();
     }
@@ -89,7 +89,7 @@ double Ford_fulkerson::excess(Flow_network& G, int v)
 bool Ford_fulkerson::isFeasible(Flow_network& G, int s, int t)
 {
     for (int v{0}; v < G.num_vertices(); ++v) {
-        for (FlowEdge e : G.adj(v)) {
+        for (FlowEdge e : G._adjacency_lists(v)) {
             if (e.flow() < -FLOATING_POINT_EPSILON || e.flow() > e.capacity() + FLOATING_POINT_EPSILON) {
                 std::cerr << "Edge does not satisfy capacity constraints: " + e;
                 return false;
@@ -138,7 +138,7 @@ bool Ford_fulkerson::check(Flow_network& G, int s, int t)
     // _check that value of min cut = value of max flow
     double mincutValue = 0.0;
     for (int v{0}; v < G.num_vertices(); ++v) {
-        for (FlowEdge e : G.adj(v)) {
+        for (FlowEdge e : G._adjacency_lists(v)) {
             if ((v == e.from()) && inCut(e.from()) && !inCut(e.to()))
                 mincutValue += e.capacity();
         }

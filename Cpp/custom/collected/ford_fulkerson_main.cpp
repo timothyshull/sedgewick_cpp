@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     Std_out::print_line("Max flow from " + s + " to " + t);
     for (int v{0}; v < network.num_vertices(); ++v) {
         for (auto e : network.adjacent(v)) {
-            if ((v == e.from()) && e.flow() > 0) {
+            if ((v == e.from()) && e._flow() > 0) {
                 Std_out::print_line("   " + e);
             }
         }
