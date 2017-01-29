@@ -2,16 +2,20 @@
 #define GRAHAM_SCAN_H
 
 #include <vector>
+
 #include "Point_2d.h"
 #include "Stack.h"
 
 class Graham_scan {
 public:
     Graham_scan(std::vector<Point_2d>& pts);
-    std::vector<Point_2d> hull();
+
+    Stack<Point_2d> hull();
+
 private:
-    Stack<Point_2d> hull;
-    bool isConvex();
+    Stack<Point_2d> _hull;
+
+    bool _is_convex();
 };
 
 #endif // GRAHAM_SCAN_H

@@ -73,11 +73,13 @@ public:
 
     inline double r() const { return std::sqrt(_x * _x + _y * _y); }
 
-    inline double Point_2d::theta() const { return std::atan2(_y, _x); }
+    inline double theta() const { return std::atan2(_y, _x); }
 
     double angle_to(Point_2d& that) const;
 
     static int ccw(Point_2d& a, Point_2d& b, Point_2d& c);
+
+    static int ccw(Point_2d&& a, Point_2d& b, Point_2d& c);
 
     static double area2(Point_2d& a, Point_2d& b, Point_2d& c);
 
@@ -87,7 +89,9 @@ public:
 
     bool operator<(Point_2d& rhs);
 
-    bool operator==(Point_2d& rhs);
+    inline bool operator==(Point_2d& rhs) { return _x == rhs._x && _y == rhs._y; }
+
+    inline bool operator!=(Point_2d& rhs) { return !(*this == rhs); }
 
     std::string to_string();
 

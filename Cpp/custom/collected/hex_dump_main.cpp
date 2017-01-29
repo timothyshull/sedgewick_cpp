@@ -9,14 +9,13 @@ int main(int argc, char* argv[])
         bytes_per_line = utility::str_to_num(argv[1]);
     }
 
-    int i;
-    for (i = 0; !Binary_std_in::is_empty(); ++i) {
+    for (int i{0}; !Binary_std_in::is_empty(); ++i) {
         if (bytes_per_line == 0) {
             Binary_std_in::read_char();
             continue;
         }
         if (i == 0) { Std_out::printf(""); }
-        else if (i % bytes_per_line == 0) { Std_out::printf("\n", i); }
+        else if (i % bytes_per_line == 0) { Std_out::printf("%d\n", i); }
         else { Std_out::print(" "); }
         char c = Binary_std_in::read_char();
         Std_out::printf("%02x", c & 0xff);

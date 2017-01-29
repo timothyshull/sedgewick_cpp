@@ -3,7 +3,6 @@
 
 #include "Point_2d.h"
 #include "Std_draw.h"
-#include "utility.h"
 
 bool X_order::operator<(Point_2d& lhs, Point_2d& rhs)
 {
@@ -79,6 +78,14 @@ int Point_2d::ccw(Point_2d& a, Point_2d& b, Point_2d& c)
     else { return 0; }
 }
 
+int Point_2d::ccw(Point_2d&& a, Point_2d& b, Point_2d& c)
+{
+    double area2{(b._x - a._x) * (c._y - a._y) - (b._y - a._y) * (c._x - a._x)};
+    if (area2 < 0) { return -1; }
+    else if (area2 > 0) { return +1; }
+    else { return 0; }
+}
+
 double Point_2d::area2(Point_2d& a, Point_2d& b, Point_2d& c)
 {
     return (b._x - a._x) * (c._y - a._y) - (b._y - a._y) * (c._x - a._x);
@@ -105,11 +112,6 @@ bool Point_2d::operator<(Point_2d& rhs)
     if (_x < rhs._x) { return -1; }
     if (_x > rhs._x) { return +1; }
     return 0;
-}
-
-bool Point_2d::operator==(Point_2d& rhs)
-{
-    return _x == rhs._x && _y == rhs._y;
 }
 
 std::string Point_2d::to_string()

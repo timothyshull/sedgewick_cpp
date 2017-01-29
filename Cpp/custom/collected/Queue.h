@@ -1,8 +1,7 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef COLLECTED_QUEUE_H
+#define COLLECTED_QUEUE_H
 
-#include <memory>
-#include <sstream>
+#include <iterator>
 
 #include "utility.h"
 
@@ -16,72 +15,69 @@ template<typename T>
 class Queue;
 
 template<typename T>
-struct Queue_node_pointer_traits {
-    using Node_type = Queue_node<T>;
-    using Node_raw_pointer = Queue_node<T>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Value_type = T;
-    using Shared_value_pointer = std::shared_ptr<Value_type>;
-};
-
-template<typename T>
 class Queue_node {
 public:
-    using Node_traits = Queue_node_pointer_traits<T>;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Value_type = typename Node_traits::Value_type;
-    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
-
+    using Node = Queue_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
 private:
-    Value_type _item;
-    Node_owning_pointer _next;
-
-    template<typename>
-    friend class Queue;
+    Item _item;
+    Owning_node_pointer _next;
 
     template<typename>
     friend class Queue_iterator;
+
+    template<typename>
+    friend class Queue;
 };
 
 template<typename T>
 class Queue_iterator {
 public:
-    using Node_traits = Queue_node_pointer_traits<T>;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-
-private:
-    Node_raw_pointer _ptr;
-
-    template<typename>
-    friend class Queue;
-
-public:
     using iterator_category = std::forward_iterator_tag;
-    using Value_type = typename Node_traits::Value_type;
-    using Reference_type = Value_type&;
+    using Node = Queue_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
 
-    inline Queue_iterator() noexcept : _ptr{nullptr} {}
+    Queue_iterator() = default;
 
-    inline explicit Queue_iterator(Node_raw_pointer p) noexcept : _ptr{p} {}
+    Queue_iterator(const Queue_iterator&) = default;
 
-    inline Reference_type operator*() const
+    Queue_iterator(Queue_iterator&&) = default;
+
+    ~Queue_iterator() = default;
+
+    Queue_iterator& operator=(const Queue_iterator&) = default;
+
+    Queue_iterator& operator=(Queue_iterator&&) = default;
+
+    Queue_iterator(Raw_node_pointer first) : _current{first} {}
+
+    inline bool has_next() const noexcept { return _current != nullptr; }
+
+    Item next()
     {
-        return _ptr->_item;
+        if (!has_next()) { throw utility::No_such_element_exception{""}; }
+        Item item{_current->_item};
+        _current = _current->_next;
+        return item;
     }
 
-    inline Node_raw_pointer operator->() const
-    {
-        return _ptr;
-    }
+    inline Item operator*() const { return _current->_item; }
 
-    inline Queue_iterator& operator++()
+    inline Raw_node_pointer operator->() const { return _current; }
+
+    Queue_iterator& operator++()
     {
-        _ptr = _ptr->_next.get();
+        if (has_next()) {
+            _current = _current->_next;
+        }
         return *this;
     }
 
-    inline Queue_iterator operator++(int)
+    Queue_iterator operator++(int)
     {
         Queue_iterator t{*this};
         ++(*this);
@@ -89,173 +85,102 @@ public:
     }
 
     friend
-    inline bool operator==(const Queue_iterator& x, const Queue_iterator& y)
-    {
-        return x._ptr == y._ptr;
-    }
+    inline bool operator==(const Queue_iterator& x, const Queue_iterator& y) { return x._current == y._current; }
 
     friend
     inline bool operator!=(const Queue_iterator& x, const Queue_iterator& y) { return !(x == y); }
+
+private:
+    Raw_node_pointer _current;
 };
 
 template<typename T>
 class Queue {
 public:
-    using Node_traits = Queue_node_pointer_traits<T>;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Value_type = typename Node_traits::Value_type;
-    using Pointer_type = Value_type*;
-    using Reference_type = Value_type&;
-    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
+    using Node = Queue_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
     using Iterator_type = Queue_iterator<T>;
-    using Const_iterator_type = Queue_iterator<T>;
 
-    Queue() = default;
+    Queue(const Queue&) = default;
 
-    Queue(const Queue& s) : _n{s._n}
-    {
-        if (!s.is_empty()) {
-            _first = std::unique_ptr<Node_type>{};
-            Node_raw_pointer n1{s._first.get()};
-            Node_raw_pointer n2{_first.get()};
+    Queue(Queue&&) = default;
 
-            while (n1 != nullptr) {
-                n2->_item = n1->_item;
-                if (n1->_next != nullptr) {
-                    n2->_next = std::unique_ptr<Node_type>{};
-                } else {
-                    n2->_next = nullptr;
-                }
-                n1 = n1->_next.get();
-                n2 = n2->_next.get();
-            }
-        }
-    }
+    Queue& operator=(const Queue&) = default;
 
-    Queue(Queue&& s) : _first{std::move(s._first)}, _n{s._n} {}
+    Queue& operator=(Queue&&) = default;
+
+    Queue() : _first{nullptr}, _last{nullptr}, _size{0} {}
 
     ~Queue()
     {
-        _clear();
+        Raw_node_pointer n = _first;
+        while (n != nullptr) {
+            Raw_node_pointer tmp{n->_next};
+            delete n;
+            n = tmp;
+        }
     }
 
-    Queue& operator=(const Queue& rhs)
+    inline bool is_empty() const noexcept { return _first == nullptr; }
+
+    inline int size() const noexcept { return _size; }
+
+    Item peek() const
     {
-        _n = rhs._n;
-        if (!rhs.is_empty()) {
-            _first = std::unique_ptr<Node_type>{};
-            Node_raw_pointer n1{rhs._first.get()};
-            Node_raw_pointer n2{_first.get()};
-
-            while (n1 != nullptr) {
-                n2->_item = n1->_item;
-                if (n1->_next != nullptr) {
-                    n2->_next = std::unique_ptr<Node_type>{};
-                } else {
-                    n2->_next = nullptr;
-                }
-                n1 = n1->_next.get();
-                n2 = n2->_next.get();
-            }
-        }
-        return *this;
-    };
-
-    Queue& operator=(Queue&& rhs)
-    {
-        _first = std::move(rhs._first);
-        _n = rhs._n;
-        return *this;
-    }
-
-    inline bool is_empty() const { return _first == nullptr; }
-
-    inline int size() const { return _n; }
-
-    void enqueue(Value_type item)
-    {
-        if (is_empty()) {
-            _first = std::unique_ptr<Node_type>{new Queue_node<Value_type>};
-            _last = _first.get();
-        } else {
-            auto old_last = _last;
-            old_last->_next = std::unique_ptr<Node_type>{new Queue_node<Value_type>};
-            _last = old_last->_next.get();
-        }
-        _last->_item = item;
-        _last->_next = nullptr;
-        ++_n;
-    }
-
-    Value_type dequeue()
-    {
-        if (is_empty()) {
-            throw utility::No_such_element_exception("Queue underflow");
-        }
-        Value_type item = _first->_item;
-        _first = std::move(_first->_next);
-        --_n;
-        if (is_empty()) {
-            _first = nullptr;
-            _last = nullptr;
-        }
-        return item;
-    }
-
-    Value_type peek() const
-    {
-        if (is_empty()) {
-            throw utility::No_such_element_exception("Queue underflow");
-        }
+        if (is_empty()) { throw utility::No_such_element_exception{"Queue underflow"}; }
         return _first->_item;
     }
 
-    std::string to_string() const
+    void enqueue(Item& item)
+    {
+        Raw_node_pointer old_last = _last;
+        _last = new Queue_node<Item>;
+        _last->_item = item;
+        _last->_next = nullptr;
+        if (is_empty()) { _first = _last; }
+        else { old_last->_next = _last; }
+        ++_size;
+    }
+
+    Item dequeue()
+    {
+        if (is_empty()) { throw utility::No_such_element_exception{"Queue underflow"}; }
+        Item item{_first->_item};
+        Raw_node_pointer tmp{_first};
+        _first = _first->_next;
+        delete tmp;
+        --_size;
+        if (is_empty()) { _last = nullptr; }
+        return item;
+    }
+
+    std::string to_string()
     {
         std::stringstream ss;
         ss << "Queue(\n";
-        for (auto i : *this) {
-            ss << "    Node(" << i << "),\n";
+        for (auto item : *this) {
+            ss << "    " << item << "\n";
         }
-        ss << ")\n";
+        ss << ")";
         return ss.str();
     }
 
-    inline Iterator_type begin() const noexcept
-    {
-        return Iterator_type(_first.get());
-    }
+    inline Iterator_type begin() { return Queue_iterator<Item>{_first}; }
 
-    inline Iterator_type end() const noexcept
-    {
-        return Iterator_type(nullptr);
-    }
+    inline Iterator_type end() { return Queue_iterator<Item>{nullptr}; }
 
 private:
-    Node_owning_pointer _first;
-    Node_raw_pointer _last;
-    int _n;
-
-    void _clear() noexcept
-    {
-        _clear(_first);
-    }
-
-    void _clear(Node_owning_pointer& node) noexcept
-    {
-        if (node != nullptr) {
-            _clear(node->_next);
-            node.reset(nullptr);
-        }
-    }
+    Owning_node_pointer _first;
+    Raw_node_pointer _last;
+    int _size;
 };
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Queue<T>& out)
+std::ostream& operator<<(std::ostream& os, Queue<T>& out)
 {
     return os << out.to_string();
 }
 
-#endif // QUEUE_H
+#endif // COLLECTED_QUEUE_H

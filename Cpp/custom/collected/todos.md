@@ -66,3 +66,4 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix up index_file
 - fix up Adj_matrix_edge_weighted_digraph
 - fix up Floyd_warshall
+- declare in class definitions of operator== and operator!= friend

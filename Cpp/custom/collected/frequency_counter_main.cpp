@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     int distinct{0};
     int words{0};
     int min_length{utility::str_to_num(argv[1])};
-    Symbol_table<std::string, int> st{};
+    Symbol_table<std::string, int> st;
 
     while (!Std_in::is_empty()) {
         std::string key = Std_in::read_string();

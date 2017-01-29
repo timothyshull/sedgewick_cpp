@@ -10,24 +10,24 @@ class Gabow_scc {
 public:
     Gabow_scc(Digraph& G);
 
-    int count();
+    inline int count() const noexcept { return _count; }
 
-    bool stronglyCOnnected(int v, int w);
+    inline bool strongly_connected(int source, int dest) const { return _id[source] == _id[dest]; }
 
-    int id(int v);
+    inline int id(int vertex) const { return _id[vertex]; }
 
 private:
-    std::deque<bool> marked;
-    std::vector<int> id;
-    std::vector<int> preorder;
-    int pre;
-    int count;
-    Stack<int> stack1;
-    Stack<int> stack2;
+    std::deque<bool> _marked;
+    std::vector<int> _id;
+    std::vector<int> _preorder;
+    int _pre;
+    int _count;
+    Stack<int> _stack1;
+    Stack<int> _stack2;
 
-    void dfs(Digraph& G, int v);
+    void _dfs(Digraph& G, int v);
 
-    bool check(Digraph& G);
+    bool _check(Digraph& digraph);
 };
 
 #endif // GABOW_SCC_H

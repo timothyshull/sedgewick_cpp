@@ -3,32 +3,32 @@
 
 int main(int argc, char* argv[])
 {
-    Gaussian_elimination::test1();
-    Gaussian_elimination::test2();
-    Gaussian_elimination::test3();
-    Gaussian_elimination::test4();
-    Gaussian_elimination::test5();
-    Gaussian_elimination::test6();
-    Gaussian_elimination::test7();
-    Gaussian_elimination::test8();
-    Gaussian_elimination::test9();
+    Ge_tests::test1();
+    Ge_tests::test2();
+    Ge_tests::test3();
+    Ge_tests::test4();
+    Ge_tests::test5();
+    Ge_tests::test6();
+    Ge_tests::test7();
+    Ge_tests::test8();
+    Ge_tests::test9();
 
     int n{utility::str_to_num(argv[1])};
-    std::vector<std::vector<double>> A;
-    A.reserve(n);
+    std::vector<std::vector<double>> a;
+    a.reserve(static_cast<std::vector<double>::size_type>(n));
     for (int i{0}; i < n; ++i) {
-        A[i] = std::vector<double>{};
-        A[i].reserve(n);
+        a[i] = std::vector<double>{};
+        a[i].reserve(static_cast<std::vector<double>::size_type>(n));
         for (int j{0}; j < n; ++j) {
-            A[i][j] = Std_random::uniform(1000);
+            a[i][j] = Std_random::uniform(1000);
         }
     }
     std::vector<double> b;
-    b.reserve(n);
+    b.reserve(static_cast<std::vector<double>::size_type>(n));
     for (int i{0}; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
     }
 
-    Gaussian_elimination::test(n + "-by-" + n + " (probably nonsingular)", A, b);
+    Ge_tests::test(std::string{std::to_string(n) + "-by-" + std::to_string(n) + " (probably nonsingular)"}, a, b);
     return 0;
 }

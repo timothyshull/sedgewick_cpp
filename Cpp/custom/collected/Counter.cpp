@@ -3,7 +3,7 @@
 std::string Counter::to_string() const
 {
     std::stringstream ss;
-    ss << "Counter(count: " << _count << ", name: " << _name << ")";
+    ss << "Counter(_count: " << _count << ", name: " << _name << ")";
     return ss.str();
 }
 

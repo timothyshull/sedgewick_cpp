@@ -6,44 +6,58 @@
 namespace Graph_generator {
     class Edge {
     public:
+        Edge() = default;
+
+        Edge(const Edge&) = default;
+
+        Edge(Edge&&) = default;
+
+        Edge(const Edge&) = default;
+
+        ~Edge() = default;
+
+        Edge& operator=(const Edge&) = default;
+
+        Edge& operator=(Edge&&) = default;
+
         Edge(int v, int w);
 
         bool operator<(Edge& rhs);
 
     private:
-        int v;
-        int w;
+        int _v;
+        int _w;
     };
 
-    Graph simple(int V, int E);
+    Graph simple(int num_vertices, int num_edges);
 
-    Graph simple(int V, double p);
+    Graph simple(int num_vertices, double probability);
 
-    Graph complete(int V);
+    Graph complete(int num_vertices);
 
-    Graph complete_bipartite(int V1, int V2);
+    Graph complete_bipartite(int v1, int v2);
 
-    Graph bipartite(int V1, int V2, int E);
+    Graph bipartite(int v1, int v2, int num_edges);
 
-    Graph bipartite(int V1, int V2, double p);
+    Graph bipartite(int v1, int v2, double probability);
 
-    Graph path(int V);
+    Graph path(int num_vertices);
 
-    Graph binary_tree(int V);
+    Graph binary_tree(int num_vertices);
 
-    Graph cycle(int V);
+    Graph cycle(int num_vertices);
 
-    Graph eulerian_cycle(int V, int E);
+    Graph eulerian_cycle(int num_vertices, int num_edges);
 
-    Graph eulerian_path(int V, int E);
+    Graph eulerian_path(int num_vertices, int num_edges);
 
-    Graph wheel(int V);
+    Graph wheel(int num_vertices);
 
     Graph star(int V);
 
-    Graph regular(int V, int k);
+    Graph regular(int num_vertices, int k);
 
-    Graph tree(int V);
+    Graph tree(int num_vertices);
 };
 
 #endif // GRAPH_GENERATOR_H

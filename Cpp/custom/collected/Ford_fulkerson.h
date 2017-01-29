@@ -9,27 +9,27 @@
 
 class Ford_fulkerson {
 public:
-    Ford_fulkerson(Flow_network& G, int s, int t);
+    Ford_fulkerson(Flow_network& network, int source, int dest);
 
-    double value();
+    inline double value() const noexcept { return _value; }
 
-    bool inCut(int v);
+    bool in_cut(int vertex);
 
 private:
-    static const double FLOATING_POINT_EPSILON = std::numeric_limits<float>::epsilon();
-    std::deque<bool> marked;
-    std::vector<Flow_edge> edgeTo;
-    double value;
+    static const double floating_point_epsilon = std::numeric_limits<float>::epsilon();
+    std::deque<bool> _marked;
+    std::vector<Flow_edge> _edge_to;
+    double _value;
 
-    void validate(int v, int V);
+    void _validate(int vertex, int num_vertices);
 
-    bool hasAugmentingPath(Flow_network& G, int s, int t);
+    bool _has_augmenting_path(Flow_network& network, int source, int dest);
 
-    double excess(Flow_network& G, int v);
+    double _excess(Flow_network& network, int vertex);
 
-    bool isFeasible(Flow_network& G, int s, int t);
+    bool _is_feasible(Flow_network& network, int source, int dest);
 
-    bool check(Flow_network& G, int s, int t);
+    bool _check(Flow_network& G, int s, int t);
 };
 
 #endif // FORD_FULKERSON_H

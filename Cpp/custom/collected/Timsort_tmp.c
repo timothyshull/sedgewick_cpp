@@ -2757,7 +2757,7 @@ PyDoc_STRVAR(index_doc,
 
 PyDoc_STRVAR(count_doc,
 
-             "L.count(value) -> integer -- return number of occurrences of value");
+             "L._count(value) -> integer -- return number of occurrences of value");
 
 PyDoc_STRVAR(reverse_doc,
 
@@ -2780,7 +2780,7 @@ static PyMethodDef list_methods[] = {
         {"pop",          (PyCFunction) listpop,        METH_VARARGS, pop_doc},
         {"remove",       (PyCFunction) listremove,     METH_O,       remove_doc},
         {"index",        (PyCFunction) listindex,      METH_VARARGS, index_doc},
-        {"count",        (PyCFunction) listcount,      METH_O,       count_doc},
+        {"_count",        (PyCFunction) listcount,      METH_O,       count_doc},
         {"reverse",      (PyCFunction) listreverse,    METH_NOARGS,  reverse_doc},
         {"sort",         (PyCFunction) listsort,       METH_VARARGS | METH_KEYWORDS, sort_doc},
         {NULL, NULL}        /* sentinel */

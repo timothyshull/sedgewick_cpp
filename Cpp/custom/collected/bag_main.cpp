@@ -8,17 +8,16 @@
 int main()
 {
     Bag<std::string> bag;
-    std::vector<std::string> vs = Std_in::read_all_strings();
-    for (auto s : vs) {
-        bag.add(s);
+    std::string item;
+    while (!Std_in::is_empty()) {
+        item = Std_in::read_string();
+        bag.add(item);
     }
 
-    Std_out::printf("The size of the bag is: %d", bag.size());
+    Std_out::print_line("size of bag = " + std::to_string(bag.size()));
     for (auto s : bag) {
         Std_out::print_line(s);
     }
-
-    // Std_out::print_line(bag);
 
     return 0;
 }

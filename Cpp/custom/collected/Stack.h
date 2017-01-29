@@ -1,7 +1,7 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef COLLECTED_STACK_H
+#define COLLECTED_STACK_H
 
-#include <memory>
+#include <iterator>
 #include <sstream>
 
 #include "utility.h"
@@ -16,72 +16,69 @@ template<typename T>
 class Stack;
 
 template<typename T>
-struct Stack_node_pointer_traits {
-    using Node_type = Stack_node<T>;
-    using Node_raw_pointer = Stack_node<T>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Value_type = T;
-    using Shared_value_pointer = std::shared_ptr<Value_type>;
-};
-
-template<typename T>
 class Stack_node {
 public:
-    using Node_traits = Stack_node_pointer_traits<T>;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Value_type = typename Node_traits::Value_type;
-    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
-
+    using Node = Stack_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
 private:
-    Value_type _item;
-    Node_owning_pointer _next;
-
-    template<typename>
-    friend class Stack;
+    Item _item;
+    Owning_node_pointer _next;
 
     template<typename>
     friend class Stack_iterator;
+
+    template<typename>
+    friend class Stack;
 };
 
 template<typename T>
 class Stack_iterator {
 public:
-    using Node_traits = Stack_node_pointer_traits<T>;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-
-private:
-    Node_raw_pointer _ptr;
-
-    template<typename>
-    friend class Stack;
-
-public:
     using iterator_category = std::forward_iterator_tag;
-    using Value_type = typename Node_traits::Value_type;
-    using Reference_type = Value_type&;
+    using Node = Stack_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
 
-    inline Stack_iterator() noexcept : _ptr{nullptr} {}
+    Stack_iterator() = default;
 
-    inline explicit Stack_iterator(Node_raw_pointer p) noexcept : _ptr{p} {}
+    Stack_iterator(const Stack_iterator&) = default;
 
-    inline Reference_type operator*() const
+    Stack_iterator(Stack_iterator&&) = default;
+
+    ~Stack_iterator() = default;
+
+    Stack_iterator& operator=(const Stack_iterator&) = default;
+
+    Stack_iterator& operator=(Stack_iterator&&) = default;
+
+    Stack_iterator(Raw_node_pointer first) : _current{first} {}
+
+    inline bool has_next() const noexcept { return _current != nullptr; }
+
+    Item next()
     {
-        return _ptr->_item;
+        if (!has_next()) { throw utility::No_such_element_exception{""}; }
+        Item item = _current->_item;
+        _current = _current->_next;
+        return item;
     }
 
-    inline Node_raw_pointer operator->() const
-    {
-        return _ptr;
-    }
+    inline Item operator*() const { return _current->_item; }
 
-    inline Stack_iterator& operator++()
+    inline Raw_node_pointer operator->() const { return _current; }
+
+    Stack_iterator& operator++()
     {
-        _ptr = _ptr->_next.get();
+        if (has_next()) {
+            _current = _current->_next;
+        }
         return *this;
     }
 
-    inline Stack_iterator operator++(int)
+    Stack_iterator operator++(int)
     {
         Stack_iterator t{*this};
         ++(*this);
@@ -89,162 +86,98 @@ public:
     }
 
     friend
-    inline bool operator==(const Stack_iterator& x, const Stack_iterator& y)
-    {
-        return x._ptr == y._ptr;
-    }
+    inline bool operator==(const Stack_iterator& lhs, const Stack_iterator& rhs) { return lhs._current == rhs._current; }
 
     friend
-    inline bool operator!=(const Stack_iterator& x, const Stack_iterator& y) { return !(x == y); }
+    inline bool operator!=(const Stack_iterator& lhs, const Stack_iterator& rhs) { return !(lhs == rhs); }
+
+private:
+    Raw_node_pointer _current;
 };
 
 template<typename T>
 class Stack {
 public:
-    using Node_traits = Stack_node_pointer_traits<T>;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Value_type = typename Node_traits::Value_type;
-    using Pointer_type = Value_type*;
-    using Reference_type = Value_type&;
-    using Shared_value_pointer = typename Node_traits::Shared_value_pointer;
+    using Node = Stack_node<T>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Item = T;
     using Iterator_type = Stack_iterator<T>;
-    using Const_iterator_type = Stack_iterator<T>;
 
-    Stack() = default;
+    Stack(const Stack&) = default;
 
-    Stack(const Stack& s) : _n{s._n}
-    {
-        if (!s.is_empty()) {
-            _first = std::unique_ptr<Node_type>{};
-            Node_raw_pointer n1{s._first.get()};
-            Node_raw_pointer n2{_first.get()};
+    Stack(Stack&&) = default;
 
-            while (n1 != nullptr) {
-                n2->_item = n1->_item;
-                if (n1->_next != nullptr) {
-                    n2->_next = std::unique_ptr<Node_type>{};
-                } else {
-                    n2->_next = nullptr;
-                }
-                n1 = n1->_next.get();
-                n2 = n2->_next.get();
-            }
-        }
-    }
+    Stack& operator=(const Stack&) = default;
 
-    Stack(Stack&& s) : _first{std::move(s._first)}, _n{s._n} {}
+    Stack& operator=(Stack&&) = default;
+
+    Stack() : _first{nullptr}, _size{0} {}
 
     ~Stack()
     {
-        _clear();
-    }
-
-    Stack& operator=(const Stack& rhs)
-    {
-        _n = rhs._n;
-        if (!rhs.is_empty()) {
-            _first = std::unique_ptr<Node_type>{};
-            Node_raw_pointer n1{rhs._first.get()};
-            Node_raw_pointer n2{_first.get()};
-
-            while (n1 != nullptr) {
-                n2->_item = n1->_item;
-                if (n1->_next != nullptr) {
-                    n2->_next = std::unique_ptr<Node_type>{};
-                } else {
-                    n2->_next = nullptr;
-                }
-                n1 = n1->_next.get();
-                n2 = n2->_next.get();
-            }
+        Raw_node_pointer n{_first};
+        while (n != nullptr) {
+            Raw_node_pointer tmp{n->_next};
+            delete n;
+            n = tmp;
         }
-        return *this;
-    };
-
-    Stack& operator=(Stack&& rhs)
-    {
-        _first = std::move(rhs._first);
-        _n = rhs._n;
-        return *this;
     }
 
-    inline bool is_empty() const { return _first == nullptr; }
+    inline bool is_empty() const noexcept { return _first == nullptr; }
 
-    inline int size() const { return _n; }
+    inline int size() const noexcept { return _size; }
 
-    void push(Reference_type item)
+    void push(Item& item)
     {
-        auto old_first = std::move(_first);
-        _first = std::unique_ptr<Node_type>{new Stack_node<Value_type>};
+        Raw_node_pointer old_first{_first};
+        _first = new Stack_node<Item>;
         _first->_item = item;
-        _first->_next = std::move(old_first);
-        ++_n;
+        _first->_next = old_first;
+        ++_size;
     }
 
-    Value_type pop()
+    Item pop()
     {
-        if (is_empty()) {
-            throw utility::No_such_element_exception("Stack underflow");
-        }
-        Value_type item = _first->_item;
-        _first = std::move(_first->_next);
-        --_n;
+        if (is_empty()) { throw utility::No_such_element_exception{"Stack underflow"}; }
+        Item item = _first->_item;
+        Raw_node_pointer tmp{_first};
+        _first = _first->_next;
+        delete tmp;
+        --_size;
         return item;
     }
 
-    Value_type peek() const
+    Item peek() const
     {
-        if (is_empty()) {
-            throw utility::No_such_element_exception("Stack underflow");
-        }
+        if (is_empty()) { throw utility::No_such_element_exception{"Stack underflow"}; }
         return _first->_item;
     }
 
-    std::string to_string() const
+    std::string to_string()
     {
         std::stringstream ss;
         ss << "Stack(\n";
-        for (auto i : *this) {
-            ss << "    Node(" << i << "),\n";
+        for (auto item : *this) {
+            ss << "    " << item << "\n";
         }
-        ss << ")\n";
+        ss << ")";
         return ss.str();
     }
 
-    inline Iterator_type begin() const noexcept
-    {
-        return Iterator_type(_first.get());
-    }
+    inline Iterator_type begin() { return Stack_iterator<Item>{_first}; }
 
-    inline Iterator_type end() const noexcept
-    {
-        return Iterator_type(nullptr);
-    }
+    inline Iterator_type end() { return Stack_iterator<Item>{nullptr}; }
 
 private:
-    Node_owning_pointer _first;
-    int _n;
-
-    void _clear() noexcept
-    {
-        _clear(_first);
-    }
-
-    void _clear(Node_owning_pointer& node) noexcept
-    {
-        if (node != nullptr) {
-            _clear(node->_next);
-            node.reset(nullptr);
-        }
-    }
+    Owning_node_pointer _first;
+    int _size;
 };
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Stack<T>& out)
+inline std::ostream& operator<<(std::ostream& os, Stack<T>& out)
 {
     return os << out.to_string();
 }
 
-#endif // STACK_H
+#endif // COLLECTED_STACK_H

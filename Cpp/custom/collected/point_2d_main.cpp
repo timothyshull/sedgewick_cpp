@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
     Std_draw::set_pen_radius();
     Std_draw::set_pen_color(Std_draw::blue);
-    std::sort(points.begin(), points.end(), Point_2d::polarOrder());
+    std::sort(points.begin(), points.end(), Point_2d::polar_order());
     for (int i{0}; i < n; ++i) {
         p.draw_to(points[i]);
         Std_draw::show();

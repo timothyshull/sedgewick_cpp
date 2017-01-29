@@ -15,16 +15,17 @@ int main(int argc, char* argv[])
 
     Std_out::printf("Number of edges _in max matching        = %d\n", matching.size());
     Std_out::printf("Number of vertices _in min vertex cover = %d\n", matching.size());
-    Std_out::printf("Graph has a perfect matching           = %b\n", matching.is_perfect());
+    Std_out::printf("Graph has a perfect matching           = %d\n", matching.is_perfect());
     Std_out::print_line();
 
     if (graph.num_vertices() >= 1000) { std::exit(-1); }
 
     Std_out::print("Max matching: ");
+    int w;
     for (int v{0}; v < graph.num_vertices(); ++v) {
-        int w = matching._mate(v);
+        w = matching.mate(v);
         if (matching.is_matched(v) && v < w) {
-            Std_out::print(v + "-" + w + " ");
+            Std_out::print(std::to_string(v) + "-" + std::to_string(w) + " ");
         }
     }
     Std_out::print_line();

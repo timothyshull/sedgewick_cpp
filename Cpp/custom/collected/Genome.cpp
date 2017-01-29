@@ -1,28 +1,29 @@
 #include "Genome.h"
+#include "Binary_std_out.h"
+#include "Binary_std_in.h"
+#include "Alphabet.h"
 
-void ::Genome::compress()
+void Genome::compress()
 {
-    Alphabet DNA = Alphabet.DNA;
-    std::string s = Binary_std_in::read_string();
-    int n = s.length();
+    Alphabet dna{Alphabets::dna};
+    std::string s{Binary_std_in::read_string()};
+    auto n = s.size();
     Binary_std_out::write(n);
 
-    // Write two-bit code for char.
     for (int i{0}; i < n; ++i) {
-        int d = DNA.toIndex(s.charAt(i));
+        int d{dna.to_index(s[i])};
         Binary_std_out::write(d, 2);
     }
     Binary_std_out::close();
 }
 
-void ::Genome::expand()
+void Genome::expand()
 {
-    Alphabet DNA = Alphabet.DNA;
-    int n = Binary_std_in::read_int();
-    // Read two bits; write char.
+    Alphabet dna{Alphabets::dna};
+    int n{Binary_std_in::read_int()};
     for (int i{0}; i < n; ++i) {
-        char c = Binary_std_in::read_char(2);
-        Binary_std_out::write(DNA.toChar(c), 8);
+        char c{Binary_std_in::read_char(2)};
+        Binary_std_out::write(dna.to_char(c), 8);
     }
     Binary_std_out::close();
 }

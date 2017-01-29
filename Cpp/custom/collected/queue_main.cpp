@@ -5,17 +5,15 @@
 int main()
 {
     Queue<std::string> queue;
-
-    std::vector<std::string> v = Std_in::read_all_strings();
-
-    for (auto s : v) {
-        if (s != "-") {
-            queue.enqueue(s);
+    std::string item;
+    while (!Std_in::is_empty()) {
+        item = Std_in::read_string();
+        if (item != "-") {
+            queue.enqueue(item);
         } else if (!queue.is_empty()) {
             Std_out::print(queue.dequeue() + " ");
         }
     }
-    Std_out::print_line(queue);
-    Std_out::printf("(%d left on _queue)", queue.size());
+    Std_out::print_line("(" + std::to_string(queue.size()) + " left on queue)");
     return 0;
 }

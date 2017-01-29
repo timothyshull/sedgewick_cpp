@@ -7,26 +7,28 @@
 #include "Edge.h"
 #include "Index_min_pq.h"
 #include "Edge_weighted_graph.h"
+#include "Queue.h"
 
 class Prim_mst {
 public:
-    Prim_mst(Edge_weighted_graph& G);
+    Prim_mst(Edge_weighted_graph& graph);
 
-    std::vector<Edge> edges();
+    Queue<Edge> edges();
 
     double weight();
+
 private:
-    const static double FLOATING_POINT_EPSILON = std::numeric_limits<double>::epsilon();
-    std::vector<Edge> edgeTo;
-    std::vector<double> distance_to;
-    std::deque<bool> marked;
-    Index_min_pq<double> pq;
+    const static double floating_point_epsilon = std::numeric_limits<double>::epsilon();
+    std::vector<Edge> _edge_to;
+    std::vector<double> _distance_to;
+    std::deque<bool> _marked;
+    Index_min_pq<double> _pq;
 
-    void prim(Edge_weighted_graph& G, int s);
+    void _prim(Edge_weighted_graph& graph, int source);
 
-    void scan(Edge_weighted_graph& G, int v);
+    void _scan(Edge_weighted_graph& graph, int vertex);
 
-    bool check(Edge_weighted_graph& G);
+    bool _check(Edge_weighted_graph& graph);
 };
 
 #endif // PRIM_MST_H

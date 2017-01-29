@@ -1,27 +1,29 @@
 #include "Prim_mst.h"
+#include "Union_find.h"
 
-Prim_mst::Prim_mst(Edge_weighted_graph& G)
+Prim_mst::Prim_mst(Edge_weighted_graph& graph)
+: _edge_to(static_cast<std::vector<Edge>::size_type>(graph.num_vertices())),
+  _distance_to(static_cast<std::vector<double>::size_type>(graph.num_vertices())),
+  _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+  _pq{graph.num_vertices()}
 {
-    edgeTo = new Edge[G.num_vertices()];
-    distance_to = new double[G.num_vertices()];
-    marked = new boolean[G.num_vertices()];
-    pq = new IndexMinPQ<Double>(G.num_vertices());
-    for (int v{0}; v < G.num_vertices(); ++v)
-        distance_to[v] = Double.POSITIVE_INFINITY;
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        _distance_to[v] = std::numeric_limits<double>::infinity();
+    }
 
-    for (int v{0}; v < G.num_vertices(); ++v)      // run from each vertex to find
-        if (!marked[v]) prim(G, v);      // minimum spanning forest
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        if (!_marked[v]) { _prim(graph, v); }
+    }
 
-    // _check optimality conditions
-    assert check(G);
+    utility::alg_assert(_check(graph), "Prim_mst check failed after construction");
 }
 
-std::vector<Edge> Prim_mst::edges()
+Queue<Edge> Prim_mst::edges()
 {
-    Queue<Edge> mst = new Queue<Edge>();
-    for (int v{0}; v < edgeTo.length; ++v) {
-        Edge e = edgeTo[v];
-        if (e != null) {
+    Queue <Edge> mst;
+    for (int v{0}; v < _edge_to.size(); ++v) {
+        Edge e = _edge_to[v];
+        if (e != nullptr) {
             mst.enqueue(e);
         }
     }
@@ -30,84 +32,88 @@ std::vector<Edge> Prim_mst::edges()
 
 double Prim_mst::weight()
 {
-    double weight = 0.0;
-    for (Edge e : edges())
-        weight += e._weight();
+    double weight{0.0};
+    for (auto e : edges()) {
+        weight += e.weight();
+    }
     return weight;
 }
 
-void Prim_mst::prim(Edge_weighted_graph& G, int s)
+void Prim_mst::_prim(Edge_weighted_graph& graph, int source)
 {
-    distance_to[s] = 0.0;
-    pq.insert(s, distance_to[s]);
-    while (!pq.is_empty()) {
-        int v = pq.delMin();
-        scan(G, v);
+    _distance_to[source] = 0.0;
+    _pq.insert(source, _distance_to[source]);
+    int v;
+    while (!_pq.is_empty()) {
+        v = _pq.delMin();
+        _scan(graph, v);
     }
 }
 
-void Prim_mst::scan(Edge_weighted_graph& G, int v)
+void Prim_mst::_scan(Edge_weighted_graph& graph, int vertex)
 {
-    marked[v] = true;
-    for (Edge e : G._adjacency_lists(v)) {
-        int w = e.other(v);
-        if (marked[w]) continue;         // v-w is obsolete edge
-        if (e._weight() < distance_to[w]) {
-            distance_to[w] = e._weight();
-            edgeTo[w] = e;
-            if (pq.contains(w)) pq.decreaseKey(w, distance_to[w]);
-            else pq.insert(w, distance_to[w]);
+    _marked[vertex] = true;
+    for (auto e : graph.adjacent(vertex)) {
+        int w = e.other(vertex);
+        if (_marked[w]) { continue; }
+        if (e.weight() < _distance_to[w]) {
+            _distance_to[w] = e.weight();
+            _edge_to[w] = e;
+            if (_pq.contains(w)) _pq.decreaseKey(w, _distance_to[w]);
+            else _pq.insert(w, _distance_to[w]);
         }
     }
 }
 
-bool Prim_mst::check(Edge_weighted_graph& G)
+bool Prim_mst::_check(Edge_weighted_graph& graph)
 {
-    double totalWeight = 0.0;
-    for (Edge e : edges()) {
-        totalWeight += e._weight();
+    double total_weight{0.0};
+    for (auto e : edges()) {
+        total_weight += e.weight();
     }
-    if (std::abs(totalWeight - weight()) > FLOATING_POINT_EPSILON) {
-        std::cerr << "Weight of edges does not equal weight(): %f vs. %f\n", totalWeight, weight();
+    if (std::abs(total_weight - weight()) > floating_point_epsilon) {
+        std::cerr << "Weight of edges does not equal weight(): "<< total_weight << " vs. " << weight() << "\n";
         return false;
     }
 
-    // _check that it is acyclic
-    UF uf = new UF(G.num_vertices());
-    for (Edge e : edges()) {
-        int v = e.either(), w = e.other(v);
+    Union_find uf{graph.num_vertices()};
+    int v;
+    int w;
+    for (auto e : edges()) {
+        v = e.either();
+        w = e.other(v);
         if (uf.connected(v, w)) {
             std::cerr << "Not a forest";
             return false;
         }
-        uf.union(v, w);
+        uf.create_union(v, w);
     }
 
-    // _check that it is a spanning forest
-    for (Edge e : G.edges()) {
-        int v = e.either(), w = e.other(v);
+    for (auto e : graph.edges()) {
+        v = e.either();
+        w = e.other(v);
         if (!uf.connected(v, w)) {
             std::cerr << "Not a spanning forest";
             return false;
         }
     }
 
-    // _check that it is a minimal spanning forest (cut optimality conditions)
-    for (Edge e : edges()) {
-
-        // all edges _in MST except e
-        uf = new UF(G.num_vertices());
-        for (Edge f : edges()) {
-            int x = f.either(), y = f.other(x);
-            if (f != e) uf.union(x, y);
+    int x;
+    int y;
+    for (auto e : edges()) {
+        uf = Union_find{graph.num_vertices()};
+        for (auto f : edges()) {
+            x = f.either();
+            y = f.other(x);
+            if (f != e) { uf.create_union(x, y); }
         }
 
-        // _check that e is min weight edge _in crossing cut
-        for (Edge f : G.edges()) {
-            int x = f.either(), y = f.other(x);
+        for (auto f : graph.edges()) {
+            x = f.either();
+            y = f.other(x);
             if (!uf.connected(x, y)) {
-                if (f._weight() < e._weight()) {
-                    std::cerr << "Edge " + f + " violates cut optimality conditions";
+                if (f.weight() < e.weight()) {
+                    std::cerr << "Edge " << f << " violates cut optimality conditions";
                     return false;
                 }
             }

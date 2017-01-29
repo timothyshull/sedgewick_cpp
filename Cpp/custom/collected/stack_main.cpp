@@ -5,16 +5,15 @@
 int main()
 {
     Stack<std::string> stack;
-
-    std::vector<std::string> v = Std_in::read_all_strings();
-
-    for (auto s : v) {
-        if (s != "-") {
-            stack.push(s);
+    std::string item;
+    while (!Std_in::is_empty()) {
+        item = Std_in::read_string();
+        if (item != "-") {
+            stack.push(item);
         } else if (!stack.is_empty()) {
             Std_out::print(stack.pop() + " ");
         }
     }
-    Std_out::printf("(%d left on stack)", stack.size());
+    Std_out::print_line("(" + std::to_string(stack.size()) + " left on stack)");
     return 0;
 }

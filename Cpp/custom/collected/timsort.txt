@@ -68,7 +68,7 @@ Comparison with Python's Samplesort Hybrid
   them, and trivial for timsort because it naturally works on runs.  Within
   an "_size" block, the first line gives the # of compares done by samplesort,
   the second line by timsort, and the third line is the percentage by
-  which the samplesort count exceeds the timsort count:
+  which the samplesort _count exceeds the timsort _count:
 
       _size   \sort   /sort   =sort
 -------  ------  ------  ------
@@ -175,7 +175,7 @@ Comparison with Python's Samplesort Hybrid
   _in samplesort.
 
   But timsort "should be" slower than samplesort on ~sort, so it's hard
-  to count that it isn't on some boxes as a strike against it <wink>.
+  to _count that it isn't on some boxes as a strike against it <wink>.
 
 + Here's the highwater mark for the number of heap-based temp slots (4
   bytes each on this box) needed by each test, again with arguments
@@ -430,7 +430,7 @@ else moving A[0] to the merge area.  Call that the "one pair at a time"
 mode.  The only twist here is keeping track of how many times _in a row "the
 winner" comes from the same run.
 
-If that count reaches _initial_min_gallop, we switch to "galloping mode".  Here
+If that _count reaches _initial_min_gallop, we switch to "galloping mode".  Here
 we *search* B for where A[0] belongs, and move over all the B's before
 that point _in one chunk to the merge area, then move A[0] to the merge
 area.  Then we search A for where B[0] belongs, and similarly move a
@@ -627,7 +627,7 @@ format = "%5s  %9.2f  %11d"
 f2     = "%5s  %9.2f  %11.2f"
 
 def drive():
-    count = sst = sscmp = mst = mscmp = nelts = 0
+    _count = sst = sscmp = mst = mscmp = nelts = 0
     while True:
         _size = random.randrange(100000)
         nelts += _size
@@ -641,11 +641,11 @@ def drive():
         mst += t
         mscmp += _comparator
 
-        count += 1
-        if count % 10:
+        _count += 1
+        if _count % 10:
             continue
 
-        print "count", count, "nelts", nelts
+        print "_count", _count, "nelts", nelts
         print format % ("sort",  sst, sscmp)
         print format % ("msort", mst, mscmp)
         print f2     % ("", (sst-mst)*1e2/mst, (sscmp-mscmp)*1e2/mscmp)
@@ -659,7 +659,7 @@ microsecond resolution.  samplesort started with a 1.52% #-of-comparisons
 disadvantage, fell quickly to 1.48%, and then fluctuated within that small
 range.  Here's the last chunk of output before I killed the job:
 
-count 2630 nelts 130906543
+_count 2630 nelts 130906543
  sort    6110.80   1937887573
 msort    6002.78   1909389381
             1.80         1.49

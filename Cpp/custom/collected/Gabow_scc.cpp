@@ -1,72 +1,56 @@
 #include "Gabow_scc.h"
+#include "Transitive_closure.h"
 
 Gabow_scc::Gabow_scc(Digraph& G)
+        : _marked(static_cast<std::deque<bool>::size_type>(G.num_vertices())),
+          _stack1{},
+          _stack2{},
+          _id(static_cast<std::vector<int>::size_type>(G.num_vertices())),
+          _preorder(static_cast<std::vector<int>::size_type>(G.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    stack1 = new Stack<Integer>();
-    stack2 = new Stack<Integer>();
-    id = new int[G.num_vertices()];
-    preorder = new int[G.num_vertices()];
     for (int v{0}; v < G.num_vertices(); ++v) {
-        id[v] = -1;
+        _id[v] = -1;
     }
 
     for (int v{0}; v < G.num_vertices(); ++v) {
-        if (!marked[v]) { dfs(G, v); }
+        if (!_marked[v]) { _dfs(G, v); }
     }
 
-    // _check that id[] gives strong components
-    assert check(G);
+    utility::alg_assert(_check(G), "Gabow_scc invariant check failed after construction");
 }
 
-int Gabow_scc::count()
+void Gabow_scc::_dfs(Digraph& G, int v)
 {
-    return count;
-}
-
-bool Gabow_scc::stronglyCOnnected(int v, int w)
-{
-    return id[v] == id[w];
-}
-
-int Gabow_scc::id(int v)
-{
-    return id[v];
-}
-
-void Gabow_scc::dfs(Digraph& G, int v)
-{
-    marked[v] = true;
-    preorder[v] = ++pre;
-    stack1.push(v);
-    stack2.push(v);
-    for (int w : G.adj(v)) {
-        if (!marked[w]) { dfs(G, w); }
-        else if (id[w] == -1) {
-            while (preorder[stack2.peek()] > preorder[w]) {
-                stack2.pop();
+    _marked[v] = true;
+    _preorder[v] = ++_pre;
+    _stack1.push(v);
+    _stack2.push(v);
+    for (int w : G.adjacent(v)) {
+        if (!_marked[w]) { _dfs(G, w); }
+        else if (_id[w] == -1) {
+            while (_preorder[_stack2.peek()] > _preorder[w]) {
+                _stack2.pop();
             }
         }
     }
 
-    // found strong component containing v
-    if (stack2.peek() == v) {
-        stack2.pop();
+    if (_stack2.peek() == v) {
+        _stack2.pop();
         int w;
         do {
-            w = stack1.pop();
-            id[w] = count;
+            w = _stack1.pop();
+            _id[w] = _count;
         } while (w != v);
-        ++count;
+        ++_count;
     }
 }
 
-bool Gabow_scc::check(Digraph& G)
+bool Gabow_scc::_check(Digraph& digraph)
 {
-    TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (int w{0}; w < G.num_vertices(); ++w) {
-            if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
+    Transitive_closure tc{digraph};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (int w{0}; w < digraph.num_vertices(); ++w) {
+            if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }
         }

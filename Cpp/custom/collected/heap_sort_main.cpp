@@ -1,6 +1,5 @@
 #include "Heap_sort.h"
 #include "Std_in.h"
-#include "Std_out.h"
 #include "utility.h"
 
 int main()
