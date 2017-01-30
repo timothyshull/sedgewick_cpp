@@ -5,12 +5,12 @@
 
 class Transitive_closure {
 public:
-    Transitive_closure(Digraph& G);
+    Transitive_closure(Digraph& digraph);
 
-    bool reachable(int v, int w);
+    inline bool reachable(int v, int w) const { return _tc[v].marked(w); }
 
 private:
-    std::vector<Directed_dfs> tc;
+    std::vector<Directed_dfs> _tc;
 };
 
 #endif // TRANSITIVE_CLOSURE_H

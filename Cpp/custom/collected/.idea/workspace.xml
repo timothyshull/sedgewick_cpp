@@ -24,8 +24,8 @@
       <config projectName="collected" targetName="multiway_merge_main_automoc" />
       <config projectName="collected" targetName="binary_std_in_main" />
       <config projectName="collected" targetName="breadth_first_paths_main" />
-      <config projectName="collected" targetName="doubling_test_main.cpp" />
       <config projectName="collected" targetName="dijkstra_all_pairs_sp_main" />
+      <config projectName="collected" targetName="doubling_test_main.cpp" />
       <config projectName="collected" targetName="cycle_main.cpp" />
       <config projectName="collected" targetName="std_in_main_automoc" />
       <config projectName="collected" targetName="msd_radix_sort_main" />
@@ -58,8 +58,8 @@
       <config projectName="collected" targetName="separate_chaining_hash_st_main_automoc" />
       <config projectName="collected" targetName="std_array_io_main_automoc" />
       <config projectName="collected" targetName="arbitrage_main" />
-      <config projectName="collected" targetName="weighted_quick_union_uf_main_automoc" />
       <config projectName="collected" targetName="gaussian_elimination_main.cpp" />
+      <config projectName="collected" targetName="weighted_quick_union_uf_main_automoc" />
       <config projectName="collected" targetName="eulerian_path_main_automoc" />
       <config projectName="collected" targetName="knuth_shuffle_main" />
       <config projectName="collected" targetName="random_seq_main.cpp" />
@@ -75,8 +75,8 @@
       <config projectName="collected" targetName="draw_main.cpp" />
       <config projectName="collected" targetName="directed_eulerian_path_main.cpp" />
       <config projectName="collected" targetName="quick_union_uf_main" />
-      <config projectName="collected" targetName="directed_dfs_main" />
       <config projectName="collected" targetName="picture_dump_main.cpp" />
+      <config projectName="collected" targetName="directed_dfs_main" />
       <config projectName="collected" targetName="fibonacci_min_pq_main" />
       <config projectName="collected" targetName="acyclic_lp_main" />
       <config projectName="collected" targetName="trie_st_main" />
@@ -91,8 +91,8 @@
       <config projectName="collected" targetName="stack_main_automoc" />
       <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main" />
       <config projectName="collected" targetName="std_random_main.cpp" />
-      <config projectName="collected" targetName="patricia_set_main" />
       <config projectName="collected" targetName="rect_hv_main_automoc" />
+      <config projectName="collected" targetName="patricia_set_main" />
       <config projectName="collected" targetName="floyd_warshall_main" />
       <config projectName="collected" targetName="digraph_main_automoc" />
       <config projectName="collected" targetName="dijkstra_sp_main" />
@@ -104,8 +104,8 @@
       <config projectName="collected" targetName="queue_main_automoc" />
       <config projectName="collected" targetName="binary_std_in_main.cpp" />
       <config projectName="collected" targetName="mergesort_bu_main" />
-      <config projectName="collected" targetName="two_person_zero_sum_game_main.cpp" />
       <config projectName="collected" targetName="cat_main" />
+      <config projectName="collected" targetName="two_person_zero_sum_game_main.cpp" />
       <config projectName="collected" targetName="top_m_main" />
       <config projectName="collected" targetName="linked_bag_main_automoc" />
       <config projectName="collected" targetName="transitive_closure_main" />
@@ -119,8 +119,8 @@
       <config projectName="collected" targetName="date_main" />
       <config projectName="collected" targetName="resizing_array_queue_main" />
       <config projectName="collected" targetName="in_main_automoc" />
-      <config projectName="collected" targetName="graph_generator_main" />
       <config projectName="collected" targetName="avl_tree_symbol_table_main_automoc" />
+      <config projectName="collected" targetName="graph_generator_main" />
       <config projectName="collected" targetName="average_main_automoc" />
       <config projectName="collected" targetName="std_array_io_main.cpp" />
       <config projectName="collected" targetName="de_dup_main.cpp" />
@@ -138,8 +138,8 @@
       <config projectName="collected" targetName="boruvka_mst_main.cpp" />
       <config projectName="collected" targetName="acyclic_lp_main_automoc" />
       <config projectName="collected" targetName="red_black_bst_main_automoc" />
-      <config projectName="collected" targetName="eulerian_cycle_main.cpp" />
       <config projectName="collected" targetName="resizing_array_queue_main_automoc" />
+      <config projectName="collected" targetName="eulerian_cycle_main.cpp" />
       <config projectName="collected" targetName="graham_scan_main" />
       <config projectName="collected" targetName="acyclic_sp_main" />
       <config projectName="collected" targetName="directed_cycle_x_main.cpp" />
@@ -151,8 +151,8 @@
       <config projectName="collected" targetName="lookup_csv_main" />
       <config projectName="collected" targetName="directed_eulerian_path_main_automoc" />
       <config projectName="collected" targetName="kosaraju_sharir_scc_main.cpp" />
-      <config projectName="collected" targetName="directed_dfs_main.cpp" />
       <config projectName="collected" targetName="lookup_index_main_automoc" />
+      <config projectName="collected" targetName="directed_dfs_main.cpp" />
       <config projectName="collected" targetName="resizing_array_stack_main_automoc" />
       <config projectName="collected" targetName="segment_tree_main_automoc" />
       <config projectName="collected" targetName="doubling_ratio_main_automoc" />
@@ -176,8 +176,8 @@
       <config projectName="collected" targetName="gauss_jordan_elimination_main" />
       <config projectName="collected" targetName="kwik_main" />
       <config projectName="collected" targetName="black_filter_main_automoc" />
-      <config projectName="collected" targetName="closest_pair_main" />
       <config projectName="collected" targetName="edge_weighted_graph_main.cpp" />
+      <config projectName="collected" targetName="closest_pair_main" />
       <config projectName="collected" targetName="transitive_closure_main.cpp" />
       <config projectName="collected" targetName="fft_main_automoc" />
       <config projectName="collected" targetName="collected" />
@@ -195,10 +195,10 @@
       <config projectName="collected" targetName="alphabet_main_automoc" />
       <config projectName="collected" targetName="genome_main.cpp" />
       <config projectName="collected" targetName="directed_cycle_main" />
-      <config projectName="collected" targetName="breadth_first_directed_paths_main_automoc" />
       <config projectName="collected" targetName="sequential_search_st_main.cpp" />
-      <config projectName="collected" targetName="stopwatch_cpu_main" />
+      <config projectName="collected" targetName="breadth_first_directed_paths_main_automoc" />
       <config projectName="collected" targetName="digraph_main" />
+      <config projectName="collected" targetName="stopwatch_cpu_main" />
       <config projectName="collected" targetName="separate_chaining_hash_st_main.cpp" />
       <config projectName="collected" targetName="doubling_test_main" />
       <config projectName="collected" targetName="std_out_main" />
@@ -232,8 +232,8 @@
       <config projectName="collected" targetName="topological_main" />
       <config projectName="collected" targetName="trie_st_main_automoc" />
       <config projectName="collected" targetName="flow_edge_main" />
-      <config projectName="collected" targetName="longest_repeated_substring_main_automoc" />
       <config projectName="collected" targetName="multiway_min_pq_main" />
+      <config projectName="collected" targetName="longest_repeated_substring_main_automoc" />
       <config projectName="collected" targetName="prim_mst_main" />
       <config projectName="collected" targetName="breadth_first_directed_paths_main" />
       <config projectName="collected" targetName="kosaraju_sharir_scc_main_automoc" />
@@ -242,8 +242,8 @@
       <config projectName="collected" targetName="set_main" />
       <config projectName="collected" targetName="insertion_sort_main_automoc" />
       <config projectName="collected" targetName="transaction_main.cpp" />
-      <config projectName="collected" targetName="shellsort_main_automoc" />
       <config projectName="collected" targetName="eulerian_path_main.cpp" />
+      <config projectName="collected" targetName="shellsort_main_automoc" />
       <config projectName="collected" targetName="msd_radix_sort_main_automoc" />
       <config projectName="collected" targetName="particle_main.cpp" />
       <config projectName="collected" targetName="assignment_problem_main" />
@@ -275,16 +275,16 @@
       <config projectName="collected" targetName="std_out_main.cpp" />
       <config projectName="collected" targetName="connected_component_main.cpp" />
       <config projectName="collected" targetName="bipartite_main_automoc" />
-      <config projectName="collected" targetName="prim_mst_main_automoc" />
       <config projectName="collected" targetName="quicksort_3_string_main_automoc" />
+      <config projectName="collected" targetName="prim_mst_main_automoc" />
       <config projectName="collected" targetName="lookup_index_main" />
       <config projectName="collected" targetName="fft_main" />
       <config projectName="collected" targetName="tarjan_scc_main" />
       <config projectName="collected" targetName="std_random_main_automoc" />
       <config projectName="collected" targetName="degrees_of_separation_main" />
-      <config projectName="collected" targetName="degrees_of_separation_main.cpp" />
-      <config projectName="collected" targetName="grep_main.cpp" />
       <config projectName="collected" targetName="stopwatch_main_automoc" />
+      <config projectName="collected" targetName="grep_main.cpp" />
+      <config projectName="collected" targetName="degrees_of_separation_main.cpp" />
       <config projectName="collected" targetName="max_pq_main" />
       <config projectName="collected" targetName="grep_main" />
       <config projectName="collected" targetName="binary_out_main.cpp" />
@@ -343,8 +343,8 @@
       <config projectName="collected" targetName="hex_dump_main_automoc" />
       <config projectName="collected" targetName="cat_main.cpp" />
       <config projectName="collected" targetName="picture_dump_main_automoc" />
-      <config projectName="collected" targetName="bipartite_main" />
       <config projectName="collected" targetName="hopcroft_karp_main_automoc" />
+      <config projectName="collected" targetName="bipartite_main" />
       <config projectName="collected" targetName="index_max_pq_main" />
       <config projectName="collected" targetName="count_main.cpp" />
       <config projectName="collected" targetName="point_2d_main_automoc" />
@@ -366,8 +366,8 @@
       <config projectName="collected" targetName="max_pq_main_automoc" />
       <config projectName="collected" targetName="symbol_table_main" />
       <config projectName="collected" targetName="resizing_array_stack_main.cpp" />
-      <config projectName="collected" targetName="utility_automoc" />
       <config projectName="collected" targetName="graham_scan_main.cpp" />
+      <config projectName="collected" targetName="utility_automoc" />
       <config projectName="collected" targetName="transaction_main" />
       <config projectName="collected" targetName="gabow_scc_main_automoc" />
       <config projectName="collected" targetName="multiway_min_pq_main.cpp" />
@@ -403,8 +403,8 @@
       <config projectName="collected" targetName="segment_tree_main" />
       <config projectName="collected" targetName="b_tree_main" />
       <config projectName="collected" targetName="linear_regression_main.cpp" />
-      <config projectName="collected" targetName="three_sum_fast_main_automoc" />
       <config projectName="collected" targetName="nonrecursive_directed_dfs_main" />
+      <config projectName="collected" targetName="three_sum_fast_main_automoc" />
       <config projectName="collected" targetName="edge_main.cpp" />
       <config projectName="collected" targetName="depth_first_directed_paths_main_automoc" />
       <config projectName="collected" targetName="quicksort_3_string_main" />
@@ -417,8 +417,8 @@
       <config projectName="collected" targetName="counter_main" />
       <config projectName="collected" targetName="binary_dump_main.cpp" />
       <config projectName="collected" targetName="resizing_array_bag_main" />
-      <config projectName="collected" targetName="linear_regression_main_automoc" />
       <config projectName="collected" targetName="directed_cycle_x_main_automoc" />
+      <config projectName="collected" targetName="linear_regression_main_automoc" />
       <config projectName="collected" targetName="std_audio_main_automoc" />
       <config projectName="collected" targetName="depth_first_paths_main_automoc" />
       <config projectName="collected" targetName="index_binomial_min_pq_main.cpp" />
@@ -463,10 +463,10 @@
       <config projectName="collected" targetName="dijkstra_all_pairs_sp_main_automoc" />
       <config projectName="collected" targetName="depth_first_search_main.cpp" />
       <config projectName="collected" targetName="suffix_array_x_main_automoc" />
-      <config projectName="collected" targetName="longest_common_substring_main.cpp" />
       <config projectName="collected" targetName="whitelist_main" />
-      <config projectName="collected" targetName="three_sum_fast_main.cpp" />
+      <config projectName="collected" targetName="longest_common_substring_main.cpp" />
       <config projectName="collected" targetName="index_binomial_min_pq_main" />
+      <config projectName="collected" targetName="three_sum_fast_main.cpp" />
       <config projectName="collected" targetName="stopwatch_cpu_main_automoc" />
       <config projectName="collected" targetName="whitelist_main_automoc" />
       <config projectName="collected" targetName="flow_network_main.cpp" />
@@ -482,8 +482,8 @@
       <config projectName="collected" targetName="directed_eulerian_cycle_main.cpp" />
       <config projectName="collected" targetName="rabin_karp_main" />
       <config projectName="collected" targetName="b_tree_main_automoc" />
-      <config projectName="collected" targetName="knuth_morris_pratt_main_automoc" />
       <config projectName="collected" targetName="particle_main" />
+      <config projectName="collected" targetName="knuth_morris_pratt_main_automoc" />
       <config projectName="collected" targetName="mergesort_x_main" />
       <config projectName="collected" targetName="cat_main_automoc" />
       <config projectName="collected" targetName="sparse_vector_main.cpp" />
@@ -492,8 +492,8 @@
       <config projectName="collected" targetName="symbol_table_main_automoc" />
       <config projectName="collected" targetName="binary_in_main_automoc" />
       <config projectName="collected" targetName="index_min_pq_main" />
-      <config projectName="collected" targetName="nonrecursive_directed_dfs_main.cpp" />
       <config projectName="collected" targetName="std_draw_main_automoc" />
+      <config projectName="collected" targetName="nonrecursive_directed_dfs_main.cpp" />
       <config projectName="collected" targetName="kruskal_mst_main" />
       <config projectName="collected" targetName="binary_std_in_main_automoc" />
       <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main_automoc" />
@@ -549,118 +549,10 @@
     <favorites_list name="collected" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="655" column="77" lean-forward="true" selection-start-line="655" selection-start-column="77" selection-end-line="655" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Transaction.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TST.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TST.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1549">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Trie_st.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Trie_st.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Trie_set.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Trie_set.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transitive_closure.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Transitive_closure.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Transaction.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Date.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Date.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="59" lean-forward="false" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Topological_x.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Topological_x.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="139" column="15" lean-forward="false" selection-start-line="139" selection-start-column="15" selection-end-line="139" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Topological_x.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Topological_x.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Bag_iterator</find>
-      <find>new</find>
-      <find>key</find>
-      <find>\.key</find>
-      <find>\.prev</find>
-      <find>_data</find>
-      <find>new ArithmeticException\((.*)\)</find>
       <find>\.mid</find>
       <find>new NoSuchElementException\((.*)\)</find>
       <find>\.charAt\((.\w*)\)</find>
@@ -684,12 +576,15 @@
       <find>Arrays.binarySearch</find>
       <find>Integer</find>
       <find>this.</find>
+      <find>\.isString</find>
+      <find>\.charAt\(([^\)])\)</find>
+      <find>R</find>
+      <find>\sR</find>
+      <find>\starget_link(.*)\n</find>
+      <find>\.append\(([^\)]*)\)</find>
+      <find>_radixaw_node_pointer</find>
     </findStrings>
     <replaceStrings>
-      <replace>std::string</replace>
-      <replace>std::cerr &lt;&lt; $1;</replace>
-      <replace>a.size()</replace>
-      <replace>Illegal_argument_exception\{$1\};</replace>
       <replace>Null_pointer_exception</replace>
       <replace>std::</replace>
       <replace>nullptr</replace>
@@ -710,12 +605,16 @@
       <replace>Segment_tree_node</replace>
       <replace>_dimension</replace>
       <replace>nullptr$1</replace>
-      <replace>== $1</replace>
       <replace>int $1\{$2\};</replace>
       <replace>.size()</replace>
-      <replace>[$1]</replace>
       <replace>std::binary_search</replace>
       <replace>int</replace>
+      <replace>-&gt;isString</replace>
+      <replace>[$1]</replace>
+      <replace>_radix</replace>
+      <replace>\ntarget_link$1\n\n</replace>
+      <replace>&lt;&lt; $1</replace>
+      <replace>Raw_node_pointer</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -724,13 +623,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Resizing_array_queue.h" />
-        <option value="$PROJECT_DIR$/Resizing_array_stack.h" />
-        <option value="$PROJECT_DIR$/resizing_array_stack_main.cpp" />
-        <option value="$PROJECT_DIR$/Run_length.h" />
-        <option value="$PROJECT_DIR$/run_length_main.cpp" />
-        <option value="$PROJECT_DIR$/Run_length.cpp" />
-        <option value="$PROJECT_DIR$/Segment_tree.cpp" />
         <option value="$PROJECT_DIR$/segment_tree_main.cpp" />
         <option value="$PROJECT_DIR$/Segment_tree.h" />
         <option value="$PROJECT_DIR$/Vector.cpp" />
@@ -768,13 +660,20 @@
         <option value="$PROJECT_DIR$/Tarjan_scc.cpp" />
         <option value="$PROJECT_DIR$/Three_sum_fast.cpp" />
         <option value="$PROJECT_DIR$/top_m_main.cpp" />
-        <option value="$PROJECT_DIR$/todos.md" />
         <option value="$PROJECT_DIR$/Topological_x.h" />
         <option value="$PROJECT_DIR$/Topological_x.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Date.h" />
         <option value="$PROJECT_DIR$/Transaction.h" />
         <option value="$PROJECT_DIR$/Transaction.cpp" />
+        <option value="$PROJECT_DIR$/transaction_main.cpp" />
+        <option value="$PROJECT_DIR$/Transitive_closure.cpp" />
+        <option value="$PROJECT_DIR$/Transitive_closure.h" />
+        <option value="$PROJECT_DIR$/Trie_set.h" />
+        <option value="$PROJECT_DIR$/Trie_set.cpp" />
+        <option value="$PROJECT_DIR$/Trie_st.h" />
+        <option value="$PROJECT_DIR$/todos.md" />
+        <option value="$PROJECT_DIR$/TST.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -2052,12 +1951,13 @@
       <workItem from="1485717821650" duration="3664000" />
       <workItem from="1485734340891" duration="6251000" />
       <workItem from="1485745992833" duration="10618000" />
-      <workItem from="1485785355820" duration="11233000" />
+      <workItem from="1485785355820" duration="11387000" />
+      <workItem from="1485797051834" duration="3951000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="419594000" />
+    <option name="totallyTimeSpent" value="423699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2070,13 +1970,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1002" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13095239" sideWeight="0.4965035" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33265308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33265308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327551" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327551" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2088,6 +1987,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327551" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39427987" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2140,49 +2040,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/three_sum_main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Three_sum.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Three_sum.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Separate_chaining_hash_st.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Separate_chaining_hash_st.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
-          <folding>
-            <marker date="1485786634000" expanded="true" signature="219:2884" ph="{...}" />
-            <marker date="1485786634000" expanded="true" signature="688:1022" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/separate_chaining_hash_st_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -2195,9 +2052,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding>
-            <marker date="1485786668000" expanded="true" signature="127:404" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2245,7 +2100,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2253,7 +2107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2261,7 +2114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="57" lean-forward="true" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2277,7 +2129,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="71" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2301,7 +2152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="8" lean-forward="false" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2309,7 +2159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="793">
           <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2317,7 +2166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2345,19 +2193,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symbol_table.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Symbol_table.cpp" />
     <entry file="file://$PROJECT_DIR$/symbol_graph_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2373,7 +2213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2381,7 +2220,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="1037" column="14" lean-forward="false" selection-start-line="1037" selection-start-column="14" selection-end-line="1037" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2389,7 +2227,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2417,9 +2254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="47" lean-forward="false" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding>
-            <marker date="1485794204000" expanded="true" signature="136:858" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2435,7 +2269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2447,69 +2280,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/todos.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="570">
-            <caret line="89" column="35" lean-forward="false" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/top_m_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trie_st.cpp" />
+    <entry file="file://$PROJECT_DIR$/TST.cpp" />
+    <entry file="file://$PROJECT_DIR$/Date.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="59" lean-forward="false" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Transitive_closure.cpp">
+    <entry file="file://$PROJECT_DIR$/Topological_x.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trie_set.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trie_st.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trie_st.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TST.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TST.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1549">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="2085">
+          <caret line="139" column="15" lean-forward="false" selection-start-line="139" selection-start-column="15" selection-end-line="139" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -2522,26 +2313,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Topological_x.cpp">
+    <entry file="file://$PROJECT_DIR$/Transaction.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="139" column="15" lean-forward="false" selection-start-line="139" selection-start-column="15" selection-end-line="139" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="655" column="77" lean-forward="true" selection-start-line="655" selection-start-column="77" selection-end-line="655" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Date.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="59" lean-forward="false" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+        <state relative-caret-position="195">
+          <caret line="13" column="50" lean-forward="false" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -2549,15 +2324,115 @@
     <entry file="file://$PROJECT_DIR$/Transaction.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Transaction.cpp">
+    <entry file="file://$PROJECT_DIR$/Transitive_closure.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transaction_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="62" lean-forward="false" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todos.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="851">
+            <caret line="90" column="30" lean-forward="false" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trie_set.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+          <folding>
+            <marker date="1485798567000" expanded="true" signature="136:416" ph="{...}" />
+            <marker date="1485798567000" expanded="true" signature="434:1593" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trie_st.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="156" column="11" lean-forward="false" selection-start-line="156" selection-start-column="11" selection-end-line="156" selection-end-column="11" />
+          <folding>
+            <marker date="1485800700000" expanded="true" signature="206:489" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="658" column="0" lean-forward="true" selection-start-line="658" selection-start-column="0" selection-end-line="658" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TST.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="138" column="36" lean-forward="false" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
+          <folding>
+            <marker date="1485801617000" expanded="true" signature="478:4934" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="555:580" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="622:665" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="703:1007" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="1055:1138" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="1196:1713" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="2564:3038" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="3124:3510" ph="{...}" />
+            <marker date="1485801617000" expanded="true" signature="3605:4026" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trie_set.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="110" column="8" lean-forward="false" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trie_set_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Transitive_closure.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <marker date="1485797592000" expanded="true" signature="111:285" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transitive_closure_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

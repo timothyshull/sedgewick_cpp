@@ -19,27 +19,27 @@ int main(int argc, char* argv[])
     }
 
     Std_out::print_line("longestPrefixOf(\"shellsort\"):");
-    Std_out::print_line(set.longestPrefixOf("shellsort"));
+    Std_out::print_line(set.longest_prefix_of("shellsort"));
     Std_out::print_line();
 
     Std_out::print_line("longestPrefixOf(\"xshellsort\"):");
-    Std_out::print_line(set.longestPrefixOf("xshellsort"));
+    Std_out::print_line(set.longest_prefix_of("xshellsort"));
     Std_out::print_line();
 
     Std_out::print_line("keysWithPrefix(\"shor\"):");
-    for (auto s : set.keysWithPrefix("shor")) {
+    for (auto s : set.keys_with_prefix("shor")) {
         Std_out::print_line(s);
     }
     Std_out::print_line();
 
     Std_out::print_line("keysWithPrefix(\"shortening\"):");
-    for (auto s : set.keysWithPrefix("shortening")) {
+    for (auto s : set.keys_with_prefix("shortening")) {
         Std_out::print_line(s);
     }
     Std_out::print_line();
 
     Std_out::print_line("keysThatMatch(\".he.l.\"):");
-    for (auto s : set.keysThatMatch(".he.l.")) {
+    for (auto s : set.keys_that_match(".he.l.")) {
         Std_out::print_line(s);
     }
     return 0;

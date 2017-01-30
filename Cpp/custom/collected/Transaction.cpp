@@ -11,7 +11,24 @@ Transaction::Transaction(std::string& who, Date& when, double amount)
     }
 }
 
+Transaction::Transaction(std::string&& who, Date&& when, double amount)
+        : _who{who},
+          _when{when},
+          _amount{amount}
+{
+    if (std::isnan(amount) || std::isinf(amount)) {
+        throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
+    }
+}
+
 Transaction::Transaction(std::string& transaction) : Transaction{_prep_args(transaction)}
+{
+    if (std::isnan(_amount) || std::isinf(_amount)) {
+        throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
+    }
+}
+
+Transaction::Transaction(std::string&& transaction) : Transaction{_prep_args(transaction)}
 {
     if (std::isnan(_amount) || std::isinf(_amount)) {
         throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");

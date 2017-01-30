@@ -4,8 +4,6 @@
 #include <vector>
 #include "Queue.h"
 
-const static int R = 256;
-
 class Trie_set_node;
 
 class Trie_set;
@@ -14,11 +12,13 @@ class Trie_set_node {
 public:
     using Raw_node_pointer = Trie_set_node*;
 
-    Trie_set_node() : next(static_cast<std::vector<Raw_node_pointer>::size_type>(R)), isString{false} {}
+    Trie_set_node() : _next(static_cast<std::vector<Raw_node_pointer>::size_type>(Trie_set::_radix)), _is_string{false} {}
 
 private:
-    std::vector<Raw_node_pointer> next;
-    bool isString;
+    std::vector<Raw_node_pointer> _next;
+    bool _is_string;
+
+    friend class Trie_set;
 };
 
 class Trie_set {
@@ -31,35 +31,38 @@ public:
 
     void add(std::string& key);
 
-    int size();
+    inline int size() const noexcept { return _size; }
 
-    bool is_empty();
+    inline bool is_empty() const noexcept { return size() == 0; }
 
     std::vector<std::string> iterator();
 
-    std::vector<std::string> keysWithPrefix();
+    Queue keys_with_prefix(std::string& prefix);
 
-    std::vector<std::string> keysThatMatch();
+    Queue<std::string> keys_that_match(std::string& pattern);
 
-    std::string longestPrefixOf(std::string& query);
+    std::string longest_prefix_of(std::string& query);
 
     void remove(std::string& key);
 
 private:
-    Raw_node_pointer root;
-    int n;
+    const static int _radix = 256;
+    Raw_node_pointer _root;
+    int _size;
 
-    Raw_node_pointer get(Raw_node_pointer x, std::string& key, int d);
+    Raw_node_pointer _get(Raw_node_pointer x, std::string& key, int d);
 
-    Raw_node_pointer add(Raw_node_pointer x, std::string& key, int d);
+    Raw_node_pointer _add(Raw_node_pointer x, std::string& key, int d);
 
-    void collect(Raw_node_pointer x, std::stringstream& prefix, Queue<std::string>& results);
+    void _collect(Raw_node_pointer x, std::stringstream& prefix, Queue<std::string>& results);
 
-    void collect(Raw_node_pointer x, std::stringstream& pattern, Queue<std::string>& results, void);
+    void _collect(Raw_node_pointer x, std::stringstream& prefix, std::string& pattern, Queue<std::string>& results);
 
-    int longestPrefixOf(Raw_node_pointer x, std::string& query, int d, int length);
+    int _longest_prefix_of(Raw_node_pointer x, std::string& query, int d, int length);
 
-    Raw_node_pointer remove(Raw_node_pointer x, std::string& key, int d);
+    Raw_node_pointer _remove(Raw_node_pointer x, std::string& key, int d);
+
+    friend class Trie_set_node;
 };
 
 #endif // TRIE_Set_H

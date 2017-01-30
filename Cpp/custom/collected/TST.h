@@ -77,27 +77,30 @@ public:
         return query.substr(0, length);
     }
 
-    Iterable <std::string> keys()
+    Queue<std::string> keys()
     {
-        Queue<std::string> queue = new Queue<std::string>();
-        collect(root, new std::stringstream(), queue);
+        Queue<std::string> queue;
+        std::stringstream ss;
+        collect(root, ss, queue);
         return queue;
     }
 
-    Iterable <std::string> keysWithPrefix(std::string& prefix)
+    Queue<std::string> keys_with_prefix(std::string& prefix)
     {
-        Queue<std::string> queue = new Queue<std::string>();
+        Queue<std::string> queue;
         Raw_node_pointer x = get(root, prefix, 0);
         if (x == nullptr) { return queue; }
         if (x->val != nullptr) { queue.enqueue(prefix); }
-        collect(x->mid, new std::stringstream(prefix), queue);
+        std::stringstream ss{prefix};
+        collect(x->mid, ss, queue);
         return queue;
     }
 
-    Iterable <std::string> keysThatMatch(std::string& pattern)
+    Queue<std::string> keys_that_match(std::string& pattern)
     {
-        Queue<std::string> queue = new Queue<std::string>();
-        collect(root, new std::stringstream(), 0, pattern, queue);
+        Queue<std::string> queue;
+        std::stringstream ss;
+        _collect(root, ss, 0, pattern, queue);
         return queue;
     }
 
@@ -121,7 +124,7 @@ private:
     {
         char c = key[d];
         if (x == nullptr) {
-            x = new Raw_node_pointer();
+            x = new TST_node{};
             x->c = c;
         }
         if (c < x->c) { x->left = put(x->left, key, val, d); }
@@ -135,25 +138,44 @@ private:
     {
         if (x == nullptr) { return; }
         collect(x->left, prefix, queue);
-        if (x->val != nullptr) { queue.enqueue(prefix.to_string() + x->c); }
-        collect(x->mid, prefix.append(x->c), queue);
-        prefix.deleteCharAt(prefix.size() - 1);
+        if (x->val != nullptr) {
+            std::string s{prefix.str()};
+            s += x->c;
+            queue.enqueue(s);
+        }
+        prefix << x->c;
+        collect(x->mid, prefix, queue);
+        std::string s{prefix.str()};
+        s.erase(s.size() - 1);
+        prefix.str(s);
+
         collect(x->right, prefix, queue);
     }
 
-    void collect(Raw_node_pointer x, std::stringstream prefix, int i, std::string pattern, Queue<std::string> queue, void)
+    void _collect(Raw_node_pointer x, std::stringstream prefix, int i, std::string pattern, Queue<std::string> queue)
     {
         if (x == nullptr) { return; }
         char c = pattern[i];
-        if (c == '.' || c < x->c) { collect(x->left, prefix, i, pattern, queue); }
+        if (c == '.' || c < x->c) {
+            _collect(x->left, prefix, i, pattern, queue);
+        }
         if (c == '.' || c == x->c) {
-            if (i == pattern.size() - 1 && x->val != nullptr) { queue.enqueue(prefix.to_string() + x->c); }
+            if (i == pattern.size() - 1 && x->val != nullptr) {
+                std::string s{prefix.str()};
+                s += x->c;
+                queue.enqueue(s);
+            }
             if (i < pattern.size() - 1) {
-                collect(x->mid, prefix.append(x->c), i + 1, pattern, queue);
-                prefix.deleteCharAt(prefix.size() - 1);
+                prefix << x->c;
+                _collect(x->mid, prefix, i + 1, pattern, queue);
+                std::string s{prefix.str()};
+                s.erase(s.size() - 1);
+                prefix.str(s);
             }
         }
-        if (c == '.' || c > x->c) { collect(x->right, prefix, i, pattern, queue); }
+        if (c == '.' || c > x->c) {
+            _collect(x->right, prefix, i, pattern, queue);
+        }
     }
 };
 

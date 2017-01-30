@@ -27,13 +27,13 @@ int main(int argc, char* argv[])
     Std_out::print_line();
 
     Std_out::print_line("keysWithPrefix(\"shor\"):");
-    for (auto s : st.keysWithPrefix("shor")) {
+    for (auto s : st.keys_with_prefix("shor")) {
         Std_out::print_line(s);
     }
     Std_out::print_line();
 
     Std_out::print_line("keysThatMatch(\".he.l.\"):");
-    for (auto s : st.keysThatMatch(".he.l.")) {
+    for (auto s : st.keys_that_match(".he.l.")) {
         Std_out::print_line(s);
     }
     return 0;

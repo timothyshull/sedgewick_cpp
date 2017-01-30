@@ -4,163 +4,191 @@
 #include <vector>
 #include "Queue.h"
 
-const static int R = 256;
-
-template <typename Value>
+template<typename Value>
 class Trie_st_node;
 
-template <typename Value>
+template<typename Value>
 class Trie_st;
 
-template <typename Value>
+template<typename Value>
 class Trie_st_node {
 public:
     using Raw_node_pointer = Trie_st_node*;
 
-    Trie_st_node() : next(static_cast<std::vector<Raw_node_pointer>::size_type>(R)), val{} {}
+    Trie_st_node() : _next(static_cast<std::vector<Raw_node_pointer>::size_type>(Trie_st::_radix)), _val{} {}
 
 private:
-    Value val;
-    std::vector<Raw_node_pointer> next;
+    Value _val;
+    std::vector<Raw_node_pointer> _next;
+
+    template<typename>
+    friend class Trie_st;
 };
 
-template <typename Value>
+template<typename Value>
 class Trie_st {
 public:
     using Raw_node_pointer = Trie_st_node*;
+    using Value_type = Value;
 
-    Trie_st();
+    Trie_st() = default;
 
-
-
-Value get(String key) {
-        Node x = get(root, key, 0);
-        if (x == null) return null;
-        return (Value) x.val;
+    Value get(std::string& key)
+    {
+        Raw_node_pointer x = _get(_root, key, 0);
+        if (x == nullptr) { return nullptr; }
+        return (Value) x->_val;
     }
 
-    bool contains(String key) {
-        return get(key) != null;
+    inline bool contains(std::string& key) const { return get(key) != nullptr; }
+
+    void put(std::string& key, Value val)
+    {
+        if (val == nullptr) { delete (key); }
+        else { _root = _put(_root, key, val, 0); }
     }
 
-void put(String key, Value val) {
-        if (val == null) delete(key);
-        else root = put(root, key, val, 0);
+    inline int size() const noexcept { return _size; }
+
+    inline bool is_empty() const noexcept { return size() == 0; }
+
+    Queue<std::string> keys()
+    {
+        std::string s{""};
+        return keys_with_prefix(s);
     }
 
-int size() {
-        return n;
-    }
-
-    bool is_empty() {
-        return size() == 0;
-    }
-
-    Iterable<std::string> keys() {
-        return keysWithPrefix("");
-    }
-
-    Iterable<std::string> keysWithPrefix(String prefix) {
-        Queue<std::string> results = new Queue<std::string>();
-        Node x = get(root, prefix, 0);
-        collect(x, new std::stringstream(prefix), results);
+    Queue<std::string> keys_with_prefix(std::string& prefix)
+    {
+        Queue<std::string> results;
+        Raw_node_pointer x = _get(_root, prefix, 0);
+        _collect(x, std::stringstream{prefix}, results);
         return results;
     }
 
-    Iterable<std::string> keysThatMatch(String pattern) {
-        Queue<std::string> results = new Queue<std::string>();
-        collect(root, new std::stringstream(), pattern, results);
+    Queue<std::string> keys_that_match(std::string& pattern)
+    {
+        Queue<std::string> results;
+        std::stringstream ss;
+        _collect(_root, ss, pattern, results);
         return results;
     }
 
-    std::string longestPrefixOf(String query) {
-        int length = longestPrefixOf(root, query, 0, -1);
-        if (length == -1) return null;
-        else return query.substring(0, length);
+    std::string longest_prefix_of(std::string& query)
+    {
+        int length = _longest_prefix_of(_root, query, 0, -1);
+        if (length == -1) { return nullptr; }
+        else { return query.substr(0, length); }
     }
 
-    void remove(String key) {
-        root = remove(root, key, 0);
+    void remove(std::string& key)
+    {
+        _root = _remove(_root, key, 0);
     }
+
 private:
-    Raw_node_pointer root;
-    int n;
+    const static int _radix = 256;
+    Raw_node_pointer _root;
+    int _size;
 
-Node get(Node x, std::string key, int d) {
-        if (x == null) return null;
-        if (d == key.length()) return x;
-        char c = key.charAt(d);
-        return get(x.next[c], key, d + 1);
+    template<typename>
+    friend class Trie_st_node;
+
+    Raw_node_pointer _get(Raw_node_pointer x, std::string key, int d)
+    {
+        if (x == nullptr) { return nullptr; }
+        if (d == key.length()) { return x; }
+        char c = key[d];
+        return _get(x->_next[c], key, d + 1);
     }
 
-Node put(Node x, std::string key, Value val, int d) {
-        if (x == null) x = new Node();
+    Raw_node_pointer _put(Raw_node_pointer x, std::string key, Value val, int d)
+    {
+        if (x == nullptr) { x = new Trie_st_node{}; }
         if (d == key.length()) {
-            if (x.val == null) ++n;
-            x.val = val;
+            if (x->_val == nullptr) { ++_size; }
+            x->_val = val;
             return x;
         }
-        char c = key.charAt(d);
-        x.next[c] = put(x.next[c], key, val, d + 1);
+        char c = key[d];
+        x->_next[c] = _put(x->_next[c], key, val, d + 1);
         return x;
     }
 
-    void collect(Node x, std::stringstream prefix, Queue<std::string> results) {
-        if (x == null) return;
-        if (x.val != null) results.enqueue(prefix.to_string());
-        for (char c{0}; c < R; ++c) {
-            prefix.append(c);
-            collect(x.next[c], prefix, results);
-            prefix.deleteCharAt(prefix.length() - 1);
+    void _collect(Raw_node_pointer x, std::stringstream prefix, Queue<std::string> results)
+    {
+        if (x == nullptr) { return; }
+        if (x->_val != nullptr) {
+            std::string s{prefix.str()};
+            results.enqueue(s);
+        }
+        for (char c{0}; c < _radix; ++c) {
+            prefix << c;
+            _collect(x->_next[c], prefix, results);
+            std::string s{prefix.str()};
+            s.erase(s.size() - 1);
+            prefix.str(s);
         }
     }
 
-    void collect(Node x, std::stringstream prefix, std::string pattern, Queue<std::string> results) {
-        if (x == null) return;
-        int d = prefix.length();
-        if (d == pattern.length() && x.val != null)
-            results.enqueue(prefix.to_string());
-        if (d == pattern.length())
+    void _collect(Raw_node_pointer x, std::stringstream prefix, std::string pattern, Queue<std::string> results)
+    {
+        if (x == nullptr) { return; }
+        auto d = prefix.str().size();
+        if (d == pattern.length() && x->_val != nullptr) {
+            std::string s{prefix.str()};
+            results.enqueue(s);
+        }
+        if (d == pattern.length()) {
             return;
-        char c = pattern.charAt(d);
+        }
+        char c = pattern[d];
         if (c == '.') {
-            for (char ch{0}; ch < R; ++ch) {
-                prefix.append(ch);
-                collect(x.next[ch], prefix, pattern, results);
-                prefix.deleteCharAt(prefix.length() - 1);
+            for (char ch{0}; ch < _radix; ++ch) {
+                prefix << ch;
+                _collect(x->_next[ch], prefix, pattern, results);
+                std::string s{prefix.str()};
+                s.erase(s.size() - 1);
+                prefix.str(s);
             }
         } else {
-            prefix.append(c);
-            collect(x.next[c], prefix, pattern, results);
-            prefix.deleteCharAt(prefix.length() - 1);
+            prefix << c;
+            _collect(x->_next[c], prefix, pattern, results);
+            std::string s{prefix.str()};
+            s.erase(s.size() - 1);
+            prefix.str(s);
         }
     }
 
-    int longestPrefixOf(Node x, std::string query, int d, int length) {
-        if (x == null) return length;
-        if (x.val != null) length = d;
-        if (d == query.length()) return length;
-        char c = query.charAt(d);
-        return longestPrefixOf(x.next[c], query, d + 1, length);
+    int _longest_prefix_of(Raw_node_pointer x, std::string query, int d, int length)
+    {
+        if (x == nullptr) { return length; }
+        if (x->_val != nullptr) { length = d; }
+        if (d == query.length()) { return length; }
+        char c = query[d];
+        return _longest_prefix_of(x->_next[c], query, d + 1, length);
     }
 
-    Node remove(Node x, std::string key, int d) {
-        if (x == null) return null;
+    Raw_node_pointer _remove(Raw_node_pointer x, std::string key, int d)
+    {
+        if (x == nullptr) { return nullptr; }
         if (d == key.length()) {
-            if (x.val != null) n--;
-            x.val = null;
+            if (x->_val != nullptr) { _size--; }
+            x->_val = nullptr;
         } else {
-            char c = key.charAt(d);
-            x.next[c] = delete(x.next[c], key, d + 1);
+            char c = key[d];
+            x->_next[c] = delete (x->_next[c], key, d + 1);
         }
 
-        // remove subtrie rooted at x if it is completely empty
-        if (x.val != null) return x;
-        for (int c{0}; c < R; ++c)
-            if (x.next[c] != null)
+        if (x->_val != nullptr) { return x; }
+        for (int c{0}; c < _radix; ++c) {
+            if (x->_next[c] != nullptr) {
                 return x;
-        return null;
+            }
+        }
+        return nullptr;
     }
+
 };
 
 #endif // TRIE_ST_H

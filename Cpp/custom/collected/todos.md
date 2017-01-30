@@ -88,3 +88,4 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - more work in Symbol_table
 - if all num_vertices, num_edges return size_t will not need to cast in ctors in so many places
 - Make all priority_queues iterable
+- Fix all trie class iterators

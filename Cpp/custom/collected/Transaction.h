@@ -22,7 +22,11 @@ class Transaction {
 public:
     Transaction(std::string& who, Date& when, double amount);
 
+    Transaction(std::string&& who, Date&& when, double amount);
+
     Transaction(std::string& transaction);
+
+    Transaction(std::string&& transaction);
 
     inline std::string who() const noexcept { return _who; }
 
