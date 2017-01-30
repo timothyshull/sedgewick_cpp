@@ -1,45 +1,47 @@
 #ifndef RECT_HV_H
 #define RECT_HV_H
 
+#include <cmath>
+
 #include "Point_2d.h"
 
 class Rect_hv {
 public:
-    Rect_hv(double xmin, double ymin, double xmax, double ymax);
+    Rect_hv(double x_min, double y_min, double x_max, double y_max);
 
-    double xmin();
+    inline double x_min() const noexcept { return _x_min; }
 
-    double xmax();
+    inline double x_max() const noexcept {return _x_max; }
 
-    double ymin();
+    inline double y_min() const noexcept { return _y_min; }
 
-    double ymax();
+    inline double y_max() const noexcept { return _y_max; }
 
-    double width();
+    inline double width() const noexcept { return _x_max - _x_min; }
 
-    double height();
+    inline double height() const noexcept { return _y_max - _y_min; }
 
-    bool intersects(Rect_hv& that);
+    inline bool intersects(Rect_hv& rhs) const { return _x_max >= rhs._x_min && _y_max >= rhs._y_min && rhs._x_max >= _x_min && rhs._y_max >= _y_min; }
 
-    bool contains(Point_2d& p);
+    inline bool contains(Point_2d& p) const noexcept { return (p.x() >= _x_min) && (p.x() <= _x_max) && (p.y() >= _y_min) && (p.y() <= _y_max); }
 
-    double distanceTo(Point_2d& p);
+    inline double distance_to(Point_2d& p) const { return std::sqrt(distance_squared_to(p)); }
 
-    double distanceSquaredTo(Point_2d& p);
+    double distance_squared_to(const Point_2d& p) const;
 
-    bool operator==(Rect_hv& rhs);
+    bool operator==(const Rect_hv& rhs) const;
 
-    int hashCode();
+    std::size_t hash_code() const;
 
-    std::string to_string();
+    std::string to_string() const;
 
     void draw();
 
 private:
-    const double xmin;
-    const double ymin;
-    const double xmax;
-    const double ymax;
+    const double _x_min;
+    const double _y_min;
+    const double _x_max;
+    const double _y_max;
 };
 
 #endif // RECT_HV_H

@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     // Std_out::print_line("Source: " + source);
 
     Symbol_graph sg{filename, delimiter};
-    Graph graph{sg.graph()};
+    Graph graph{sg._graph()};
     if (!sg.contains(source)) {
         Std_out::print_line(source + " not _in database.");
         return -1;

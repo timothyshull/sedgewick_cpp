@@ -26,7 +26,7 @@ public:
 
     bool operator<(const Date& rhs) const;
 
-    inline bool Date::operator==(const Date& rhs) const { return (_month == rhs._month) && (_day == rhs._day) && (_year == rhs._year); }
+    inline bool operator==(const Date& rhs) const noexcept { return (_month == rhs._month) && (_day == rhs._day) && (_year == rhs._year); }
 
     int hash_code() const;
 

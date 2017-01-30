@@ -7,15 +7,15 @@
 class Transaction;
 
 struct Who_order {
-    bool operator<(Transaction& v, Transaction& w);
+    inline bool operator<(const Transaction& v, const Transaction& w) const noexcept { return v._who < w._who; };
 };
 
 struct When_order {
-    bool operator<(Transaction& v, Transaction& w);
+    inline bool operator<(const Transaction& v, const Transaction& w) const noexcept { return v._when < w._when; };
 };
 
 struct How_much_order {
-    bool operator<(Transaction& v, Transaction& w);
+    inline bool operator<(const Transaction& v, const Transaction& w) const noexcept { return v._amount < w._amount; };
 };
 
 class Transaction {
@@ -24,24 +24,28 @@ public:
 
     Transaction(std::string& transaction);
 
-    std::string who();
+    inline std::string who() const noexcept { return _who; }
 
-    Date when();
+    inline Date when() const { return _when; }
 
-    double amount();
+    inline double amount() const noexcept { return _amount; }
 
-    std::string to_string();
+    inline std::string to_string() const { return "Transaction(" + _who + _when.to_string() + std::to_string(_amount) + ")"; }
 
-    bool operator<(Transaction& rhs);
+    inline bool operator<(const Transaction& rhs) const noexcept { return _amount < rhs._amount; };
 
-    bool operator==(Transaction& rhs);
+    bool operator==(const Transaction& rhs) const noexcept { return _amount == rhs._amount && _who == rhs._who && _when == rhs._when; }
 
-    int hashCode();
+    std::size_t hash_code();
 
 private:
-    const std::string who;
-    const Date when;
-    const double amount;
+    const std::string _who;
+    const Date _when;
+    const double _amount;
+
+    Transaction(std::tuple<std::string, Date, double>&& args);
+
+    static std::tuple<std::string, Date, double> _prep_args(std::string& transaction);
 
     friend class Who_order;
 

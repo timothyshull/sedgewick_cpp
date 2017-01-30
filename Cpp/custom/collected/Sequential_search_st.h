@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#include "utility.h"
+#include "Queue.h"
+
 template<typename Key, typename Value>
 class Sequential_search_st_node;
 
@@ -22,6 +25,9 @@ private:
     Key_type key;
     Value_type val;
     Owning_node_pointer next;
+
+    template<typename, typename>
+    friend class Sequential_search_st;
 };
 
 template<typename Key, typename Value>
@@ -29,80 +35,78 @@ class Sequential_search_st {
 public:
     using Key_type = Key;
     using Value_type = Value;
-    using Owning_node_pointer = Sequential_search_st_node<Key_type, Value_type>*;
+    using Node = Sequential_search_st_node<Key_type, Value_type>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
 
-    SequentialSearchST() {}
+    Sequential_search_st() = default;
 
-    int size()
+    inline int size() const noexcept { return _size; }
+
+    inline bool is_empty() const noexcept { return _size == 0; }
+
+    bool contains(Key_type& key)
     {
-        return n;
+        if (key == nullptr) { throw utility::Null_pointer_exception{"argument to contains() is nullptr"}; }
+        return get(key) != nullptr;
     }
 
-    bool is_empty()
+    Value get(Key_type& key)
     {
-        return size() == 0;
-    }
-
-    bool contains(Key key)
-    {
-        if (key == null) { throw new NullPointerException("argument to contains() is null"); }
-        return get(key) != null;
-    }
-
-    Value get(Key key)
-    {
-        if (key == null) { throw new NullPointerException("argument to get() is null"); }
-        for (Node x{first}; x != null; x = x.next) {
-            if (key.equals(x.key)) {
-                return x.val;
+        if (key == nullptr) { throw utility::Null_pointer_exception{"argument to get() is nullptr"}; }
+        for (Raw_node_pointer x{_first}; x != nullptr; x = x->next) {
+            if (key == x->key) {
+                return x->val;
             }
         }
-        return null;
+        return nullptr;
     }
 
-    void put(Key key, Value val)
+    void put(Key_type& key, Value_type& val)
     {
-        if (key == null) { throw new NullPointerException("first argument to put() is null"); }
-        if (val == null) {
+        if (key == nullptr) { throw utility::Null_pointer_exception{"first argument to put() is nullptr"}; }
+        if (val == nullptr) {
             delete (key);
             return;
         }
 
-        for (Node x{first}; x != null; x = x.next) {
-            if (key.equals(x.key)) {
-                x.val = val;
+        for (Raw_node_pointer x{_first}; x != nullptr; x = x->next) {
+            if (key == x->key) {
+                x->val = val;
                 return;
             }
         }
-        first = new Node(key, val, first);
-        ++n;
+        _first = new Sequential_search_st_node{key, val, _first};
+        ++_size;
     }
 
     void remove(Key key)
     {
-        if (key == null) { throw new NullPointerException("argument to delete() is null"); }
-        first = remove(first, key);
+        if (key == nullptr) { throw utility::Null_pointer_exception{"argument to delete() is nullptr"}; }
+        _first = remove(_first, key);
     }
 
-    std::vector<Key_type> keys() {
-        Queue<Key> queue = new Queue<Key>();
-        for (Node x{first}; x != null; x = x.next)
-            queue.enqueue(x.key);
+    Queue<Key_type> keys()
+    {
+        Queue<Key> queue;
+        for (Raw_node_pointer x{_first}; x != nullptr; x = x->next) {
+            queue.enqueue(x->key);
+        }
         return queue;
     }
 
 private:
-    int n;
-    Owning_node_pointer first;
+    int _size;
+    Owning_node_pointer _first;
 
-    Node remove(Node x, Key key)
+    Raw_node_pointer remove(Raw_node_pointer x, Key key)
     {
-        if (x == null) { return null; }
-        if (key.equals(x.key)) {
-            n--;
-            return x.next;
+        if (x == nullptr) { return nullptr; }
+        if (key == x->key) {
+            _size--;
+            return x->next;
         }
-        x.next = delete (x.next, key);
+        x->next = remove(x->next, key);
         return x;
     }
 };

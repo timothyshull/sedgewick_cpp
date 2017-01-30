@@ -11,6 +11,6 @@ int main(int argc, char* argv[])
         if (item != "-") { queue.enqueue(item); }
         else if (!queue.is_empty()) { Std_out::print(queue.dequeue() + " "); }
     }
-    Std_out::print_line("(" + queue.size() + " left on _queue)");
+    Std_out::print_line("(" + std::to_string(queue.size()) + " left on _queue)");
     return 0;
 }

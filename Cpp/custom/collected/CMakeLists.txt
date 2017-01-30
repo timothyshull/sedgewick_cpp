@@ -256,12 +256,6 @@ target_link_libraries(std_out_main std_io)
 add_executable(std_random_main std_random_main.cpp)
 target_link_libraries(std_random_main std_random utility ${Boost_LIBRARIES})
 
-# TODO
-add_executable(timsort_main timsort_main.cpp Timsort.h Timsort_tmp.c)
-target_link_libraries(timsort_main std_io utility ${Boost_LIBRARIES})
-
-add_executable(timsort_py Timsort_py.h Timsort_py.cpp)
-
 add_executable(topological_main topological_main.cpp Topological.h Topological.cpp)
 target_link_libraries(topological_main std_io)
 
@@ -577,7 +571,6 @@ target_link_libraries(quick_find_uf_main std_io utility ${Boost_LIBRARIES})
 add_executable(quick_union_uf_main quick_union_uf_main.cpp Quick_union_uf.cpp Quick_union_uf.h)
 target_link_libraries(quick_union_uf_main std_io utility ${Boost_LIBRARIES})
 
-# TODO: 3rd Round
 add_executable(rabin_karp_main rabin_karp_main.cpp Rabin_karp.cpp Rabin_karp.h)
 target_link_libraries(rabin_karp_main std_io utility ${Boost_LIBRARIES})
 
@@ -602,7 +595,7 @@ target_link_libraries(run_length_main std_io utility ${Boost_LIBRARIES})
 add_executable(segment_tree_main segment_tree_main.cpp Segment_tree.cpp Segment_tree.h)
 target_link_libraries(segment_tree_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp Separate_chaining_hash_st.cpp Separate_chaining_hash_st.h) # TODO)
+add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp Separate_chaining_hash_st.h)
 target_link_libraries(separate_chaining_hash_st_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(sequential_search_st_main sequential_search_st_main.cpp Sequential_search_st.h)
@@ -641,7 +634,7 @@ target_link_libraries(symbol_digraph_main std_io utility ${Boost_LIBRARIES})
 add_executable(symbol_graph_main symbol_graph_main.cpp Symbol_graph.cpp Symbol_graph.h)
 target_link_libraries(symbol_graph_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(symbol_table_main symbol_table_main.cpp Symbol_table.cpp Symbol_table.h)
+add_executable(symbol_table_main symbol_table_main.cpp Symbol_table.h)
 target_link_libraries(symbol_table_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(tarjan_scc_main tarjan_scc_main.cpp Tarjan_scc.cpp Tarjan_scc.h)
@@ -659,6 +652,7 @@ target_link_libraries(top_m_main std_io utility ${Boost_LIBRARIES})
 add_executable(topological_x_main topological_x_main.cpp Topological_x.cpp Topological_x.h)
 target_link_libraries(topological_x_main std_io utility ${Boost_LIBRARIES})
 
+# TODO: 3rd Round
 add_executable(transaction_main transaction_main.cpp Transaction.cpp Transaction.h)
 target_link_libraries(transaction_main std_io utility ${Boost_LIBRARIES})
 
@@ -668,14 +662,14 @@ target_link_libraries(transitive_closure_main std_io utility ${Boost_LIBRARIES})
 add_executable(trie_set_main trie_set_main.cpp Trie_set.cpp Trie_set.h)
 target_link_libraries(trie_set_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(trie_st_main trie_st_main.cpp Trie_st.cpp Trie_st.h)
+add_executable(trie_st_main trie_st_main.cpp Trie_st.h)
 target_link_libraries(trie_st_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(tst_main tst_main.cpp TST.cpp TST.h)
+add_executable(tst_main tst_main.cpp TST.h)
 target_link_libraries(tst_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(two_person_zero_sum_game_main two_person_zero_sum_game_main.cpp Two_person_zero_sum_game.cpp Two_person_zero_sum_game.h)
+add_executable(two_person_zero_sum_game_main two_person_zero_sum_game_main.cpp Two_person_zero_sum_game.cpp Two_person_zero_sum_game.h) # TODO: mostly complete
 target_link_libraries(two_person_zero_sum_game_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(vector_main vector_main.cpp Vector.cpp Vector.h)
+add_executable(vector_main vector_main.cpp Vector.cpp Vector.h) # TODO: complete
 target_link_libraries(vector_main std_io utility ${Boost_LIBRARIES})

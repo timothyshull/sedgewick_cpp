@@ -1,71 +1,38 @@
 #include "Symbol_digraph.h"
+#include "In.h"
 
-Symbol_digraph::Symbol_digraph(std::string& filename, std::string& delimiter)
+Symbol_digraph::Symbol_digraph(std::string& filename, const char delimiter)
+        : _st{}
 {
-    st = new ST<std::string, Integer>();
-
-    // First pass builds the index by reading strings to associate
-    // distinct strings with an index
-    In in = new In(filename);
+    In in{filename};
     while (in.hasNextLine()) {
-        std::vector<std::string> a = in.read_line().split(delimiter);
-        for (int i{0}; i < a.length; ++i) {
-            if (!st.contains(a[i]))
-                st.put(a[i], st.size());
+        std::string line{in.read_line()};
+        std::vector<std::string> a;
+        utility::split_string(line, delimiter, a);
+        for (int i{0}; i < a.size(); ++i) {
+            if (!_st.contains(a[i])) {
+                _st.put(a[i], _st.size());
+            }
         }
     }
 
-    // inverted index to get string keys _in an aray
-    keys = new String[st.size()];
-    for (String name : st.keys()) {
-        keys[st.get(name)] = name;
+    _keys = std::vector<std::string>{static_cast<std::vector<std::string>::size_type>(_st.size())};
+    for (auto name : _st.keys()) {
+        _keys[_st.get(name)] = name;
     }
 
-    // second pass builds the digraph by connecting first vertex on each
-    // line to all others
-    graph = new Digraph(st.size());
-    in = new In(filename);
+    _graph = Digraph{_st.size()};
+    in = In{filename};
     while (in.hasNextLine()) {
-        std::vector<std::string> a = in.read_line().split(delimiter);
-        int v = st.get(a[0]);
-        for (int i{1}; i < a.length; ++i) {
-            int w = st.get(a[i]);
-            graph.add_edge(v, w);
+        std::string line{in.read_line()};
+        std::vector<std::string> a;
+        utility::split_string(line, delimiter, a);
+        int v = _st.get(a[0]);
+        for (int i{1}; i < a.size(); ++i) {
+            int w = _st.get(a[i]);
+            _graph.add_edge(v, w);
         }
     }
 }
 
-bool Symbol_digraph::contains(std::string& s)
-{
-    return st.contains(s);
-}
 
-int Symbol_digraph::index(std::string& s)
-{
-    return st.get(s);
-}
-
-int Symbol_digraph::index_of(std::string& s)
-{
-    return st.get(s);
-}
-
-std::string Symbol_digraph::name(int v)
-{
-    return keys[v];
-}
-
-std::string Symbol_digraph::nameOf(int v)
-{
-    return keys[v];
-}
-
-Digraph Symbol_digraph::G()
-{
-    return graph;
-}
-
-Digraph Symbol_digraph::digraph()
-{
-    return graph;
-}

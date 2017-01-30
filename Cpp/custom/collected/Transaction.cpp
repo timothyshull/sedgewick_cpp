@@ -1,79 +1,43 @@
 #include "Transaction.h"
-
-bool Who_order::operator<(Transaction& v, Transaction& w)
-{
-    return v.who < w.who;
-}
-
-bool When_order::operator<(Transaction& v, Transaction& w)
-{
-    return v.when < w.when;
-}
-
-bool How_much_order::operator<(Transaction& v, Transaction& w)
-{
-    return v.amount < w.amount;
-}
+#include "utility.h"
 
 Transaction::Transaction(std::string& who, Date& when, double amount)
+        : _who{who},
+          _when{when},
+          _amount{amount}
 {
-    if (Double.isNaN(amount) || Double.isInfinite(amount))
+    if (std::isnan(amount) || std::isinf(amount)) {
         throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
-    this.who = who;
-    this.when = when;
-    this.amount = amount;
+    }
 }
 
-Transaction::Transaction(std::string& transaction)
+Transaction::Transaction(std::string& transaction) : Transaction{_prep_args(transaction)}
 {
-    std::vector<std::string> a = transaction.split("\\s+");
-    who = a[0];
-    when = new Date(a[1]);
-    amount = Double.parseDouble(a[2]);
-    if (Double.isNaN(amount) || Double.isInfinite(amount))
+    if (std::isnan(_amount) || std::isinf(_amount)) {
         throw utility::Illegal_argument_exception("Amount cannot be NaN or infinite");
+    }
 }
 
-std::string Transaction::who()
+std::size_t Transaction::hash_code()
 {
-    return who;
-}
-
-Date Transaction::when()
-{
-    return when;
-}
-
-double Transaction::amount()
-{
-    return amount;
-}
-
-std::string Transaction::to_string()
-{
-    return String.format("%-10s %10s %8.2f", who, when, amount);
-}
-
-bool Transaction::operator<(Transaction& rhs)
-{
-    return Double.compare(this.amount, that.amount)
-}
-
-bool Transaction::operator==(Transaction& rhs)
-{
-    if (other == this) return true;
-    if (other == null) return false;
-    if (other.getClass() != this.getClass()) return false;
-    Transaction that = (Transaction) other;
-    return (this.amount == that.amount) && (this.who.equals(that.who))
-           && (this.when.equals(that.when));
-}
-
-int Transaction::hashCode()
-{
-    int hash = 1;
-    hash = 31 * hash + who.hashCode();
-    hash = 31 * hash + when.hashCode();
-    hash = 31 * hash + ((Double) amount).hashCode();
+    std::size_t hash = 1;
+    hash = 31 * hash + std::hash<std::string>{}(_who);
+    hash = 31 * hash + _when.hash_code();
+    hash = 31 * hash + std::hash<double>{}(_amount);
     return hash;
+}
+
+Transaction::Transaction(std::tuple<std::string, Date, double>&& args)
+        : _who{std::get<0>(args)},
+          _when{std::get<1>(args)},
+          _amount{std::get<2>(args)} {}
+
+std::tuple<std::string, Date, double> Transaction::_prep_args(std::string& transaction)
+{
+    std::vector<std::string> a;
+    utility::split_string(transaction, ' ', a);
+    std::string who{a[0]};
+    Date when = Date(a[1]);
+    double amount{utility::str_to_num<double>(a[2].c_str())};
+    return {who, when, amount};
 }

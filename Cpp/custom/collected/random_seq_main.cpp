@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[])
 {
-    int n = utility::str_to_num(argv[1]);
+    int n{utility::str_to_num(argv[1])};
 
     if (argc == 2) {
         double x;
@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
             Std_out::print_line(x);
         }
     } else if (argc == 4) {
-        double lo = utility::str_to_num(argv[1]);
-        double hi = utility::str_to_num(argv[2]);
+        double lo{utility::str_to_num(argv[1])};
+        double hi{utility::str_to_num(argv[2])};
 
         double x;
         for (int i{0}; i < n; ++i) {

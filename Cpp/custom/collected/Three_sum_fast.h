@@ -4,9 +4,9 @@
 #include <vector>
 
 namespace Three_sum_fast {
-    bool containsDuplicates(std::vector<int>& a);
+    bool contains_duplicates(std::vector<int>& a);
 
-    void printAll(std::vector<int>& a);
+    void print_all(std::vector<int>& a);
 
     int count(std::vector<int>& a);
 };

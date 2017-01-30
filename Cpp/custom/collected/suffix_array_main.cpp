@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     for (int i{0}; i < s.length(); ++i) {
         int index = suffix.index(i);
         std::string ith = "\"" + s.substr(index, std::min(index + 50, s.length())) + "\"";
-        utility::alg_assert(s.substr(index).equals(suffix.select(i));
+        utility::alg_assert(s.substr(index) == suffix.select(i), "");
         int rank = suffix.rank(s.substr(index));
         if (i == 0) {
             Std_out::printf("%3d %3d %3s %3d %s\n", i, index, "-", rank, ith);

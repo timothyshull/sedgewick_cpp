@@ -28,27 +28,29 @@ namespace Std_stats {
 
     double var(std::vector<int>& a);
 
-    double varp(std::vector<double>& a);
+    double var_p(std::vector<double>& a);
 
-    double varp(std::vector<double>& a, int lo, int hi);
+    double var_p(std::vector<double>& a, int lo, int hi);
 
-    double stddev(std::vector<double>& a);
+    double std_dev(std::vector<double>& a);
 
-    double stddev(std::vector<double>& a, int lo, int hi);
+    double std_dev(std::vector<double>& a, int lo, int hi);
 
-    double stddevp(std::vector<double>& a);
+    double std_dev_p(std::vector<double>& a);
 
-    double stddevp(std::vector<double>& a, int lo, int hi);
+    double std_dev_p(std::vector<double>& a, int lo, int hi);
 
     double sum(std::vector<double>& a);
 
     double sum(std::vector<int>& a);
 
-    double plotPoints(std::vector<double>& a);
+    double sum(std::vector<double>& a, int lo, int hi);
 
-    double plotLines(std::vector<double>& a);
+    double plot_points(std::vector<double>& a);
 
-    double plotBars(std::vector<double>& a);
+    double plot_lines(std::vector<double>& a);
+
+    double plot_bars(std::vector<double>& a);
 };
 
 #endif // STD_STATS_H

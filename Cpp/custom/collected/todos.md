@@ -72,7 +72,7 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - change all hash_code to return std::size_t
 - review logical constness and usage
 - assign const wherever possible
-- !!!calling reserve on a vector and then assigning to an index does not work -> this is a big problem
+- !!!calling reserve on a vector and then assigning to an index does not work -> this is a big problem -> start with the resizing array classes
 - review all comparators and remove Java compareTo format, default to < with == false
 - review member ordering optimizations and reorder members accordingly
 - review all substr calls
@@ -81,3 +81,10 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - review which classes can be turned into simple functions
 - clean up Patricia_set, add node delete, add iterator support
 - clean up Patricia_st and add ctor-> fix vale vs value pointer issue
+- use smart pointers for all vectors etc holding pointers -> see segment_tree
+- use size_t for all size functions
+- fix key and value pointer issues in Sequential_search_st
+- Symbol_digraph ctor needs more work
+- more work in Symbol_table
+- if all num_vertices, num_edges return size_t will not need to cast in ctors in so many places
+- Make all priority_queues iterable

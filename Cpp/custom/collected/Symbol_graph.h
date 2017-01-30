@@ -4,29 +4,36 @@
 #include <string>
 #include <map>
 #include "Graph.h"
+#include "Symbol_table.h"
 
 class Symbol_graph {
 public:
-    Symbol_graph(std::string& filename, std::string& delimiter);
+    Symbol_graph(std::string& filename, const char delimiter);
 
-    bool contains(std::string& s);
+    inline bool contains(std::string& s) const { return _st.contains(s); }
 
-    int index(std::string& s);
+    inline bool contains(std::string&& s) const { return _st.contains(s); }
 
-    int index_of(std::string& s);
+    inline int index(std::string& s) const { return _st.get(s); }
 
-    std::string name(int v);
+    inline int index(std::string&& s) const { return _st.get(s); }
 
-    std::string nameOf(int v);
+    inline int index_of(std::string& s) const { return _st.get(s); }
 
-    Graph G();
+    inline int index_of(std::string&& s) const { return _st.get(s); }
 
-    Graph digraph();
+    inline std::string name(int v) const { return _keys[v]; }
+
+    inline std::string name_of(int v) const { return _keys[v]; }
+
+    inline Graph graph() const { return _graph; }
+
+    inline Graph digraph() const { return _graph; }
 
 private:
-    std::map<std::string, int> st;
-    std::vector<std::string> keys;
-    Graph graph;
+    Symbol_table<std::string, int> _st;
+    std::vector<std::string> _keys;
+    Graph _graph;
 };
 
 #endif // SYMBOL_GRAPH_H

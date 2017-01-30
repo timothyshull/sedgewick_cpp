@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
     Digraph digraph{in};
     Tarjan_scc scc{digraph};
 
-    int m{scc.count()};
+    int m{scc._count()};
     Std_out::print_line(m + " components");
 
     std::vector<Queue<int>> components;
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
         components[i] = Queue<int>();
     }
     for (int v{0}; v < digraph.num_vertices(); ++v) {
-        components[scc.id(v)].enqueue(v);
+        components[scc._id(v)].enqueue(v);
     }
 
     for (int i{0}; i < m; ++i) {

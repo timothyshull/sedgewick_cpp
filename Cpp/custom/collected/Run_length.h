@@ -2,10 +2,12 @@
 #define RUN_LENGTH_H
 
 namespace Run_length {
-    const static int R = 256;
-    const static int LG_R = 8;
+    const static int radix = 256;
+
+    const static int lg_r = 8;
 
     void expand();
+
     void compress();
 
 };

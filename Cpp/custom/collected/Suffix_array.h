@@ -4,29 +4,62 @@
 #include <string>
 #include <vector>
 
+class Suffix_array;
+
 class Suffix {
 public:
+    Suffix() = default;
+
+    Suffix(const Suffix&) = default;
+
+    Suffix(Suffix&&) = default;
+
+    ~Suffix() = default;
+
+    Suffix& operator=(const Suffix&) = default;
+
+    Suffix& operator=(Suffix&&) = default;
+
     Suffix(std::string& text, int index);
 
-    char operator[](int i);
+    bool operator<(const Suffix& rhs) const;
 
-    bool operator<(Suffix& rhs);
+    inline bool operator==(const Suffix& rhs) const { return _text == rhs._text && _index == rhs._index; };
 
-    std::string to_string();
+    inline std::string to_string() const { return {_text.begin() + _index, _text.end()}; }
 
 private:
-    const std::string text;
-    const int index;
+    const std::string _text;
+    const int _index;
 
-    int length();
+    inline std::size_t _length() const { return _text.size() - _index; }
 
+    inline std::size_t _size() const { return _text.size() - _index; }
+
+    inline char operator[](int i) const { return _text[this->_index + i]; }
+
+    friend class Suffix_array;
 };
 
 class Suffix_array {
 public:
+    Suffix_array() = default;
+
+    Suffix_array(const Suffix_array&) = default;
+
+    Suffix_array(Suffix_array&&) = default;
+
+    ~Suffix_array() = default;
+
+    Suffix_array& operator=(const Suffix_array&) = default;
+
+    Suffix_array& operator=(Suffix_array&&) = default;
+
     Suffix_array(std::string& text);
 
-    int length();
+    inline std::size_t length() const { return _suffixes.size(); }
+
+    inline std::size_t size() const { return _suffixes.size(); }
 
     int index(int i);
 
@@ -36,12 +69,14 @@ public:
 
     int rank(std::string& query);
 
+    int rank(std::string&& query);
+
 private:
-    std::vector<Suffix> suffixes;
+    std::vector<Suffix> _suffixes;
 
-    int lcp(Suffix& s, Suffix& t);
+    int _lcp(Suffix& s, Suffix& t);
 
-    int compar(std::string& query, Suffix& suffix);
+    bool operator<(std::string& query, Suffix& suffix);
 };
 
 #endif // SUFFIX_ARRAY_H

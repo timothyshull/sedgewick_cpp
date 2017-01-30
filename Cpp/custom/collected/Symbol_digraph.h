@@ -3,29 +3,36 @@
 
 #include <map>
 #include "Digraph.h"
+#include "Symbol_table.h"
 
 class Symbol_digraph {
 public:
-    Symbol_digraph(std::string& filename, std::string& delimiter);
+    Symbol_digraph(std::string& filename, const char delimiter);
 
-    bool contains(std::string& s);
+    inline bool contains(std::string& s) const { return _st.contains(s); }
 
-    int index(std::string& s);
+    inline bool contains(std::string&& s) const { return _st.contains(s); }
 
-    int index_of(std::string& s);
+    inline int index(std::string& s) { return _st.get(s); }
 
-    std::string name(int v);
+    inline int index(std::string&& s) { return _st.get(s); }
 
-    std::string nameOf(int v);
+    inline int index_of(std::string& s) { return _st.get(s); }
 
-    Digraph G();
+    inline int index_of(std::string&& s) { return _st.get(s); }
 
-    Digraph digraph();
+    inline std::string name(int v) const { return _keys[v]; }
+
+    inline std::string name_of(int v) const { return _keys[v]; }
+
+    inline Digraph graph() const { return _graph; }
+
+    inline Digraph digraph() const { return _graph; }
 
 private:
-    std::map<std::string, int> st;
-    std::vector<std::string> keys;
-    Digraph graph;
+    Symbol_table<std::string, int> _st;
+    std::vector<std::string> _keys;
+    Digraph _graph;
 
 };
 

@@ -1,54 +1,34 @@
 #include "Sparse_vector.h"
+#include "utility.h"
 
-Sparse_vector::Sparse_vector(int d)
-{
-    this.d = d;
-    this.st = new ST<Integer, Double>();
-}
+Sparse_vector::Sparse_vector(int d) : _dimension{d}, _st{} {}
 
 void Sparse_vector::put(int i, double value)
 {
-    if (i < 0 || i >= d) { throw new IndexOutOfBoundsException("Illegal index"); }
-    if (value == 0.0) { st. }
-    delete (i);
-    else st.put(i, value);
+    if (i < 0 || i >= _dimension) { throw utility::Index_out_of_bounds_exception{"Illegal index"}; }
+    if (value == 0.0) { _st.remove(i); }
+    else { _st.put(i, value); }
 }
 
 double Sparse_vector::get(int i)
 {
-    if (i < 0 || i >= d) { throw new IndexOutOfBoundsException("Illegal index"); }
-    if (st.contains(i)) { return st.get(i); }
+    if (i < 0 || i >= _dimension) { throw utility::Index_out_of_bounds_exception{"Illegal index"}; }
+    if (_st.contains(i)) { return _st.get(i); }
     else { return 0.0; }
-}
-
-int Sparse_vector::nnz()
-{
-    return st.size();
-}
-
-int Sparse_vector::size()
-{
-    return d;
-}
-
-int Sparse_vector::dimension()
-{
-    return d;
 }
 
 double Sparse_vector::dot(Sparse_vector that)
 {
-    if (this.d != that.d) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
     double sum = 0.0;
 
-// iterate over the vector with the fewest nonzeros
-    if (this.st.size() <= that.st.size()) {
-        for (int i : this.st.keys()) {
-            if (that.st.contains(i)) { sum += this.get(i) * that.get(i); }
+    if (_st.size() <= that._st.size()) {
+        for (int i : _st.keys()) {
+            if (that._st.contains(i)) { sum += get(i) * that.get(i); }
         }
     } else {
-        for (int i : that.st.keys()) {
-            if (this.st.contains(i)) { sum += this.get(i) * that.get(i); }
+        for (int i : that._st.keys()) {
+            if (_st.contains(i)) { sum += get(i) * that.get(i); }
         }
     }
     return sum;
@@ -57,43 +37,44 @@ double Sparse_vector::dot(Sparse_vector that)
 double Sparse_vector::dot(std::vector<double> that)
 {
     double sum = 0.0;
-    for (int i : st.keys()) {
-        sum += that[i] * this.get(i);
+    for (int i : _st.keys()) {
+        sum += that[i] * get(i);
     }
     return sum;
 }
 
 double Sparse_vector::magnitude()
 {
-    return std::sqrt(this.dot(this));
+    return std::sqrt(dot(this));
 }
 
 double Sparse_vector::norm()
 {
-    return std::sqrt(this.dot(this));
+    return std::sqrt(dot(this));
 }
 
 Sparse_vector Sparse_vector::scale(double alpha)
 {
-    SparseVector c = new SparseVector(d);
-    for (int i : this.st.keys()) { c.put(i, alpha * this.get(i)); }
+    Sparse_vector c{_dimension};
+    for (int i : _st.keys()) { c.put(i, alpha * get(i)); }
     return c;
 }
 
 Sparse_vector Sparse_vector::plus(Sparse_vector& that)
 {
-    if (this.d != that.d) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
-    SparseVector c = new SparseVector(d);
-    for (int i : this.st.keys()) { c.put(i, this.get(i)); }                // c = this
-    for (int i : that.st.keys()) c.put(i, that.get(i) + c.get(i));     // c = c + that
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
+    Sparse_vector c{_dimension};
+    for (int i : _st.keys()) { c.put(i, get(i)); }
+    for (int i : that._st.keys()) { c.put(i, that.get(i) + c.get(i)); }
     return c;
 }
 
 std::string Sparse_vector::to_string()
 {
-    std::stringstream s = new std::stringstream();
-    for (int i : st.keys()) {
-        s.append("(" + i + ", " + st.get(i) + ") ");
+    std::stringstream ss;
+    ss << "Sparse_vector(\n";
+    for (int i : _st.keys()) {
+        ss << "    (" << i << ", " << _st.get(i) << "),\n";
     }
-    return s.to_string();
+    return ss.str();
 }

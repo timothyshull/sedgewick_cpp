@@ -1,122 +1,105 @@
+#include <deque>
 #include "Topological_x.h"
 
-Topological_x::Topological_x(Digraph& G)
+Topological_x::Topological_x(Digraph& digraph)
+        : _rank{static_cast<std::vector<int>::size_type>(digraph.num_vertices())},
+          _order{}
 {
-    std::vector<int> indegree = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        indegree[v] = G.indegree(v);
+    std::vector<int> indegree{static_cast<std::vector<int>::size_type>(digraph.num_vertices())};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        indegree[v] = digraph.indegree(v);
     }
 
-    // initialize
-    rank = new int[G.num_vertices()];
-    order = new Queue<Integer>();
-    int count = 0;
+    int count{0};
 
-    // initialize _queue to contain all vertices with indegree = 0
-    Queue<Integer> queue = new Queue<Integer>();
-    for (int v{0}; v < G.num_vertices(); ++v)
-        if (indegree[v] == 0) queue.enqueue(v);
+    Queue<int> queue;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (indegree[v] == 0) { queue.enqueue(v); }
+    }
 
     for (int j{0}; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
-        order.enqueue(v);
-        rank[v] = ++count;
-        for (int w : G.adj(v)) {
+        _order.enqueue(v);
+        _rank[v] = ++count;
+        for (auto w : digraph.adjacent(v)) {
             indegree[w]--;
-            if (indegree[w] == 0) queue.enqueue(w);
+            if (indegree[w] == 0) { queue.enqueue(w); }
         }
     }
 
-    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
-    if (count != G.num_vertices()) {
-        order = null;
+    if (count != digraph.num_vertices()) {
+        _order = Queue<int>{};
     }
 
-    assert check(G);
+    utility::alg_assert(_check(digraph), "Topological_x invariant check failed after construction with a digraph");
 }
 
-Topological_x::Topological_x(Edge_weighted_digraph& G)
+Topological_x::Topological_x(Edge_weighted_digraph& digraph)
+        : _rank{static_cast<std::vector<int>::size_type>(digraph.num_vertices())},
+          _order{}
 {
-    std::vector<int> indegree = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        indegree[v] = G.indegree(v);
+    std::vector<int> indegree{static_cast<std::vector<int>::size_type>(digraph.num_vertices())};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        indegree[v] = digraph.indegree(v);
     }
 
-    // initialize
-    rank = new int[G.num_vertices()];
-    order = new Queue<Integer>();
     int count = 0;
 
-    // initialize _queue to contain all vertices with indegree = 0
-    Queue<Integer> queue = new Queue<Integer>();
-    for (int v{0}; v < G.num_vertices(); ++v)
-        if (indegree[v] == 0) queue.enqueue(v);
+    Queue<int> queue;
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (indegree[v] == 0) { queue.enqueue(v); }
+    }
 
     for (int j{0}; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
-        order.enqueue(v);
-        rank[v] = ++count;
-        for (Directed_edge e : G.adj(v)) {
+        _order.enqueue(v);
+        _rank[v] = ++count;
+        for (auto e : digraph.adjacent(v)) {
             int w = e.to();
             indegree[w]--;
-            if (indegree[w] == 0) queue.enqueue(w);
+            if (indegree[w] == 0) { queue.enqueue(w); }
         }
     }
 
-    // there is a directed _cycle _in subgraph of vertices with indegree >= 1.
-    if (count != G.num_vertices()) {
-        order = null;
+    if (count != digraph.num_vertices()) {
+        _order = Queue<int>{};
     }
 
-    assert check(G);
-}
-
-std::vector<int> Topological_x::order()
-{
-    return order;
-}
-
-bool Topological_x::has_order()
-{
-    return order != null;
+    utility::alg_assert(_check(digraph), "Topological_x invariant check failed after construction with a edge weighted digraph");
 }
 
 int Topological_x::rank(int v)
 {
-    validateVertex(v);
-    if (hasOrder()) return rank[v];
-    else return -1;
+    _validate_vertex(v);
+    if (has_order()) { return _rank[v]; }
+    else { return -1; }
 }
 
-bool Topological_x::check(Digraph& G)
+bool Topological_x::_check(Digraph& digraph)
 {
-    if (hasOrder()) {
-        // _check that ranks are a permutation of 0 to _num_vertices-1
-        std::deque<bool> found = new boolean[G.num_vertices()];
-        for (int i{0}; i < G.num_vertices(); ++i) {
+    if (has_order()) {
+        std::deque<bool> found{static_cast<std::deque<bool>::size_type>(digraph.num_vertices())};
+        for (int i{0}; i < digraph.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i{0}; i < G.num_vertices(); ++i) {
+        for (int i{0}; i < digraph.num_vertices(); ++i) {
             if (!found[i]) {
                 std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
 
-        // _check that ranks provide a valid topological _order
-        for (int v{0}; v < G.num_vertices(); ++v) {
-            for (int w : G.adj(v)) {
+        for (int v{0}; v < digraph.num_vertices(); ++v) {
+            for (auto w : digraph.adjacent(v)) {
                 if (rank(v) > rank(w)) {
-                    System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
-                                      v, w, v, rank(v), w, rank(w));
+                    std::cerr << v << "-" << w << ": rank(" << v << ") = " << rank(v) << ", rank(" << w << ") = " << rank(w) << "\n";
                     return false;
                 }
             }
         }
 
-        // _check that _order() is consistent with rank()
-        int r = 0;
-        for (int v : order()) {
+        int r{0};
+        for (auto v : order()) {
             if (rank(v) != r) {
                 std::cerr << "_order() and rank() inconsistent";
                 return false;
@@ -128,36 +111,32 @@ bool Topological_x::check(Digraph& G)
     return true;
 }
 
-bool Topological_x::check(Edge_weighted_digraph& G)
+bool Topological_x::_check(Edge_weighted_digraph& digraph)
 {
-    if (hasOrder()) {
-        // _check that ranks are a permutation of 0 to _num_vertices-1
-        std::deque<bool> found = new boolean[G.num_vertices()];
-        for (int i{0}; i < G.num_vertices(); ++i) {
+    if (has_order()) {
+        std::deque<bool> found{static_cast<std::deque<bool>::size_type>(digraph.num_vertices())};
+        for (int i{0}; i < digraph.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i{0}; i < G.num_vertices(); ++i) {
+        for (int i{0}; i < digraph.num_vertices(); ++i) {
             if (!found[i]) {
                 std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
 
-        // _check that ranks provide a valid topological _order
-        for (int v{0}; v < G.num_vertices(); ++v) {
-            for (Directed_edge e : G.adj(v)) {
+        for (int v{0}; v < digraph.num_vertices(); ++v) {
+            for (Directed_edge e : digraph.adjacent(v)) {
                 int w = e.to();
                 if (rank(v) > rank(w)) {
-                    System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
-                                      v, w, v, rank(v), w, rank(w));
+                    std::cerr << v << "-" << w << ": rank(" << v << ") = " << rank(v) << ", rank(" << w << ") = " << rank(w) << "\n";
                     return false;
                 }
             }
         }
 
-        // _check that _order() is consistent with rank()
-        int r = 0;
-        for (int v : order()) {
+        int r{0};
+        for (auto v : order()) {
             if (rank(v) != r) {
                 std::cerr << "_order() and rank() inconsistent";
                 return false;
@@ -166,13 +145,13 @@ bool Topological_x::check(Edge_weighted_digraph& G)
         }
     }
 
-
     return true;
 }
 
-void Topological_x::validateVertex(int v)
+void Topological_x::_validate_vertex(int v)
 {
-    int num_vertices = rank.length;
-    if (v < 0 || v >= V)
-        throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V - 1));
+    auto num_vertices = _rank.size();
+    if (v < 0 || v >= num_vertices) {
+        throw utility::Index_out_of_bounds_exception{"vertex " + std::to_string(v) + " is not between 0 and " + std::to_string(num_vertices - 1)};
+    }
 }

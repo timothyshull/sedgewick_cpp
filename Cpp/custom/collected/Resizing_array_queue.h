@@ -2,75 +2,79 @@
 #define RESIZING_ARRAY_QUEUE_H
 
 #include <vector>
+#include "utility.h"
 
+// TODO: wraparound iterator wrapper
 template<typename T>
 class Resizing_array_queue {
 public:
+    using Iterator_type = typename std::vector<T>::iterator;
+
     Resizing_array_queue()
+            : _queue(static_cast<std::vector<T>::size_type>(2)),
+              _size{2},
+              _first{0},
+              _last{0} {}
+
+    inline bool is_empty() const noexcept { return _size == 0; }
+
+    inline int size() const noexcept { return _size; }
+
+    void enqueue(T& item)
     {
-        q = (Item[]) new Object[2];
-        n = 0;
-        first = 0;
-        last = 0;
+        if (_size == _queue.size()) { resize(2 * _queue.size()); }
+        _queue[_last++] = item;
+        if (_last == _queue.size()) { _last = 0; }
+        ++_size;
     }
 
-    bool is_empty()
+    void enqueue(T&& item)
     {
-        return n == 0;
+        if (_size == _queue.size()) { resize(2 * _queue.size()); }
+        _queue[_last++] = item;
+        if (_last == _queue.size()) { _last = 0; }
+        ++_size;
     }
 
-    int size()
+    T dequeue()
     {
-        return n;
-    }
-
-    void enqueue(Item item)
-    {
-        // double size of array if necessary and recopy to front of array
-        if (n == q.length) { resize(2 * q.length); }   // double size of array if necessary
-        q[last++] = item;                        // add item
-        if (last == q.length) last = 0;          // wrap-around
-        ++n;
-    }
-
-    Item dequeue()
-    {
-        if (is_empty()) { throw new NoSuchElementException("Queue underflow"); }
-        Item item = q[first];
-        q[first] = null;                            // to avoid loitering
-        n--;
-        ++first;
-        if (first == q.length) { first = 0; }           // wrap-around
-        // shrink size of array if necessary
-        if (n > 0 && n == q.size() / 4) resize(q.size() / 2);
+        if (is_empty()) { throw utility::No_such_element_exception{"Queue underflow"}; }
+        T item = _queue[_first];
+        _queue[_first] = 0; // zero it out
+        --_size;
+        ++_first;
+        if (_first == _queue.size()) { _first = 0; }
+        if (_size > 0 && _size == _queue.size() / 4) { resize(_queue.size() / 2); }
         return item;
     }
 
-    Item peek()
+    T peek()
     {
-        if (is_empty()) { throw new NoSuchElementException("Queue underflow"); }
-        return q[first];
+        if (is_empty()) { throw utility::No_such_element_exception{"Queue underflow"}; }
+        return _queue[_first];
     }
 
-private:
-    std::vector<T> q;
-    int n;
-    int first;
-    int last;
+    inline Iterator_type begin() { return _queue.begin() + _first; }
 
-    void resize(int capacity)
+    inline Iterator_type end() { return _queue.end() + _last; }
+
+private:
+    std::vector<T> _queue;
+    int _size;
+    int _first;
+    int _last;
+
+    void resize(std::size_t capacity)
     {
-        assert
-        capacity >= n;
-        Item[]
-        temp = (Item[])
-        new Object[capacity];
-        for (int i{0}; i < n; ++i) {
-            temp[i] = q[(first + i) % q.length];
+        utility::alg_assert(capacity >= _size, "Resizing_array_queue resize called with capacity less than current size");
+        utility::alg_assert(capacity < _queue.max_size(), "Resizing_array_queue resize called with capacity greater than or equal to the max size");
+        std::vector<T> temp(capacity);
+        for (int i{0}; i < _size; ++i) {
+            temp[i] = _queue[(_first + i) % _queue.size()];
         }
-        q = temp;
-        first = 0;
-        last = n;
+        _queue = temp;
+        _first = 0;
+        _last = _size;
     }
 };
 

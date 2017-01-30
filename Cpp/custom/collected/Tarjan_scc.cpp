@@ -1,64 +1,50 @@
 #include "Tarjan_scc.h"
+#include "Transitive_closure.h"
 
-Tarjan_scc::Tarjan_scc(Digraph& G)
+Tarjan_scc::Tarjan_scc(Digraph& digraph)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+          _stack{},
+          _id(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
+          _low(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    marked = new boolean[G.num_vertices()];
-    stack = new Stack<Integer>();
-    id = new int[G.num_vertices()];
-    low = new int[G.num_vertices()];
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        if (!marked[v]) dfs(G, v);
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        if (!_marked[v]) { _dfs(digraph, v); }
     }
 
-    // _check that id[] gives strong components
-    assert check(G);
+    utility::alg_assert(_check(digraph), "Tarjan_scc invariant check failed after construction");
 }
 
-int Tarjan_scc::count()
+void Tarjan_scc::_dfs(Digraph& digraph, int vertex)
 {
-    return count;
-}
-
-bool Tarjan_scc::stronglyConnected(int v, int w)
-{
-    return id[v] == id[w];
-}
-
-int Tarjan_scc::id(int v)
-{
-    return id[v];
-}
-
-void Tarjan_scc::dfs(Digraph& G, int v)
-{
-    marked[v] = true;
-    low[v] = ++pre;
-    int min = low[v];
-    stack.push(v);
-    for (int w : G.adj(v)) {
-        if (!marked[w]) dfs(G, w);
-        if (low[w] < min) min = low[w];
+    _marked[vertex] = true;
+    _low[vertex] = ++_pre;
+    int min = _low[vertex];
+    _stack.push(vertex);
+    for (int w : digraph.adjacent(vertex)) {
+        if (!_marked[w]) { _dfs(digraph, w); }
+        if (_low[w] < min) { min = _low[w]; }
     }
-    if (min < low[v]) {
-        low[v] = min;
+    if (min < _low[vertex]) {
+        _low[vertex] = min;
         return;
     }
     int w;
     do {
-        w = stack.pop();
-        id[w] = count;
-        low[w] = G.num_vertices();
-    } while (w != v);
-    ++count;
+        w = _stack.pop();
+        _id[w] = _count;
+        _low[w] = digraph.num_vertices();
+    } while (w != vertex);
+    ++_count;
 }
 
-bool Tarjan_scc::check(Digraph& G)
+bool Tarjan_scc::_check(Digraph& digraph)
 {
-    TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (int w{0}; w < G.num_vertices(); ++w) {
-            if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v)))
+    Transitive_closure tc{digraph};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (int w{0}; w < digraph.num_vertices(); ++w) {
+            if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
+            }
         }
     }
     return true;

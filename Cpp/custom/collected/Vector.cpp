@@ -1,101 +1,86 @@
 #include "Vector.h"
+#include "utility.h"
 
 Vector::Vector(int d)
-{
-    this.d = d;
-    data = new double[d];
-}
+        : _dimension{d},
+          _data(static_cast<std::vector<double>::size_type>(d)) {}
 
 Vector::Vector(std::initializer_list<double>& a)
-{
-    d = a.length;
-
-    // defensive copy so that client can't alter our copy of data[]
-    data = new double[d];
-    for (int i{0}; i < d; ++i)
-        data[i] = a[i];
-}
-
-int Vector::length()
-{
-    return d;
-}
-
-int Vector::dimension()
-{
-    return d;
-}
+        : _dimension{static_cast<int>(a.size())},
+          _data{a} {}
 
 double Vector::dot(Vector& that)
 {
-    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
-    double sum = 0.0;
-    for (int i{0}; i < d; ++i)
-        sum = sum + (this.data[i] * that.data[i]);
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    double sum{0.0};
+    for (int i{0}; i < _dimension; ++i) {
+        sum = sum + (_data[i] * that._data[i]);
+    }
     return sum;
 }
 
 double Vector::magnitude()
 {
-    return std::sqrt(this.dot(this));
+    return std::sqrt(dot(*this));
 }
 
-double Vector::distanceTo(Vector& that)
+double Vector::distance_to(Vector& rhs)
 {
-    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
-    return this.minus(that).magnitude();
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    return minus(rhs).magnitude();
 }
 
-Vector Vector::plus(Vector& that)
+Vector Vector::plus(Vector& rhs)
 {
-    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
-    Vector c = new Vector(d);
-    for (int i{0}; i < d; ++i)
-        c.data[i] = this.data[i] + that.data[i];
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    Vector c{_dimension};
+    for (int i{0}; i < _dimension; ++i) {
+        c._data[i] = _data[i] + rhs._data[i];
+    }
     return c;
 }
 
-Vector Vector::minus(Vector& that) {
-    if (this.d != that.d) throw utility::Illegal_argument_exception("Dimensions don't agree");
-    Vector c = new Vector(d);
-    for (int i{0}; i < d; ++i)
-        c.data[i] = this.data[i] - that.data[i];
-    return c;
-}
-
-double Vector::cartesian(int i)
+Vector Vector::minus(Vector& rhs)
 {
-    return data[i];
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    Vector c{_dimension};
+    for (int i{0}; i < _dimension; ++i) {
+        c._data[i] = _data[i] - rhs._data[i];
+    }
+    return c;
 }
 
 Vector Vector::times(double alpha)
 {
-    Vector c = new Vector(d);
-    for (int i{0}; i < d; ++i)
-        c.data[i] = alpha * data[i];
+    Vector c{_dimension};
+    for (int i{0}; i < _dimension; ++i) {
+        c._data[i] = alpha * _data[i];
+    }
     return c;
 }
 
 Vector Vector::scale(double alpha)
 {
-    Vector c = new Vector(d);
-    for (int i{0}; i < d; ++i)
-        c.data[i] = alpha * data[i];
+    Vector c{_dimension};
+    for (int i{0}; i < _dimension; ++i) {
+        c._data[i] = alpha * _data[i];
+    }
     return c;
 }
 
 Vector Vector::direction()
 {
-    if (this.magnitude() == 0.0) throw new ArithmeticException("Zero-vector has no direction");
-    return this.times(1.0 / this.magnitude());
+    if (magnitude() == 0.0) { throw utility::Arithmetic_exception{"Zero-vector has no direction"}; }
+    return times(1.0 / magnitude());
 }
 
 std::string Vector::to_string()
 {
-    std::stringstream s = new std::stringstream();
-    for (int i{0}; i < d; ++i)
-        s.append(data[i] + " ");
-    return s.to_string();
+    std::stringstream ss;
+    for (auto i : _data) {
+        ss << i << " ";
+    }
+    return ss.str();
 }
 
 std::ostream& operator<<(std::ostream& os, Vector& out)

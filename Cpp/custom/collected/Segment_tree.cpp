@@ -1,152 +1,130 @@
+#include <cmath>
+
 #include "Segment_tree.h"
 
-int Segment_tree_node::size()
-{
-    return to - from + 1;
-}
-
 Segment_tree::Segment_tree(std::vector<int>& array)
+        : _array{array},
+          _size{static_cast<int>(2 * std::pow(2.0, std::floor((std::log(static_cast<double>(array.size())) / std::log(2.0)) + 1)))},
+          _heap(static_cast<std::vector<Segment_tree_node>::size_type>(_size))
 {
-    this.array = Arrays.copyOf(array, array.length);
-    //The max size of this array is about 2 * 2 ^ log2(_size) + 1
-    size = (int) (2 * std::pow(2.0, std::floor((std::log((double) array.length) / std::log(2.0)) + 1)));
-    heap = new Node[size];
-    build(1, 0, array.length);
-}
-
-int Segment_tree::size()
-{
-    return array.length;
+    _build(1, 0, static_cast<int>(array.size()));
 }
 
 int Segment_tree::rsq(int from, int to)
 {
-    return rsq(1, from, to);
+    return _rsq(1, from, to);
 }
 
-int Segment_tree::rMinQ(int from, int to)
+int Segment_tree::r_min_q(int from, int to)
 {
-    return rMinQ(1, from, to);
+    return _r_min_q(1, from, to);
 }
 
 void Segment_tree::update(int from, int to, int value)
 {
-    update(1, from, to, value);
+    _update(1, from, to, value);
 }
 
-int Segment_tree::rsq(int v, int from, int to)
+int Segment_tree::_rsq(int v, int from, int to)
 {
-    Node n = heap[v];
+    Segment_tree_node n = _heap[v];
 
-    //If you did a range update that contained this node, you can infer the Sum without going down the tree
-    if (n.pendingVal != null && contains(n.from, n.to, from, to)) {
-        return (to - from + 1) * n.pendingVal;
+    if (n._pending_val != std::numeric_limits<int>::max() && _contains(n._from, n._to, from, to)) {
+        return (to - from + 1) * n._pending_val;
     }
 
-    if (contains(from, to, n.from, n.to)) {
-        return heap[v].sum;
+    if (_contains(from, to, n._from, n._to)) {
+        return _heap[v]._sum;
     }
 
-    if (intersects(from, to, n.from, n.to)) {
-        propagate(v);
-        int leftSum = rsq(2 * v, from, to);
-        int rightSum = rsq(2 * v + 1, from, to);
+    if (_intersects(from, to, n._from, n._to)) {
+        _propagate(v);
+        int left_sum{_rsq(2 * v, from, to)};
+        int right_sum{_rsq(2 * v + 1, from, to)};
 
-        return leftSum + rightSum;
+        return left_sum + right_sum;
     }
 
     return 0;
 }
 
-void Segment_tree::build(int v, int from, int size)
+void Segment_tree::_build(int v, int from, int size)
 {
-    heap[v] = new Node();
-    heap[v].from = from;
-    heap[v].to = from + size - 1;
+    _heap[v] = Segment_tree_node{};
+    _heap[v]._from = from;
+    _heap[v]._to = from + size - 1;
 
     if (size == 1) {
-        heap[v].sum = array[from];
-        heap[v].min = array[from];
+        _heap[v]._sum = _array[from];
+        _heap[v]._min = _array[from];
     } else {
-        //Build childs
-        build(2 * v, from, size / 2);
-        build(2 * v + 1, from + size / 2, size - size / 2);
+        _build(2 * v, from, size / 2);
+        _build(2 * v + 1, from + size / 2, size - size / 2);
 
-        heap[v].sum = heap[2 * v].sum + heap[2 * v + 1].sum;
-        //min = min of the children
-        heap[v].min = std::min(heap[2 * v].min, heap[2 * v + 1].min);
+        _heap[v]._sum = _heap[2 * v]._sum + _heap[2 * v + 1]._sum;
+        _heap[v]._min = std::min(_heap[2 * v]._min, _heap[2 * v + 1]._min);
     }
 }
 
-int Segment_tree::rMinQ(int v, int from, int to)
+int Segment_tree::_r_min_q(int v, int from, int to)
 {
-    Node n = heap[v];
+    Segment_tree_node n = _heap[v];
 
-    //If you did a range update that contained this node, you can infer the Min value without going down the tree
-    if (n.pendingVal != null && contains(n.from, n.to, from, to)) {
-        return n.pendingVal;
+    if (n._pending_val != std::numeric_limits<int>::max() && _contains(n._from, n._to, from, to)) {
+        return n._pending_val;
     }
 
-    if (contains(from, to, n.from, n.to)) {
-        return heap[v].min;
+    if (_contains(from, to, n._from, n._to)) {
+        return _heap[v]._min;
     }
 
-    if (intersects(from, to, n.from, n.to)) {
-        propagate(v);
-        int leftMin = rMinQ(2 * v, from, to);
-        int rightMin = rMinQ(2 * v + 1, from, to);
+    if (_intersects(from, to, n._from, n._to)) {
+        _propagate(v);
+        int left_min{_r_min_q(2 * v, from, to)};
+        int right_min{_r_min_q(2 * v + 1, from, to)};
 
-        return std::min(leftMin, rightMin);
+        return std::min(left_min, right_min);
     }
 
-    return Integer.MAX_VALUE;
+    return std::numeric_limits<int>::max();
 }
 
-void Segment_tree::update(int v, int from, int to, int value)
+void Segment_tree::_update(int v, int from, int to, int value)
 {
-    Node n = heap[v];
+    Segment_tree_node n = _heap[v];
 
-    if (contains(from, to, n.from, n.to)) {
-        change(n, value);
+    if (_contains(from, to, n._from, n._to)) {
+        _change(n, value);
     }
 
-    if (n.size() == 1) return;
+    if (n.size() == 1) { return; }
 
-    if (intersects(from, to, n.from, n.to)) {
-        propagate(v);
+    if (_intersects(from, to, n._from, n._to)) {
+        _propagate(v);
 
-        update(2 * v, from, to, value);
-        update(2 * v + 1, from, to, value);
+        _update(2 * v, from, to, value);
+        _update(2 * v + 1, from, to, value);
 
-        n.sum = heap[2 * v].sum + heap[2 * v + 1].sum;
-        n.min = std::min(heap[2 * v].min, heap[2 * v + 1].min);
-    }
-}
-
-void Segment_tree::propagate(int v)
-{
-    Node n = heap[v];
-
-    if (n.pendingVal != null) {
-        change(heap[2 * v], n.pendingVal);
-        change(heap[2 * v + 1], n.pendingVal);
-        n.pendingVal = null; //unset the pending propagation value
+        n._sum = _heap[2 * v]._sum + _heap[2 * v + 1]._sum;
+        n._min = std::min(_heap[2 * v]._min, _heap[2 * v + 1]._min);
     }
 }
 
-void Segment_tree::change(Segment_tree_node* n, int value)
+void Segment_tree::_propagate(int v)
 {
-    n.pendingVal = value;
-    n.sum = n.size() * value;
-    n.min = value;
-    array[n.from] = value;
+    Segment_tree_node n = _heap[v];
+
+    if (n._pending_val != std::numeric_limits<int>::max()) {
+        _change(_heap[2 * v], n._pending_val);
+        _change(_heap[2 * v + 1], n._pending_val);
+        // n._pending_val = std::numeric_limits<int>::max();
+    }
 }
 
-bool Segment_tree::contains(int from1, int to1, int from2, int to2)
+void Segment_tree::_change(Segment_tree_node& n, int value)
 {
-    return from2 >= from1 && to2 <= to1;
-}
-
-bool Segment_tree::intersects(int from1, int to1, int from2, int to2) {
-    return from1 <= from2 && to1 >= from2 || from1 >= from2 && from1 <= to2;
+    n._pending_val = value;
+    n._sum = static_cast<int>(n.size() * value);
+    n._min = value;
+    _array[n._from] = value;
 }

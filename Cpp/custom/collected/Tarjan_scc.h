@@ -8,25 +8,37 @@
 
 class Tarjan_scc {
 public:
-    Tarjan_scc(Digraph& G);
+    Tarjan_scc() = default;
 
-    int count();
+    Tarjan_scc(const Tarjan_scc&) = default;
 
-    bool stronglyConnected(int v, int w);
+    Tarjan_scc(Tarjan_scc&&) = default;
 
-    int id(int v);
+    ~Tarjan_scc() = default;
+
+    Tarjan_scc& operator=(const Tarjan_scc&) = default;
+
+    Tarjan_scc& operator=(Tarjan_scc&&) = default;
+
+    Tarjan_scc(Digraph& digraph);
+
+    inline int count() const noexcept { return _count; }
+
+    inline bool strongly_connected(int v, int w) const { return _id[v] == _id[w]; }
+
+    inline int id(int v) const { return _id[v]; }
 
 private:
-    std::deque<bool> marked;
-    std::vector<int> id;
-    std::vector<int> low;
-    int pre;
-    int count;
-    Stack<int> stack;
+    std::deque<bool> _marked;
+    std::vector<int> _id;
+    std::vector<int> _low;
+    int _pre;
+    int _count;
+    Stack<int> _stack;
 
-    void dfs(Digraph& G, int v);
+    void _dfs(Digraph& digraph, int vertex);
 
-    bool check(Digraph& G);
+    bool _check(Digraph& digraph);
 };
 
 #endif // TARJAN_SCC_H

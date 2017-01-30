@@ -5,23 +5,37 @@
 
 class Vector {
 public:
+    Vector() = default;
+
+    Vector(const Vector&) = default;
+
+    Vector(Vector&&) = default;
+
+    ~Vector() = default;
+
+    Vector& operator=(const Vector&) = default;
+
+    Vector& operator=(Vector&&) = default;
+
     Vector(int d);
 
     Vector(std::initializer_list<double>& a);
 
-    int length();
+    inline int length() const noexcept { return _dimension; }
 
-    int dimension();
+    inline int dimension() const noexcept { return _dimension; }
 
     double dot(Vector& that);
 
     double magnitude();
 
-    double distanceTo(Vector& that);
+    double distance_to(Vector& rhs);
 
-    Vector plus(Vector& that);
+    Vector plus(Vector& rhs);
 
-    double cartesian(int i);
+    Vector minus(Vector& rhs);
+
+    inline double cartesian(int i) const { return _data[i]; }
 
     Vector times(double alpha);
 
@@ -32,8 +46,8 @@ public:
     std::string to_string();
 
 private:
-    int d;
-    std::vector<double> data;
+    int _dimension;
+    std::vector<double> _data;
 };
 
 std::ostream& operator<<(std::ostream& os, Vector& out);

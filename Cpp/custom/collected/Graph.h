@@ -5,6 +5,18 @@
 
 class Graph {
 public:
+    Graph() = default;
+
+    Graph(const Graph&) = default;
+
+    Graph(Graph&&) = default;
+
+    ~Graph() = default;
+
+    Graph& operator=(const Graph&) = default;
+
+    Graph& operator=(Graph&&) = default;
+
     explicit Graph(int v);
 
     explicit Graph(std::istream& in);
@@ -22,6 +34,7 @@ public:
     int degree(int v) const;
 
     std::string to_string() const;
+
 private:
     int _num_vertices;
     int _num_edges;

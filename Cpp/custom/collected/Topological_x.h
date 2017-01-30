@@ -8,21 +8,25 @@
 
 class Topological_x {
 public:
-    Topological_x(Digraph& G);
-    Topological_x(Edge_weighted_digraph& G);
+    Topological_x(Digraph& digraph);
 
-    inline std::vector<int> order();
+    Topological_x(Edge_weighted_digraph& digraph);
 
-    inline bool has_order();
+    inline Queue<int> order() const { return _order; }
+
+    inline bool has_order() const { return !_order.is_empty(); }
 
     int rank(int v);
-private:
-    Queue<int> order;
-    std::vector<int> rank;
 
-    bool check(Digraph& G);
-    bool check(Edge_weighted_digraph& G);
-    void validateVertex(int v);
+private:
+    Queue<int> _order;
+    std::vector<int> _rank;
+
+    bool _check(Digraph& digraph);
+
+    bool _check(Edge_weighted_digraph& digraph);
+
+    void _validate_vertex(int v);
 };
 
 #endif // TOPOLOGICAL_X_H

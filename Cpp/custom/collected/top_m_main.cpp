@@ -19,11 +19,11 @@ int main(int argc, char* argv[])
         }
     }
 
-    Stack<Transaction> stack{};
-    for (Transaction transaction : pq) {
+    Stack<Transaction> stack;
+    for (auto transaction : pq) {
         stack.push(transaction);
     }
-    for (Transaction transaction : stack) {
+    for (auto transaction : stack) {
         Std_out::print_line(transaction);
     }
     return 0;
