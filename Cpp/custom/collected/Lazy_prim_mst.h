@@ -8,24 +8,24 @@
 
 class Lazy_prim_mst {
 public:
-    Lazy_prim_mst(Edge_weighted_graph& G);
+    Lazy_prim_mst(Edge_weighted_graph& graph);
 
-    void prim(Edge_weighted_graph& G, int s);
+    void prim(Edge_weighted_graph& graph, int source);
 
-    void scan(Edge_weighted_graph& G, int v);
+    void scan(Edge_weighted_graph& graph, int vertex);
 
-    std::vector<Edge> edges();
+    inline Queue<Edge> edges() const { return _mst; }
 
-    double weight();
+    inline double weight() const noexcept { return _weight; }
 
 private:
-    const static double FLOATING_POINT_EPSILON = std::numeric_limits<double>::epsilon();
-    double weight;
-    Queue<Edge> mst;
-    std::deque<bool> marked;
-    Min_pq<Edge> pq;
+    const static double _floating_point_epsilon = std::numeric_limits<double>::epsilon();
+    double _weight;
+    Queue<Edge> _mst;
+    std::deque<bool> _marked;
+    Min_pq<Edge> _pq;
 
-    bool check(Edge_weighted_graph& G);
+    bool _check(Edge_weighted_graph& graph);
 };
 
 #endif // LAZY_PRIM_MST_H

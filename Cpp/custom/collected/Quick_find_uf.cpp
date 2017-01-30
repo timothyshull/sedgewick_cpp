@@ -1,50 +1,47 @@
 #include "Quick_find_uf.h"
+#include "utility.h"
 
 Quick_find_uf::Quick_find_uf(int n)
+        : _count{n},
+          _id(static_cast<std::vector<int>::size_type>(n))
 {
-    count = n;
-    id = new int[n];
-    for (int i{0}; i < n; ++i)
-        id[i] = i;
-}
-
-int Quick_find_uf::count()
-{
-    return count;
+    for (int i{0}; i < n; ++i) {
+        _id[i] = i;
+    }
 }
 
 int Quick_find_uf::find(int p)
 {
-    validate(p);
-    return id[p];
+    _validate(p);
+    return _id[p];
 }
 
 bool Quick_find_uf::connected(int p, int q)
 {
-    validate(p);
-    validate(q);
-    return id[p] == id[q];
+    _validate(p);
+    _validate(q);
+    return _id[p] == _id[q];
 }
 
 void Quick_find_uf::create_union(int p, int q)
 {
-    validate(p);
-    validate(q);
-    int pID = id[p];   // needed for correctness
-    int qID = id[q];   // to reduce the number of array accesses
+    _validate(p);
+    _validate(q);
+    int p_id = _id[p];
+    int q_id = _id[q];
 
-    // p and q are already _in the same component
-    if (pID == qID) return;
+    if (p_id == q_id) { return; }
 
-    for (int i{0}; i < id.length; ++i)
-        if (id[i] == pID) id[i] = qID;
-    count--;
+    for (int i{0}; i < _id.size(); ++i) {
+        if (_id[i] == p_id) { _id[i] = q_id; }
+    }
+    --_count;
 }
 
-void Quick_find_uf::validate(int p)
+void Quick_find_uf::_validate(int p)
 {
-    int n = id.length;
+    auto n = _id.size();
     if (p < 0 || p >= n) {
-        throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n - 1));
+        throw utility::Index_out_of_bounds_exception{"index " + std::to_string(p) + " is not between 0 and " + std::to_string(n - 1)};
     }
 }

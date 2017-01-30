@@ -105,3 +105,8 @@ double Particle::kinetic_energy()
 {
     return 0.5 * _mass * (_vx * _vx + _vy * _vy);
 }
+
+bool Particle::operator==(const Particle& rhs)
+{
+    return _rx == rhs._rx && _ry == rhs._ry && _vx == rhs._vx && _vy == rhs._vy && _radius == rhs._radius && _mass == rhs._mass && _color == rhs._color && _count && rhs._count;
+}

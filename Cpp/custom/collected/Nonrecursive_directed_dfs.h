@@ -6,10 +6,14 @@
 
 class Nonrecursive_directed_dfs {
 public:
-    Nonrecursive_directed_dfs(Digraph& G, int s);
-    bool marked(int v);
+    Nonrecursive_directed_dfs(Digraph& digraph, int source);
+
+    ~Nonrecursive_directed_dfs() = default;
+
+    inline bool marked(int v) const { return _marked[v]; }
+
 private:
-    std::deque<bool> marked;
+    std::deque<bool> _marked;
 };
 
 #endif // NONRECURSIVE_DIRECTED_DFS_H

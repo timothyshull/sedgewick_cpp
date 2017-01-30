@@ -1,49 +1,61 @@
+#include <string>
+#include <vector>
 #include "LZW_compression.h"
+#include "Binary_std_in.h"
+#include "Binary_std_out.h"
+#include "TST.h"
 
 void ::LZW_compression::compress()
 {
-    std::string input = Binary_std_in::read_string();
-    TST <Integer> st = new TST<Integer>();
-    for (int i{0}; i < R; ++i) {
-        st.put("" + (char) i, i);
+    std::string input{Binary_std_in::read_string()};
+    TST<int> st;
+    std::string s;
+    for (int i{0}; i < radix; ++i) {
+        s = static_cast<char>(i);
+        st.put(s, i);
     }
-    int code = R + 1;  // R is codeword for EOF
+    int code{radix + 1};
 
+    std::string prefix;
+    std::string sub;
     while (input.length() > 0) {
-        std::string s = st.longestPrefixOf(input);  // Find max prefix match s.
-        Binary_std_out::write(st.get(s), W);      // Print s's encoding.
-        int t = s.length();
-        if (t < input.length() && code < L) {    // Add s to symbol table.
-            st.put(input.substring(0, t + 1), code++);
+        prefix = st.longestPrefixOf(input);
+        Binary_std_out::write(st.get(s), codeword_width);
+        auto t = s.length();
+        if (t < input.length() && code < num_codewords) {
+            sub = input.substr(0, t + 1);
+            st.put(sub, code++);
         }
-        input = input.substring(t);            // Scan past s _in input.
+        input = input.substr(t);
     }
-    Binary_std_out::write(R, W);
+    Binary_std_out::write(radix, codeword_width);
     Binary_std_out::close();
 }
 
 void ::LZW_compression::expand()
 {
-    std::vector<std::string> st = new String[L];
-    int i; // next available codeword value
+    std::vector<std::string> st;
+    st.reserve(static_cast<std::vector<std::string>::size_type>(num_codewords));
+    int i;
 
-    // initialize symbol table with all 1-character strings
-    for (i = 0; i < R; ++i) {
-        st[i] = "" + (char) i;
+    std::string ch;
+    for (i = 0; i < radix; ++i) {
+        ch = static_cast<char>(i);
+        st[i] = ch;
     }
-    st[i++] = "";                        // (unused) lookahead for EOF
+    st[i++] = "";
 
-    int codeword = Binary_std_in::read_int(W);
-    if (codeword == R) { return; }           // expanded message is empty string
-    std::string val = st[codeword];
+    int codeword{Binary_std_in::read_int(codeword_width)};
+    if (codeword == radix) { return; }
+    std::string val{st[codeword]};
 
     while (true) {
         Binary_std_out::write(val);
-        codeword = Binary_std_in::read_int(W);
-        if (codeword == R) break;
+        codeword = Binary_std_in::read_int(codeword_width);
+        if (codeword == radix) { break; }
         std::string s = st[codeword];
-        if (i == codeword) s = val + val.charAt(0);   // special case hack
-        if (i < L) st[i++] = val + s.charAt(0);
+        if (i == codeword) { s = val + val[0]; }
+        if (i < num_codewords) { st[i++] = val + s[0]; }
         val = s;
     }
     Binary_std_out::close();

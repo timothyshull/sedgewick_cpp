@@ -762,7 +762,7 @@ private:
         bool rank_check = _is_rank_consistent();
 
         if (!bst_check) {
-            Std_out::print_line("Binary_search_tree symmetric order is not consistent");
+            Std_out::print_line("Binary_search_tree symmetric _order is not consistent");
         }
         if (!avl_check) {
             Std_out::print_line("Binary_search_tree AVL property is not consistent");

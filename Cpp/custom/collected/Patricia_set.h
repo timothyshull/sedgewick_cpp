@@ -4,17 +4,25 @@
 #include <string>
 #include "Queue.h"
 
-struct Patricia_set_node;
+class Patricia_set_node;
 
-struct Patricia_set_node {
+class Patricia_set;
+
+class Patricia_set_node {
+public:
     using Raw_node_pointer = Patricia_set_node*;
 
+    Patricia_set_node(std::string& key, int b);
+
+    Patricia_set_node(std::string&& key, int b);
+
+private:
     Raw_node_pointer left;
     Raw_node_pointer right;
     std::string key;
     int b;
 
-    Patricia_set_node(std::string& key, int b);
+    friend class Patricia_set;
 };
 
 class Patricia_set {
@@ -39,15 +47,15 @@ private:
     Raw_node_pointer head;
     int count;
 
-    void collect(Raw_node_pointer x, int b, Queue<std::string> queue);
+    void _collect(Raw_node_pointer x, int b, Queue<std::string> queue);
 
-    bool safeBitTest(std::string& key, int b);
+    bool _safe_bit_test(std::string& key, int b);
 
-    int bitTest(std::string& key, int b);
+    int _bit_test(std::string& key, int b);
 
-    int safeCharAt(std::string& key, int i);
+    int _safe_char_at(std::string& key, int i);
 
-    int firstDifferingBit(std::string& k1, std::string& k2);
+    int _first_differing_bit(std::string& k1, std::string& k2);
 };
 
 #endif // PATRICIA_Set_H

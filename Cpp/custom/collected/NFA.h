@@ -10,9 +10,9 @@ public:
     bool recognizes(std::string& txt);
 
 private:
-    Digraph graph;
-    std::string regexp;
-    int m;
+    Digraph _graph;
+    std::string _regexp;
+    int _size;
 };
 
 #endif // NFA_H

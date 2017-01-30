@@ -1161,7 +1161,7 @@ Boolean *descending is set to 0 _in the former case, or to 1 _in the latter.
 For its intended use _in a stable mergesort, the strictness of the defn of
 "descending" is needed so that the caller can safely reverse a descending
 sequence without violating stability (strict > ensures there are no equal
-elements to get out of order).
+elements to get out of _order).
 
 Returns -1 _in case of error.
 */

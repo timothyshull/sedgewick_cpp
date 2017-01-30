@@ -11,6 +11,6 @@ int main(int argc, char* argv[])
     for (auto e : mst.edges()) {
         Std_out::print_line(e);
     }
-    Std_out::printf("%.5f\n", mst.weight());
+    Std_out::printf("%.5f\n", mst._weight());
     return 0;
 }

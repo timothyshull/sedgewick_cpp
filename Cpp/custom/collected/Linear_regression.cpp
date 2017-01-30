@@ -1,83 +1,56 @@
 #include "Linear_regression.h"
+#include "utility.h"
 
 Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>& y)
 {
-    if (x.size() != y.length) {
+    if (x.size() != y.size()) {
         throw utility::Illegal_argument_exception("array lengths are not equal");
     }
-    n = x.length;
+    _size = static_cast<int>(x.size());
 
-    // first pass
-    double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
-    for (int i{0}; i < n; ++i) {
-        sumx += x[i];
-        sumx2 += x[i] * x[i];
-        sumy += y[i];
+    double sum_x{0.0};
+    double sum_y{0.0};
+    double sum_x_2{0.0};
+    for (int i{0}; i < _size; ++i) {
+        sum_x += x[i];
+        sum_x_2 += x[i] * x[i];
+        sum_y += y[i];
     }
-    double xbar = sumx / n;
-    double ybar = sumy / n;
+    double x_bar{sum_x / _size};
+    double y_bar{sum_y / _size};
 
-    // second pass: compute summary statistics
-    double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
-    for (int i{0}; i < n; ++i) {
-        xxbar += (x[i] - xbar) * (x[i] - xbar);
-        yybar += (y[i] - ybar) * (y[i] - ybar);
-        xybar += (x[i] - xbar) * (y[i] - ybar);
+    double xx_bar = 0.0;
+    double yy_bar = 0.0;
+    double xy_bar = 0.0;
+    for (int i{0}; i < _size; ++i) {
+        xx_bar += (x[i] - x_bar) * (x[i] - x_bar);
+        yy_bar += (y[i] - y_bar) * (y[i] - y_bar);
+        xy_bar += (x[i] - x_bar) * (y[i] - y_bar);
     }
-    slope = xybar / xxbar;
-    intercept = ybar - slope * xbar;
+    _slope = xy_bar / xx_bar;
+    _intercept = y_bar - _slope * x_bar;
 
-    // more statistical analysis
-    double rss = 0.0;      // residual sum of squares
-    double ssr = 0.0;      // regression sum of squares
-    for (int i{0}; i < n; ++i) {
-        double fit = slope * x[i] + intercept;
+    double rss{0.0};
+    double ssr{0.0};
+    double fit;
+    for (int i{0}; i < _size; ++i) {
+        fit = _slope * x[i] + _intercept;
         rss += (fit - y[i]) * (fit - y[i]);
-        ssr += (fit - ybar) * (fit - ybar);
+        ssr += (fit - y_bar) * (fit - y_bar);
     }
 
-    int degreesOfFreedom = n - 2;
-    r2 = ssr / yybar;
-    svar = rss / degreesOfFreedom;
-    svar1 = svar / xxbar;
-    svar0 = svar / n + xbar * xbar * svar1;
-}
-
-double Linear_regression::intercept()
-{
-    return intercept;
-}
-
-double Linear_regression::slope()
-{
-    return slope;
-}
-
-double Linear_regression::R2()
-{
-    return r2;
-}
-
-double Linear_regression::interceptStdErr()
-{
-    return std::sqrt(svar0);
-}
-
-double Linear_regression::slopeStdErr()
-{
-    return std::sqrt(svar1);
-}
-
-double Linear_regression::predict()
-{
-    return slope * x + intercept;
+    int degrees_of_freedom{_size - 2};
+    _r2 = ssr / yy_bar;
+    _s_var = rss / degrees_of_freedom;
+    _s_var_1 = _s_var / xx_bar;
+    _s_var_0 = _s_var / _size + x_bar * x_bar * _s_var_1;
 }
 
 std::string Linear_regression::to_string()
 {
-    std::string s = "";
-    s += String.format("%.2f _size + %.2f", slope(), intercept());
-    return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
+    std::stringstream ss;
+    ss << _slope << " size " << _intercept << "(R^2 = " << _r2 << ")";
+    return ss.str();
 }
 
 std::ostream& operator<<(std::ostream& os, Linear_regression& out)

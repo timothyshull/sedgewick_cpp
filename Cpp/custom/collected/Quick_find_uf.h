@@ -7,7 +7,7 @@ class Quick_find_uf {
 public:
     Quick_find_uf(int n);
 
-    int count();
+    inline int count() const noexcept { return _count; }
 
     int find(int p);
 
@@ -16,10 +16,10 @@ public:
     void create_union(int p, int q);
 
 private:
-    std::vector<int> id;
-    int count;
+    std::vector<int> _id;
+    int _count;
 
-    void validate(int p);
+    void _validate(int p);
 };
 
 #endif // QUICK_FIND_UF_H

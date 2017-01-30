@@ -7,15 +7,15 @@
 int main(int argc, char* argv[])
 {
     In in{argv[1]};
-    int context = utility::str_to_num(argv[1]);
+    int context{utility::str_to_num(argv[1])};
 
-    std::vector<std::string> all_strings = in.readAllStrings();
+    std::vector<std::string> all_strings{in.read_all_strings()};
     std::stringstream ss;
     for (auto s : all_strings) {
         ss << s << " ";
     }
     std::string text{ss.str()};
-    int n{text.length()};
+    int n{static_cast<int>(text.length())};
 
     Suffix_array sa{text};
 

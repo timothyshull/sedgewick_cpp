@@ -564,7 +564,7 @@ private:
         bool rank_check = _is_rank_consistent();
 
         if (!bst_check) {
-            Std_out::print_line("AVL_tree_symbol_table symmetric order is not consistent");
+            Std_out::print_line("AVL_tree_symbol_table symmetric _order is not consistent");
         }
         if (!avl_check) {
             Std_out::print_line("AVL_tree_symbol_table AVL property is not consistent");

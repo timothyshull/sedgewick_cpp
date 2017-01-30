@@ -1,19 +1,24 @@
 #include "Multiway_merge.h"
+#include "Index_min_pq.h"
+#include "Std_out.h"
 
 void ::Multiway_merge::merge(std::vector<In>& streams)
 {
-    int n = streams.length;
-    IndexMinPQ<std::string> pq = new IndexMinPQ<std::string>(n);
-    for (int i{0}; i < n; ++i)
-        if (!streams[i].is_empty())
+    auto n = streams.size();
+    Index_min_pq<std::string> pq{n};
+    for (int i{0}; i < n; ++i) {
+        if (!streams[i].is_empty()) {
             pq.insert(i, streams[i].read_string());
+        }
+    }
 
-    // Extract and print min and read next from its stream.
+    int i;
     while (!pq.is_empty()) {
-        Std_out::print(pq.minKey() + " ");
-        int i = pq.delMin();
-        if (!streams[i].is_empty())
+        Std_out::print(pq.min_key() + " ");
+        i = pq.delete_min();
+        if (!streams[i].is_empty()) {
             pq.insert(i, streams[i].read_string());
+        }
     }
     Std_out::print_line();
 }

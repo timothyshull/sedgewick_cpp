@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
     if (!topological1.has_order()) {
         Std_out::print_line("Not a DAG");
     } else {
-        Std_out::print("Topological order: ");
+        Std_out::print("Topological _order: ");
         for (int v : topological1.order()) {
             Std_out::print(v + " ");
         }
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     if (!topological2.has_order()) {
         Std_out::print_line("Not a DAG");
     } else {
-        Std_out::print("Topological order: ");
+        Std_out::print("Topological _order: ");
         for (int v : topological2.order()) {
             Std_out::print(v + " ");
         }

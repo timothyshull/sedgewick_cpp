@@ -6,18 +6,18 @@
 
 class Kruskal_mst {
 public:
-    Kruskal_mst(Edge_weighted_graph& G);
+    Kruskal_mst(Edge_weighted_graph& graph);
 
-    std::vector<Edge> edges();
+    inline Queue<Edge> edges() const { return _mst; }
 
-    double weight();
+    inline double weight() const noexcept { return _weight; }
 
 private:
-    const static double FLOATING_POINT_EPSILON = std::numeric_limits<double>::epsilon();
-    double weight;
-    Queue<Edge> mst;
+    const static double _floating_point_epsilon = std::numeric_limits<double>::epsilon();
+    double _weight;
+    Queue<Edge> _mst;
 
-    bool check(Edge_weighted_graph& G);
+    bool _check(Edge_weighted_graph& graph);
 };
 
 #endif // KRUSKAL_MST_H

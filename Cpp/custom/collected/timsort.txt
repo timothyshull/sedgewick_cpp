@@ -41,12 +41,12 @@ Comparison with Python's Samplesort Hybrid
   comparison advantage (depending on platform quirks) unless comparison
   is very expensive.
 
-+ On arrays with many kinds of pre-existing order, this blows samplesort out
++ On arrays with many kinds of pre-existing _order, this blows samplesort out
   of the water.  It's significantly faster than samplesort even on some
   cases samplesort was special-casing the snot out of.  I believe that lists
-  very often do have exploitable partial order _in real life, and this is the
+  very often do have exploitable partial _order _in real life, and this is the
   strongest argument _in favor of timsort (indeed, samplesort's special cases
-  for extreme partial order are appreciated by real users, and timsort goes
+  for extreme partial _order are appreciated by real users, and timsort goes
   much deeper than those, _in particular naturally covering every case where
   someone has suggested "and it would be cool if list.sort() had a special
   case for this too ... and for that ...").
@@ -194,7 +194,7 @@ Comparison with Python's Samplesort Hybrid
   also ends up doing balanced merges, but systematically benefits a lot from
   the preliminary pre-merge searches described under "Merge Memory" later.
   %sort approaches having a balanced merge at the end because the random
-  selection of elements to replace is expected to produce an out-of-order
+  selection of elements to replace is expected to produce an out-of-_order
   element near the midpoint.  \sort, /sort, =sort are the trivial one-run
   cases, needing no merging at all.  +sort ends up having one very long run
   and one very short, and so gets all the temp space it needs from the small
@@ -298,7 +298,7 @@ of 2; merge_compute_minrun() is a deceptively simple function.
 
 The Merge Pattern
 -----------------
-In order to exploit regularities _in the data, we're merging on natural
+In _order to exploit regularities _in the data, we're merging on natural
 run lengths, and they can become wildly unbalanced.  That's a Good Thing
 for this sort!  It means we have to find a way to manage an assortment of
 potentially very different run lengths, though.
@@ -309,7 +309,7 @@ Stability constrains permissible merging patterns.  For example, if we have
     A:10000  B:20000  C:10000
 
 we dare not merge A with C first, because if A, B and C happen to contain
-a common element, it would get out of order wrt its occurrence(s) _in B.  The
+a common element, it would get out of _order wrt its occurrence(s) _in B.  The
 merging must be done as (A+B)+C or A+(B+C) instead.
 
 So merging is always done on two consecutive runs at a time, and _in-place,
@@ -318,7 +318,7 @@ although this may require some temp memory (more on that later).
 When a run is identified, its base address and length are pushed on a stack
 _in the MergeState struct.  merge_collapse() is then called to see whether it
 should merge it with preceding run(s).  We would like to delay merging as
-long as possible _in order to exploit patterns that may come up later, but we
+long as possible _in _order to exploit patterns that may come up later, but we
 like even more to do merging as soon as possible to exploit that the run just
 found is still high _in the memory hierarchy.  We also can't delay merging
 "too long" because it consumes memory to remember the runs that are still

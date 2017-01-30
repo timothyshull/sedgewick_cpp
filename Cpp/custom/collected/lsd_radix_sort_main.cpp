@@ -7,12 +7,12 @@
 int main(int argc, char* argv[])
 {
     std::vector<std::string> a{Std_in::read_all_strings()};
-    int w = a[0].size();
+    auto w = a[0].size();
     for (auto s : a) {
         utility::alg_assert(s.size() == w, "Strings must have fixed length");
     }
 
-    LSD_radix_sort::sort(a, w);
+    LSD_radix_sort::sort(a, static_cast<int>(w));
 
     for (auto s : a) {
         Std_out::print_line(s);

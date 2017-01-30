@@ -2,10 +2,10 @@
 #include "Union_find.h"
 
 Prim_mst::Prim_mst(Edge_weighted_graph& graph)
-: _edge_to(static_cast<std::vector<Edge>::size_type>(graph.num_vertices())),
-  _distance_to(static_cast<std::vector<double>::size_type>(graph.num_vertices())),
-  _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
-  _pq{graph.num_vertices()}
+        : _edge_to(static_cast<std::vector<Edge>::size_type>(graph.num_vertices())),
+          _distance_to(static_cast<std::vector<double>::size_type>(graph.num_vertices())),
+          _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
+          _pq{graph.num_vertices()}
 {
     for (int v{0}; v < graph.num_vertices(); ++v) {
         _distance_to[v] = std::numeric_limits<double>::infinity();
@@ -20,7 +20,7 @@ Prim_mst::Prim_mst(Edge_weighted_graph& graph)
 
 Queue<Edge> Prim_mst::edges()
 {
-    Queue <Edge> mst;
+    Queue<Edge> mst;
     for (int v{0}; v < _edge_to.size(); ++v) {
         Edge e = _edge_to[v];
         if (e != nullptr) {
@@ -59,8 +59,8 @@ void Prim_mst::_scan(Edge_weighted_graph& graph, int vertex)
         if (e.weight() < _distance_to[w]) {
             _distance_to[w] = e.weight();
             _edge_to[w] = e;
-            if (_pq.contains(w)) _pq.decreaseKey(w, _distance_to[w]);
-            else _pq.insert(w, _distance_to[w]);
+            if (_pq.contains(w)) { _pq.decreaseKey(w, _distance_to[w]); }
+            else { _pq.insert(w, _distance_to[w]); }
         }
     }
 }
@@ -72,7 +72,7 @@ bool Prim_mst::_check(Edge_weighted_graph& graph)
         total_weight += e.weight();
     }
     if (std::abs(total_weight - weight()) > floating_point_epsilon) {
-        std::cerr << "Weight of edges does not equal weight(): "<< total_weight << " vs. " << weight() << "\n";
+        std::cerr << "Weight of edges does not equal weight(): " << total_weight << " vs. " << weight() << "\n";
         return false;
     }
 

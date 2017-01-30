@@ -4,9 +4,21 @@
 #include <limits>
 #include <vector>
 
+namespace Lp_tests {
+    void test(std::vector<std::vector<double>>& A, std::vector<double>& b, std::vector<double>& c);
+
+    void test1();
+
+    void test2();
+
+    void test3();
+
+    void test4();
+}
+
 class Linear_programming {
 public:
-    Linear_programming(std::vector<std::vector<double>>& A, std::vector<double>& b, std::vector<double>& c);
+    Linear_programming(std::vector<std::vector<double>>& a, std::vector<double>& b, std::vector<double>& c);
 
     void solve();
 
@@ -14,7 +26,7 @@ public:
 
     int dantzig();
 
-    int minRatioRule(int q);
+    int min_ratio_rule(int q);
 
     void pivot(int p, int q);
 
@@ -23,25 +35,23 @@ public:
     std::vector<double> primal();
 
     std::vector<double> dual();
+
 private:
-    const static double EPSILON = std::numeric_limits<double>::epsilon();
-    std::vector<std::vector<int>> a;
-    int m;
-    int n;
-    std::vector<int> basis;
+    const static double _epsilon = std::numeric_limits<double>::epsilon();
+    std::vector<std::vector<double>> _aux;
+    int _m;
+    int _n;
+    std::vector<int> _basis;
 
-    bool isPrimalFeasible(std::vector<std::vector<double>>& A, std::vector<double>& b);
-    bool isDualFeasible(std::vector<std::vector<double>>& A, std::vector<double>& c);
-    bool isOptimal(std::vector<double>& b, std::vector<double>& c);
-    bool check(std::vector<std::vector<double>>& A, std::vector<double>& b, std::vector<double>& c);
-    void show();
-    void test(std::vector<std::vector<double>>& A, std::vector<double>& b, std::vector<double>& c);
-    void test1();
-    void test2();
-    void test3();
-    void test4();
+    bool _is_primal_feasible(std::vector<std::vector<double>>& a, std::vector<double>& b);
+
+    bool _is_dual_feasible(std::vector<std::vector<double>>& A, std::vector<double>& c);
+
+    bool _is_optimal(std::vector<double>& b, std::vector<double>& c);
+
+    bool _check(std::vector<std::vector<double>>& A, std::vector<double>& b, std::vector<double>& c);
+
+    void _show();
 };
-
-
 
 #endif // LINEAR_PROGRAMMING_H

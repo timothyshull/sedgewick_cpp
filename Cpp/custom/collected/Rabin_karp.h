@@ -10,21 +10,20 @@ public:
     int search(std::string& txt);
 
 private:
-    std::string pat;
-    long patHash;
-    int m;
-    long q;
-    int R;
-    long RM;
+    std::string _pattern;
+    std::size_t _pattern_hash;
+    std::size_t _length;
+    long _prime_num;
+    int _radix;
+    long _rm;
 
-    long hash(std::string& key, int m);
+    std::size_t _hash(std::string& key, int m);
 
-    bool check(std::string& txt, int i);
+    bool _check(std::string& txt, int i);
 
-    bool check(int i);
+    inline bool _check(int i) const noexcept { return true; }
 
-    long longRandomPrime();
-
+    static long _long_random_prime();
 };
 
 #endif // RABIN_KARP_H

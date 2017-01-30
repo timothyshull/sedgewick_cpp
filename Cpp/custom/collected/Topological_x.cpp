@@ -103,7 +103,7 @@ bool Topological_x::check(Digraph& G)
             }
         }
 
-        // _check that ranks provide a valid topological order
+        // _check that ranks provide a valid topological _order
         for (int v{0}; v < G.num_vertices(); ++v) {
             for (int w : G.adj(v)) {
                 if (rank(v) > rank(w)) {
@@ -114,11 +114,11 @@ bool Topological_x::check(Digraph& G)
             }
         }
 
-        // _check that order() is consistent with rank()
+        // _check that _order() is consistent with rank()
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                std::cerr << "order() and rank() inconsistent";
+                std::cerr << "_order() and rank() inconsistent";
                 return false;
             }
             ++r;
@@ -143,7 +143,7 @@ bool Topological_x::check(Edge_weighted_digraph& G)
             }
         }
 
-        // _check that ranks provide a valid topological order
+        // _check that ranks provide a valid topological _order
         for (int v{0}; v < G.num_vertices(); ++v) {
             for (Directed_edge e : G.adj(v)) {
                 int w = e.to();
@@ -155,11 +155,11 @@ bool Topological_x::check(Edge_weighted_digraph& G)
             }
         }
 
-        // _check that order() is consistent with rank()
+        // _check that _order() is consistent with rank()
         int r = 0;
         for (int v : order()) {
             if (rank(v) != r) {
-                std::cerr << "order() and rank() inconsistent";
+                std::cerr << "_order() and rank() inconsistent";
                 return false;
             }
             ++r;

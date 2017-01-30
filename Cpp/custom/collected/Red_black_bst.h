@@ -647,7 +647,7 @@ private:
         bool balance_check = _is_balanced();
 
         if (!bst_check) {
-            Std_out::print_line("Red_black_bst symmetric order is not consistent");
+            Std_out::print_line("Red_black_bst symmetric _order is not consistent");
         }
         if (!size_check) {
             Std_out::print_line("Red_black_bst subtree size counts are not consistent");

@@ -1,89 +1,81 @@
 #include "Kruskal_mst.h"
+#include "Min_pq.h"
+#include "Union_find.h"
 
-Kruskal_mst::Kruskal_mst(Edge_weighted_graph& G)
+Kruskal_mst::Kruskal_mst(Edge_weighted_graph& graph)
 {
-    MinPQ <Edge> pq = new MinPQ<Edge>();
-    for (Edge e : G.edges()) {
+    Min_pq<Edge> pq;
+    for (auto e : graph.edges()) {
         pq.insert(e);
     }
 
-    // run greedy algorithm
-    UF uf = new UF(G.num_vertices());
-    while (!pq.is_empty() && mst.size() < G.num_vertices() - 1) {
-        Edge e = pq.delMin();
-        int v = e.either();
-        int w = e.other(v);
-        if (!uf.connected(v, w)) { // v-w does not create a _cycle
-            uf.
-            union(v, w);  // merge v and w components
-            mst.enqueue(e);  // add edge e to mst
-            weight += e._weight();
+    Union_find uf{graph.num_vertices()};
+    int v;
+    int w;
+    while (!pq.is_empty() && _mst.size() < graph.num_vertices() - 1) {
+        Edge e = pq.delete_min();
+        v = e.either();
+        w = e.other(v);
+        if (!uf.connected(v, w)) {
+            uf.create_union(v, w);
+            _mst.enqueue(e);
+            _weight += e.weight();
         }
     }
 
-    // _check optimality conditions
-    assert check(G);
+    utility::alg_assert(_check(graph), "Kruskal_mst invariant check failed after construction");
 }
 
-std::vector<Edge> Kruskal_mst::edges()
+bool Kruskal_mst::_check(Edge_weighted_graph& graph)
 {
-    return mst;
-}
-
-double Kruskal_mst::weight()
-{
-    return weight;
-}
-
-bool Kruskal_mst::check(Edge_weighted_graph& G)
-{
-    double total = 0.0;
-    for (Edge e : edges()) {
-        total += e._weight();
+    double total{0.0};
+    for (auto e : edges()) {
+        total += e.weight();
     }
-    if (std::abs(total - weight()) > FLOATING_POINT_EPSILON) {
-        std::cerr << "Weight of edges does not equal weight(): %f vs. %f\n", total, weight();
+    if (std::abs(total - weight()) > _floating_point_epsilon) {
+        std::cerr << "Weight of edges does not equal weight(): " << total << " vs. " << weight() << "\n";
         return false;
     }
 
-    // _check that it is acyclic
-    UF uf = new UF(G.num_vertices());
-    for (Edge e : edges()) {
-        int v = e.either(), w = e.other(v);
+    Union_find uf{graph.num_vertices()};
+    int v;
+    int w;
+    for (auto e : edges()) {
+        v = e.either();
+        w = e.other(v);
         if (uf.connected(v, w)) {
             std::cerr << "Not a forest";
             return false;
         }
-        uf.
-        union(v, w);
+        uf.create_union(v, w);
     }
 
-    // _check that it is a spanning forest
-    for (Edge e : G.edges()) {
-        int v = e.either(), w = e.other(v);
+    for (auto e : graph.edges()) {
+        v = e.either();
+        w = e.other(v);
         if (!uf.connected(v, w)) {
             std::cerr << "Not a spanning forest";
             return false;
         }
     }
 
-    // _check that it is a minimal spanning forest (cut optimality conditions)
-    for (Edge e : edges()) {
+    int x;
+    int y;
+    for (auto e : edges()) {
 
-        // all edges _in MST except e
-        uf = new UF(G.num_vertices());
-        for (Edge f : mst) {
-            int x = f.either(), y = f.other(x);
-            if (f != e) { uf. }
-            union(x, y);
+        uf = Union_find{graph.num_vertices()};
+        for (auto f : _mst) {
+            x = f.either();
+            y = f.other(x);
+            if (f != e) { uf.create_union(x, y); }
         }
 
-        // _check that e is min weight edge _in crossing cut
-        for (Edge f : G.edges()) {
-            int x = f.either(), y = f.other(x);
+        for (auto f : graph.edges()) {
+            x = f.either();
+            y = f.other(x);
             if (!uf.connected(x, y)) {
-                if (f._weight() < e._weight()) {
-                    std::cerr << "Edge " + f + " violates cut optimality conditions";
+                if (f.weight() < e.weight()) {
+                    std::cerr << "Edge " << f << " violates cut optimality conditions";
                     return false;
                 }
             }

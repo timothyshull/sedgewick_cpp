@@ -2,15 +2,13 @@
 #define INDEX_BINOMIAL_MIN_PQ_H
 
 #include <memory>
+#include "utility.h"
 
 template<typename Key>
 class Index_binomial_min_pq_node;
 
-template<typename Key>
+template<typename Key, typename Comparator = Index_binomial_min_pq_key_comparator <Key>>
 class Index_binomial_min_pq_iterator;
-
-template<typename Key>
-class Index_binomial_min_pq_reverse_iterator;
 
 template<typename T>
 struct Index_binomial_min_pq_key_comparator;
@@ -19,90 +17,87 @@ template<typename Key, typename Comparator = Index_binomial_min_pq_key_comparato
 class Index_binomial_min_pq;
 
 template<typename Key>
-struct Index_binomial_min_pq_node_pointer_traits {
-    using Key_type = Key;
-
-    using Node_type = Index_binomial_min_pq_node<Key_type>;
-    using Node_raw_pointer = Index_binomial_min_pq_node<Key_type>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Node_shared_pointer = std::shared_ptr<Node_type>;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
-    using Size_type = std::size_t;
-};
-
-template<typename Key>
 class Index_binomial_min_pq_node {
 public:
-    using Node_traits = Index_binomial_min_pq_node_pointer_traits<Key>;
-    using Key_type = typename Node_traits::Key_type;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
-    using Size_type = typename Node_traits::Size_type;
+    using Key_type = Key;
+    using Node = Index_binomial_min_pq_node<Key>;
+    using Raw_node_pointer = Node*;
+    using Owning_node_pointer = Node*;
+
+    Index_binomial_min_pq_node() = default;
+
+    Index_binomial_min_pq_node(const Index_binomial_min_pq_node&) = default;
+
+    Index_binomial_min_pq_node(Index_binomial_min_pq_node&&) = default;
+
+    Index_binomial_min_pq_node& operator=(const Index_binomial_min_pq_node&) = default;
+
+    Index_binomial_min_pq_node& operator=(Index_binomial_min_pq_node&&) = default;
+
+    ~Index_binomial_min_pq_node() = default;
+
+    inline int index() const noexcept { return _index; }
 
 private:
-    Shared_key_pointer key;
-    int order;
-    int index;
-    Node_owning_pointer parent;
-    Node_owning_pointer child;
-    Node_owning_pointer sibling;
+    Key_type _key;
+    int _order;
+    int _index;
+    Raw_node_pointer _parent;
+    Owning_node_pointer _child;
+    Raw_node_pointer _sibling;
 
-    template<typename, typename, typename>
+    template<typename, typename>
     friend class Index_binomial_min_pq;
 
     template<typename, typename>
     friend class Index_binomial_min_pq_iterator;
-
-    template<typename, typename>
-    friend class Index_binomial_min_pq_reverse_iterator;
 };
 
-template<typename Key, typename Value>
+template<typename Key, typename Comparator>
 class Index_binomial_min_pq_iterator {
 public:
-    using iterator_category = std::random_access_iterator_tag;
-    using Node_traits = Index_binomial_min_pq_node_pointer_traits<Key, Value>;
-    using Key_type = typename Node_traits::Key_type;
-    using Value_type = typename Node_traits::Value_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Tree_type = Index_binomial_min_pq<Key_type, Value_type>;
-    using Tree_pointer = Tree_type*;
+    using iterator_category = std::forward_iterator_tag;
+    using Key_type = Key;
+    using Node = Index_binomial_min_pq_node<Key>;
+    using Raw_node_pointer = Node*;
+    using Owning_node_pointer = Node*;
+    using Comparator_type = Comparator;
+    using Raw_key_pointer = Key_type*;
+    using Priority_queue_type = Index_binomial_min_pq<Key_type, Comparator_type>;
+    using Priority_queue_pointer = Priority_queue_type*
 
-    using Reference_type = Value_type&;
-
-    Index_binomial_min_pq_iterator() noexcept = delete;
-
-    explicit Index_binomial_min_pq_iterator(Tree_pointer tree) noexcept : _index{0}, _tree{tree}
+    Index_binomial_min_pq_iterator(Priority_queue_type& pq) : _data{pq._size}, _original{&pq}
     {
-        _construct_in_order(_tree->_get_root());
+        _data._head = clone(pq._head, false, false, nullptr);
     }
 
-    Index_binomial_min_pq_iterator(Tree_pointer tree, int index) noexcept : _index{index}, _tree{tree}
+    Index_binomial_min_pq_iterator(Priority_queue_type& pq, Raw_node_pointer n) : _data{pq._size}, _original{&pq}
     {
-        _construct_in_order(_tree->_get_root());
-        if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
-        }
+        _data._head = clone(n, false, false, nullptr);
     }
 
-    inline Node_raw_pointer operator*() const
+    inline bool has_next() const { return !_data.is_empty(); }
+
+    int next()
     {
-        return _in_order[_index];
+        if (!has_next()) { throw utility::No_such_element_exception{""}; }
+        return _data.delete_min();
     }
 
-    inline Node_raw_pointer operator->() const
+    inline Key_type operator*() const
     {
-        return _in_order[_index];
+        return _data._head->_key;
+    }
+
+    inline Raw_node_pointer operator->() const
+    {
+        return _data._head;
     }
 
     inline Index_binomial_min_pq_iterator& operator++()
     {
-        ++_index;
-        if (_index >= _in_order.size()) {
-            _index = -1;
+        if (has_next()) {
+            next();
         }
         return *this;
     }
@@ -114,254 +109,228 @@ public:
         return t;
     }
 
-    inline Index_binomial_min_pq_iterator& operator--()
-    {
-        if (_index > 0) {
-            --_index;
-        }
-        return *this;
-    }
-
-    inline Index_binomial_min_pq_iterator operator--(int)
-    {
-        Index_binomial_min_pq_iterator t{*this};
-        --(*this);
-        return t;
-    }
-
-    Node_raw_pointer operator[](const int& index)
-    {
-        return _in_order[index];
-    }
-
     friend
     inline bool operator==(const Index_binomial_min_pq_iterator& x, const Index_binomial_min_pq_iterator& y)
     {
-        return x._in_order == y._in_order && x._index == y._index;
+        if (x._original != y._original) {
+            return false;
+        }
+        if (x._data._head && y._data._head) {
+            return *(x._data._head->_key) == *(y._data._head->_key);
+        }
+        return x._data._head == nullptr && y._data._head == nullptr;
     }
 
     friend
     inline bool operator!=(const Index_binomial_min_pq_iterator& x, const Index_binomial_min_pq_iterator& y) { return !(x == y); }
 
 private:
+    Priority_queue_type _data;
+    Priority_queue_pointer _original;
+
     template<typename>
     friend class Index_binomial_min_pq;
+
+    Raw_node_pointer clone(Raw_node_pointer x, bool is_parent, bool is_child, Raw_node_pointer parent)
+    {
+        if (x == nullptr) { return nullptr; }
+        Raw_node_pointer node{new Index_binomial_min_pq_node<Key_type>};
+        node->_index = x->_index;
+        node->_key = x->_key;
+        _data._nodes[node->_index] = node;
+        node->_parent = parent;
+        node->_sibling = clone(x->_sibling, false, false, parent);
+        node->_child = clone(x->_child, false, true, node);
+        return node;
+    }
 };
 
 template<typename T>
 struct Index_binomial_min_pq_key_comparator {
-    int operator()(const T& x, const T& y) const
+    bool operator()(const T& x, const T& y) const
     {
-        if (x < y) {
-            return -1;
-        } else if (y < x) {
-            return 1;
-        }
-        return 0;
+        return x < y;
     }
 };
 
-template<typename Key, typename Value, typename Comparator>
+template<typename Key, typename Comparator>
 class Index_binomial_min_pq {
 public:
-    using Node_traits = Index_binomial_min_pq_node_pointer_traits<Key>;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = typename Node_traits::Shared_key_pointer;
-    using Key_type = typename Node_traits::Key_type;
+    using Key_type = Key;
+    using Node = Index_binomial_min_pq_node<Key_type>;
+    using Raw_node_pointer = Node*;
+    using Owning_node_pointer = Node*;
     using Comparator_type = Comparator;
+    using Iterator_type = Index_binomial_min_pq_iterator<Key_type>;
 
-    using Reference_type = Value_type&;
-    using Const_reference_type = const Value_type&;
-    using Pointer_type = Value_type*;
-    using Const_pointer_type = Value_type const*;
-    using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
-    using Iterator_type = Index_binomial_min_pq_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = Index_binomial_min_pq_reverse_iterator<Key_type, Value_type>;
+    inline Iterator_type begin() { return Iterator_type(*this); }
 
-    Iterator_type begin() { return Iterator_type(this, 0); }
+    inline Iterator_type end() { return Iterator_type(*this, nullptr); }
 
-    Iterator_type end() { return Iterator_type(this, -1); }
-
-    Index_binomial_min_pq(int N)
+    Index_binomial_min_pq(int size)
+            : _comp{},
+              _nodes(static_cast<std::vector<Raw_node_pointer>::size_type>(size)),
+              _size{size}
     {
-        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
-        comparator = new MyComparator();
-        nodes = (Node<Key>[])
-        new Node[N];
-        this.n = N;
+        // will throw before
+        // if (size < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
     }
 
-    Index_binomial_min_pq(int N, Comparator<Key> comparator)
-    {
-        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
-        this.comparator = comparator;
-        nodes = (Node<Key>[])
-        new Node[N];
-        this.n = N;
-    }
+    inline bool is_empty() const noexcept { return _head == nullptr; }
 
-    bool is_empty()
+    bool contains(int i) const
     {
-        return head == null;
-    }
-
-    bool contains(int i)
-    {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        else { return nodes[i] != null; }
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
+        else { return _nodes[i] != nullptr; }
     }
 
     int size()
     {
-        int result = 0, tmp;
-        for (Node <Key> node = head; node != null; node = node.sibling) {
-            if (node.order > 30) {
-                throw new ArithmeticException("The number of elements cannot be evaluated, but the priority _queue is still valid.");
+        int result{0};
+        int tmp;
+        for (Raw_node_pointer node{_head}; node != nullptr; node = node->_sibling) {
+            if (node->_order > 30) {
+                throw utility::Arithmetic_exception{"The number of elements cannot be evaluated, but the priority queue is still valid."};
             }
-            tmp = 1 << node.order;
+            tmp = 1 << node->_order;
             result |= tmp;
         }
         return result;
     }
 
-    void insert(int i, Key key)
+    void insert(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already _in the _queue"); }
-        Node <Key> x = new Node<Key>();
-        x.key = key;
-        x.index = i;
-        x.order = 0;
-        nodes[i] = x;
-        IndexBinomialMinPQ <Key> H = new IndexBinomialMinPQ<Key>();
-        H.head = x;
-        head =
-        union(H).head;
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{}; }
+        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already in the queue"); }
+        Raw_node_pointer x{new Index_binomial_min_pq_node<Key_type>};
+        x->_key = key;
+        x->_index = i;
+        x->_order = 0;
+        _nodes[i] = x;
+        Index_binomial_min_pq<Key_type, Comparator_type> tmp{};
+        tmp._head = x;
+        _head = create_union(tmp)._head;
     }
 
-    int minIndex()
+    int min_index()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        Node <Key> min = head;
-        Node <Key> current = head;
-        while (current.sibling != null) {
-            min = (greater(min.key, current.sibling.key)) ? current.sibling : min;
-            current = current.sibling;
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority queue is empty"}; }
+        Raw_node_pointer min{_head};
+        Raw_node_pointer current{_head};
+        while (current->_sibling != nullptr) {
+            min = (_greater(min->_key, current->_sibling->_key)) ? current->_sibling : min;
+            current = current->_sibling;
         }
-        return min.index;
+        return min->_index;
     }
 
-    Key minKey()
+    Key min_key()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        Node <Key> min = head;
-        Node <Key> current = head;
-        while (current.sibling != null) {
-            min = (greater(min.key, current.sibling.key)) ? current.sibling : min;
-            current = current.sibling;
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority queue is empty"}; }
+        Raw_node_pointer min{_head};
+        Raw_node_pointer current{_head};
+        while (current->_sibling != nullptr) {
+            min = (_greater(min->_key, current->_sibling->_key)) ? current->_sibling : min;
+            current = current->_sibling;
         }
-        return min.key;
+        return min->_key;
     }
 
-    int delMin()
+    int delete_min()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        Node <Key> min = eraseMin();
-        Node <Key> x = (min.child == null) ? min : min.child;
-        if (min.child != null) {
-            min.child = null;
-            Node <Key> prevx = null, nextx = x.sibling;
-            while (nextx != null) {
-                x.parent = null; // for garbage collection
-                x.sibling = prevx;
-                prevx = x;
-                x = nextx;
-                nextx = nextx.sibling;
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        Raw_node_pointer min{_erase_min()};
+        Raw_node_pointer x{(min->_child == nullptr) ? min : min->_child};
+        if (min->_child != nullptr) {
+            min->_child = nullptr;
+            Raw_node_pointer prev_x{nullptr};
+            Raw_node_pointer next_x{x->_sibling};
+            while (next_x != nullptr) {
+                // TODO: need some sort of delete call here
+                x->_parent = nullptr;
+                x->_sibling = prev_x;
+                prev_x = x;
+                x = next_x;
+                next_x = next_x->_sibling;
             }
-            x.parent = null;
-            x.sibling = prevx;
-            IndexBinomialMinPQ <Key> H = new IndexBinomialMinPQ<Key>();
-            H.head = x;
-            head =
-            union(H).head;
+            x->_parent = nullptr;
+            x->_sibling = prev_x;
+            Index_binomial_min_pq<Key_type, Comparator_type> tmp{};
+            tmp._head = x;
+            _head = create_union(tmp)._head;
         }
-        return min.index;
+        return min->_index;
     }
 
-    Key keyOf(int i)
+    Key key_of(int i)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
         if (!contains(i)) { throw utility::Illegal_argument_exception("Specified index is not _in the _queue"); }
-        return nodes[i].key;
+        return _nodes[i].key;
     }
 
-    void changeKey(int i, Key key)
+    void change_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
         if (!contains(i)) { throw utility::Illegal_argument_exception("Specified index is not _in the _queue"); }
-        if (greater(nodes[i].key, key)) { decreaseKey(i, key); }
-        else { increaseKey(i, key); }
+        if (_greater(_nodes[i].key, key)) { decrease_key(i, key); }
+        else { increase_key(i, key); }
     }
 
-    void decreaseKey(int i, Key key)
+    void decrease_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        if (greater(key, nodes[i].key)) {
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        if (_greater(key, _nodes[i].key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not decrease the key");
         }
-        Node <Key> x = nodes[i];
-        x.key = key;
-        swim(i);
+        Raw_node_pointer x{_nodes[i]};
+        x->_key = key;
+        _swim(i);
     }
 
-    void increaseKey(int i, Key key)
+    void increase_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        if (greater(nodes[i].key, key)) {
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        if (_greater(_nodes[i].key, key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not increase the key");
         }
-        delete (i);
+        remove(i);
         insert(i, key);
     }
 
     void remove(int i)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        toTheRoot(i);
-        Node <Key> x = erase(i);
-        if (x.child != null) {
-            Node <Key> y = x;
-            x = x.child;
-            y.child = null;
-            Node <Key> prevx = null, nextx = x.sibling;
-            while (nextx != null) {
-                x.parent = null;
-                x.sibling = prevx;
+        if (i < 0 || i >= _size) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        _to_the_root(i);
+        Raw_node_pointer x = erase(i);
+        if (x->_child != nullptr) {
+            Raw_node_pointer y = x;
+            x = x->_child;
+            y->_child = nullptr;
+            Raw_node_pointer prevx = nullptr, nextx = x->_sibling;
+            while (nextx != nullptr) {
+                x->_parent = nullptr;
+                x->_sibling = prevx;
                 prevx = x;
                 x = nextx;
-                nextx = nextx.sibling;
+                nextx = nextx->_sibling;
             }
-            x.parent = null;
-            x.sibling = prevx;
-            IndexBinomialMinPQ <Key> H = new IndexBinomialMinPQ<Key>();
-            H.head = x;
-            head =
-            union(H).head;
+            x->_parent = nullptr;
+            x->_sibling = prevx;
+            Index_binomial_min_pq<Key_type, Comparator_type> tmp{};
+            tmp._head = x;
+            _head = create_union(tmp)._head;
         }
     }
 
 private:
-    Node_owning_pointer head;
-    std::vector<Raw_node_pointer> nodes;
-    int n;
-    Comparator_type comp;
+    Owning_node_pointer _head;
+    std::vector<Raw_node_pointer> _nodes;
+    int _size;
+    Comparator_type _comp;
 
     template<typename, typename>
     friend class Index_binomial_min_pq_iterator;
@@ -369,126 +338,125 @@ private:
     template<typename, typename>
     friend class Index_binomial_min_pq_reverse_iterator;
 
-    bool greater(Key n, Key m)
+    bool _greater(Key_type& n, Key_type& m)
     {
-        if (n == null) { return false; }
-        if (m == null) { return true; }
-        return comparator.compare(n, m) > 0;
+        return Comparator{}(m, n);
     }
 
-    void exchange(Node <Key> x, Node <Key> y)
+    void _exchange(Raw_node_pointer x, Raw_node_pointer y)
     {
-        Key tempKey = x.key;
-        x.key = y.key;
-        y.key = tempKey;
-        int tempInt = x.index;
-        x.index = y.index;
-        y.index = tempInt;
-        nodes[x.index] = x;
-        nodes[y.index] = y;
+        Key_type temp_key{x->_key};
+        x->_key = y->_key;
+        y->_key = temp_key;
+
+        int temp_int{x->_index};
+        x->_index = y->_index;
+        y->_index = temp_int;
+        _nodes[x->_index] = x;
+        _nodes[y->_index] = y;
     }
 
-    void link(Node <Key> root1, Node <Key> root2)
+    void _link(Raw_node_pointer root1, Raw_node_pointer root2)
     {
-        root1.sibling = root2.child;
-        root1.parent = root2;
-        root2.child = root1;
-        root2.order++;
+        root1->_sibling = root2->_child;
+        root1->_parent = root2;
+        root2->_child = root1;
+        root2->_order++;
     }
 
-    void swim(int i)
+    void _swim(int i)
     {
-        Node <Key> x = nodes[i];
-        Node <Key> parent = x.parent;
-        if (parent != null && greater(parent.key, x.key)) {
-            exchange(x, parent);
-            swim(i);
+        Raw_node_pointer x = _nodes[i];
+        Raw_node_pointer parent = x->_parent;
+        if (parent != nullptr && _greater(parent->_key, x->_key)) {
+            _exchange(x, parent);
+            _swim(i);
         }
     }
 
-    void toTheRoot(int i)
+    void _to_the_root(int i)
     {
-        Node <Key> x = nodes[i];
-        Node <Key> parent = x.parent;
-        if (parent != null) {
-            exchange(x, parent);
-            toTheRoot(i);
+        Raw_node_pointer x = _nodes[i];
+        Raw_node_pointer parent = x->_parent;
+        if (parent != nullptr) {
+            _exchange(x, parent);
+            _to_the_root(i);
         }
     }
 
-    Node <Key> erase(int i)
+    Raw_node_pointer erase(int i)
     {
-        Node <Key> reference = nodes[i];
-        Node <Key> x = head;
-        Node <Key> previous = null;
+        Raw_node_pointer reference = _nodes[i];
+        Raw_node_pointer x = _head;
+        Raw_node_pointer previous = nullptr;
         while (x != reference) {
             previous = x;
-            x = x.sibling;
+            x = x->_sibling;
         }
-        previous.sibling = x.sibling;
-        if (x == head) { head = head.sibling; }
-        nodes[i] = null;
+        if (previous) {
+            previous->_sibling = x->_sibling;
+        }
+        if (x == _head) { _head = _head->_sibling; }
+        _nodes[i] = nullptr;
         return x;
     }
 
-    Node <Key> eraseMin()
+    Raw_node_pointer _erase_min()
     {
-        Node <Key> min = head;
-        Node <Key> previous = null;
-        Node <Key> current = head;
-        while (current.sibling != null) {
-            if (greater(min.key, current.sibling.key)) {
+        Raw_node_pointer min = _head;
+        Raw_node_pointer previous = nullptr;
+        Raw_node_pointer current = _head;
+        while (current->_sibling != nullptr) {
+            if (_greater(min->_key, current->_sibling->_key)) {
                 previous = current;
-                min = current.sibling;
+                min = current->_sibling;
             }
-            current = current.sibling;
+            current = current->_sibling;
         }
-        previous.sibling = min.sibling;
-        if (min == head) { head = min.sibling; }
-        nodes[min.index] = null;
+        if (previous) {
+            previous->_sibling = min->_sibling;
+        }
+        if (min == _head) { _head = min->_sibling; }
+        _nodes[min->_index] = nullptr;
         return min;
     }
 
-    Node <Key> merge(Node <Key> h, Node <Key> x, Node <Key> y)
+    Raw_node_pointer _merge(Raw_node_pointer h, Raw_node_pointer x, Raw_node_pointer y)
     {
-        if (x == null && y == null) { return h; }
-        else if (x == null) { h.sibling = merge(y, null, y.sibling); }
-        else if (y == null) { h.sibling = merge(x, x.sibling, null); }
-        else if (x.order < y.order) { h.sibling = merge(x, x.sibling, y); }
-        else { h.sibling = merge(y, x, y.sibling); }
+        if (x == nullptr && y == nullptr) { return h; }
+        else if (x == nullptr) { h->_sibling = _merge(y, nullptr, y->_sibling); }
+        else if (y == nullptr) { h->_sibling = _merge(x, x->_sibling, nullptr); }
+        else if (x->_order < y->_order) { h->_sibling = _merge(x, x->_sibling, y); }
+        else { h->_sibling = _merge(y, x, y->_sibling); }
         return h;
     }
 
-    IndexBinomialMinPQ <Key> union(IndexBinomialMinPQ<Key>
-    heap) {
-        this.head = merge(new Node<Key>(), this.head, heap.head).sibling;
-        Node <Key> x = this.head;
-        Node <Key> prevx = null, nextx = x.sibling;
-        while (nextx != null) {
-            if (x.order < nextx.order ||
-                (nextx.sibling != null && nextx.sibling.order == x.order)) {
-                prevx = x;
-                x = nextx;
-            } else if (greater(nextx.key, x.key)) {
-                x.sibling = nextx.sibling;
-                link(nextx, x);
-            } else {
-                if (prevx == null) {
-                    this.head = nextx;
-                } else {
-                    prevx.sibling = nextx;
-                }
-                link(x, nextx);
-                x = nextx;
-            }
-            nextx = x.sibling;
-        }
-        return this;
-    }
-
-    IndexBinomialMinPQ()
+    Index_binomial_min_pq<Key_type, Comparator_type>& create_union(Index_binomial_min_pq<Key_type, Comparator_type>& heap)
     {
-        comparator = null;
+        _head = _merge(new Index_binomial_min_pq_node<Key_type>, _head, heap._head)->_sibling;
+        Raw_node_pointer x{_head};
+        Raw_node_pointer prev_x{nullptr};
+        Raw_node_pointer next_x{x->_sibling};
+        while (next_x != nullptr) {
+            if (x->_order < next_x->_order ||
+                (next_x->_sibling != nullptr && next_x->_sibling->_order == x->_order)) {
+                prev_x = x;
+                x = next_x;
+            } else if (_greater(next_x->_key, x->_key)) {
+                x->_sibling = next_x->_sibling;
+                _link(next_x, x);
+            } else {
+                if (prev_x == nullptr) {
+                    _head = next_x;
+                } else {
+                    prev_x->_sibling = next_x;
+                }
+                _link(x, next_x);
+                x = next_x;
+            }
+            next_x = x->_sibling;
+        }
+        return *this;
     }
 };
 

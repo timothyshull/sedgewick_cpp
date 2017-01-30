@@ -281,7 +281,7 @@ target_link_libraries(whitelist_main std_io utility ${Boost_LIBRARIES})
 
 
 
-
+# TODO: start second set
 
 add_executable(bellman_ford_sp_main bellman_ford_sp_main.cpp Bellman_ford_sp.cpp Bellman_ford_sp.h)
 target_link_libraries(bellman_ford_sp_main std_io utility ${Boost_LIBRARIES})
@@ -469,20 +469,19 @@ target_link_libraries(huffman_main std_io utility ${Boost_LIBRARIES})
 add_executable(in_main in_main.cpp In.cpp In.h) # TODO
 target_link_libraries(in_main std_io utility ${Boost_LIBRARIES})
 
-# TODO: 3rd Round
 add_executable(index_binomial_min_pq_main index_binomial_min_pq_main.cpp Index_binomial_min_pq.h)
 target_link_libraries(index_binomial_min_pq_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(index_fibonacci_min_pq_main index_fibonacci_min_pq_main.cpp Index_fibonacci_min_pq.cpp Index_fibonacci_min_pq.h)
+add_executable(index_fibonacci_min_pq_main index_fibonacci_min_pq_main.cpp Index_fibonacci_min_pq.h)
 target_link_libraries(index_fibonacci_min_pq_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(index_max_pq_main index_max_pq_main.cpp Index_max_pq.h)
+add_executable(index_max_pq_main index_max_pq_main.cpp Index_max_pq.h) # TODO: round3
 target_link_libraries(index_max_pq_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(index_min_pq_main index_min_pq_main.cpp Index_min_pq.h)
+add_executable(index_min_pq_main index_min_pq_main.cpp Index_min_pq.h) # TODO: round3
 target_link_libraries(index_min_pq_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(index_multiway_min_pq_main index_multiway_min_pq_main.cpp Index_multiway_min_pq.cpp Index_multiway_min_pq.h)
+add_executable(index_multiway_min_pq_main index_multiway_min_pq_main.cpp Index_multiway_min_pq.cpp Index_multiway_min_pq.h) # TODO: round3
 target_link_libraries(index_multiway_min_pq_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(interval_1d_main interval_1d_main.cpp Interval_1d.cpp Interval_1d.h)
@@ -498,7 +497,7 @@ add_executable(kruskal_mst_main kruskal_mst_main.cpp Kruskal_mst.cpp Kruskal_mst
 target_link_libraries(kruskal_mst_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(kwik_main kwik_main.cpp)
-target_link_libraries(kwik_main std_io utility ${Boost_LIBRARIES})
+target_link_libraries(kwik_main std_io utility ${Boost_LIBRARIES}) # TODO: needs a little more work
 
 add_executable(lazy_prim_mst_main lazy_prim_mst_main.cpp Lazy_prim_mst.cpp Lazy_prim_mst.h)
 target_link_libraries(lazy_prim_mst_main std_io utility ${Boost_LIBRARIES})
@@ -509,13 +508,13 @@ target_link_libraries(linear_programming_main std_io utility ${Boost_LIBRARIES})
 add_executable(linear_regression_main linear_regression_main.cpp Linear_regression.cpp Linear_regression.h)
 target_link_libraries(linear_regression_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(linked_bag_main linked_bag_main.cpp Linked_bag.cpp Linked_bag.h) # TODO)
+add_executable(linked_bag_main linked_bag_main.cpp Linked_bag.h) # Won't do
 target_link_libraries(linked_bag_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(linked_queue_main linked_queue_main.cpp Linked_queue.cpp Linked_queue.h) # TODO)
+add_executable(linked_queue_main linked_queue_main.cpp Linked_queue.h) # Won't do
 target_link_libraries(linked_queue_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(linked_stack_main linked_stack_main.cpp Linked_stack.cpp Linked_stack.h) # TODO)
+add_executable(linked_stack_main linked_stack_main.cpp Linked_stack.h) # Won't do
 target_link_libraries(linked_stack_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(longest_common_substring_main longest_common_substring_main.cpp Longest_common_substring.cpp Longest_common_substring.h)
@@ -536,7 +535,7 @@ target_link_libraries(lzw_compression_main std_io utility ${Boost_LIBRARIES})
 add_executable(multiway_merge_main multiway_merge_main.cpp Multiway_merge.cpp Multiway_merge.h)
 target_link_libraries(multiway_merge_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(multiway_min_pq_main multiway_min_pq_main.cpp Multiway_min_pq.cpp Multiway_min_pq.h)
+add_executable(multiway_min_pq_main multiway_min_pq_main.cpp Multiway_min_pq.h)
 target_link_libraries(multiway_min_pq_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(nfa_main nfa_main.cpp NFA.cpp NFA.h)
@@ -557,7 +556,7 @@ target_link_libraries(particle_main std_io utility ${Boost_LIBRARIES})
 add_executable(patricia_set_main patricia_set_main.cpp Patricia_set.cpp Patricia_set.h)
 target_link_libraries(patricia_set_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(patricia_st_main patricia_st_main.cpp Patricia_st.cpp Patricia_st.h)
+add_executable(patricia_st_main patricia_st_main.cpp Patricia_st.h)
 target_link_libraries(patricia_st_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(picture_dump_main picture_dump_main.cpp)
@@ -578,6 +577,7 @@ target_link_libraries(quick_find_uf_main std_io utility ${Boost_LIBRARIES})
 add_executable(quick_union_uf_main quick_union_uf_main.cpp Quick_union_uf.cpp Quick_union_uf.h)
 target_link_libraries(quick_union_uf_main std_io utility ${Boost_LIBRARIES})
 
+# TODO: 3rd Round
 add_executable(rabin_karp_main rabin_karp_main.cpp Rabin_karp.cpp Rabin_karp.h)
 target_link_libraries(rabin_karp_main std_io utility ${Boost_LIBRARIES})
 

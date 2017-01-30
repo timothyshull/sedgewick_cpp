@@ -1,106 +1,67 @@
 #include "Interval_1d.h"
+#include "utility.h"
 
-bool Min_endpoint_comparator::operator()(Interval_1d& a, Interval_1d& b)
+bool Min_endpoint_comparator::operator()(const Interval_1d& a, const Interval_1d& b)
 {
-    if (a.min < b.min) { return -1; }
-    else if (a.min > b.min) { return +1; }
-    else if (a.max < b.max) { return -1; }
-    else if (a.max > b.max) { return +1; }
-    else { return 0; }
+    if (a._min < b._min) { return true; }
+    else if (a._min > b._min) { return false; }
+    return a._max < b._max;
 }
 
-bool Max_endpoint_comparator::operator()(Interval_1d& a, Interval_1d& b)
+bool Max_endpoint_comparator::operator()(const Interval_1d& a, const Interval_1d& b)
 {
-    if (a.min < b.max) { return -1; }
-    else if (a.min > b.max) { return +1; }
-    else if (a.min < b.min) { return -1; }
-    else if (a.min > b.min) { return +1; }
-    else { return 0; }
+    if (a._max < b._max) { return true; }
+    else if (a._max > b._max) { return false; }
+    return a._min < b._min;
 }
 
-bool Length_comparator::operator()(Interval_1d& a, Interval_1d& b)
+bool Length_comparator::operator()(const Interval_1d& a, const Interval_1d& b)
 {
-    double alen = a.length();
-    double blen = b.length();
-    if (alen < blen) { return -1; }
-    else if (alen > blen) { return +1; }
-    else { return 0; }
+    return a.length() < b.length();
 }
 
-Interval_1d::Interval_1d(double min, double max)
+Interval_1d::Interval_1d(double min, double max) : _min{min == 0.0 ? 0.0 : min}, _max{max == 0.0 ? 0.0 : max}
 {
-    if (Double.isInfinite(min) || Double.isInfinite(max)) {
-        throw utility::Illegal_argument_exception("Endpoints must be finite");
+    if (std::isinf(min) || std::isinf(max)) {
+        throw utility::Illegal_argument_exception{"Endpoints must be finite"};
     }
-    if (Double.isNaN(min) || Double.isNaN(max)) {
-        throw utility::Illegal_argument_exception("Endpoints cannot be NaN");
+    if (std::isnan(min) || std::isnan(max)) {
+        throw utility::Illegal_argument_exception{"Endpoints cannot be NaN"};
     }
 
-    // convert -0.0 to +0.0
-    if (min == 0.0) { min = 0.0; }
-    if (max == 0.0) { max = 0.0; }
-
-    if (min <= max) {
-        this.min = min;
-        this.max = max;
-    } else { throw utility::Illegal_argument_exception("Illegal interval"); }
+    if (min > max) { throw utility::Illegal_argument_exception("Illegal interval"); }
 }
 
-double Interval_1d::left()
+bool Interval_1d::intersects(const Interval_1d& rhs) const
 {
-    return min;
+    if (_max < rhs._min) { return false; }
+    return rhs._max >= _min;
 }
 
-double Interval_1d::right()
+bool Interval_1d::contains(double x) const
 {
-    return max;
+    return (_min <= x) && (x <= _max);
 }
 
-double Interval_1d::min()
+double Interval_1d::length() const
 {
-    return min;
+    return _max - _min;
 }
 
-double Interval_1d::max()
+std::string Interval_1d::to_string() const
 {
-    return max;
+    return "Interval_1d[" + std::to_string(_min) + ", " + std::to_string(_max) + "]";
 }
 
-bool Interval_1d::intersects(Interval_1d& that)
+bool Interval_1d::operator==(const Interval_1d& rhs) const
 {
-    if (this.max < that.min) { return false; }
-    if (that.max < this.min) { return false; }
-    return true;
+    return _min == rhs._min && _max == rhs._max;
 }
 
-bool Interval_1d::contains(double x)
+std::size_t Interval_1d::hash_code() const
 {
-    return (min <= x) && (x <= max);
-}
-
-double Interval_1d::length()
-{
-    return max - min;
-}
-
-std::string Interval_1d::to_string()
-{
-    return "[" + min + ", " + max + "]";
-}
-
-bool Interval_1d::operator==(Interval_1d& rhs)
-{
-    if (other == this) { return true; }
-    if (other == null) { return false; }
-    if (other.getClass() != this.getClass()) { return false; }
-    Interval1D that = (Interval1D) other;
-    return this.min == that.min && this.max == that.max;
-}
-
-int Interval_1d::hashCode()
-{
-    int hash1 = ((Double) min).hashCode();
-    int hash2 = ((Double) max).hashCode();
+    std::size_t hash1{std::hash<double>{}(_min)};
+    std::size_t hash2{std::hash<double>{}(_max)};
     return 31 * hash1 + hash2;
 }
 

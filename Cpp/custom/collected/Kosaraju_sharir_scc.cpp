@@ -1,53 +1,39 @@
 #include "Kosaraju_sharir_scc.h"
+#include "Depth_first_order.h"
+#include "Transitive_closure.h"
 
-Kosaraju_sharir_scc::Kosaraju_sharir_scc(Digraph& G)
+Kosaraju_sharir_scc::Kosaraju_sharir_scc(Digraph& digraph)
+        : _marked(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+          _id(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    DepthFirstOrder dfs = new DepthFirstOrder(G.reverse());
+    Digraph reversed{digraph.reverse()};
+    Depth_first_order dfs{reversed};
 
-    // run DFS on G, using reverse postorder to guide calculation
-    marked = new boolean[G.num_vertices()];
-    id = new int[G.num_vertices()];
-    for (int v : dfs.reversePost()) {
-        if (!marked[v]) {
-            dfs(G, v);
-            ++count;
+    for (int v : dfs.reverse_post()) {
+        if (!_marked[v]) {
+            _dfs(digraph, v);
+            ++_count;
         }
     }
 
-    // _check that id[] gives strong components
-    assert check(G);
+    utility::alg_assert(_check(digraph), "Kosaraju_sharir_scc invariant check failed after construction");
 }
 
-int Kosaraju_sharir_scc::count()
+void Kosaraju_sharir_scc::_dfs(Digraph& digraph, int vertex)
 {
-    return count;
-}
-
-bool Kosaraju_sharir_scc::stronglyConnected(int v, int w)
-{
-    return id[v] == id[w];
-}
-
-int Kosaraju_sharir_scc::id(int v)
-{
-    return id[v];
-}
-
-void Kosaraju_sharir_scc::dfs(Digraph& G, int v)
-{
-    marked[v] = true;
-    id[v] = count;
-    for (int w : G.adj(v)) {
-        if (!marked[w]) { dfs(G, w); }
+    _marked[vertex] = true;
+    _id[vertex] = _count;
+    for (int w : digraph.adjacent(vertex)) {
+        if (!_marked[w]) { _dfs(digraph, w); }
     }
 }
 
-bool Kosaraju_sharir_scc::check(Digraph& G)
+bool Kosaraju_sharir_scc::_check(Digraph& digraph)
 {
-    TransitiveClosure tc = new TransitiveClosure(G);
-    for (int v{0}; v < G.num_vertices(); ++v) {
-        for (int w{0}; w < G.num_vertices(); ++w) {
-            if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
+    Transitive_closure tc{digraph};
+    for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (int w{0}; w < digraph.num_vertices(); ++w) {
+            if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }
         }

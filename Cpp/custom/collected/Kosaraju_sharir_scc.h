@@ -7,19 +7,34 @@
 
 class Kosaraju_sharir_scc {
 public:
-    Kosaraju_sharir_scc(Digraph& G);
+    Kosaraju_sharir_scc() = default;
 
-    int count();
-    bool stronglyConnected(int v, int w);
-    int id(int v);
+    Kosaraju_sharir_scc(const Kosaraju_sharir_scc) = default;
+
+    Kosaraju_sharir_scc(Kosaraju_sharir_scc&&) = default;
+
+    ~Kosaraju_sharir_scc() = default;
+
+    Kosaraju_sharir_scc& operator=(const Kosaraju_sharir_scc) = default;
+
+    Kosaraju_sharir_scc& operator=(Kosaraju_sharir_scc&&) = default;
+
+    Kosaraju_sharir_scc(Digraph& digraph);
+
+    inline int count() const noexcept { return _count; }
+
+    inline bool strongly_connected(int v, int w) const { return _id[v] == _id[w]; }
+
+    inline int id(int v) const { return _id[v]; }
+
 private:
-    std::deque<bool> marked;
-    std::vector<int> id;
-    int count;
+    std::deque<bool> _marked;
+    std::vector<int> _id;
+    int _count;
 
-    void dfs(Digraph& G, int v);
+    void _dfs(Digraph& digraph, int vertex);
 
-    bool check(Digraph& G);
+    bool _check(Digraph& digraph);
 };
 
 #endif // KOSARAJU_SHARIR_SCC_H

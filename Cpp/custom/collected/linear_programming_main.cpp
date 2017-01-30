@@ -5,31 +5,31 @@
 int main(int argc, char* argv[])
 {
     Std_out::print_line("----- test 1 --------------------");
-    Linear_programming::test1();
+    Lp_tests::test1();
     Std_out::print_line("----- test 2 --------------------");
-    Linear_programming::test2();
+    Lp_tests::test2();
     Std_out::print_line("----- test 3 --------------------");
     try {
-        Linear_programming::test3();
-    } catch (ArithmeticException e) {
-        e.printStackTrace();
+        Lp_tests::test3();
+    } catch (utility::Arithmetic_exception& e) {
+        Std_out::print_line(e.what());
     }
 
     Std_out::print_line("----- test 4 --------------------");
-    Linear_programming::test4();
+    Lp_tests::test4();
 
     Std_out::print_line("----- test random ---------------");
-    int m = utility::str_to_num(argv[1]);
-    int n = utility::str_to_num(argv[2]);
+    int m{utility::str_to_num(argv[1])};
+    int n{utility::str_to_num(argv[2])};
     std::vector<double> c;
-    c.reserve(n);
+    c.reserve(static_cast<std::vector<double>::size_type>(n));
     std::vector<double> b;
-    b.reserve(m);
-    std::vector<std::vector<double>> A;
-    A.reserve(m);
+    b.reserve(static_cast<std::vector<double>::size_type>(m));
+    std::vector<std::vector<double>> a;
+    a.reserve(static_cast<std::vector<std::vector<double>>::size_type>(m));
     for (int i{0}; i < m; ++i) {
-        A[i] = std::vector<double>{};
-        A[i].reserve(n);
+        a[i] = std::vector<double>{};
+        a[i].reserve(static_cast<std::vector<double>::size_type>(n));
     }
     for (int j{0}; j < n; ++j) {
         c[j] = Std_random::uniform(1000);
@@ -39,10 +39,10 @@ int main(int argc, char* argv[])
     }
     for (int i{0}; i < m; ++i) {
         for (int j{0}; j < n; ++j) {
-            A[i][j] = Std_random::uniform(100);
+            a[i][j] = Std_random::uniform(100);
         }
     }
-    Linear_programming lp{A, b, c};
+    Linear_programming lp{a, b, c};
     Std_out::print_line(lp.value());
     return 0;
 }

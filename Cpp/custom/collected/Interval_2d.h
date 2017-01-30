@@ -6,25 +6,41 @@
 
 class Interval_2d {
 public:
-    Interval_2d(Interval_1d& x, Interval_1d& y);
+    Interval_2d() = default;
 
-    bool intersects(Interval_2d& that);
+    Interval_2d(const Interval_2d&) = default;
 
-    bool contains(Point_2d& that);
+    Interval_2d(Interval_2d&&) = default;
 
-    double area();
+    ~Interval_2d() = default;
 
-    std::string to_string();
+    Interval_2d& operator=(const Interval_2d&) = default;
 
-    bool operator==(Interval_2d& rhs);
+    Interval_2d& operator=(Interval_2d&&) = default;
 
-    int hashCode();
+    Interval_2d(const Interval_1d& x, const Interval_1d& y);
 
-    void draw();
+    bool intersects(const Interval_2d& that) const;
+
+    bool contains(const Point_2d& rhs) const;
+
+    double area() const;
+
+    std::string to_string() const;
+
+    bool operator==(const Interval_2d& rhs) const;
+
+    std::size_t hash_code() const;
+
+    void draw() const;
 
 private:
-    const Interval_1d x;
-    const Interval_1d y;
+    // logically const
+    Interval_1d _x;
+    // logically const
+    Interval_1d _y;
 };
+
+std::ostream& operator<<(std::ostream& os, const Interval_2d& out);
 
 #endif // INTERVAL_2D_H

@@ -2,9 +2,9 @@
 #define LZW_COMPRESSION_H
 
 namespace LZW_compression {
-    const static int R = 256;
-    const static int L = 4096;
-    const static int W = 12;
+    const static int radix = 256;
+    const static int num_codewords = 4096;
+    const static int codeword_width = 12;
 
     void compress();
 

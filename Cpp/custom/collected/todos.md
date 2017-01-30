@@ -67,3 +67,17 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - fix up Adj_matrix_edge_weighted_digraph
 - fix up Floyd_warshall
 - declare in class definitions of operator== and operator!= friend
+- rethink where Owning_node_pointers are deleted (if it truly owns it, the node should delete it)
+- Index_min_binomial_queue needs dtor and node removal etc
+- change all hash_code to return std::size_t
+- review logical constness and usage
+- assign const wherever possible
+- !!!calling reserve on a vector and then assigning to an index does not work -> this is a big problem
+- review all comparators and remove Java compareTo format, default to < with == false
+- review member ordering optimizations and reorder members accordingly
+- review all substr calls
+- review all string iterator usage and possibly switch with npos where applicable
+- longest_common_substring and longest_repeated_substring main needs work
+- review which classes can be turned into simple functions
+- clean up Patricia_set, add node delete, add iterator support
+- clean up Patricia_st and add ctor-> fix vale vs value pointer issue

@@ -70,7 +70,7 @@ In::In(std::string& name, std::true_type)
 
         URLConnection site = url.openConnection();
 
-        // _in order to set User-Agent, replace above line with these two
+        // _in _order to set User-Agent, replace above line with these two
         // HttpURLConnection site = (HttpURLConnection) url.openConnection();
         // site.addRequestProperty("User-Agent", "Mozilla/4.76");
 

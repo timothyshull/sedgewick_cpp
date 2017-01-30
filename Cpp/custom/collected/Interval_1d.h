@@ -3,49 +3,69 @@
 
 #include <string>
 
+class Interval_1d;
+
 struct Min_endpoint_comparator {
-    bool operator()(Interval_1d& a, Interval_1d& b);
+    bool operator()(const Interval_1d& a, const Interval_1d& b);
 };
 
 struct Max_endpoint_comparator {
-    bool operator()(Interval_1d& a, Interval_1d& b);
+    bool operator()(const Interval_1d& a, const Interval_1d& b);
 };
 
 struct Length_comparator {
-    bool operator()(Interval_1d& a, Interval_1d& b);
+    bool operator()(const Interval_1d& a, const Interval_1d& b);
 };
 
 class Interval_1d {
 public:
-    const static Min_endpoint_comparator MIN_ENDPOINT_ORDER{};
-    const static Max_endpoint_comparator MAX_ENDPOINT_ORDER{};
-    const static Length_comparator LENGTH_ORDER{};
+    constexpr static Min_endpoint_comparator min_endpoint_order{};
+    constexpr static Max_endpoint_comparator max_endpoint_order{};
+    constexpr static Length_comparator length_order{};
+
+    Interval_1d() = default;
+
+    Interval_1d(const Interval_1d&) = default;
+
+    Interval_1d(Interval_1d&&) = default;
+
+    ~Interval_1d() = default;
+
+    Interval_1d& operator=(const Interval_1d&) = default;
+
+    Interval_1d& operator=(Interval_1d&&) = default;
 
     Interval_1d(double min, double max);
 
-    double left();
+    inline double left() const noexcept { return _min; }
 
-    double right();
+    inline double right() const noexcept { return _max; }
 
-    double min();
+    inline double min() const noexcept { return _min; }
 
-    double max();
+    inline double max() const noexcept { return _max; }
 
-    bool intersects(Interval_1d& that);
+    bool intersects(const Interval_1d& rhs) const;
 
-    bool contains(double x);
+    bool contains(double x) const;
 
-    double length();
+    double length() const;
 
-    std::string to_string();
+    std::string to_string() const;
 
-    bool operator==(Interval_1d& rhs);
+    bool operator==(const Interval_1d& rhs) const;
 
-    int hashCode();
+    std::size_t hash_code() const;
 
 private:
-    const double min;
-    const double max;
+    // logically const
+    double _min;
+    // logically const
+    double _max;
+
+    friend struct Min_endpoint_comparator;
+    friend struct Max_endpoint_comparator;
+    friend struct Length_comparator;
 };
 
 std::ostream& operator<<(std::ostream& os, Interval_1d& out);

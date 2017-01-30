@@ -13,9 +13,9 @@ namespace LSD_radix_sort {
 
     static void sort(std::vector<std::string>& a, int w)
     {
-        int n = a.size();
-        std::vector<std::string> aux{};
-        aux.reserve(static_cast<std::vector<std::string>::size_type>(n));
+        auto n = a.size();
+        std::vector<std::string> aux;
+        aux.reserve(n);
 
         for (int d{w - 1}; d >= 0; --d) {
             std::vector<int> count{};
@@ -40,9 +40,9 @@ namespace LSD_radix_sort {
 
     static void sort(std::vector<int>& a)
     {
-        int n = a.size();
-        std::vector<int> aux{};
-        aux.reserve(static_cast<std::vector<int>::size_type>(n));
+        auto n = a.size();
+        std::vector<int> aux;
+        aux.reserve(n);
 
         for (int d{0}; d < word; ++d) {
             std::vector<int> count{};

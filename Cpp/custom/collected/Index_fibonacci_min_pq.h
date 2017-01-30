@@ -1,114 +1,97 @@
 #ifndef INDEX_FIBONACCI_MIN_PQ_H
 #define INDEX_FIBONACCI_MIN_PQ_H
 
-class Index_fibonacci_min_pq {
-
-};
-
-#include <memory>
+#include <iterator>
+#include <unordered_map>
+#include "utility.h"
 
 template<typename Key>
 class Index_fibonacci_min_pq_node;
-
-template<typename Key>
-class Index_fibonacci_min_pq_iterator;
-
-template<typename Key>
-class Index_fibonacci_min_pq_reverse_iterator;
 
 template<typename T>
 struct Index_fibonacci_min_pq_key_comparator;
 
 template<typename Key, typename Comparator = Index_fibonacci_min_pq_key_comparator<Key>>
+class Index_fibonacci_min_pq_iterator;
+
+template<typename Key, typename Comparator = Index_fibonacci_min_pq_key_comparator<Key>>
 class Index_fibonacci_min_pq;
-
-template<typename Key>
-struct Index_fibonacci_min_pq_node_pointer_traits {
-    using Key_type = Key;
-
-    using Node_type = Index_fibonacci_min_pq_node<Key_type>;
-    using Node_raw_pointer = Index_fibonacci_min_pq_node<Key_type>*;
-    using Node_owning_pointer = std::unique_ptr<Node_type>;
-    using Node_shared_pointer = std::shared_ptr<Node_type>;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
-    using Size_type = std::size_t;
-};
 
 template<typename Key>
 class Index_fibonacci_min_pq_node {
 public:
-    using Node_traits = Index_fibonacci_min_pq_node_pointer_traits<Key>;
-    using Key_type = typename Node_traits::Key_type;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = std::shared_ptr<Key_type>;
-    using Size_type = typename Node_traits::Size_type;
+    using Key_type = Key;
+    using Node = Index_fibonacci_min_pq_node<Key>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
 
 private:
-    Shared_key_pointer key;
-    int order;
-    int index;
-    bool mark;
-    Node_owning_pointer prev;
-    Node_owning_pointer next;
-    Node_owning_pointer parent;
-    Node_owning_pointer child;
+    Key_type _key;
+    int _order;
+    int _index;
+    bool _mark;
+    Raw_node_pointer _prev;
+    Raw_node_pointer _next;
+    Raw_node_pointer _parent;
+    Owning_node_pointer _child;
 
     template<typename, typename, typename>
     friend class Index_fibonacci_min_pq;
 
     template<typename, typename>
     friend class Index_fibonacci_min_pq_iterator;
-
-    template<typename, typename>
-    friend class Index_fibonacci_min_pq_reverse_iterator;
 };
 
-template<typename Key, typename Value>
+template<typename Key, typename Comparator>
 class Index_fibonacci_min_pq_iterator {
 public:
-    using iterator_category = std::random_access_iterator_tag;
-    using Node_traits = Index_fibonacci_min_pq_node_pointer_traits<Key, Value>;
-    using Key_type = typename Node_traits::Key_type;
-    using Value_type = typename Node_traits::Value_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Tree_type = Index_fibonacci_min_pq<Key_type, Value_type>;
-    using Tree_pointer = Tree_type*;
+    using iterator_category = std::forward_iterator_tag;
+    using Key_type = Key;
+    using Node = Index_fibonacci_min_pq_node<Key>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
+    using Comparator_type = Comparator;
+    using Priority_queue_type = Index_fibonacci_min_pq<Key_type, Comparator_type>;
+    using Priority_queue_pointer = Priority_queue_type*;
 
-    using Reference_type = Value_type&;
-
-    Index_fibonacci_min_pq_iterator() noexcept = delete;
-
-    explicit Index_fibonacci_min_pq_iterator(Tree_pointer tree) noexcept : _index{0}, _tree{tree}
+    Index_fibonacci_min_pq_iterator(Priority_queue_type& pq) : _copy{pq._num}, _original{&pq}
     {
-        _construct_in_order(_tree->_get_root());
-    }
-
-    Index_fibonacci_min_pq_iterator(Tree_pointer tree, int index) noexcept : _index{index}, _tree{tree}
-    {
-        _construct_in_order(_tree->_get_root());
-        if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
+        for (auto x : pq._nodes) {
+            if (x != nullptr) { _copy.insert(x->index, x->key); }
         }
     }
 
-    inline Node_raw_pointer operator*() const
+    Index_fibonacci_min_pq_iterator(Priority_queue_type& pq, Raw_node_pointer n) : _copy{pq._num}, _original{&pq}
     {
-        return _in_order[_index];
+        // TODO: this may cause issues
+        for (auto x : pq._nodes) {
+            if (x != nullptr) { _copy.insert(x->index, x->key); }
+        }
+        _copy._head = n;
     }
 
-    inline Node_raw_pointer operator->() const
+    inline bool has_next() const noexcept { return !_copy.is_empty(); }
+
+    int next()
     {
-        return _in_order[_index];
+        if (!has_next()) { throw utility::No_such_element_exception{""}; }
+        return _copy.delete_min();
+    }
+
+    inline Key_type operator*() const
+    {
+        return _copy._head->_key;
+    }
+
+    inline Raw_node_pointer operator->() const
+    {
+        return _copy._head;
     }
 
     inline Index_fibonacci_min_pq_iterator& operator++()
     {
-        ++_index;
-        if (_index >= _in_order.size()) {
-            _index = -1;
+        if (has_next()) {
+            next();
         }
         return *this;
     }
@@ -120,36 +103,25 @@ public:
         return t;
     }
 
-    inline Index_fibonacci_min_pq_iterator& operator--()
-    {
-        if (_index > 0) {
-            --_index;
-        }
-        return *this;
-    }
-
-    inline Index_fibonacci_min_pq_iterator operator--(int)
-    {
-        Index_fibonacci_min_pq_iterator t{*this};
-        --(*this);
-        return t;
-    }
-
-    Node_raw_pointer operator[](const int& index)
-    {
-        return _in_order[index];
-    }
-
     friend
     inline bool operator==(const Index_fibonacci_min_pq_iterator& x, const Index_fibonacci_min_pq_iterator& y)
     {
-        return x._in_order == y._in_order && x._index == y._index;
+        if (x._original != y._original) {
+            return false;
+        }
+        if (x._copy._head && y._copy._head) {
+            return *(x._copy._head->_key) == *(y._copy._head->_key);
+        }
+        return x._copy._head == nullptr && y._copy._head == nullptr;
     }
 
     friend
     inline bool operator!=(const Index_fibonacci_min_pq_iterator& x, const Index_fibonacci_min_pq_iterator& y) { return !(x == y); }
 
 private:
+    Priority_queue_type _copy;
+    Priority_queue_pointer _original;
+
     template<typename>
     friend class Index_fibonacci_min_pq;
 };
@@ -158,157 +130,126 @@ template<typename T>
 struct Index_fibonacci_min_pq_key_comparator {
     int operator()(const T& x, const T& y) const
     {
-        if (x < y) {
-            return -1;
-        } else if (y < x) {
-            return 1;
-        }
-        return 0;
+        return x < y;
     }
 };
 
-template<typename Key, typename Value, typename Comparator>
+template<typename Key, typename Comparator>
 class Index_fibonacci_min_pq {
 public:
-    using Node_traits = Index_fibonacci_min_pq_node_pointer_traits<Key>;
-    using Node_type = typename Node_traits::Node_type;
-    using Node_raw_pointer = typename Node_traits::Node_raw_pointer;
-    using Node_owning_pointer = typename Node_traits::Node_owning_pointer;
-    using Node_shared_pointer = typename Node_traits::Node_shared_pointer;
-    using Shared_key_pointer = typename Node_traits::Shared_key_pointer;
-    using Key_type = typename Node_traits::Key_type;
+    using Key_type = Key;
+    using Node = Index_fibonacci_min_pq_node<Key>;
+    using Owning_node_pointer = Node*;
+    using Raw_node_pointer = Node*;
     using Comparator_type = Comparator;
+    using Iterator_type = Index_fibonacci_min_pq_iterator<Key_type, Comparator_type>;
 
-    using Reference_type = Value_type&;
-    using Const_reference_type = const Value_type&;
-    using Pointer_type = Value_type*;
-    using Const_pointer_type = Value_type const*;
-    using Size_type = std::size_t;
-    using Difference_type = std::ptrdiff_t;  // TODO: _check on this because of the relationship with max_size
-    using Iterator_type = Index_fibonacci_min_pq_iterator<Key_type, Value_type>;
-    using Reverse_iterator_type = Index_fibonacci_min_pq_reverse_iterator<Key_type, Value_type>;
+    inline Iterator_type begin() { return Iterator_type(*this); }
 
-    Iterator_type begin() { return Iterator_type(this, 0); }
+    inline Iterator_type end() { return Iterator_type(*this, nullptr); }
 
-    Iterator_type end() { return Iterator_type(this, -1); }
-
-    Index_fibonacci_min_pq(int N)
+    Index_fibonacci_min_pq(int size)
+            : _num{size},
+              _nodes(static_cast<std::vector<Raw_node_pointer>::size_type>(size)),
+              _comp{}
     {
-        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
-        n = N;
-        nodes = (Node<Key>[])
-        new Node[n];
-        comp = new MyComparator();
+        // will throw before this
+        // if (size < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
     }
 
-    Index_fibonacci_min_pq(Comparator<Key> C, int N)
-    {
-        if (N < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
-        n = N;
-        nodes = (Node<Key>[])
-        new Node[n];
-        comp = C;
-    }
-
-    bool is_empty()
-    {
-        return size == 0;
-    }
+    inline bool is_empty() const noexcept { return _size == 0; }
 
     bool contains(int i)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        else { return nodes[i] != null; }
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        else { return _nodes[i] != nullptr; }
     }
 
-    int size()
-    {
-        return size;
-    }
+    inline int size() const noexcept { return _size; }
 
     void insert(int i, Key key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
         if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already _in the _queue"); }
-        Node <Key> x = new Node<Key>();
-        x.key = key;
-        x.index = i;
-        nodes[i] = x;
-        ++size;
-        head = insert(x, head);
-        if (min == null) { min = head; }
-        else { min = (greater(min.key, key)) ? head : min; }
+        Raw_node_pointer x = new Index_fibonacci_min_pq_node<Key_type>();
+        x->_key = key;
+        x->_index = i;
+        _nodes[i] = x;
+        ++_size;
+        _head = _insert(x, _head);
+        if (_min == nullptr) { _min = _head; }
+        else { _min = (_greater(_min->_key, key)) ? _head : _min; }
     }
 
-    int minIndex()
+    int min_index() const
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        return min.index;
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        return _min->_index;
     }
 
-    Key minKey()
+    Key_type min_key()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        return min.key;
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        return _min->_key;
     }
 
-    int delMin()
+    int delete_min()
     {
-        if (is_empty()) { throw new NoSuchElementException("Priority _queue is empty"); }
-        head = cut(min, head);
-        Node <Key> x = min.child;
-        int index = min.index;
-        min.key = null;                    //For garbage collection
-        if (x != null) {
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue is empty"}; }
+        _head = _cut(_min, _head);
+        Raw_node_pointer x = _min->_child;
+        int index = _min->_index;
+        _min->_key = nullptr;
+        if (x != nullptr) {
             do {
-                x.parent = null;
-                x = x.next;
-            } while (x != min.child);
-            head = meld(head, x);
-            min.child = null;            //For garbage collection
+                x->_parent = nullptr;
+                x = x->_next;
+            } while (x != _min->_child);
+            _head = _meld(_head, x);
+            _min->_child = nullptr;
         }
-        size--;
-        if (!is_empty()) { consolidate(); }
-        else { min = null; }
-        nodes[index] = null;
+        _size--;
+        if (!is_empty()) { _consolidate(); }
+        else { _min = nullptr; }
+        _nodes[index] = nullptr;
         return index;
     }
 
-    Key keyOf(int i)
+    Key_type key_of(int i)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        return nodes[i].key;
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        return _nodes[i]->key;
     }
 
-    void changeKey(int i, Key key)
+    void change_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        if (greater(key, nodes[i].key)) { increaseKey(i, key); }
-        else { decreaseKey(i, key); }
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        if (_greater(key, _nodes[i]->key)) { increase_key(i, key); }
+        else { decrease_key(i, key); }
     }
 
-    void decreaseKey(int i, Key key)
+    void decrease_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        if (greater(key, nodes[i].key)) {
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        if (_greater(key, _nodes[i]->key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not decrease the key");
         }
-        Node <Key> x = nodes[i];
-        x.key = key;
-        if (greater(min.key, key)) { min = x; }
-        if (x.parent != null && greater(x.parent.key, key)) {
-            cut(i);
+        Raw_node_pointer x = _nodes[i];
+        x->_key = key;
+        if (_greater(_min->_key, key)) { _min = x; }
+        if (x->_parent != nullptr && _greater(x->_parent->_key, key)) {
+            _cut(i);
         }
     }
 
-    void increaseKey(int i, Key key)
+    void increase_key(int i, Key_type& key)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        if (greater(nodes[i].key, key)) {
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        if (_greater(_nodes[i]->key, key)) {
             throw utility::Illegal_argument_exception("Calling with this argument would not increase the key");
         }
         delete (i);
@@ -317,35 +258,38 @@ public:
 
     void remove(int i)
     {
-        if (i < 0 || i >= n) { throw new IndexOutOfBoundsException(); }
-        if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
-        Node <Key> x = nodes[i];
-        x.key = null;                //For garbage collection
-        if (x.parent != null) {
-            cut(i);
+        if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
+        if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
+        Raw_node_pointer x = _nodes[i];
+        x->_key = nullptr;
+        if (x->_parent != nullptr) {
+            _cut(i);
         }
-        head = cut(x, head);
-        if (x.child != null) {
-            Node <Key> child = x.child;
-            x.child = null;            //For garbage collection
+        _head = _cut(x, _head);
+        if (x->_child != nullptr) {
+            Raw_node_pointer child = x->_child;
+            x->_child = nullptr;
             x = child;
             do {
-                child.parent = null;
-                child = child.next;
+                child->_parent = nullptr;
+                child = child->_next;
             } while (child != x);
-            head = meld(head, child);
+            _head = _meld(_head, child);
         }
-        if (!is_empty()) { consolidate(); }
-        else { min = null; }
-        nodes[i] = null;
-        size--;
+        if (!is_empty()) { _consolidate(); }
+        else { _min = nullptr; }
+        _nodes[i] = nullptr;
+        _size--;
     }
 
 private:
-    Node_owning_pointer head;
-    std::vector<Raw_node_pointer> nodes;
-    int n;
-    Comparator_type comp;
+    Raw_node_pointer _head;
+    Raw_node_pointer _min;
+    std::vector<Raw_node_pointer> _nodes;
+    int _size;
+    int _num;
+    Comparator_type _comp;
+    std::unordered_map<int, Raw_node_pointer> _table;
 
     template<typename, typename>
     friend class Index_fibonacci_min_pq_iterator;
@@ -353,104 +297,104 @@ private:
     template<typename, typename>
     friend class Index_fibonacci_min_pq_reverse_iterator;
 
-    bool greater(Key n, Key m)
+    bool _greater(Key_type& n, Key_type& m)
     {
-        if (n == null) { return false; }
-        if (m == null) { return true; }
-        return comp.compare(n, m) > 0;
+        if (n == nullptr) { return false; }
+        if (m == nullptr) { return true; }
+        return _comp.compare(n, m) > 0;
     }
 
-    void link(Node <Key> root1, Node <Key> root2)
+    void _link(Raw_node_pointer root1, Raw_node_pointer root2)
     {
-        root1.parent = root2;
-        root2.child = insert(root1, root2.child);
-        root2.order++;
+        root1->_parent = root2;
+        root2->_child = _insert(root1, root2->_child);
+        root2->_order++;
     }
 
-    void cut(int i)
+    void _cut(int i)
     {
-        Node <Key> x = nodes[i];
-        Node <Key> parent = x.parent;
-        parent.child = cut(x, parent.child);
-        x.parent = null;
-        parent.order--;
-        head = insert(x, head);
-        parent.mark = !parent.mark;
-        if (!parent.mark && parent.parent != null) {
-            cut(parent.index);
+        Raw_node_pointer x = _nodes[i];
+        Raw_node_pointer parent = x->_parent;
+        parent->_child = _cut(x, parent->_child);
+        x->_parent = nullptr;
+        parent->_order--;
+        _head = _insert(x, _head);
+        parent->_mark = !parent->_mark;
+        if (!parent->_mark && parent->_parent != nullptr) {
+            _cut(parent->_index);
         }
     }
 
-    void consolidate()
+    void _consolidate()
     {
-        table.clear();
-        Node <Key> x = head;
+        _table.clear();
+        Raw_node_pointer x = _head;
         int maxOrder = 0;
-        min = head;
-        Node <Key> y = null, z = null;
+        _min = _head;
+        Raw_node_pointer y = nullptr, z = nullptr;
         do {
             y = x;
-            x = x.next;
-            z = table.get(y.order);
-            while (z != null) {
-                table.remove(y.order);
-                if (greater(y.key, z.key)) {
-                    link(y, z);
+            x = x->_next;
+            z = _table[y->_order];
+            while (z != nullptr) {
+                _table.erase(y->_order);
+                if (_greater(y->_key, z->_key)) {
+                    _link(y, z);
                     y = z;
                 } else {
-                    link(z, y);
+                    _link(z, y);
                 }
-                z = table.get(y.order);
+                z = _table[y->_order];
             }
-            table.put(y.order, y);
-            if (y.order > maxOrder) { maxOrder = y.order; }
-        } while (x != head);
-        head = null;
-        for (Node <Key> n : table.values()) {
-            min = greater(min.key, n.key) ? n : min;
-            head = insert(n, head);
+            _table.insert({y->_order, y});
+            if (y->_order > maxOrder) { maxOrder = y->_order; }
+        } while (x != _head);
+        _head = nullptr;
+        for (auto n : _table) {
+            _min = _greater(_min->_key, n.second->_key) ? n.second : _min;
+            _head = _insert(n.second, _head);
         }
     }
 
-    Node <Key> insert(Node <Key> x, Node <Key> head)
+    Raw_node_pointer _insert(Raw_node_pointer x, Raw_node_pointer head)
     {
-        if (head == null) {
-            x.prev = x;
-            x.next = x;
+        if (head == nullptr) {
+            x->_prev = x;
+            x->_next = x;
         } else {
-            head.prev.next = x;
-            x.next = head;
-            x.prev = head.prev;
-            head.prev = x;
+            head->_prev->_next = x;
+            x->_next = head;
+            x->_prev = head->_prev;
+            head->_prev = x;
         }
         return x;
     }
 
-    Node <Key> cut(Node <Key> x, Node <Key> head)
+    Raw_node_pointer _cut(Raw_node_pointer x, Raw_node_pointer head)
     {
-        if (x.next == x) {
-            x.next = null;
-            x.prev = null;
-            return null;
+        if (x->_next == x) {
+            x->_next = nullptr;
+            x->_prev = nullptr;
+            return nullptr;
         } else {
-            x.next.prev = x.prev;
-            x.prev.next = x.next;
-            Node <Key> res = x.next;
-            x.next = null;
-            x.prev = null;
+            x->_next->_prev = x->_prev;
+            x->_prev->_next = x->_next;
+            Raw_node_pointer res = x->_next;
+            x->_next = nullptr;
+            x->_prev = nullptr;
             if (head == x) { return res; }
             else { return head; }
         }
     }
 
-    Node <Key> meld(Node <Key> x, Node <Key> y)
+    Raw_node_pointer _meld(Raw_node_pointer x, Raw_node_pointer y)
     {
-        if (x == null) { return y; }
-        if (y == null) { return x; }
-        x.prev.next = y.next;
-        y.next.prev = x.prev;
-        x.prev = y;
-        y.next = x;
+        if (x == nullptr) { return y; }
+        if (y == nullptr) { return x; }
+        x->_prev->_next = y->_next;
+        y->_next->_prev = x->_prev;
+        x->_prev = y;
+        y->_next = x;
         return x;
     }
 

@@ -1,45 +1,37 @@
 #include "Quick_union_uf.h"
+#include "utility.h"
 
 Quick_union_uf::Quick_union_uf(int n)
+        : _count{n},
+          _parent(static_cast<std::vector<int>::size_type>(n))
 {
-    parent = new int[n];
-    count = n;
     for (int i{0}; i < n; ++i) {
-        parent[i] = i;
+        _parent[i] = i;
     }
-}
-
-int Quick_union_uf::count()
-{
-    return count;
 }
 
 int Quick_union_uf::find(int p)
 {
-    validate(p);
-    while (p != parent[p])
-        p = parent[p];
+    _validate(p);
+    while (p != _parent[p]) {
+        p = _parent[p];
+    }
     return p;
-}
-
-bool Quick_union_uf::connected(int p, int q)
-{
-    return find(p) == find(q);
 }
 
 void Quick_union_uf::create_union(int p, int q)
 {
     int rootP = find(p);
     int rootQ = find(q);
-    if (rootP == rootQ) return;
-    parent[rootP] = rootQ;
-    count--;
+    if (rootP == rootQ) { return; }
+    _parent[rootP] = rootQ;
+    _count--;
 }
 
-void Quick_union_uf::validate(int p)
+void Quick_union_uf::_validate(int p)
 {
-    int n = parent.length;
+    auto n = _parent.size();
     if (p < 0 || p >= n) {
-        throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n - 1));
+        throw utility::Index_out_of_bounds_exception{"index " + std::to_string(p) + " is not between 0 and " + std::to_string(n - 1)};
     }
 }
