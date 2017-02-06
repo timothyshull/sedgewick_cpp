@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "In.h"
+
 class Graph {
 public:
     Graph() = default;

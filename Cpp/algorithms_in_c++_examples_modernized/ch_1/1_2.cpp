@@ -1,7 +1,4 @@
-#include<iostream>
-
-using std::cin;
-using std::cout;
+#include <iostream>
 
 static const int N = 10000;
 

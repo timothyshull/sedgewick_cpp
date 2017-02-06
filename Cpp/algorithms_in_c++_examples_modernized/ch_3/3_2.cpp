@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<cmath>
-#include<random>
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <random>
 
 using std::cin;
 using std::cout;

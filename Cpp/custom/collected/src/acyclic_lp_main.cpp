@@ -1,6 +1,5 @@
 #include "Acyclic_lp.h"
 #include "Std_out.h"
-#include "In.h"
 
 int main(int argc, char* argv[])
 {

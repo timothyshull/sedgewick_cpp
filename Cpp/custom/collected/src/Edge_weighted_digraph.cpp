@@ -9,7 +9,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(int num_vertices)
           _indegree(static_cast<std::vector<int>::size_type>(num_vertices))
 {
     if (num_vertices < 0) {
-        throw utility::Illegal_argument_exception("the number of vertices _in an Edge_weighted_digraph must be non-negative");
+        throw utility::Illegal_argument_exception("the number of vertices in an Edge_weighted_digraph must be non-negative");
     }
     for (int v{0}; v < _num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Directed_edge>{};
@@ -33,14 +33,10 @@ Edge_weighted_digraph::Edge_weighted_digraph(int num_vertices, int num_edges)
     }
 }
 
-Edge_weighted_digraph::Edge_weighted_digraph(In& in)
+Edge_weighted_digraph::Edge_weighted_digraph(In<std::ifstream>& in) : Edge_weighted_digraph{in.read_int()}
 {
-    utility::copy_stream(in, Std_in::std_in);
-    int num_vertices = Std_in::read_int();
-    *this = Edge_weighted_digraph{num_vertices};
-    int num_edges = Std_in::read_int();
-    _num_edges = num_edges;
-    if (_num_edges < 0) {
+    int num_edges{in.read_int()};
+    if (num_edges < 0) {
         throw utility::Index_out_of_bounds_exception("The number of edges must be non-negative");
     }
 
@@ -48,27 +44,24 @@ Edge_weighted_digraph::Edge_weighted_digraph(In& in)
     int w;
     double weight;
     for (int i{0}; i < num_edges; ++i) {
-        Std_out::print_line("add edge");
-        v = Std_in::read_int();
-        w = Std_in::read_int();
-        if (v < 0 || v >= num_vertices || w < 0 || w >= num_vertices) {
+        v = in.read_int();
+        w = in.read_int();
+        if (v < 0 || v >= _num_vertices || w < 0 || w >= _num_vertices) {
             throw utility::Index_out_of_bounds_exception("The vertex must be between 0 and the number of vertices - 1");
         }
-        weight = Std_in::read_double();
+        weight = in.read_double();
         add_edge(v, w, weight);
     }
-    // reset
-    utility::copy_stream(std::cin, Std_in::std_in);
 }
 
-Edge_weighted_digraph::Edge_weighted_digraph(const Edge_weighted_digraph& g)
-        : _num_vertices{g._num_vertices},
-          _num_edges{g._num_edges},
-          _indegree{g._indegree}
+Edge_weighted_digraph::Edge_weighted_digraph(const Edge_weighted_digraph& digraph)
+        : _num_vertices{digraph._num_vertices},
+          _num_edges{digraph._num_edges},
+          _indegree{digraph._indegree}
 {
     for (int v{0}; v < _num_vertices; ++v) {
         Stack<Directed_edge> reverse;
-        for (auto e : g._adjacency_lists[v]) {
+        for (auto e : digraph._adjacency_lists[v]) {
             reverse.push(e);
         }
         for (auto e : reverse) {
@@ -97,22 +90,22 @@ void Edge_weighted_digraph::add_edge(int source, int destination, double weight)
     ++_num_edges;
 }
 
-std::vector<Directed_edge> Edge_weighted_digraph::adjacent(int v) const
+std::vector<Directed_edge> Edge_weighted_digraph::adjacent(int vertex) const
 {
-    _validate_vertex(v);
-    return _adjacency_lists[v];
+    _validate_vertex(vertex);
+    return _adjacency_lists[vertex];
 }
 
-int Edge_weighted_digraph::outdegree(int v) const
+int Edge_weighted_digraph::outdegree(int vertex) const
 {
-    _validate_vertex(v);
-    return static_cast<int>(_adjacency_lists[v].size());
+    _validate_vertex(vertex);
+    return static_cast<int>(_adjacency_lists[vertex].size());
 }
 
-int Edge_weighted_digraph::indegree(int v) const
+int Edge_weighted_digraph::indegree(int vertex) const
 {
-    _validate_vertex(v);
-    return _indegree[v];
+    _validate_vertex(vertex);
+    return _indegree[vertex];
 }
 
 std::vector<Directed_edge> Edge_weighted_digraph::edges() const
@@ -129,9 +122,9 @@ std::vector<Directed_edge> Edge_weighted_digraph::edges() const
 std::string Edge_weighted_digraph::to_string() const
 {
     std::stringstream ss;
-    ss << "Edge_weighted_digraph(\n    number of vertices: " << _num_vertices << ",\n    number of edges: " << _num_edges << "\n";
+    ss << "Edge_weighted_digraph(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
     for (int v{0}; v < _num_vertices; ++v) {
-        ss << "    edges for vertex " << v << ": ";
+        ss << "    vertex " << v << ": ";
         for (auto e : _adjacency_lists[v]) {
             ss << e << " ";
         }
@@ -141,9 +134,9 @@ std::string Edge_weighted_digraph::to_string() const
     return ss.str();
 }
 
-void Edge_weighted_digraph::_validate_vertex(int v) const
+void Edge_weighted_digraph::_validate_vertex(int vertex) const
 {
-    if (v < 0 || v >= _num_vertices) {
+    if (vertex < 0 || vertex >= _num_vertices) {
         throw utility::Index_out_of_bounds_exception("The vertex is not between 0 and the number of vertices");
     }
 }

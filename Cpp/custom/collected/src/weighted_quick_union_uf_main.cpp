@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    int n = Std_in::read_int();
+    int n{Std_in::read_int()};
     Weighted_quick_union_uf uf{n};
     while (!Std_in::is_empty()) {
         int p = Std_in::read_int();

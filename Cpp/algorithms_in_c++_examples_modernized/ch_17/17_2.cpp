@@ -1,6 +1,6 @@
-#include<vector>
+#include <vector>
 
-#include"Graph.h"
+#include "Graph.h"
 
 template<class Graph>
 std::vector<Edge> edges(Graph& graph)

@@ -22,9 +22,10 @@ public:
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
     using Item = T;
+
 private:
     Item _item;
-    Owning_node_pointer _next;
+    Owning_node_pointer _next{nullptr};
 
     template<typename>
     friend class Stack_iterator;
@@ -41,6 +42,7 @@ public:
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
     using Item = T;
+    using Raw_item_pointer = T*;
 
     Stack_iterator() = default;
 
@@ -68,7 +70,7 @@ public:
 
     inline Item operator*() const { return _current->_item; }
 
-    inline Raw_node_pointer operator->() const { return _current; }
+    inline Raw_item_pointer operator->() const { return &(_current->_item); }
 
     Stack_iterator& operator++()
     {
@@ -103,16 +105,39 @@ public:
     using Raw_node_pointer = Node*;
     using Item = T;
     using Iterator_type = Stack_iterator<T>;
-
-    Stack(const Stack&) = default;
-
-    Stack(Stack&&) = default;
-
-    Stack& operator=(const Stack&) = default;
-
-    Stack& operator=(Stack&&) = default;
+    using Const_iterator_type = Stack_iterator<T>;
 
     Stack() : _first{nullptr}, _size{0} {}
+
+    Stack(const Stack& rhs) : _first{_copy(rhs._first)}, _size{rhs._size} {}
+
+    Stack(Stack&& rhs) : _first{rhs._first}, _size{rhs._size}
+    {
+        rhs._first = nullptr;
+        rhs._size = 0;
+    }
+
+    Stack& operator=(const Stack& rhs)
+    {
+        if (*this == rhs) {
+            return *this;
+        }
+        _first = _copy(rhs._first);
+        _size = rhs._size;
+        return *this;
+    }
+
+    Stack& operator=(Stack&& rhs)
+    {
+        if (*this == rhs) {
+            return *this;
+        }
+        _first = rhs._first;
+        _size = rhs._size;
+        rhs._first = nullptr;
+        rhs._size = 0;
+        return *this;
+    }
 
     ~Stack()
     {
@@ -169,9 +194,34 @@ public:
 
     inline Iterator_type end() { return Stack_iterator<Item>{nullptr}; }
 
+    inline Const_iterator_type begin() const { return Stack_iterator<Item>{_first}; }
+
+    inline Const_iterator_type end() const { return Stack_iterator<Item>{nullptr}; }
+
+    inline bool operator==(const Stack& rhs) const { return _first == rhs._first && _size == rhs._size; }
+
+    inline bool operator!=(const Stack& rhs) const { return !(rhs == *this); }
+
 private:
     Owning_node_pointer _first;
     int _size;
+
+    Raw_node_pointer _copy(Raw_node_pointer n)
+    {
+        if (n != nullptr) {
+            Node dummy;
+            Raw_node_pointer tmp{&dummy};
+
+            while (n != nullptr) {
+                tmp->_next = new Stack_node<Item>;
+                tmp->_next->_item = n->_item;
+                n = n->_next;
+                tmp = tmp->_next;
+            }
+            return dummy._next;
+        }
+        return nullptr;
+    }
 };
 
 template<typename T>

@@ -1,5 +1,5 @@
-#include<cmath>
-#include"Point.h"
+#include <cmath>
+#include "Point.h"
 
 float distance(Point& a, Point& b)
 {

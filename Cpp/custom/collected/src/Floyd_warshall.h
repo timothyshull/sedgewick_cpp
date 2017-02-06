@@ -2,8 +2,10 @@
 #define FLOYD_WARSHALL_H
 
 #include <vector>
-#include "Directed_edge.h"
+
 #include "Adj_matrix_edge_weighted_digraph.h"
+#include "Directed_edge.h"
+#include "Stack.h"
 
 class Floyd_warshall {
 public:
@@ -13,7 +15,7 @@ public:
 
     inline bool has_negative_cycle() const noexcept { return _has_negative_cycle; }
 
-    std::vector<Directed_edge> negative_cycle();
+    Stack<Directed_edge> negative_cycle();
 
     inline bool has_path(int source, int dest) const { return _distances[source][dest] < std::numeric_limits<double>::infinity(); }
 

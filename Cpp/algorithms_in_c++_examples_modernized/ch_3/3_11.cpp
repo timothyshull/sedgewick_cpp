@@ -1,7 +1,7 @@
-#include<cstdlib>
-#include<memory>
-#include<random>
-#include"list.h"
+#include <cstdlib>
+#include <memory>
+#include <random>
+#include "list.h"
 
 using std::size_t;
 using std::shared_ptr;

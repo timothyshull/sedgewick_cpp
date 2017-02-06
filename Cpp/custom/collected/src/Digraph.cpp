@@ -90,7 +90,7 @@ std::string Digraph::to_string() const
     std::stringstream ss;
     ss << "Digraph(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
     for (int v{0}; v < _num_vertices; ++v) {
-        ss << "    Vertex " << v << ": ";
+        ss << "    vertex " << v << ": ";
         for (auto w : _adjacency_lists[v]) {
             ss << w << ", ";
         }

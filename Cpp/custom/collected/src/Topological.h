@@ -23,14 +23,14 @@ public:
 
     explicit Topological(Edge_weighted_digraph& g);
 
-    inline std::vector<int> order() const { return _order; }
+    inline Stack<int> order() const { return _order; }
 
-    inline bool has_order() const { return !_order.empty(); }
+    inline bool has_order() const { return !_order.is_empty(); }
 
     int rank(int v) const;
 
 private:
-    std::vector<int> _order;
+    Stack<int> _order;
     std::vector<int> _rank;
 
     void _validate_vertex(int v) const;

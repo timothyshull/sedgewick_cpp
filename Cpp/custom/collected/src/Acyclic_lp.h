@@ -1,5 +1,5 @@
-#ifndef ACYCLICLP_H
-#define ACYCLICLP_H
+#ifndef ACYCLIC_LP_H
+#define ACYCLIC_LP_H
 
 #include <type_traits>
 #include <vector>
@@ -26,9 +26,9 @@ public:
 
     inline double distance_to(int v) const { return _distance_to[v]; }
 
-    inline bool has_path_to(int v) const { return _distance_to[v] < std::numeric_limits<double>::infinity(); }
+    inline bool has_path_to(int v) const { return _distance_to[v] > -std::numeric_limits<double>::infinity(); }
 
-    std::vector<Directed_edge> path_to(int vertex);
+    Stack<Directed_edge> path_to(int vertex);
 
 private:
     std::vector<double> _distance_to;
@@ -37,4 +37,4 @@ private:
     void _relax(Directed_edge& e);
 };
 
-#endif // ACYCLICLP_H
+#endif // ACYCLIC_LP_H

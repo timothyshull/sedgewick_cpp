@@ -1,7 +1,7 @@
-#include<cmath>
-#include<iostream>
-#include<cstdlib>
-#include"Point.h"
+#include <cmath>
+#include <iostream>
+#include <cstdlib>
+#include "Point.h"
 
 using std::cin;
 using std::cout;

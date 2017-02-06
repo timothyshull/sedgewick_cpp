@@ -1,6 +1,6 @@
-#include<iostream>
-#include<cstdlib>
-#include<memory>
+#include <iostream>
+#include <cstdlib>
+#include <memory>
 
 using std::cin;
 using std::cout;

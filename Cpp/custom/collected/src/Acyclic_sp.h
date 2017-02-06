@@ -19,19 +19,19 @@ public:
 
     Acyclic_sp& operator=(Acyclic_sp&&) = default;
 
-    Acyclic_sp(Edge_weighted_digraph& g, int source);
+    Acyclic_sp(Edge_weighted_digraph& digraph, int source);
 
-    inline double distance_to(int v) const { return _distance_to[v]; }
+    inline double distance_to(int vertex) const { return _distance_to[vertex]; }
 
-    inline bool has_path_to(int v) const { return _distance_to[v] < std::numeric_limits<double>::infinity(); }
+    inline bool has_path_to(int vertex) const { return _distance_to[vertex] > -std::numeric_limits<double>::infinity(); }
 
-    std::vector<Directed_edge> path_to(int vertex);
+    Stack<Directed_edge> path_to(int vertex);
 
 private:
     std::vector<double> _distance_to;
     std::vector<Directed_edge> _edge_to;
 
-    void _relax(Directed_edge& e);
+    void _relax(Directed_edge& edge);
 };
 
 #endif // ACYCLIC_SP_H

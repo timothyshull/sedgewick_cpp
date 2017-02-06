@@ -18,21 +18,21 @@ public:
 
     Edge_weighted_directed_cycle& operator=(Edge_weighted_directed_cycle&&) = default;
 
-    explicit Edge_weighted_directed_cycle(Edge_weighted_digraph& g);
+    explicit Edge_weighted_directed_cycle(Edge_weighted_digraph& digraph);
 
     inline bool has_cycle() const { return !_cycle.is_empty(); }
 
-    inline std::vector<Directed_edge> cycle() const { return _cycle; }
+    inline Stack<Directed_edge> cycle() const { return _cycle; }
 
 private:
     std::deque<bool> _marked;
     std::vector<Directed_edge> _edge_to;
     std::deque<bool> _on_stack;
-    std::vector<Directed_edge> _cycle;
+    Stack<Directed_edge> _cycle;
 
-    void _dfs(Edge_weighted_digraph& g, int v);
+    void _dfs(Edge_weighted_digraph& digraph, int vertex);
 
-    bool _check(Edge_weighted_digraph& g) const;
+    bool _check(Edge_weighted_digraph& digraph) const;
 };
 
 #endif // EDGE_WEIGHTED_DIRECTED_CYCLE_H

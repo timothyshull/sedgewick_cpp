@@ -1,6 +1,6 @@
 // See Dense_graph.h
 
-//#include"Dense_graph.h"
+//#include "Dense_graph.h"
 //
 //class Graph_iterator {
 //    const Dense_graph& g;

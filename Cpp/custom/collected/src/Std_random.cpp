@@ -8,6 +8,7 @@
 
 namespace Std_random {
     std::random_device rd;
+    std::default_random_engine engine{rd()};
 
     auto now = std::chrono::system_clock::now();
 
@@ -31,7 +32,7 @@ namespace Std_random {
     double uniform()
     {
         static std::uniform_real_distribution<double> dist(0, 1);
-        return dist(rd);
+        return dist(engine);
     }
 
     int uniform(int n)
@@ -40,7 +41,7 @@ namespace Std_random {
             throw utility::Illegal_argument_exception("Parameter size must be positive");
         }
         std::uniform_int_distribution<int> dist(0, n - 1);
-        return dist(rd);
+        return dist(engine);
     }
 
     double random()

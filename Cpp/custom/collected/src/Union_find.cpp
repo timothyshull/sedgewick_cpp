@@ -2,6 +2,7 @@
 #include "Union_find.h"
 #include "utility.h"
 
+// NOTE: this is the weighted quick union version
 Union_find::Union_find(int n)
         : _count{n},
           _parent(static_cast<std::vector<int>::size_type>(n)),
@@ -16,7 +17,7 @@ Union_find::Union_find(int n)
     }
 }
 
-int Union_find::find(int p) const
+int Union_find::find(int p)
 {
     _validate(p);
     while (p != _parent[p]) {
@@ -26,13 +27,15 @@ int Union_find::find(int p) const
     return p;
 }
 
-bool Union_find::connected(int p, int q) const
+bool Union_find::connected(int p, int q)
 {
     return find(p) == find(q);
 }
 
 void Union_find::create_union(int p, int q)
 {
+    // _validate(p);
+    // _validate(q);
     int root_p = find(p);
     int root_q = find(q);
     if (root_p == root_q) {

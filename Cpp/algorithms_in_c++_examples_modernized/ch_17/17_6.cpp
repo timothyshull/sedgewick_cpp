@@ -1,8 +1,8 @@
-#include<iostream>
-#include<cstdlib>
-#include"Graph.h"
-#include"IO.h"
-#include"Connected_component.h"
+#include <iostream>
+#include <cstdlib>
+#include "Graph.h"
+#include "IO.h"
+#include "Connected_component.h"
 
 int main(int argc, char* argv[])
 {

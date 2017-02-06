@@ -9,9 +9,9 @@ public:
 
     inline int count() const { return _count; }
 
-    int find(int p) const;
+    int find(int p); // not a const operation
 
-    bool connected(int p, int q) const;
+    bool connected(int p, int q); // calls find so not const
 
     void create_union(int p, int q); // union is a C++ keyword
 private:

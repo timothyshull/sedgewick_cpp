@@ -1,9 +1,9 @@
 #ifndef DENSE_GRAPH_H
 #define DENSE_GRAPH_H
 
-#include<vector>
-#include<deque>
-#include"Graph.h"
+#include <vector>
+#include <deque>
+#include "Graph.h"
 
 class Edge;
 

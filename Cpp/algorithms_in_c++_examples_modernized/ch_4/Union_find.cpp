@@ -1,5 +1,5 @@
-#include<vector>
-#include"Union_find.h"
+#include <vector>
+#include "Union_find.h"
 
 using std::vector;
 

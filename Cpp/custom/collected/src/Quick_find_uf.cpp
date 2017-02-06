@@ -27,13 +27,13 @@ void Quick_find_uf::create_union(int p, int q)
 {
     _validate(p);
     _validate(q);
-    int p_id = _id[p];
-    int q_id = _id[q];
+    int id_p = _id[p];
+    int id_q = _id[q];
 
-    if (p_id == q_id) { return; }
+    if (id_p == id_q) { return; }
 
     for (int i{0}; i < _id.size(); ++i) {
-        if (_id[i] == p_id) { _id[i] = q_id; }
+        if (_id[i] == id_p) { _id[i] = id_q; }
     }
     --_count;
 }

@@ -1,6 +1,6 @@
-#include<iostream>
-#include<cstdlib>
-#include"list.h"
+#include <iostream>
+#include <cstdlib>
+#include "list.h"
 
 using std::cin;
 using std::cout;

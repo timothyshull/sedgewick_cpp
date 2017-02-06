@@ -1,6 +1,6 @@
-#include<cstdlib>
-#include<random>
-#include"Graph.h"
+#include <cstdlib>
+#include <random>
+#include "Graph.h"
 
 static void random_edges(Graph& graph, int edge)
 {

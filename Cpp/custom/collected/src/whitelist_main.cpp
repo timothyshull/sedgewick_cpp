@@ -2,10 +2,11 @@
 #include "Static_set_of_ints.h"
 #include "Std_in.h"
 #include "Std_out.h"
+#include "In.h"
 
 int main(int argc, char* argv[])
 {
-    std::ifstream in{argv[1]};
+    In<std::ifstream> in{argv[1]};
     std::vector<int> white{in.read_all_ints()};
     Static_set_of_ints set{white};
 

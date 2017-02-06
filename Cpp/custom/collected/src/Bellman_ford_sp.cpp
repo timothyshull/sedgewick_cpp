@@ -23,10 +23,10 @@ Bellman_ford_sp::Bellman_ford_sp(Edge_weighted_digraph digraph, int source)
 
 bool Bellman_ford_sp::has_negative_cycle()
 {
-    return !_cycle.empty();
+    return !_cycle.is_empty();
 }
 
-std::vector<Directed_edge> Bellman_ford_sp::negative_cycle()
+Stack<Directed_edge> Bellman_ford_sp::negative_cycle()
 {
     return _cycle;
 }
@@ -39,20 +39,15 @@ double Bellman_ford_sp::distance_to(int vertex)
     return _distance_to[vertex];
 }
 
-bool Bellman_ford_sp::has_path_to(int vertex)
-{
-    return _distance_to[vertex] < std::numeric_limits<double>::infinity();
-}
-
-std::vector<Directed_edge> Bellman_ford_sp::path_to(int vertex)
+Stack<Directed_edge> Bellman_ford_sp::path_to(int vertex)
 {
     if (has_negative_cycle()) {
         throw utility::Unsupported_operation_exception("Negative _cost _cycle exists");
     }
     if (!has_path_to(vertex)) { return {}; }
-    std::vector<Directed_edge> path;
-    for (Directed_edge e{_edge_to[vertex]}; e != null; e = _edge_to[e.from()]) {
-        path.emplace_back(e);
+    Stack<Directed_edge> path;
+    for (Directed_edge e{_edge_to[vertex]}; e != Directed_edge{}; e = _edge_to[e.from()]) {
+        path.push(e);
     }
     return path;
 }
@@ -81,7 +76,7 @@ void Bellman_ford_sp::_find_negative_cycle()
     int num_vertices = static_cast<int>(_edge_to.size());
     Edge_weighted_digraph spt{num_vertices};
     for (int v{0}; v < num_vertices; ++v) {
-        if (_edge_to[v] != null) {
+        if (_edge_to[v] != Directed_edge{}) {
             spt.add_edge(_edge_to[v]);
         }
     }
@@ -103,14 +98,14 @@ bool Bellman_ford_sp::_check(Edge_weighted_digraph digraph, int source)
         }
     } else {
 
-        if (_distance_to[source] != 0.0 || _edge_to[source] != null) {
+        if (_distance_to[source] != 0.0 || _edge_to[source] != Directed_edge{}) {
             std::cerr << "distanceTo[s] and _edge_to[s] inconsistent";
             return false;
         }
 
         for (int v{0}; v < digraph.num_vertices(); ++v) {
             if (v == source) { continue; }
-            if (_edge_to[v] == null && _distance_to[v] != std::numeric_limits<double>::infinity()) {
+            if (_edge_to[v] == Directed_edge{} && _distance_to[v] != std::numeric_limits<double>::infinity()) {
                 std::cerr << "_distance_to[] and _edge_to[] inconsistent";
                 return false;
             }
@@ -120,14 +115,14 @@ bool Bellman_ford_sp::_check(Edge_weighted_digraph digraph, int source)
             for (Directed_edge e : digraph.adjacent(v)) {
                 int w = e.to();
                 if (_distance_to[v] + e.weight() < _distance_to[w]) {
-                    std::cerr << "edge " + e + " not relaxed");
+                    std::cerr << "edge " << e << " not relaxed";
                     return false;
                 }
             }
         }
 
         for (int w{0}; w < digraph.num_vertices(); ++w) {
-            if (_edge_to[w] == null) { continue; }
+            if (_edge_to[w] == Directed_edge{}) { continue; }
             Directed_edge e = _edge_to[w];
             int v = e.from();
             if (w != e.to()) { return false; }

@@ -1,4 +1,4 @@
-#include"Dense_graph.h"
+#include "Dense_graph.h"
 
 Dense_graph::Dense_graph(int num_vertices, bool digraph = false)
         : adj{num_vertices}, vertex_cnt{num_vertices}, edge_cnt{0}, digraph{digraph}

@@ -1,22 +1,30 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 
-using std::cin;
-using std::cout;
-
-static const int N = 10000;
+static const int max_size = 10000;
 
 int main()
 {
-    int i, p, q, id[n];
-    for (i = 0; i < n; i++) { id[i] = i; }
-    while (cin >> p >> q) {
-        int t = id[p];
+    std::vector<int> id;
+    id.reserve(max_size);
+
+    int i;
+    for (i = 0; i < max_size; ++i) { id[i] = i; }
+
+    int t;
+    int p;
+    int q;
+    while (std::cin >> p >> q) {
+        t = id[p];
         if (t == id[q]) { continue; }
-        for (i = 0; i < n; i++) {
-            if (id[i] == t) { id[i] = id[q]; }
+        for (i = 0; i < max_size; ++i) {
+            if (id[i] == t) {
+                id[i] = id[q];
+            }
         }
-        cout << " " << p << " " << q << "\n";
+        std::cout << " " << p << " " << q << "\n";
     }
+
     return 0;
 }
 

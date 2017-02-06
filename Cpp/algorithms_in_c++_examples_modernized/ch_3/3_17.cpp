@@ -1,6 +1,6 @@
-#include<iostream>
-#include<cstdlib>
-#include<cstring>
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
 
 using std::cin;
 using std::cout;

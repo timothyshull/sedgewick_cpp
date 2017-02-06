@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 static const int N = 10000;
 

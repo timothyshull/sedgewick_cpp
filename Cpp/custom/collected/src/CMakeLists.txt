@@ -45,15 +45,13 @@ add_library(utility STATIC utility.h utility.cpp)
 
 
 # Start executable definitions
-add_executable(accumulator_main accumulator_main.cpp Accumulator.h Std_in.h Std_in.cpp Std_out.h Std_out.cpp)
-target_link_libraries(accumulator_main std_io)
-# for use in tests
-add_library(accumulator Accumulator.h)
-set_target_properties(accumulator PROPERTIES LINKER_LANGUAGE CXX)
 
+# for use in tests
+add_library(accumulator Accumulator.cpp Accumulator.h)
+add_executable(accumulator_main accumulator_main.cpp)
+target_link_libraries(accumulator_main accumulator std_io)
 
 set(ACYCLIC_LP_DEPS
-        acyclic_lp_main.cpp
         Acyclic_lp.h
         Acyclic_lp.cpp
         Edge_weighted_digraph.h
@@ -73,8 +71,9 @@ set(ACYCLIC_LP_DEPS
         Edge_weighted_directed_cycle.h
         Edge_weighted_directed_cycle.cpp
         )
-add_executable(acyclic_lp_main ${ACYCLIC_LP_DEPS})
-target_link_libraries(acyclic_lp_main std_random utility ${Boost_LIBRARIES})
+add_library(acyclic_lp ${ACYCLIC_LP_DEPS})
+add_executable(acyclic_lp_main acyclic_lp_main.cpp)
+target_link_libraries(acyclic_lp_main acyclic_lp std_io std_random utility ${Boost_LIBRARIES})
 
 set(ACYCLIC_SP_DEPS
         acyclic_sp_main.cpp
@@ -279,17 +278,18 @@ add_executable(edge_main edge_main.cpp Edge.cpp Edge.h)
 target_link_libraries(edge_main std_io utility ${Boost_LIBRARIES})
 
 set(EDGE_WEIGHTED_DIGRAPH_DEPS
-        edge_weighted_digraph_main.cpp
         Edge_weighted_digraph.cpp
         Edge_weighted_digraph.h
         Directed_edge.h
         Directed_edge.cpp
         )
-add_executable(edge_weighted_digraph_main ${EDGE_WEIGHTED_DIGRAPH_DEPS})
-target_link_libraries(edge_weighted_digraph_main std_random utility ${Boost_LIBRARIES})
+add_library(edge_weighted_digraph ${EDGE_WEIGHTED_DIGRAPH_DEPS})
+add_executable(edge_weighted_digraph_main edge_weighted_digraph_main.cpp)
+target_link_libraries(edge_weighted_digraph_main edge_weighted_digraph std_random utility ${Boost_LIBRARIES})
 
-add_executable(edge_weighted_directed_cycle_main edge_weighted_directed_cycle_main.cpp Edge_weighted_directed_cycle.h Edge_weighted_directed_cycle.cpp)
-target_link_libraries(edge_weighted_directed_cycle_main std_io)
+add_library(edge_weighted_directed_cycle Edge_weighted_directed_cycle.cpp Edge_weighted_directed_cycle.h)
+add_executable(edge_weighted_directed_cycle_main edge_weighted_directed_cycle_main.cpp)
+target_link_libraries(edge_weighted_directed_cycle_main edge_weighted_directed_cycle edge_weighted_digraph std_io std_random utility ${Boost_LIBRARIES})
 
 add_executable(edge_weighted_graph_main edge_weighted_graph_main.cpp Edge_weighted_graph.cpp Edge_weighted_graph.h)
 target_link_libraries(edge_weighted_graph_main std_io utility ${Boost_LIBRARIES})

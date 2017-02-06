@@ -1,6 +1,6 @@
-#include<iostream>
-#include<memory>
-#include<vector>
+#include <iostream>
+#include <memory>
+#include <vector>
 
 using std::cin;
 using std::cout;

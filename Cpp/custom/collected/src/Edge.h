@@ -5,8 +5,6 @@
 
 class Edge {
 public:
-    Edge() = default;
-
     Edge(const Edge&) = default;
 
     Edge(Edge&&) = default;
@@ -17,25 +15,27 @@ public:
 
     Edge& operator=(Edge&&) = default;
 
-    Edge(int v, int w, double weight);
+    Edge();
+
+    Edge(int source, int destination, double weight);
 
     inline double weight() const noexcept { return _weight; }
 
-    inline int either() const noexcept { return _v; }
+    inline int either() const noexcept { return _source; }
 
     int other(int vertex);
 
     inline bool operator<(const Edge& rhs) const noexcept { return _weight < rhs._weight; }
 
-    inline bool operator==(const Edge& rhs) const noexcept { return _v == rhs._v && _w == rhs._w && _weight == rhs._weight; }
+    inline bool operator==(const Edge& rhs) const noexcept { return _source == rhs._source && _destination == rhs._destination && _weight == rhs._weight; }
 
     inline bool operator!=(const Edge& rhs) const noexcept { return !(*this == rhs); }
 
-    std::string to_string() { return "Edge(source: " + std::to_string(_v) + ", destination: " + std::to_string(_w) + ", weight: " + std::to_string(_weight) + ")"; }
+    std::string to_string() { return "Edge(source: " + std::to_string(_source) + ", destination: " + std::to_string(_destination) + ", weight: " + std::to_string(_weight) + ")"; }
 
 private:
-    const int _v;
-    const int _w;
+    const int _source;
+    const int _destination;
     const double _weight;
 };
 

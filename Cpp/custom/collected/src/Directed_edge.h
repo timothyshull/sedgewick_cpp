@@ -6,13 +6,8 @@
 #include "utility.h"
 
 class Directed_edge {
-private:
-    int _source;
-    int _destination;
-    double _weight;
-
 public:
-    Directed_edge() = default;
+    Directed_edge();
 
     Directed_edge(const Directed_edge&) = default;
 
@@ -33,6 +28,15 @@ public:
     inline double weight() const { return _weight; }
 
     std::string to_string() const;
+
+    inline bool operator==(const Directed_edge& rhs) const { return _source == rhs._source && _destination == rhs._destination && _weight == rhs._weight; }
+
+    inline bool operator!=(const Directed_edge& rhs) const { return !(rhs == *this); }
+
+private:
+    int _source;
+    int _destination;
+    double _weight;
 };
 
 std::ostream& operator<<(std::ostream& os, const Directed_edge& out);

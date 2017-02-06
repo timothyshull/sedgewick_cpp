@@ -43,7 +43,7 @@ Floyd_warshall::Floyd_warshall(Adj_matrix_edge_weighted_digraph& digraph)
     utility::alg_assert(_check(digraph), "Floyd_warshall invariant check failed after construction");
 }
 
-std::vector<Directed_edge> Floyd_warshall::negative_cycle()
+Stack<Directed_edge> Floyd_warshall::negative_cycle()
 {
     int num_vertices;
     for (int v{0}; v < _distances.size(); ++v) {
@@ -51,7 +51,7 @@ std::vector<Directed_edge> Floyd_warshall::negative_cycle()
             num_vertices = static_cast<int>(_edge_to.size());
             Edge_weighted_digraph spt{num_vertices};
             for (int w{0}; w < num_vertices; ++w) {
-                if (_edge_to[v][w] != nullptr) {
+                if (_edge_to[v][w] != Directed_edge{}) {
                     spt.add_edge(_edge_to[v][w]);
                 }
             }
@@ -76,9 +76,9 @@ std::vector<Directed_edge> Floyd_warshall::path(int source, int dest)
     if (has_negative_cycle()) {
         throw utility::Unsupported_operation_exception{"Negative cost cycle exists"};
     }
-    if (!has_path(source, dest)) { return nullptr; }
+    if (!has_path(source, dest)) { return {}; }
     std::vector<Directed_edge> path;
-    for (Directed_edge e{_edge_to[source][dest]}; e != nullptr; e = _edge_to[source][e.from()]) {
+    for (Directed_edge e{_edge_to[source][dest]}; e != Directed_edge{}; e = _edge_to[source][e.from()]) {
         path.push_back(e);
     }
     return path;

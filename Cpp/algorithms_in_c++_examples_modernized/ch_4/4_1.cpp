@@ -1,5 +1,5 @@
-#include<cmath>
-#include<cstdlib>
+#include <cmath>
+#include <cstdlib>
 
 class POINT {
 private:

@@ -1,12 +1,10 @@
-#include <iostream>
-
 #include "Accumulator.h"
 #include "Std_in.h"
 #include "Std_out.h"
 
 int main(int argc, char* argv[])
 {
-    Accumulator<double> stats;
+    Accumulator stats;
 
     double x;
     while (!Std_in::is_empty()) {

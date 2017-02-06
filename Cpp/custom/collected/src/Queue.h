@@ -102,6 +102,7 @@ public:
     using Raw_node_pointer = Node*;
     using Item = T;
     using Iterator_type = Queue_iterator<T>;
+    using Const_iterator_type = Queue_iterator<T>;
 
     Queue(const Queue&) = default;
 
@@ -170,6 +171,10 @@ public:
     inline Iterator_type begin() { return Queue_iterator<Item>{_first}; }
 
     inline Iterator_type end() { return Queue_iterator<Item>{nullptr}; }
+
+    inline Const_iterator_type begin() const { return Queue_iterator<Item>{_first}; }
+
+    inline Const_iterator_type end() const { return Queue_iterator<Item>{nullptr}; }
 
 private:
     Owning_node_pointer _first;

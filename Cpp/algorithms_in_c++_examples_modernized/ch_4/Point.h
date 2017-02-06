@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include<random>
+#include <random>
 
 namespace __impl {
     using std::random_device;

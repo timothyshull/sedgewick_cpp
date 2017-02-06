@@ -1,7 +1,7 @@
 #ifndef UNION_FIND_H
 #define UNION_FIND_H
 
-#include<vector>
+#include <vector>
 
 class Union_find {
 private:

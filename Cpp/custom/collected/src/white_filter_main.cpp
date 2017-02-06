@@ -1,11 +1,12 @@
 #include <string>
 #include "Set.h"
+#include "In.h"
 #include "Std_in.h"
 #include "Std_out.h"
 
 int main(int argc, char* argv[])
 {
-    Set<std::string> set{};
+    Set<std::string> set;
 
     In<std::ifstream> in{argv[1]};
     std::string word;

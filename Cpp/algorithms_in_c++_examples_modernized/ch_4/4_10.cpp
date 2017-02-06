@@ -1,6 +1,6 @@
-#include<iostream>
-#include<cstdlib>
-#include"Union_find.h"
+#include <iostream>
+#include <cstdlib>
+#include "Union_find.h"
 
 using std::cin;
 using std::cout;

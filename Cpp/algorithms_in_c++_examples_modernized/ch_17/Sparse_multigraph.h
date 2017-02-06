@@ -1,8 +1,8 @@
 #ifndef SPARSE_MULTI_GRAPH_H
 #define SPARSE_MULTI_GRAPH_H
 
-#include<vector>
-#include"Graph.h"
+#include <vector>
+#include "Graph.h"
 
 class Sparse_multigraph_iterator;
 

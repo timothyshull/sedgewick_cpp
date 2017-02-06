@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<cmath>
-#include"Complex.h"
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include "Complex.h"
 
 using std::cin;
 using std::cout;

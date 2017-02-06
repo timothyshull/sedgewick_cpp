@@ -1,6 +1,14 @@
 #include <sstream>
 #include <iomanip>
+#include <limits>
+
 #include "Directed_edge.h"
+
+// for comparisons to replace check against null
+Directed_edge::Directed_edge()
+        : _source{std::numeric_limits<int>::max()},
+          _destination{std::numeric_limits<int>::max()},
+          _weight{std::numeric_limits<double>::infinity()} {}
 
 Directed_edge::Directed_edge(int source, int destination, double weight) : _source{source}, _destination{destination}, _weight{weight}
 {

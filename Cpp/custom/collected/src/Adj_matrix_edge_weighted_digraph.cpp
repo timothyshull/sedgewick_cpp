@@ -37,8 +37,8 @@ Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(unsigned num_
 //Directed_edge(4->6, weight: 0.71)
 void Adj_matrix_edge_weighted_digraph::add_edge(Directed_edge& e)
 {
-    int v = e.from();
-    int w = e.to();
+    int v{e.from()};
+    int w{e.to()};
     _check_vertex(v);
     _check_vertex(w);
     if (_adjacency_matrix[v][w] == nullptr) {
@@ -57,9 +57,7 @@ void Adj_matrix_edge_weighted_digraph::add_edge(int v, int w, double weight)
     }
 }
 
-unsigned Adj_matrix_edge_weighted_digraph::num_vertices() const { return _num_vertices; }
 
-unsigned Adj_matrix_edge_weighted_digraph::num_edges() const { return _num_edges; }
 
 Adj_matrix_edge_weighted_digraph::Iterator_type Adj_matrix_edge_weighted_digraph::begin() noexcept
 {

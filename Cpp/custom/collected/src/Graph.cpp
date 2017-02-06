@@ -1,6 +1,4 @@
 #include "Graph.h"
-#include "utility.h"
-#include "Std_in.h"
 #include "Stack.h"
 
 Graph::Graph(int v)
@@ -13,29 +11,25 @@ Graph::Graph(int v)
     }
 }
 
-Graph::Graph(In& in)
+Graph::Graph(In& in) : Graph{in.read_int()}
 {
-    utility::copy_stream(in, Std_in::std_in);
-    int num_vertices = Std_in::read_int();
-    *this = Graph{num_vertices};
-    int num_edges = Std_in::read_int();
+    int num_edges{in.read_int()};
     if (num_edges < 0) {
         throw utility::Illegal_argument_exception("The Number of edges must be non-negative");
     }
     int v;
     int w;
     for (int i{0}; i < num_edges; ++i) {
-        v = Std_in::read_int();
-        w = Std_in::read_int();
+        v = in.read_int();
+        w = in.read_int();
         add_edge(v, w);
     }
-    utility::copy_stream(std::cin, Std_in::std_in);
 }
 
 Graph::Graph(const Graph& g) : Graph{g._num_vertices}, _num_edges{g._num_edges}
 {
     for (int v{0}; v < g.num_vertices(); ++v) {
-        Stack<int> reverse{};
+        Stack<int> reverse;
         for (auto w : g.adjacent(v)) {
             reverse.push(w);
         }
@@ -63,15 +57,15 @@ std::vector<int> Graph::adjacent(int v) const
 int Graph::degree(int v) const
 {
     _validate_vertex(v);
-    return _adjacency_lists[v].size();
+    return static_cast<int>(_adjacency_lists[v].size());
 }
 
 std::string Graph::to_string() const
 {
     std::stringstream ss;
-    ss << "Graph(\n" << "    number of vertices: " << _num_edges << "\n    number of edges: " << _num_vertices << "\n";
+    ss << "Graph(number of vertices: " << _num_edges << ", number of edges: " << _num_vertices << "\n";
     for (int v{0}; v < _num_vertices; ++v) {
-        ss << "    Vertex " << v << ": ";
+        ss << "    vertex " << v << ": ";
         for (auto w : _adjacency_lists[v]) {
             ss << w << " ";
         }

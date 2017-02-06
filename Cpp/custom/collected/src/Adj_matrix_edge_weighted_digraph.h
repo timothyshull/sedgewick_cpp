@@ -63,9 +63,9 @@ public:
 
     void add_edge(int v, int w, double weight);
 
-    inline unsigned num_vertices() const;
+    inline int num_vertices() const { return _num_vertices; }
 
-    inline unsigned num_edges() const;
+    inline int num_edges() const { return _num_edges; }
 
     inline Iterator_type begin() noexcept;
 

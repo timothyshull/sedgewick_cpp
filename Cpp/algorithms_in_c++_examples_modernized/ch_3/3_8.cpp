@@ -1,9 +1,9 @@
-#include<cmath>
-#include<iostream>
-#include<cstdlib>
-#include<random>
-#include<vector>
-#include"Point.h"
+#include <cmath>
+#include <iostream>
+#include <cstdlib>
+#include <random>
+#include <vector>
+#include "Point.h"
 
 using std::cin;
 using std::cout;

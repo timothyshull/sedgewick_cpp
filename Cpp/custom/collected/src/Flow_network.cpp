@@ -98,7 +98,7 @@ std::string Flow_network::to_string()
     std::stringstream ss;
     ss << "Flow_network(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
     for (int v{0}; v < _num_vertices; ++v) {
-        ss << "    Vertex " << v + ":  ";
+        ss << "    vertex " << v + ":  ";
         for (auto e : _adjacency_lists[v]) {
             if (e.to() != v) {
                 ss << e << "  ";

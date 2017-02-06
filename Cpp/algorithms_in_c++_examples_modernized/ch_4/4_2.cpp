@@ -1,7 +1,7 @@
-#include<iostream>
-#include<cstdlib>
-#include<vector>
-#include"Point.h"
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include "Point.h"
 
 using std::cout;
 using std::vector;

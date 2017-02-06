@@ -21,10 +21,10 @@ int Quick_union_uf::find(int p)
 
 void Quick_union_uf::create_union(int p, int q)
 {
-    int rootP = find(p);
-    int rootQ = find(q);
-    if (rootP == rootQ) { return; }
-    _parent[rootP] = rootQ;
+    int root_p = find(p);
+    int root_q = find(q);
+    if (root_p == root_q) { return; }
+    _parent[root_p] = root_q;
     _count--;
 }
 

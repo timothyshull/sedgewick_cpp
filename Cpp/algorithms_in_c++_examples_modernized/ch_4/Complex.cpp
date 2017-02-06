@@ -1,5 +1,5 @@
-#include<iostream>
-#include"Complex.h"
+#include <iostream>
+#include "Complex.h"
 
 Complex::Complex(float x, float y) : re_{x}, im_{y} {}
 

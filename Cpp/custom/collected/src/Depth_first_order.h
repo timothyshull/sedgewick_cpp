@@ -33,7 +33,7 @@ public:
 
     inline Queue<int> post() const { return _postorder; }
 
-    std::vector<int> reverse_post() const;
+    Stack<int> reverse_post() const;
 
 private:
     std::deque<bool> _marked;

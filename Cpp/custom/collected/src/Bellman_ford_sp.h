@@ -11,13 +11,13 @@ public:
 
     bool has_negative_cycle();
 
-    std::vector<Directed_edge> negative_cycle();
+    Stack<Directed_edge> negative_cycle();
 
     double distance_to(int vertex);
 
-    bool has_path_to(int vertex);
+    inline bool has_path_to(int vertex) const { return _distance_to[vertex] < -std::numeric_limits<double>::infinity(); }
 
-    std::vector<Directed_edge> path_to(int vertex);
+    Stack<Directed_edge> path_to(int vertex);
 
 private:
     std::vector<double> _distance_to;
@@ -25,7 +25,7 @@ private:
     std::deque<bool> _on_queue;
     Queue<int> _queue;
     int _cost;
-    std::vector<Directed_edge> _cycle;
+    Stack<Directed_edge> _cycle;
 
     void _relax(Edge_weighted_digraph digraph, int vertex);
 

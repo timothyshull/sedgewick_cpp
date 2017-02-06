@@ -73,7 +73,7 @@ namespace Std_out {
     template<typename T>
     void print(T&& t)
     {
-        std_out << t << "\n";
+        std_out << t;
     }
 
     void print();

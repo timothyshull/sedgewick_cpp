@@ -1,6 +1,6 @@
-#include<iostream>
-#include<string>
-#include"Stack.h"
+#include <iostream>
+#include <string>
+#include "Stack.h"
 
 using std::cout;
 using std::string;

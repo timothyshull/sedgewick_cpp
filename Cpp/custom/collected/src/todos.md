@@ -1,7 +1,5 @@
-- Acyclic_lp has issues
 - use only key/value pointers in symbol tables
-- fix binary search tree
-- remove all unnecessary using declarations from node based structures
+- fix Tree structures to simplify node usage, remove all unnecessary using declarations from node based structures
 - check if other trees are missing public delete and use remove for each
 - red black bst has pointer access issues (nullptr being read in is_red)
 - need to handle the empty string case for key comparators separately
@@ -17,7 +15,6 @@
 - fix Mergesort_x
 - remove unnecessary comments
 - review all uses of static and make sure they are necessary
-- fix whitefilter after In is completed
 - fix or make consistent all comparators, std::less, less, compareTo, etc
 - fix imports between headers and .cpp when imports are in headers
 - make sure all sort mains use a show and that all shows use range based for loop
@@ -92,3 +89,133 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - more tests for In
 - clean up all duplicated code between Input and Output type classes
 - variance is wrong in accumulator
+- all iterators may need duplicates with Const_iterator_type and const
+- all classes with Std_in substituted for in need to be fixed
+- all structures with pointer members need custom dtors, copy & assignment
+    - AVL_tree_symbol_table
+    - Bag
+    - Binary_search_symbol_table
+    - Binary_search_tree
+    - Binomial_min_pq
+    - Fibonacci_min_pq
+    - Huffman
+    - Index_binomial_min_pq
+    - Index_fibonacci_min_pq
+    - Linear_probing_hash_symbol_table
+    - Patricia_mst
+    - Queue
+    - Red_black_bst
+    - Separate_chaining_hash_st
+    - Sequential_search_st
+    - Stack
+    - Std_draw
+    - Trie_set
+    - Trie_st
+    - TST
+
+- all classes with edges compared to nullptr need fixed
+    - Collision_system
+    - Dijkstra_sp
+    - Dijkstra_undirected_sp
+
+- replace all uses of Stack and Queue that were removed
+- fix Queue and Bag iterators, ctors, dtor, etc
+- fix and Double.NEGATIVE_INFINITY items that were replaced with positive_infinity
+- add a const default edge to compare against
+- fix all places where In class was replaced by ifstream, istream, stdin etc
+- fix all edge pointer usage (Adj_matrix_edge_weighted_digraph)
+
+
+
+
+
+# Notes
+- for vector, use ctor reserve if type is not int type, otherwise use reserve
+
+
+
+
+
+# Edge classes
+Acyclic_lp
+Acyclic_sp
+Adj_matrix_edge_weighted_digraph
+Assignment_problem
+Bellman_ford_sp
+Bipartite
+Bipartite_x
+Boruvka_mst
+Breadth_first_directed_paths
+Breadth_first_paths
+Cycle
+Depth_first_directed_paths
+Depth_first_paths
+Digraph
+Digraph_generator
+Dijkstra_all_pairs_sp
+Dijkstra_sp
+Dijkstra_undirected_sp
+Directed_cycle
+Directed_cycle_x
+Directed_edge
+directed_edge_main
+Directed_eulerian_cycle
+directed_eulerian_cycle_main
+Directed_eulerian_path
+directed_eulerian_path_main
+Edge_weighted_digraph
+Edge_weighted_directed_cycle
+edge_weighted_directed_cycle_main
+Edge_weighted_graph
+edge_weighted_graph_main
+Eulerian_cycle
+eulerian_cycle_main
+Eulerian_path
+eulerian_path_main
+Flow_edge
+flow_edge_main
+Flow_network
+Floyd_warshall
+floyd_warshall_main
+Ford_fulkerson
+ford_fulkerson_main
+Graph
+Graph_generator
+graph_generator_main
+Hopcroft_karp
+hopcroft_karp_main
+Kruskal_mst
+kruskal_mst_main
+Lazy_prim_mst
+lazy_prim_mst_main
+NFA
+Prim_mst
+prim_mst_main
+Symbol_digraph
+Symbol_graph
+Topological_x
+topological_x_main
+
+
+# Node classes
+AVL_tree_symbol_table
+B_tree
+Bag
+Binary_search_tree
+Binomial_min_pq
+Fibonacci_min_pq
+Huffman
+Index_binomial_min_pq
+Index_fibonacci_min_pq
+Index_max_pq
+Index_min_pq
+Patricia_set
+Patricia_st
+Queue
+Red_black_bst
+Segment_tree
+Sequential_search_st
+Stack
+Trie_set
+Trie_st
+TST

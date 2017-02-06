@@ -61,11 +61,11 @@ void Depth_first_order::_dfs(Digraph& g, int v)
     _post[v] = ++_post_counter;
 }
 
-std::vector<int> Depth_first_order::reverse_post() const
+Stack<int> Depth_first_order::reverse_post() const
 {
-    std::vector<int> reverse;
+    Stack<int> reverse;
     for (auto v : _postorder) {
-        reverse.emplace_back(v);
+        reverse.push(v);
     }
     return reverse;
 }
