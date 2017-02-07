@@ -28,7 +28,7 @@ public:
                 }
             }
             if (v != s && v != t && wt[v] > 0) {
-                h[v]++;
+                ++h[v];
                 gQ.put(v);
             }
         }

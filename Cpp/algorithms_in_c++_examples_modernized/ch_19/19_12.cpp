@@ -1,7 +1,7 @@
 void scR(int w)
 {
     int v;
-    pre[w] = cnt++;
+    pre[w] = ++cnt;
     S.push(w);
     path.push(w);
     typename Graph::adjIterator A(G, w);
@@ -13,6 +13,6 @@ void scR(int w)
     }
     if (path.top() == w) { path.pop(); } else { return; }
     do { id[v = S.pop()] = scnt; } while (v != w);
-    scnt++;
+    ++scnt;
 }
 

@@ -6,7 +6,7 @@ class EC : public SEARCH<Graph> {
     void searchC(Edge e)
     {
         int w = e.w;
-        ord[w] = cnt++;
+        ord[w] = ++cnt;
         low[w] = ord[w];
         typename Graph::adjIterator A(G, w);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
@@ -14,7 +14,7 @@ class EC : public SEARCH<Graph> {
                 searchC(Edge(w, t));
                 if (low[w] > low[t]) { low[w] = low[t]; }
                 if (low[t] == ord[t]) {
-                    bcnt++;
+                    ++bcnt;
                 } // w-t is a bridge
             } else if (t != e.v) {
                 if (low[w] > ord[t]) { low[w] = ord[t]; }

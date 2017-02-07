@@ -31,7 +31,7 @@ public:
 
     void insert(Index v)
     {
-        pq[++N] = v;
+        ++pq[N] = v;
         qp[v] = N;
         fixUp(pq, N);
     }

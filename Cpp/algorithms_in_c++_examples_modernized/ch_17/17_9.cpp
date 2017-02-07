@@ -37,7 +37,7 @@
 //        int v = e.v, w = e.w;
 //        adj[v] = new node(w, adj[v]);
 //        if (!digraph) { adj[w] = new node(v, adj[w]); }
-//        edge_cnt++;
+//        ++edge_cnt;
 //    }
 //
 //    void remove(Edge e);

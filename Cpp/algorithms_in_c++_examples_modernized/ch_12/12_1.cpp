@@ -22,9 +22,9 @@ public:
         info = 1.0 * ::rand() / RAND_MAX;
     }
 
-    int scan(istream& is = cin) { return (is >> keyval >> info) != 0; }
+    int scan(istream& is = std::cin) { return (is >> keyval >> info) != 0; }
 
-    void show(ostream& os = cout) { os << keyval << " " << info << "\n"; }
+    void show(ostream& os = std::cout) { os << keyval << " " << info << "\n"; }
 };
 
 ostream& operator<<(ostream& os, Item& x)

@@ -12,7 +12,7 @@ template<class Graph> class tc {
     }
 
 public:
-    tc(const Graph& G) : G(G), T(G.V(), true) { for (int v = 0; v < G.V(); v++) { tcR(v, v); }}
+    tc(const Graph& G) : G(G), T(G.V(), true) { for (int v = 0; v < G.V(); ++v) { tcR(v, v); }}
 
     bool reachable(int v, int w) { return T.edge(v, w); }
 };

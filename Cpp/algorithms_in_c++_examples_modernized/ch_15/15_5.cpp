@@ -24,7 +24,7 @@ void insert(Item x)
     int i;
     Key w = searchR(head->l, v, -1).key();
     if (v == w) { return; }
-    for (i = 0; digit(v, i) == digit(w, i); i++) {}
+    for (i = 0; digit(v, i) == digit(w, i); ++i) {}
     head->l = insertR(head->l, x, i, head);
 }
 

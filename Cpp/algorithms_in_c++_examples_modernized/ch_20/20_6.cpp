@@ -9,7 +9,7 @@ public:
         int min = -1;
         for (int v = 0; min != 0; v = min) {
             min = 0;
-            for (int w = 1; w < G.V(); w++) {
+            for (int w = 1; w < G.V(); ++w) {
                 if (mst[w] == 0) {
                     double P;
                     Edge* e = G.edge(v, w);
@@ -28,7 +28,7 @@ public:
 
     void show()
     {
-        for (int v = 1; v < G.V(); v++) {
+        for (int v = 1; v < G.V(); ++v) {
             if (mst[v]) { mst[v]->show(); }
         }
     }

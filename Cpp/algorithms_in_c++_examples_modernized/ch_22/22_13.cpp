@@ -7,7 +7,7 @@ int costR(Edge* e, int v)
 Edge* besteligible()
 {
     Edge* x = 0;
-    for (int v = 0, min = C * G.V(); v < G.V(); v++) {
+    for (int v = 0, min = C * G.V(); v < G.V(); ++v) {
         typename Graph::adjIterator A(G, v);
         for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
             if (e->capRto(e->other(v)) > 0) {

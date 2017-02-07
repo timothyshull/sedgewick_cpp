@@ -6,11 +6,11 @@ struct Node {
     Node()
     {
         next = new Node* [R];
-        for (int i = 0; i < R; i++) { next[i] = 0; }
+        for (int i = 0; i < R; ++i) { next[i] = 0; }
     }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link head;
 

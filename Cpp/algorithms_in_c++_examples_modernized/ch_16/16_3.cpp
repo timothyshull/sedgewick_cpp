@@ -8,12 +8,12 @@ link insertR(link h, Item x, int ht)
     t.key = v;
     t.item = x;
     if (ht == 0) {
-        for (j = 0; j < h->m; j++) { if (v < h->b[j].key) { break; }}
+        for (j = 0; j < h->m; ++j) { if (v < h->b[j].key) { break; }}
     } else {
-        for (j = 0; j < h->m; j++) {
+        for (j = 0; j < h->m; ++j) {
             if ((j + 1 == h->m) || (v < h->b[j + 1].key)) {
                 link u;
-                u = insertR(h->b[j++].next, x, ht - 1);
+                u = ++insertR(h->b[j].next, x, ht - 1);
                 if (u == 0) { return 0; }
                 t.key = u->b[0].key;
                 t.next = u;
@@ -23,7 +23,8 @@ link insertR(link h, Item x, int ht)
     }
     for (i = h->m; i > j; i--) { h->b[i] = h->b[i - 1]; }
     h->b[j] = t;
-    if (++h->m < M) { return 0; } else { return split(h); }
+    if { ++(h->m < M) }
+    { return 0; } else { return split(h); }
 }
 
 public:
@@ -46,6 +47,6 @@ void insert(Item item)
     t->b[0].next = head;
     t->b[1].next = u;
     head = t;
-    HT++;
+    ++HT;
 }
 

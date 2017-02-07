@@ -37,7 +37,7 @@ void insertR(link& h, Item x, int d)
 
 public:
 
-ST(int maxN) { for (int i = 0; i < R; i++) { heads[i] = 0; }}
+ST(int maxN) { for (int i = 0; i < R; ++i) { heads[i] = 0; }}
 
 void insert(Item x) { insertR(heads[digit(x.key(), 0)], x, 1); }
 

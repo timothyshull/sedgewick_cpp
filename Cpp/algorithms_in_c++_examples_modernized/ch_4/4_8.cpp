@@ -12,7 +12,7 @@ private:
         }
     };
 
-    using link = Node *;
+    using link = Node*;
     link head;
 public:
     Stack(int) { head = 0; }

@@ -1,0 +1,48 @@
+project(acpp_modernized)
+
+# Chapters 1 - 3
+add_library(2d_array_allocation 2d_array_allocation.h 2d_array_allocation.cpp)
+add_library(array_of_strings_sort array_of_strings_sort.h array_of_strings_sort.cpp)
+add_library(binary_search binary_search.h binary_search.cpp)
+add_library(closest_point_grid closest_point_grid.h closest_point_grid.cpp)
+add_library(free_list free_list.h free_list.cpp)
+add_library(point Point.h Point.cpp)
+add_library(sequential_search sequential_search.h sequential_search.cpp)
+
+
+
+# Chapters 1 - 3
+add_executable(adjacency_list_graph_main adjacency_list_graph_main.cpp)
+target_link_libraries(adjacency_list_graph_main free_list)
+
+add_executable(adjacency_matrix_graph_main adjacency_matrix_graph_main.cpp)
+
+add_executable(array_of_strings_sort_main array_of_strings_sort_main.cpp)
+target_link_libraries(array_of_strings_sort_main array_of_strings_sort)
+
+add_executable(closest_point_computation_main closest_point_computation_main.cpp)
+target_link_libraries(closest_point_computation_main point)
+
+add_executable(closest_point_grid_main closest_point_grid_main.cpp)
+target_link_libraries(closest_point_grid_main point closest_point_grid)
+
+add_executable(coin_flipping_simulation_main coin_flipping_simulation_main.cpp)
+add_executable(dynamic_array_memory_allocation dynamic_array_memory_allocation.cpp)
+add_executable(function_definition_main function_definition_main.cpp)
+
+add_executable(josephus_list_allocation_main josephus_list_allocation_main.cpp)
+target_link_libraries(josephus_list_allocation_main free_list)
+
+add_executable(josephus_problem_main josephus_problem_main.cpp)
+target_link_libraries(josephus_problem_main free_list)
+
+add_executable(list_insertion_sort_main list_insertion_sort_main.cpp)
+target_link_libraries(list_insertion_sort_main free_list)
+
+add_executable(path_compression_main path_compression_main.cpp)
+add_executable(quick_find_main quick_find_main.cpp)
+add_executable(quick_union_main quick_union_main.cpp)
+add_executable(sieve_of_eratosthenes_main sieve_of_eratosthenes_main.cpp)
+add_executable(string_search_main string_search_main.cpp string_search.h string_search.cpp)
+add_executable(types_of_numbers_main types_of_numbers_main.cpp)
+add_executable(weighted_quick_union_main weighted_quick_union_main.cpp)

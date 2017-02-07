@@ -12,12 +12,12 @@ public:
 
     int empty() const { return N == 0; }
 
-    void insert(Item item) { pq[N++] = item; }
+    void insert(Item item) { ++pq[N] = item; }
 
     Item getmax()
     {
         int max = 0;
-        for (int j = 1; j < N; j++) {
+        for (int j = 1; j < N; ++j) {
             if (pq[max] < pq[j]) { max = j; }
         }
         exch(pq[max], pq[N - 1]);

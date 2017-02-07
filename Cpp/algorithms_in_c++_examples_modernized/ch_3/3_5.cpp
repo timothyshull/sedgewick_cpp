@@ -1,26 +1,27 @@
 #include <iostream>
 #include <vector>
 
-using std::cin;
-using std::cout;
-using std::vector;
-
-static const int n = 1000;
+static const int max_size = 1000;
 
 int main()
 {
+    std::vector<int> a;
+    a.reserve(max_size);
+
     int i;
-    vector<int> a{n};
-    for (i = 2; i < n; i++) { a[i] = 1; }
-    for (i = 2; i < n; i++) {
+    for (i = 2; i < max_size; ++i) { a[i] = 1; }
+
+    for (i = 2; i < max_size; ++i) {
         if (a[i]) {
-            for (int j = i; j * i < n; j++) { a[i * j] = 0; }
+            for (int j = i; j * i < max_size; ++j) { a[i * j] = 0; }
         }
     }
-    for (i = 2; i < n; i++) {
-        if (a[i]) { cout << " " << i << "\n"; }
+
+    for (i = 2; i < max_size; ++i) {
+        if (a[i]) { std::cout << " " << i << "\n"; }
     }
-    cout << "\n";
+    std::cout << "\n";
+
     return 0;
 }
 

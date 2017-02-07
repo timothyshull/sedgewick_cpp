@@ -1,19 +1,13 @@
 #include <iostream>
-#include <memory>
 #include <vector>
-
-using std::cin;
-using std::cout;
-using std::unique_ptr;
-using std::vector;
 
 int main(int argc, char* argv[])
 {
-    int i;
-    int n = atoi(argv[1]);
-    std::unique_ptr<vector<int>> a{new vector<int>{n}};
-    if (a == nullptr) {
-        cout << "out of memory" << "\n";
+    std::size_t n{std::stoul(argv[1])};
+    std::vector<int> a;
+    a.reserve(n);
+    if (a.capacity() != a) {
+        std::cout << "unable to reserve memory for size " << n << "\n";
         return -1;
     }
     // ...

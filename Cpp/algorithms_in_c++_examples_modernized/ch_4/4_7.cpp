@@ -5,7 +5,7 @@ class Stack {
 private:
     std::vector<Item> s;
 public:
-    // is constructing a temporary vector here unnecessary -> can you use the size constructor here just by passing n?
+    // is constructing a temporary vector here unnecessary -> can you use the size constructor here just by passing max_size?
     Stack(int max_n) : s{std::vector<Item>{max_n}} {}
 
     int empty() const { return s.empty(); }

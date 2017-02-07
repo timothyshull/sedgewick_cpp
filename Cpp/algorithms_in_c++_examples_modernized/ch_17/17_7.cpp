@@ -14,7 +14,7 @@
 //public:
 //    Dense_graph(int num_vertices, bool digraph = false) : adj(num_vertices), vertex_cnt(num_vertices), edge_cnt(0), digraph(digraph)
 //    {
-//        for (int i = 0; i < num_vertices; i++) {
+//        for (int i = 0; i < num_vertices; ++i) {
 //            adj[i].assign(num_vertices, false);
 //        }
 //    }
@@ -28,7 +28,7 @@
 //    void insert(Edge e)
 //    {
 //        int v = e.v, w = e.w;
-//        if (adj[v][w] == false) { edge_cnt++; }
+//        if (adj[v][w] == false) { ++edge_cnt; }
 //        adj[v][w] = true;
 //        if (!digraph) { adj[w][v] = true; }
 //    }

@@ -13,10 +13,10 @@ private:
         }
     };
 
-    using link = node *;
+    using link = node*;
     link head, tail;
 public:
-    using handle = node *;
+    using handle = node*;
 
     PQ(int = 0)
     {

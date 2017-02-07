@@ -8,7 +8,7 @@ protected:
 
     void search()
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if (ord[v] == -1) { searchC(Edge(v, v)); }
         }
     }

@@ -14,7 +14,7 @@ template<class Graph, class Edge> class allSPdag {
                 p[s][t] = e;
             }
             if (p[t][t] == 0) { dfsR(t); }
-            for (int i = 0; i < G.V(); i++) {
+            for (int i = 0; i < G.V(); ++i) {
                 if (p[t][i]) {
                     if (d[s][i] > w + d[t][i]) {
                         d[s][i] = w + d[t][i];
@@ -30,11 +30,11 @@ public:
                                p(G.V()), d(G.V())
     {
         int V = G.V();
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < V; ++i) {
             p[i].assign(V, 0);
             d[i].assign(V, V);
         }
-        for (int s = 0; s < V; s++) {
+        for (int s = 0; s < V; ++s) {
             if (p[s][s] == 0) { dfsR(s); }
         }
     }

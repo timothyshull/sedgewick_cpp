@@ -4,10 +4,10 @@ template<class Graph> class DEGREE {
 public:
     DEGREE(const Graph& G) : G(G), degree(G.V(), 0)
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             typename Graph::adjIterator A(G, v);
             for (int w = A.beg(); !A.end(); w = A.nxt()) {
-                degree[v]++;
+                ++degree[v];
             }
         }
     }

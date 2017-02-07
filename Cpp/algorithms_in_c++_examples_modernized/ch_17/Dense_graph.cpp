@@ -3,7 +3,7 @@
 Dense_graph::Dense_graph(int num_vertices, bool digraph = false)
         : adj{num_vertices}, vertex_cnt{num_vertices}, edge_cnt{0}, digraph{digraph}
 {
-    for (int i = 0; i < num_vertices; i++) {
+    for (int i = 0; i < num_vertices; ++i) {
         adj[i].assign(num_vertices, false);
     }
 }
@@ -18,7 +18,7 @@ void Dense_graph::insert(Edge e)
 {
     int v = e.v, w = e.w;
     if (adj[v][w] == false) {
-        edge_cnt++;
+        ++edge_cnt;
     }
     adj[v][w] = true;
     if (!digraph) {
@@ -38,7 +38,8 @@ void Dense_graph::remove(Edge e)
     }
 }
 
-bool Dense_graph::edge(int v, int w) const {
+bool Dense_graph::edge(int v, int w) const
+{
     return adj[v][w];
 }
 
@@ -50,7 +51,10 @@ int Graph_iterator::begin()
 
 int Graph_iterator::next()
 {
-    for (i++; i < g.num_vertices(); i++) {
+    for
+    ++(i;
+    i < g.num_vertices();
+    ++i) {
         if (g.adj[v][i] == true) { return i; }
     }
     return -1;

@@ -9,7 +9,7 @@ template<class Graph> class SC {
     void scR(int w)
     {
         int t;
-        int min = low[w] = pre[w] = cnt++;
+        int min = low[w] = pre[w] = ++cnt;
         S.push(w);
         typename Graph::adjIterator A(G, w);
         for (t = A.beg(); !A.end(); t = A.nxt()) {
@@ -24,14 +24,14 @@ template<class Graph> class SC {
             id[t = S.pop()] = scnt;
             low[t] = G.V();
         } while (t != w);
-        scnt++;
+        ++scnt;
     }
 
 public:
     SC(const Graph& G) : G(G), cnt(0), scnt(0),
                          pre(G.V(), -1), low(G.V()), id(G.V())
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if (pre[v] == -1) { scR(v); }
         }
     }

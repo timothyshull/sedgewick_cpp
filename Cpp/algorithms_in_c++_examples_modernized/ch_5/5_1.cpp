@@ -1,6 +1,6 @@
-int factorial(int N)
+int factorial(int n)
 {
-    if (N == 0) { return 1; }
-    return N * factorial(N - 1);
+    if (n == 0) { return 1; }
+    return n * factorial(n - 1);
 }
 

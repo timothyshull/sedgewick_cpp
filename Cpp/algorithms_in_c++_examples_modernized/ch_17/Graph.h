@@ -42,6 +42,7 @@ public:
     using iterator = Graph_iterator;
 
     iterator begin();
+
     iterator end();
 };
 

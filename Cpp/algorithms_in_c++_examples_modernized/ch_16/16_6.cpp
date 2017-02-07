@@ -2,7 +2,7 @@ private:
 
 Item search(link h, Key v)
 {
-    for (int j = 0; j < h->m; j++) {
+    for (int j = 0; j < h->m; ++j) {
         if (v == h->b[j].key()) { return h->b[j]; }
     }
     return nullItem;

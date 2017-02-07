@@ -8,7 +8,7 @@ public:
     {
         Gsc = new SC<Graph>(G);
         K = new DenseGRAPH(Gsc->count(), true);
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             typename Graph::adjIterator A(G, v);
             for (int t = A.beg(); !A.end(); t = A.nxt()) {
                 K->insert(Edge(Gsc->ID(v), Gsc->ID(t)));

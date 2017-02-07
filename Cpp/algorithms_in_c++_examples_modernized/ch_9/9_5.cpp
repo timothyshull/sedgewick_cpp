@@ -14,7 +14,7 @@ public:
 
     void insert(Item item)
     {
-        pq[++N] = item;
+        ++pq[N] = item;
         fixUp(pq, N);
     }
 

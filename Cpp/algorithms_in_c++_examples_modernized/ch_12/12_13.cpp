@@ -9,8 +9,7 @@ void insertT(link& h, Item x)
     if (x.key() < h->item.key()) {
         insertT(h->l, x);
         rotR(h);
-    }
-    else {
+    } else {
         insertT(h->r, x);
         rotL(h);
     }

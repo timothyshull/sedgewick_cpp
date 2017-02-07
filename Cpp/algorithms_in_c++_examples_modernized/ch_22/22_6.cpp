@@ -15,14 +15,14 @@ public:
     FEASIBLE(const Graph& G, vector<int> sd) : G(G)
     {
         Graph F(G.V() + 2);
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             typename Graph::adjIterator A(G, v);
             for (EDGE* e = A.beg(); !A.end(); e = A.nxt()) {
                 F.insert(e);
             }
         }
         int s = G.V(), t = G.V() + 1;
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.V(); ++i) {
             if (sd[i] >= 0) {
                 F.insert(new EDGE(s, i, sd[i]));
             } else {

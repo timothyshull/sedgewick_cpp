@@ -13,7 +13,7 @@ private:
         }
     };
 
-    using link = node *;
+    using link = node*;
     link* dir;
     Item nullItem;
     int N, d, D;

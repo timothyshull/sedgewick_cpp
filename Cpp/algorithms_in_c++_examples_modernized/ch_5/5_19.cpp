@@ -10,7 +10,7 @@ struct Node {
     }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link max(Item a[], int l, int r)
 {

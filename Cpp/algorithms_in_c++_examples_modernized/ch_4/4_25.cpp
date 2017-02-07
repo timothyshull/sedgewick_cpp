@@ -9,7 +9,7 @@ public:
         a = new Number[N + 1];
         n = N + 1;
         a[N] = c;
-        for (int i = 0; i < N; i++) { a[i] = 0; }
+        for (int i = 0; i < N; ++i) { a[i] = 0; }
     }
 
     float eval(float x) const
@@ -24,10 +24,10 @@ public:
     friend POLY operator+(POLY& p, POLY& q)
     {
         POLY t(0, p.n > q.n ? p.n - 1 : q.n - 1);
-        for (int i = 0; i < p.n; i++) {
+        for (int i = 0; i < p.n; ++i) {
             t.a[i] += p.a[i];
         }
-        for (int j = 0; j < q.n; j++) {
+        for (int j = 0; j < q.n; ++j) {
             t.a[j] += q.a[j];
         }
         return t;
@@ -36,8 +36,8 @@ public:
     friend POLY operator*(POLY& p, POLY& q)
     {
         POLY t(0, (p.n - 1) + (q.n - 1));
-        for (int i = 0; i < p.n; i++) {
-            for (int j = 0; j < q.n; j++) {
+        for (int i = 0; i < p.n; ++i) {
+            for (int j = 0; j < q.n; ++j) {
                 t.a[i + j] += p.a[i] * q.a[j];
             }
         }

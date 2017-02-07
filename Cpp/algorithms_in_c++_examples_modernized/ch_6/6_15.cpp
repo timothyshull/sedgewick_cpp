@@ -9,7 +9,7 @@ struct Node {
     }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link randlist(int);
 

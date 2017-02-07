@@ -5,7 +5,7 @@ class DFS : public SEARCH<Graph> {
     void searchC(Edge e)
     {
         int w = e.w;
-        ord[w] = cnt++;
+        ord[w] = ++cnt;
         st[e.w] = e.v;
         typename Graph::adjIterator A(G, w);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {

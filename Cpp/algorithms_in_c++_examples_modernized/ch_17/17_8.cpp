@@ -17,7 +17,7 @@
 //
 //    int next()
 //    {
-//        for (i++; i < g.num_vertices(); i++) {
+//        for ++(i; i < g.num_vertices(); ++i) {
 //            if (g.adj[v][i] == true) { return i; }
 //        }
 //        return -1;

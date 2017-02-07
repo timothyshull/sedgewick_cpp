@@ -10,7 +10,7 @@ template<class Graph> class SC {
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
             if (id[t] == -1) { dfsR(G, t); }
         }
-        postI[cnt++] = w;
+        ++postI[cnt] = w;
     }
 
 public:
@@ -19,7 +19,7 @@ public:
     {
         Graph R(G.V(), true);
         reverse(G, R);
-        for (int v = 0; v < R.V(); v++) {
+        for (int v = 0; v < R.V(); ++v) {
             if (id[v] == -1) { dfsR(R, v); }
         }
         postR = postI;
@@ -28,7 +28,7 @@ public:
         for (int v = G.V() - 1; v >= 0; v--) {
             if (id[postR[v]] == -1) {
                 dfsR(G, postR[v]);
-                scnt++;
+                ++scnt;
             }
         }
     }

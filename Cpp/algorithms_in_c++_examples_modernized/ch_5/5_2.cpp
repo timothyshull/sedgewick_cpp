@@ -1,8 +1,8 @@
-int puzzle(int N)
+int puzzle(int n)
 {
-    if (N == 1) { return 1; }
-    if (N % 2 == 0) {
-        return puzzle(N / 2);
-    } else { return puzzle(3 * N + 1); }
+    if (n == 1) { return 1; }
+    if (n % 2 == 0) {
+        return puzzle(n / 2);
+    } else { return puzzle(3 * n + 1); }
 }
 

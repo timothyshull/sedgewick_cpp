@@ -16,7 +16,7 @@ public:
             found = false;
             return;
         }
-        for (t = 0; t < G.V(); t++) {
+        for (t = 0; t < G.V(); ++t) {
             if ((t != v) && (t != w)) {
                 if ((deg[t] % 2) != 0) {
                     found = false;

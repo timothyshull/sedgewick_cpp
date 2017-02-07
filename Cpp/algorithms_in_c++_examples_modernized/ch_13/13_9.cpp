@@ -3,7 +3,7 @@ private:
 int randX()
 {
     int i, j, t = rand();
-    for (i = 1, j = 2; i < lgNmax; i++, j += j) {
+    for (i = 1, j = 2; i < lgNmax; ++i, j += j) {
         if (t > RAND_MAX / j) { break; }
     }
     if (i > lgN) { lgN = i; }

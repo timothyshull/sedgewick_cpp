@@ -11,7 +11,7 @@ int Union_find::find(int x)
 
 Union_find::Union_find(int n) : id{vector<int>{n}}, sz{vector<int>{n}}
 {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         id[i] = i;
         sz[i] = 1;
     }

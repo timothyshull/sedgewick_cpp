@@ -5,36 +5,43 @@
 
 // assumes a C style list interface
 
-template<typename Item>
+template<typename Item_type>
 struct Node {
-    Item item;
-    std::shared_ptr<Node> next; // revisit shared_ptr here to avoid retain cycles
+    Node(Item_type x, std::shared_ptr<Node<Item_type>>& t) : item{x}, next{t} {}
 
-    Node(Item x, std::shared_ptr<Node> t) : item{x}, next{t} {}
+    Node(Item_type x, std::shared_ptr<Node<Item_type>>&& t) : item{x}, next{t} {}
+
+    ~Node() = default;
+
+    Item_type item;
+    std::shared_ptr<Node<Item_type>> next;
 };
 
-template<typename Item>
-using Link = std::shared_ptr<Node<Item>>;
+template<typename Item_type>
+using Link = std::shared_ptr<Node<Item_type>>;
 
-template<typename Item>
+template<typename Item_type>
+using Raw_node_pointer<Item_type> = Node<Item_type>*;
+
+template<typename Item_type>
 void construct(int);
 
-template<typename Item>
-Node<Item> new_node(int);
+template<typename Item_type>
+Raw_node_pointer<Item_type> new_node(int);
 
-template<typename Item>
-void delete_node(Node<Item>);
+template<typename Item_type>
+void delete_node(Node<Item_type>);
 
-template<typename Item>
-void insert(Node<Item>, Node<Item>);
+template<typename Item_type>
+void insert(Node<Item_type>, Node<Item_type>);
 
-template<typename Item>
-Node<Item> remove(Node<Item>);
+template<typename Item_type>
+void remove(Node<Item_type>);
 
-template<typename Item>
-Node<Item> next(Node<Item>);
+template<typename Item_type>
+inline Raw_node_pointer<Item_type> next(Raw_node_pointer<Item_type> x) noexcept { return x ? x->next.get() : nullptr; }
 
-template<typename Item>
-Item item(Node<Item>);
+template<typename Item_type>
+inline Item_type item(Raw_node_pointer<Item_type> x) { return x->item; };
 
-#endif //LIST_H
+#endif // LIST_H

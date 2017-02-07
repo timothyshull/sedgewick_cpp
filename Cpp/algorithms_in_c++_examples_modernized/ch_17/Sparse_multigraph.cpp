@@ -16,7 +16,7 @@ void Sparse_multigraph::insert(Edge e)
     if (!digraph) {
         adj[w] = new node(v, adj[w]);
     }
-    edge_cnt++;
+    ++edge_cnt;
 }
 
 void Sparse_multigraph::remove(Edge e);

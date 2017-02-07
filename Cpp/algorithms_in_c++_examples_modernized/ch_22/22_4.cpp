@@ -2,7 +2,7 @@ template<class Graph, class Edge>
 bool MAXFLOW<Graph, Edge>::pfs()
 {
     PQi<int> pQ(G.V(), wt);
-    for (int v = 0; v < G.V(); v++) {
+    for (int v = 0; v < G.V(); ++v) {
         wt[v] = 0;
         st[v] = 0;
         pQ.insert(v);

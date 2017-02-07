@@ -7,7 +7,7 @@ public:
                                  spt(G.V()), wt(G.V(), G.V())
     {
         PQi<double> pQ(G.V(), wt);
-        for (int v = 0; v < G.V(); v++) { pQ.insert(v); }
+        for (int v = 0; v < G.V(); ++v) { pQ.insert(v); }
         wt[s] = 0.0;
         pQ.lower(s);
         while (!pQ.empty()) {

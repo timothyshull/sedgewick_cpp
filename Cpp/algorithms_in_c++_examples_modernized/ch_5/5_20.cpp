@@ -14,11 +14,11 @@ struct Node {
     }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link parse()
 {
-    char t = a[i++];
+    char t = ++a[i];
     Link x = new Node(t);
     if ((t == '+') || (t == '*')) {
         x->l = parse();

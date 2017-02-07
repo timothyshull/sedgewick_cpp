@@ -8,5 +8,5 @@ struct Node {
     Node() { m = 0; }
 };
 
-using Link = Node *;
+using Link = Node*;
 

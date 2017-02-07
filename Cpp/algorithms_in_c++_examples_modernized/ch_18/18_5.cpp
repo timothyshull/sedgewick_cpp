@@ -3,16 +3,16 @@ class EULER : public SEARCH<Graph> {
     void searchC(Edge e)
     {
         int v = e.v, w = e.w;
-        ord[w] = cnt++;
-        cout << "-" << w;
+        ord[w] = ++cnt;
+        std::cout << "-" << w;
         typename Graph::adjIterator A(G, w);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
             if (ord[t] == -1) { searchC(Edge(w, t)); }
             else if (ord[t] < ord[v]) {
-                cout << "-" << t << "-" << w;
+                std::cout << "-" << t << "-" << w;
             }
         }
-        if (v != w) { cout << "-" << v; } else { cout << "\n"; }
+        if (v != w) { std::cout << "-" << v; } else { std::cout << "\n"; }
     }
 
 public:

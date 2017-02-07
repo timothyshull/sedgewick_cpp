@@ -10,19 +10,19 @@ int main(int argc, char* argv[])
 {
     int N = atoi(argv[1]);
     Queue<int> queues[M];
-    for (int i = 0; i < N; i++, cout << "\n") {
+    for (int i = 0; i < N; ++i, std::cout << "\n") {
         int in = rand() % M, out = rand() % M;
         queues[in].put(i);
-        cout << i << " in ";
+        std::cout << i << " in ";
         if (!queues[out].empty()) {
-            cout << queues[out].get() << " out";
+            std::cout << queues[out].get() << " out";
         }
-        cout << "\n";
-        for (int k = 0; k < M; k++, cout << "\n") {
+        std::cout << "\n";
+        for (int k = 0; k < M; ++k, std::cout << "\n") {
             QUEUE<int> q = queues[k];
-            cout << k << ": ";
+            std::cout << k << ": ";
             while (!q.empty()) {
-                cout << q.get() << " ";
+                std::cout << q.get() << " ";
             }
         }
     }

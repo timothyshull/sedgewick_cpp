@@ -13,7 +13,7 @@ private:
         }
     };
 
-    using link = node *;
+    using link = node*;
     link head;
     Item nullItem;
 

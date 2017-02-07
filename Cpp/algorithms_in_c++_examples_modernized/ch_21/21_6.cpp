@@ -10,7 +10,7 @@ public:
     {
         int j, w;
         dagTS <Graph> ts(G);
-        for (int v = ts[j = 0]; j < G.V(); v = ts[++j]) {
+        for (int v = ts[j = 0]; j < G.V(); v = ++ts[j]) {
             typename Graph::adjIterator A(G, v);
             for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
                 if (wt[w = e->w()] < wt[v] + e->wt()) {

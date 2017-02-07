@@ -15,10 +15,10 @@ template<class Graph> class CC {
 public:
     CC(const Graph& G) : G(G), ccnt(0), id(G.V(), -1)
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if (id[v] == -1) {
                 ccR(v);
-                ccnt++;
+                ++ccnt;
             }
         }
     }

@@ -31,7 +31,7 @@ public:
     MST(Graph& G) : G(G),
                     fr(G.V()), mst(G.V()), wt(G.V(), -1)
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if (mst[v] == 0) { pfs(v); }
         }
     }

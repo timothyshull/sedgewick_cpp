@@ -17,7 +17,7 @@ template<class Graph> class BI {
 public:
     BI(const Graph& G) : G(G), OK(true), vc(G.V(), -1)
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if (vc[v] == -1) {
                 if (!dfsR(v, 0)) {
                     OK = false;

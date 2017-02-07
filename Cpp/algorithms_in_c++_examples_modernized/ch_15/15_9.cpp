@@ -7,7 +7,7 @@ void matchR(link h, char* v, int i)
     if (h == 0) { return; }
     if ((*v == 0) && (h->d == 0)) {
         word[i] = 0;
-        cout << word << " ";
+        std::cout << word << " ";
     }
     if ((*v == '*') || (*v == h->d)) {
         word[i] = h->d;

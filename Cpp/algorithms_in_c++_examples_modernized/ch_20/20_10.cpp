@@ -24,7 +24,7 @@ template<class keyType> class PQi {
     {
         int j;
         while ((j = d * (k - 1) + 2) <= N) {
-            for (int i = j + 1; i < j + d && i <= N; i++) {
+            for (int i = j + 1; i < j + d && i <= N; ++i) {
                 if (a[pq[j]] > a[pq[i]]) { j = i; }
             }
             if (!(a[pq[k]] > a[pq[j]])) { break; }
@@ -41,7 +41,7 @@ public:
 
     void insert(int v)
     {
-        pq[++N] = v;
+        ++pq[N] = v;
         qp[v] = N;
         fixUp(N);
     }

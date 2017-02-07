@@ -7,7 +7,7 @@ template<class Graph> class cDFS {
 
     void searchC(int v)
     {
-        ord[v] = cnt++;
+        ord[v] = ++cnt;
         typename Graph::adjIterator A(G, v);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
             if (ord[t] == -1) { searchC(t); }

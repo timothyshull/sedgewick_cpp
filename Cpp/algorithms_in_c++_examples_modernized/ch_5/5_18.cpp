@@ -1,7 +1,7 @@
 void printnode(Item x, int h)
 {
-    for (int i = 0; i < h; i++) { cout << "  "; }
-    cout << x << "\n";
+    for (int i = 0; i < h; ++i) { std::cout << "  "; }
+    std::cout << x << "\n";
 }
 
 void show(link t, int h)

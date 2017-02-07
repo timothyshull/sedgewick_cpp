@@ -16,6 +16,7 @@ public:
     bool find(int p, int q);
 
     void unite(int p, int q);
+
     {
         int i = find(p), j = find(q);
         if (i == j) { return; }

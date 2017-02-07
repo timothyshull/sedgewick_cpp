@@ -18,9 +18,9 @@ void ePATH<Graph>::show()
     if (!found) { return; }
     while (tour(v) == v && !S.empty()) {
         v = S.pop();
-        cout << "-" << v;
+        std::cout << "-" << v;
     }
-    cout << "\n";
+    std::cout << "\n";
 }
 
 

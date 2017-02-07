@@ -16,7 +16,7 @@ public:
 template<class Graph>
 void IO<Graph>::show(const Graph& G)
 {
-    for (int s = 0; s < G.V(); s++) {
+    for (int s = 0; s < G.V(); ++s) {
         std::cout.width(2);
         std::cout << s << ":";
         typename Graph::adjIterator A(G, s);

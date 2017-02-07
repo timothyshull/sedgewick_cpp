@@ -10,7 +10,7 @@ class ST {
         node(int d) : v(-1), d(d), l(0), m(0), r(0) {}
     };
 
-    using link = node *;
+    using link = node*;
     link head;
 
     link indexR(link h, const string& s, int w)
@@ -18,7 +18,7 @@ class ST {
         int i = s[w];
         if (h == 0) { h = new node(i); }
         if (i == 0) {
-            if (h->v == -1) { h->v = N++; }
+            if (h->v == -1) { h->v = ++N; }
             val = h->v;
             return h;
         }

@@ -1,4 +1,5 @@
-template<class Graph, class Edge> class check {
+template<class Graph, class Edge>
+class check {
 public:
     static int flow(Graph& G, int v)
     {
@@ -12,7 +13,7 @@ public:
 
     static bool flow(Graph& G, int s, int t)
     {
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < G.V(); ++v) {
             if ((v != s) && (v != t)) {
                 if (flow(G, v) != 0) { return false; }
             }

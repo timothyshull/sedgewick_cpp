@@ -1,27 +1,30 @@
 #include <iostream>
-#include <string.h>
+#include <vector>
 
-using std::cin;
-using std::cout;
-
-static const int N = 10000;
+static const int max_size = 10000;
 
 int main(int argc, char* argv[])
 {
+    std::string p{argv[1]};
+    std::string a;
+    a.reserve(max_size);
+
     int i;
     char t;
-    char a[n], * p = argv[1];
-    for (i = 0; i < n - 1; a[i] = t, i++) {
-        if (!cin.get(t)) { break; }
+    for (i = 0; i < max_size; a += t, ++i) {
+        if (!std::cin.get(t)) { break; }
     }
-    a[i] = 0;
-    for (i = 0; a[i] != 0; i++) {
-        int j;
-        for (j = 0; p[j] != 0; j++) {
+
+    a.shrink_to_fit();
+
+    int j;
+    for (i = 0; i < a.size(); ++i) {
+        for (j = 0; j < p.size(); ++j) {
             if (a[i + j] != p[j]) { break; }
         }
-        if (p[j] == 0) { cout << i << " "; }
+        if (j == p.size()) { std::cout << "The string " << p << " occurred at index " << i << " "; }
     }
-    cout << "\n";
+    std::cout << "\n";
+    return 0;
 }
 

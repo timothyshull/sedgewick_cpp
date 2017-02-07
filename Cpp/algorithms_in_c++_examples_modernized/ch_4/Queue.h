@@ -15,7 +15,7 @@ private:
         }
     };
 
-    using link = node *;
+    using link = node*;
     link head, tail;
 public:
     QUEUE(int) { head = 0; }

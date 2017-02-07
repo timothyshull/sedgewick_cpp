@@ -1,18 +1,15 @@
 #include <iostream>
+#include <vector>
 
-using std::cin;
-using std::cout;
-
-int main()
+int main(int argc, char* argv[])
 {
-    int i, j, adj[V][V];
-    for (i = 0; i < V; i++) {
-        for (j = 0; j < V; j++) {
-            adj[i][j] = 0;
-        }
-    }
-    for (i = 0; i < V; i++) { adj[i][i] = 1; }
-    while (cin >> i >> j) {
+    std::size_t num_vertices{std::stoul(argv[1])};
+    std::vector<std::vector<int>> adj{num_vertices, std::vector<int>{num_vertices, 0}};
+
+    int i;
+    int j;
+    for (i = 0; i < num_vertices; ++i) { adj[i][i] = 1; }
+    while (std::cin >> i >> j) {
         adj[i][j] = 1;
         adj[j][i] = 1;
     }

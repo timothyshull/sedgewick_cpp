@@ -42,6 +42,8 @@ add_library(std_random STATIC Std_random.h Std_random.cpp)
 add_library(utility STATIC utility.h utility.cpp)
 
 
+# subdirectories with CMakeLists.txt
+add_subdirectory(acpp)
 
 
 # Start executable definitions

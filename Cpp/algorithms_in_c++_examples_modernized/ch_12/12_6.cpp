@@ -16,7 +16,7 @@ private:
         }
     };
 
-    using link = node *;
+    using link = node*;
     int N;
     link head;
 
@@ -41,7 +41,7 @@ public:
     void insert(Item x)
     {
         head = new node(x, head);
-        N++;
+        ++N;
     }
 };
 

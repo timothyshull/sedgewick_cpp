@@ -7,7 +7,7 @@ using std::cout;
 
 int operator<(const Item& A, const Item& B) { return A.key < B.key; }
 
-int scan(Item& x) { return (cin >> x.key >> x.info) != 0; }
+int scan(Item& x) { return (std::cin >> x.key >> x.info) != 0; }
 
 void rand(Item& x)
 {
@@ -15,5 +15,5 @@ void rand(Item& x)
     x.info = 1.0 * rand() / RAND_MAX;
 }
 
-void show(const Item& x) { cout << x.key << " " << x.info << endl; }
+void show(const Item& x) { std::cout << x.key << " " << x.info << endl; }
 

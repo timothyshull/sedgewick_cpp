@@ -14,12 +14,12 @@ int main(int argc, char* argv[])
     int cnt = 0;
     size_t n = static_cast<size_t>(atoi(argv[1]));
     vector<Point> a{n};
-    for (i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (a[i].distance(a[j]) < d) { cnt++; }
+    for (i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (a[i].distance(a[j]) < d) { ++cnt; }
         }
     }
-    cout << cnt << " pairs within " << d << "\n";
+    std::cout << cnt << " pairs within " << d << "\n";
     return 0;
 }
 

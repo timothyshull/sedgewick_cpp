@@ -6,7 +6,7 @@ public:
     DenseGRAPH(int V, bool digraph = false) :
             adj(V), Vcnt(V), Ecnt(0), digraph(digraph)
     {
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < V; ++i) {
             adj[i].assign(V, 0);
         }
     }
@@ -20,7 +20,7 @@ public:
     void insert(Edge* e)
     {
         int v = e->v(), w = e->w();
-        if (adj[v][w] == 0) { Ecnt++; }
+        if (adj[v][w] == 0) { ++Ecnt; }
         adj[v][w] = e;
         if (!digraph) { adj[w][v] = e; }
     }

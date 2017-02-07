@@ -15,7 +15,7 @@ template<class Item>
 void mergesortAB(Item a[], int l, int r)
 {
     static Item aux[maxN];
-    for (int i = l; i <= r; i++) { aux[i] = a[i]; }
+    for (int i = l; i <= r; ++i) { aux[i] = a[i]; }
     mergesortABr(a, aux, l, r);
 }
 

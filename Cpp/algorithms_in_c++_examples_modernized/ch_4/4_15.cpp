@@ -16,14 +16,14 @@ public:
 
     void put(Item item)
     {
-        q[tail++] = item;
+        ++q[tail] = item;
         tail = tail % N;
     }
 
     Item get()
     {
         head = head % N;
-        return q[head++];
+        return ++q[head];
     }
 };
 

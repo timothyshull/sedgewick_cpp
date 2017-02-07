@@ -1,7 +1,12 @@
-link reverse(link x)
+#include "list.h"
+
+template<typename Item_type>
+Link<Item_type> reverse(Link<Item_type> x)
 {
-    link t, y = x, r = 0;
-    while (y != 0) {
+    Link<Item_type> t;
+    Link<Item_type> y{x};
+    Link<Item_type> r{nullptr};
+    while (y != nullptr) {
         t = y->next;
         y->next = r;
         r = y;

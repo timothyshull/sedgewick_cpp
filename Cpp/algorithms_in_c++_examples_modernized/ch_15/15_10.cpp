@@ -23,7 +23,7 @@ struct Node {
     int internal() { return d != NULLdigit; }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link heads[R];
 

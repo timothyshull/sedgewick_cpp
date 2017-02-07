@@ -15,12 +15,13 @@ void quicksortX(Item a[], int l, int r, int d)
     p = l - 1;
     q = r;
     while (i < j) {
-        while (ch(a[++i]) < v) {}
+        while { ++(ch(a[i]) < v) }
+        {}
         while (v < ch(a[--j])) { if (j == l) { break; }}
         if (i > j) { break; }
         exch(a[i], a[j]);
         if (ch(a[i]) == v) {
-            p++;
+            ++p;
             exch(a[p], a[i]);
         }
         if (v == ch(a[j])) {
@@ -32,11 +33,11 @@ void quicksortX(Item a[], int l, int r, int d)
         if (v != '\0') { quicksortX(a, l, r, d + 1); }
         return;
     }
-    if (ch(a[i]) < v) { i++; }
-    for (k = l; k <= p; k++, j--) { exch(a[k], a[j]); }
-    for (k = r; k >= q; k--, i++) { exch(a[k], a[i]); }
+    if (ch(a[i]) < v) { ++i; }
+    for (k = l; k <= p; ++k, j--) { exch(a[k], a[j]); }
+    for (k = r; k >= q; k--, ++i) { exch(a[k], a[i]); }
     quicksortX(a, l, j, d);
-    if ((i == r) && (ch(a[i]) == v)) { i++; }
+    if ((i == r) && (ch(a[i]) == v)) { ++i; }
     if (v != '\0') { quicksortX(a, j + 1, i - 1, d + 1); }
     quicksortX(a, i, r, d);
 }

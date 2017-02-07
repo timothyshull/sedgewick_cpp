@@ -13,8 +13,8 @@ template<class Edge> class SparseMultiGRAPH {
         node(Edge* e, node* next) : e(e), next(next) {}
     };
 
-    using link = node *;
-    vector <link> adj;
+    using link = node*;
+    vector<link> adj;
 public:
     SparseMultiGRAPH(int V, bool digraph = false) :
             adj(V), Vcnt(V), Ecnt(0), digraph(digraph) {}
@@ -31,7 +31,7 @@ public:
         if (!digraph) {
             adj[e->w()] = new node(e, adj[e->w()]);
         }
-        Ecnt++;
+        ++Ecnt;
     }
 
     class Graph_iterator;

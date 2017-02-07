@@ -4,8 +4,7 @@ static link pair(link p, link q)
         p->r = q->l;
         q->l = p;
         return q;
-    }
-    else {
+    } else {
         q->r = p->l;
         p->l = q;
         return p;

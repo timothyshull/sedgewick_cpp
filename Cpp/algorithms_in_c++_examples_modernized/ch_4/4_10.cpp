@@ -11,10 +11,10 @@ int main(int argc, char* argv[])
     int q;
     int n = atoi(argv[1]);
     Union_find info(n);
-    while (cin >> p >> q) {
+    while (std::cin >> p >> q) {
         if (!info.find(p, q)) {
             info.unite(p, q);
-            cout << " " << p << " " << q << "\n";
+            std::cout << " " << p << " " << q << "\n";
         }
     }
     return 0;

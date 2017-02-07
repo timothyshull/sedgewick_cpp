@@ -13,8 +13,8 @@ public:
     int count()
     {
         int N = 0;
-        for (int i = 0; i < M; i++) {
-            if (!st[i].null()) { N++; }
+        for (int i = 0; i < M; ++i) {
+            if (!st[i].null()) { ++N; }
         }
         return N;
     }
@@ -27,7 +27,7 @@ public:
 
     Item select(int k)
     {
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < M; ++i) {
             if (!st[i].null()) {
                 if (k-- == 0) { return st[i]; }
             }
@@ -37,7 +37,7 @@ public:
 
     void show(ostream& os)
     {
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < M; ++i) {
             if (!st[i].null()) { st[i].show(os); }
         }
     }

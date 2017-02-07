@@ -9,7 +9,7 @@ public:
         s = new Item[maxN];
         n = 0;
         t = new Item[maxN];
-        for (int i = 0; i < maxN; i++) { t[i] = 0; }
+        for (int i = 0; i < maxN; ++i) { t[i] = 0; }
     }
 
     int empty() const { return n == 0; }
@@ -17,7 +17,7 @@ public:
     void push(Item item)
     {
         if (t[item] == 1) { return; }
-        s[n++] = item;
+        ++s[n] = item;
         t[item] = 1;
     }
 

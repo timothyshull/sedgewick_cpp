@@ -11,7 +11,7 @@ class BFS : public SEARCH<Graph> {
         while (!Q.empty()) {
             if (ord[(e = Q.get()).w] == -1) {
                 int v = e.v, w = e.w;
-                ord[w] = cnt++;
+                ord[w] = ++cnt;
                 st[w] = v;
                 typename Graph::adjIterator A(G, w);
                 for (int t = A.beg(); !A.end(); t = A.nxt()) {

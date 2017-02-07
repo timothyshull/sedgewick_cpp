@@ -14,7 +14,10 @@ public:
 
     Edge* nxt()
     {
-        for (i++; i < G.V(); i++) {
+        for
+        ++(i;
+        i < G.V();
+        ++i) {
             if (G.edge(v, i)) { return G.adj[v][i]; }
         }
         return 0;

@@ -10,18 +10,18 @@ int main(int argc, char* argv[])
     string a{argv[1]};
     int n{a.size()};
     Stack<char> ops{n};
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         if (a[i] == ')') {
-            cout << ops.pop() << " ";
+            std::cout << ops.pop() << " ";
         }
         if ((a[i] == '+') || (a[i] == '*')) {
             ops.push(a[i]);
         }
         if ((a[i] >= '0') && (a[i] <= '9')) {
-            cout << a[i] << " ";
+            std::cout << a[i] << " ";
         }
     }
-    cout << "\n";
+    std::cout << "\n";
     return 0;
 }
 

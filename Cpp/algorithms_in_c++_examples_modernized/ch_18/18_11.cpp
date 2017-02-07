@@ -8,7 +8,7 @@ public:
 
     int empty() const { return N == 0; }
 
-    void put(Item item) { s[N++] = item; }
+    void put(Item item) { ++s[N] = item; }
 
     void update(Item x) {}
 

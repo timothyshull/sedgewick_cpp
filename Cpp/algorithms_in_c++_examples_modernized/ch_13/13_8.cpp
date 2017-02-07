@@ -10,11 +10,11 @@ struct Node {
         item = x;
         sz = k;
         next = new Node* [k];
-        for (int i = 0; i < k; i++) { next[i] = 0; }
+        for (int i = 0; i < k; ++i) { next[i] = 0; }
     }
 };
 
-using Link = Node *;
+using Link = Node*;
 
 Link head;
 

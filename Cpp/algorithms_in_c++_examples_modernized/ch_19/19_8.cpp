@@ -8,16 +8,16 @@ public:
                           in(D.V(), 0), ts(D.V(), -1), tsI(D.V(), -1)
     {
         QUEUE<int> Q;
-        for (int v = 0; v < D.V(); v++) {
+        for (int v = 0; v < D.V(); ++v) {
             typename Dag::adjIterator A(D, v);
             for (int t = A.beg(); !A.end(); t = A.nxt()) {
-                in[t]++;
+                ++in[t];
             }
         }
-        for (int v = 0; v < D.V(); v++) {
+        for (int v = 0; v < D.V(); ++v) {
             if (in[v] == 0) { Q.put(v); }
         }
-        for (int j = 0; !Q.empty(); j++) {
+        for (int j = 0; !Q.empty(); ++j) {
             ts[j] = Q.get();
             tsI[ts[j]] = j;
             typename Dag::adjIterator A(D, ts[j]);
