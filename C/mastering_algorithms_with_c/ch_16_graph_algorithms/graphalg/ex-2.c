@@ -38,30 +38,31 @@ static EdgeData PthTestE[PTHECT] = {
         {"f", "e", 4.0}
 };
 
-static void print_graph_pth(const Graph *graph) {
-    Set *adjacent;
+static void print_graph_pth(const Graph* graph)
+{
+    Set* adjacent;
 
-    PathVertex *vertex;
+    PathVertex* vertex;
 
-    ListElmt *element,
-            *member;
+    ListElmt* element,
+            * member;
 
     int i,
             j;
     fprintf(stdout, "Vertices=%d, edges=%d\n", graph_vcount(graph), graph_ecount
-            (graph));
+    (graph));
     i = 0;
     element = list_head(&graph_adjlists(graph));
     while (i < list_size(&graph_adjlists(graph))) {
-        vertex = ((AdjList *) list_data(element))->vertex;
-        fprintf(stdout, "graph[%03d]=%s: ", i, (char *) vertex->data);
+        vertex = ((AdjList*) list_data(element))->vertex;
+        fprintf(stdout, "graph[%03d]=%s: ", i, (char*) vertex->data);
         j = 0;
-        adjacent = &((AdjList *) list_data(element))->adjacent;
+        adjacent = &((AdjList*) list_data(element))->adjacent;
         member = list_head(adjacent);
         while (j < set_size(adjacent)) {
             vertex = list_data(member);
             if (j > 0) { fprintf(stdout, ", "); }
-            fprintf(stdout, "%s(%4.1lf)", (char *) vertex->data, vertex->weight);
+            fprintf(stdout, "%s(%4.1lf)", (char*) vertex->data, vertex->weight);
             member = list_next(member);
             j++;
         }
@@ -72,28 +73,30 @@ static void print_graph_pth(const Graph *graph) {
     return;
 }
 
-static int match_pth(const void *pth1, const void *pth2) {
-    return !strcmp(((const PathVertex *) pth1)->data, ((const PathVertex *) pth2)->
+static int match_pth(const void* pth1, const void* pth2)
+{
+    return !strcmp(((const PathVertex*) pth1)->data, ((const PathVertex*) pth2)->
             data);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Graph graph;
 
-    PathVertex *pth_start,
-            *pth_vertex,
+    PathVertex* pth_start,
+            * pth_vertex,
             pth_vertex1,
-            *pth_vertex2;
+            * pth_vertex2;
 
     List paths;
 
-    ListElmt *element;
+    ListElmt* element;
 
     int i;
     graph_init(&graph, match_pth, free);
     fprintf(stdout, "Computing shortest paths\n");
     for (i = 0; i < PTHVCT; i++) {
-        if ((pth_vertex = (PathVertex *) malloc(sizeof(PathVertex))) == NULL) {
+        if ((pth_vertex = (PathVertex*) malloc(sizeof(PathVertex))) == NULL) {
             return 1;
         }
         if (i == 1) {
@@ -105,7 +108,7 @@ int main(int argc, char **argv) {
         }
     }
     for (i = 0; i < PTHECT; i++) {
-        if ((pth_vertex2 = (PathVertex *) malloc(sizeof(PathVertex))) == NULL) {
+        if ((pth_vertex2 = (PathVertex*) malloc(sizeof(PathVertex))) == NULL) {
             return 1;
         }
         pth_vertex1.data = PthTestE[i].vertex1;
@@ -122,16 +125,16 @@ int main(int argc, char **argv) {
     for (element = list_head(&paths); element != NULL; element =
                                                                list_next(element)) {
         pth_vertex = list_data(element);
-        fprintf(stdout, "vertex=%s, parent=%s, d=%.1lf\n", (char *) pth_vertex->
-                data, pth_vertex->parent != NULL ? (char *) pth_vertex->parent->data :
+        fprintf(stdout, "vertex=%s, parent=%s, d=%.1lf\n", (char*) pth_vertex->
+                data, pth_vertex->parent != NULL ? (char*) pth_vertex->parent->data :
                       "*", pth_vertex->d);
     }
     pth_vertex1.data = "e";
     if (route(&paths, &pth_vertex1, &pth_vertex, match_pth) != 0) {
         return 1;
     }
-    fprintf(stdout, "Next vertex in the route from %s to %s is %s\n", (char *)
-            pth_start->data, (char *) pth_vertex1.data, (char *) pth_vertex->data);
+    fprintf(stdout, "Next vertex in the route from %s to %s is %s\n", (char*)
+            pth_start->data, (char*) pth_vertex1.data, (char*) pth_vertex->data);
     list_destroy(&paths);
     graph_destroy(&graph);
     return 0;

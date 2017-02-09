@@ -7,6 +7,6 @@ typedef enum Token_ {
     lexit, error, digit, other
 } Token;
 
-Token lex(const char *istream, CHTbl *symtbl);
+Token lex(const char* istream, CHTbl* symtbl);
 
 #endif

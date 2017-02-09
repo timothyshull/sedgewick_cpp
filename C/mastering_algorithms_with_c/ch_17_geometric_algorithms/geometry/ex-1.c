@@ -20,17 +20,18 @@ static Point CvxTestP[CVXPCT] = {
         {-3.0, -1.0, 0.0}
 };
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     List P,
             polygon;
 
-    ListElmt *element;
+    ListElmt* element;
 
     Point p1_rct,
             p2_rct,
             p3_rct,
             p4_rct,
-            *point;
+            * point;
 
     SPoint p1_sph,
             p2_sph;

@@ -5,9 +5,10 @@
 #include "directls.h"
 #include "sort.h"
 
-static int compare_dir(const void *key1, const void *key2) {
+static int compare_dir(const void* key1, const void* key2)
+{
     int retval;
-    if ((retval = strcmp(((const Directory *) key1)->name, ((const Directory *) key2)->name)) > 0) {
+    if ((retval = strcmp(((const Directory*) key1)->name, ((const Directory*) key2)->name)) > 0) {
         return 1;
     } else if (retval < 0) {
         return -1;
@@ -16,10 +17,11 @@ static int compare_dir(const void *key1, const void *key2) {
     }
 }
 
-int directls(const char *path, Directory **dir) {
-    DIR *dirptr;
-    Directory *temp;
-    struct dirent *curdir;
+int directls(const char* path, Directory** dir)
+{
+    DIR* dirptr;
+    Directory* temp;
+    struct dirent* curdir;
     int count, i;
     if ((dirptr = opendir(path)) == NULL) {
         return -1;
@@ -27,7 +29,7 @@ int directls(const char *path, Directory **dir) {
     count = 0;
     while ((curdir = readdir(dirptr)) != NULL) {
         count++;
-        if ((temp = (Directory *) realloc(*dir, count * sizeof(Directory))) == NULL) {
+        if ((temp = (Directory*) realloc(*dir, count * sizeof(Directory))) == NULL) {
             free(*dir);
             return -1;
         } else {

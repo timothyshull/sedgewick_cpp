@@ -4,9 +4,10 @@
 #include "bitree.h"
 #include "traverse.h"
 
-static void print_preorder(const BiTreeNode *node) {
+static void print_preorder(const BiTreeNode* node)
+{
     if (!bitree_is_eob(node)) {
-        fprintf(stdout, "Node=%03d\n", *(int *) bitree_data(node));
+        fprintf(stdout, "Node=%03d\n", *(int*) bitree_data(node));
         if (!bitree_is_eob(bitree_left(node))) {
             print_preorder(bitree_left(node));
         }
@@ -17,12 +18,13 @@ static void print_preorder(const BiTreeNode *node) {
     return;
 }
 
-static void print_inorder(const BiTreeNode *node) {
+static void print_inorder(const BiTreeNode* node)
+{
     if (!bitree_is_eob(node)) {
         if (!bitree_is_eob(bitree_left(node))) {
             print_inorder(bitree_left(node));
         }
-        fprintf(stdout, "Node=%03d\n", *(int *) bitree_data(node));
+        fprintf(stdout, "Node=%03d\n", *(int*) bitree_data(node));
         if (!bitree_is_eob(bitree_right(node))) {
             print_inorder(bitree_right(node));
         }
@@ -30,7 +32,8 @@ static void print_inorder(const BiTreeNode *node) {
     return;
 }
 
-static void print_postorder(const BiTreeNode *node) {
+static void print_postorder(const BiTreeNode* node)
+{
     if (!bitree_is_eob(node)) {
         if (!bitree_is_eob(bitree_left(node))) {
             print_postorder(bitree_left(node));
@@ -38,24 +41,25 @@ static void print_postorder(const BiTreeNode *node) {
         if (!bitree_is_eob(bitree_right(node))) {
             print_postorder(bitree_right(node));
         }
-        fprintf(stdout, "Node=%03d\n", *(int *) bitree_data(node));
+        fprintf(stdout, "Node=%03d\n", *(int*) bitree_data(node));
     }
     return;
 }
 
-static int insert_int(BiTree *tree, int i) {
-    BiTreeNode *node,
-            *prev;
+static int insert_int(BiTree* tree, int i)
+{
+    BiTreeNode* node,
+            * prev;
 
     int direction,
-            *data;
+            * data;
     node = tree->root;
     direction = 0;
     while (!bitree_is_eob(node)) {
         prev = node;
-        if (i == *(int *) bitree_data(node)) {
+        if (i == *(int*) bitree_data(node)) {
             return -1;
-        } else if (i < *(int *) bitree_data(node)) {
+        } else if (i < *(int*) bitree_data(node)) {
             node = bitree_left(node);
             direction = 1;
         } else {
@@ -63,7 +67,7 @@ static int insert_int(BiTree *tree, int i) {
             direction = 2;
         }
     }
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return -1;
     }
     *data = i;
@@ -79,13 +83,14 @@ static int insert_int(BiTree *tree, int i) {
     return -1;
 }
 
-static BiTreeNode *search_int(BiTree *tree, int i) {
-    BiTreeNode *node;
+static BiTreeNode* search_int(BiTree* tree, int i)
+{
+    BiTreeNode* node;
     node = bitree_root(tree);
     while (!bitree_is_eob(node)) {
-        if (i == *(int *) bitree_data(node)) {
+        if (i == *(int*) bitree_data(node)) {
             return node;
-        } else if (i < *(int *) bitree_data(node)) {
+        } else if (i < *(int*) bitree_data(node)) {
             node = bitree_left(node);
         } else {
             node = bitree_right(node);
@@ -94,9 +99,10 @@ static BiTreeNode *search_int(BiTree *tree, int i) {
     return NULL;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     BiTree tree;
-    BiTreeNode *node;
+    BiTreeNode* node;
 
     int i;
     bitree_init(&tree, free);

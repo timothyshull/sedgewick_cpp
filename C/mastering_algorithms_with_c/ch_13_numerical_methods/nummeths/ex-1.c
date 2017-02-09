@@ -4,15 +4,18 @@
 
 #define            SIZE                 50
 
-static double f(double x) {
+static double f(double x)
+{
     return (pow(x, 3.0)) - (pow(x, 2.0)) - (3.0 * x) + 1.8;
 }
 
-static double g(double x) {
+static double g(double x)
+{
     return (3.0 * pow(x, 2.0)) - (2.0 * x) - 3.0;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     double x[SIZE],
             fx[SIZE],
             z[SIZE],

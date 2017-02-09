@@ -1,7 +1,8 @@
 #include "list.h"
 #include "traverse.h"
 
-int preorder(const BiTreeNode *node, List *list) {
+int preorder(const BiTreeNode* node, List* list)
+{
     if (!bitree_is_eob(node)) {
         if (list_ins_next(list, list_tail(list), bitree_data(node)) != 0) {
             return -1;
@@ -20,7 +21,8 @@ int preorder(const BiTreeNode *node, List *list) {
     return 0;
 }
 
-int inorder(const BiTreeNode *node, List *list) {
+int inorder(const BiTreeNode* node, List* list)
+{
     if (!bitree_is_eob(node)) {
         if (!bitree_is_eob(bitree_left(node))) {
             if (inorder(bitree_left(node), list) != 0) {
@@ -39,7 +41,8 @@ int inorder(const BiTreeNode *node, List *list) {
     return 0;
 }
 
-int postorder(const BiTreeNode *node, List *list) {
+int postorder(const BiTreeNode* node, List* list)
+{
     if (!bitree_is_eob(node)) {
         if (!bitree_is_eob(bitree_left(node))) {
             if (postorder(bitree_left(node), list) != 0) {

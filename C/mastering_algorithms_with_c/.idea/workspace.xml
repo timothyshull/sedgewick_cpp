@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="mastering_algorithms_with_c" targetName="search_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="graphalg_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="graphalg_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="hashpjw" />
+      <config projectName="mastering_algorithms_with_c" targetName="arclen" />
+      <config projectName="mastering_algorithms_with_c" targetName="route" />
+      <config projectName="mastering_algorithms_with_c" targetName="queue_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="frames" />
+      <config projectName="mastering_algorithms_with_c" targetName="search_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="page" />
+      <config projectName="mastering_algorithms_with_c" targetName="parcels" />
+      <config projectName="mastering_algorithms_with_c" targetName="directls" />
+      <config projectName="mastering_algorithms_with_c" targetName="clist" />
+      <config projectName="mastering_algorithms_with_c" targetName="set" />
+      <config projectName="mastering_algorithms_with_c" targetName="cbc" />
+      <config projectName="mastering_algorithms_with_c" targetName="des" />
+      <config projectName="mastering_algorithms_with_c" targetName="lz77" />
+      <config projectName="mastering_algorithms_with_c" targetName="bistree_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="bfs" />
+      <config projectName="mastering_algorithms_with_c" targetName="transfer" />
+      <config projectName="mastering_algorithms_with_c" targetName="graph" />
+      <config projectName="mastering_algorithms_with_c" targetName="sort_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="sort_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="huffman" />
+      <config projectName="mastering_algorithms_with_c" targetName="graph2" />
+      <config projectName="mastering_algorithms_with_c" targetName="dlist_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="clist_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="ohtbl" />
+      <config projectName="mastering_algorithms_with_c" targetName="dlist" />
+      <config projectName="mastering_algorithms_with_c" targetName="issort" />
+      <config projectName="mastering_algorithms_with_c" targetName="ctsort" />
+      <config projectName="mastering_algorithms_with_c" targetName="bit_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="shortest" />
+      <config projectName="mastering_algorithms_with_c" targetName="lex" />
+      <config projectName="mastering_algorithms_with_c" targetName="dfs" />
+      <config projectName="mastering_algorithms_with_c" targetName="root" />
+      <config projectName="mastering_algorithms_with_c" targetName="traverse" />
+      <config projectName="mastering_algorithms_with_c" targetName="set_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="set_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="spell" />
+      <config projectName="mastering_algorithms_with_c" targetName="bitree_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="compress_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="list_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="queue" />
+      <config projectName="mastering_algorithms_with_c" targetName="interpol" />
+      <config projectName="mastering_algorithms_with_c" targetName="lint" />
+      <config projectName="mastering_algorithms_with_c" targetName="geometry_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="geometry_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="chtbl" />
+      <config projectName="mastering_algorithms_with_c" targetName="bitree" />
+      <config projectName="mastering_algorithms_with_c" targetName="tsp" />
+      <config projectName="mastering_algorithms_with_c" targetName="list" />
+      <config projectName="mastering_algorithms_with_c" targetName="qksort" />
+      <config projectName="mastering_algorithms_with_c" targetName="chtbl_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="pqueue_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="geodist" />
+      <config projectName="mastering_algorithms_with_c" targetName="heap" />
+      <config projectName="mastering_algorithms_with_c" targetName="heap_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="cvxhull" />
+      <config projectName="mastering_algorithms_with_c" targetName="mgsort" />
+      <config projectName="mastering_algorithms_with_c" targetName="graph_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="graph_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="stack_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="events" />
+      <config projectName="mastering_algorithms_with_c" targetName="rxsort" />
+      <config projectName="mastering_algorithms_with_c" targetName="cover" />
+      <config projectName="mastering_algorithms_with_c" targetName="bisearch" />
+      <config projectName="mastering_algorithms_with_c" targetName="stack" />
+      <config projectName="mastering_algorithms_with_c" targetName="lsqe" />
+      <config projectName="mastering_algorithms_with_c" targetName="mst" />
+      <config projectName="mastering_algorithms_with_c" targetName="bistree" />
+      <config projectName="mastering_algorithms_with_c" targetName="nummeths_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="encrypt_ex-2" />
+      <config projectName="mastering_algorithms_with_c" targetName="encrypt_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="graph_ex-3" />
+      <config projectName="mastering_algorithms_with_c" targetName="rsa" />
+      <config projectName="mastering_algorithms_with_c" targetName="ohtbl_ex-1" />
+      <config projectName="mastering_algorithms_with_c" targetName="main" />
+      <config projectName="mastering_algorithms_with_c" targetName="clist_ex-1" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2b64acdc-f5cd-4c1f-8825-8b6a07c6b029" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="graph.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graph.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graphalg.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graphalg.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="route.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="route.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="set.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="set.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shortest.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/shortest.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tsp.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/tsp.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\n</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>)\n</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ch_5_linked_lists/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ch_5_linked_lists/list.h" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/shortest.c" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/mst.c" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/route.c" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/route.h" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/set.c" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/set.h" />
+        <option value="$PROJECT_DIR$/ch_16_graph_algorithms/tsp.c" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="1023" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="false" />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_17_geometric_algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_16_graph_algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_11_graphs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_11_graphs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graph" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mastering_algorithms_with_c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch_5_linked_lists" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="Application.Build All">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="heap" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="heap" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="heap" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="heap">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="heap_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="heap_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="heap_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="parcels" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="parcels" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="parcels">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="pqueue_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="pqueue_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="pqueue_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="queue_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="queue_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="queue_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bfs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bfs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bfs">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="dfs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="dfs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="dfs">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graph" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graph">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graph_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graph_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graph_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graph_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph_ex-3" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graph_ex-3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graph_ex-3">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bisearch" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bisearch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bisearch">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ctsort" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="ctsort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="ctsort">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="directls" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="directls" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="directls">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="issort" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="issort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="issort">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="mgsort" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="mgsort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="mgsort">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="qksort" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="qksort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="qksort">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rxsort" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="rxsort" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="rxsort">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="search_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="search_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="search_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="search_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="search_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="search_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sort_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="sort_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="sort_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sort_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="sort_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="sort_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="spell" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="spell" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="spell">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="interpol" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="interpol" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="interpol">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="lsqe" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="lsqe" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="lsqe">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nummeths_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="nummeths_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="nummeths_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="root" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="root" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="root">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bit_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bit_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bit_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="compress_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="compress_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="compress_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="huffman" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="huffman" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="huffman">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="lz77" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="lz77" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="lz77">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="transfer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="transfer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="transfer">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="cbc" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="cbc" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="cbc">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="des" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="des" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="des">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="encrypt_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="encrypt_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="encrypt_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="encrypt_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="encrypt_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="encrypt_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rsa" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="rsa" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="rsa">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graph2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graph2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graph2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graphalg_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graphalg_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graphalg_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="graphalg_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="graphalg_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="graphalg_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="mst" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="mst" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="mst">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="route" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="route" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="route">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="shortest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="shortest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="shortest">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tsp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="tsp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="tsp">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="arclen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="arclen" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="arclen">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="cvxhull" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="cvxhull" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="cvxhull">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geodist" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="geodist" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="geodist">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="geometry_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="geometry_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="geometry_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="geometry_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="lint" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="lint" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="lint">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="clist_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="clist_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="clist_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="clist_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="clist_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="clist_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="dlist_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="dlist_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="dlist_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="frames" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="frames" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="frames">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="list_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="list_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="list_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="main">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="page" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="page" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="page">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="events" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="events" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="events">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="queue" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="queue" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="queue">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="stack" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="stack" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="stack">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="stack_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="stack_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="stack_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="cover" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="cover" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="cover">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="set" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="set" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="set">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="set_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="set_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="set_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="set_ex-2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="set_ex-2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="set_ex-2">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="chtbl" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="chtbl" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="chtbl">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="chtbl_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="chtbl_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="chtbl_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="hashpjw" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="hashpjw" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="hashpjw">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="lex" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="lex" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="lex">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ohtbl" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="ohtbl" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="ohtbl">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ohtbl_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="ohtbl_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="ohtbl_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bistree" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bistree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bistree">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bistree_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bistree_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bistree_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bitree" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bitree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bitree">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="bitree_ex-1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="bitree_ex-1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="bitree_ex-1">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="traverse" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="traverse" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mastering_algorithms_with_c" RUN_TARGET_NAME="traverse">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="clist" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="clist" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="dlist" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="dlist" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="list" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mastering_algorithms_with_c" TARGET_NAME="list" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <list size="80">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.heap" />
+      <item index="2" class="java.lang.String" itemvalue="Application.heap_ex-1" />
+      <item index="3" class="java.lang.String" itemvalue="Application.parcels" />
+      <item index="4" class="java.lang.String" itemvalue="Application.pqueue_ex-1" />
+      <item index="5" class="java.lang.String" itemvalue="Application.queue_ex-1" />
+      <item index="6" class="java.lang.String" itemvalue="Application.bfs" />
+      <item index="7" class="java.lang.String" itemvalue="Application.dfs" />
+      <item index="8" class="java.lang.String" itemvalue="Application.graph" />
+      <item index="9" class="java.lang.String" itemvalue="Application.graph_ex-1" />
+      <item index="10" class="java.lang.String" itemvalue="Application.graph_ex-2" />
+      <item index="11" class="java.lang.String" itemvalue="Application.graph_ex-3" />
+      <item index="12" class="java.lang.String" itemvalue="Application.bisearch" />
+      <item index="13" class="java.lang.String" itemvalue="Application.ctsort" />
+      <item index="14" class="java.lang.String" itemvalue="Application.directls" />
+      <item index="15" class="java.lang.String" itemvalue="Application.issort" />
+      <item index="16" class="java.lang.String" itemvalue="Application.mgsort" />
+      <item index="17" class="java.lang.String" itemvalue="Application.qksort" />
+      <item index="18" class="java.lang.String" itemvalue="Application.rxsort" />
+      <item index="19" class="java.lang.String" itemvalue="Application.search_ex-1" />
+      <item index="20" class="java.lang.String" itemvalue="Application.search_ex-2" />
+      <item index="21" class="java.lang.String" itemvalue="Application.sort_ex-1" />
+      <item index="22" class="java.lang.String" itemvalue="Application.sort_ex-2" />
+      <item index="23" class="java.lang.String" itemvalue="Application.spell" />
+      <item index="24" class="java.lang.String" itemvalue="Application.interpol" />
+      <item index="25" class="java.lang.String" itemvalue="Application.lsqe" />
+      <item index="26" class="java.lang.String" itemvalue="Application.nummeths_ex-1" />
+      <item index="27" class="java.lang.String" itemvalue="Application.root" />
+      <item index="28" class="java.lang.String" itemvalue="Application.bit_ex-1" />
+      <item index="29" class="java.lang.String" itemvalue="Application.compress_ex-1" />
+      <item index="30" class="java.lang.String" itemvalue="Application.huffman" />
+      <item index="31" class="java.lang.String" itemvalue="Application.lz77" />
+      <item index="32" class="java.lang.String" itemvalue="Application.transfer" />
+      <item index="33" class="java.lang.String" itemvalue="Application.cbc" />
+      <item index="34" class="java.lang.String" itemvalue="Application.des" />
+      <item index="35" class="java.lang.String" itemvalue="Application.encrypt_ex-1" />
+      <item index="36" class="java.lang.String" itemvalue="Application.encrypt_ex-2" />
+      <item index="37" class="java.lang.String" itemvalue="Application.rsa" />
+      <item index="38" class="java.lang.String" itemvalue="Application.graph2" />
+      <item index="39" class="java.lang.String" itemvalue="Application.graphalg_ex-1" />
+      <item index="40" class="java.lang.String" itemvalue="Application.graphalg_ex-2" />
+      <item index="41" class="java.lang.String" itemvalue="Application.mst" />
+      <item index="42" class="java.lang.String" itemvalue="Application.route" />
+      <item index="43" class="java.lang.String" itemvalue="Application.shortest" />
+      <item index="44" class="java.lang.String" itemvalue="Application.tsp" />
+      <item index="45" class="java.lang.String" itemvalue="Application.arclen" />
+      <item index="46" class="java.lang.String" itemvalue="Application.cvxhull" />
+      <item index="47" class="java.lang.String" itemvalue="Application.geodist" />
+      <item index="48" class="java.lang.String" itemvalue="Application.geometry_ex-1" />
+      <item index="49" class="java.lang.String" itemvalue="Application.geometry_ex-2" />
+      <item index="50" class="java.lang.String" itemvalue="Application.lint" />
+      <item index="51" class="java.lang.String" itemvalue="Application.clist_ex-1" />
+      <item index="52" class="java.lang.String" itemvalue="Application.clist_ex-2" />
+      <item index="53" class="java.lang.String" itemvalue="Application.dlist_ex-1" />
+      <item index="54" class="java.lang.String" itemvalue="Application.frames" />
+      <item index="55" class="java.lang.String" itemvalue="Application.list_ex-1" />
+      <item index="56" class="java.lang.String" itemvalue="Application.main" />
+      <item index="57" class="java.lang.String" itemvalue="Application.page" />
+      <item index="58" class="java.lang.String" itemvalue="Application.events" />
+      <item index="59" class="java.lang.String" itemvalue="Application.queue" />
+      <item index="60" class="java.lang.String" itemvalue="Application.stack" />
+      <item index="61" class="java.lang.String" itemvalue="Application.stack_ex-1" />
+      <item index="62" class="java.lang.String" itemvalue="Application.cover" />
+      <item index="63" class="java.lang.String" itemvalue="Application.set" />
+      <item index="64" class="java.lang.String" itemvalue="Application.set_ex-1" />
+      <item index="65" class="java.lang.String" itemvalue="Application.set_ex-2" />
+      <item index="66" class="java.lang.String" itemvalue="Application.chtbl" />
+      <item index="67" class="java.lang.String" itemvalue="Application.chtbl_ex-1" />
+      <item index="68" class="java.lang.String" itemvalue="Application.hashpjw" />
+      <item index="69" class="java.lang.String" itemvalue="Application.lex" />
+      <item index="70" class="java.lang.String" itemvalue="Application.ohtbl" />
+      <item index="71" class="java.lang.String" itemvalue="Application.ohtbl_ex-1" />
+      <item index="72" class="java.lang.String" itemvalue="Application.bistree" />
+      <item index="73" class="java.lang.String" itemvalue="Application.bistree_ex-1" />
+      <item index="74" class="java.lang.String" itemvalue="Application.bitree" />
+      <item index="75" class="java.lang.String" itemvalue="Application.bitree_ex-1" />
+      <item index="76" class="java.lang.String" itemvalue="Application.traverse" />
+      <item index="77" class="java.lang.String" itemvalue="Application.clist" />
+      <item index="78" class="java.lang.String" itemvalue="Application.dlist" />
+      <item index="79" class="java.lang.String" itemvalue="Application.list" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b64acdc-f5cd-4c1f-8825-8b6a07c6b029" name="Default" comment="" />
+      <created>1486650766017</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1486650766017</updated>
+      <workItem from="1486650767397" duration="692000" />
+      <workItem from="1486652046738" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="696000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graph.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graphalg.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/shortest.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/tsp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_17_geometric_algorithms/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_11_graphs/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_5_linked_lists/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_5_linked_lists/list.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/mst.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graph.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1952">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graph.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/graphalg.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/list.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/route.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/set.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/shortest.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch_16_graph_algorithms/tsp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -3,7 +3,8 @@
 #include <string.h>
 #include "bit.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     unsigned char bits1[8],
             bits2[8],
             bits3[8];

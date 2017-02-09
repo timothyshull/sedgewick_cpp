@@ -5,10 +5,11 @@
 #include "list.h"
 #include "set.h"
 
-static void print_set(const Set *set) {
-    ListElmt *member;
+static void print_set(const Set* set)
+{
+    ListElmt* member;
 
-    int *data,
+    int* data,
             size,
             i;
     fprintf(stdout, "Set size is %d\n", size = set_size(set));
@@ -23,22 +24,24 @@ static void print_set(const Set *set) {
     return;
 }
 
-static int match_int(const void *key1, const void *key2) {
+static int match_int(const void* key1, const void* key2)
+{
     return !memcmp(key1, key2, sizeof(int));
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Set set,
             set1,
             set2;
 
-    int *data,
+    int* data,
             retval,
             i;
     set_init(&set, match_int, free);
     fprintf(stdout, "Inserting 10 members\n");
     for (i = 9; i >= 0; i--) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -51,7 +54,7 @@ int main(int argc, char **argv) {
     print_set(&set);
     fprintf(stdout, "Inserting the same members again\n");
     for (i = 9; i >= 0; i--) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -63,7 +66,7 @@ int main(int argc, char **argv) {
     }
     print_set(&set);
     fprintf(stdout, "Inserting 200 and 100\n");
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 200;
@@ -72,7 +75,7 @@ int main(int argc, char **argv) {
     } else if (retval == 1) {
         free(data);
     }
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 100;
@@ -85,34 +88,34 @@ int main(int argc, char **argv) {
     fprintf(stdout, "Removing 100, 5, and 10\n");
     i = 100;
     data = &i;
-    if (set_remove(&set, (void **) &data) == 0) {
+    if (set_remove(&set, (void**) &data) == 0) {
         free(data);
     }
     i = 5;
     data = &i;
-    if (set_remove(&set, (void **) &data) == 0) {
+    if (set_remove(&set, (void**) &data) == 0) {
         free(data);
     }
     i = 10;
     data = &i;
-    if (set_remove(&set, (void **) &data) == 0) {
+    if (set_remove(&set, (void**) &data) == 0) {
         free(data);
     }
     print_set(&set);
     fprintf(stdout, "Removing three members\n");
-    if (list_rem_next(&set, NULL, (void **) &data) == 0) {
+    if (list_rem_next(&set, NULL, (void**) &data) == 0) {
         free(data);
     }
-    if (list_rem_next(&set, NULL, (void **) &data) == 0) {
+    if (list_rem_next(&set, NULL, (void**) &data) == 0) {
         free(data);
     }
-    if (list_rem_next(&set, NULL, (void **) &data) == 0) {
+    if (list_rem_next(&set, NULL, (void**) &data) == 0) {
         free(data);
     }
     print_set(&set);
     fprintf(stdout, "Removing all members\n");
     while (set_size(&set) > 0) {
-        if (list_rem_next(&set, NULL, (void **) &data) == 0) {
+        if (list_rem_next(&set, NULL, (void**) &data) == 0) {
             free(data);
         }
     }
@@ -120,7 +123,7 @@ int main(int argc, char **argv) {
     set_init(&set1, match_int, free);
     set_init(&set2, match_int, free);
     for (i = 9; i >= 0; i--) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -130,7 +133,7 @@ int main(int argc, char **argv) {
             free(data);
         }
         if (i == 5 || i == 6 || i == 7) {
-            if ((data = (int *) malloc(sizeof(int))) == NULL) {
+            if ((data = (int*) malloc(sizeof(int))) == NULL) {
                 return 1;
             }
             *data = i * 10;
@@ -140,7 +143,7 @@ int main(int argc, char **argv) {
                 free(data);
             }
         } else if (i == 3 || i == 1) {
-            if ((data = (int *) malloc(sizeof(int))) == NULL) {
+            if ((data = (int*) malloc(sizeof(int))) == NULL) {
                 return 1;
             }
             *data = i;

@@ -4,14 +4,15 @@
 #include "geometry.h"
 #include "list.h"
 
-int cvxhull(const List *P, List *polygon) {
-    ListElmt *element;
+int cvxhull(const List* P, List* polygon)
+{
+    ListElmt* element;
 
-    Point *min,
-            *low,
-            *p0,
-            *pi,
-            *pc;
+    Point* min,
+            * low,
+            * p0,
+            * pi,
+            * pc;
 
     double z,
             length1,

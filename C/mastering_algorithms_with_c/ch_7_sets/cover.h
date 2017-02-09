@@ -5,10 +5,10 @@
 #include "set.h"
 
 typedef struct KSet_ {
-    void *key;
+    void* key;
     Set set;
 } KSet;
 
-int cover(Set *members, Set *subsets, Set *covering);
+int cover(Set* members, Set* subsets, Set* covering);
 
 #endif

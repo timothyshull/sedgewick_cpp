@@ -2,11 +2,12 @@
 #include <string.h>
 #include "sort.h"
 
-int issort(void *data, int size, int esize, int (*compare)(const void *key1, const void *key2)) {
-    char *a = data;
-    void *key;
+int issort(void* data, int size, int esize, int (* compare)(const void* key1, const void* key2))
+{
+    char* a = data;
+    void* key;
     int i, j;
-    if ((key = (char *) malloc(esize)) == NULL) {
+    if ((key = (char*) malloc(esize)) == NULL) {
         return -1;
     }
     for (j = 1; j < size; j++) {

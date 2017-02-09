@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(graph graph.c graph.h list.c list.h set.c set.h)
+add_executable(graph2 graph.c graph.h list.c list.h set.c set.h)
 add_executable(mst mst.c graph.c graph.h graphalg.h list.c list.h)
 add_executable(route route.c route.h list.c list.h graphalg.h graph.c graph.h)
 add_executable(shortest shortest.c list.c list.h set.c set.h graph.c graph.h graphalg.h)

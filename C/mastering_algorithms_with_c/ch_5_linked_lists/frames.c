@@ -2,13 +2,14 @@
 #include "frames.h"
 #include "list.h"
 
-int alloc_frame(List *frames) {
+int alloc_frame(List* frames)
+{
     int frame_number;
-    int *data;
+    int* data;
     if (list_size(frames) == 0) {
         return -1;
     } else {
-        if (list_rem_next(frames, NULL, (void **) &data) != 0) {
+        if (list_rem_next(frames, NULL, (void**) &data) != 0) {
             return -1;
         } else {
             frame_number = *data;
@@ -18,9 +19,10 @@ int alloc_frame(List *frames) {
     return frame_number;
 }
 
-int free_frame(List *frames, int frame_number) {
-    int *data;
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+int free_frame(List* frames, int frame_number)
+{
+    int* data;
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return -1;
     }
     *data = frame_number;

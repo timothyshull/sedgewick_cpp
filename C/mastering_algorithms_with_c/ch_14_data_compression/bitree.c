@@ -2,21 +2,24 @@
 #include <string.h>
 #include "bitree.h"
 
-void bitree_init(BiTree *tree, void (*destroy)(void *data)) {
+void bitree_init(BiTree* tree, void (* destroy)(void* data))
+{
     tree->size = 0;
     tree->destroy = destroy;
     tree->root = NULL;
     return;
 }
 
-void bitree_destroy(BiTree *tree) {
+void bitree_destroy(BiTree* tree)
+{
     bitree_rem_left(tree, NULL);
     memset(tree, 0, sizeof(BiTree));
     return;
 }
 
-int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data) {
-    BiTreeNode *new_node, **position;
+int bitree_ins_left(BiTree* tree, BiTreeNode* node, const void* data)
+{
+    BiTreeNode* new_node, ** position;
     if (node == NULL) {
         if (bitree_size(tree) > 0) {
             return -1;
@@ -28,10 +31,10 @@ int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data) {
         }
         position = &node->left;
     }
-    if ((new_node = (BiTreeNode *) malloc(sizeof(BiTreeNode))) == NULL) {
+    if ((new_node = (BiTreeNode*) malloc(sizeof(BiTreeNode))) == NULL) {
         return -1;
     }
-    new_node->data = (void *) data;
+    new_node->data = (void*) data;
     new_node->left = NULL;
     new_node->right = NULL;
     *position = new_node;
@@ -39,8 +42,9 @@ int bitree_ins_left(BiTree *tree, BiTreeNode *node, const void *data) {
     return 0;
 }
 
-int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data) {
-    BiTreeNode *new_node, **position;
+int bitree_ins_right(BiTree* tree, BiTreeNode* node, const void* data)
+{
+    BiTreeNode* new_node, ** position;
     if (node == NULL) {
         if (bitree_size(tree) > 0) {
             return -1;
@@ -52,10 +56,10 @@ int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data) {
         }
         position = &node->right;
     }
-    if ((new_node = (BiTreeNode *) malloc(sizeof(BiTreeNode))) == NULL) {
+    if ((new_node = (BiTreeNode*) malloc(sizeof(BiTreeNode))) == NULL) {
         return -1;
     }
-    new_node->data = (void *) data;
+    new_node->data = (void*) data;
     new_node->left = NULL;
     new_node->right = NULL;
     *position = new_node;
@@ -63,8 +67,9 @@ int bitree_ins_right(BiTree *tree, BiTreeNode *node, const void *data) {
     return 0;
 }
 
-void bitree_rem_left(BiTree *tree, BiTreeNode *node) {
-    BiTreeNode **position;
+void bitree_rem_left(BiTree* tree, BiTreeNode* node)
+{
+    BiTreeNode** position;
     if (bitree_size(tree) == 0) {
         return;
     }
@@ -86,8 +91,9 @@ void bitree_rem_left(BiTree *tree, BiTreeNode *node) {
     return;
 }
 
-void bitree_rem_right(BiTree *tree, BiTreeNode *node) {
-    BiTreeNode **position;
+void bitree_rem_right(BiTree* tree, BiTreeNode* node)
+{
+    BiTreeNode** position;
     if (bitree_size(tree) == 0) {
         return;
     }
@@ -109,7 +115,8 @@ void bitree_rem_right(BiTree *tree, BiTreeNode *node) {
     return;
 }
 
-int bitree_merge(BiTree *merge, BiTree *left, BiTree *right, const void *data) {
+int bitree_merge(BiTree* merge, BiTree* left, BiTree* right, const void* data)
+{
     bitree_init(merge, left->destroy);
     if (bitree_ins_left(merge, NULL, data) != 0) {
         bitree_destroy(merge);

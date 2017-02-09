@@ -2,14 +2,15 @@
 #include <string.h>
 #include "sort.h"
 
-static int merge(void *data, int esize, int i, int j, int k, int (*compare)(const void *key1, const void *key2)) {
-    char *a = data, *m;
+static int merge(void* data, int esize, int i, int j, int k, int (* compare)(const void* key1, const void* key2))
+{
+    char* a = data, * m;
 
     int ipos, jpos, mpos;
     ipos = i;
     jpos = j + 1;
     mpos = 0;
-    if ((m = (char *) malloc(esize * ((k - i) + 1))) == NULL) {
+    if ((m = (char*) malloc(esize * ((k - i) + 1))) == NULL) {
         return -1;
     }
     while (ipos <= j || jpos <= k) {
@@ -43,7 +44,8 @@ static int merge(void *data, int esize, int i, int j, int k, int (*compare)(cons
     return 0;
 }
 
-int mgsort(void *data, int size, int esize, int i, int k, int (*compare)(const void *key1, const void *key2)) {
+int mgsort(void* data, int size, int esize, int i, int k, int (* compare)(const void* key1, const void* key2))
+{
     int j;
     if (i < k) {
         j = (int) (((i + k - 1)) / 2);

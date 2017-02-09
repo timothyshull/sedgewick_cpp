@@ -5,11 +5,11 @@
 #include "list.h"
 
 typedef struct BfsVertex_ {
-    void *data;
+    void* data;
     VertexColor color;
     int hops;
 } BfsVertex;
 
-int bfs(Graph *graph, BfsVertex *start, List *hops);
+int bfs(Graph* graph, BfsVertex* start, List* hops);
 
 #endif

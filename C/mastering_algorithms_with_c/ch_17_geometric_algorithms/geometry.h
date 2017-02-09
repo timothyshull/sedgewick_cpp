@@ -26,8 +26,8 @@ typedef struct SPoint_ {
 
 int lint(Point p1, Point p2, Point p3, Point p4);
 
-int cvxhull(const List *P, List *polygon);
+int cvxhull(const List* P, List* polygon);
 
-void arclen(SPoint p1, SPoint p2, double *length);
+void arclen(SPoint p1, SPoint p2, double* length);
 
 #endif

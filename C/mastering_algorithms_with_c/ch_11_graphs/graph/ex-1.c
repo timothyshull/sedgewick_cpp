@@ -8,11 +8,12 @@
 
 #define            STRSIZ                2
 
-static void print_graph(const Graph *graph) {
-    Set *adjacent;
+static void print_graph(const Graph* graph)
+{
+    Set* adjacent;
 
-    ListElmt *element,
-            *member;
+    ListElmt* element,
+            * member;
 
     int i,
             j;
@@ -21,14 +22,14 @@ static void print_graph(const Graph *graph) {
     i = 0;
     element = list_head(&graph_adjlists(graph));
     while (i < list_size(&graph_adjlists(graph))) {
-        fprintf(stdout, "graph[%03d]=%s: ", i, (char *) ((AdjList *) list_data(
+        fprintf(stdout, "graph[%03d]=%s: ", i, (char*) ((AdjList*) list_data(
                 element))->vertex);
         j = 0;
-        adjacent = &((AdjList *) list_data(element))->adjacent;
+        adjacent = &((AdjList*) list_data(element))->adjacent;
         member = list_head(adjacent);
         while (j < set_size(adjacent)) {
             if (j > 0) { fprintf(stdout, ", "); }
-            fprintf(stdout, "%s", (char *) list_data(member));
+            fprintf(stdout, "%s", (char*) list_data(member));
             member = list_next(member);
             j++;
         }
@@ -39,26 +40,28 @@ static void print_graph(const Graph *graph) {
     return;
 }
 
-static int match_str(const void *str1, const void *str2) {
-    return !strcmp((const char *) str1, (const char *) str2);
+static int match_str(const void* str1, const void* str2)
+{
+    return !strcmp((const char*) str1, (const char*) str2);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Graph graph;
 
-    AdjList *adjlist;
+    AdjList* adjlist;
 
-    ListElmt *element;
+    ListElmt* element;
 
-    char *data,
+    char* data,
             data1[STRSIZ],
-            *data2;
+            * data2;
 
     int retval,
             size,
             i;
     graph_init(&graph, match_str, free);
-    if ((data = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data, "a");
@@ -66,7 +69,7 @@ int main(int argc, char **argv) {
     if (graph_ins_vertex(&graph, data) != 0) {
         return 1;
     }
-    if ((data = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data, "b");
@@ -74,7 +77,7 @@ int main(int argc, char **argv) {
     if (graph_ins_vertex(&graph, data) != 0) {
         return 1;
     }
-    if ((data = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data, "c");
@@ -82,7 +85,7 @@ int main(int argc, char **argv) {
     if (graph_ins_vertex(&graph, data) != 0) {
         return 1;
     }
-    if ((data = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data, "d");
@@ -90,7 +93,7 @@ int main(int argc, char **argv) {
     if (graph_ins_vertex(&graph, data) != 0) {
         return 1;
     }
-    if ((data = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data, "e");
@@ -99,7 +102,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "a");
@@ -109,7 +112,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "a");
@@ -119,7 +122,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "b");
@@ -129,7 +132,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "b");
@@ -139,7 +142,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "c");
@@ -149,7 +152,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "c");
@@ -159,7 +162,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "c");
@@ -169,7 +172,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "d");
@@ -179,7 +182,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "e");
@@ -189,7 +192,7 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "e");
@@ -199,14 +202,14 @@ int main(int argc, char **argv) {
         return 1;
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "a");
     strcpy(data2, "c");
     data = data2;
     fprintf(stdout, "Removing edge %s to %s\n", data1, data2);
-    if (graph_rem_edge(&graph, data1, (void **) &data) != 0) {
+    if (graph_rem_edge(&graph, data1, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -215,7 +218,7 @@ int main(int argc, char **argv) {
     strcpy(data2, "c");
     data = data2;
     fprintf(stdout, "Removing edge %s to %s\n", data1, data2);
-    if (graph_rem_edge(&graph, data1, (void **) &data) != 0) {
+    if (graph_rem_edge(&graph, data1, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -224,7 +227,7 @@ int main(int argc, char **argv) {
     strcpy(data2, "c");
     data = data2;
     fprintf(stdout, "Removing edge %s to %s\n", data1, data2);
-    if (graph_rem_edge(&graph, data1, (void **) &data) != 0) {
+    if (graph_rem_edge(&graph, data1, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -233,7 +236,7 @@ int main(int argc, char **argv) {
     strcpy(data2, "b");
     data = data2;
     fprintf(stdout, "Removing edge %s to %s\n", data1, data2);
-    if (graph_rem_edge(&graph, data1, (void **) &data) != 0) {
+    if (graph_rem_edge(&graph, data1, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -242,7 +245,7 @@ int main(int argc, char **argv) {
     strcpy(data2, "a");
     data = data2;
     fprintf(stdout, "Removing edge %s to %s\n", data1, data2);
-    if (graph_rem_edge(&graph, data1, (void **) &data) != 0) {
+    if (graph_rem_edge(&graph, data1, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -251,12 +254,12 @@ int main(int argc, char **argv) {
     strcpy(data1, "a");
     data = data1;
     fprintf(stdout, "Removing vertex %s\n", data1);
-    if (graph_rem_vertex(&graph, (void **) &data) != 0) {
+    if (graph_rem_vertex(&graph, (void**) &data) != 0) {
         return 1;
     }
     free(data);
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "f");
@@ -268,7 +271,7 @@ int main(int argc, char **argv) {
         free(data2);
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "c");
@@ -280,13 +283,13 @@ int main(int argc, char **argv) {
         free(data2);
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "f");
     strcpy(data2, "a");
     data = data2;
-    retval = graph_rem_edge(&graph, data1, (void **) &data);
+    retval = graph_rem_edge(&graph, data1, (void**) &data);
     fprintf(stdout, "Removing an invalid edge from %s to %s...Value=%d (-1=OK)\n",
             data1, data2, retval);
     if (retval == 0) {
@@ -294,13 +297,13 @@ int main(int argc, char **argv) {
     }
     free(data2);
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "c");
     strcpy(data2, "e");
     data = data2;
-    retval = graph_rem_edge(&graph, data1, (void **) &data);
+    retval = graph_rem_edge(&graph, data1, (void**) &data);
     fprintf(stdout, "Removing an invalid edge from %s to %s...Value=%d (-1=OK)\n",
             data1, data2, retval);
     if (retval == 0) {
@@ -308,7 +311,7 @@ int main(int argc, char **argv) {
     }
     free(data2);
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data2, "c");
@@ -319,7 +322,7 @@ int main(int argc, char **argv) {
         free(data2);
     }
     print_graph(&graph);
-    if ((data2 = (char *) malloc(STRSIZ)) == NULL) {
+    if ((data2 = (char*) malloc(STRSIZ)) == NULL) {
         return 1;
     }
     strcpy(data1, "b");
@@ -354,7 +357,7 @@ int main(int argc, char **argv) {
     while (i < size) {
         i++;
         if (i > 1) { fprintf(stdout, ", "); }
-        fprintf(stdout, "%s", (char *) list_data(element));
+        fprintf(stdout, "%s", (char*) list_data(element));
         element = list_next(element);
     }
     fprintf(stdout, "\n");

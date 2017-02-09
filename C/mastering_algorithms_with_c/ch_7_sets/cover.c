@@ -4,15 +4,16 @@
 #include "list.h"
 #include "set.h"
 
-int cover(Set *members, Set *subsets, Set *covering) {
+int cover(Set* members, Set* subsets, Set* covering)
+{
     Set intersection;
 
-    KSet *subset;
+    KSet* subset;
 
-    ListElmt *member,
-            *max_member;
+    ListElmt* member,
+            * max_member;
 
-    void *data;
+    void* data;
 
     int max_size;
     set_init(covering, subsets->match, NULL);
@@ -27,7 +28,7 @@ int cover(Set *members, Set *subsets, Set *covering) {
         max_size = 0;
         for (member = list_head(subsets); member != NULL; member =
                                                                   list_next(member)) {
-            if (set_intersection(&intersection, &((KSet *) list_data(member))->set,
+            if (set_intersection(&intersection, &((KSet*) list_data(member))->set,
                                  members) != 0) {
                 return -1;
             }
@@ -54,7 +55,7 @@ int cover(Set *members, Set *subsets, Set *covering) {
         *                                                                         *
         **************************************************************************/
 
-        subset = (KSet *) list_data(max_member);
+        subset = (KSet*) list_data(max_member);
         if (set_insert(covering, subset) != 0) {
             return -1;
         }
@@ -65,10 +66,10 @@ int cover(Set *members, Set *subsets, Set *covering) {
         *                                                                         *
         **************************************************************************/
 
-        for (member = list_head(&((KSet *) list_data(max_member))->set); member !=
-                                                                         NULL; member = list_next(member)) {
+        for (member = list_head(&((KSet*) list_data(max_member))->set); member !=
+                                                                        NULL; member = list_next(member)) {
             data = list_data(member);
-            if (set_remove(members, (void **) &data) == 0 && members->destroy != NULL) {
+            if (set_remove(members, (void**) &data) == 0 && members->destroy != NULL) {
                 members->destroy(data);
             }
         }
@@ -79,7 +80,7 @@ int cover(Set *members, Set *subsets, Set *covering) {
         *                                                                         *
         **************************************************************************/
 
-        if (set_remove(subsets, (void **) &subset) != 0) {
+        if (set_remove(subsets, (void**) &subset) != 0) {
             return -1;
         }
     }

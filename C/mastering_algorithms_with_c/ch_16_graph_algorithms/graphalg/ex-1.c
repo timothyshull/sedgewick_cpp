@@ -94,30 +94,31 @@ static CoordData TspTestV[TSPVCT] = {
         {"g", 6.0, 3.0}
 };
 
-static void print_graph_mst(const Graph *graph) {
-    Set *adjacent;
+static void print_graph_mst(const Graph* graph)
+{
+    Set* adjacent;
 
-    MstVertex *vertex;
+    MstVertex* vertex;
 
-    ListElmt *element,
-            *member;
+    ListElmt* element,
+            * member;
 
     int i,
             j;
     fprintf(stdout, "Vertices=%d, edges=%d\n", graph_vcount(graph), graph_ecount
-            (graph));
+    (graph));
     i = 0;
     element = list_head(&graph_adjlists(graph));
     while (i < list_size(&graph_adjlists(graph))) {
-        vertex = ((AdjList *) list_data(element))->vertex;
-        fprintf(stdout, "graph[%03d]=%s: ", i, (char *) vertex->data);
+        vertex = ((AdjList*) list_data(element))->vertex;
+        fprintf(stdout, "graph[%03d]=%s: ", i, (char*) vertex->data);
         j = 0;
-        adjacent = &((AdjList *) list_data(element))->adjacent;
+        adjacent = &((AdjList*) list_data(element))->adjacent;
         member = list_head(adjacent);
         while (j < set_size(adjacent)) {
             vertex = list_data(member);
             if (j > 0) { fprintf(stdout, ", "); }
-            fprintf(stdout, "%s(%4.1lf)", (char *) vertex->data, vertex->weight);
+            fprintf(stdout, "%s(%4.1lf)", (char*) vertex->data, vertex->weight);
             member = list_next(member);
             j++;
         }
@@ -128,35 +129,37 @@ static void print_graph_mst(const Graph *graph) {
     return;
 }
 
-static int match_mst(const void *mst1, const void *mst2) {
-    return !strcmp(((const MstVertex *) mst1)->data, ((const MstVertex *) mst2)->
+static int match_mst(const void* mst1, const void* mst2)
+{
+    return !strcmp(((const MstVertex*) mst1)->data, ((const MstVertex*) mst2)->
             data);
 }
 
-static void print_graph_pth(const Graph *graph) {
-    Set *adjacent;
+static void print_graph_pth(const Graph* graph)
+{
+    Set* adjacent;
 
-    PathVertex *vertex;
+    PathVertex* vertex;
 
-    ListElmt *element,
-            *member;
+    ListElmt* element,
+            * member;
 
     int i,
             j;
     fprintf(stdout, "Vertices=%d, edges=%d\n", graph_vcount(graph), graph_ecount
-            (graph));
+    (graph));
     i = 0;
     element = list_head(&graph_adjlists(graph));
     while (i < list_size(&graph_adjlists(graph))) {
-        vertex = ((AdjList *) list_data(element))->vertex;
-        fprintf(stdout, "graph[%03d]=%s: ", i, (char *) vertex->data);
+        vertex = ((AdjList*) list_data(element))->vertex;
+        fprintf(stdout, "graph[%03d]=%s: ", i, (char*) vertex->data);
         j = 0;
-        adjacent = &((AdjList *) list_data(element))->adjacent;
+        adjacent = &((AdjList*) list_data(element))->adjacent;
         member = list_head(adjacent);
         while (j < set_size(adjacent)) {
             vertex = list_data(member);
             if (j > 0) { fprintf(stdout, ", "); }
-            fprintf(stdout, "%s(%4.1lf)", (char *) vertex->data, vertex->weight);
+            fprintf(stdout, "%s(%4.1lf)", (char*) vertex->data, vertex->weight);
             member = list_next(member);
             j++;
         }
@@ -167,15 +170,17 @@ static void print_graph_pth(const Graph *graph) {
     return;
 }
 
-static int match_pth(const void *pth1, const void *pth2) {
-    return !strcmp(((const PathVertex *) pth1)->data, ((const PathVertex *) pth2)->
+static int match_pth(const void* pth1, const void* pth2)
+{
+    return !strcmp(((const PathVertex*) pth1)->data, ((const PathVertex*) pth2)->
             data);
 }
 
-static void print_list_tsp(List *vertices) {
-    TspVertex *vertex;
+static void print_list_tsp(List* vertices)
+{
+    TspVertex* vertex;
 
-    ListElmt *element;
+    ListElmt* element;
 
     int i;
     fprintf(stdout, "Vertices=%d\n", list_size(vertices));
@@ -183,7 +188,7 @@ static void print_list_tsp(List *vertices) {
     element = list_head(vertices);
     while (1) {
         vertex = list_data(element);
-        fprintf(stdout, "vertices[%03d]=%s: (%.1lf, %.1lf)\n", i, (char *) vertex->
+        fprintf(stdout, "vertices[%03d]=%s: (%.1lf, %.1lf)\n", i, (char*) vertex->
                 data, vertex->x, vertex->y);
         i++;
         if (list_is_tail(element)) {
@@ -195,33 +200,35 @@ static void print_list_tsp(List *vertices) {
     return;
 }
 
-static int match_tsp(const void *tsp1, const void *tsp2) {
-    return !strcmp(((const TspVertex *) tsp1)->data, ((const TspVertex *) tsp2)->
+static int match_tsp(const void* tsp1, const void* tsp2)
+{
+    return !strcmp(((const TspVertex*) tsp1)->data, ((const TspVertex*) tsp2)->
             data);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Graph graph;
 
-    MstVertex *mst_start,
-            *mst_vertex,
+    MstVertex* mst_start,
+            * mst_vertex,
             mst_vertex1,
-            *mst_vertex2;
+            * mst_vertex2;
 
-    PathVertex *pth_start,
-            *pth_vertex,
+    PathVertex* pth_start,
+            * pth_vertex,
             pth_vertex1,
-            *pth_vertex2;
+            * pth_vertex2;
 
-    TspVertex *tsp_start,
-            *tsp_vertex;
+    TspVertex* tsp_start,
+            * tsp_vertex;
 
     List span,
             paths,
             vertices,
             tour;
 
-    ListElmt *element;
+    ListElmt* element;
 
     double distance,
             total,
@@ -232,7 +239,7 @@ int main(int argc, char **argv) {
     graph_init(&graph, match_mst, free);
     fprintf(stdout, "Computing a minimum spanning tree\n");
     for (i = 0; i < MSTVCT; i++) {
-        if ((mst_vertex = (MstVertex *) malloc(sizeof(MstVertex))) == NULL) {
+        if ((mst_vertex = (MstVertex*) malloc(sizeof(MstVertex))) == NULL) {
             return 1;
         }
         if (i == 0) {
@@ -244,7 +251,7 @@ int main(int argc, char **argv) {
         }
     }
     for (i = 0; i < MSTECT; i++) {
-        if ((mst_vertex2 = (MstVertex *) malloc(sizeof(MstVertex))) == NULL) {
+        if ((mst_vertex2 = (MstVertex*) malloc(sizeof(MstVertex))) == NULL) {
             return 1;
         }
         mst_vertex1.data = MstTestE[i].vertex1;
@@ -261,15 +268,15 @@ int main(int argc, char **argv) {
     for (element = list_head(&span); element != NULL; element =
                                                               list_next(element)) {
         mst_vertex = list_data(element);
-        fprintf(stdout, "vertex=%s, parent=%s\n", (char *) mst_vertex->data,
-                mst_vertex->parent != NULL ? (char *) mst_vertex->parent->data : "*");
+        fprintf(stdout, "vertex=%s, parent=%s\n", (char*) mst_vertex->data,
+                mst_vertex->parent != NULL ? (char*) mst_vertex->parent->data : "*");
     }
     list_destroy(&span);
     graph_destroy(&graph);
     graph_init(&graph, match_pth, free);
     fprintf(stdout, "Computing shortest paths\n");
     for (i = 0; i < PTHVCT; i++) {
-        if ((pth_vertex = (PathVertex *) malloc(sizeof(PathVertex))) == NULL) {
+        if ((pth_vertex = (PathVertex*) malloc(sizeof(PathVertex))) == NULL) {
             return 1;
         }
         if (i == 1) {
@@ -281,7 +288,7 @@ int main(int argc, char **argv) {
         }
     }
     for (i = 0; i < PTHECT; i++) {
-        if ((pth_vertex2 = (PathVertex *) malloc(sizeof(PathVertex))) == NULL) {
+        if ((pth_vertex2 = (PathVertex*) malloc(sizeof(PathVertex))) == NULL) {
             return 1;
         }
         pth_vertex1.data = PthTestE[i].vertex1;
@@ -298,8 +305,8 @@ int main(int argc, char **argv) {
     for (element = list_head(&paths); element != NULL; element =
                                                                list_next(element)) {
         pth_vertex = list_data(element);
-        fprintf(stdout, "vertex=%s, parent=%s, d=%.1lf\n", (char *) pth_vertex->
-                data, pth_vertex->parent != NULL ? (char *) pth_vertex->parent->data :
+        fprintf(stdout, "vertex=%s, parent=%s, d=%.1lf\n", (char*) pth_vertex->
+                data, pth_vertex->parent != NULL ? (char*) pth_vertex->parent->data :
                       "*", pth_vertex->d);
     }
     list_destroy(&paths);
@@ -307,7 +314,7 @@ int main(int argc, char **argv) {
     list_init(&vertices, free);
     fprintf(stdout, "Solving a traveling-salesman problem\n");
     for (i = 0; i < TSPVCT; i++) {
-        if ((tsp_vertex = (TspVertex *) malloc(sizeof(TspVertex))) == NULL) {
+        if ((tsp_vertex = (TspVertex*) malloc(sizeof(TspVertex))) == NULL) {
             return 1;
         }
         if (i == 0) {
@@ -335,10 +342,10 @@ int main(int argc, char **argv) {
         x = tsp_vertex->x;
         y = tsp_vertex->y;
         if (!list_is_head(&tour, element)) {
-            fprintf(stdout, "vertex=%s, distance=%.2lf\n", (char *) tsp_vertex->
+            fprintf(stdout, "vertex=%s, distance=%.2lf\n", (char*) tsp_vertex->
                     data, distance);
         } else {
-            fprintf(stdout, "vertex=%s\n", (char *) tsp_vertex->data);
+            fprintf(stdout, "vertex=%s\n", (char*) tsp_vertex->data);
         }
     }
     fprintf(stdout, "total=%.2lf\n", total);

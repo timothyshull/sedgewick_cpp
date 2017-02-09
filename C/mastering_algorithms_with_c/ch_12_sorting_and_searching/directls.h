@@ -7,6 +7,6 @@ typedef struct Directory_ {
     char name[MAXNAMLEN + 1];
 } Directory;
 
-int directls(const char *path, Directory **dir);
+int directls(const char* path, Directory** dir);
 
 #endif

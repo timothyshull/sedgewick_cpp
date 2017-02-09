@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include "page.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     CList list;
-    CListElmt *current;
+    CListElmt* current;
 
-    Page *p;
+    Page* p;
 
     int i;
     clist_init(&list, free);
     current = NULL;
     for (i = 0; i < 10; i++) {
-        if ((p = (Page *) malloc(sizeof(Page))) == NULL) {
+        if ((p = (Page*) malloc(sizeof(Page))) == NULL) {
             return 1;
         }
         if (i < 5) {

@@ -101,7 +101,8 @@ static const int DesFinal[64] = {
 
 typedef enum DesEorD_ { encipher, decipher } DesEorD;
 
-static void permute(unsigned char *bits, const int *mapping, int n) {
+static void permute(unsigned char* bits, const int* mapping, int n)
+{
     unsigned char temp[8];
 
     int i;
@@ -113,8 +114,9 @@ static void permute(unsigned char *bits, const int *mapping, int n) {
     return;
 }
 
-static int des_main(const unsigned char *source, unsigned char *target, const
-unsigned char *key, DesEorD direction) {
+static int des_main(const unsigned char* source, unsigned char* target, const
+unsigned char* key, DesEorD direction)
+{
     static unsigned char subkeys[16][7];
 
     unsigned char temp[8],
@@ -324,14 +326,16 @@ unsigned char *key, DesEorD direction) {
     return 0;
 }
 
-void des_encipher(const unsigned char *plaintext, unsigned char *ciphertext,
-                  const unsigned char *key) {
+void des_encipher(const unsigned char* plaintext, unsigned char* ciphertext,
+                  const unsigned char* key)
+{
     des_main(plaintext, ciphertext, key, encipher);
     return;
 }
 
-void des_decipher(const unsigned char *ciphertext, unsigned char *plaintext,
-                  const unsigned char *key) {
+void des_decipher(const unsigned char* ciphertext, unsigned char* plaintext,
+                  const unsigned char* key)
+{
     des_main(ciphertext, plaintext, key, decipher);
     return;
 }

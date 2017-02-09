@@ -2,6 +2,6 @@
 #define HASHPJW_H
 #define PRIME_TBLSIZ 1699
 
-int hashpjw(const void *key);
+int hashpjw(const void* key);
 
 #endif

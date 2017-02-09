@@ -3,7 +3,8 @@
 #include <string.h>
 #include "dlist.h"
 
-void dlist_init(DList *list, void (*destroy)(void *data)) {
+void dlist_init(DList* list, void (* destroy)(void* data))
+{
     list->size = 0;
     list->destroy = destroy;
     list->head = NULL;
@@ -11,10 +12,11 @@ void dlist_init(DList *list, void (*destroy)(void *data)) {
     return;
 }
 
-void dlist_destroy(DList *list) {
-    void *data;
+void dlist_destroy(DList* list)
+{
+    void* data;
     while (dlist_size(list) > 0) {
-        if (dlist_remove(list, dlist_tail(list), (void **) &data) == 0 && list->
+        if (dlist_remove(list, dlist_tail(list), (void**) &data) == 0 && list->
                 destroy != NULL) {
 
             /***********************************************************************
@@ -30,15 +32,16 @@ void dlist_destroy(DList *list) {
     return;
 }
 
-int dlist_ins_next(DList *list, DListElmt *element, const void *data) {
-    DListElmt *new_element;
+int dlist_ins_next(DList* list, DListElmt* element, const void* data)
+{
+    DListElmt* new_element;
     if (element == NULL && dlist_size(list) != 0) {
         return -1;
     }
-    if ((new_element = (DListElmt *) malloc(sizeof(DListElmt))) == NULL) {
+    if ((new_element = (DListElmt*) malloc(sizeof(DListElmt))) == NULL) {
         return -1;
     }
-    new_element->data = (void *) data;
+    new_element->data = (void*) data;
     if (dlist_size(list) == 0) {
 
         /**************************************************************************
@@ -72,15 +75,16 @@ int dlist_ins_next(DList *list, DListElmt *element, const void *data) {
     return 0;
 }
 
-int dlist_ins_prev(DList *list, DListElmt *element, const void *data) {
-    DListElmt *new_element;
+int dlist_ins_prev(DList* list, DListElmt* element, const void* data)
+{
+    DListElmt* new_element;
     if (element == NULL && dlist_size(list) != 0) {
         return -1;
     }
-    if ((new_element = (DListElmt *) malloc(sizeof(DListElmt))) == NULL) {
+    if ((new_element = (DListElmt*) malloc(sizeof(DListElmt))) == NULL) {
         return -1;
     }
-    new_element->data = (void *) data;
+    new_element->data = (void*) data;
     if (dlist_size(list) == 0) {
 
         /**************************************************************************
@@ -114,7 +118,8 @@ int dlist_ins_prev(DList *list, DListElmt *element, const void *data) {
     return 0;
 }
 
-int dlist_remove(DList *list, DListElmt *element, void **data) {
+int dlist_remove(DList* list, DListElmt* element, void** data)
+{
     if (element == NULL || dlist_size(list) == 0) {
         return -1;
     }

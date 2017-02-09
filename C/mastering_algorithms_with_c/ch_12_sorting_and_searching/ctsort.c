@@ -2,13 +2,14 @@
 #include <string.h>
 #include "sort.h"
 
-int ctsort(int *data, int size, int k) {
-    int *counts, *temp;
+int ctsort(int* data, int size, int k)
+{
+    int* counts, * temp;
     int i, j;
-    if ((counts = (int *) malloc(k * sizeof(int))) == NULL) {
+    if ((counts = (int*) malloc(k * sizeof(int))) == NULL) {
         return -1;
     }
-    if ((temp = (int *) malloc(size * sizeof(int))) == NULL) {
+    if ((temp = (int*) malloc(size * sizeof(int))) == NULL) {
         return -1;
     }
     for (i = 0; i < k; i++) {

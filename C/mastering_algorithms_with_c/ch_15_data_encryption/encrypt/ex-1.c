@@ -2,7 +2,8 @@
 #include <string.h>
 #include "encrypt.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     unsigned char destmp[8],
             desptx[8],
             desctx[8],

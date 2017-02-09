@@ -5,27 +5,27 @@
 #include "list.h"
 
 typedef struct MstVertex_ {
-    void *data;
+    void* data;
     double weight;
 
     VertexColor color;
     double key;
 
-    struct MstVertex_ *parent;
+    struct MstVertex_* parent;
 } MstVertex;
 
 typedef struct PathVertex_ {
-    void *data;
+    void* data;
     double weight;
 
     VertexColor color;
     double d;
 
-    struct PathVertex_ *parent;
+    struct PathVertex_* parent;
 } PathVertex;
 
 typedef struct TspVertex_ {
-    void *data;
+    void* data;
 
     double x,
             y;
@@ -33,13 +33,13 @@ typedef struct TspVertex_ {
     VertexColor color;
 } TspVertex;
 
-int mst(Graph *graph, const MstVertex *start, List *span, int (*match)(const
-                                                                       void *key1, const void *key2));
+int mst(Graph* graph, const MstVertex* start, List* span, int (* match)(const
+                                                                        void* key1, const void* key2));
 
-int shortest(Graph *graph, const PathVertex *start, List *paths, int (*match)
-        (const void *key1, const void *key2));
+int shortest(Graph* graph, const PathVertex* start, List* paths, int (* match)
+        (const void* key1, const void* key2));
 
-int tsp(List *vertices, const TspVertex *start, List *tour, int (*match)
-        (const void *key1, const void *key2));
+int tsp(List* vertices, const TspVertex* start, List* tour, int (* match)
+        (const void* key1, const void* key2));
 
 #endif

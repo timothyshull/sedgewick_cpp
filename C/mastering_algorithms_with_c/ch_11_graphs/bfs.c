@@ -4,17 +4,18 @@
 #include "list.h"
 #include "queue.h"
 
-int bfs(Graph *graph, BfsVertex *start, List *hops) {
+int bfs(Graph* graph, BfsVertex* start, List* hops)
+{
     Queue queue;
 
-    AdjList *adjlist, *clr_adjlist;
+    AdjList* adjlist, * clr_adjlist;
 
-    BfsVertex *clr_vertex, *adj_vertex;
+    BfsVertex* clr_vertex, * adj_vertex;
 
-    ListElmt *element, *member;
+    ListElmt* element, * member;
     for (element = list_head(&graph_adjlists(graph)); element != NULL; element =
                                                                                list_next(element)) {
-        clr_vertex = ((AdjList *) list_data(element))->vertex;
+        clr_vertex = ((AdjList*) list_data(element))->vertex;
         if (graph->match(clr_vertex, start)) {
             clr_vertex->color = gray;
             clr_vertex->hops = 0;
@@ -44,15 +45,15 @@ int bfs(Graph *graph, BfsVertex *start, List *hops) {
             clr_vertex = clr_adjlist->vertex;
             if (clr_vertex->color == white) {
                 clr_vertex->color = gray;
-                clr_vertex->hops = ((BfsVertex *) adjlist->vertex)->hops + 1;
+                clr_vertex->hops = ((BfsVertex*) adjlist->vertex)->hops + 1;
                 if (queue_enqueue(&queue, clr_adjlist) != 0) {
                     queue_destroy(&queue);
                     return -1;
                 }
             }
         }
-        if (queue_dequeue(&queue, (void **) &adjlist) == 0) {
-            ((BfsVertex *) adjlist->vertex)->color = black;
+        if (queue_dequeue(&queue, (void**) &adjlist) == 0) {
+            ((BfsVertex*) adjlist->vertex)->color = black;
         } else {
             queue_destroy(&queue);
             return -1;
@@ -62,7 +63,7 @@ int bfs(Graph *graph, BfsVertex *start, List *hops) {
     list_init(hops, NULL);
     for (element = list_head(&graph_adjlists(graph)); element != NULL; element =
                                                                                list_next(element)) {
-        clr_vertex = ((AdjList *) list_data(element))->vertex;
+        clr_vertex = ((AdjList*) list_data(element))->vertex;
         if (clr_vertex->hops != -1) {
             if (list_ins_next(hops, list_tail(hops), clr_vertex) != 0) {
                 list_destroy(hops);

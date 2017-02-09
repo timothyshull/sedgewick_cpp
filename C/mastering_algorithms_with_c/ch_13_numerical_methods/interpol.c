@@ -3,19 +3,20 @@
 #include <string.h>
 #include "nummeths.h"
 
-int interpol(const double *x, const double *fx, int n, double *z, double *pz,
-             int m) {
+int interpol(const double* x, const double* fx, int n, double* z, double* pz,
+             int m)
+{
     double term,
-            *table,
-            *coeff;
+            * table,
+            * coeff;
 
     int i,
             j,
             k;
-    if ((table = (double *) malloc(sizeof(double) * n)) == NULL) {
+    if ((table = (double*) malloc(sizeof(double) * n)) == NULL) {
         return -1;
     }
-    if ((coeff = (double *) malloc(sizeof(double) * n)) == NULL) {
+    if ((coeff = (double*) malloc(sizeof(double) * n)) == NULL) {
         free(table);
         return -1;
     }

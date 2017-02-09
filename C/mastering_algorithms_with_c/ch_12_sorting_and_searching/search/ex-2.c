@@ -5,9 +5,10 @@
 #include "sort.h"
 #include "spell.h"
 
-static int compare_str(const void *key1, const void *key2) {
+static int compare_str(const void* key1, const void* key2)
+{
     int retval;
-    if ((retval = strcmp((const char *) key1, (const char *) key2)) > 0) {
+    if ((retval = strcmp((const char*) key1, (const char*) key2)) > 0) {
         return 1;
     } else if (retval < 0) {
         return -1;
@@ -16,7 +17,8 @@ static int compare_str(const void *key1, const void *key2) {
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     char dictionary[12][SPELL_SIZE],
             lookup[SPELL_SIZE],
             target[SPELL_SIZE];

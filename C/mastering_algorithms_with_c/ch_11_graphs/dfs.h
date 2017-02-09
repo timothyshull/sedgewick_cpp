@@ -5,10 +5,10 @@
 #include "list.h"
 
 typedef struct DfsVertex_ {
-    void *data;
+    void* data;
     VertexColor color;
 } DfsVertex;
 
-int dfs(Graph *graph, List *ordered);
+int dfs(Graph* graph, List* ordered);
 
 #endif

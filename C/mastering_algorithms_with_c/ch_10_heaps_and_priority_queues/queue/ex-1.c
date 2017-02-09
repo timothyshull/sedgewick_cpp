@@ -3,10 +3,11 @@
 #include "list.h"
 #include "queue.h"
 
-static void print_queue(const Queue *queue) {
-    ListElmt *element;
+static void print_queue(const Queue* queue)
+{
+    ListElmt* element;
 
-    int *data,
+    int* data,
             size,
             i;
     fprintf(stdout, "Queue size is %d\n", size = queue_size(queue));
@@ -21,15 +22,16 @@ static void print_queue(const Queue *queue) {
     return;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Queue queue;
 
-    int *data,
+    int* data,
             i;
     queue_init(&queue, free);
     fprintf(stdout, "Enqueuing 10 elements\n");
     for (i = 0; i < 10; i++) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -40,7 +42,7 @@ int main(int argc, char **argv) {
     print_queue(&queue);
     fprintf(stdout, "Dequeuing 5 elements\n");
     for (i = 0; i < 5; i++) {
-        if (queue_dequeue(&queue, (void **) &data) == 0) {
+        if (queue_dequeue(&queue, (void**) &data) == 0) {
             free(data);
         } else {
             return 1;
@@ -48,14 +50,14 @@ int main(int argc, char **argv) {
     }
     print_queue(&queue);
     fprintf(stdout, "Enqueuing 100 and 200\n");
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 100;
     if (queue_enqueue(&queue, data) != 0) {
         return 1;
     }
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 200;
@@ -71,7 +73,7 @@ int main(int argc, char **argv) {
     print_queue(&queue);
     fprintf(stdout, "Dequeuing all elements\n");
     while (queue_size(&queue) > 0) {
-        if (queue_dequeue(&queue, (void **) &data) == 0) {
+        if (queue_dequeue(&queue, (void**) &data) == 0) {
             free(data);
         }
     }

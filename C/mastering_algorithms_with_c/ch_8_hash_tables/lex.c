@@ -5,13 +5,14 @@
 #include "lex.h"
 #include "symbol.h"
 
-Token lex(const char *istream, CHTbl *symtbl) {
+Token lex(const char* istream, CHTbl* symtbl)
+{
     Token token;
-    Symbol *symbol;
+    Symbol* symbol;
 
     size_t length;
     int retval, i;
-    if ((symbol = (Symbol *) malloc(sizeof(Symbol))) == NULL) {
+    if ((symbol = (Symbol*) malloc(sizeof(Symbol))) == NULL) {
         return error;
     }
     if ((symbol->lexeme = next_token(istream)) == NULL) {

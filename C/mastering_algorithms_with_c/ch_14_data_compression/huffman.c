@@ -8,11 +8,12 @@
 #include "compress.h"
 #include "pqueue.h"
 
-static int compare_freq(const void *tree1, const void *tree2) {
-    HuffNode *root1,
-            *root2;
-    root1 = (HuffNode *) bitree_data(bitree_root((const BiTree *) tree1));
-    root2 = (HuffNode *) bitree_data(bitree_root((const BiTree *) tree2));
+static int compare_freq(const void* tree1, const void* tree2)
+{
+    HuffNode* root1,
+            * root2;
+    root1 = (HuffNode*) bitree_data(bitree_root((const BiTree*) tree1));
+    root2 = (HuffNode*) bitree_data(bitree_root((const BiTree*) tree2));
     if (root1->freq < root2->freq) {
         return 1;
     } else if (root1->freq > root2->freq) {
@@ -22,21 +23,23 @@ static int compare_freq(const void *tree1, const void *tree2) {
     }
 }
 
-static void destroy_tree(void *tree) {
+static void destroy_tree(void* tree)
+{
     bitree_destroy(tree);
     free(tree);
     return;
 }
 
-static int build_tree(int *freqs, BiTree **tree) {
-    BiTree *init,
-            *merge,
-            *left,
-            *right;
+static int build_tree(int* freqs, BiTree** tree)
+{
+    BiTree* init,
+            * merge,
+            * left,
+            * right;
 
     PQueue pqueue;
 
-    HuffNode *data;
+    HuffNode* data;
 
     int size,
             c;
@@ -51,12 +54,12 @@ static int build_tree(int *freqs, BiTree **tree) {
             *                                                                      *
             ***********************************************************************/
 
-            if ((init = (BiTree *) malloc(sizeof(BiTree))) == NULL) {
+            if ((init = (BiTree*) malloc(sizeof(BiTree))) == NULL) {
                 pqueue_destroy(&pqueue);
                 return -1;
             }
             bitree_init(init, free);
-            if ((data = (HuffNode *) malloc(sizeof(HuffNode))) == NULL) {
+            if ((data = (HuffNode*) malloc(sizeof(HuffNode))) == NULL) {
                 pqueue_destroy(&pqueue);
                 return -1;
             }
@@ -93,7 +96,7 @@ static int build_tree(int *freqs, BiTree **tree) {
         *                                                                         *
         **************************************************************************/
 
-        if ((merge = (BiTree *) malloc(sizeof(BiTree))) == NULL) {
+        if ((merge = (BiTree*) malloc(sizeof(BiTree))) == NULL) {
             pqueue_destroy(&pqueue);
             return -1;
         }
@@ -104,12 +107,12 @@ static int build_tree(int *freqs, BiTree **tree) {
         *                                                                         *
         **************************************************************************/
 
-        if (pqueue_extract(&pqueue, (void **) &left) != 0) {
+        if (pqueue_extract(&pqueue, (void**) &left) != 0) {
             pqueue_destroy(&pqueue);
             free(merge);
             return -1;
         }
-        if (pqueue_extract(&pqueue, (void **) &right) != 0) {
+        if (pqueue_extract(&pqueue, (void**) &right) != 0) {
             pqueue_destroy(&pqueue);
             free(merge);
             return -1;
@@ -121,7 +124,7 @@ static int build_tree(int *freqs, BiTree **tree) {
         *                                                                         *
         **************************************************************************/
 
-        if ((data = (HuffNode *) malloc(sizeof(HuffNode))) == NULL) {
+        if ((data = (HuffNode*) malloc(sizeof(HuffNode))) == NULL) {
             pqueue_destroy(&pqueue);
             free(merge);
             return -1;
@@ -134,8 +137,8 @@ static int build_tree(int *freqs, BiTree **tree) {
         *                                                                         *
         **************************************************************************/
 
-        data->freq = ((HuffNode *) bitree_data(bitree_root(left)))->freq +
-                     ((HuffNode *) bitree_data(bitree_root(right)))->freq;
+        data->freq = ((HuffNode*) bitree_data(bitree_root(left)))->freq +
+                     ((HuffNode*) bitree_data(bitree_root(right)))->freq;
 
         /**************************************************************************
         *                                                                         *
@@ -164,7 +167,7 @@ static int build_tree(int *freqs, BiTree **tree) {
         free(left);
         free(right);
     }
-    if (pqueue_extract(&pqueue, (void **) tree) != 0) {
+    if (pqueue_extract(&pqueue, (void**) tree) != 0) {
         pqueue_destroy(&pqueue);
         return -1;
     } else {
@@ -173,8 +176,9 @@ static int build_tree(int *freqs, BiTree **tree) {
     return 0;
 }
 
-static void build_table(BiTreeNode *node, unsigned short code, unsigned char
-size, HuffCode *table) {
+static void build_table(BiTreeNode* node, unsigned short code, unsigned char
+size, HuffCode* table)
+{
     if (!bitree_is_eob(node)) {
         if (!bitree_is_eob(bitree_left(node))) {
 
@@ -212,17 +216,18 @@ size, HuffCode *table) {
             *                                                                      *
             ***********************************************************************/
 
-            table[((HuffNode *) bitree_data(node))->symbol].used = 1;
-            table[((HuffNode *) bitree_data(node))->symbol].code = code;
-            table[((HuffNode *) bitree_data(node))->symbol].size = size;
+            table[((HuffNode*) bitree_data(node))->symbol].used = 1;
+            table[((HuffNode*) bitree_data(node))->symbol].code = code;
+            table[((HuffNode*) bitree_data(node))->symbol].size = size;
         }
     }
     return;
 }
 
-int huffman_compress(const unsigned char *original, unsigned char
-**compressed, int size) {
-    BiTree *tree;
+int huffman_compress(const unsigned char* original, unsigned char
+** compressed, int size)
+{
+    BiTree* tree;
     HuffCode table[UCHAR_MAX + 1];
 
     int freqs[UCHAR_MAX + 1],
@@ -235,8 +240,8 @@ int huffman_compress(const unsigned char *original, unsigned char
             c,
             i;
 
-    unsigned char *comp,
-            *temp;
+    unsigned char* comp,
+            * temp;
     *compressed = NULL;
     for (c = 0; c <= UCHAR_MAX; c++) {
         freqs[c] = 0;
@@ -271,7 +276,7 @@ int huffman_compress(const unsigned char *original, unsigned char
     bitree_destroy(tree);
     free(tree);
     hsize = sizeof(int) + (UCHAR_MAX + 1);
-    if ((comp = (unsigned char *) malloc(hsize)) == NULL) {
+    if ((comp = (unsigned char*) malloc(hsize)) == NULL) {
         return -1;
     }
     memcpy(comp, &size, sizeof(int));
@@ -305,14 +310,14 @@ int huffman_compress(const unsigned char *original, unsigned char
                 *                                                                   *
                 ********************************************************************/
 
-                if ((temp = (unsigned char *) realloc(comp, (opos / 8) + 1)) == NULL) {
+                if ((temp = (unsigned char*) realloc(comp, (opos / 8) + 1)) == NULL) {
                     free(comp);
                     return -1;
                 }
                 comp = temp;
             }
             cpos = (sizeof(short) * 8) - table[c].size + i;
-            bit_set(comp, opos, bit_get((unsigned char *) &table[c].code, cpos));
+            bit_set(comp, opos, bit_get((unsigned char*) &table[c].code, cpos));
             opos++;
         }
         ipos++;
@@ -321,10 +326,11 @@ int huffman_compress(const unsigned char *original, unsigned char
     return ((opos - 1) / 8) + 1;
 }
 
-int huffman_uncompress(const unsigned char *compressed, unsigned char
-**original) {
-    BiTree *tree;
-    BiTreeNode *node;
+int huffman_uncompress(const unsigned char* compressed, unsigned char
+** original)
+{
+    BiTree* tree;
+    BiTreeNode* node;
 
     int freqs[UCHAR_MAX + 1],
             hsize,
@@ -334,8 +340,8 @@ int huffman_uncompress(const unsigned char *compressed, unsigned char
             state,
             c;
 
-    unsigned char *orig,
-            *temp;
+    unsigned char* orig,
+            * temp;
     *original = orig = NULL;
     hsize = sizeof(int) + (UCHAR_MAX + 1);
     memcpy(&size, compressed, sizeof(int));
@@ -398,7 +404,7 @@ int huffman_uncompress(const unsigned char *compressed, unsigned char
             ***********************************************************************/
 
             if (opos > 0) {
-                if ((temp = (unsigned char *) realloc(orig, opos + 1)) == NULL) {
+                if ((temp = (unsigned char*) realloc(orig, opos + 1)) == NULL) {
                     bitree_destroy(tree);
                     free(tree);
                     free(orig);
@@ -406,13 +412,13 @@ int huffman_uncompress(const unsigned char *compressed, unsigned char
                 }
                 orig = temp;
             } else {
-                if ((orig = (unsigned char *) malloc(1)) == NULL) {
+                if ((orig = (unsigned char*) malloc(1)) == NULL) {
                     bitree_destroy(tree);
                     free(tree);
                     return -1;
                 }
             }
-            orig[opos] = ((HuffNode *) bitree_data(node))->symbol;
+            orig[opos] = ((HuffNode*) bitree_data(node))->symbol;
             opos++;
 
             /***********************************************************************

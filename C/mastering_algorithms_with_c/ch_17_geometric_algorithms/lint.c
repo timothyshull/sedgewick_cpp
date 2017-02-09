@@ -1,6 +1,7 @@
 #include "geometry.h"
 
-int lint(Point p1, Point p2, Point p3, Point p4) {
+int lint(Point p1, Point p2, Point p3, Point p4)
+{
     double z1,
             z2,
             z3,

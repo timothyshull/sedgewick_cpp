@@ -5,8 +5,9 @@
 #include "bit.h"
 #include "compress.h"
 
-static int compare_win(const unsigned char *window, const unsigned char
-*buffer, int *offset, unsigned char *next) {
+static int compare_win(const unsigned char* window, const unsigned char
+* buffer, int* offset, unsigned char* next)
+{
     int match,
             longest,
             i,
@@ -50,14 +51,15 @@ static int compare_win(const unsigned char *window, const unsigned char
     return longest;
 }
 
-int lz77_compress(const unsigned char *original, unsigned char **compressed,
-                  int size) {
+int lz77_compress(const unsigned char* original, unsigned char** compressed,
+                  int size)
+{
     unsigned long token;
 
     unsigned char window[LZ77_WINDOW_SIZE],
             buffer[LZ77_BUFFER_SIZE],
-            *comp,
-            *temp,
+            * comp,
+            * temp,
             next;
 
     int offset,
@@ -71,7 +73,7 @@ int lz77_compress(const unsigned char *original, unsigned char **compressed,
             i;
     *compressed = NULL;
     hsize = sizeof(int);
-    if ((comp = (unsigned char *) malloc(hsize)) == NULL) {
+    if ((comp = (unsigned char*) malloc(hsize)) == NULL) {
         return -1;
     }
     memcpy(comp, &size, sizeof(int));
@@ -178,14 +180,14 @@ int lz77_compress(const unsigned char *original, unsigned char **compressed,
                 *                                                                   *
                 ********************************************************************/
 
-                if ((temp = (unsigned char *) realloc(comp, (opos / 8) + 1)) == NULL) {
+                if ((temp = (unsigned char*) realloc(comp, (opos / 8) + 1)) == NULL) {
                     free(comp);
                     return -1;
                 }
                 comp = temp;
             }
             tpos = (sizeof(unsigned long) * 8) - tbits + i;
-            bit_set(comp, opos, bit_get((unsigned char *) &token, tpos));
+            bit_set(comp, opos, bit_get((unsigned char*) &token, tpos));
             opos++;
         }
 
@@ -230,12 +232,13 @@ int lz77_compress(const unsigned char *original, unsigned char **compressed,
     return ((opos - 1) / 8) + 1;
 }
 
-int lz77_uncompress(const unsigned char *compressed, unsigned char
-**original) {
+int lz77_uncompress(const unsigned char* compressed, unsigned char
+** original)
+{
     unsigned char window[LZ77_WINDOW_SIZE],
             buffer[LZ77_BUFFER_SIZE],
-            *orig,
-            *temp,
+            * orig,
+            * temp,
             next;
 
     int offset,
@@ -277,19 +280,19 @@ int lz77_uncompress(const unsigned char *compressed, unsigned char
             memset(&offset, 0, sizeof(int));
             for (i = 0; i < LZ77_WINOFF_BITS; i++) {
                 tpos = (sizeof(int) * 8) - LZ77_WINOFF_BITS + i;
-                bit_set((unsigned char *) &offset, tpos, bit_get(compressed, ipos));
+                bit_set((unsigned char*) &offset, tpos, bit_get(compressed, ipos));
                 ipos++;
             }
             memset(&length, 0, sizeof(int));
             for (i = 0; i < LZ77_BUFLEN_BITS; i++) {
                 tpos = (sizeof(int) * 8) - LZ77_BUFLEN_BITS + i;
-                bit_set((unsigned char *) &length, tpos, bit_get(compressed, ipos));
+                bit_set((unsigned char*) &length, tpos, bit_get(compressed, ipos));
                 ipos++;
             }
             next = 0x00;
             for (i = 0; i < LZ77_NEXT_BITS; i++) {
                 tpos = (sizeof(unsigned char) * 8) - LZ77_NEXT_BITS + i;
-                bit_set((unsigned char *) &next, tpos, bit_get(compressed, ipos));
+                bit_set((unsigned char*) &next, tpos, bit_get(compressed, ipos));
                 ipos++;
             }
 
@@ -311,13 +314,13 @@ int lz77_uncompress(const unsigned char *compressed, unsigned char
 
             i = 0;
             if (opos > 0) {
-                if ((temp = (unsigned char *) realloc(orig, opos + length + 1)) == NULL) {
+                if ((temp = (unsigned char*) realloc(orig, opos + length + 1)) == NULL) {
                     free(orig);
                     return -1;
                 }
                 orig = temp;
             } else {
-                if ((orig = (unsigned char *) malloc(length + 1)) == NULL) {
+                if ((orig = (unsigned char*) malloc(length + 1)) == NULL) {
                     return -1;
                 }
             }
@@ -391,7 +394,7 @@ int lz77_uncompress(const unsigned char *compressed, unsigned char
             next = 0x00;
             for (i = 0; i < LZ77_NEXT_BITS; i++) {
                 tpos = (sizeof(unsigned char) * 8) - LZ77_NEXT_BITS + i;
-                bit_set((unsigned char *) &next, tpos, bit_get(compressed, ipos));
+                bit_set((unsigned char*) &next, tpos, bit_get(compressed, ipos));
                 ipos++;
             }
 
@@ -402,13 +405,13 @@ int lz77_uncompress(const unsigned char *compressed, unsigned char
             ***********************************************************************/
 
             if (opos > 0) {
-                if ((temp = (unsigned char *) realloc(orig, opos + 1)) == NULL) {
+                if ((temp = (unsigned char*) realloc(orig, opos + 1)) == NULL) {
                     free(orig);
                     return -1;
                 }
                 orig = temp;
             } else {
-                if ((orig = (unsigned char *) malloc(1)) == NULL) {
+                if ((orig = (unsigned char*) malloc(1)) == NULL) {
                     return -1;
                 }
             }

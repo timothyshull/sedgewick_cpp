@@ -1,6 +1,7 @@
 #include "encrypt.h"
 
-static Huge modexp(Huge a, Huge b, Huge n) {
+static Huge modexp(Huge a, Huge b, Huge n)
+{
     Huge y;
     y = 1;
     while (b != 0) {
@@ -13,10 +14,12 @@ static Huge modexp(Huge a, Huge b, Huge n) {
     return y;
 }
 
-void rsa_encipher(Huge plaintext, Huge *ciphertext, RsaPubKey pubkey) {
+void rsa_encipher(Huge plaintext, Huge* ciphertext, RsaPubKey pubkey)
+{
     return;
 }
 
-void rsa_decipher(Huge ciphertext, Huge *plaintext, RsaPriKey prikey) {
+void rsa_decipher(Huge ciphertext, Huge* plaintext, RsaPriKey prikey)
+{
     return;
 }

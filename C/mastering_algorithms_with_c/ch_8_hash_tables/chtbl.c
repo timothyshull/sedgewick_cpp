@@ -4,10 +4,11 @@
 #include "list.h"
 #include "chtbl.h"
 
-int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key), int
-(*match)(const void *key1, const void *key2), void (*destroy)(void *data)) {
+int chtbl_init(CHTbl* htbl, int buckets, int (* h)(const void* key), int
+(* match)(const void* key1, const void* key2), void (* destroy)(void* data))
+{
     int i;
-    if ((htbl->table = (List *) malloc(buckets * sizeof(List))) == NULL) {
+    if ((htbl->table = (List*) malloc(buckets * sizeof(List))) == NULL) {
         return -1;
     }
     htbl->buckets = buckets;
@@ -21,7 +22,8 @@ int chtbl_init(CHTbl *htbl, int buckets, int (*h)(const void *key), int
     return 0;
 }
 
-void chtbl_destroy(CHTbl *htbl) {
+void chtbl_destroy(CHTbl* htbl)
+{
     int i;
     for (i = 0; i < htbl->buckets; i++) {
         list_destroy(&htbl->table[i]);
@@ -31,12 +33,13 @@ void chtbl_destroy(CHTbl *htbl) {
     return;
 }
 
-int chtbl_insert(CHTbl *htbl, const void *data) {
-    void *temp;
+int chtbl_insert(CHTbl* htbl, const void* data)
+{
+    void* temp;
 
     int bucket,
             retval;
-    temp = (void *) data;
+    temp = (void*) data;
     if (chtbl_lookup(htbl, &temp) == 0) {
         return 1;
     }
@@ -47,9 +50,10 @@ int chtbl_insert(CHTbl *htbl, const void *data) {
     return retval;
 }
 
-int chtbl_remove(CHTbl *htbl, void **data) {
-    ListElmt *element,
-            *prev;
+int chtbl_remove(CHTbl* htbl, void** data)
+{
+    ListElmt* element,
+            * prev;
 
     int bucket;
     bucket = htbl->h(*data) % htbl->buckets;
@@ -70,8 +74,9 @@ int chtbl_remove(CHTbl *htbl, void **data) {
     return -1;
 }
 
-int chtbl_lookup(const CHTbl *htbl, void **data) {
-    ListElmt *element;
+int chtbl_lookup(const CHTbl* htbl, void** data)
+{
+    ListElmt* element;
 
     int bucket;
     bucket = htbl->h(*data) % htbl->buckets;

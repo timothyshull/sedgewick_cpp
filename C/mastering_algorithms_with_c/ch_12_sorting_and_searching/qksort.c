@@ -2,19 +2,21 @@
 #include <string.h>
 #include "sort.h"
 
-static int compare_int(const void *int1, const void *int2) {
-    if (*(const int *) int1 > *(const int *) int2) {
+static int compare_int(const void* int1, const void* int2)
+{
+    if (*(const int*) int1 > *(const int*) int2) {
         return 1;
-    } else if (*(const int *) int1 < *(const int *) int2) {
+    } else if (*(const int*) int1 < *(const int*) int2) {
         return -1;
     } else {
         return 0;
     }
 }
 
-static int partition(void *data, int esize, int i, int k, int (*compare)(const void *key1, const void *key2)) {
-    char *a = data;
-    void *pval, *temp;
+static int partition(void* data, int esize, int i, int k, int (* compare)(const void* key1, const void* key2))
+{
+    char* a = data;
+    void* pval, * temp;
 
     int r[3];
     if ((pval = malloc(esize)) == NULL) {
@@ -51,7 +53,8 @@ static int partition(void *data, int esize, int i, int k, int (*compare)(const v
     return k;
 }
 
-int qksort(void *data, int size, int esize, int i, int k, int (*compare)(const void *key1, const void *key2)) {
+int qksort(void* data, int size, int esize, int i, int k, int (* compare)(const void* key1, const void* key2))
+{
     int j;
     if (i < k) {
         if ((j = partition(data, esize, i, k, compare)) < 0) {

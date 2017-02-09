@@ -2,7 +2,8 @@
 #include <math.h>
 #include "geometry.h"
 
-void arclen(SPoint p1, SPoint p2, double *length) {
+void arclen(SPoint p1, SPoint p2, double* length)
+{
     Point p1_rct,
             p2_rct;
 

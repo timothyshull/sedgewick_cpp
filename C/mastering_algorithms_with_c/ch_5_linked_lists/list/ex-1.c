@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include "list.h"
 
-static void print_list(const List *list) {
-    ListElmt *element;
+static void print_list(const List* list)
+{
+    ListElmt* element;
 
-    int *data, i;
+    int* data, i;
     fprintf(stdout, "List size is %d\n", list_size(list));
     i = 0;
     element = list_head(list);
@@ -24,16 +25,17 @@ static void print_list(const List *list) {
     return;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     List list;
-    ListElmt *element;
+    ListElmt* element;
 
-    int *data,  i;
+    int* data, i;
     list_init(&list, free);
     element = list_head(&list);
 
     for (i = 10; i > 0; i--) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i;
@@ -52,7 +54,7 @@ int main(int argc, char **argv) {
     data = list_data(element);
     fprintf(stdout, "Removing an element after the one containing %03d\n", *data);
 
-    if (list_rem_next(&list, element, (void **) &data) != 0) {
+    if (list_rem_next(&list, element, (void**) &data) != 0) {
         return 1;
     }
 
@@ -68,7 +70,7 @@ int main(int argc, char **argv) {
     fprintf(stdout, "Removing an element after the first element\n");
     element = list_head(&list);
 
-    if (list_rem_next(&list, element, (void **) &data) != 0) {
+    if (list_rem_next(&list, element, (void**) &data) != 0) {
         return 1;
     }
 
@@ -86,7 +88,7 @@ int main(int argc, char **argv) {
     element = list_next(element);
     element = list_next(element);
 
-    if (list_rem_next(&list, element, (void **) &data) != 0) {
+    if (list_rem_next(&list, element, (void**) &data) != 0) {
         return 1;
     }
 

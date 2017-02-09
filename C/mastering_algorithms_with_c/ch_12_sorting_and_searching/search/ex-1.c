@@ -6,9 +6,10 @@
 
 #define            STRSIZ                6
 
-static int compare_str(const void *key1, const void *key2) {
+static int compare_str(const void* key1, const void* key2)
+{
     int retval;
-    if ((retval = strcmp((const char *) key1, (const char *) key2)) > 0) {
+    if ((retval = strcmp((const char*) key1, (const char*) key2)) > 0) {
         return 1;
     } else if (retval < 0) {
         return -1;
@@ -22,8 +23,9 @@ typedef enum Words_ {
     dip
 } Words;
 
-int main(int argc, char **argv) {
-    char *target;
+int main(int argc, char** argv)
+{
+    char* target;
 
     char sarray[12][STRSIZ],
             tarray[12][STRSIZ];
@@ -49,7 +51,7 @@ int main(int argc, char **argv) {
     strcpy(tarray[2], "xxx");
     issort(sarray, 12, STRSIZ, compare_str);
     for (word = hop; word <= dip; word++) {
-        fprintf(stdout, "sorted[%02d]=%s\n", word, (char *) sarray[word]);
+        fprintf(stdout, "sorted[%02d]=%s\n", word, (char*) sarray[word]);
     }
     target = tarray[0];
     retval = bisearch(sarray, target, 12, STRSIZ, compare_str);

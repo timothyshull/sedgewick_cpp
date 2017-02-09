@@ -1,7 +1,8 @@
 #include "hashpjw.h"
 
-int hashpjw(const void *key) {
-    const char *ptr;
+int hashpjw(const void* key)
+{
+    const char* ptr;
     int val;
     val = 0;
     ptr = key;

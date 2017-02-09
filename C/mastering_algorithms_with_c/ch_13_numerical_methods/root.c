@@ -1,7 +1,8 @@
 #include <math.h>
 #include "nummeths.h"
 
-int root(double (*f)(double x), double (*g)(double x), double *x, int *n, double delta) {
+int root(double (* f)(double x), double (* g)(double x), double* x, int* n, double delta)
+{
     int satisfied,
             i;
     i = 0;

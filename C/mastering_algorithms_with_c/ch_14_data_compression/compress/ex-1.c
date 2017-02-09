@@ -5,12 +5,13 @@
 
 #define            DATSIZ           500000
 
-int main(int argc, char **argv) {
-    FILE *fp;
+int main(int argc, char** argv)
+{
+    FILE* fp;
 
     unsigned char original[DATSIZ],
-            *compressed,
-            *restored;
+            * compressed,
+            * restored;
 
     int csize,
             osize,

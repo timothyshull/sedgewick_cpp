@@ -11,3 +11,5 @@ int binary_search(std::vector<int>& a, int v, int l, int r)
     }
     return -1;
 }
+
+

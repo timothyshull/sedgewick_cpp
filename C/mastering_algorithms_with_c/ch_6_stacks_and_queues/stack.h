@@ -10,9 +10,9 @@ typedef List Stack;
 
 #define stack_destroy list_destroy
 
-int stack_push(Stack *stack, const void *data);
+int stack_push(Stack* stack, const void* data);
 
-int stack_pop(Stack *stack, void **data);
+int stack_pop(Stack* stack, void** data);
 
 #define stack_peek(stack) ((stack)->head == NULL ? NULL : (stack)->head->data)
 

@@ -9,10 +9,11 @@
 #define            SKILLS_COUNT         12
 #define            PLAYER_COUNT          8
 
-static void print_skills(const Set *skills) {
-    ListElmt *member;
+static void print_skills(const Set* skills)
+{
+    ListElmt* member;
 
-    char *data;
+    char* data;
 
     int size,
             i;
@@ -28,32 +29,36 @@ static void print_skills(const Set *skills) {
     return;
 }
 
-static void print_players(const Set *players) {
-    ListElmt *member;
+static void print_players(const Set* players)
+{
+    ListElmt* member;
     for (member = list_head(players); member != NULL; member = list_next(member)) {
-        fprintf(stdout, "Player %c\n", *(char *) ((KSet *) list_data(member))->key);
-        print_skills(&((KSet *) list_data(member))->set);
+        fprintf(stdout, "Player %c\n", *(char*) ((KSet*) list_data(member))->key);
+        print_skills(&((KSet*) list_data(member))->set);
     }
     return;
 }
 
-int match_key(const void *key1, const void *key2) {
-    if (*(char *) ((const KSet *) key1)->key == *(char *) ((const KSet *) key2)->key) {
+int match_key(const void* key1, const void* key2)
+{
+    if (*(char*) ((const KSet*) key1)->key == *(char*) ((const KSet*) key2)->key) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int match_skill(const void *skill1, const void *skill2) {
-    if (*(const char *) skill1 == *(const char *) skill2) {
+int match_skill(const void* skill1, const void* skill2)
+{
+    if (*(const char*) skill1 == *(const char*) skill2) {
         return 1;
     } else {
         return 0;
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Set skills,
             players,
             covering;

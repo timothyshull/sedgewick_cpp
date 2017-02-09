@@ -2,29 +2,32 @@
 #include <stdlib.h>
 #include "heap.h"
 
-static void print_heap(Heap *heap) {
+static void print_heap(Heap* heap)
+{
     int i;
     fprintf(stdout, "Heap size is %d\n", heap_size(heap));
     for (i = 0; i < heap_size(heap); i++) {
-        fprintf(stdout, "Node=%03d\n", *(int *) heap->tree[i]);
+        fprintf(stdout, "Node=%03d\n", *(int*) heap->tree[i]);
     }
     return;
 }
 
-static int compare_int(const void *int1, const void *int2) {
-    if (*(const int *) int1 > *(const int *) int2) {
+static int compare_int(const void* int1, const void* int2)
+{
+    if (*(const int*) int1 > *(const int*) int2) {
         return 1;
-    } else if (*(const int *) int1 < *(const int *) int2) {
+    } else if (*(const int*) int1 < *(const int*) int2) {
         return -1;
     } else {
         return 0;
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Heap heap;
 
-    void *data;
+    void* data;
 
     int intval[30],
             i;
@@ -80,10 +83,10 @@ int main(int argc, char **argv) {
     print_heap(&heap);
     i++;
     while (heap_size(&heap) > 0) {
-        if (heap_extract(&heap, (void **) &data) != 0) {
+        if (heap_extract(&heap, (void**) &data) != 0) {
             return 1;
         }
-        fprintf(stdout, "Extracting %03d\n", *(int *) data);
+        fprintf(stdout, "Extracting %03d\n", *(int*) data);
         print_heap(&heap);
     }
     fprintf(stdout, "Destroying the heap\n");

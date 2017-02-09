@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "clist.h"
 
-static void print_list(const CList *list) {
-    CListElmt *element;
-    int *data, size, i;
+static void print_list(const CList* list)
+{
+    CListElmt* element;
+    int* data, size, i;
     fprintf(stdout, "List size is %d (circling twice)\n", clist_size(list));
     size = clist_size(list);
     element = clist_head(list);
@@ -18,15 +19,16 @@ static void print_list(const CList *list) {
     return;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     CList list;
-    CListElmt *element;
+    CListElmt* element;
 
-    int *data, i;
+    int* data, i;
     clist_init(&list, free);
     element = clist_head(&list);
     for (i = 0; i < 10; i++) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -46,7 +48,7 @@ int main(int argc, char **argv) {
     }
     data = clist_data(element);
     fprintf(stdout, "Circling and removing an element after the one containing %03d\n", *data);
-    if (clist_rem_next(&list, element, (void **) &data) != 0) {
+    if (clist_rem_next(&list, element, (void**) &data) != 0) {
         return 1;
     }
     free(data);
@@ -57,7 +59,7 @@ int main(int argc, char **argv) {
     }
     data = clist_data(element);
     fprintf(stdout, "Circling and inserting 011 after the element containing %03d\n", *data);
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 11;

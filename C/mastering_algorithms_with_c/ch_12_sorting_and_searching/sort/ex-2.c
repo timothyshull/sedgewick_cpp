@@ -4,8 +4,9 @@
 #include <unistd.h>
 #include "directls.h"
 
-int main(int argc, char **argv) {
-    Directory *dir;
+int main(int argc, char** argv)
+{
+    Directory* dir;
 
     char buffer[MAXPATHLEN];
 

@@ -2,7 +2,8 @@
 #include <math.h>
 #include "nummeths.h"
 
-void lsqe(const double *x, const double *y, int n, double *b1, double *b0) {
+void lsqe(const double* x, const double* y, int n, double* b1, double* b0)
+{
     double sumx,
             sumy,
             sumx2,

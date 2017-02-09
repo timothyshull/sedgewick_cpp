@@ -5,7 +5,11 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(main main.c dlist.h dlist.c list.h list.c clist.h clist.c)
+add_library(clist clist.h clist.c)
+add_library(dlist dlist.h dlist.c)
+add_library(list list.c list.h)
+
+# add_executable(main main.c dlist.h dlist.c list.h list.c clist.h clist.c)
 add_executable(frames frames.h frames.c list.h list.c)
 add_executable(page page.h page.c clist.h clist.c)
 add_executable(list_ex-1 list/ex-1.c)

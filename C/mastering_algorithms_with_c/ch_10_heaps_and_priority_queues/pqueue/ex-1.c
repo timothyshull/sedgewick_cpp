@@ -2,29 +2,32 @@
 #include <stdlib.h>
 #include "pqueue.h"
 
-static void print_pqueue(PQueue *pqueue) {
+static void print_pqueue(PQueue* pqueue)
+{
     int i;
     fprintf(stdout, "Priority queue size is %d\n", pqueue_size(pqueue));
     for (i = 0; i < pqueue_size(pqueue); i++) {
-        fprintf(stdout, "Node=%03d\n", *(int *) pqueue->tree[i]);
+        fprintf(stdout, "Node=%03d\n", *(int*) pqueue->tree[i]);
     }
     return;
 }
 
-static int compare_int(const void *int1, const void *int2) {
-    if (*(const int *) int1 > *(const int *) int2) {
+static int compare_int(const void* int1, const void* int2)
+{
+    if (*(const int*) int1 > *(const int*) int2) {
         return 1;
-    } else if (*(const int *) int1 < *(const int *) int2) {
+    } else if (*(const int*) int1 < *(const int*) int2) {
         return -1;
     } else {
         return 0;
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     PQueue pqueue;
 
-    void *data;
+    void* data;
 
     int intval[30],
             i;
@@ -81,11 +84,11 @@ int main(int argc, char **argv) {
     i++;
     while (pqueue_size(&pqueue) > 0) {
         fprintf(stdout, "Peeking at the highest priority element..Value=%03d\n",
-                *(int *) pqueue_peek(&pqueue));
-        if (pqueue_extract(&pqueue, (void **) &data) != 0) {
+                *(int*) pqueue_peek(&pqueue));
+        if (pqueue_extract(&pqueue, (void**) &data) != 0) {
             return 1;
         }
-        fprintf(stdout, "Extracting %03d\n", *(int *) data);
+        fprintf(stdout, "Extracting %03d\n", *(int*) data);
         print_pqueue(&pqueue);
     }
     fprintf(stdout, "Destroying the pqueue\n");

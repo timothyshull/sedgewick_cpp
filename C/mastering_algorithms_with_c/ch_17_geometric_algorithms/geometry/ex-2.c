@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include "geodist.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     double lat1,
             lon1,
             lat2,

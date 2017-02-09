@@ -3,13 +3,14 @@
 #include "graph.h"
 #include "list.h"
 
-static int dfs_main(Graph *graph, AdjList *adjlist, List *ordered) {
-    AdjList *clr_adjlist;
+static int dfs_main(Graph* graph, AdjList* adjlist, List* ordered)
+{
+    AdjList* clr_adjlist;
 
-    DfsVertex *clr_vertex, *adj_vertex;
+    DfsVertex* clr_vertex, * adj_vertex;
 
-    ListElmt *member;
-    ((DfsVertex *) adjlist->vertex)->color = gray;
+    ListElmt* member;
+    ((DfsVertex*) adjlist->vertex)->color = gray;
     for (member = list_head(&adjlist->adjacent); member != NULL; member =
                                                                          list_next(member)) {
         adj_vertex = list_data(member);
@@ -23,27 +24,28 @@ static int dfs_main(Graph *graph, AdjList *adjlist, List *ordered) {
             }
         }
     }
-    ((DfsVertex *) adjlist->vertex)->color = black;
-    if (list_ins_next(ordered, NULL, (DfsVertex *) adjlist->vertex) != 0) {
+    ((DfsVertex*) adjlist->vertex)->color = black;
+    if (list_ins_next(ordered, NULL, (DfsVertex*) adjlist->vertex) != 0) {
         return -1;
     }
     return 0;
 }
 
-int dfs(Graph *graph, List *ordered) {
-    DfsVertex *vertex;
-    ListElmt *element;
+int dfs(Graph* graph, List* ordered)
+{
+    DfsVertex* vertex;
+    ListElmt* element;
     for (element = list_head(&graph_adjlists(graph)); element != NULL; element =
                                                                                list_next(element)) {
-        vertex = ((AdjList *) list_data(element))->vertex;
+        vertex = ((AdjList*) list_data(element))->vertex;
         vertex->color = white;
     }
     list_init(ordered, NULL);
     for (element = list_head(&graph_adjlists(graph)); element != NULL; element =
                                                                                list_next(element)) {
-        vertex = ((AdjList *) list_data(element))->vertex;
+        vertex = ((AdjList*) list_data(element))->vertex;
         if (vertex->color == white) {
-            if (dfs_main(graph, (AdjList *) list_data(element), ordered) != 0) {
+            if (dfs_main(graph, (AdjList*) list_data(element), ordered) != 0) {
                 list_destroy(ordered);
                 return -1;
             }

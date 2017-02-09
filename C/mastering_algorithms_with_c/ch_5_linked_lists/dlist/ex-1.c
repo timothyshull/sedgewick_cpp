@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include "dlist.h"
 
-void print_list(const DList *list) {
-    DListElmt *element;
+void print_list(const DList* list)
+{
+    DListElmt* element;
 
-    int *data, i;
+    int* data, i;
     fprintf(stdout, "List size is %d\n", dlist_size(list));
     i = 0;
     element = dlist_head(list);
@@ -22,15 +23,16 @@ void print_list(const DList *list) {
     return;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     DList list;
-    DListElmt *element;
+    DListElmt* element;
 
-    int *data, i;
+    int* data, i;
     dlist_init(&list, free);
     element = dlist_head(&list);
     for (i = 10; i > 0; i--) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i;
@@ -45,7 +47,7 @@ int main(int argc, char **argv) {
     }
     data = dlist_data(element);
     fprintf(stdout, "Removing an element after the one containing %03d\n", *data);
-    if (dlist_remove(&list, element, (void **) &data) != 0) {
+    if (dlist_remove(&list, element, (void**) &data) != 0) {
         return 1;
     }
     print_list(&list);
@@ -57,7 +59,7 @@ int main(int argc, char **argv) {
     print_list(&list);
     fprintf(stdout, "Removing an element at the tail of the list\n");
     element = dlist_tail(&list);
-    if (dlist_remove(&list, element, (void **) &data) != 0) {
+    if (dlist_remove(&list, element, (void**) &data) != 0) {
         return 1;
     }
     print_list(&list);
@@ -76,7 +78,7 @@ int main(int argc, char **argv) {
     element = dlist_next(element);
     element = dlist_next(element);
     element = dlist_next(element);
-    if (dlist_remove(&list, element, (void **) &data) != 0) {
+    if (dlist_remove(&list, element, (void**) &data) != 0) {
         return 1;
     }
     print_list(&list);
@@ -87,7 +89,7 @@ int main(int argc, char **argv) {
     }
     print_list(&list);
     fprintf(stdout, "Removing an element at the head of the list\n");
-    if (dlist_remove(&list, dlist_head(&list), (void **) &data) != 0) {
+    if (dlist_remove(&list, dlist_head(&list), (void**) &data) != 0) {
         return 1;
     }
     print_list(&list);
@@ -98,7 +100,7 @@ int main(int argc, char **argv) {
     }
     print_list(&list);
     fprintf(stdout, "Inserting 015 two elements after the head of the list\n");
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 15;

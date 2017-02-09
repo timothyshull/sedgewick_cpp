@@ -8,6 +8,6 @@ typedef struct Page_ {
     int reference;
 } Page;
 
-int replace_page(CListElmt **current);
+int replace_page(CListElmt** current);
 
 #endif //CH_5_LINKED_LISTS_PAGE_H

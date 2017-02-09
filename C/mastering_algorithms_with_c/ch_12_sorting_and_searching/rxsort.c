@@ -4,14 +4,15 @@
 #include <string.h>
 #include "sort.h"
 
-int rxsort(int *data, int size, int p, int k) {
-    int *counts, *temp;
+int rxsort(int* data, int size, int p, int k)
+{
+    int* counts, * temp;
 
     int index, pval, i, j, n;
-    if ((counts = (int *) malloc(k * sizeof(int))) == NULL) {
+    if ((counts = (int*) malloc(k * sizeof(int))) == NULL) {
         return -1;
     }
-    if ((temp = (int *) malloc(size * sizeof(int))) == NULL) {
+    if ((temp = (int*) malloc(size * sizeof(int))) == NULL) {
         return -1;
     }
     for (n = 0; n < p; n++) {

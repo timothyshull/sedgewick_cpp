@@ -4,7 +4,8 @@
 
 #define            TXTSIZ             1000
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     unsigned char destmp[TXTSIZ],
             desptx[TXTSIZ],
             desctx[TXTSIZ],

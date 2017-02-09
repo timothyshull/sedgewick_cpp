@@ -3,9 +3,10 @@
 #include "list.h"
 #include "stack.h"
 
-static void print_stack(const Stack *stack) {
-    ListElmt *element;
-    int *data, size, i;
+static void print_stack(const Stack* stack)
+{
+    ListElmt* element;
+    int* data, size, i;
     fprintf(stdout, "Stack size is %d\n", size = stack_size(stack));
     i = 0;
     element = list_head(stack);
@@ -18,14 +19,15 @@ static void print_stack(const Stack *stack) {
     return;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     Stack stack;
 
-    int *data, i;
+    int* data, i;
     stack_init(&stack, free);
     fprintf(stdout, "Pushing 10 elements\n");
     for (i = 0; i < 10; i++) {
-        if ((data = (int *) malloc(sizeof(int))) == NULL) {
+        if ((data = (int*) malloc(sizeof(int))) == NULL) {
             return 1;
         }
         *data = i + 1;
@@ -36,7 +38,7 @@ int main(int argc, char **argv) {
     print_stack(&stack);
     fprintf(stdout, "Popping 5 elements\n");
     for (i = 0; i < 5; i++) {
-        if (stack_pop(&stack, (void **) &data) == 0) {
+        if (stack_pop(&stack, (void**) &data) == 0) {
             free(data);
         } else {
             return 1;
@@ -44,14 +46,14 @@ int main(int argc, char **argv) {
     }
     print_stack(&stack);
     fprintf(stdout, "Pushing 100 and 200\n");
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 100;
     if (stack_push(&stack, data) != 0) {
         return 1;
     }
-    if ((data = (int *) malloc(sizeof(int))) == NULL) {
+    if ((data = (int*) malloc(sizeof(int))) == NULL) {
         return 1;
     }
     *data = 200;
@@ -67,7 +69,7 @@ int main(int argc, char **argv) {
     print_stack(&stack);
     fprintf(stdout, "Popping all elements\n");
     while (stack_size(&stack) > 0) {
-        if (stack_pop(&stack, (void **) &data) == 0) {
+        if (stack_pop(&stack, (void**) &data) == 0) {
             free(data);
         }
     }

@@ -6,11 +6,12 @@
 
 #define            STRSIZ                6
 
-static void preorder_tree(const BiTreeNode *node) {
+static void preorder_tree(const BiTreeNode* node)
+{
     if (!bitree_is_eob(node)) {
-        fprintf(stdout, "Node=%s, %+2d, hidden=%d\n", (char *) ((AvlNode *)
-                        bitree_data(node))->data, ((AvlNode *) bitree_data(node))->factor,
-                ((AvlNode *) bitree_data(node))->hidden);
+        fprintf(stdout, "Node=%s, %+2d, hidden=%d\n", (char*) ((AvlNode*)
+                        bitree_data(node))->data, ((AvlNode*) bitree_data(node))->factor,
+                ((AvlNode*) bitree_data(node))->hidden);
         if (!bitree_is_eob(bitree_left(node))) {
             preorder_tree(bitree_left(node));
         }
@@ -21,9 +22,10 @@ static void preorder_tree(const BiTreeNode *node) {
     return;
 }
 
-static int compare_str(const void *str1, const void *str2) {
+static int compare_str(const void* str1, const void* str2)
+{
     int retval;
-    if ((retval = strcmp((const char *) str1, (const char *) str2)) > 0) {
+    if ((retval = strcmp((const char*) str1, (const char*) str2)) > 0) {
         return 1;
     } else if (retval < 0) {
         return -1;
@@ -37,10 +39,11 @@ typedef enum Words_ {
     dip
 } Words;
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv)
+{
     BiTree tree;
 
-    char *target;
+    char* target;
 
     char sarray[12][STRSIZ],
             tarray[12][STRSIZ];
@@ -209,31 +212,31 @@ int main(int argc, char **argv) {
     strcpy(tarray[3], "hat");
     strcpy(tarray[4], "xxx");
     target = tarray[0];
-    if (bistree_lookup(&tree, (void **) &target) == -1) {
+    if (bistree_lookup(&tree, (void**) &target) == -1) {
         fprintf(stdout, "Could not find %s\n", target);
     } else {
         fprintf(stdout, "Found %s\n", target);
     }
     target = tarray[1];
-    if (bistree_lookup(&tree, (void **) &target) == -1) {
+    if (bistree_lookup(&tree, (void**) &target) == -1) {
         fprintf(stdout, "Could not find %s\n", target);
     } else {
         fprintf(stdout, "Found %s\n", target);
     }
     target = tarray[2];
-    if (bistree_lookup(&tree, (void **) &target) == -1) {
+    if (bistree_lookup(&tree, (void**) &target) == -1) {
         fprintf(stdout, "Could not find %s\n", target);
     } else {
         fprintf(stdout, "Found %s\n", target);
     }
     target = tarray[3];
-    if (bistree_lookup(&tree, (void **) &target) == -1) {
+    if (bistree_lookup(&tree, (void**) &target) == -1) {
         fprintf(stdout, "Could not find %s\n", target);
     } else {
         fprintf(stdout, "Found %s\n", target);
     }
     target = tarray[4];
-    if (bistree_lookup(&tree, (void **) &target) == -1) {
+    if (bistree_lookup(&tree, (void**) &target) == -1) {
         fprintf(stdout, "Could not find %s\n", target);
     } else {
         fprintf(stdout, "Found %s\n", target);
