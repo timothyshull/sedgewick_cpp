@@ -1,34 +1,40 @@
-#ifndef COLLECTED_DERIVED_PFS_H
-#define COLLECTED_DERIVED_PFS_H
+// Program 18.10 - Generalized graph search (program is misnamed)
+#ifndef DERIVED_PFS_H
+#define DERIVED_PFS_H
 
-#include "GQ.cc"
+#include "Random_queue.h"
+#include "Generalized_graph_search.h"
 
-template<class Graph>
-class PFS : public SEARCH<Graph> {
-    vector<int> st;
+template<typename Graph_type>
+class Derived_pfs : public Generalized_graph_search<Graph_type> {
+public:
+    Derived_pfs(Graph_type& graph)
+            : Generalized_graph_search<Graph_type>(graph),
+              _search_tree(graph.V(), -1) { _search(); }
 
-    void searchC(Edge e)
+    inline int search_tree(int v) const { return _search_tree[v]; }
+
+private:
+    std::vector<int> _search_tree;
+
+    void _search_c(Edge&& e)
     {
-        GQ <Edge> Q(G.V());
-        Q.put(e);
-        ord[e.w] = cnt++;
-        while (!Q.empty()) {
-            e = Q.get();
-            st[e.w] = e.v;
-            typename Graph::adjIterator A(G, e.w);
-            for (int t = A.beg(); !A.end(); t = A.nxt()) {
-                if (ord[t] == -1) {
-                    Q.put(Edge(e.w, t));
-                    ord[t] = cnt++;
-                } else if (st[t] == -1) { Q.update(Edge(e.w, t)); }
+        Random_queue<Edge> queue{_graph.num_vertices()};
+        queue.put(e);
+        _order[e.destination()] = _count++;
+        Edge tmp;
+        while (!queue.empty()) {
+            tmp = queue.get();
+            _search_tree[e.destination()] = e.source();
+            // typename Graph_type::adjIterator A(G, e.w);
+            for (auto t : _graph.adjacent(e.destination())) {
+                if (_order[t] == -1) {
+                    queue.put(Edge(e.destination(), t));
+                    _order[t] = _count++;
+                } else if (_search_tree[t] == -1) { queue.update(Edge{e.destination(), t}); }
             }
         }
     }
-
-public:
-    PFS(Graph& G) : SEARCH<Graph>(G), st(G.V(), -1) { search(); }
-
-    int ST(int v) const { return st[v]; }
 };
 
-#endif // COLLECTED_DERIVED_PFS_H
+#endif // DERIVED_PFS_H

@@ -1,25 +1,32 @@
-#include "GRAPHbasic.cc"
-#include "GRAPHio.cc"
-#include "LPTdag.cc"
+#include "Dense_graph.h"
+#include "Graph_io.h"
+#include "Longest_paths_dag.h"
 
-typedef WeightedEdge EDGE;
 
-typedef DenseGRAPH <EDGE> GRAPH;
+// typedef WeightedEdge EDGE;
+
+// typedef DenseGRAPH <EDGE> GRAPH;
 
 int main(int argc, char* argv[])
 {
-    int i, s, t, N = atoi(argv[1]);
-    double duration[N];
-    GRAPH G(N, true);
-    for (int i = 0; i < N; i++) {
-        cin >> duration[i];
+    int i;
+    int s;
+    int t;
+    int num_vertices{std::stoi(argv[1])};
+    std::vector<double> duration;
+    duration.reserve(static_cast<std::vector<double>::size_type>(num_vertices));
+    Dense_graph graph{num_vertices, true};
+    for (int i{0}; i < num_vertices; ++i) {
+        std::cin >> duration[i];
     }
-    while (cin >> s >> t) {
-        G.insert(new EDGE(s, t, duration[s]));
+    while (std::cin >> s >> t) {
+        graph.insert(new Edge{s, t, duration[s]});
     }
-    LPTdag <GRAPH, EDGE> lpt(G);
-    for (i = 0; i < N; i++) {
-        cout << i << " " << lpt.dist(i) << "\n";
+    Longest_paths_dag <Dense_graph, Edge> lpt{graph};
+    for (i = 0; i < num_vertices; ++i) {
+        std::cout << i << " " << lpt.distance(i) << "\n";
     }
+
+    return 0;
 }
 

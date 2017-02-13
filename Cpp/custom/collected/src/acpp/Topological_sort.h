@@ -1,37 +1,51 @@
-#ifndef COLLECTED_TOPOLOGICAL_SORT_H
-#define COLLECTED_TOPOLOGICAL_SORT_H
+// Program 19.7 - Topological sort
+#ifndef TOPOLOGICAL_SORT_H
+#define TOPOLOGICAL_SORT_H
 
-template<class Dag> class dagTS {
-    const Dag& D;
-    int cnt, tcnt;
-    vector<int> pre, post, postI;
+#include <vector>
 
-    void tsR(int v)
+// Assumes a DAG
+template<typename Dag_type>
+class Topological_sort {
+public:
+    Topological_sort(const Dag_type& dag)
+            : _dag{dag},
+              _t_count(0),
+              _count(0),
+              _preorder(dag.V(), -1),
+              _postorder(dag.V(), -1),
+              _postorder_inverse(dag.V(), -1)
     {
-        pre[v] = cnt++;
-        for (int w = 0; w < D.V(); w++) {
-            if (D.edge(w, v)) {
-                if (pre[w] == -1) { tsR(w); }
+        for (int v{0}; v < dag.num_vertices(); ++v) {
+            if (_preorder[v] == -1) { _topological_sort_r(v); }
+        }
+    }
+
+    inline int operator[](int v) const { return _postorder_inverse[v]; }
+
+    inline int relabel(int v) const { return _postorder[v]; }
+
+private:
+    const Dag_type& _dag;
+    int _count;
+    int _t_count;
+    std::vector<int> _preorder;
+    std::vector<int> _postorder;
+    std::vector<int> _postorder_inverse;
+
+    void _topological_sort_r(int v)
+    {
+        _preorder[v] = _count++;
+        for (int w{0}; w < _dag.num_vertices(); ++w) {
+            if (_dag.edge(w, v)) {
+                if (_preorder[w] == -1) { _topological_sort_r(w); }
             }
         }
-        post[v] = tcnt;
-        postI[tcnt++] = v;
+        _postorder[v] = _t_count;
+        _postorder_inverse[_t_count++] = v;
     }
-
-public:
-    dagTS(const Dag& D) : D(D), tcnt(0), cnt(0),
-                          pre(D.V(), -1), post(D.V(), -1), postI(D.V(), -1)
-    {
-        for (int v = 0; v < D.V(); v++) {
-            if (pre[v] == -1) { tsR(v); }
-        }
-    }
-
-    int operator[](int v) const { return postI[v]; }
-
-    int relabel(int v) const { return post[v]; }
 };
 
 
 
-#endif // COLLECTED_TOPOLOGICAL_SORT_H
+#endif // TOPOLOGICAL_SORT_H

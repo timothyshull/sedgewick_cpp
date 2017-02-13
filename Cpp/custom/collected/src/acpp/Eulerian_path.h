@@ -1,66 +1,75 @@
-#ifndef COLLECTED_EULERIAN_PATH_EXISTENCE_H
-#define COLLECTED_EULERIAN_PATH_EXISTENCE_H
+// Program 17.18 - Euler path existence
+// Program 17.19 - Linear-time Euler path
+#ifndef EULERIAN_PATH_EXISTENCE_H
+#define EULERIAN_PATH_EXISTENCE_H
 
-template<class Graph> class ePATH {
-    Graph G;
-    int v, w;
-    bool found;
-    STACK<int> S;
+#include <stack>
+#include <iostream>
 
-    int tour(int v);
+#include "Edge.h"
+#include "Vertex_degrees.h"
 
+template<typename Graph>
+class Eulerian_path {
 public:
-    ePATH(const Graph& G, int v, int w) :
-            G(G), v(v), w(w)
+    Eulerian_path(const Graph& graph, int source, int destination)
+            : _graph{graph},
+              _source{source},
+              _destination{destination}
     {
-        DEGREE <Graph> deg(G);
-        int t = deg[v] + deg[w];
+        Vertex_degrees<Graph> deg{graph};
+        int t{deg[source] + deg[destination]};
         if ((t % 2) != 0) {
-            found = false;
+            _found = false;
             return;
         }
-        for (t = 0; t < G.V(); t++) {
-            if ((t != v) && (t != w)) {
+        for (t = 0; t < graph.num_vertices(); ++t) {
+            if ((t != source) && (t != destination)) {
                 if ((deg[t] % 2) != 0) {
-                    found = false;
+                    _found = false;
                     return;
                 }
             }
         }
-        found = true;
+        _found = true;
     }
 
-    bool exists() const { return found; }
+    inline bool exists() const noexcept { return _found; }
 
-    void show();
+    void show()
+    {
+        if (!_found) { return; }
+        while (_tour(_source) == _source && !_stack.empty()) {
+            _source = _stack.top();
+            _stack.pop();
+            std::cout << "-" << _source;
+        }
+        std::cout << "\n";
+    }
+
+private:
+    Graph _graph;
+    int _source;
+    int _destination;
+    bool _found;
+    std::stack<int> _stack;
+
+    int _tour(int v)
+    {
+        int w;
+        while (true) {
+            auto adj = _graph.adjacent(v);
+            // typename Graph::adjIterator A(_graph, v);
+            auto it = adj.begin();
+            if (it != adj.end()) {
+                w = *it;
+                _stack.push(v);
+                _graph.remove(Edge{v, w});
+                v = w;
+            } else { break; }
+        }
+        return v;
+    }
 };
 
-
-template<class Graph>
-int ePATH<Graph>::tour(int v)
-{
-    while (true) {
-        typename Graph::adjIterator A(G, v);
-        int w = A.beg();
-        if (A.end()) { break; }
-        S.push(v);
-        G.remove(Edge(v, w));
-        v = w;
-    }
-    return v;
-}
-
-template<class Graph>
-void ePATH<Graph>::show()
-{
-    if (!found) { return; }
-    while (tour(v) == v && !S.empty()) {
-        v = S.pop();
-        cout << "-" << v;
-    }
-    cout << "\n";
-}
-
-
-
-#endif // COLLECTED_EULERIAN_PATH_EXISTENCE_H
+#endif // EULERIAN_PATH_EXISTENCE_H

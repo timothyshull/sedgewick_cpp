@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MST_PRIM_H
-#define COLLECTED_MST_PRIM_H
+#ifndef MST_PRIM_H
+#define MST_PRIM_H
 
-template<class Graph, class Edge> class MST {
+template<typename Graph, typename Edge> class MST {
     const Graph& G;
     vector<double> wt;
     vector<Edge*> fr, mst;
@@ -39,4 +39,4 @@ public:
 
 
 
-#endif // COLLECTED_MST_PRIM_H
+#endif // MST_PRIM_H

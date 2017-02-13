@@ -1,7 +1,7 @@
-#ifndef COLLECTED_TWO_COLORABILITY_H
-#define COLLECTED_TWO_COLORABILITY_H
+#ifndef TWO_COLORABILITY_H
+#define TWO_COLORABILITY_H
 
-template<class Graph> class BI {
+template<typename Graph> class BI {
     const Graph& G;
     bool OK;
     vector<int> vc;
@@ -37,4 +37,4 @@ public:
 
 
 
-#endif // COLLECTED_TWO_COLORABILITY_H
+#endif // TWO_COLORABILITY_H

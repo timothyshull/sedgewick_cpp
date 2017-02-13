@@ -1,5 +1,5 @@
-#ifndef COLLECTED_SPARSE_MULTIGRAPH_H
-#define COLLECTED_SPARSE_MULTIGRAPH_H
+#ifndef SPARSE_MULTIGRAPH_H
+#define SPARSE_MULTIGRAPH_H
 
 class SparseMultiGRAPH::adjIterator {
     const SparseMultiGRAPH& G;
@@ -70,4 +70,4 @@ public:
     friend class adjIterator;
 };
 
-#endif // COLLECTED_SPARSE_MULTIGRAPH_H
+#endif // SPARSE_MULTIGRAPH_H

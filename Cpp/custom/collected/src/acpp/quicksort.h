@@ -9,7 +9,7 @@ inline void push2(STACK<int>& s, int A, int B)
     s.push(A);
 }
 
-template<class Item>
+template<typename Item>
 void quicksort(Item a[], int l, int r)
 {
     STACK<int> s(50);
@@ -31,7 +31,7 @@ void quicksort(Item a[], int l, int r)
 
 static const int M = 10;
 
-template<class Item>
+template<typename Item>
 void quicksort(Item a[], int l, int r)
 {
     if (r - l <= M) { return; }
@@ -44,17 +44,17 @@ void quicksort(Item a[], int l, int r)
     quicksort(a, i + 1, r);
 }
 
-template<class Item>
+template<typename Item>
 void hybridsort(Item a[], int l, int r)
 {
     quicksort(a, l, r);
     insertion(a, l, r);
 }
 
-template<class Item>
+template<typename Item>
 int operator==(const Item& A, const Item& B) { return !less(A, B) && !less(B, A); }
 
-template<class Item>
+template<typename Item>
 void quicksort(Item a[], int l, int r)
 {
     int k;

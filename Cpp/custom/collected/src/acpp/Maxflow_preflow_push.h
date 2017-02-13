@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MAXFLOW_PREFLOW_PUSH_H
-#define COLLECTED_MAXFLOW_PREFLOW_PUSH_H
+#ifndef MAXFLOW_PREFLOW_PUSH_H
+#define MAXFLOW_PREFLOW_PUSH_H
 
-template<class Graph, class Edge> class MAXFLOW {
+template<typename Graph, typename Edge> class MAXFLOW {
     const Graph& G;
     int s, t;
     vector<int> h, wt;
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif // COLLECTED_MAXFLOW_PREFLOW_PUSH_H
+#endif // MAXFLOW_PREFLOW_PUSH_H

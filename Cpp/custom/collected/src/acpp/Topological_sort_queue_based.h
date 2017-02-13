@@ -1,40 +1,48 @@
-#ifndef COLLECTED_TOPOLOGICAL_SORT_QUEUE_BASED_H
-#define COLLECTED_TOPOLOGICAL_SORT_QUEUE_BASED_H
+// Program 19.8 - Source-queue-based topological sort
+#ifndef TOPOLOGICAL_SORT_QUEUE_BASED_H
+#define TOPOLOGICAL_SORT_QUEUE_BASED_H
 
-#include "QUEUE.cc"
+#include <queue>
 
-template<class Dag> class dagTS {
-    const Dag& D;
-    vector<int> in, ts, tsI;
+template<typename Dag_type>
+class Topological_sort_queue_based {
 public:
-    dagTS(const Dag& D) : D(D),
-                          in(D.V(), 0), ts(D.V(), -1), tsI(D.V(), -1)
+    Topological_sort_queue_based(const Dag_type& dag)
+            : _dag{dag},
+              _inorder(dag.num_vertices(), 0),
+              _topological_sort(dag.num_vertices(), -1),
+              _topological_sort_inverse(dag.num_vertices(), -1)
     {
-        QUEUE<int> Q;
-        for (int v = 0; v < D.V(); v++) {
-            typename Dag::adjIterator A(D, v);
-            for (int t = A.beg(); !A.end(); t = A.nxt()) {
-                in[t]++;
+        std::queue<int> queue;
+        for (int v{0}; v < dag.num_vertices(); ++v) {
+            // typename Dag_type::adjIterator A(dag, v);
+            for (auto t : dag.adjacent(v)) {
+                _inorder[t]++;
             }
         }
-        for (int v = 0; v < D.V(); v++) {
-            if (in[v] == 0) { Q.put(v); }
+        for (int v{0}; v < dag.num_vertices(); ++v) {
+            if (_inorder[v] == 0) { queue.push(v); }
         }
-        for (int j = 0; !Q.empty(); j++) {
-            ts[j] = Q.get();
-            tsI[ts[j]] = j;
-            typename Dag::adjIterator A(D, ts[j]);
-            for (int t = A.beg(); !A.end(); t = A.nxt()) {
-                if (--in[t] == 0) { Q.put(t); }
+        for (int j = 0; !queue.empty(); ++j) {
+            _topological_sort[j] = queue.front();
+            queue.pop();
+            _topological_sort_inverse[_topological_sort[j]] = j;
+            // typename Dag_type::adjIterator A(dag, _topological_sort[j]);
+            for (auto t : dag.adjacent(_topological_sort[j])) {
+                if (--_inorder[t] == 0) { queue.push(t); }
             }
         }
     }
 
-    int operator[](int v) const { return ts[v]; }
+    int operator[](int v) const { return _topological_sort[v]; }
 
-    int relabel(int v) const { return tsI[v]; }
+    int relabel(int v) const { return _topological_sort_inverse[v]; }
+
+private:
+    const Dag_type& _dag;
+    std::vector<int> _inorder;
+    std::vector<int> _topological_sort;
+    std::vector<int> _topological_sort_inverse;
 };
 
-
-
-#endif // COLLECTED_TOPOLOGICAL_SORT_QUEUE_BASED_H
+#endif // TOPOLOGICAL_SORT_QUEUE_BASED_H

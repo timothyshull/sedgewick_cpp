@@ -17,7 +17,7 @@ struct Stack_node {
     ~Stack_node() = default;
 };
 
-template<class Item_type>
+template<typename Item_type>
 class Stack {
 public:
     using Raw_node_pointer = Stack_node<Item_type>*;

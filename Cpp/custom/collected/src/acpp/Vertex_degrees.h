@@ -1,21 +1,26 @@
-#ifndef COLLECTED_VERTEX_DEGREES_H
-#define COLLECTED_VERTEX_DEGREES_H
+// Program 17.11 - Vertex degrees class implementation
+#ifndef VERTEX_DEGREES_H
+#define VERTEX_DEGREES_H
 
-template<typename Graph> class Vertex_degrees {
-    const Graph& G;
-    vector<int> degree;
+#include <vector>
+
+template<typename Graph_type>
+class Vertex_degrees {
 public:
-    Vertex_degrees(const Graph& G) : G(G), degree(G.V(), 0)
+    Vertex_degrees(const Graph_type& graph) : _graph{graph}, _degree(graph.num_vertices(), 0)
     {
-        for (int v = 0; v < G.V(); v++) {
-            typename Graph::adjIterator A(G, v);
-            for (int w = A.beg(); !A.end(); w = A.nxt()) {
-                degree[v]++;
+        for (int v{0}; v < graph.num_vertices(); ++v) {
+            // typename Graph_type::adjIterator A(graph, v);
+            for (auto w : graph.adjacent(v)) {
+                _degree[v]++;
             }
         }
     }
 
-    int operator[](int v) const { return degree[v]; }
+    inline int operator[](int v) const { return _degree[v]; }
+private:
+    const Graph_type& _graph;
+    std::vector<int> _degree;
 };
 
-#endif // COLLECTED_VERTEX_DEGREES_H
+#endif // VERTEX_DEGREES_H

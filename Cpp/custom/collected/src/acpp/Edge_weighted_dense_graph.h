@@ -1,7 +1,7 @@
-#ifndef COLLECTED_EDGE_WEIGHTED_DENSE_GRAPH_H
-#define COLLECTED_EDGE_WEIGHTED_DENSE_GRAPH_H
+#ifndef EDGE_WEIGHTED_DENSE_GRAPH_H
+#define EDGE_WEIGHTED_DENSE_GRAPH_H
 
-template<class Edge>
+template<typename Edge>
 class DenseGRAPH<Edge>::adjIterator {
     const DenseGRAPH<Edge>& G;
     int i, v;
@@ -29,7 +29,7 @@ public:
 
 
 
-template<class Edge> class DenseGRAPH {
+template<typename Edge> class DenseGRAPH {
     int Vcnt, Ecnt;
     bool digraph;
     vector <vector<Edge*>> adj;
@@ -73,4 +73,4 @@ public:
 
 
 
-#endif // COLLECTED_EDGE_WEIGHTED_DENSE_GRAPH_H
+#endif // EDGE_WEIGHTED_DENSE_GRAPH_H

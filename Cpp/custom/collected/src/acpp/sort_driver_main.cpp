@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-template<class Item>
+template<typename Item>
 void exch(Item& A, Item& B)
 {
     Item t = A;
@@ -10,10 +10,10 @@ void exch(Item& A, Item& B)
     B = t;
 }
 
-template<class Item>
+template<typename Item>
 void compexch(Item& A, Item& B) { if (B < A) { exch(A, B); }}
 
-template<class Item>
+template<typename Item>
 void sort(Item a[], int l, int r)
 {
     for (int i = l + 1; i <= r; i++) {

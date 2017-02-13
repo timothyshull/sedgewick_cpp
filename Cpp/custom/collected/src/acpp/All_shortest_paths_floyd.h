@@ -1,35 +1,39 @@
-#ifndef COLLECTED_ALL_SHORTEST_PATHS_FLOYD_H
-#define COLLECTED_ALL_SHORTEST_PATHS_FLOYD_H
+// Program 21.5 - Floyd's algorithm for all shortest paths
+#ifndef ALL_SHORTEST_PATHS_FLOYD_H
+#define ALL_SHORTEST_PATHS_FLOYD_H
 
-template<class Graph, class Edge> class allSP {
-    const Graph& G;
-    vector <vector<Edge*>> p;
-    vector <vector<double>> d;
+#include <vector>
+
+template<typename Graph_type, typename Edge_type>
+class All_shortest_paths_floyd {
 public:
-    allSP(const Graph& G) : G(G), p(G.V()), d(G.V())
+    All_shortest_paths_floyd(const Graph_type& graph)
+            : _graph{graph},
+              _paths(graph.num_vertices()),
+              _distances(graph.num_vertices())
     {
-        int V = G.V();
-        for (int i = 0; i < V; i++) {
-            p[i].assign(V, 0);
-            d[i].assign(V, V);
+        auto num_vertices = graph.num_vertices();
+        for (int i{0}; i < num_vertices; ++i) {
+            _paths[i].assign(num_vertices, 0);
+            _distances[i].assign(num_vertices, num_vertices);
         }
-        for (int s = 0; s < V; s++) {
-            for (int t = 0; t < V; t++) {
-                if (G.edge(s, t)) {
-                    p[s][t] = G.edge(s, t);
-                    d[s][t] = G.edge(s, t)->wt();
+        for (int s{0}; s < num_vertices; ++s) {
+            for (int t{0}; t < num_vertices; ++t) {
+                if (graph.edge(s, t)) {
+                    _paths[s][t] = graph.edge(s, t);
+                    _distances[s][t] = graph.edge(s, t)->weight();
                 }
             }
         }
-        for (int s = 0; s < V; s++) { d[s][s] = 0; }
-        for (int i = 0; i < V; i++) {
-            for (int s = 0; s < V; s++) {
-                if (p[s][i]) {
-                    for (int t = 0; t < V; t++) {
+        for (int s{0}; s < num_vertices; ++s) { _distances[s][s] = 0; }
+        for (int i{0}; i < num_vertices; ++i) {
+            for (int s{0}; s < num_vertices; ++s) {
+                if (_paths[s][i]) {
+                    for (int t = 0; t < num_vertices; ++t) {
                         if (s != t) {
-                            if (d[s][t] > d[s][i] + d[i][t]) {
-                                p[s][t] = p[s][i];
-                                d[s][t] = d[s][i] + d[i][t];
+                            if (_distances[s][t] > _distances[s][i] + _distances[i][t]) {
+                                _paths[s][t] = _paths[s][i];
+                                _distances[s][t] = _distances[s][i] + _distances[i][t];
                             }
                         }
                     }
@@ -38,11 +42,14 @@ public:
         }
     }
 
-    Edge* path(int s, int t) const { return p[s][t]; }
+    inline Edge_type* path(int s, int t) const { return _paths[s][t]; }
 
-    double dist(int s, int t) const { return d[s][t]; }
+    inline double distance(int s, int t) const { return _distances[s][t]; }
+
+private:
+    const Graph_type& _graph;
+    std::vector<std::vector<Edge_type*>> _paths;
+    std::vector<std::vector<double>> _distances;
 };
 
-
-
-#endif // COLLECTED_ALL_SHORTEST_PATHS_FLOYD_H
+#endif // ALL_SHORTEST_PATHS_FLOYD_H

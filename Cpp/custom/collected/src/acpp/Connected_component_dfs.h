@@ -1,31 +1,35 @@
-#ifndef COLLECTED_CONNECTED_COMPONENT_DFS_H
-#define COLLECTED_CONNECTED_COMPONENT_DFS_H
+// Program 18.1 - Depth-first search of a connected component
+#ifndef CONNECTED_COMPONENT_DFS_H
+#define CONNECTED_COMPONENT_DFS_H
 
 #include <vector>
 
-template<class Graph> class cDFS {
-    int cnt;
-    const Graph& G;
-    vector<int> ord;
+template<typename Graph>
+class Connected_component_dfs {
+public:
+    Connected_component_dfs(const Graph& graph, int v = 0)
+            : _graph{graph},
+              _count{0},
+              _order(graph.num_vertices(), -1) { _search_c(v); }
 
-    void searchC(int v)
+    inline int count() const { return _count; }
+
+    inline int operator[](int v) const { return _order[v]; }
+private:
+    int _count;
+    const Graph& _graph;
+    std::vector<int> _order;
+
+    void _search_c(int v)
     {
-        ord[v] = cnt++;
-        typename Graph::adjIterator A(G, v);
+        _order[v] = _count++;
+        typename Graph::adjIterator A(_graph, v);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            if (ord[t] == -1) { searchC(t); }
+            if (_order[t] == -1) { _search_c(t); }
         }
     }
-
-public:
-    cDFS(const Graph& G, int v = 0) :
-            G(G), cnt(0), ord(G.V(), -1) { searchC(v); }
-
-    int count() const { return cnt; }
-
-    int operator[](int v) const { return ord[v]; }
 };
 
 
 
-#endif // COLLECTED_CONNECTED_COMPONENT_DFS_H
+#endif // CONNECTED_COMPONENT_DFS_H

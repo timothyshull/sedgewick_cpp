@@ -17,11 +17,17 @@ public:
 
     Edge();
 
+    Edge(int source, int destination);
+
     Edge(int source, int destination, double weight);
 
     inline double weight() const noexcept { return _weight; }
 
     inline int either() const noexcept { return _source; }
+
+    inline int source() const noexcept { return _source; }
+
+    inline int destination() const noexcept { return _destination; }
 
     int other(int vertex);
 

@@ -1,36 +1,46 @@
-#ifndef COLLECTED_REVERSE_TOPOLOGICAL_SORT_H
-#define COLLECTED_REVERSE_TOPOLOGICAL_SORT_H
+#ifndef REVERSE_TOPOLOGICAL_SORT_H
+#define REVERSE_TOPOLOGICAL_SORT_H
 
-template<class Dag> class dagTS {
-    const Dag& D;
-    int cnt, tcnt;
-    vector<int> pre, post, postI;
+#include <vector>
 
-    void tsR(int v)
-    {
-        pre[v] = cnt++;
-        typename Dag::adjIterator A(D, v);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            if (pre[t] == -1) { tsR(t); }
-        }
-        post[v] = tcnt;
-        postI[tcnt++] = v;
-    }
-
+template<typename Dag_type>
+class Reverse_topological_sort {
 public:
-    dagTS(const Dag& D) : D(D), tcnt(0), cnt(0),
-                          pre(D.V(), -1), post(D.V(), -1), postI(D.V(), -1)
+    Reverse_topological_sort(const Dag_type& dag)
+            : _dag{dag},
+              _t_count{0},
+              _count{0},
+              _preorder(dag.num_vertices(), -1),
+              _postorder(dag.num_vertices(), -1),
+              _postorder_inverse(dag.num_vertices(), -1)
     {
-        for (int v = 0; v < D.V(); v++) {
-            if (pre[v] == -1) { tsR(v); }
-        }
+        for (int v{0}; v < dag.num_vertices(); ++v) { if (_preorder[v] == -1) { _topological_sort_r(v); }}
     }
 
-    int operator[](int v) const { return postI[v]; }
+    inline int operator[](int v) const { return _postorder_inverse[v]; }
 
-    int relabel(int v) const { return post[v]; }
+    inline int relabel(int v) const { return _postorder[v]; }
+
+private:
+    const Dag_type& _dag;
+    int _count;
+    int _t_count;
+    std::vector<int> _preorder;
+    std::vector<int>_postorder;
+    std::vector<int>_postorder_inverse;
+
+    void _topological_sort_r(int v)
+    {
+        _preorder[v] = _count++;
+        // typename Dag_type::adjIterator A(_dag, v);
+        for (auto t : _dag.adjacent(v)) {
+            if (_preorder[t] == -1) { _topological_sort_r(t); }
+        }
+        _postorder[v] = _t_count;
+        _postorder_inverse[_t_count++] = v;
+    }
 };
 
 
 
-#endif // COLLECTED_REVERSE_TOPOLOGICAL_SORT_H
+#endif // REVERSE_TOPOLOGICAL_SORT_H

@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MST_PFS_H
-#define COLLECTED_MST_PFS_H
+#ifndef MST_PFS_H
+#define MST_PFS_H
 
-template<class Graph, class Edge> class MST {
+template<typename Graph, typename Edge> class MST {
     const Graph& G;
     vector<double> wt;
     vector<Edge*> fr, mst;
@@ -42,4 +42,4 @@ public:
 
 
 
-#endif // COLLECTED_MST_PFS_H
+#endif // MST_PFS_H

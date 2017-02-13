@@ -4,6 +4,6 @@
 
 #include <vector>
 
-int sequential_search(std::vector<int>& a, int v, int l, int r);
+int sequential_search(std::vector<int>& coll, int v, int l, int r);
 
 #endif // SEQUENTIAL_SEARCH_H

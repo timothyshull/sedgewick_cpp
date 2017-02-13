@@ -1,39 +1,48 @@
-#ifndef COLLECTED_SHORTEST_PATH_DIJKSTRA_PFS_H
-#define COLLECTED_SHORTEST_PATH_DIJKSTRA_PFS_H
+// Program 21.1 - Dijkstra's algorithm (priority-first search)
+#ifndef SHORTEST_PATH_DIJKSTRA_PFS_H
+#define SHORTEST_PATH_DIJKSTRA_PFS_H
 
-template<class Graph, class Edge> class SPT {
-    const Graph& G;
-    vector<double> wt;
-    vector<Edge*> spt;
+#include <vector>
+#include <queue>
+
+#include "Priority_queue_prim_pfs.h"
+
+template<typename Graph, typename Edge> class Shortest_paths_dijkstra_pfs {
 public:
-    SPT(const Graph& G, int s) : G(G),
-                                 spt(G.V()), wt(G.V(), G.V())
+    Shortest_paths_dijkstra_pfs(const Graph& graph, int source)
+            : _graph{graph},
+              _shortest_path(graph.num_vertices(), nullptr),
+              _weights(graph.num_vertices(), graph.num_vertices())
     {
-        PQi<double> pQ(G.V(), wt);
-        for (int v = 0; v < G.V(); v++) { pQ.insert(v); }
-        wt[s] = 0.0;
-        pQ.lower(s);
-        while (!pQ.empty()) {
-            int v = pQ.getmin(); // wt[v] = 0.0;
-            if (v != s && spt[v] == 0) { return; }
-            typename Graph::adjIterator A(G, v);
-            for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
-                int w = e->w();
-                double P = wt[v] + e->wt();
-                if (P < wt[w]) {
-                    wt[w] = P;
-                    pQ.lower(w);
-                    spt[w] = e;
+        Priority_queue_prim_pfs<double> priority_queue(graph.num_vertices(), _weights);
+        for (int v{0}; v < graph.num_vertices(); ++v) { priority_queue.insert(v); }
+        _weights[source] = 0.0;
+        priority_queue.lower(source);
+        int v;
+        while (!priority_queue.empty()) {
+            v = priority_queue.get_min(); // wt[v] = 0.0;
+            if (v != source && _shortest_path[v] == 0) { return; }
+            // typename Graph::adjIterator A(graph, v);
+            for (auto e : graph.adjacent(v)) {
+                int w{e->destination()};
+                double p = _weights[v] + e->weight();
+                if (p < _weights[w]) {
+                    _weights[w] = p;
+                    priority_queue.lower(w);
+                    _shortest_path[w] = e;
                 }
             }
         }
     }
 
-    Edge* pathR(int v) const { return spt[v]; }
+    Edge* path_r(int v) const { return _shortest_path[v]; }
 
-    double dist(int v) const { return wt[v]; }
+    double distance(int v) const { return _weights[v]; }
+
+private:
+    const Graph& _graph;
+    std::vector<double> _weights;
+    std::vector<Edge*> _shortest_path;
 };
 
-
-
-#endif // COLLECTED_SHORTEST_PATH_DIJKSTRA_PFS_H
+#endif // SHORTEST_PATH_DIJKSTRA_PFS_H

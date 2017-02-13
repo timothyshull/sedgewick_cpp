@@ -1,33 +1,38 @@
-#ifndef COLLECTED_FLOW_NETWORK_EDGE_H
-#define COLLECTED_FLOW_NETWORK_EDGE_H
+// Program 22.2 - Flow-network edges
+#ifndef FLOW_NETWORK_EDGE_H
+#define FLOW_NETWORK_EDGE_H
 
 class Flow_network_edge {
-
-};
-
-class EDGE {
-    int pv, pw, pcap, pflow;
 public:
-    EDGE(int v, int w, int cap) :
-            pv(v), pw(w), pcap(cap), pflow(0) {}
+    Flow_network_edge(int source, int destination, int capacity)
+            : _p_source{source},
+              _p_sink{destination},
+              _p_capacity{capacity},
+              _p_flow{0} {}
 
-    int v() const { return pv; }
+    inline int source() const noexcept { return _p_source; }
 
-    int w() const { return pw; }
+    inline int sink() const noexcept { return _p_sink; }
 
-    int cap() const { return pcap; }
+    inline int destination() const noexcept { return _p_sink; }
 
-    int flow() const { return pflow; }
+    inline int capacity() const noexcept { return _p_capacity; }
 
-    bool from(int v) const { return pv == v; }
+    inline int flow() const noexcept { return _p_flow; }
 
-    int other(int v) const { return from(v) ? pw : pv; }
+    inline bool from(int v) const noexcept { return _p_source == v; }
 
-    int capRto(int v) const { return from(v) ? pflow : pcap - pflow; }
+    inline int other(int v) const noexcept { return from(v) ? _p_sink : _p_source; }
 
-    void addflowRto(int v, int d) { pflow += from(v) ? -d : d; }
+    inline int cap_r_to(int v) const noexcept { return from(v) ? _p_flow : _p_capacity - _p_flow; }
+
+    inline void add_flow_r_to(int v, int d) { _p_flow += from(v) ? -d : d; }
+
+private:
+    int _p_source;
+    int _p_sink;
+    int _p_capacity;
+    int _p_flow;
 };
 
-
-
-#endif // COLLECTED_FLOW_NETWORK_EDGE_H
+#endif // FLOW_NETWORK_EDGE_H

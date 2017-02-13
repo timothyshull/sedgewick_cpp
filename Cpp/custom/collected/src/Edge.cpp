@@ -4,9 +4,14 @@
 #include "utility.h"
 
 Edge::Edge()
-        : _source{std::numeric_limits<int>::max()},
-          _destination{std::numeric_limits<int>::max()},
+        : _source{-1},
+          _destination{-1},
           _weight{std::numeric_limits<double>::infinity()} {}
+
+Edge::Edge(int source, int destination)
+        : _source{source},
+          _destination{destination},
+          _weight{0.0} {}
 
 Edge::Edge(int source, int destination, double weight) : _source{source}, _destination{destination}, _weight{weight}
 {

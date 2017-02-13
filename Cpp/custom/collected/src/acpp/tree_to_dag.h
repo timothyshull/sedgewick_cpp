@@ -1,5 +1,5 @@
-#ifndef COLLECTED_TREE_TO_DAG_H
-#define COLLECTED_TREE_TO_DAG_H
+#ifndef TREE_TO_DAG_H
+#define TREE_TO_DAG_H
 
 int compressR(link h)
 {
@@ -13,4 +13,4 @@ int compressR(link h)
     return t;
 }
 
-#endif // COLLECTED_TREE_TO_DAG_H
+#endif // TREE_TO_DAG_H

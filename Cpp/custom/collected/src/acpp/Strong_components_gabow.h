@@ -1,9 +1,9 @@
-#ifndef COLLECTED_STRONG_COMPONENTS_GABOW_H
-#define COLLECTED_STRONG_COMPONENTS_GABOW_H
+#ifndef STRONG_COMPONENTS_GABOW_H
+#define STRONG_COMPONENTS_GABOW_H
 
 #include "STACK.cc"
 
-template<class Graph> class SC {
+template<typename Graph> class SC {
     const Graph& G;
     STACK<int> S;
     int cnt, scnt;
@@ -45,4 +45,4 @@ public:
 
 
 
-#endif // COLLECTED_STRONG_COMPONENTS_GABOW_H
+#endif // STRONG_COMPONENTS_GABOW_H

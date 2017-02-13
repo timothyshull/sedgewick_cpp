@@ -1,7 +1,7 @@
-#ifndef COLLECTED_STRONG_COMPONENTS_KOSARAJU_H
-#define COLLECTED_STRONG_COMPONENTS_KOSARAJU_H
+#ifndef STRONG_COMPONENTS_KOSARAJU_H
+#define STRONG_COMPONENTS_KOSARAJU_H
 
-template<class Graph> class SC {
+template<typename Graph> class SC {
     const Graph& G;
     int cnt, scnt;
     vector<int> postI, postR, id;
@@ -43,4 +43,4 @@ public:
 
 
 
-#endif // COLLECTED_STRONG_COMPONENTS_KOSARAJU_H
+#endif // STRONG_COMPONENTS_KOSARAJU_H

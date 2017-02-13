@@ -2,7 +2,7 @@
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
-template<class Item>
+template<typename Item>
 void selection(Item a[], int l, int r)
 {
     for (int i = l; i < r; i++) {

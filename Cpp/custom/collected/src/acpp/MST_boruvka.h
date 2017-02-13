@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MST_BORUVKA_H
-#define COLLECTED_MST_BORUVKA_H
+#ifndef MST_BORUVKA_H
+#define MST_BORUVKA_H
 
-template<class Graph, class Edge> class MST {
+template<typename Graph, typename Edge> class MST {
     const Graph& G;
     vector<Edge*> a, b, mst;
     UF uf;
@@ -35,4 +35,4 @@ public:
 
 
 
-#endif // COLLECTED_MST_BORUVKA_H
+#endif // MST_BORUVKA_H

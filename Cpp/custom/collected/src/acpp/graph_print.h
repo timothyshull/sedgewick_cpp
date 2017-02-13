@@ -1,11 +1,11 @@
 // Program 17.3 - A client function that prints a graph
-#ifndef COLLECTED_GRAPH_PRINT_H
-#define COLLECTED_GRAPH_PRINT_H
+#ifndef GRAPH_PRINT_H
+#define GRAPH_PRINT_H
 
 #include <iostream>
 
 // see Graph_io
-template<class Graph_type>
+template<typename Graph_type>
 void show(const Graph_type& graph)
 {
     for (int s = 0; s < graph.num_vertices(); ++s) {
@@ -19,4 +19,4 @@ void show(const Graph_type& graph)
     }
 }
 
-#endif // COLLECTED_GRAPH_PRINT_H
+#endif // GRAPH_PRINT_H

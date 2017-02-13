@@ -1,5 +1,7 @@
 project(acpp_modernized)
 
+include_directories(..)
+
 # Chapters 1 - 3
 add_library(2d_array_allocation 2d_array_allocation.h 2d_array_allocation.cpp)
 add_library(array_of_strings_sort array_of_strings_sort.h array_of_strings_sort.cpp)

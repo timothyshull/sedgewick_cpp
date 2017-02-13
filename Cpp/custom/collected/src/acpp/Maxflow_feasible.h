@@ -1,9 +1,9 @@
-#ifndef COLLECTED_MAXFLOW_FEASIBLE_H
-#define COLLECTED_MAXFLOW_FEASIBLE_H
+#ifndef MAXFLOW_FEASIBLE_H
+#define MAXFLOW_FEASIBLE_H
 
 #include "MAXFLOW.cc"
 
-template<class Graph, class Edge> class FEASIBLE {
+template<typename Graph, typename Edge> class FEASIBLE {
     const Graph& G;
 
     void freeedges(const Graph& F, int v)
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif // COLLECTED_MAXFLOW_FEASIBLE_H
+#endif // MAXFLOW_FEASIBLE_H

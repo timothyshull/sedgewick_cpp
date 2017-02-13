@@ -18,7 +18,7 @@ struct Queue_node {
     ~Queue_node() = default;
 };
 
-template<class Item_type>
+template<typename Item_type>
 class Queue {
 public:
     using Raw_node_pointer = Queue_node<Item_type>*;

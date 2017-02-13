@@ -1,7 +1,7 @@
-#ifndef COLLECTED_EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H
-#define COLLECTED_EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H
+#ifndef EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H
+#define EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H
 
-template<class Edge> class SparseMultiGRAPH {
+template<typename Edge> class SparseMultiGRAPH {
     int Vcnt, Ecnt;
     bool digraph;
 
@@ -40,4 +40,4 @@ public:
 
 
 
-#endif // COLLECTED_EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H
+#endif // EDGE_WEIGHTED_SPARSE_MULTIGRAPH_H

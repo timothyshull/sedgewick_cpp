@@ -1,7 +1,7 @@
-#ifndef COLLECTED_TRANSITIVE_CLOSURE_DAG_H
-#define COLLECTED_TRANSITIVE_CLOSURE_DAG_H
+#ifndef TRANSITIVE_CLOSURE_DAG_H
+#define TRANSITIVE_CLOSURE_DAG_H
 
-template<class tcDag, class Dag> class dagTC {
+template<typename tcDag, typename Dag> class dagTC {
     tcDag T;
     const Dag& D;
     int cnt;
@@ -33,4 +33,4 @@ public:
     bool reachable(int v, int w) const { return T.edge(v, w); }
 };
 
-#endif // COLLECTED_TRANSITIVE_CLOSURE_DAG_H
+#endif // TRANSITIVE_CLOSURE_DAG_H

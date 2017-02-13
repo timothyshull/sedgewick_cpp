@@ -1,45 +1,59 @@
-#ifndef COLLECTED_DIGRAPH_DFS_H
-#define COLLECTED_DIGRAPH_DFS_H
+#ifndef DIGRAPH_DFS_H
+#define DIGRAPH_DFS_H
 
-template<class Graph> class DFS {
-    const Graph& G;
-    int depth, cnt, cntP;
-    vector<int> pre, post;
+#include <vector>
+#include <iostream>
 
-    void show(char* s, Edge e)
+#include "Edge.h"
+
+template<typename Graph_type>
+class Digraph_dfs {
+public:
+    Digraph_dfs(const Graph_type& graph)
+            : _graph{graph},
+              _count{0},
+              cntP{0},
+              _preorder(graph.num_vertices(), -1),
+              _postorder(graph.num_vertices(), -1)
     {
-        for (int i = 0; i < depth; i++) { cout << "  "; }
-        cout << e.v << "-" << e.w << s << "\n";
+        for (int v{0}; v < graph.num_vertices(); ++v) {
+            if (_preorder[v] == -1) { _dfs_r(Edge(v, v)); }
+        }
     }
 
-    void dfsR(Edge e)
+private:
+    const Graph_type& _graph;
+    int _depth;
+    int _count;
+    int cntP;
+    std::vector<int> _preorder;
+    std::vector<int> _postorder;
+
+    void show(std::string&& s, Edge& e)
     {
-        int w = e.w;
+        for (int i = 0; i < _depth; ++i) { std::cout << "  "; }
+        std::cout << e.source() << "-" << e.destination() << s << "\n";
+    }
+
+    void _dfs_r(Edge& e)
+    {
+        int w{e.destination()};
         show(" tree", e);
-        pre[w] = cnt++;
-        depth++;
-        typename Graph::adjIterator A(G, w);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            Edge x(w, t);
-            if (pre[t] == -1) { dfsR(x); }
-            else if (post[t] == -1) { show(" back", x); }
-            else if (pre[t] > pre[w]) { show(" down", x); }
+        _preorder[w] = _count++;
+        ++_depth;
+        // typename Graph_type::adjIterator A(_graph, w);
+        for (auto t : _graph.adjacent(w)) {
+            Edge x{w, t};
+            if (_preorder[t] == -1) { _dfs_r(x); }
+            else if (_postorder[t] == -1) { show(" back", x); }
+            else if (_preorder[t] > _preorder[w]) { show(" down", x); }
             else { show(" cross", x); }
         }
-        post[w] = cntP++;
-        depth--;
-    }
-
-public:
-    DFS(const Graph& G) : G(G), cnt(0), cntP(0),
-                          pre(G.V(), -1), post(G.V(), -1)
-    {
-        for (int v = 0; v < G.V(); v++) {
-            if (pre[v] == -1) { dfsR(Edge(v, v)); }
-        }
+        _postorder[w] = cntP++;
+        --_depth;
     }
 };
 
 
 
-#endif // COLLECTED_DIGRAPH_DFS_H
+#endif // DIGRAPH_DFS_H

@@ -1,18 +1,18 @@
-#ifndef COLLECTED_SIMPLE_PATH_SEARCH_H
-#define COLLECTED_SIMPLE_PATH_SEARCH_H
+#ifndef SIMPLE_PATH_SEARCH_H
+#define SIMPLE_PATH_SEARCH_H
 
-template<class Graph> class Hamiltonian_path {
-    const Graph& G;
-    vector<bool> visited;
-    bool found;
+template<typename Graph> class Hamiltonian_path {
+    const Graph& _graph;
+    vector<bool> _visited;
+    bool _found;
 
     bool searchR(int v, int w)
     {
         if (v == w) { return true; }
-        visited[v] = true;
-        typename Graph::adjIterator A(G, v);
+        _visited[v] = true;
+        typename Graph::adjIterator A(_graph, v);
         for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            if (!visited[t]) {
+            if (!_visited[t]) {
                 if (searchR(t, w)) { return true; }
             }
         }
@@ -21,9 +21,9 @@ template<class Graph> class Hamiltonian_path {
 
 public:
     Hamiltonian_path(const Graph& G, int v, int w) :
-            G(G), visited(G.V(), false) { found = searchR(v, w); }
+            _graph(G), _visited(G.V(), false) { _found = searchR(v, w); }
 
-    bool exists() const { return found; }
+    bool exists() const { return _found; }
 };
 
-#endif // COLLECTED_SIMPLE_PATH_SEARCH_H
+#endif // SIMPLE_PATH_SEARCH_H

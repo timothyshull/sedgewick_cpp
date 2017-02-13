@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MINCOST_RESIDUAL_NETWORKS_H
-#define COLLECTED_MINCOST_RESIDUAL_NETWORKS_H
+#ifndef MINCOST_RESIDUAL_NETWORKS_H
+#define MINCOST_RESIDUAL_NETWORKS_H
 
-template<class Graph, class Edge> class MINCOST {
+template<typename Graph, typename Edge> class MINCOST {
     const Graph& G;
     int s, t;
     vector<int> wt;
@@ -26,4 +26,4 @@ public:
 
 
 
-#endif // COLLECTED_MINCOST_RESIDUAL_NETWORKS_H
+#endif // MINCOST_RESIDUAL_NETWORKS_H

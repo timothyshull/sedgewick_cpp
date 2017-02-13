@@ -1,6 +1,6 @@
 // Program 17.4 - Graph-processing input/output interface
-#ifndef COLLECTED_GRAPH_IO_H
-#define COLLECTED_GRAPH_IO_H
+#ifndef GRAPH_IO_H
+#define GRAPH_IO_H
 
 #include <iostream>
 
@@ -36,4 +36,4 @@ public:
 
 };
 
-#endif // COLLECTED_GRAPH_IO_H
+#endif // GRAPH_IO_H

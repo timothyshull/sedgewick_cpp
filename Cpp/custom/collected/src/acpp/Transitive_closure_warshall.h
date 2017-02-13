@@ -1,7 +1,7 @@
-#ifndef COLLECTED_TRANSITIVE_CLOSURE_WARSHALL_H
-#define COLLECTED_TRANSITIVE_CLOSURE_WARSHALL_H
+#ifndef TRANSITIVE_CLOSURE_WARSHALL_H
+#define TRANSITIVE_CLOSURE_WARSHALL_H
 
-template<class tcGraph, class Graph> class TC {
+template<typename tcGraph, typename Graph> class TC {
     tcGraph T;
 public:
     TC(const Graph& G) : T(G)
@@ -27,4 +27,4 @@ public:
 
 
 
-#endif // COLLECTED_TRANSITIVE_CLOSURE_WARSHALL_H
+#endif // TRANSITIVE_CLOSURE_WARSHALL_H

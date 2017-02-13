@@ -1,25 +1,32 @@
-#ifndef COLLECTED_TWO_WAY_EULER_TOUR_H
-#define COLLECTED_TWO_WAY_EULER_TOUR_H
+// Program 18.5 - Two-way Euler tour
+#ifndef TWO_WAY_EULER_TOUR_H
+#define TWO_WAY_EULER_TOUR_H
 
-template<class Graph>
-class EULER : public SEARCH<Graph> {
-    void searchC(Edge e)
-    {
-        int v = e.v, w = e.w;
-        ord[w] = cnt++;
-        cout << "-" << w;
-        typename Graph::adjIterator A(G, w);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            if (ord[t] == -1) { searchC(Edge(w, t)); }
-            else if (ord[t] < ord[v]) {
-                cout << "-" << t << "-" << w;
-            }
-        }
-        if (v != w) { cout << "-" << v; } else { cout << "\n"; }
-    }
+#include <iostream>
 
+#include "Generalized_graph_search.h"
+
+template<typename Graph_type>
+class Two_way_euler_tour : public Generalized_graph_search<Graph_type> {
 public:
-    EULER(const Graph& G) : SEARCH<Graph>(G) { search(); }
+    Two_way_euler_tour(const Graph_type& G) : Generalized_graph_search<Graph_type>(G) { _search(); }
+
+private:
+    inline void _search_c(Edge&& e) { _search_c(e); }
+
+    void _search_c(Edge& e)
+    {
+        int v{e.source()};
+        int w{e.destination()};
+        _order[w] = _count++;
+        std::cout << "-" << w;
+        // typename Graph_type::adjIterator A(G, w);
+        for (auto t : _graph.adjacent(w)) {
+            if (_order[t] == -1) { _search_c(Edge{w, t}); }
+            else if (_order[t] < _order[v]) { std::cout << "-" << t << "-" << w; }
+        }
+        if (v != w) { std::cout << "-" << v; } else { std::cout << "\n"; }
+    }
 };
 
-#endif // COLLECTED_TWO_WAY_EULER_TOUR_H
+#endif // TWO_WAY_EULER_TOUR_H

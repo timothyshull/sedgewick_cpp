@@ -12,10 +12,10 @@
 using std::cin;
 using std::cout;
 
-template<class Item>
+template<typename Item>
 void rand(Item a[], int N) { for (int i = 0; i < N; i++) { rand(a[i]); }}
 
-template<class Item>
+template<typename Item>
 void scan(Item a[], int& N)
 {
     for (int i = 0; i < N; i++) {
@@ -24,7 +24,7 @@ void scan(Item a[], int& N)
     N = i;
 }
 
-template<class Item>
+template<typename Item>
 void show(Item a[], int l, int r)
 {
     for (int i = l; i <= r; i++) {

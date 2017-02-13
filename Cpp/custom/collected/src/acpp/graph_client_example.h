@@ -1,6 +1,6 @@
 // Program 17.2 - Example of a graph-processing client
-#ifndef COLLECTED_GRAPH_CLIENT_EXAMPLE_H
-#define COLLECTED_GRAPH_CLIENT_EXAMPLE_H
+#ifndef GRAPH_CLIENT_EXAMPLE_H
+#define GRAPH_CLIENT_EXAMPLE_H
 
 #include <vector>
 #include "../Edge.h"
@@ -21,4 +21,4 @@ std::vector<Edge> edges(Graph_type& graph)
     return a;
 }
 
-#endif // COLLECTED_GRAPH_CLIENT_EXAMPLE_H
+#endif // GRAPH_CLIENT_EXAMPLE_H

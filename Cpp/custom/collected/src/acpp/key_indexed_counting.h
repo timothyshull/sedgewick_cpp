@@ -2,15 +2,22 @@
 #ifndef KEY_INDEXED_COUNTING_H
 #define KEY_INDEXED_COUNTING_H
 
-void distcount(int a[], int l, int r)
+#include <vector>
+
+void distribution_count(std::vector<int>& coll, int l, int r, std::size_t size)
 {
-    int i, j, cnt[M];
-    static int b[maxN];
-    for (j = 0; j < M; j++) { cnt[j] = 0; }
-    for (i = l; i <= r; i++) { cnt[a[i] + 1]++; }
-    for (j = 1; j < M; j++) { cnt[j] += cnt[j - 1]; }
-    for (i = l; i <= r; i++) { b[cnt[a[i]]++] = a[i]; }
-    for (i = l; i <= r; i++) { a[i] = b[i - l]; }
+    const static std::size_t max_size{1000};
+    std::vector<int> count;
+    count.assign(size, 0);
+    static std::vector<int> aux;
+    aux.reserve(max_size);
+
+    int i;
+    int j;
+    for (i = l; i <= r; ++i) { count[coll[i] + 1]++; }
+    for (j = 1; j < size; ++j) { count[j] += count[j - 1]; }
+    for (i = l; i <= r; ++i) { aux[count[coll[i]]++] = coll[i]; }
+    for (i = l; i <= r; ++i) { coll[i] = aux[i - l]; }
 }
 
 #endif // KEY_INDEXED_COUNTING_H

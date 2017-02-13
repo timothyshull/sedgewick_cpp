@@ -1,52 +1,57 @@
-#ifndef COLLECTED_ALL_SHORTEST_PATHS_DAG_H
-#define COLLECTED_ALL_SHORTEST_PATHS_DAG_H
+// Program 21.7 - All shortest paths in an acyclic network
+#ifndef ALL_SHORTEST_PATHS_DAG_H
+#define ALL_SHORTEST_PATHS_DAG_H
 
-template<class Graph, class Edge> class allSPdag {
-    const Graph& G;
-    vector <vector<Edge*>> p;
-    vector <vector<double>> d;
+#include <vector>
 
-    void dfsR(int s)
+template<typename Graph_type, typename Edge_type>
+class All_shortest_paths_dag {
+public:
+    All_shortest_paths_dag(const Graph_type& graph)
+            : _graph{graph},
+              _paths(graph.num_vertices()),
+              _distances(graph.num_vertices())
     {
-        typename Graph::adjIterator A(G, s);
-        for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
-            int t = e->w();
-            double w = e->wt();
-            if (d[s][t] > w) {
-                d[s][t] = w;
-                p[s][t] = e;
+        auto num_vertices = graph.num_vertices();
+        for (int i{0}; i < num_vertices; ++i) {
+            _paths[i].assign(num_vertices, nullptr);
+            _distances[i].assign(num_vertices, num_vertices);
+        }
+        for (int s{0}; s < num_vertices; ++s) {
+            if (_paths[s][s] == nullptr) { _dfs_r(s); }
+        }
+    }
+
+    inline Edge_type* path(int s, int t) const { return _paths[s][t]; }
+
+    inline double distance(int s, int t) const { return _distances[s][t]; }
+
+private:
+    const Graph_type& _graph;
+    std::vector<std::vector<Edge_type*>> _paths;
+    std::vector<std::vector<double>> _distances;
+
+    void _dfs_r(int s)
+    {
+        // typename Graph_type::adjIterator A(_graph, s);
+        for (auto e : _graph.adjacent(s)) {
+            int t{e->dest()};
+            double w{e->weight()};
+            if (_distances[s][t] > w) {
+                _distances[s][t] = w;
+                _paths[s][t] = e;
             }
-            if (p[t][t] == 0) { dfsR(t); }
-            for (int i = 0; i < G.V(); i++) {
-                if (p[t][i]) {
-                    if (d[s][i] > w + d[t][i]) {
-                        d[s][i] = w + d[t][i];
-                        p[s][i] = e;
+            if (_paths[t][t] == nullptr) { _dfs_r(t); }
+            for (int i{0}; i < _graph.num_vertices(); ++i) {
+                if (_paths[t][i]) {
+                    if (_distances[s][i] > w + _distances[t][i]) {
+                        _distances[s][i] = w + _distances[t][i];
+                        _paths[s][i] = e;
                     }
                 }
             }
         }
     }
-
-public:
-    allSPdag(const Graph& G) : G(G),
-                               p(G.V()), d(G.V())
-    {
-        int V = G.V();
-        for (int i = 0; i < V; i++) {
-            p[i].assign(V, 0);
-            d[i].assign(V, V);
-        }
-        for (int s = 0; s < V; s++) {
-            if (p[s][s] == 0) { dfsR(s); }
-        }
-    }
-
-    Edge* path(int s, int t) const { return p[s][t]; }
-
-    double dist(int s, int t) const { return d[s][t]; }
 };
 
-
-
-#endif // COLLECTED_ALL_SHORTEST_PATHS_DAG_H
+#endif // ALL_SHORTEST_PATHS_DAG_H

@@ -1,7 +1,7 @@
-#ifndef COLLECTED_NETWORK_DIAMETER_H
-#define COLLECTED_NETWORK_DIAMETER_H
+#ifndef NETWORK_DIAMETER_H
+#define NETWORK_DIAMETER_H
 
-template<class Graph, class Edge>
+template<typename Graph, typename Edge>
 double diameter(Graph& G)
 {
     int vmax = 0, wmax = 0;
@@ -27,4 +27,4 @@ double diameter(Graph& G)
 
 
 
-#endif // COLLECTED_NETWORK_DIAMETER_H
+#endif // NETWORK_DIAMETER_H

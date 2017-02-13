@@ -1,5 +1,5 @@
-#ifndef COLLECTED_RANDOM_GRAPH_GENERATORS_H
-#define COLLECTED_RANDOM_GRAPH_GENERATORS_H
+#ifndef RANDOM_GRAPH_GENERATORS_H
+#define RANDOM_GRAPH_GENERATORS_H
 
 static void randE(Graph& G, int E)
 {
@@ -23,4 +23,4 @@ static void randG(Graph& G, int E)
 }
 
 
-#endif // COLLECTED_RANDOM_GRAPH_GENERATORS_H
+#endif // RANDOM_GRAPH_GENERATORS_H

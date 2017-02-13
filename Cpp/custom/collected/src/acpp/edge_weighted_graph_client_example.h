@@ -1,6 +1,6 @@
-#ifndef COLLECTED_EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H
-#define COLLECTED_EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H
-template <class Graph, class Edge>
+#ifndef EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H
+#define EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H
+template <typename Graph, class Edge>
 vector <Edge *> edges(const Graph &G)
 { int E = 0;
     vector <Edge *> a(G.E());
@@ -16,4 +16,4 @@ vector <Edge *> edges(const Graph &G)
 
 
 
-#endif // COLLECTED_EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H
+#endif // EDGE_WEIGHTED_GRAPH_CLIENT_EXAMPLE_H

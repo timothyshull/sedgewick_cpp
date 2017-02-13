@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MINCOST_NETWORK_SIMPLEX_IMPROVED_H
-#define COLLECTED_MINCOST_NETWORK_SIMPLEX_IMPROVED_H
+#ifndef MINCOST_NETWORK_SIMPLEX_IMPROVED_H
+#define MINCOST_NETWORK_SIMPLEX_IMPROVED_H
 
-template<class Graph, class Edge> class MINCOST {
+template<typename Graph, typename Edge> class MINCOST {
     const Graph& G;
     int s, t;
     int valid;
@@ -153,4 +153,4 @@ public:
     }
 };
 
-#endif // COLLECTED_MINCOST_NETWORK_SIMPLEX_IMPROVED_H
+#endif // MINCOST_NETWORK_SIMPLEX_IMPROVED_H

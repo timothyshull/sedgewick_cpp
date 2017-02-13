@@ -1,20 +1,20 @@
-#ifndef COLLECTED_FLOW_COST_H
-#define COLLECTED_FLOW_COST_H
+// Program 22.8 - Computing flow cost
+#ifndef FLOW_COST_H
+#define FLOW_COST_H
 
-static int cost(Graph& G)
+template<typename Graph_type>
+static int cost(Graph_type& graph)
 {
-    int x = 0;
-    for (int v = 0; v < G.V(); v++) {
-        typename Graph::adjIterator A(G, v);
-        for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
-            if (e->from(v) && e->costRto(e->w()) < C) {
-                x += e->flow() * e->costRto(e->w());
+    int x{0};
+    for (int v{0}; v < graph.num_vertices(); ++v) {
+        // typename Graph_type::adjIterator A(graph, v);
+        for (auto e : graph.adjacent(v)) {
+            if (e->from(v) && e->cost_r_to(e->destination()) < C) {
+                x += e->flow() * e->cost_r_to(e->destination());
             }
         }
     }
     return x;
 }
 
-
-
-#endif // COLLECTED_FLOW_COST_H
+#endif // FLOW_COST_H

@@ -1,34 +1,39 @@
-#ifndef COLLECTED_HAMILTONIAN_PATH_H
-#define COLLECTED_HAMILTONIAN_PATH_H
+// Program 17.17 - Hamilton path
+#ifndef HAMILTONIAN_PATH_H
+#define HAMILTONIAN_PATH_H
+
+#include <vector>
 
 template<typename Graph_type>
 class Hamiltonian_path {
-    const Graph_type& G;
-    vector<bool> visited;
-    bool found;
+public:
+    Hamiltonian_path(const Graph_type& graph, int source, int destination, int distance)
+            : _graph{graph},
+              _visited(graph.num_vertices(), false) { _found = _search_r(source, destination, distance); }
 
-    bool searchR(int v, int w, int d)
+    inline bool exists() const noexcept { return _found; }
+
+private:
+    const Graph_type& _graph;
+    std::vector<bool> _visited;
+    bool _found;
+
+    bool _search_r(int source, int destination, int distance)
     {
-        if (v == w) { return (d == 0); }
-        visited[v] = true;
-        typename Graph_type::adjIterator A(G, v);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) {
-            if (!visited[t]) {
-                if (searchR(t, w, d - 1)) { return true; }
+        if (source == destination) { return (distance == 0); }
+        _visited[source] = true;
+        // typename Graph_type::adjIterator A(_graph, source);
+        for (auto t : _graph.adjacent(source)) {
+            if (!_visited[t]) {
+                if (_search_r(t, destination, distance - 1)) { return true; }
             }
         }
-        visited[v] = false;
+        _visited[source] = false;
         return false;
     }
-
-public:
-    Hamiltonian_path(const Graph_type& G, int v, int w) :
-            G(G), visited(G.V(), false) { found = searchR(v, w); }
-
-    bool exists() const { return found; }
 };
 
 
 
 
-#endif // COLLECTED_HAMILTONIAN_PATH_H
+#endif // HAMILTONIAN_PATH_H

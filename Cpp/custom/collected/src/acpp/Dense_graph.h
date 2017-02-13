@@ -1,7 +1,9 @@
-#ifndef COLLECTED_DENSE_GRAPH_H
-#define COLLECTED_DENSE_GRAPH_H
+#ifndef DENSE_GRAPH_H
+#define DENSE_GRAPH_H
 
 #include <vector>
+
+#include "Edge.h"
 
 class Dense_graph_iterator {
     const Dense_graph& _graph;
@@ -48,7 +50,8 @@ public:
 
     void insert(Edge& e)
     {
-        int v = e.v, w = e.w;
+        int v{e.source()};
+        int w{e.destination()};
         if (_adjacency_matrix[v][w] == false) { _num_edges++; }
         _adjacency_matrix[v][w] = true;
         if (!_is_directed) { _adjacency_matrix[w][v] = true; }
@@ -56,8 +59,8 @@ public:
 
     void remove(Edge& e)
     {
-        int v{e.from()};
-        int w{e.to()};
+        int v{e.source()};
+        int w{e.destination()};
         if (_adjacency_matrix[v][w] == true) { --_num_edges; }
         _adjacency_matrix[v][w] = false;
         if (!_is_directed) { _adjacency_matrix[w][v] = false; }
@@ -74,4 +77,4 @@ private:
     std::vector<std::vector<bool>> _adjacency_matrix;
 };
 
-#endif // COLLECTED_DENSE_GRAPH_H
+#endif // DENSE_GRAPH_H

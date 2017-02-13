@@ -1,34 +1,44 @@
-#ifndef COLLECTED_LONGEST_PATHS_DAG_H
-#define COLLECTED_LONGEST_PATHS_DAG_H
+// Program 21.6 - Longest paths in an acyclic network
+#ifndef LONGEST_PATHS_DAG_H
+#define LONGEST_PATHS_DAG_H
 
-#include "dagTS.cc"
+#include <vector>
 
-template<class Graph, class Edge> class LPTdag {
-    const Graph& G;
-    vector<double> wt;
-    vector<Edge*> lpt;
+#include "Topological_sort.h"
+
+template<typename Graph_type, typename Edge_type>
+class Longest_paths_dag {
 public:
-    LPTdag(const Graph& G) : G(G),
-                             lpt(G.V()), wt(G.V(), 0)
+    Longest_paths_dag(const Graph_type& graph)
+            : _graph{graph},
+              _longest_paths(graph.num_vertices()),
+              _weights(graph.num_vertices(), 0.0)
     {
-        int j, w;
-        dagTS <Graph> ts(G);
-        for (int v = ts[j = 0]; j < G.V(); v = ts[++j]) {
-            typename Graph::adjIterator A(G, v);
-            for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
-                if (wt[w = e->w()] < wt[v] + e->wt()) {
-                    wt[w] = wt[v] + e->wt();
-                    lpt[w] = e;
+        Topological_sort<Graph_type> ts{graph};
+
+        int j;
+        int w;
+        for (int v = ts[j = 0]; j < graph.V(); v = ts[++j]) {
+            typename Graph_type::adjIterator A(graph, v);
+            for (Edge_type* e = A.beg(); !A.end(); e = A.nxt()) {
+                if (_weights[w = e->w()] < _weights[v] + e->wt()) {
+                    _weights[w] = _weights[v] + e->wt();
+                    _longest_paths[w] = e;
                 }
             }
         }
     }
 
-    Edge* pathR(int v) const { return lpt[v]; }
+    Edge_type* pathR(int v) const { return _longest_paths[v]; }
 
-    double dist(int v) const { return wt[v]; }
+    inline double distance(int v) const { return _weights[v]; }
+
+private:
+    const Graph_type& _graph;
+    std::vector<double> _weights;
+    std::vector<Edge_type*> _longest_paths;
 };
 
 
 
-#endif // COLLECTED_LONGEST_PATHS_DAG_H
+#endif // LONGEST_PATHS_DAG_H

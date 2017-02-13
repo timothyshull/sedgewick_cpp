@@ -137,6 +137,8 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - use GSL narrow_cast and narrow for casting
 - use unsigned long for num_vertices etc for natural use with size_t
 - the standard library throws for certain places where null is returned (std::out_of_range)
+- replace all double reserve and set value calls with .assign
+- prefer just the universal reference form of a function with std::forward to fix
 
 
 

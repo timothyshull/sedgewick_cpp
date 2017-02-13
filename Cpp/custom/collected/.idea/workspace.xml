@@ -2,566 +2,566 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
     <generated>
-      <config projectName="collected" targetName="index_binomial_min_pq_main_automoc" />
-      <config projectName="collected" targetName="types_of_numbers_main" />
-      <config projectName="collected" targetName="file_index_main.cpp" />
-      <config projectName="collected" targetName="std_io_automoc" />
-      <config projectName="collected" targetName="longest_common_substring_main_automoc" />
-      <config projectName="collected" targetName="binary_insertion_sort_main" />
-      <config projectName="collected" targetName="josephus_problem_main" />
-      <config projectName="collected" targetName="std_stats_main" />
-      <config projectName="collected" targetName="cpm_main_automoc" />
-      <config projectName="collected" targetName="knuth_shuffle_main_automoc" />
-      <config projectName="collected" targetName="point_2d_main" />
-      <config projectName="collected" targetName="binary_search_tree_main_automoc" />
-      <config projectName="collected" targetName="patricia_st_main_automoc" />
-      <config projectName="collected" targetName="floyd_warshall_main_automoc" />
-      <config projectName="collected" targetName="directed_cycle_main_automoc" />
-      <config projectName="collected" targetName="hex_dump_main.cpp" />
-      <config projectName="collected" targetName="depth_first_paths_main.cpp" />
-      <config projectName="collected" targetName="doubling_ratio_main.cpp" />
-      <config projectName="collected" targetName="sequential_search_st_main_automoc" />
-      <config projectName="collected" targetName="depth_first_directed_paths_main" />
-      <config projectName="collected" targetName="date_main.cpp" />
-      <config projectName="collected" targetName="binary_std_in_main" />
-      <config projectName="collected" targetName="multiway_merge_main_automoc" />
-      <config projectName="collected" targetName="breadth_first_paths_main" />
-      <config projectName="collected" targetName="doubling_test_main.cpp" />
-      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main" />
-      <config projectName="collected" targetName="std_in_main_automoc" />
-      <config projectName="collected" targetName="cycle_main.cpp" />
-      <config projectName="collected" targetName="msd_radix_sort_main" />
-      <config projectName="collected" targetName="cycle_main_automoc" />
-      <config projectName="collected" targetName="out_main_automoc" />
-      <config projectName="collected" targetName="std_stats_main_automoc" />
-      <config projectName="collected" targetName="red_black_bst_main" />
-      <config projectName="collected" targetName="index_min_pq_main.cpp" />
-      <config projectName="collected" targetName="edge_weighted_digraph_main_automoc" />
-      <config projectName="collected" targetName="topological_main_automoc" />
-      <config projectName="collected" targetName="doubling_test_main_automoc" />
-      <config projectName="collected" targetName="timsort_py_automoc" />
-      <config projectName="collected" targetName="lsd_radix_sort_main" />
-      <config projectName="collected" targetName="acyclic_sp_main_automoc" />
-      <config projectName="collected" targetName="list_insertion_sort_main" />
-      <config projectName="collected" targetName="binary_in_main.cpp" />
-      <config projectName="collected" targetName="linear_programming_main" />
-      <config projectName="collected" targetName="std_array_io_main" />
-      <config projectName="collected" targetName="linked_bag_main.cpp" />
-      <config projectName="collected" targetName="quick_union_uf_main.cpp" />
-      <config projectName="collected" targetName="gaussian_elimination_main" />
-      <config projectName="collected" targetName="huffman_main" />
-      <config projectName="collected" targetName="binary_insertion_sort_main_automoc" />
-      <config projectName="collected" targetName="quicksort_main_automoc" />
-      <config projectName="collected" targetName="edge_weighted_directed_cycle_main_automoc" />
-      <config projectName="collected" targetName="collision_system_main_automoc" />
-      <config projectName="collected" targetName="three_sum_main.cpp" />
-      <config projectName="collected" targetName="symbol_digraph_main_automoc" />
-      <config projectName="collected" targetName="floyd_warshall_main.cpp" />
-      <config projectName="collected" targetName="linear_programming_main_automoc" />
-      <config projectName="collected" targetName="separate_chaining_hash_st_main_automoc" />
-      <config projectName="collected" targetName="std_array_io_main_automoc" />
-      <config projectName="collected" targetName="arbitrage_main" />
-      <config projectName="collected" targetName="weighted_quick_union_uf_main_automoc" />
-      <config projectName="collected" targetName="gaussian_elimination_main.cpp" />
-      <config projectName="collected" targetName="eulerian_path_main_automoc" />
-      <config projectName="collected" targetName="knuth_shuffle_main" />
-      <config projectName="collected" targetName="random_seq_main.cpp" />
-      <config projectName="collected" targetName="std_draw_main" />
-      <config projectName="collected" targetName="three_sum_fast_main" />
-      <config projectName="collected" targetName="index_max_pq_main_automoc" />
-      <config projectName="collected" targetName="two_person_zero_sum_game_main_automoc" />
-      <config projectName="collected" targetName="insertion_sort_x_main_automoc" />
-      <config projectName="collected" targetName="assignment_problem_main_automoc" />
-      <config projectName="collected" targetName="white_filter_main_automoc" />
-      <config projectName="collected" targetName="black_filter_main.cpp" />
-      <config projectName="collected" targetName="draw_main.cpp" />
-      <config projectName="collected" targetName="flow_edge_main_automoc" />
-      <config projectName="collected" targetName="directed_eulerian_path_main.cpp" />
-      <config projectName="collected" targetName="quick_union_uf_main" />
-      <config projectName="collected" targetName="directed_dfs_main" />
-      <config projectName="collected" targetName="picture_dump_main.cpp" />
-      <config projectName="collected" targetName="fibonacci_min_pq_main" />
-      <config projectName="collected" targetName="acyclic_lp_main" />
-      <config projectName="collected" targetName="trie_st_main" />
+      <config projectName="collected" targetName="multiway_merge_main.cpp" />
+      <config projectName="collected" targetName="frequency_counter_main.cpp" />
+      <config projectName="collected" targetName="symbol_graph_main" />
       <config projectName="collected" targetName="patricia_set_main_automoc" />
-      <config projectName="collected" targetName="edge_weighted_graph_main" />
-      <config projectName="collected" targetName="suffix_array_main.cpp" />
-      <config projectName="collected" targetName="std_out_main_automoc" />
-      <config projectName="collected" targetName="longest_repeated_substring_main" />
-      <config projectName="collected" targetName="binary_std_out_main_automoc" />
-      <config projectName="collected" targetName="sparse_vector_main" />
-      <config projectName="collected" targetName="fibonacci_min_pq_main.cpp" />
-      <config projectName="collected" targetName="stack_main_automoc" />
-      <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main" />
-      <config projectName="collected" targetName="std_random_main.cpp" />
-      <config projectName="collected" targetName="patricia_set_main" />
-      <config projectName="collected" targetName="rect_hv_main_automoc" />
-      <config projectName="collected" targetName="floyd_warshall_main" />
-      <config projectName="collected" targetName="digraph_main_automoc" />
-      <config projectName="collected" targetName="dijkstra_sp_main" />
-      <config projectName="collected" targetName="top_m_main.cpp" />
-      <config projectName="collected" targetName="quick_find_uf_main.cpp" />
-      <config projectName="collected" targetName="binary_dump_main_automoc" />
-      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main.cpp" />
-      <config projectName="collected" targetName="cycle_main" />
-      <config projectName="collected" targetName="queue_main_automoc" />
-      <config projectName="collected" targetName="binary_std_in_main.cpp" />
-      <config projectName="collected" targetName="mergesort_bu_main" />
-      <config projectName="collected" targetName="cat_main" />
-      <config projectName="collected" targetName="two_person_zero_sum_game_main.cpp" />
-      <config projectName="collected" targetName="top_m_main" />
-      <config projectName="collected" targetName="linked_bag_main_automoc" />
-      <config projectName="collected" targetName="transitive_closure_main" />
+      <config projectName="collected" targetName="binomial_min_priority_queue_main_automoc" />
+      <config projectName="collected" targetName="doubling_test_main" />
+      <config projectName="collected" targetName="mergesort_main_automoc" />
+      <config projectName="collected" targetName="boruvka_mst_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_stack_main" />
+      <config projectName="collected" targetName="index_multiway_min_pq_main.cpp" />
+      <config projectName="collected" targetName="three_sum_main.cpp" />
+      <config projectName="collected" targetName="binary_std_in_main" />
+      <config projectName="collected" targetName="point" />
       <config projectName="collected" targetName="depth_first_search_main" />
-      <config projectName="collected" targetName="dijkstra_sp_main.cpp" />
-      <config projectName="collected" targetName="linked_queue_main" />
-      <config projectName="collected" targetName="quick_find_main" />
-      <config projectName="collected" targetName="stopwatch_main" />
-      <config projectName="collected" targetName="genome_main" />
+      <config projectName="collected" targetName="lzw_compression_main.cpp" />
+      <config projectName="collected" targetName="linear_probing_hash_symbol_table_main" />
+      <config projectName="collected" targetName="binary_search_tree_main" />
+      <config projectName="collected" targetName="boruvka_mst_main.cpp" />
+      <config projectName="collected" targetName="closest_pair_main_automoc" />
+      <config projectName="collected" targetName="kwik_main.cpp" />
+      <config projectName="collected" targetName="binary_in_main_automoc" />
+      <config projectName="collected" targetName="trie_set_main.cpp" />
+      <config projectName="collected" targetName="topological_main" />
+      <config projectName="collected" targetName="binary_std_out_main" />
+      <config projectName="collected" targetName="types_of_numbers_main" />
+      <config projectName="collected" targetName="accumulator_automoc" />
       <config projectName="collected" targetName="complex_main_automoc" />
-      <config projectName="collected" targetName="alphabet_main" />
-      <config projectName="collected" targetName="date_main" />
+      <config projectName="collected" targetName="picture_main_automoc" />
+      <config projectName="collected" targetName="graph_generator_main_automoc" />
+      <config projectName="collected" targetName="kosaraju_sharir_scc_main.cpp" />
+      <config projectName="collected" targetName="breadth_first_directed_paths_main" />
+      <config projectName="collected" targetName="rect_hv_main" />
+      <config projectName="collected" targetName="floyd_warshall_main" />
+      <config projectName="collected" targetName="linear_probing_hash_symbol_table_main_automoc" />
+      <config projectName="collected" targetName="symbol_graph_main_automoc" />
+      <config projectName="collected" targetName="binary_search" />
+      <config projectName="collected" targetName="run_length_main_automoc" />
       <config projectName="collected" targetName="edge_weighted_digraph" />
-      <config projectName="collected" targetName="resizing_array_queue_main" />
-      <config projectName="collected" targetName="in_main_automoc" />
-      <config projectName="collected" targetName="avl_tree_symbol_table_main_automoc" />
-      <config projectName="collected" targetName="graph_generator_main" />
+      <config projectName="collected" targetName="fenwick_tree_main_automoc" />
+      <config projectName="collected" targetName="sequential_search_st_main" />
+      <config projectName="collected" targetName="nfa_main_automoc" />
+      <config projectName="collected" targetName="file_index_main" />
+      <config projectName="collected" targetName="adjacency_matrix_graph_main" />
+      <config projectName="collected" targetName="timsort_main" />
+      <config projectName="collected" targetName="flow_network_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_bag_main_automoc" />
+      <config projectName="collected" targetName="edge_main_automoc" />
+      <config projectName="collected" targetName="hex_dump_main.cpp" />
+      <config projectName="collected" targetName="weighted_quick_union_uf_main" />
+      <config projectName="collected" targetName="particle_main" />
+      <config projectName="collected" targetName="utility" />
+      <config projectName="collected" targetName="fft_main" />
+      <config projectName="collected" targetName="gaussian_elimination_main" />
+      <config projectName="collected" targetName="std_stats_main_automoc" />
+      <config projectName="collected" targetName="gaussian_elimination_main_automoc" />
+      <config projectName="collected" targetName="directed_eulerian_cycle_main.cpp" />
+      <config projectName="collected" targetName="insertion_sort_main" />
       <config projectName="collected" targetName="average_main_automoc" />
+      <config projectName="collected" targetName="quick_union_main" />
+      <config projectName="collected" targetName="breadth_first_directed_paths_main.cpp" />
+      <config projectName="collected" targetName="kwik_main_automoc" />
+      <config projectName="collected" targetName="avl_tree_symbol_table_main_automoc" />
+      <config projectName="collected" targetName="mergesort_bu_main" />
+      <config projectName="collected" targetName="acyclic_lp_main_automoc" />
+      <config projectName="collected" targetName="huffman_main.cpp" />
+      <config projectName="collected" targetName="quicksort_3_way_main" />
+      <config projectName="collected" targetName="min_pq_main_automoc" />
+      <config projectName="collected" targetName="count_main.cpp" />
+      <config projectName="collected" targetName="nonrecursive_dfs_main_automoc" />
+      <config projectName="collected" targetName="picture_dump_main_automoc" />
+      <config projectName="collected" targetName="cat_main" />
+      <config projectName="collected" targetName="connected_component_main_automoc" />
+      <config projectName="collected" targetName="acyclic_lp_spec" />
+      <config projectName="collected" targetName="std_io_automoc" />
+      <config projectName="collected" targetName="array_of_strings_sort" />
+      <config projectName="collected" targetName="list_insertion_sort_main" />
+      <config projectName="collected" targetName="depth_first_directed_paths_main" />
+      <config projectName="collected" targetName="linked_stack_main" />
+      <config projectName="collected" targetName="quick_union_uf_main" />
+      <config projectName="collected" targetName="edge_main.cpp" />
+      <config projectName="collected" targetName="suffix_array_main.cpp" />
+      <config projectName="collected" targetName="rabin_karp_main_automoc" />
+      <config projectName="collected" targetName="linear_regression_main.cpp" />
+      <config projectName="collected" targetName="gmock_main" />
+      <config projectName="collected" targetName="std_out_main.cpp" />
+      <config projectName="collected" targetName="mergesort_main" />
+      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main.cpp" />
+      <config projectName="collected" targetName="directed_dfs_main.cpp" />
+      <config projectName="collected" targetName="binary_search_symbol_table_main" />
+      <config projectName="collected" targetName="gtest_main" />
+      <config projectName="collected" targetName="cat_main.cpp" />
+      <config projectName="collected" targetName="index_max_pq_main.cpp" />
+      <config projectName="collected" targetName="index_binomial_min_pq_main.cpp" />
+      <config projectName="collected" targetName="alphabet_main" />
+      <config projectName="collected" targetName="transitive_closure_main_automoc" />
+      <config projectName="collected" targetName="index_max_pq_main_automoc" />
+      <config projectName="collected" targetName="depth_first_paths_main" />
+      <config projectName="collected" targetName="boyer_moore_main.cpp" />
+      <config projectName="collected" targetName="floyd_warshall_main.cpp" />
+      <config projectName="collected" targetName="multiway_min_pq_main" />
+      <config projectName="collected" targetName="furthest_pair_main_automoc" />
+      <config projectName="collected" targetName="msd_radix_sort_main" />
+      <config projectName="collected" targetName="cycle_main" />
+      <config projectName="collected" targetName="connected_component_main.cpp" />
+      <config projectName="collected" targetName="interval_1d_main_automoc" />
+      <config projectName="collected" targetName="date_main_automoc" />
+      <config projectName="collected" targetName="quicksort_3_string_main_automoc" />
+      <config projectName="collected" targetName="binary_in_main" />
+      <config projectName="collected" targetName="collision_system_main" />
+      <config projectName="collected" targetName="std_random_automoc" />
+      <config projectName="collected" targetName="breadth_first_directed_paths_main_automoc" />
+      <config projectName="collected" targetName="bipartite_main_automoc" />
+      <config projectName="collected" targetName="topological_x_main.cpp" />
+      <config projectName="collected" targetName="resizing_array_stack_main_automoc" />
+      <config projectName="collected" targetName="timsort_main_automoc" />
+      <config projectName="collected" targetName="index_binomial_min_pq_main_automoc" />
+      <config projectName="collected" targetName="ford_fulkerson_main" />
+      <config projectName="collected" targetName="interval_1d_main" />
+      <config projectName="collected" targetName="genome_main_automoc" />
+      <config projectName="collected" targetName="lsd_radix_sort_main" />
+      <config projectName="collected" targetName="max_pq_main" />
+      <config projectName="collected" targetName="trie_set_main_automoc" />
+      <config projectName="collected" targetName="white_filter_main_automoc" />
+      <config projectName="collected" targetName="string_search_main" />
+      <config projectName="collected" targetName="std_random_main" />
+      <config projectName="collected" targetName="directed_cycle_x_main_automoc" />
+      <config projectName="collected" targetName="lookup_index_main_automoc" />
+      <config projectName="collected" targetName="longest_common_substring_main_automoc" />
+      <config projectName="collected" targetName="linear_regression_main" />
+      <config projectName="collected" targetName="resizing_array_queue_main.cpp" />
+      <config projectName="collected" targetName="segment_tree_main" />
+      <config projectName="collected" targetName="degrees_of_separation_main_automoc" />
+      <config projectName="collected" targetName="digraph_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_queue_main" />
+      <config projectName="collected" targetName="edge_weighted_directed_cycle_main_automoc" />
+      <config projectName="collected" targetName="lookup_csv_main.cpp" />
+      <config projectName="collected" targetName="sparse_vector_main" />
+      <config projectName="collected" targetName="bag_main_automoc" />
+      <config projectName="collected" targetName="transaction_main_automoc" />
+      <config projectName="collected" targetName="std_draw_main.cpp" />
+      <config projectName="collected" targetName="top_m_main" />
+      <config projectName="collected" targetName="bellman_ford_sp_main_automoc" />
+      <config projectName="collected" targetName="furthest_pair_main.cpp" />
+      <config projectName="collected" targetName="knuth_shuffle_main" />
+      <config projectName="collected" targetName="quick_find_uf_main.cpp" />
+      <config projectName="collected" targetName="depth_first_paths_main_automoc" />
+      <config projectName="collected" targetName="sequential_search" />
+      <config projectName="collected" targetName="binary_dump_main" />
+      <config projectName="collected" targetName="count_main_automoc" />
+      <config projectName="collected" targetName="depth_first_order_main" />
+      <config projectName="collected" targetName="vector_main" />
+      <config projectName="collected" targetName="breadth_first_paths_main.cpp" />
+      <config projectName="collected" targetName="symbol_table_main.cpp" />
+      <config projectName="collected" targetName="josephus_list_allocation_main" />
+      <config projectName="collected" targetName="suffix_array_x_main.cpp" />
+      <config projectName="collected" targetName="graham_scan_main.cpp" />
+      <config projectName="collected" targetName="linear_programming_main" />
+      <config projectName="collected" targetName="frequency_counter_main_automoc" />
+      <config projectName="collected" targetName="avl_tree_symbol_table_main" />
+      <config projectName="collected" targetName="closest_point_computation_main" />
+      <config projectName="collected" targetName="sieve_of_eratosthenes_main" />
+      <config projectName="collected" targetName="symbol_table_main_automoc" />
+      <config projectName="collected" targetName="gauss_jordan_elimination_main_automoc" />
+      <config projectName="collected" targetName="Accumulator_main" />
+      <config projectName="collected" targetName="binary_insertion_sort_main_automoc" />
+      <config projectName="collected" targetName="kruskal_mst_main.cpp" />
+      <config projectName="collected" targetName="prim_mst_main_automoc" />
+      <config projectName="collected" targetName="sequential_search_st_main.cpp" />
+      <config projectName="collected" targetName="utility_automoc" />
+      <config projectName="collected" targetName="msd_radix_sort_main_automoc" />
+      <config projectName="collected" targetName="separate_chaining_hash_st_main.cpp" />
+      <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main_automoc" />
+      <config projectName="collected" targetName="trie_set_main" />
+      <config projectName="collected" targetName="fibonacci_min_pq_main.cpp" />
+      <config projectName="collected" targetName="dynamic_array_memory_allocation" />
+      <config projectName="collected" targetName="shellsort_main" />
+      <config projectName="collected" targetName="index_multiway_min_pq_main_automoc" />
+      <config projectName="collected" targetName="picture_main" />
+      <config projectName="collected" targetName="timsort_py_automoc" />
+      <config projectName="collected" targetName="stack_main" />
+      <config projectName="collected" targetName="std_stats_main" />
+      <config projectName="collected" targetName="gtest" />
+      <config projectName="collected" targetName="bipartite_x_main" />
+      <config projectName="collected" targetName="eulerian_cycle_main.cpp" />
+      <config projectName="collected" targetName="depth_first_directed_paths_main_automoc" />
+      <config projectName="collected" targetName="lzw_compression_main_automoc" />
+      <config projectName="collected" targetName="std_stats_main.cpp" />
+      <config projectName="collected" targetName="depth_first_search_main_automoc" />
+      <config projectName="collected" targetName="nonrecursive_dfs_main" />
+      <config projectName="collected" targetName="trie_st_main" />
+      <config projectName="collected" targetName="doubling_ratio_main_automoc" />
+      <config projectName="collected" targetName="cycle_main_automoc" />
+      <config projectName="collected" targetName="sparse_vector_main_automoc" />
+      <config projectName="collected" targetName="depth_first_order_main_automoc" />
+      <config projectName="collected" targetName="prim_mst_main.cpp" />
+      <config projectName="collected" targetName="linked_queue_main" />
+      <config projectName="collected" targetName="acyclic_sp_main" />
+      <config projectName="collected" targetName="top_m_main.cpp" />
+      <config projectName="collected" targetName="insertion_sort_x_main" />
+      <config projectName="collected" targetName="multiway_min_pq_main_automoc" />
+      <config projectName="collected" targetName="run_length_main.cpp" />
+      <config projectName="collected" targetName="furthest_pair_main" />
+      <config projectName="collected" targetName="digraph_generator_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_queue_main_automoc" />
+      <config projectName="collected" targetName="edge_main" />
+      <config projectName="collected" targetName="two_person_zero_sum_game_main.cpp" />
+      <config projectName="collected" targetName="binary_insertion_sort_main" />
+      <config projectName="collected" targetName="edge_weighted_digraph_main.cpp" />
+      <config projectName="collected" targetName="grep_main.cpp" />
+      <config projectName="collected" targetName="two_person_zero_sum_game_main" />
+      <config projectName="collected" targetName="separate_chaining_hash_st_main_automoc" />
+      <config projectName="collected" targetName="quicksort_3_string_main" />
+      <config projectName="collected" targetName="stopwatch_main_automoc" />
+      <config projectName="collected" targetName="lazy_prim_mst_main.cpp" />
+      <config projectName="collected" targetName="lookup_index_main" />
+      <config projectName="collected" targetName="bipartite_main.cpp" />
+      <config projectName="collected" targetName="particle_main_automoc" />
+      <config projectName="collected" targetName="patricia_set_main" />
+      <config projectName="collected" targetName="grep_main" />
+      <config projectName="collected" targetName="white_filter_main" />
+      <config projectName="collected" targetName="insertion_sort_x_main_automoc" />
+      <config projectName="collected" targetName="black_filter_main" />
+      <config projectName="collected" targetName="de_dup_main" />
+      <config projectName="collected" targetName="counter_main_automoc" />
+      <config projectName="collected" targetName="point_2d_main_automoc" />
+      <config projectName="collected" targetName="edge_weighted_directed_cycle" />
+      <config projectName="collected" targetName="directed_cycle_x_main" />
+      <config projectName="collected" targetName="longest_repeated_substring_main.cpp" />
+      <config projectName="collected" targetName="flow_edge_main.cpp" />
+      <config projectName="collected" targetName="segment_tree_main.cpp" />
+      <config projectName="collected" targetName="dijkstra_sp_main_automoc" />
+      <config projectName="collected" targetName="random_seq_main.cpp" />
+      <config projectName="collected" targetName="nonrecursive_directed_dfs_main.cpp" />
+      <config projectName="collected" targetName="b_tree_main_automoc" />
+      <config projectName="collected" targetName="doubling_ratio_main.cpp" />
+      <config projectName="collected" targetName="kosaraju_sharir_scc_main_automoc" />
+      <config projectName="collected" targetName="linear_regression_main_automoc" />
+      <config projectName="collected" targetName="edge_weighted_directed_cycle_main" />
+      <config projectName="collected" targetName="hex_dump_main_automoc" />
+      <config projectName="collected" targetName="transaction_main" />
+      <config projectName="collected" targetName="breadth_first_paths_main" />
+      <config projectName="collected" targetName="std_in_main_automoc" />
+      <config projectName="collected" targetName="eulerian_path_main_automoc" />
+      <config projectName="collected" targetName="accumulator" />
+      <config projectName="collected" targetName="free_list" />
+      <config projectName="collected" targetName="whitelist_main_automoc" />
+      <config projectName="collected" targetName="sequential_search_st_main_automoc" />
+      <config projectName="collected" targetName="quicksort_x_main" />
+      <config projectName="collected" targetName="tst_main.cpp" />
+      <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main" />
+      <config projectName="collected" targetName="directed_eulerian_path_main" />
+      <config projectName="collected" targetName="interval_2d_main" />
+      <config projectName="collected" targetName="symbol_graph_main.cpp" />
+      <config projectName="collected" targetName="assignment_problem_main_automoc" />
+      <config projectName="collected" targetName="fenwick_tree_main.cpp" />
+      <config projectName="collected" targetName="gabow_scc_main" />
+      <config projectName="collected" targetName="three_sum_fast_main.cpp" />
+      <config projectName="collected" targetName="point_2d_main" />
+      <config projectName="collected" targetName="mergesort_bu_main_automoc" />
+      <config projectName="collected" targetName="cat_main_automoc" />
+      <config projectName="collected" targetName="std_random" />
+      <config projectName="collected" targetName="complex_main" />
+      <config projectName="collected" targetName="binary_std_out_main.cpp" />
+      <config projectName="collected" targetName="interval_1d_main.cpp" />
+      <config projectName="collected" targetName="ford_fulkerson_main_automoc" />
+      <config projectName="collected" targetName="lookup_index_main.cpp" />
+      <config projectName="collected" targetName="binary_search_main" />
+      <config projectName="collected" targetName="red_black_bst_main_automoc" />
+      <config projectName="collected" targetName="std_audio_main.cpp" />
+      <config projectName="collected" targetName="nonrecursive_dfs_main.cpp" />
+      <config projectName="collected" targetName="degrees_of_separation_main" />
+      <config projectName="collected" targetName="index_min_pq_main_automoc" />
+      <config projectName="collected" targetName="fibonacci_min_pq_main" />
+      <config projectName="collected" targetName="nfa_main.cpp" />
+      <config projectName="collected" targetName="quicksort_3_way_main_automoc" />
+      <config projectName="collected" targetName="rabin_karp_main" />
+      <config projectName="collected" targetName="fft_main.cpp" />
+      <config projectName="collected" targetName="eulerian_cycle_main" />
+      <config projectName="collected" targetName="in_main.cpp" />
+      <config projectName="collected" targetName="eulerian_path_main.cpp" />
+      <config projectName="collected" targetName="directed_dfs_main_automoc" />
+      <config projectName="collected" targetName="dijkstra_undirected_sp_main.cpp" />
+      <config projectName="collected" targetName="tarjan_scc_main" />
+      <config projectName="collected" targetName="std_draw_main" />
+      <config projectName="collected" targetName="red_black_bst_main" />
+      <config projectName="collected" targetName="acyclic_sp_main_automoc" />
+      <config projectName="collected" targetName="lsd_radix_sort_main_automoc" />
+      <config projectName="collected" targetName="quicksort_main" />
+      <config projectName="collected" targetName="josephus_problem_main" />
+      <config projectName="collected" targetName="de_dup_main_automoc" />
+      <config projectName="collected" targetName="lookup_csv_main" />
+      <config projectName="collected" targetName="std_audio_main" />
+      <config projectName="collected" targetName="stopwatch_cpu_main" />
+      <config projectName="collected" targetName="interval_2d_main.cpp" />
+      <config projectName="collected" targetName="graham_scan_main" />
+      <config projectName="collected" targetName="index_binomial_min_pq_main" />
+      <config projectName="collected" targetName="hopcroft_karp_main.cpp" />
+      <config projectName="collected" targetName="gabow_scc_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_stack_main.cpp" />
+      <config projectName="collected" targetName="rabin_karp_main.cpp" />
+      <config projectName="collected" targetName="binary_out_main" />
+      <config projectName="collected" targetName="min_pq_main" />
+      <config projectName="collected" targetName="weighted_quick_union" />
+      <config projectName="collected" targetName="segment_tree_main_automoc" />
+      <config projectName="collected" targetName="directed_eulerian_cycle_main" />
+      <config projectName="collected" targetName="suffix_array_x_main_automoc" />
       <config projectName="collected" targetName="std_array_io_main.cpp" />
-      <config projectName="collected" targetName="de_dup_main.cpp" />
+      <config projectName="collected" targetName="boruvka_mst_main" />
+      <config projectName="collected" targetName="kruskal_mst_main_automoc" />
+      <config projectName="collected" targetName="digraph_generator_main" />
+      <config projectName="collected" targetName="edge_weighted_digraph_main_automoc" />
+      <config projectName="collected" targetName="queue_main" />
+      <config projectName="collected" targetName="in_main" />
+      <config projectName="collected" targetName="kwik_main" />
+      <config projectName="collected" targetName="run_length_main" />
+      <config projectName="collected" targetName="index_min_pq_main.cpp" />
+      <config projectName="collected" targetName="trie_st_main.cpp" />
+      <config projectName="collected" targetName="depth_first_paths_main.cpp" />
+      <config projectName="collected" targetName="black_filter_main.cpp" />
+      <config projectName="collected" targetName="hex_dump_main" />
+      <config projectName="collected" targetName="shellsort_main_automoc" />
+      <config projectName="collected" targetName="array_of_strings_sort_main" />
+      <config projectName="collected" targetName="longest_common_substring_main" />
+      <config projectName="collected" targetName="multiway_merge_main" />
+      <config projectName="collected" targetName="function_definition_main" />
+      <config projectName="collected" targetName="suffix_array_main" />
+      <config projectName="collected" targetName="quick_find_uf_main" />
+      <config projectName="collected" targetName="dijkstra_undirected_sp_main_automoc" />
+      <config projectName="collected" targetName="sparse_vector_main.cpp" />
+      <config projectName="collected" targetName="linked_queue_main.cpp" />
+      <config projectName="collected" targetName="mergesort_x_main" />
+      <config projectName="collected" targetName="mergesort_x_main_automoc" />
+      <config projectName="collected" targetName="bellman_ford_sp_main" />
+      <config projectName="collected" targetName="frequency_counter_main" />
+      <config projectName="collected" targetName="gauss_jordan_elimination_main.cpp" />
+      <config projectName="collected" targetName="directed_dfs_main" />
+      <config projectName="collected" targetName="flow_network_main.cpp" />
+      <config projectName="collected" targetName="in_main_automoc" />
+      <config projectName="collected" targetName="std_draw_main_automoc" />
+      <config projectName="collected" targetName="heap_sort_main_automoc" />
+      <config projectName="collected" targetName="std_io" />
+      <config projectName="collected" targetName="hopcroft_karp_main_automoc" />
+      <config projectName="collected" targetName="closest_point_grid" />
+      <config projectName="collected" targetName="nonrecursive_directed_dfs_main_automoc" />
+      <config projectName="collected" targetName="kosaraju_sharir_scc_main" />
+      <config projectName="collected" targetName="suffix_array_x_main" />
+      <config projectName="collected" targetName="bipartite_main" />
+      <config projectName="collected" targetName="picture_dump_main" />
+      <config projectName="collected" targetName="linked_stack_main_automoc" />
+      <config projectName="collected" targetName="top_m_main_automoc" />
+      <config projectName="collected" targetName="timsort_py" />
+      <config projectName="collected" targetName="binomial_min_priority_queue_main" />
+      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main_automoc" />
+      <config projectName="collected" targetName="index_fibonacci_min_pq_main.cpp" />
+      <config projectName="collected" targetName="rect_hv_main.cpp" />
+      <config projectName="collected" targetName="symbol_table_main" />
+      <config projectName="collected" targetName="std_random_main_automoc" />
+      <config projectName="collected" targetName="directed_edge_main" />
+      <config projectName="collected" targetName="out_main_automoc" />
+      <config projectName="collected" targetName="bellman_ford_sp_main.cpp" />
+      <config projectName="collected" targetName="tst_main_automoc" />
+      <config projectName="collected" targetName="closest_pair_main" />
+      <config projectName="collected" targetName="resizing_array_bag_main" />
+      <config projectName="collected" targetName="binary_dump_main_automoc" />
+      <config projectName="collected" targetName="date_main.cpp" />
+      <config projectName="collected" targetName="fft_main_automoc" />
+      <config projectName="collected" targetName="file_index_main.cpp" />
+      <config projectName="collected" targetName="three_sum_fast_main" />
+      <config projectName="collected" targetName="picture_dump_main.cpp" />
+      <config projectName="collected" targetName="rect_hv_main_automoc" />
+      <config projectName="collected" targetName="huffman_main" />
+      <config projectName="collected" targetName="ford_fulkerson_main.cpp" />
+      <config projectName="collected" targetName="directed_eulerian_cycle_main_automoc" />
+      <config projectName="collected" targetName="draw_main" />
+      <config projectName="collected" targetName="topological_main_automoc" />
+      <config projectName="collected" targetName="point_2d_main.cpp" />
+      <config projectName="collected" targetName="fibonacci_min_pq_main_automoc" />
+      <config projectName="collected" targetName="directed_cycle_main_automoc" />
+      <config projectName="collected" targetName="connected_component_main" />
+      <config projectName="collected" targetName="index_multiway_min_pq_main" />
+      <config projectName="collected" targetName="three_sum_main_automoc" />
+      <config projectName="collected" targetName="boyer_moore_main_automoc" />
+      <config projectName="collected" targetName="edge_weighted_digraph_main" />
+      <config projectName="collected" targetName="binary_search_main_automoc" />
+      <config projectName="collected" targetName="binary_search_tree_main_automoc" />
+      <config projectName="collected" targetName="transitive_closure_main" />
+      <config projectName="collected" targetName="std_audio_main_automoc" />
+      <config projectName="collected" targetName="quick_find_main" />
+      <config projectName="collected" targetName="out_main.cpp" />
+      <config projectName="collected" targetName="nonrecursive_directed_dfs_main" />
+      <config projectName="collected" targetName="dijkstra_undirected_sp_main" />
+      <config projectName="collected" targetName="binary_std_out_main_automoc" />
+      <config projectName="collected" targetName="file_index_main_automoc" />
+      <config projectName="collected" targetName="eulerian_path_main" />
+      <config projectName="collected" targetName="average_main" />
+      <config projectName="collected" targetName="floyd_warshall_main_automoc" />
+      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main" />
+      <config projectName="collected" targetName="accumulator_main" />
+      <config projectName="collected" targetName="suffix_array_main_automoc" />
+      <config projectName="collected" targetName="stopwatch_main.cpp" />
+      <config projectName="collected" targetName="2d_array_allocation" />
+      <config projectName="collected" targetName="transitive_closure_main.cpp" />
+      <config projectName="collected" targetName="queue_main_automoc" />
+      <config projectName="collected" targetName="huffman_main_automoc" />
       <config projectName="collected" targetName="lazy_prim_mst_main_automoc" />
-      <config projectName="collected" targetName="selection_sort_main" />
+      <config projectName="collected" targetName="acyclic_lp" />
+      <config projectName="collected" targetName="std_array_io_main_automoc" />
+      <config projectName="collected" targetName="binary_out_main.cpp" />
+      <config projectName="collected" targetName="insertion_sort_main_automoc" />
+      <config projectName="collected" targetName="draw_main.cpp" />
+      <config projectName="collected" targetName="grep_main_automoc" />
+      <config projectName="collected" targetName="patricia_st_main" />
+      <config projectName="collected" targetName="directed_cycle_main" />
+      <config projectName="collected" targetName="nfa_main" />
+      <config projectName="collected" targetName="knuth_morris_pratt_main" />
+      <config projectName="collected" targetName="binary_std_in_main_automoc" />
+      <config projectName="collected" targetName="random_seq_main" />
+      <config projectName="collected" targetName="gauss_jordan_elimination_main" />
+      <config projectName="collected" targetName="heap_sort_main" />
+      <config projectName="collected" targetName="topological_x_main" />
+      <config projectName="collected" targetName="collected" />
+      <config projectName="collected" targetName="graham_scan_main_automoc" />
+      <config projectName="collected" targetName="linear_programming_main_automoc" />
+      <config projectName="collected" targetName="closest_pair_main.cpp" />
+      <config projectName="collected" targetName="degrees_of_separation_main.cpp" />
+      <config projectName="collected" targetName="edge_weighted_graph_main.cpp" />
+      <config projectName="collected" targetName="index_max_pq_main" />
+      <config projectName="collected" targetName="longest_repeated_substring_main" />
+      <config projectName="collected" targetName="linked_bag_main.cpp" />
+      <config projectName="collected" targetName="tmp" />
+      <config projectName="collected" targetName="stopwatch_main" />
+      <config projectName="collected" targetName="weighted_quick_union_main" />
+      <config projectName="collected" targetName="dijkstra_sp_main.cpp" />
+      <config projectName="collected" targetName="index_fibonacci_min_pq_main_automoc" />
+      <config projectName="collected" targetName="out_main" />
+      <config projectName="collected" targetName="binary_in_main.cpp" />
+      <config projectName="collected" targetName="directed_edge_main_automoc" />
+      <config projectName="collected" targetName="doubling_test_main.cpp" />
+      <config projectName="collected" targetName="patricia_st_main.cpp" />
+      <config projectName="collected" targetName="flow_edge_main_automoc" />
+      <config projectName="collected" targetName="set_main" />
+      <config projectName="collected" targetName="symbol_digraph_main.cpp" />
+      <config projectName="collected" targetName="depth_first_search_main.cpp" />
+      <config projectName="collected" targetName="weighted_quick_union_uf_main_automoc" />
+      <config projectName="collected" targetName="bag_main" />
+      <config projectName="collected" targetName="longest_common_substring_main.cpp" />
+      <config projectName="collected" targetName="stopwatch_cpu_main_automoc" />
+      <config projectName="collected" targetName="coin_flipping_simulation_main" />
+      <config projectName="collected" targetName="binary_std_in_main.cpp" />
+      <config projectName="collected" targetName="graph_generator_main.cpp" />
+      <config projectName="collected" targetName="quick_find_uf_main_automoc" />
+      <config projectName="collected" targetName="tarjan_scc_main.cpp" />
+      <config projectName="collected" targetName="max_pq_main_automoc" />
+      <config projectName="collected" targetName="genome_main" />
+      <config projectName="collected" targetName="union_find_main" />
+      <config projectName="collected" targetName="lookup_csv_main_automoc" />
+      <config projectName="collected" targetName="std_array_io_main" />
+      <config projectName="collected" targetName="collision_system_main_automoc" />
+      <config projectName="collected" targetName="counter_main" />
+      <config projectName="collected" targetName="vector_main_automoc" />
+      <config projectName="collected" targetName="stopwatch_cpu_main.cpp" />
+      <config projectName="collected" targetName="lzw_compression_main" />
+      <config projectName="collected" targetName="edge_weighted_graph_main_automoc" />
+      <config projectName="collected" targetName="quicksort_main_automoc" />
+      <config projectName="collected" targetName="linear_programming_main.cpp" />
+      <config projectName="collected" targetName="quick_union_uf_main_automoc" />
+      <config projectName="collected" targetName="std_in_main" />
+      <config projectName="collected" targetName="cycle_main.cpp" />
+      <config projectName="collected" targetName="std_random_main.cpp" />
       <config projectName="collected" targetName="separate_chaining_hash_st_main" />
       <config projectName="collected" targetName="vector_main.cpp" />
-      <config projectName="collected" targetName="topological_x_main.cpp" />
-      <config projectName="collected" targetName="suffix_array_main" />
-      <config projectName="collected" targetName="three_sum_main" />
-      <config projectName="collected" targetName="bag_main_automoc" />
-      <config projectName="collected" targetName="quicksort_main" />
-      <config projectName="collected" targetName="closest_point_grid_main" />
-      <config projectName="collected" targetName="date_main_automoc" />
-      <config projectName="collected" targetName="boruvka_mst_main.cpp" />
-      <config projectName="collected" targetName="acyclic_lp_main_automoc" />
-      <config projectName="collected" targetName="red_black_bst_main_automoc" />
-      <config projectName="collected" targetName="edge_weighted_digraph_main" />
-      <config projectName="collected" targetName="eulerian_cycle_main.cpp" />
-      <config projectName="collected" targetName="resizing_array_queue_main_automoc" />
-      <config projectName="collected" targetName="graham_scan_main" />
-      <config projectName="collected" targetName="acyclic_sp_main" />
-      <config projectName="collected" targetName="directed_cycle_x_main.cpp" />
-      <config projectName="collected" targetName="furthest_pair_main.cpp" />
-      <config projectName="collected" targetName="interval_2d_main.cpp" />
-      <config projectName="collected" targetName="binary_search_tree_main" />
-      <config projectName="collected" targetName="ford_fulkerson_main_automoc" />
-      <config projectName="collected" targetName="lookup_csv_main" />
-      <config projectName="collected" targetName="union_find_main_automoc" />
-      <config projectName="collected" targetName="directed_eulerian_path_main_automoc" />
-      <config projectName="collected" targetName="kosaraju_sharir_scc_main.cpp" />
-      <config projectName="collected" targetName="directed_dfs_main.cpp" />
-      <config projectName="collected" targetName="lookup_index_main_automoc" />
-      <config projectName="collected" targetName="resizing_array_stack_main_automoc" />
-      <config projectName="collected" targetName="function_definition_main" />
-      <config projectName="collected" targetName="doubling_ratio_main_automoc" />
-      <config projectName="collected" targetName="segment_tree_main_automoc" />
-      <config projectName="collected" targetName="binary_in_main" />
-      <config projectName="collected" targetName="linear_probing_hash_symbol_table_main" />
-      <config projectName="collected" targetName="depth_first_search_main_automoc" />
-      <config projectName="collected" targetName="accumulator" />
-      <config projectName="collected" targetName="lookup_index_main.cpp" />
-      <config projectName="collected" targetName="bipartite_x_main_automoc" />
-      <config projectName="collected" targetName="hopcroft_karp_main.cpp" />
-      <config projectName="collected" targetName="symbol_digraph_main" />
-      <config projectName="collected" targetName="rabin_karp_main_automoc" />
-      <config projectName="collected" targetName="std_audio_main" />
-      <config projectName="collected" targetName="interval_1d_main.cpp" />
-      <config projectName="collected" targetName="picture_main_automoc" />
-      <config projectName="collected" targetName="edge_main" />
-      <config projectName="collected" targetName="symbol_table_main.cpp" />
-      <config projectName="collected" targetName="gauss_jordan_elimination_main.cpp" />
-      <config projectName="collected" targetName="count_main_automoc" />
-      <config projectName="collected" targetName="gtest" />
-      <config projectName="collected" targetName="timsort_py" />
-      <config projectName="collected" targetName="accumulator_spec" />
-      <config projectName="collected" targetName="point_2d_main.cpp" />
-      <config projectName="collected" targetName="coin_flipping_simulation_main" />
-      <config projectName="collected" targetName="gauss_jordan_elimination_main" />
-      <config projectName="collected" targetName="kwik_main" />
-      <config projectName="collected" targetName="black_filter_main_automoc" />
-      <config projectName="collected" targetName="closest_pair_main" />
-      <config projectName="collected" targetName="edge_weighted_graph_main.cpp" />
-      <config projectName="collected" targetName="transitive_closure_main.cpp" />
-      <config projectName="collected" targetName="fft_main_automoc" />
-      <config projectName="collected" targetName="collected" />
-      <config projectName="collected" targetName="draw_main" />
-      <config projectName="collected" targetName="binary_std_out_main.cpp" />
-      <config projectName="collected" targetName="weighted_quick_union_main" />
-      <config projectName="collected" targetName="ford_fulkerson_main" />
-      <config projectName="collected" targetName="timsort_main_automoc" />
-      <config projectName="collected" targetName="tst_main.cpp" />
-      <config projectName="collected" targetName="patricia_st_main.cpp" />
-      <config projectName="collected" targetName="directed_dfs_main_automoc" />
-      <config projectName="collected" targetName="bipartite_x_main" />
-      <config projectName="collected" targetName="weighted_quick_union" />
-      <config projectName="collected" targetName="quicksort_3_way_main" />
-      <config projectName="collected" targetName="Accumulator_main" />
-      <config projectName="collected" targetName="flow_network_main" />
-      <config projectName="collected" targetName="alphabet_main_automoc" />
-      <config projectName="collected" targetName="genome_main.cpp" />
-      <config projectName="collected" targetName="directed_cycle_main" />
-      <config projectName="collected" targetName="sequential_search_st_main.cpp" />
-      <config projectName="collected" targetName="breadth_first_directed_paths_main_automoc" />
-      <config projectName="collected" targetName="stopwatch_cpu_main" />
-      <config projectName="collected" targetName="digraph_main" />
-      <config projectName="collected" targetName="separate_chaining_hash_st_main.cpp" />
-      <config projectName="collected" targetName="doubling_test_main" />
-      <config projectName="collected" targetName="std_out_main" />
-      <config projectName="collected" targetName="index_fibonacci_min_pq_main_automoc" />
-      <config projectName="collected" targetName="heap_sort_main_automoc" />
-      <config projectName="collected" targetName="index_min_pq_main_automoc" />
-      <config projectName="collected" targetName="binary_std_out_main" />
-      <config projectName="collected" targetName="dijkstra_sp_main_automoc" />
-      <config projectName="collected" targetName="binary_dump_main" />
-      <config projectName="collected" targetName="counter_main_automoc" />
-      <config projectName="collected" targetName="std_random" />
-      <config projectName="collected" targetName="white_filter_main" />
-      <config projectName="collected" targetName="std_io" />
-      <config projectName="collected" targetName="resizing_array_bag_main.cpp" />
-      <config projectName="collected" targetName="heap_main" />
-      <config projectName="collected" targetName="flow_network_main_automoc" />
-      <config projectName="collected" targetName="binary_out_main" />
-      <config projectName="collected" targetName="kosaraju_sharir_scc_main" />
-      <config projectName="collected" targetName="eulerian_path_main" />
-      <config projectName="collected" targetName="in_main" />
-      <config projectName="collected" targetName="topological_x_main" />
-      <config projectName="collected" targetName="furthest_pair_main_automoc" />
-      <config projectName="collected" targetName="bag_main" />
-      <config projectName="collected" targetName="multiway_merge_main" />
-      <config projectName="collected" targetName="frequency_counter_main_automoc" />
-      <config projectName="collected" targetName="boruvka_mst_main_automoc" />
-      <config projectName="collected" targetName="nfa_main" />
-      <config projectName="collected" targetName="min_pq_main_automoc" />
-      <config projectName="collected" targetName="suffix_array_main_automoc" />
-      <config projectName="collected" targetName="nfa_main.cpp" />
-      <config projectName="collected" targetName="topological_main" />
-      <config projectName="collected" targetName="trie_st_main_automoc" />
-      <config projectName="collected" targetName="flow_edge_main" />
-      <config projectName="collected" targetName="multiway_min_pq_main" />
-      <config projectName="collected" targetName="longest_repeated_substring_main_automoc" />
-      <config projectName="collected" targetName="breadth_first_directed_paths_main" />
-      <config projectName="collected" targetName="prim_mst_main" />
-      <config projectName="collected" targetName="kosaraju_sharir_scc_main_automoc" />
-      <config projectName="collected" targetName="quicksort_x_main" />
-      <config projectName="collected" targetName="std_random_automoc" />
-      <config projectName="collected" targetName="set_main" />
-      <config projectName="collected" targetName="insertion_sort_main_automoc" />
-      <config projectName="collected" targetName="transaction_main.cpp" />
-      <config projectName="collected" targetName="eulerian_path_main.cpp" />
-      <config projectName="collected" targetName="shellsort_main_automoc" />
-      <config projectName="collected" targetName="msd_radix_sort_main_automoc" />
-      <config projectName="collected" targetName="particle_main.cpp" />
-      <config projectName="collected" targetName="assignment_problem_main" />
-      <config projectName="collected" targetName="lzw_compression_main.cpp" />
-      <config projectName="collected" targetName="graph_main_automoc" />
-      <config projectName="collected" targetName="gtest_main" />
-      <config projectName="collected" targetName="breadth_first_paths_main_automoc" />
-      <config projectName="collected" targetName="selection_sort_main_automoc" />
-      <config projectName="collected" targetName="point" />
-      <config projectName="collected" targetName="linked_bag_main" />
-      <config projectName="collected" targetName="black_filter_main" />
-      <config projectName="collected" targetName="in_main.cpp" />
-      <config projectName="collected" targetName="eulerian_cycle_main_automoc" />
-      <config projectName="collected" targetName="stopwatch_main.cpp" />
-      <config projectName="collected" targetName="binomial_min_priority_queue_main" />
-      <config projectName="collected" targetName="bellman_ford_sp_main_automoc" />
-      <config projectName="collected" targetName="frequency_counter_main.cpp" />
-      <config projectName="collected" targetName="dynamic_array_memory_allocation" />
-      <config projectName="collected" targetName="quick_union_uf_main_automoc" />
-      <config projectName="collected" targetName="array_of_strings_sort_main" />
-      <config projectName="collected" targetName="weighted_quick_union_uf_main" />
-      <config projectName="collected" targetName="index_max_pq_main.cpp" />
-      <config projectName="collected" targetName="frequency_counter_main" />
-      <config projectName="collected" targetName="gmock_main" />
-      <config projectName="collected" targetName="directed_eulerian_cycle_main_automoc" />
-      <config projectName="collected" targetName="collision_system_main" />
-      <config projectName="collected" targetName="index_multiway_min_pq_main_automoc" />
-      <config projectName="collected" targetName="run_length_main_automoc" />
-      <config projectName="collected" targetName="utility" />
-      <config projectName="collected" targetName="heap_sort_main" />
-      <config projectName="collected" targetName="symbol_graph_main.cpp" />
-      <config projectName="collected" targetName="kruskal_mst_main.cpp" />
-      <config projectName="collected" targetName="linear_probing_hash_symbol_table_main_automoc" />
-      <config projectName="collected" targetName="std_out_main.cpp" />
-      <config projectName="collected" targetName="connected_component_main.cpp" />
-      <config projectName="collected" targetName="edge_weighted_directed_cycle" />
-      <config projectName="collected" targetName="bipartite_main_automoc" />
-      <config projectName="collected" targetName="quicksort_3_string_main_automoc" />
-      <config projectName="collected" targetName="prim_mst_main_automoc" />
-      <config projectName="collected" targetName="lookup_index_main" />
-      <config projectName="collected" targetName="fft_main" />
-      <config projectName="collected" targetName="tarjan_scc_main" />
-      <config projectName="collected" targetName="std_random_main_automoc" />
-      <config projectName="collected" targetName="free_list" />
-      <config projectName="collected" targetName="degrees_of_separation_main" />
-      <config projectName="collected" targetName="grep_main.cpp" />
-      <config projectName="collected" targetName="stopwatch_main_automoc" />
-      <config projectName="collected" targetName="degrees_of_separation_main.cpp" />
-      <config projectName="collected" targetName="max_pq_main" />
-      <config projectName="collected" targetName="grep_main" />
-      <config projectName="collected" targetName="binary_out_main.cpp" />
-      <config projectName="collected" targetName="insertion_sort_x_main" />
-      <config projectName="collected" targetName="nonrecursive_dfs_main" />
-      <config projectName="collected" targetName="graph_generator_main.cpp" />
-      <config projectName="collected" targetName="doubling_ratio_main" />
-      <config projectName="collected" targetName="run_length_main.cpp" />
-      <config projectName="collected" targetName="prim_mst_main.cpp" />
-      <config projectName="collected" targetName="dijkstra_undirected_sp_main.cpp" />
-      <config projectName="collected" targetName="directed_edge_main_automoc" />
-      <config projectName="collected" targetName="suffix_array_x_main.cpp" />
-      <config projectName="collected" targetName="trie_st_main.cpp" />
-      <config projectName="collected" targetName="nonrecursive_directed_dfs_main_automoc" />
-      <config projectName="collected" targetName="particle_main_automoc" />
-      <config projectName="collected" targetName="kruskal_mst_main_automoc" />
-      <config projectName="collected" targetName="closest_point_grid" />
-      <config projectName="collected" targetName="acyclic_lp" />
-      <config projectName="collected" targetName="gmock" />
-      <config projectName="collected" targetName="patricia_set_main.cpp" />
-      <config projectName="collected" targetName="closest_point_computation_main" />
-      <config projectName="collected" targetName="draw_main_automoc" />
-      <config projectName="collected" targetName="suffix_array_x_main" />
-      <config projectName="collected" targetName="trie_set_main.cpp" />
-      <config projectName="collected" targetName="topological_x_main_automoc" />
-      <config projectName="collected" targetName="edge_weighted_graph_main_automoc" />
-      <config projectName="collected" targetName="patricia_st_main" />
-      <config projectName="collected" targetName="de_dup_main" />
-      <config projectName="collected" targetName="quick_find_uf_main" />
-      <config projectName="collected" targetName="symbol_graph_main_automoc" />
-      <config projectName="collected" targetName="average_main" />
-      <config projectName="collected" targetName="depth_first_order_main_automoc" />
-      <config projectName="collected" targetName="random_seq_main_automoc" />
-      <config projectName="collected" targetName="longest_common_substring_main" />
-      <config projectName="collected" targetName="dijkstra_undirected_sp_main_automoc" />
-      <config projectName="collected" targetName="gaussian_elimination_main_automoc" />
-      <config projectName="collected" targetName="tarjan_scc_main.cpp" />
-      <config projectName="collected" targetName="genome_main_automoc" />
-      <config projectName="collected" targetName="quick_union_main" />
-      <config projectName="collected" targetName="lookup_csv_main_automoc" />
-      <config projectName="collected" targetName="sequential_search_st_main" />
-      <config projectName="collected" targetName="shellsort_main" />
-      <config projectName="collected" targetName="min_pq_main" />
-      <config projectName="collected" targetName="linked_queue_main_automoc" />
-      <config projectName="collected" targetName="binary_search_main" />
-      <config projectName="collected" targetName="linked_stack_main_automoc" />
-      <config projectName="collected" targetName="symbol_graph_main" />
-      <config projectName="collected" targetName="kwik_main.cpp" />
-      <config projectName="collected" targetName="binomial_min_priority_queue_main.cpp" />
-      <config projectName="collected" targetName="resizing_array_bag_main_automoc" />
-      <config projectName="collected" targetName="depth_first_order_main" />
-      <config projectName="collected" targetName="index_fibonacci_min_pq_main.cpp" />
-      <config projectName="collected" targetName="out_main" />
-      <config projectName="collected" targetName="acyclic_lp_spec" />
-      <config projectName="collected" targetName="rect_hv_main.cpp" />
-      <config projectName="collected" targetName="grep_main_automoc" />
-      <config projectName="collected" targetName="graham_scan_main_automoc" />
-      <config projectName="collected" targetName="directed_eulerian_path_main" />
-      <config projectName="collected" targetName="bipartite_main.cpp" />
-      <config projectName="collected" targetName="de_dup_main_automoc" />
-      <config projectName="collected" targetName="hex_dump_main_automoc" />
-      <config projectName="collected" targetName="rabin_karp_main.cpp" />
-      <config projectName="collected" targetName="cat_main.cpp" />
-      <config projectName="collected" targetName="picture_dump_main_automoc" />
-      <config projectName="collected" targetName="array_of_strings_sort" />
-      <config projectName="collected" targetName="index_max_pq_main" />
-      <config projectName="collected" targetName="hopcroft_karp_main_automoc" />
-      <config projectName="collected" targetName="bipartite_main" />
-      <config projectName="collected" targetName="count_main.cpp" />
-      <config projectName="collected" targetName="point_2d_main_automoc" />
-      <config projectName="collected" targetName="tst_main" />
-      <config projectName="collected" targetName="gabow_scc_main" />
-      <config projectName="collected" targetName="three_sum_main_automoc" />
-      <config projectName="collected" targetName="boruvka_mst_main" />
-      <config projectName="collected" targetName="binary_search_symbol_table_main_automoc" />
-      <config projectName="collected" targetName="run_length_main" />
-      <config projectName="collected" targetName="cpm_main" />
-      <config projectName="collected" targetName="count_main" />
-      <config projectName="collected" targetName="breadth_first_paths_main.cpp" />
-      <config projectName="collected" targetName="quicksort_x_main_automoc" />
-      <config projectName="collected" targetName="longest_repeated_substring_main.cpp" />
-      <config projectName="collected" targetName="fibonacci_min_pq_main_automoc" />
-      <config projectName="collected" targetName="linear_regression_main" />
-      <config projectName="collected" targetName="std_draw_main.cpp" />
-      <config projectName="collected" targetName="linked_stack_main" />
-      <config projectName="collected" targetName="max_pq_main_automoc" />
-      <config projectName="collected" targetName="resizing_array_stack_main.cpp" />
-      <config projectName="collected" targetName="symbol_table_main" />
-      <config projectName="collected" targetName="utility_automoc" />
-      <config projectName="collected" targetName="graham_scan_main.cpp" />
-      <config projectName="collected" targetName="binary_search" />
-      <config projectName="collected" targetName="transaction_main" />
-      <config projectName="collected" targetName="gabow_scc_main_automoc" />
-      <config projectName="collected" targetName="tmp" />
-      <config projectName="collected" targetName="multiway_min_pq_main.cpp" />
-      <config projectName="collected" targetName="file_index_main" />
-      <config projectName="collected" targetName="random_seq_main" />
-      <config projectName="collected" targetName="resizing_array_stack_main" />
-      <config projectName="collected" targetName="bellman_ford_sp_main" />
-      <config projectName="collected" targetName="std_stats_main.cpp" />
-      <config projectName="collected" targetName="hex_dump_main" />
-      <config projectName="collected" targetName="mergesort_main_automoc" />
-      <config projectName="collected" targetName="connected_component_main" />
-      <config projectName="collected" targetName="boyer_moore_main.cpp" />
-      <config projectName="collected" targetName="huffman_main.cpp" />
-      <config projectName="collected" targetName="trie_set_main" />
-      <config projectName="collected" targetName="mergesort_main" />
-      <config projectName="collected" targetName="directed_cycle_x_main" />
-      <config projectName="collected" targetName="degrees_of_separation_main_automoc" />
-      <config projectName="collected" targetName="nonrecursive_dfs_main_automoc" />
-      <config projectName="collected" targetName="linked_queue_main.cpp" />
-      <config projectName="collected" targetName="fenwick_tree_main.cpp" />
-      <config projectName="collected" targetName="symbol_digraph_main.cpp" />
-      <config projectName="collected" targetName="timsort_main" />
-      <config projectName="collected" targetName="bellman_ford_sp_main.cpp" />
-      <config projectName="collected" targetName="mergesort_x_main_automoc" />
-      <config projectName="collected" targetName="fenwick_tree_main_automoc" />
-      <config projectName="collected" targetName="adjacency_matrix_graph_main" />
-      <config projectName="collected" targetName="edge_main_automoc" />
-      <config projectName="collected" targetName="furthest_pair_main" />
-      <config projectName="collected" targetName="connected_component_main_automoc" />
-      <config projectName="collected" targetName="dijkstra_undirected_sp_main" />
-      <config projectName="collected" targetName="path_compression_main" />
-      <config projectName="collected" targetName="directed_edge_main" />
-      <config projectName="collected" targetName="file_index_main_automoc" />
-      <config projectName="collected" targetName="rect_hv_main" />
-      <config projectName="collected" targetName="segment_tree_main" />
-      <config projectName="collected" targetName="linear_regression_main.cpp" />
-      <config projectName="collected" targetName="b_tree_main" />
-      <config projectName="collected" targetName="nonrecursive_directed_dfs_main" />
-      <config projectName="collected" targetName="three_sum_fast_main_automoc" />
-      <config projectName="collected" targetName="edge_main.cpp" />
-      <config projectName="collected" targetName="depth_first_directed_paths_main_automoc" />
-      <config projectName="collected" targetName="quicksort_3_string_main" />
-      <config projectName="collected" targetName="stopwatch_cpu_main.cpp" />
-      <config projectName="collected" targetName="arbitrage_main_automoc" />
-      <config projectName="collected" targetName="transitive_closure_main_automoc" />
-      <config projectName="collected" targetName="index_fibonacci_min_pq_main" />
-      <config projectName="collected" targetName="edge_weighted_directed_cycle_main" />
-      <config projectName="collected" targetName="hopcroft_karp_main" />
-      <config projectName="collected" targetName="counter_main" />
-      <config projectName="collected" targetName="binary_dump_main.cpp" />
-      <config projectName="collected" targetName="resizing_array_bag_main" />
-      <config projectName="collected" targetName="directed_cycle_x_main_automoc" />
-      <config projectName="collected" targetName="linear_regression_main_automoc" />
-      <config projectName="collected" targetName="2d_array_allocation" />
-      <config projectName="collected" targetName="depth_first_paths_main_automoc" />
-      <config projectName="collected" targetName="std_audio_main_automoc" />
-      <config projectName="collected" targetName="index_binomial_min_pq_main.cpp" />
-      <config projectName="collected" targetName="huffman_main_automoc" />
-      <config projectName="collected" targetName="avl_tree_symbol_table_main" />
-      <config projectName="collected" targetName="josephus_list_allocation_main" />
-      <config projectName="collected" targetName="queue_main" />
-      <config projectName="collected" targetName="sparse_vector_main_automoc" />
-      <config projectName="collected" targetName="gauss_jordan_elimination_main_automoc" />
-      <config projectName="collected" targetName="multiway_min_pq_main_automoc" />
-      <config projectName="collected" targetName="edge_weighted_digraph_main.cpp" />
-      <config projectName="collected" targetName="set_main_automoc" />
-      <config projectName="collected" targetName="accumulator_main" />
-      <config projectName="collected" targetName="out_main.cpp" />
-      <config projectName="collected" targetName="std_audio_main.cpp" />
-      <config projectName="collected" targetName="depth_first_directed_paths_main.cpp" />
-      <config projectName="collected" targetName="binary_search_main_automoc" />
-      <config projectName="collected" targetName="adjacency_list_graph_main" />
-      <config projectName="collected" targetName="depth_first_paths_main" />
-      <config projectName="collected" targetName="union_find_main" />
-      <config projectName="collected" targetName="mergesort_bu_main_automoc" />
-      <config projectName="collected" targetName="linear_programming_main.cpp" />
-      <config projectName="collected" targetName="std_in_main" />
-      <config projectName="collected" targetName="tarjan_scc_main_automoc" />
-      <config projectName="collected" targetName="kwik_main_automoc" />
-      <config projectName="collected" targetName="fenwick_tree_main" />
-      <config projectName="collected" targetName="boyer_moore_main" />
-      <config projectName="collected" targetName="insertion_sort_main" />
-      <config projectName="collected" targetName="segment_tree_main.cpp" />
-      <config projectName="collected" targetName="binary_out_main_automoc" />
-      <config projectName="collected" targetName="lazy_prim_mst_main.cpp" />
-      <config projectName="collected" targetName="picture_main" />
-      <config projectName="collected" targetName="closest_pair_main.cpp" />
-      <config projectName="collected" targetName="index_multiway_min_pq_main.cpp" />
-      <config projectName="collected" targetName="stack_main" />
-      <config projectName="collected" targetName="closest_pair_main_automoc" />
-      <config projectName="collected" targetName="boyer_moore_main_automoc" />
-      <config projectName="collected" targetName="digraph_generator_main.cpp" />
-      <config projectName="collected" targetName="lookup_csv_main.cpp" />
-      <config projectName="collected" targetName="linked_stack_main.cpp" />
-      <config projectName="collected" targetName="lzw_compression_main_automoc" />
-      <config projectName="collected" targetName="resizing_array_queue_main.cpp" />
       <config projectName="collected" targetName="cpm_main.cpp" />
-      <config projectName="collected" targetName="dijkstra_all_pairs_sp_main_automoc" />
-      <config projectName="collected" targetName="depth_first_search_main.cpp" />
-      <config projectName="collected" targetName="suffix_array_x_main_automoc" />
-      <config projectName="collected" targetName="longest_common_substring_main.cpp" />
-      <config projectName="collected" targetName="whitelist_main" />
-      <config projectName="collected" targetName="three_sum_fast_main.cpp" />
-      <config projectName="collected" targetName="index_binomial_min_pq_main" />
-      <config projectName="collected" targetName="stopwatch_cpu_main_automoc" />
-      <config projectName="collected" targetName="whitelist_main_automoc" />
-      <config projectName="collected" targetName="flow_network_main.cpp" />
-      <config projectName="collected" targetName="interval_2d_main" />
-      <config projectName="collected" targetName="digraph_generator_main_automoc" />
-      <config projectName="collected" targetName="accumulator_main_automoc" />
-      <config projectName="collected" targetName="breadth_first_directed_paths_main.cpp" />
-      <config projectName="collected" targetName="quicksort_3_way_main_automoc" />
-      <config projectName="collected" targetName="picture_dump_main" />
-      <config projectName="collected" targetName="ford_fulkerson_main.cpp" />
-      <config projectName="collected" targetName="lzw_compression_main" />
-      <config projectName="collected" targetName="directed_eulerian_cycle_main.cpp" />
-      <config projectName="collected" targetName="trie_set_main_automoc" />
-      <config projectName="collected" targetName="rabin_karp_main" />
-      <config projectName="collected" targetName="b_tree_main_automoc" />
-      <config projectName="collected" targetName="particle_main" />
-      <config projectName="collected" targetName="knuth_morris_pratt_main_automoc" />
-      <config projectName="collected" targetName="mergesort_x_main" />
-      <config projectName="collected" targetName="cat_main_automoc" />
-      <config projectName="collected" targetName="sparse_vector_main.cpp" />
-      <config projectName="collected" targetName="tst_main_automoc" />
-      <config projectName="collected" targetName="lazy_prim_mst_main" />
-      <config projectName="collected" targetName="symbol_table_main_automoc" />
-      <config projectName="collected" targetName="binary_in_main_automoc" />
-      <config projectName="collected" targetName="index_min_pq_main" />
-      <config projectName="collected" targetName="nonrecursive_directed_dfs_main.cpp" />
-      <config projectName="collected" targetName="std_draw_main_automoc" />
-      <config projectName="collected" targetName="kruskal_mst_main" />
-      <config projectName="collected" targetName="binary_std_in_main_automoc" />
-      <config projectName="collected" targetName="adj_matrix_edge_weighted_digraph_main_automoc" />
-      <config projectName="collected" targetName="flow_edge_main.cpp" />
-      <config projectName="collected" targetName="fft_main.cpp" />
-      <config projectName="collected" targetName="vector_main_automoc" />
-      <config projectName="collected" targetName="interval_2d_main_automoc" />
-      <config projectName="collected" targetName="two_person_zero_sum_game_main" />
+      <config projectName="collected" targetName="directed_cycle_x_main.cpp" />
+      <config projectName="collected" targetName="bipartite_x_main_automoc" />
+      <config projectName="collected" targetName="digraph_generator_main.cpp" />
+      <config projectName="collected" targetName="doubling_ratio_main" />
+      <config projectName="collected" targetName="set_main_automoc" />
+      <config projectName="collected" targetName="prim_mst_main" />
+      <config projectName="collected" targetName="patricia_st_main_automoc" />
+      <config projectName="collected" targetName="assignment_problem_main" />
+      <config projectName="collected" targetName="knuth_shuffle_main_automoc" />
+      <config projectName="collected" targetName="closest_point_grid_main" />
+      <config projectName="collected" targetName="particle_main.cpp" />
+      <config projectName="collected" targetName="cpm_main" />
+      <config projectName="collected" targetName="symbol_digraph_main" />
+      <config projectName="collected" targetName="arbitrage_main" />
+      <config projectName="collected" targetName="de_dup_main.cpp" />
+      <config projectName="collected" targetName="longest_repeated_substring_main_automoc" />
+      <config projectName="collected" targetName="graph_main_automoc" />
+      <config projectName="collected" targetName="linked_stack_main.cpp" />
+      <config projectName="collected" targetName="fenwick_tree_main" />
+      <config projectName="collected" targetName="dijkstra_sp_main" />
+      <config projectName="collected" targetName="alphabet_main_automoc" />
+      <config projectName="collected" targetName="gaussian_elimination_main.cpp" />
+      <config projectName="collected" targetName="gmock" />
+      <config projectName="collected" targetName="b_tree_main" />
+      <config projectName="collected" targetName="tst_main" />
+      <config projectName="collected" targetName="std_out_main_automoc" />
+      <config projectName="collected" targetName="flow_edge_main" />
+      <config projectName="collected" targetName="accumulator_spec" />
+      <config projectName="collected" targetName="tarjan_scc_main_automoc" />
+      <config projectName="collected" targetName="date_main" />
+      <config projectName="collected" targetName="flow_network_main" />
+      <config projectName="collected" targetName="binary_dump_main.cpp" />
       <config projectName="collected" targetName="graph_main" />
-      <config projectName="collected" targetName="nfa_main_automoc" />
-      <config projectName="collected" targetName="transaction_main_automoc" />
+      <config projectName="collected" targetName="quicksort_x_main_automoc" />
+      <config projectName="collected" targetName="accumulator_main_automoc" />
+      <config projectName="collected" targetName="index_fibonacci_min_pq_main" />
+      <config projectName="collected" targetName="heap_main" />
+      <config projectName="collected" targetName="linked_bag_main" />
+      <config projectName="collected" targetName="multiway_merge_main_automoc" />
+      <config projectName="collected" targetName="stack_main_automoc" />
+      <config projectName="collected" targetName="linked_queue_main_automoc" />
+      <config projectName="collected" targetName="cpm_main_automoc" />
+      <config projectName="collected" targetName="random_seq_main_automoc" />
+      <config projectName="collected" targetName="breadth_first_paths_main_automoc" />
+      <config projectName="collected" targetName="directed_eulerian_path_main.cpp" />
+      <config projectName="collected" targetName="directed_eulerian_path_main_automoc" />
+      <config projectName="collected" targetName="three_sum_fast_main_automoc" />
+      <config projectName="collected" targetName="genome_main.cpp" />
+      <config projectName="collected" targetName="transaction_main.cpp" />
+      <config projectName="collected" targetName="graph_generator_main" />
+      <config projectName="collected" targetName="knuth_morris_pratt_main_automoc" />
+      <config projectName="collected" targetName="selection_sort_main" />
+      <config projectName="collected" targetName="kruskal_mst_main" />
+      <config projectName="collected" targetName="linked_bag_main_automoc" />
+      <config projectName="collected" targetName="union_find_main_automoc" />
+      <config projectName="collected" targetName="adjacency_list_graph_main" />
+      <config projectName="collected" targetName="path_compression_main" />
+      <config projectName="collected" targetName="boyer_moore_main" />
+      <config projectName="collected" targetName="topological_x_main_automoc" />
+      <config projectName="collected" targetName="edge_weighted_graph_main" />
+      <config projectName="collected" targetName="lazy_prim_mst_main" />
+      <config projectName="collected" targetName="doubling_test_main_automoc" />
+      <config projectName="collected" targetName="binary_out_main_automoc" />
+      <config projectName="collected" targetName="acyclic_lp_main" />
+      <config projectName="collected" targetName="three_sum_main" />
+      <config projectName="collected" targetName="multiway_min_pq_main.cpp" />
+      <config projectName="collected" targetName="eulerian_cycle_main_automoc" />
+      <config projectName="collected" targetName="resizing_array_bag_main.cpp" />
+      <config projectName="collected" targetName="index_min_pq_main" />
+      <config projectName="collected" targetName="depth_first_directed_paths_main.cpp" />
+      <config projectName="collected" targetName="two_person_zero_sum_game_main_automoc" />
+      <config projectName="collected" targetName="count_main" />
+      <config projectName="collected" targetName="hopcroft_karp_main" />
+      <config projectName="collected" targetName="quick_union_uf_main.cpp" />
+      <config projectName="collected" targetName="interval_2d_main_automoc" />
+      <config projectName="collected" targetName="digraph_main" />
+      <config projectName="collected" targetName="trie_st_main_automoc" />
       <config projectName="collected" targetName="gabow_scc_main.cpp" />
-      <config projectName="collected" targetName="interval_1d_main_automoc" />
-      <config projectName="collected" targetName="sequential_search" />
-      <config projectName="collected" targetName="std_random_main" />
-      <config projectName="collected" targetName="lsd_radix_sort_main_automoc" />
-      <config projectName="collected" targetName="top_m_main_automoc" />
-      <config projectName="collected" targetName="binary_search_symbol_table_main" />
-      <config projectName="collected" targetName="graph_generator_main_automoc" />
-      <config projectName="collected" targetName="quick_find_uf_main_automoc" />
-      <config projectName="collected" targetName="eulerian_cycle_main" />
-      <config projectName="collected" targetName="index_multiway_min_pq_main" />
-      <config projectName="collected" targetName="string_search_main" />
-      <config projectName="collected" targetName="interval_1d_main" />
-      <config projectName="collected" targetName="vector_main" />
-      <config projectName="collected" targetName="complex_main" />
-      <config projectName="collected" targetName="sieve_of_eratosthenes_main" />
-      <config projectName="collected" targetName="nonrecursive_dfs_main.cpp" />
-      <config projectName="collected" targetName="binomial_min_priority_queue_main_automoc" />
-      <config projectName="collected" targetName="accumulator_automoc" />
-      <config projectName="collected" targetName="digraph_generator_main" />
-      <config projectName="collected" targetName="directed_eulerian_cycle_main" />
-      <config projectName="collected" targetName="knuth_morris_pratt_main" />
-      <config projectName="collected" targetName="multiway_merge_main.cpp" />
+      <config projectName="collected" targetName="whitelist_main" />
+      <config projectName="collected" targetName="patricia_set_main.cpp" />
+      <config projectName="collected" targetName="std_out_main" />
+      <config projectName="collected" targetName="symbol_digraph_main_automoc" />
+      <config projectName="collected" targetName="selection_sort_main_automoc" />
+      <config projectName="collected" targetName="binomial_min_priority_queue_main.cpp" />
+      <config projectName="collected" targetName="arbitrage_main_automoc" />
+      <config projectName="collected" targetName="black_filter_main_automoc" />
+      <config projectName="collected" targetName="draw_main_automoc" />
+      <config projectName="collected" targetName="binary_search_symbol_table_main_automoc" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -587,149 +587,111 @@
     <favorites_list name="collected" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Flow_network_edge.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Flow_network_edge.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Maxflow_augmenting_paths.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Maxflow_preflow_push.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_preflow_push.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Maxflow_feasible.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_feasible.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bipartite_matching_via_reduction.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/bipartite_matching_via_reduction.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="flow_cost.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="flow_cost.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Mincost_residual_networks.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_residual_networks.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Mincost_network_simplex.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_network_simplex.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="45">
-                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Mincost_network_simplex_improved.h" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_network_simplex_improved.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="96" column="19" lean-forward="true" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="program_names.md" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/acpp/program_names.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-                <state split_layout="FIRST">
-                  <first_editor relative-caret-position="1590">
-                    <caret line="249" column="38" lean-forward="false" selection-start-line="249" selection-start-column="38" selection-end-line="249" selection-end-column="38" />
-                    <folding />
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="graph_client_example.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/graph_client_example.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="54" lean-forward="false" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="adjacency_list_graph_main.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/acpp/adjacency_list_graph_main.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="program_names.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/program_names.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="662">
+                <caret line="251" column="0" lean-forward="false" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sequential_search.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/sequential_search.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shellsort.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/shellsort.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="All_shortest_paths_floyd.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/All_shortest_paths_floyd.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Union_find.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/Union_find.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Union_find.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/Union_find.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types_of_numbers_main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/types_of_numbers_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Two_colorability.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/Two_colorability.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Maxflow_augmenting_paths.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bubble_sort.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acpp/bubble_sort.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -740,17 +702,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add edge</find>
-      <find>Vertex</find>
-      <find>rd</find>
-      <find>_cycle</find>
-      <find>!= nullptr</find>
-      <find>edge</find>
-      <find>node</find>
-      <find>\.\w*\n</find>
-      <find>//</find>
-      <find>rand_float</find>
-      <find>int main</find>
       <find>Point.h</find>
       <find>free_list</find>
       <find>free_list.h</find>
@@ -762,8 +713,25 @@
       <find>Stack</find>
       <find>stack</find>
       <find>5.1</find>
-      <find>COLLECTED_</find>
       <find>phi</find>
+      <find>COLLECTED_</find>
+      <find>degre</find>
+      <find>PQi</find>
+      <find>match</find>
+      <find>prim</find>
+      <find>floyd</find>
+      <find>dfs</find>
+      <find>euler</find>
+      <find>flow</find>
+      <find>cost</find>
+      <find>hamil</find>
+      <find>symbol</find>
+      <find>longest</find>
+      <find>&lt;class</find>
+      <find>template(&lt;[^&gt;]*,\s)class([^&gt;]*&gt;)</find>
+      <find>template(&lt;[^\&gt;]*,\s)class([^\&gt;]*\&gt;)</find>
+      <find>max</find>
+      <find>addflowRto</find>
     </findStrings>
     <replaceStrings>
       <replace>\n</replace>
@@ -771,6 +739,9 @@
       <replace>Queue</replace>
       <replace>queue</replace>
       <replace />
+      <replace>&lt;typename</replace>
+      <replace>template$1typename$2</replace>
+      <replace>add_flow_r_to</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -781,57 +752,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/acpp/Connected_component_dfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Generalized_graph_search.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Derived_dfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Basic_connectivity.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Two_way_euler_tour.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Two_colorability.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Edge_connectivity.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Derived_bfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Derived_bfs_improved.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Derived_pfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Randomized_graph_search.h" />
-        <option value="$PROJECT_DIR$/src/acpp/digraph_reversal.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Digraph_dfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Transitive_closure_warshall.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Transitive_closure_dfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/tree_to_dag.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Reverse_topological_sort.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Topological_sort.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Topological_sort_queue_based.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Transitive_closure_dag.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Strong_components_kosaraju.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Strong_components_tarjan.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Strong_components_gabow.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Transitive_closure_strong_components.h" />
-        <option value="$PROJECT_DIR$/src/acpp/edge_weighted_graph_client_example.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Edge_weighted_dense_graph.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Edge_weighted_sparse_multigraph.h" />
-        <option value="$PROJECT_DIR$/src/acpp/MST_prim.h" />
-        <option value="$PROJECT_DIR$/src/acpp/MST_pfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/MST_kruskal.h" />
-        <option value="$PROJECT_DIR$/src/acpp/MST_boruvka.h" />
-        <option value="$PROJECT_DIR$/src/acpp/MST_prim_pfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Shortest_path_dijkstra_pfs.h" />
-        <option value="$PROJECT_DIR$/src/acpp/network_diameter.h" />
-        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_dijkstra.h" />
-        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_floyd.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Longest_paths_dag.h" />
-        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_dag.h" />
-        <option value="$PROJECT_DIR$/src/acpp/job_scheduling.cpp" />
-        <option value="$PROJECT_DIR$/src/acpp/Shortest_paths_bellman_ford.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Flow_check.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Flow_network_edge.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Maxflow_preflow_push.h" />
-        <option value="$PROJECT_DIR$/src/acpp/Maxflow_feasible.h" />
-        <option value="$PROJECT_DIR$/src/acpp/bipartite_matching_via_reduction.cpp" />
-        <option value="$PROJECT_DIR$/src/acpp/flow_cost.h" />
         <option value="$PROJECT_DIR$/src/acpp/Mincost_residual_networks.h" />
-        <option value="$PROJECT_DIR$/src/acpp/program_names.md" />
         <option value="$PROJECT_DIR$/src/acpp/Mincost_network_simplex.h" />
         <option value="$PROJECT_DIR$/src/acpp/Mincost_network_simplex_improved.h" />
+        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_dag.h" />
+        <option value="$PROJECT_DIR$/src/acpp/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/Edge.h" />
+        <option value="$PROJECT_DIR$/src/Edge.cpp" />
+        <option value="$PROJECT_DIR$/src/acpp/Vertex_degrees.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Two_way_euler_tour.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Basic_connectivity.h" />
+        <option value="$PROJECT_DIR$/src/acpp/bipartite_matching_via_reduction.cpp" />
+        <option value="$PROJECT_DIR$/src/acpp/Shortest_paths_bellman_ford.h" />
+        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_dijkstra.h" />
+        <option value="$PROJECT_DIR$/src/acpp/MST_prim_pfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Priority_queue_prim_pfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Shortest_paths_dijkstra_pfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Array_polynomial.h" />
+        <option value="$PROJECT_DIR$/src/acpp/bubble_sort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Connected_component_dfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Array_stack.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Dense_graph.h" />
+        <option value="$PROJECT_DIR$/todos.md" />
+        <option value="$PROJECT_DIR$/src/acpp/Derived_bfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Generalized_graph_search.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Derived_bfs_improved.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Derived_dfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Random_queue.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Derived_pfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Digraph_dfs.h" />
+        <option value="$PROJECT_DIR$/src/acpp/digraph_reversal.h" />
+        <option value="$PROJECT_DIR$/src/acpp/reverse_digraph.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Edge_connectivity.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Eulerian_path.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Flow_check.h" />
+        <option value="$PROJECT_DIR$/src/acpp/program_names.md" />
+        <option value="$PROJECT_DIR$/src/acpp/flow_cost.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Flow_network_edge.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Hamiltonian_path.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Graph_symbol_table.h" />
+        <option value="$PROJECT_DIR$/src/acpp/in_place_sort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/insertion_sort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/job_scheduling.cpp" />
+        <option value="$PROJECT_DIR$/src/acpp/key_indexed_counting.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Longest_paths_dag.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Topological_sort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Topological_sort_queue_based.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Reverse_topological_sort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/sequential_search.cpp" />
+        <option value="$PROJECT_DIR$/src/acpp/shellsort.h" />
+        <option value="$PROJECT_DIR$/src/acpp/All_shortest_paths_floyd.h" />
+        <option value="$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h" />
       </list>
     </option>
   </component>
@@ -2354,7 +2325,9 @@
       <workItem from="1486829580433" duration="7750000" />
       <workItem from="1486840625440" duration="791000" />
       <workItem from="1486869108453" duration="5000" />
-      <workItem from="1486960460660" duration="5442000" />
+      <workItem from="1486960460660" duration="5494000" />
+      <workItem from="1486996094323" duration="8111000" />
+      <workItem from="1487015141956" duration="10051000" />
     </task>
     <servers />
   </component>
@@ -2379,7 +2352,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="510201000" />
+    <option name="totallyTimeSpent" value="528415000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2394,10 +2367,11 @@
     <frame x="0" y="23" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17440476" sideWeight="0.4965035" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13571429" sideWeight="0.4965035" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33166832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32667333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32667333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2409,7 +2383,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32667333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3936064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2471,95 +2444,7 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/acpp/Two_colorability.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Edge_connectivity.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Derived_bfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Dense_graph.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="75" lean-forward="false" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Derived_bfs_improved.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Derived_pfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="2" lean-forward="false" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Randomized_graph_search.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/digraph_reversal.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Digraph_dfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Transitive_closure_warshall.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Transitive_closure_dfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/tree_to_dag.cpp">
+    <entry file="file://$PROJECT_DIR$/src/acpp/factorial_recursive.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2567,218 +2452,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/tree_to_dag.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Reverse_topological_sort.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Topological_sort.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Topological_sort_queue_based.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Transitive_closure_dag.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Strong_components_kosaraju.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Strong_components_tarjan.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Strong_components_gabow.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Transitive_closure_strong_components.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="2" lean-forward="true" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/graph_client_example.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/factorial_recursive.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="54" lean-forward="false" selection-start-line="0" selection-start-column="54" selection-end-line="0" selection-end-column="54" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/edge_weighted_graph_client_example.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/fibonacci_dynamic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Edge_weighted_dense_graph.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/fibonacci_recursive.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Edge_weighted_sparse_multigraph.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/fibonacci_recursive.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/MST_pfs.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/MST_kruskal.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/MST_boruvka.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/MST_prim.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/MST_prim_pfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/network_diameter.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/All_shortest_paths_dijkstra.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/All_shortest_paths_floyd.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Longest_paths_dag.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/All_shortest_paths_dag.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/job_scheduling.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Shortest_paths_dijkstra_pfs.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Shortest_paths_bellman_ford.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acpp/Flow_check.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -2793,45 +2518,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acpp/Flow_network_edge.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="34" column="16" lean-forward="true" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_preflow_push.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_feasible.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/bipartite_matching_via_reduction.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.cpp">
+    <entry file="file://$PROJECT_DIR$/src/acpp/free_list.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2839,34 +2532,298 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/flow_cost.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/free_list.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_residual_networks.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/function_definition_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_network_simplex.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/Generalized_graph_search.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/graph_client_example.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/graph_print.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Graph_io.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/graph_processing_client.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Graph_symbol_table.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Graph_symbol_table.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/infix_to_postfix_conversion_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Hamiltonian_path.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="48" lean-forward="false" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/in_place_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/insertion_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/job_scheduling.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/josephus_list_allocation_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/josephus_problem_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/key_indexed_counting.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="55" lean-forward="false" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/knapsack_dynamic.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/knapsack_recursive.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/knapsack_recursive.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Linked_list_queue.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Linked_list_stack.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/list_insertion_sort_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/list_selection_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Longest_paths_dag.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Topological_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Topological_sort_queue_based.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Reverse_topological_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/roots_of_unity_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/sequential_search.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acpp/Mincost_network_simplex_improved.h">
+    <entry file="file://$PROJECT_DIR$/src/acpp/sequential_search.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="96" column="19" lean-forward="true" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/shellsort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/All_shortest_paths_floyd.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Union_find.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Union_find.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/types_of_numbers_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Two_colorability.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2874,11 +2831,27 @@
     <entry file="file://$PROJECT_DIR$/src/acpp/program_names.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="1590">
-            <caret line="249" column="38" lean-forward="false" selection-start-line="249" selection-start-column="38" selection-end-line="249" selection-end-column="38" />
+          <first_editor relative-caret-position="662">
+            <caret line="251" column="0" lean-forward="false" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/bubble_sort.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acpp/Maxflow_augmenting_paths.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

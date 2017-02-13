@@ -1,28 +1,35 @@
-#ifndef COLLECTED_GENERALIZED_GRAPH_SEARCH_H
-#define COLLECTED_GENERALIZED_GRAPH_SEARCH_H
+// Program 18.2 - Graph search
+#ifndef GENERALIZED_GRAPH_SEARCH_H
+#define GENERALIZED_GRAPH_SEARCH_H
 
-template<class Graph> class SEARCH {
+#include <vector>
+
+#include "Edge.h"
+
+template<typename Graph_type>
+class Generalized_graph_search {
 protected:
-    const Graph& G;
-    int cnt;
-    vector<int> ord;
+public:
+    Generalized_graph_search(const Graph_type& graph) : _graph{graph}, _order(graph.num_vertices(), -1), _count{0} {}
 
-    virtual void searchC(Edge) = 0;
+    inline int operator[](int v) const { return _order[v]; }
+protected:
+    const Graph_type& _graph;
+    int _count;
+    std::vector<int> _order;
 
-    void search()
+    // virtual void _search_c(Edge&) = 0;
+
+    virtual void _search_c(Edge&&) = 0; // called once for each component
+
+    void _search()
     {
-        for (int v = 0; v < G.V(); v++) {
-            if (ord[v] == -1) { searchC(Edge(v, v)); }
+        for (int v{0}; v < _graph.num_vertices(); ++v) {
+            if (_order[v] == -1) { _search_c(Edge(v, v)); }
         }
     }
-
-public:
-    SEARCH(const Graph& G) : G(G),
-                             ord(G.V(), -1), cnt(0) {}
-
-    int operator[](int v) const { return ord[v]; }
 };
 
 
 
-#endif // COLLECTED_GENERALIZED_GRAPH_SEARCH_H
+#endif // GENERALIZED_GRAPH_SEARCH_H

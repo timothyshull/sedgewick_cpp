@@ -1,7 +1,7 @@
-#ifndef COLLECTED_MST_KRUSKAL_H
-#define COLLECTED_MST_KRUSKAL_H
+#ifndef MST_KRUSKAL_H
+#define MST_KRUSKAL_H
 
-template<class Graph, class Edge, class EdgePtr>
+template<typename Graph, class Edge, typename EdgePtr>
 class MST {
     const Graph& G;
     vector <EdgePtr> a, mst;
@@ -23,4 +23,4 @@ public:
 
 
 
-#endif // COLLECTED_MST_KRUSKAL_H
+#endif // MST_KRUSKAL_H

@@ -214,7 +214,7 @@ Program 18.7 - Edge connectivity - h -
 Program 18.8 - Breadth-first search - h - Derived_bfs
 Program 18.9 - Improved BFS - h -
 Program 18.10 - Generalized graph search  - h - Derived_pfs
-Program 18.11 - Random queue implementation - h - Randomized_graph_search
+Program 18.11 - Random queue implementation - h - Random_queue
 Program 19.1 - Reversing a digraph - h -
 Program 19.2 - DFS of a digraph - h -
 Program 19.3 - Warshall's algorithm - h -

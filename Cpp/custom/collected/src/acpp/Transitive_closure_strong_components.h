@@ -1,7 +1,7 @@
-#ifndef COLLECTED_TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H
-#define COLLECTED_TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H
+#ifndef TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H
+#define TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H
 
-template<class Graph> class TC {
+template<typename Graph> class TC {
     const Graph& G;
     DenseGRAPH* K;
     dagTC <DenseGRAPH, Graph>* Ktc;
@@ -30,4 +30,4 @@ public:
     bool reachable(int v, int w) { return Ktc->reachable(Gsc->ID(v), Gsc->ID(w)); }
 };
 
-#endif // COLLECTED_TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H
+#endif // TRANSITIVE_CLOSURE_STRONG_COMPONENTS_H

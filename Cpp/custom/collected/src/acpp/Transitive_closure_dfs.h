@@ -1,7 +1,7 @@
-#ifndef COLLECTED_TRANSITIVE_CLOSURE_DFS_H
-#define COLLECTED_TRANSITIVE_CLOSURE_DFS_H
+#ifndef TRANSITIVE_CLOSURE_DFS_H
+#define TRANSITIVE_CLOSURE_DFS_H
 
-template<class Graph> class tc {
+template<typename Graph> class tc {
     Graph T;
     const Graph& G;
 
@@ -22,4 +22,4 @@ public:
 
 
 
-#endif // COLLECTED_TRANSITIVE_CLOSURE_DFS_H
+#endif // TRANSITIVE_CLOSURE_DFS_H

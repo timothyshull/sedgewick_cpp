@@ -1,30 +1,32 @@
-#ifndef COLLECTED_FLOW_CHECK_H
-#define COLLECTED_FLOW_CHECK_H
+// Program 22.1 - Flow check and value computation
+#ifndef FLOW_CHECK_H
+#define FLOW_CHECK_H
 
-template<class Graph, class Edge> class check {
-public:
-    static int flow(Graph& G, int v)
+namespace Flow_check {
+    template<typename Graph_type, typename Edge_type>
+    static int flow(Graph_type& graph, int vertex)
     {
-        int x = 0;
-        typename Graph::adjIterator A(G, v);
-        for (Edge* e = A.beg(); !A.end(); e = A.nxt()) {
-            x += e->from(v) ? e->flow() : -e->flow();
+        int x{0};
+        typename Graph_type::adjIterator A(graph, vertex);
+        for (auto e : graph.adjacent(vertex)) {
+            x += e->from(vertex) ? e->flow() : -e->flow();
         }
         return x;
     }
 
-    static bool flow(Graph& G, int s, int t)
+    template<typename Graph_type>
+    static bool flow(Graph_type& graph, int source, int sink)
     {
-        for (int v = 0; v < G.V(); v++) {
-            if ((v != s) && (v != t)) {
-                if (flow(G, v) != 0) { return false; }
+        for (int v{0}; v < graph.num_vertices(); ++v) {
+            if ((v != source) && (v != sink)) {
+                if (flow(graph, v) != 0) { return false; }
             }
         }
-        int sflow = flow(G, s);
-        if (sflow < 0) { return false; }
-        if (sflow + flow(G, t) != 0) { return false; }
-        return true;
+        int s_flow{flow(graph, source)};
+        if (s_flow < 0) { return false; }
+
+        return  !(s_flow + flow(graph, sink));
     }
 };
 
-#endif // COLLECTED_FLOW_CHECK_H
+#endif // FLOW_CHECK_H

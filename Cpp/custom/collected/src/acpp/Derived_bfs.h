@@ -1,33 +1,40 @@
-#ifndef COLLECTED_DERIVED_BFS_H
-#define COLLECTED_DERIVED_BFS_H
+#ifndef DERIVED_BFS_H
+#define DERIVED_BFS_H
 
-#include "QUEUE.cc"
+#include <queue>
 
-template<class Graph>
-class BFS : public SEARCH<Graph> {
-    vector<int> st;
+#include "Generalized_graph_search.h"
 
-    void searchC(Edge e)
+template<typename Graph_type>
+class Derived_bfs : public Generalized_graph_search<Graph_type> {
+public:
+    Derived_bfs(Graph_type& graph) : Generalized_graph_search<Graph_type>{graph}, _search_tree(graph.num_vertices(), -1) { _search(); }
+
+    int search_tree(int v) const { return _search_tree[v]; }
+
+private:
+    std::vector<int> _search_tree;
+
+    void _search_c(Edge&& e)
     {
-        QUEUE <Edge> Q;
-        Q.put(e);
-        while (!Q.empty()) {
-            if (ord[(e = Q.get()).w] == -1) {
-                int v = e.v, w = e.w;
-                ord[w] = cnt++;
-                st[w] = v;
-                typename Graph::adjIterator A(G, w);
-                for (int t = A.beg(); !A.end(); t = A.nxt()) {
-                    if (ord[t] == -1) { Q.put(Edge(w, t)); }
+        std::queue<Edge> queue;
+        queue.push(e);
+        Edge tmp;
+        while (!queue.empty()) {
+            tmp = queue.front();
+            queue.pop();
+            if (_order[tmp.destination()] == -1) {
+                int v{e.source()};
+                int w{e.destination()};
+                _order[w] = _count++;
+                _search_tree[w] = v;
+                // typename Graph_type::adjIterator A(G, w);
+                for (auto t : _graph.adjacent(w)) {
+                    if (_order[t] == -1) { queue.push(Edge(w, t)); }
                 }
             }
         }
     }
-
-public:
-    BFS(Graph& G) : SEARCH<Graph>(G), st(G.V(), -1) { search(); }
-
-    int ST(int v) const { return st[v]; }
 };
 
-#endif // COLLECTED_DERIVED_BFS_H
+#endif // DERIVED_BFS_H
