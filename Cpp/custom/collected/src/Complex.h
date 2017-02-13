@@ -27,7 +27,7 @@ public:
 
     inline double real() const { return _real; };
 
-    inline double imaginary() const { return _imaginary; }
+    inline double imaginary() const { return _imag; }
 
     Complex divides(Complex& that) const;
 
@@ -40,7 +40,7 @@ public:
     Complex tan() const;
 private:
     double _real;
-    double _imaginary;
+    double _imag;
 };
 
 std::ostream& operator<<(std::ostream& os, Complex& out);

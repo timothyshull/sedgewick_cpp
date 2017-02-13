@@ -52,11 +52,11 @@ public:
 
     B_tree_node(int num_children)
             : _num_children{num_children},
-              _children(static_cast<typename std::vector<B_tree_entry<Key_type, Value_type>>::size_type>(num_children)) {}
+              _children(static_cast<std::vector<B_tree_entry<Key_type, Value_type>>::size_type>(num_children)) {}
 
     B_tree_node()
             : _num_children{_max_num_children},
-              _children(static_cast<typename std::vector<B_tree_entry<Key_type, Value_type>>::size_type>(_max_num_children)) {}
+              _children(static_cast<std::vector<B_tree_entry<Key_type, Value_type>>::size_type>(_max_num_children)) {}
 
     B_tree_node(const B_tree_node&) = default;
 

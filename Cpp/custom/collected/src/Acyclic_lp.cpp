@@ -1,8 +1,8 @@
 #include "Acyclic_lp.h"
 
 Acyclic_lp::Acyclic_lp(Edge_weighted_digraph& g, int source)
-        : _distance_to(static_cast<std::vector<double>::size_type>(g.num_vertices()), -std::numeric_limits<double>::infinity()),
-          _edge_to(static_cast<std::vector<Directed_edge>::size_type>(g.num_vertices()))
+        : _distance_to(g.num_vertices(), -std::numeric_limits<double>::infinity()),
+          _edge_to(g.num_vertices())
 {
     _distance_to[source] = 0.0;
 

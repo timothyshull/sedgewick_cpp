@@ -2,9 +2,9 @@
 
 Bipartite::Bipartite(Graph& graph)
         : _is_bipartite{true},
-          _color(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
-          _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
-          _marked(static_cast<std::vector<int>::size_type>(graph.num_vertices()))
+          _color(graph.num_vertices()),
+          _marked(graph.num_vertices()),
+          _marked(graph.num_vertices())
 {
     for (int v{0}; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) {

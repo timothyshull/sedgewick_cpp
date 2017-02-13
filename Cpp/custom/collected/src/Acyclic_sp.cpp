@@ -2,8 +2,8 @@
 #include "Topological.h"
 
 Acyclic_sp::Acyclic_sp(Edge_weighted_digraph& digraph, int source)
-        : _distance_to(static_cast<std::vector<double>::size_type>(digraph.num_vertices()), -std::numeric_limits<double>::infinity()),
-          _edge_to(static_cast<std::vector<Directed_edge>::size_type>(digraph.num_vertices()))
+        : _distance_to(digraph.num_vertices(), -std::numeric_limits<double>::infinity()),
+          _edge_to(digraph.num_vertices())
 {
     _distance_to[source] = 0.0;
 

@@ -2,10 +2,11 @@
 #include "Topological_x.h"
 
 Topological_x::Topological_x(Digraph& digraph)
-        : _rank{static_cast<std::vector<int>::size_type>(digraph.num_vertices())},
+        : _rank(digraph.num_vertices()),
           _order{}
 {
-    std::vector<int> indegree{static_cast<std::vector<int>::size_type>(digraph.num_vertices())};
+    std::vector<int> indegree;
+    indegree.reserve(digraph.num_vertices());
     for (int v{0}; v < digraph.num_vertices(); ++v) {
         indegree[v] = digraph.indegree(v);
     }
@@ -35,15 +36,16 @@ Topological_x::Topological_x(Digraph& digraph)
 }
 
 Topological_x::Topological_x(Edge_weighted_digraph& digraph)
-        : _rank{static_cast<std::vector<int>::size_type>(digraph.num_vertices())},
+        : _rank(digraph.num_vertices()),
           _order{}
 {
-    std::vector<int> indegree{static_cast<std::vector<int>::size_type>(digraph.num_vertices())};
+    std::vector<int> indegree;
+    indegree.reserve(digraph.num_vertices());
     for (int v{0}; v < digraph.num_vertices(); ++v) {
         indegree[v] = digraph.indegree(v);
     }
 
-    int count = 0;
+    int count{0};
 
     Queue<int> queue;
     for (int v{0}; v < digraph.num_vertices(); ++v) {
@@ -114,7 +116,7 @@ bool Topological_x::_check(Digraph& digraph)
 bool Topological_x::_check(Edge_weighted_digraph& digraph)
 {
     if (has_order()) {
-        std::deque<bool> found{static_cast<std::deque<bool>::size_type>(digraph.num_vertices())};
+        std::deque<bool> found(digraph.num_vertices());
         for (int i{0}; i < digraph.num_vertices(); ++i) {
             found[rank(i)] = true;
         }

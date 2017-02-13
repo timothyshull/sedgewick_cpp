@@ -24,9 +24,9 @@ public:
 
     explicit Digraph(Digraph& g);
 
-    inline int num_vertices() const { return _num_vertices; };
+    inline unsigned long num_vertices() const noexcept { return _num_vertices; };
 
-    inline int num_edges() const { return _num_edges; };
+    inline unsigned long num_edges() const noexcept { return _num_edges; };
 
     void add_edge(int v, int w);
 
@@ -41,8 +41,8 @@ public:
     std::string to_string() const;
 
 private:
-    int _num_vertices;
-    int _num_edges;
+    unsigned long _num_vertices;
+    unsigned long _num_edges;
     std::vector<std::vector<int>> _adjacency_lists;
     std::vector<int> _indegree;
 

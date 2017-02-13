@@ -15,9 +15,9 @@ public:
 
     Edge_weighted_graph(Edge_weighted_graph& graph);
 
-    inline int num_vertices() const noexcept { return _num_vertices; }
+    inline unsigned long num_vertices() const noexcept { return _num_vertices; }
 
-    inline int num_edges() const noexcept { return _num_edges; }
+    inline unsigned long num_edges() const noexcept { return _num_edges; }
 
     void add_edge(Edge& edge);
 
@@ -32,8 +32,8 @@ public:
     std::string to_string();
 
 private:
-    const int _num_vertices;
-    int _num_edges;
+    const unsigned long _num_vertices;
+    unsigned long _num_edges;
     std::vector<std::vector<Edge>> _adjacency_lists;
 
     void _validate_vertex(int vertex);

@@ -1,11 +1,13 @@
 #include <deque>
+#include <gsl/gsl_util>
+
 #include "Assignment_problem.h"
 #include "utility.h"
 #include "Edge_weighted_digraph.h"
 #include "Std_out.h"
 
 Assignment_problem::Assignment_problem(std::vector<std::vector<double>>& weight)
-        : _dimension(static_cast<int>(weight.size())),
+        : _dimension(gsl::narrow<int, std::vector<std::vector<double>>::size_type>(weight.size())),
           _weight(weight.size()),
           _min_weight{0},
           _px(weight.size()),

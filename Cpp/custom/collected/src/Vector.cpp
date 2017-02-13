@@ -1,3 +1,5 @@
+#include <gsl/gsl_util>
+
 #include "Vector.h"
 #include "utility.h"
 
@@ -6,7 +8,7 @@ Vector::Vector(int d)
           _data(static_cast<std::vector<double>::size_type>(d)) {}
 
 Vector::Vector(std::initializer_list<double>& a)
-        : _dimension{static_cast<int>(a.size())},
+        : _dimension{gsl::narrow<int, std::initializer_list<double>::size_type>(a.size())},
           _data{a} {}
 
 double Vector::dot(Vector& that)

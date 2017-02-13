@@ -7,8 +7,8 @@
 
 #include "Point.h"
 
-std::random_device rd;
-std::default_random_engine gen{rd()};
+static std::random_device rd;
+static std::default_random_engine gen{rd()};
 
 Point::Point() : x{std::generate_canonical<float, 10>(gen)}, y{std::generate_canonical<float, 10>(gen)} {}
 

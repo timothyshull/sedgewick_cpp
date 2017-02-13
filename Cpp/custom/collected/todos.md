@@ -91,6 +91,8 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - variance is wrong in accumulator
 - all iterators may need duplicates with Const_iterator_type and const
 - all classes with Std_in substituted for in need to be fixed
+
+
 - all structures with pointer members need custom dtors, copy & assignment
     - AVL_tree_symbol_table
     - Bag
@@ -131,6 +133,10 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 
 # Notes
 - for vector, use ctor reserve if type is not int type, otherwise use reserve
+- only use () for container type ctors specifying size
+- use GSL narrow_cast and narrow for casting
+- use unsigned long for num_vertices etc for natural use with size_t
+- the standard library throws for certain places where null is returned (std::out_of_range)
 
 
 

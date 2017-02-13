@@ -1,11 +1,13 @@
+#include <gsl/gsl_util>
+
 #include "Bellman_ford_sp.h"
 #include "Edge_weighted_directed_cycle.h"
 #include "Std_out.h"
 
 Bellman_ford_sp::Bellman_ford_sp(Edge_weighted_digraph digraph, int source)
-        : _distance_to(static_cast<std::vector<double>::size_type>(digraph.num_vertices()), std::numeric_limits<double>::infinity()),
-          _edge_to(static_cast<std::vector<Directed_edge>::size_type>(digraph.num_vertices())),
-          _on_queue(static_cast<std::deque<bool>::size_type>(digraph.num_vertices())),
+        : _distance_to(digraph.num_vertices()), std::numeric_limits<double>::infinity(),
+          _edge_to(digraph.num_vertices()),
+          _on_queue(digraph.num_vertices()),
           _queue{}
 {
     _distance_to[source] = 0.0;
@@ -73,7 +75,7 @@ void Bellman_ford_sp::_relax(Edge_weighted_digraph digraph, int vertex)
 
 void Bellman_ford_sp::_find_negative_cycle()
 {
-    int num_vertices = static_cast<int>(_edge_to.size());
+    int num_vertices{gsl::narrow<int, std::vector<Directed_edge>::size_type>(_edge_to.size())};
     Edge_weighted_digraph spt{num_vertices};
     for (int v{0}; v < num_vertices; ++v) {
         if (_edge_to[v] != Directed_edge{}) {

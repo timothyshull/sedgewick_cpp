@@ -2,6 +2,8 @@
 #define BINARY_INSERTION_H
 
 #include <vector>
+#include <gsl/gsl_util>
+
 #include "utility.h"
 #include "Std_out.h"
 
@@ -18,7 +20,7 @@ namespace Binary_insertion_sort {
     template<typename T>
     static void sort(std::vector<T>& a)
     {
-        int n{static_cast<int>(a.size())};
+        auto n = a.size();
         for (int i{1}; i < n; ++i) {
             T v = a[i];
             int lo = 0, hi = i;
@@ -45,7 +47,7 @@ namespace Binary_insertion_sort {
     template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
-        return is_sorted(a, 0, static_cast<int>(a.size()) - 1);
+        return is_sorted(a, 0, gsl::narrow<int, typename std::vector<T>::size_type>(a.size()) - 1);
     }
 
     template<typename T>

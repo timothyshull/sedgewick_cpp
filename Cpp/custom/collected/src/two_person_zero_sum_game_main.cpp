@@ -11,13 +11,13 @@ int main(int argc, char* argv[])
     Tpzsg_tests::test4();
     Tpzsg_tests::test5();
 
-    int m{utility::str_to_num(argv[1])};
-    int n{utility::str_to_num(argv[2])};
+    std::size_t m{std::stoul(argv[1])};
+    std::size_t n{std::stoul(argv[2])};
     std::vector<std::vector<double>> payoff;
-    payoff.reserve(static_cast<std::vector<std::vector<double>>::size_type>(m));
+    payoff.reserve(m);
     for (int i{0}; i < m; ++i) {
         payoff[i] = std::vector<double>{};
-        payoff[i].reserve(static_cast<std::vector<double>::size_type>(n));
+        payoff[i].reserve(n);
         for (int j{0}; j < n; ++j) {
             payoff[i][j] = Std_random::uniform(-0.5, 0.5);
         }

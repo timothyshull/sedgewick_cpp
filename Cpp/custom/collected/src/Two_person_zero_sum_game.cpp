@@ -132,16 +132,16 @@ bool Two_person_zero_sum_game::_certify_solution(std::vector<std::vector<double>
 
 std::tuple<int, int, Linear_programming, double> Two_person_zero_sum_game::_prep_args(std::vector<std::vector<double>>& payoff)
 {
-    int m{static_cast<int>(payoff.size())};
-    int n{static_cast<int>(payoff[0].size())};
+    auto m = payoff.size();
+    auto n = payoff[0].size();
     std::vector<double> c;
-    c.reserve(std::vector<double>::size_type(n));
+    c.reserve(n);
     std::vector<double> b;
-    b.reserve(std::vector<double>::size_type(m));
+    b.reserve(m);
     std::vector<std::vector<double>> a;
-    a.reserve(static_cast<std::vector<std::vector<double>>::size_type>(m));
+    a.reserve(m);
     for (int i{0}; i < m; ++i) {
-        a.reserve(static_cast<std::vector<double>::size_type>(n));
+        a.reserve(n);
     }
     for (int i{0}; i < m; ++i) {
         b[i] = 1.0;
@@ -150,7 +150,7 @@ std::tuple<int, int, Linear_programming, double> Two_person_zero_sum_game::_prep
         c[j] = 1.0;
     }
 
-    double constant = std::numeric_limits<double>::infinity();
+    double constant{std::numeric_limits<double>::infinity()};
     for (int i{0}; i < m; ++i) {
         for (int j{0}; j < n; ++j) {
             if (payoff[i][j] < constant) {
