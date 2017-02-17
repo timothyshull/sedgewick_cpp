@@ -1,5 +1,5 @@
-#ifndef COLLECTED_QUEUE_H
-#define COLLECTED_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include <iterator>
 
@@ -188,4 +188,4 @@ std::ostream& operator<<(std::ostream& os, Queue<T>& out)
     return os << out.to_string();
 }
 
-#endif // COLLECTED_QUEUE_H
+#endif // QUEUE_H

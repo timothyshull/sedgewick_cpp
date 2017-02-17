@@ -1,9 +1,9 @@
 #include "Directed_cycle.h"
 
 Directed_cycle::Directed_cycle(Digraph& g)
-        : _marked(static_cast<std::deque<int>::size_type>(g.num_vertices())),
-          _on_stack(static_cast<std::deque<int>::size_type>(g.num_vertices())),
-          _edge_to(static_cast<std::vector<int>::size_type>(g.num_vertices()))
+        : _marked(g.num_vertices()),
+          _on_stack(g.num_vertices()),
+          _edge_to(g.num_vertices())
 {
     for (int v{0}; v < g.num_vertices(); ++v) {
         if (!_marked[v] && _cycle.is_empty()) {

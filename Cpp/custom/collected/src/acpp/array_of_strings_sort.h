@@ -5,6 +5,6 @@
 #include <vector>
 #include <string>
 
-void sort(std::vector<std::string>& v);
+void sort(std::vector<std::string>& coll);
 
 #endif // ARRAY_OF_STRINGS_SORT_H

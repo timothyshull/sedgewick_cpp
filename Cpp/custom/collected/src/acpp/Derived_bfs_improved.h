@@ -26,11 +26,11 @@ private:
         while (!queue.empty()) {
             tmp = queue.front();
             queue.pop();
-            _search_tree[e.destination()] = tmp.source();
+            _search_tree[tmp.destination()] = tmp.source();
             // typename Graph_type::adjIterator A(G, e.w);
             for (auto t : _graph.adjacent(tmp.destination())) {
                 if (_order[t] == -1) {
-                    queue.push(Edge{e.destination(), t});
+                    queue.push(Edge{tmp.destination(), t});
                     _order[t] = _count++;
                 }
             }

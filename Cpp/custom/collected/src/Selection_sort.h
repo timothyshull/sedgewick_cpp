@@ -48,7 +48,7 @@ namespace Selection_sort {
     template<typename T, typename Comparator>
     void sort(std::vector<T>& a)
     {
-        int n = a.size();
+        auto n = a.size();
         for (int i{0}; i < n; ++i) {
             int min = i;
             for (int j{i + 1}; j < n; ++j) {
@@ -61,23 +61,18 @@ namespace Selection_sort {
     }
 
     template<typename T>
-    bool less(T& v, T& w)
-    {
-        return v < w;
-    }
+    inline bool less(T& v, T& w) { return v < w; }
 
     template<typename T, typename Comparator>
-    bool less(T& v, T& w)
-    {
-        return Comparator{}(v, w);
-    }
+    bool less(T& v, T& w) { return Comparator{}(v, w); }
 
     template<typename T>
-    void exch(std::vector<T>& a, int i, int j)
+    inline void exch(std::vector<T>& a, int i, int j)
     {
-        T swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
+        std::swap(a[i], a[j]);
+        // T swap = a[i];
+        // a[i] = a[j];
+        // a[j] = swap;
     }
 
     template<typename T>
@@ -98,7 +93,7 @@ namespace Selection_sort {
     template<typename T, typename Comparator>
     bool is_sorted(std::vector<T>& a)
     {
-        return is_sorted<T, Comparator>(a, 0, a.size() - 1);
+        return is_sorted<T, Comparator>(a, 0, static_cast<int>(a.size() - 1)); // narrow_cast
     }
 
     template<typename T, typename Comparator>

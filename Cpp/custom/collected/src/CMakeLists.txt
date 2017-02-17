@@ -44,6 +44,7 @@ add_library(utility STATIC utility.h utility.cpp)
 
 # subdirectories with CMakeLists.txt
 add_subdirectory(acpp)
+add_subdirectory(extras)
 
 
 # Start executable definitions
@@ -185,6 +186,9 @@ target_link_libraries(breadth_first_directed_paths_main std_io utility ${Boost_L
 
 add_executable(breadth_first_paths_main breadth_first_paths_main.cpp Breadth_first_paths.cpp Breadth_first_paths.h)
 target_link_libraries(breadth_first_paths_main std_io utility ${Boost_LIBRARIES})
+
+add_executable(bubble_sort_main bubblesort_main.cpp Bubblesort.h)
+target_link_libraries(bubble_sort_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(cat_main cat_main.cpp)
 target_link_libraries(cat_main std_io utility ${Boost_LIBRARIES})

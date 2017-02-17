@@ -1,5 +1,5 @@
-#ifndef COLLECTED_BAG_H
-#define COLLECTED_BAG_H
+#ifndef BAG_H
+#define BAG_H
 
 #include <iterator>
 
@@ -161,4 +161,4 @@ std::ostream& operator<<(std::ostream& os, const Bag<T>& out)
     return os << out.to_string();
 }
 
-#endif // COLLECTED_BAG_H
+#endif // BAG_H

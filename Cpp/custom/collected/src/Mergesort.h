@@ -30,11 +30,10 @@ namespace Mergesort {
         utility::alg_assert(is_sorted(a, lo, mid), "Mergesort is_sorted _check failed for lo to mid");
         utility::alg_assert(is_sorted(a, mid + 1, hi), "Mergesort is_sorted _check failed for mid + 1 to hi");
 
-        for (int k{lo}; k <= hi; ++k) {
-            aux[k] = a[k];
-        }
+        for (int k{lo}; k <= hi; ++k) { aux[k] = a[k]; }
 
-        int i = lo, j = mid + 1;
+        int i = lo;
+        int j = mid + 1;
         for (int k{lo}; k <= hi; ++k) {
             if (i > mid) {
                 a[k] = aux[j++];

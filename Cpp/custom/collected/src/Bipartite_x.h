@@ -1,5 +1,5 @@
-#ifndef COLLECTED_BIPARTITE_X_H
-#define COLLECTED_BIPARTITE_X_H
+#ifndef BIPARTITE_X_H
+#define BIPARTITE_X_H
 
 #include <deque>
 #include <vector>
@@ -33,4 +33,4 @@ private:
     bool _check(Graph& graph) const;
 };
 
-#endif // COLLECTED_BIPARTITE_X_H
+#endif // BIPARTITE_X_H

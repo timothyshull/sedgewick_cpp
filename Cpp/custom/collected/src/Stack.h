@@ -1,5 +1,5 @@
-#ifndef COLLECTED_STACK_H
-#define COLLECTED_STACK_H
+#ifndef STACK_H
+#define STACK_H
 
 #include <iterator>
 #include <sstream>
@@ -230,4 +230,4 @@ inline std::ostream& operator<<(std::ostream& os, Stack<T>& out)
     return os << out.to_string();
 }
 
-#endif // COLLECTED_STACK_H
+#endif // STACK_H

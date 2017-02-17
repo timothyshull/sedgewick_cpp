@@ -2,15 +2,15 @@
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
-template<typename Item>
-void selection(Item a[], int l, int r)
+#include <vector>
+
+template<typename Item_type>
+void selection(std::vector<Item_type>& coll, int l, int r)
 {
-    for (int i = l; i < r; i++) {
-        int min = i;
-        for (int j = i + 1; j <= r; j++) {
-            if (a[j] < a[min]) { min = j; }
-        }
-        exch(a[i], a[min]);
+    for (int i = l; i < r; ++i) {
+        int min{i};
+        for (int j{i + 1}; j <= r; ++j) { if (coll[j] < coll[min]) { min = j; }}
+        std:swap(coll[i], coll[min]);
     }
 }
 

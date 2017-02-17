@@ -23,13 +23,11 @@ private:
     void _search_c(int v)
     {
         _order[v] = _count++;
-        typename Graph::adjIterator A(_graph, v);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) {
+        // typename Graph::adjIterator A(_graph, v);
+        for (auto t : _graph.adjacent(v)) {
             if (_order[t] == -1) { _search_c(t); }
         }
     }
 };
-
-
 
 #endif // CONNECTED_COMPONENT_DFS_H

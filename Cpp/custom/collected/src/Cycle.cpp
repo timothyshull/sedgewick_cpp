@@ -30,8 +30,7 @@ bool Cycle::_has_self_loop(Graph& graph)
 
 bool Cycle::_has_parallel_edges(Graph& graph)
 {
-    _marked = std::deque<bool>{};
-    _marked.reserve(static_cast<std::deque<bool>::size_type>(graph.num_vertices()));
+    _marked = std::deque<bool>(graph.num_vertices());
 
     for (int v{0}; v < graph.num_vertices(); ++v) {
 
@@ -64,7 +63,7 @@ void Cycle::_dfs(Graph& graph, int u, int v)
             _edge_to[w] = v;
             _dfs(graph, v, w);
         } else if (w != u) {
-            _cycle = Stack<int{};
+            _cycle = Stack<int>{};
             for (int x{v}; x != w; x = _edge_to[x]) {
                 _cycle.push(x);
             }

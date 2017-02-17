@@ -139,7 +139,7 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - the standard library throws for certain places where null is returned (std::out_of_range)
 - replace all double reserve and set value calls with .assign
 - prefer just the universal reference form of a function with std::forward to fix
-
+- use std::iota to fill a container with increasing values
 
 
 

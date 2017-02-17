@@ -11,7 +11,7 @@ public:
     static void sort(std::vector<T>& a)
     {
         Std_random::shuffle(a);
-        sort(a, 0, a.size() - 1);
+        sort(a, 0, static_cast<int>(a.size() - 1)); // narrow_cast
         utility::alg_assert(is_sorted(a), "Quicksort is_sorted _check failed");
     }
 
@@ -22,7 +22,7 @@ public:
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
         sort(a, j + 1, hi);
-        utility::alg_assert(is_sorted(a, lo, hi);
+        utility::alg_assert(is_sorted(a, lo, hi), "Quicksort is_sorted _check failed");
     }
 
     template<typename T>
@@ -32,27 +32,19 @@ public:
         int j = hi + 1;
         T v = a[lo];
         while (true) {
-
-            // find item on lo to swap
             while (less(a[++i], v)) {
                 if (i == hi) { break; }
             }
 
-            // find item on hi to swap
             while (less(v, a[--j])) {
                 if (j == lo) { break; }
-            }      // redundant since a[lo] acts as sentinel
+            }
 
-            // _check if pointers cross
             if (i >= j) { break; }
-
             exch(a, i, j);
         }
 
-        // put partitioning item v at a[j]
         exch(a, lo, j);
-
-        // now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
         return j;
     }
 
@@ -63,7 +55,8 @@ public:
             throw utility::Index_out_of_bounds_exception("Selected element out of bounds");
         }
         Std_random::shuffle(a);
-        int lo = 0, hi = a.size() - 1;
+        int lo{0};
+        int hi{static_cast<int>(a.size() - 1)}; // narrow_cast
         while (hi > lo) {
             int i = partition(a, lo, hi);
             if (i > k) { hi = i - 1; }
@@ -76,12 +69,13 @@ public:
     template<typename T>
     static bool less(T v, T w)
     {
-        return v.compareTo(w) < 0;
+        return v < w;
     }
 
     template<typename T>
     static void exch(std::vector<T>& a, int i, int j)
     {
+        // std::swap(a[i], a[j]);
         T swap = a[i];
         a[i] = a[j];
         a[j] = swap;
@@ -90,7 +84,7 @@ public:
     template<typename T>
     static bool is_sorted(std::vector<T>& a)
     {
-        return is_sorted(a, 0, a.size() - 1);
+        return is_sorted(a, 0, static_cast<int>(a.size() - 1)); // narrow_cast
     }
 
     template<typename T>

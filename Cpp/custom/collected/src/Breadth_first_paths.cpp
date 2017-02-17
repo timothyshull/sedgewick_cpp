@@ -2,6 +2,7 @@
 #include "Queue.h"
 #include "Std_out.h"
 
+// TODO: just use -1 instead of _infinity
 Breadth_first_paths::Breadth_first_paths(Graph& graph, int source)
         : _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
           _distance_to(static_cast<std::vector<int>::size_type>(graph.num_vertices())),
