@@ -3,30 +3,38 @@
 #define LSD_RADIX_SORT_H
 
 #include <vector>
+#include <cmath>
 
 #include "radix_util.h"
 
 template<typename Item_type>
-void radixLSD(std::vector<Item_type> a, int l, int r)
+void radix_lsd(std::vector<Item_type>& coll, int l, int r)
 {
     static std::vector<Item_type> aux;
     aux.reserve(aux.max_size() / 2);
 
+    int i;
+    int j;
     for (int d{bytes_per_word - 1}; d >= 0; --d) {
-        int i;
-        int j;
-        std::vector<int> count;
-        count.assign(static_cast<std::vector<int>::size_type>(radix + 1), 0);
-
-        // for (j = 0; j < radix; ++j) { count[j] = 0; }
-
-        for (i = l; i <= r; ++i) { count[digit(a[i], d) + 1]++; }
-
+        std::vector<int> count(static_cast<std::vector<int>::size_type>(radix + 1), 0);
+        for (i = l; i <= r; ++i) { count[digit(coll[i], d) + 1]++; }
         for (j = 1; j < radix; ++j) { count[j] += count[j - 1]; }
+        for (i = l; i <= r; ++i) { aux[count[digit(coll[i], ++d)]] = coll[i]; }
+        for (i = l; i <= r; ++i) { coll[i] = aux[i - l]; }
+    }
+}
 
-        for (i = l; i <= r; ++i) { aux[count[digit(a[i], ++d)]] = a[i]; }
-
-        for (i = l; i <= r; ++i) { a[i] = aux[i - l]; }
+template<typename Item_type>
+void radix_sort(std::vector<Item_type>& coll, int n, int max)
+{
+    for (int x{0}; x < max; ++x) {
+        std::vector<std::vector<Item_type>> bins(
+                static_cast<typename std::vector<std::vector<Item_type>>::size_type>(n),
+                std::vector<Item_type>{}
+        );
+        for (auto y : coll) { bins[(y / static_cast<int>(std::pow(10, x))) % n].emplace_back(y); } // narrow_cast
+        coll.clear();
+        for (auto v : bins) { coll.insert(coll.end(), v.begin(), v.end()); }
     }
 }
 

@@ -48,3 +48,5 @@ add_executable(sieve_of_eratosthenes_main sieve_of_eratosthenes_main.cpp)
 add_executable(string_search_main string_search_main.cpp string_search.h string_search.cpp)
 add_executable(types_of_numbers_main types_of_numbers_main.cpp)
 add_executable(weighted_quick_union_main weighted_quick_union_main.cpp)
+
+add_executable(lsd_radix_sort_main2 lsd_radix_sort_main.cpp lsd_radix_sort.h radix_util.h)

@@ -17,6 +17,6 @@ inline int digit(long a, int b) { return static_cast<int>(a >> bits_per_byte * (
 inline int digit(char* a, int b) { return a[b]; }
 
 template<typename Item_type>
-inline int digit(Item_type& a, int b) { return a.str[b]; }
+inline int digit(Item_type& a, int b) { return a.to_string[b]; } // or std::to_string
 
 #endif // COLLECTED_RADIX_UTIL_H

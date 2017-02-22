@@ -4,67 +4,40 @@
 #include <string>
 #include <vector>
 
+// TODO: fix mismatch for template and bits value - s/b sizeof type
 namespace LSD_radix_sort {
-    static const int bits_per_byte = 8;
-    static const int bits = 32;
+    static const int bits_per_byte = CHAR_BIT;
+
+    static const int bits = bits_per_byte * sizeof(int);
+
     static const int radix = 1 << bits_per_byte;
+
     static const int mask = radix - 1;
+
     static const int word = bits / bits_per_byte;
 
-    static void sort(std::vector<std::string>& a, int w)
+    void sort(std::vector<std::string>& a, int w);
+
+    template<typename Item_type>
+    void sort(std::vector<Item_type>& a)
     {
         auto n = a.size();
-        std::vector<std::string> aux;
-        aux.reserve(n);
-
-        for (int d{w - 1}; d >= 0; --d) {
-            std::vector<int> count{};
-            count.reserve(static_cast<std::vector<int>::size_type>(radix + 1));
-            for (int i{0}; i < n; ++i) {
-                count[a[i][d] + 1] += 1;
-            }
-
-            for (int r{0}; r < radix; ++r) {
-                count[r + 1] += count[r];
-            }
-
-            for (int i{0}; i < n; ++i) {
-                aux[count[a[i][d]]++] = a[i];
-            }
-
-            for (int i{0}; i < n; ++i) {
-                a[i] = aux[i];
-            }
-        }
-    }
-
-    static void sort(std::vector<int>& a)
-    {
-        auto n = a.size();
-        std::vector<int> aux;
-        aux.reserve(n);
+        std::vector<Item_type> aux(n);
 
         for (int d{0}; d < word; ++d) {
-            std::vector<int> count{};
-            count.reserve(static_cast<std::vector<int>::size_type>(radix + 1));
+            std::vector<int> count(static_cast<typename std::vector<Item_type>::size_type>(radix + 1));
             for (int i{0}; i < n; ++i) {
                 int c = (a[i] >> bits_per_byte * d) & mask;
                 count[c + 1] += 1;
             }
 
-            for (int r{0}; r < radix; ++r) {
-                count[r + 1] += count[r];
-            }
+            for (int r{0}; r < radix; ++r) { count[r + 1] += count[r]; }
 
             if (d == word - 1) {
                 int shift1 = count[radix] - count[radix / 2];
                 int shift2 = count[radix / 2];
-                for (int r{0}; r < radix / 2; ++r) {
-                    count[r] += shift1;
-                }
-                for (int r{radix / 2}; r < radix; ++r) {
-                    count[r] -= shift2;
-                }
+                for (int r{0}; r < radix / 2; ++r) { count[r] += shift1; }
+                for (int r{radix / 2}; r < radix; ++r) { count[r] -= shift2; }
             }
 
             for (int i{0}; i < n; ++i) {
@@ -72,9 +45,7 @@ namespace LSD_radix_sort {
                 aux[count[c]++] = a[i];
             }
 
-            for (int i{0}; i < n; ++i) {
-                a[i] = aux[i];
-            }
+            for (int i{0}; i < n; ++i) { a[i] = aux[i]; }
         }
     }
 };

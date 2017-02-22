@@ -450,7 +450,7 @@ target_link_libraries(lookup_csv_main std_io utility ${Boost_LIBRARIES})
 add_executable(lookup_index_main lookup_index_main.cpp)
 target_link_libraries(lookup_index_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(lsd_radix_sort_main lsd_radix_sort_main.cpp LSD_radix_sort.h)
+add_executable(lsd_radix_sort_main lsd_radix_sort_main.cpp LSD_radix_sort.h LSD_radix_sort.cpp)
 target_link_libraries(lsd_radix_sort_main std_io utility ${Boost_LIBRARIES})
 
 add_executable(lzw_compression_main lzw_compression_main.cpp LZW_compression.cpp LZW_compression.h)

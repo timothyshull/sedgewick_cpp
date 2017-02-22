@@ -11,9 +11,7 @@ void utility::alg_assert(bool test, const char* msg)
 
 std::vector<char> utility::str_to_char_vector(std::string& str)
 {
-    std::vector<char> cv;
-    for (int i{0}; i < str.size(); ++i) {
-        cv.push_back(str[i]);
-    }
+    std::vector<char> cv(str.size());
+    for (auto c : str) { cv.emplace_back(c); }
     return cv;
 }

@@ -27,8 +27,8 @@ namespace Mergesort {
     template<typename T>
     static void merge(std::vector<T>& a, std::vector<T>& aux, int lo, int mid, int hi)
     {
-        utility::alg_assert(is_sorted(a, lo, mid), "Mergesort is_sorted _check failed for lo to mid");
-        utility::alg_assert(is_sorted(a, mid + 1, hi), "Mergesort is_sorted _check failed for mid + 1 to hi");
+        utility::alg_assert(is_sorted(a, lo, mid), "Mergesort is_sorted check failed for lo to mid");
+        utility::alg_assert(is_sorted(a, mid + 1, hi), "Mergesort is_sorted check failed for mid + 1 to hi");
 
         for (int k{lo}; k <= hi; ++k) { aux[k] = a[k]; }
 
@@ -46,7 +46,7 @@ namespace Mergesort {
             }
         }
 
-        utility::alg_assert(is_sorted(a, lo, hi), "Mergesort is_sorted _check failed");
+        utility::alg_assert(is_sorted(a, lo, hi), "Mergesort is_sorted check failed");
     }
 
     template<typename T>
