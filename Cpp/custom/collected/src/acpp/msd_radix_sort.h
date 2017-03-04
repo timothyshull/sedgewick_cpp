@@ -33,7 +33,7 @@ void radix_msd(std::vector<Item_type> coll, int l, int r, int d)
 
     for (j = 1; j < radix; ++j) { aux[j] += aux[j - 1]; }
 
-    for (i = l; i <= r; ++i) { aux[aux[digit(coll[i], ++d)]] = coll[i]; }
+    for (i = l; i <= r; ++i) { aux[aux[digit(coll[i], ++d)]] = coll[i]; } // TODO: check ++d here
 
     for (i = l; i <= r; ++i) { coll[i] = aux[i - l]; }
 

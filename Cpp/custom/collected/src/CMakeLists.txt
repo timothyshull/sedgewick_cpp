@@ -561,8 +561,10 @@ target_link_libraries(run_length_main std_io utility ${Boost_LIBRARIES})
 add_executable(segment_tree_main segment_tree_main.cpp Segment_tree.cpp Segment_tree.h)
 target_link_libraries(segment_tree_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(selection_sort_main selection_sort_main.cpp Selection_sort.h)
-target_link_libraries(selection_sort_main std_io utility ${Boost_LIBRARIES})
+add_library(selection Selection_sort.h)
+set_target_properties(selection PROPERTIES LINKER_LANGUAGE CXX)
+add_executable(selection_sort_main selection_sort_main.cpp)
+target_link_libraries(selection_sort_main selection std_io utility ${Boost_LIBRARIES})
 
 add_executable(separate_chaining_hash_st_main separate_chaining_hash_st_main.cpp Separate_chaining_hash_st.h)
 target_link_libraries(separate_chaining_hash_st_main std_io utility ${Boost_LIBRARIES})

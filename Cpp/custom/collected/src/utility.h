@@ -11,14 +11,15 @@
 #include <iostream>
 #include <vector>
 #include <boost/lexical_cast.hpp>
-#include <QColor>
+// #include <QColor>
 
 namespace utility {
-    using Color = QColor;
+    // using Color = QColor;
 
     const static int max_num_str_len = 25;
 
     // not portable
+    // TODO: prefer reinterpret_cast over union
     union Binary_double {
         double d;
         long l;

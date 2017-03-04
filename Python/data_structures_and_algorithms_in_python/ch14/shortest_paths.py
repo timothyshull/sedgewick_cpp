@@ -2,10 +2,10 @@ from ..ch09.adaptable_heap_priority_queue import AdaptableHeapPriorityQueue
 
 
 def shortest_path_lengths(g, src):
-    d = {}  # d[v] is upper bound from s to v
-    cloud = {}  # map reachable v to its d[v] value
+    d = dict()  # d[v] is upper bound from s to v
+    cloud = dict()  # map reachable v to its d[v] value
     pq = AdaptableHeapPriorityQueue()  # vertex v will have key d[v]
-    pq_locator = {}  # map from vertex to its pq locator
+    pq_locator = dict()  # map from vertex to its pq locator
 
     # for each vertex v of the graph, add an entry to the priority queue, with
     # the source having distance 0 and all others having infinite distance
@@ -33,7 +33,7 @@ def shortest_path_lengths(g, src):
 
 
 def shortest_path_tree(g, s, d):
-    tree = {}
+    tree = dict()
     for v in d:
         if v is not s:
             for e in g.incident_edges(v, False):  # consider INCOMING edges

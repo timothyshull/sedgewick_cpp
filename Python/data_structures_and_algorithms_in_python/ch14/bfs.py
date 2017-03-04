@@ -12,7 +12,7 @@ def bfs(g, s, discovered):
 
 
 def bfs_complete(g):
-    forest = {}
+    forest = dict()
     for u in g.vertices():
         if u not in forest:
             forest[u] = None  # u will be a root of a tree

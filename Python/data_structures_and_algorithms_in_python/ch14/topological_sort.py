@@ -1,7 +1,7 @@
 def topological_sort(g):
-    topological_order = []  # a list of vertices placed in topological order
-    ready = []  # list of vertices that have no remaining constraints
-    incount = {}  # keep track of in-degree for each vertex
+    topological_order = list()  # a list of vertices placed in topological order
+    ready = list()  # list of vertices that have no remaining constraints
+    incount = dict()  # keep track of in-degree for each vertex
     for u in g.vertices():
         incount[u] = g.degree(u, False)  # parameter requests incoming degree
         if incount[u] == 0:  # if u has no incoming edges,

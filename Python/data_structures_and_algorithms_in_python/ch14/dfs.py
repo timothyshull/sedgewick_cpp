@@ -7,7 +7,7 @@ def dfs(g, u, discovered):
 
 
 def construct_path(u, v, discovered):
-    path = []  # empty path by default
+    path = list()  # empty path by default
     if v in discovered:
         # we build list from v to u and then reverse it at the end
         path.append(v)
@@ -22,9 +22,10 @@ def construct_path(u, v, discovered):
 
 
 def dfs_complete(g):
-    forest = {}
+    forest = dict()
     for u in g.vertices():
         if u not in forest:
             forest[u] = None  # u will be the root of a tree
             dfs(g, u, forest)
     return forest
+

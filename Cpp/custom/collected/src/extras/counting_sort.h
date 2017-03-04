@@ -20,22 +20,19 @@ void counting_sort(std::vector<Item_type>& coll, int k)
 
 // from https://probablydance.com/2016/12/02/investigating-radix-sort/
 template<typename It, typename OutIt, typename ExtractKey>
-void counting_sort(It begin, It end, OutIt out_begin, ExtractKey && extract_key)
+void counting_sort(It begin, It end, OutIt out_begin, ExtractKey&& extract_key)
 {
     size_t counts[256] = {};
-    for (It it = begin; it != end; ++it)
-    {
+    for (It it = begin; it != end; ++it) {
         ++counts[extract_key(*it)];
     }
     size_t total = 0;
-    for (size_t & count : counts)
-    {
+    for (size_t& count : counts) {
         size_t old_count = count;
         count = total;
         total += old_count;
     }
-    for (; begin != end; ++begin)
-    {
+    for (; begin != end; ++begin) {
         std::uint8_t key = extract_key(*begin);
         out_begin[counts[key]++] = std::move(*begin);
     }

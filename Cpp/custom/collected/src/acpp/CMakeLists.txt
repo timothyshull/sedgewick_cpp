@@ -50,3 +50,5 @@ add_executable(types_of_numbers_main types_of_numbers_main.cpp)
 add_executable(weighted_quick_union_main weighted_quick_union_main.cpp)
 
 add_executable(lsd_radix_sort_main2 lsd_radix_sort_main.cpp lsd_radix_sort.h radix_util.h)
+
+add_executable(knapsack_dynamic knapsack_dynamic.cpp knapsack_dynamic.h)

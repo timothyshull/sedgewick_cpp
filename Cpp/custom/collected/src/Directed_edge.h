@@ -21,17 +21,17 @@ public:
 
     Directed_edge(int source, int destination, double weight);
 
-    inline int from() const { return _source; }
+    inline int from() const noexcept { return _source; }
 
-    inline int to() const { return _destination; }
+    inline int to() const noexcept { return _destination; }
 
-    inline double weight() const { return _weight; }
+    inline double weight() const noexcept { return _weight; }
 
     std::string to_string() const;
 
-    inline bool operator==(const Directed_edge& rhs) const { return _source == rhs._source && _destination == rhs._destination && _weight == rhs._weight; }
+    inline bool operator==(const Directed_edge& rhs) const noexcept { return _source == rhs._source && _destination == rhs._destination && _weight == rhs._weight; }
 
-    inline bool operator!=(const Directed_edge& rhs) const { return !(rhs == *this); }
+    inline bool operator!=(const Directed_edge& rhs) const noexcept { return !(rhs == *this); }
 
 private:
     int _source;
