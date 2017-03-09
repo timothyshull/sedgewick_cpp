@@ -38,7 +38,7 @@ public:
 
     inline Bag_node() : _next{nullptr} {}
 
-    inline Bag_node(T item) : _next{nullptr}, _item{item} {}
+    inline explicit Bag_node(T item) : _next{nullptr}, _item{item} {}
 
 private:
     Value_type _item;

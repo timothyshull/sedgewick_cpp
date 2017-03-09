@@ -4,6 +4,10 @@
 #include <vector>
 
 class Vector {
+private:
+    int _dimension;
+    std::vector<double> _data;
+
 public:
     Vector() = default;
 
@@ -45,11 +49,8 @@ public:
 
     std::string to_string();
 
-private:
-    int _dimension;
-    std::vector<double> _data;
 };
 
-std::ostream& operator<<(std::ostream& os, Vector& out);
+inline std::ostream& operator<<(std::ostream& os, Vector& out) { return os << out.to_string(); }
 
 #endif // VECTOR_H

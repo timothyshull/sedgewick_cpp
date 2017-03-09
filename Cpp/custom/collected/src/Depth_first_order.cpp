@@ -64,9 +64,7 @@ void Depth_first_order::_dfs(Digraph& g, int v)
 Stack<int> Depth_first_order::reverse_post() const
 {
     Stack<int> reverse;
-    for (auto v : _postorder) {
-        reverse.push(v);
-    }
+    for (auto v : _postorder) { reverse.push(v); }
     return reverse;
 }
 

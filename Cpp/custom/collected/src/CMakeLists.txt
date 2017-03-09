@@ -102,7 +102,7 @@ set(ACYCLIC_SP_DEPS
         Edge_weighted_directed_cycle.cpp
         )
 add_executable(acyclic_sp_main ${ACYCLIC_SP_DEPS})
-target_link_libraries(acyclic_sp_main std_random utility ${Boost_LIBRARIES})
+target_link_libraries(acyclic_sp_main std_io std_random utility ${Boost_LIBRARIES})
 
 set(ADJ_MATRIX_EDGE_WEIGHTED_DIGRAPH_DEPS
         adj_matrix_edge_weighted_digraph_main.cpp

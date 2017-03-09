@@ -4,14 +4,12 @@
 
 int main(int argc, char* argv[])
 {
-    int n = Std_in::read_int();
+    auto n = Std_in::read_int();
     Union_find uf{n};
     while (!Std_in::is_empty()) {
-        int p = Std_in::read_int();
-        int q = Std_in::read_int();
-        if (uf.connected(p, q)) {
-            continue;
-        }
+        auto p = Std_in::read_int();
+        auto q = Std_in::read_int();
+        if (uf.connected(p, q)) { continue; }
         uf.create_union(p, q);
         Std_out::printf("%d %d\n", p, q);
     }

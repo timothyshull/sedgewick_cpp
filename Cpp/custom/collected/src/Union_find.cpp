@@ -6,15 +6,12 @@
 Union_find::Union_find(int n)
         : _count{n},
           _parent(static_cast<std::vector<int>::size_type>(n)),
-          _rank(static_cast<std::vector<short>::size_type>(n))
+          _rank(static_cast<std::vector<short>::size_type>(n), 0)
 {
     if (n < 0) {
         throw utility::Illegal_argument_exception("The number of sites _in a Weighted_quick_union_uf must be non-negative");
     }
-    for (int i{0}; i < n; ++i) {
-        _parent[i] = i;
-        _rank[i] = 0;
-    }
+    for (auto i = 0; i < n; ++i) { _parent[i] = i; }
 }
 
 int Union_find::find(int p)
@@ -27,20 +24,13 @@ int Union_find::find(int p)
     return p;
 }
 
-bool Union_find::connected(int p, int q)
-{
-    return find(p) == find(q);
-}
-
 void Union_find::create_union(int p, int q)
 {
     // _validate(p);
     // _validate(q);
-    int root_p = find(p);
-    int root_q = find(q);
-    if (root_p == root_q) {
-        return;
-    }
+    auto root_p = find(p);
+    auto root_q = find(q);
+    if (root_p == root_q) { return; }
 
     if (_rank[root_p] < _rank[root_q]) {
         _parent[root_p] = root_q;

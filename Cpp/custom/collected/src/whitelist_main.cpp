@@ -7,15 +7,12 @@
 int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
-    std::vector<int> white{in.read_all_ints()};
+    auto white = in.read_all_ints();
     Static_set_of_ints set{white};
 
-    int key;
     while (!Std_in::is_empty()) {
-        key = Std_in::read_int();
-        if (!set.contains(key)) {
-            Std_out::print_line(key);
-        }
+        auto key = Std_in::read_int();
+        if (!set.contains(key)) { Std_out::print_line(key); }
     }
     return 0;
 }

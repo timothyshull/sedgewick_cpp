@@ -4,6 +4,11 @@
 #include <vector>
 
 class Union_find {
+private:
+    std::vector<int> _parent;
+    std::vector<short> _rank;
+    int _count;
+
 public:
     explicit Union_find(int n);
 
@@ -11,15 +16,13 @@ public:
 
     int find(int p); // not a const operation
 
-    bool connected(int p, int q); // calls find so not const
+    inline bool connected(int p, int q) { return find(p) == find(q); }
 
     void create_union(int p, int q); // union is a C++ keyword
-private:
-    std::vector<int> _parent;
-    std::vector<short> _rank;
-    int _count;
 
+private:
     void _validate(int p) const;
+
 };
 
 #endif // UNION_FIND_H

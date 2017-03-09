@@ -31,7 +31,7 @@ class Polar_order {
 public:
     inline explicit Polar_order(const Point_2d c) : _comparison_point{c} {}
 
-    int operator<(Point_2d& lhs, Point_2d& rhs);
+    bool operator<(Point_2d& lhs, Point_2d& rhs);
 
 private:
     const Point_2d _comparison_point;

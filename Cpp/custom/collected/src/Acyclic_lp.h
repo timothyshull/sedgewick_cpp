@@ -9,6 +9,11 @@
 #include "Topological.h"
 
 class Acyclic_lp {
+private:
+    static const Directed_edge _default = Directed_edge{};
+    std::vector<double> _distance_to;
+    std::vector<Directed_edge> _edge_to;
+
 public:
     Acyclic_lp() = default;
 
@@ -31,10 +36,8 @@ public:
     Stack<Directed_edge> path_to(int vertex);
 
 private:
-    std::vector<double> _distance_to;
-    std::vector<Directed_edge> _edge_to;
-
     void _relax(Directed_edge& e);
+
 };
 
 #endif // ACYCLIC_LP_H

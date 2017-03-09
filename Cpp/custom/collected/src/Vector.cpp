@@ -84,8 +84,3 @@ std::string Vector::to_string()
     }
     return ss.str();
 }
-
-std::ostream& operator<<(std::ostream& os, Vector& out)
-{
-    return os << out.to_string();
-}

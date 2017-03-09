@@ -6,6 +6,10 @@
 #include "Edge_weighted_digraph.h"
 
 class Topological {
+private:
+    Stack<int> _order;
+    std::vector<int> _rank;
+
 public:
     Topological() = default;
 
@@ -30,10 +34,8 @@ public:
     int rank(int v) const;
 
 private:
-    Stack<int> _order;
-    std::vector<int> _rank;
-
     void _validate_vertex(int v) const;
+
 };
 
 #endif // TOPOLOGICAL_H

@@ -3,7 +3,7 @@
 
 #include <iterator>
 #include <sstream>
-
+#include <forward_list>
 #include "utility.h"
 
 template<typename T>
@@ -21,11 +21,16 @@ public:
     using Node = Stack_node<T>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item = T;
+    using Item_type = T;
 
 private:
-    Item _item;
-    Owning_node_pointer _next{nullptr};
+    Item_type _item;
+    Owning_node_pointer _next = nullptr;
+
+public:
+    Stack_node() = default;
+
+    ~Stack_node() { if (_next != nullptr) { delete _next; }}
 
     template<typename>
     friend class Stack_iterator;
@@ -41,9 +46,13 @@ public:
     using Node = Stack_node<T>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item = T;
+    using Item_type = T;
     using Raw_item_pointer = T*;
 
+private:
+    Raw_node_pointer _current;
+
+public:
     Stack_iterator() = default;
 
     Stack_iterator(const Stack_iterator&) = default;
@@ -58,31 +67,30 @@ public:
 
     Stack_iterator(Raw_node_pointer first) : _current{first} {}
 
-    inline bool has_next() const noexcept { return _current != nullptr; }
+    inline bool has_next() const noexcept { return _current->_next != nullptr; }
 
-    Item next()
+    Item_type next()
     {
-        if (!has_next()) { throw utility::No_such_element_exception{""}; }
-        Item item = _current->_item;
+        if (!has_next()) { throw utility::No_such_element_exception{"next() called on Stack_iterator at end"}; }
+        auto item = _current->_item;
         _current = _current->_next;
         return item;
     }
 
-    inline Item operator*() const { return _current->_item; }
+    inline Item_type& operator*() const { return _current->_item; }
 
-    inline Raw_item_pointer operator->() const { return &(_current->_item); }
+    inline Raw_item_pointer operator->() const { return std::addressof(_current->_item); }
 
     Stack_iterator& operator++()
     {
-        if (has_next()) {
-            _current = _current->_next;
-        }
+        if (has_next()) { _current = _current->_next; }
+        else { _current = nullptr; }
         return *this;
     }
 
     Stack_iterator operator++(int)
     {
-        Stack_iterator t{*this};
+        auto t = *this;
         ++(*this);
         return t;
     }
@@ -93,8 +101,6 @@ public:
     friend
     inline bool operator!=(const Stack_iterator& lhs, const Stack_iterator& rhs) { return !(lhs == rhs); }
 
-private:
-    Raw_node_pointer _current;
 };
 
 template<typename T>
@@ -107,9 +113,14 @@ public:
     using Iterator_type = Stack_iterator<T>;
     using Const_iterator_type = Stack_iterator<T>;
 
+private:
+    Owning_node_pointer _first;
+    std::size_t _size;
+
+public:
     Stack() : _first{nullptr}, _size{0} {}
 
-    Stack(const Stack& rhs) : _first{_copy(rhs._first)}, _size{rhs._size} {}
+     Stack(const Stack& rhs) : _first{_copy(rhs._first)}, _size{rhs._size} {}
 
     Stack(Stack&& rhs) : _first{rhs._first}, _size{rhs._size}
     {
@@ -119,9 +130,7 @@ public:
 
     Stack& operator=(const Stack& rhs)
     {
-        if (*this == rhs) {
-            return *this;
-        }
+        if (*this == rhs) { return *this; }
         _first = _copy(rhs._first);
         _size = rhs._size;
         return *this;
@@ -129,9 +138,7 @@ public:
 
     Stack& operator=(Stack&& rhs)
     {
-        if (*this == rhs) {
-            return *this;
-        }
+        if (*this == rhs) { return *this; }
         _first = rhs._first;
         _size = rhs._size;
         rhs._first = nullptr;
@@ -139,23 +146,18 @@ public:
         return *this;
     }
 
-    ~Stack()
-    {
-        Raw_node_pointer n{_first};
-        while (n != nullptr) {
-            Raw_node_pointer tmp{n->_next};
-            delete n;
-            n = tmp;
-        }
+    ~Stack() {
+        std::cout << "calling Stack dtor\n";
+        if (_first != nullptr) { delete _first; }
     }
 
     inline bool is_empty() const noexcept { return _first == nullptr; }
 
-    inline int size() const noexcept { return _size; }
+    inline std::size_t size() const noexcept { return _size; }
 
     void push(Item& item)
     {
-        Raw_node_pointer old_first{_first};
+        auto old_first = _first;
         _first = new Stack_node<Item>;
         _first->_item = item;
         _first->_next = old_first;
@@ -165,8 +167,9 @@ public:
     Item pop()
     {
         if (is_empty()) { throw utility::No_such_element_exception{"Stack underflow"}; }
-        Item item = _first->_item;
-        Raw_node_pointer tmp{_first};
+        auto item = _first->_item;
+        auto tmp = _first;
+        tmp->_next = nullptr;
         _first = _first->_next;
         delete tmp;
         --_size;
@@ -190,44 +193,35 @@ public:
         return ss.str();
     }
 
-    inline Iterator_type begin() { return Stack_iterator<Item>{_first}; }
+    inline Iterator_type begin() const { return Stack_iterator<Item>{_first}; }
 
-    inline Iterator_type end() { return Stack_iterator<Item>{nullptr}; }
+    inline Iterator_type end() const { return Stack_iterator<Item>{nullptr}; }
 
-    inline Const_iterator_type begin() const { return Stack_iterator<Item>{_first}; }
+    inline Const_iterator_type cbegin() const { return Stack_iterator<Item>{_first}; }
 
-    inline Const_iterator_type end() const { return Stack_iterator<Item>{nullptr}; }
+    inline Const_iterator_type cend() const { return Stack_iterator<Item>{nullptr}; }
 
     inline bool operator==(const Stack& rhs) const { return _first == rhs._first && _size == rhs._size; }
 
     inline bool operator!=(const Stack& rhs) const { return !(rhs == *this); }
 
 private:
-    Owning_node_pointer _first;
-    int _size;
-
     Raw_node_pointer _copy(Raw_node_pointer n)
     {
-        if (n != nullptr) {
-            Node dummy;
-            Raw_node_pointer tmp{&dummy};
-
-            while (n != nullptr) {
-                tmp->_next = new Stack_node<Item>;
-                tmp->_next->_item = n->_item;
-                n = n->_next;
-                tmp = tmp->_next;
-            }
-            return dummy._next;
+        if (n == nullptr) { return nullptr; }
+        Node dummy;
+        auto t = &dummy;
+        while (n != nullptr) {
+            t->_next = new Stack_node<Item>;
+            t->_next->_item = n->_item;
+            n = n->_next;
+            t = t->_next;
         }
-        return nullptr;
+        return dummy._next;
     }
 };
 
 template<typename T>
-inline std::ostream& operator<<(std::ostream& os, Stack<T>& out)
-{
-    return os << out.to_string();
-}
+inline std::ostream& operator<<(std::ostream& os, Stack<T>& out) { return os << out.to_string(); }
 
 #endif // STACK_H

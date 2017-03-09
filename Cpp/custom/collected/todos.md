@@ -126,6 +126,9 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - add a const default edge to compare against
 - fix all places where In class was replaced by ifstream, istream, stdin etc
 - fix all edge pointer usage (Adj_matrix_edge_weighted_digraph)
+- all linked has_next methods should check current->next
+- convert to_string member functions to std::to_string overloads
+- Stack has an issue with bad access in dtor when called through Topological and Edge_weighted_directed_cycle
 
 
 

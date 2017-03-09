@@ -4,7 +4,7 @@
 int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
-    int s{utility::str_to_num<int>(argv[2])};
+    auto s = utility::str_to_num<int>(argv[2]);
     Edge_weighted_digraph digraph{in};
 
     Acyclic_lp lp{digraph, s};
