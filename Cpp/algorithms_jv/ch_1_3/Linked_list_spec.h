@@ -1,4 +1,0 @@
-#ifndef CH_1_3_LINKED_LIST_SPEC_H
-#define CH_1_3_LINKED_LIST_SPEC_H
-
-#endif //CH_1_3_LINKED_LIST_SPEC_H
