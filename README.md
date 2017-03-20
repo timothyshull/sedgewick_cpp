@@ -2,7 +2,7 @@
 The code contained here is my port of the Java code (http://algs4.cs.princeton.edu/code/)
 in Robert Sedgewick's Java algorithms library to C++.
 
-Here is my motivation for doing:
+Motivation:
 - There are a number of algorithms books for C++ but I do not feel that they
   are quite as clear as Sedgewick's 4th edition Java book
 - Many, including Sedgewick's previous C++ edition, use an outdated subset
