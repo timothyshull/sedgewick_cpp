@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    In<std::ifstream> in{argv[1]};
+    auto in = In<std::ifstream>{argv[1]};
     auto s = utility::str_to_num<int>(argv[2]);
     auto digraph = Edge_weighted_digraph{in};
 

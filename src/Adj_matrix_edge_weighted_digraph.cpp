@@ -83,7 +83,7 @@ std::string Adj_matrix_edge_weighted_digraph::to_string() const
             } else {
                 s = e->to_string();
             }
-            utility::pad(s, 36, ' ');
+            s = utility::pad(s, 36, ' ');
             ss << s << ", ";
         }
         ss << "\n";
