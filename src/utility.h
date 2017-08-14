@@ -10,12 +10,9 @@
 #include <type_traits>
 #include <iostream>
 #include <vector>
-#include <boost/lexical_cast.hpp>
-// #include <QColor>
+#include <sstream>
 
 namespace utility {
-    // using Color = QColor;
-
     const static int max_num_str_len = 25;
 
     // not portable
@@ -32,41 +29,29 @@ namespace utility {
 
     void alg_assert(bool test, const char* msg);
 
-    // still has issues but better
-//    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
-//    T str_to_num(const char* str)
-//    {
-//        // from CERT
-//        char buff[max_num_str_len];
-//        char* end_ptr;
-//        typename max_numeric_type<T>::type sl{0};
-//
-//        int i;
-//        for (i = 0; i < max_num_str_len && *(str + i) != '\0'; ++i) {
-//            *(buff + i) = *(str + i);
-//        }
-//        if (i < max_num_str_len - 1 && buff[i] != '\0') {
-//            *(buff + i + 1) = '\0';
-//        }
-//
-//        errno = 0;
-//        sl = strtol(buff, &end_ptr, 0);
-//
-//        if (i == max_num_str_len || errno == ERANGE || sl > std::numeric_limits<T>::max() || sl < std::numeric_limits<T>::min() || end_ptr == buff || *end_ptr != '\0') {
-//            std::cerr << "An error occurred while parsing the number: " << str << "\_size";
-//            std::exit(-1);
-//        }
-//        return static_cast<T>(sl);
-//    }
+    class bad_lexical_cast : public std::exception {};
 
-//    template<typename T, typename std::enable_if<std::is_arithmetic<T>::value>::type>
+    // Boost/http://www.drdobbs.com/sutters-mill-the-string-formatters-of-ma/184401458
+    template<typename Target, typename Source>
+    Target lexical_cast(Source arg)
+    {
+        std::stringstream interpreter;
+        Target result;
+
+        if (!(interpreter << arg) || !(interpreter >> result) || !(interpreter >> std::ws).eof()) {
+            throw bad_lexical_cast{};
+        }
+
+        return result;
+    }
+
     template<typename T>
     T str_to_num(const char* str)
     {
         T tmp;
         try {
-            tmp = boost::lexical_cast<T>(str);
-        } catch (const boost::bad_lexical_cast& e) {
+            tmp = lexical_cast<T>(str);
+        } catch (const bad_lexical_cast& e) {
             std::cerr << "An error occurred while parsing the number: " << str << ", " << e.what() << "\n";
             std::exit(-1);
         }

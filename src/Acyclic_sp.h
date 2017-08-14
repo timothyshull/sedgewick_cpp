@@ -6,11 +6,6 @@
 #include "Edge_weighted_digraph.h"
 
 class Acyclic_sp {
-private:
-    static const Directed_edge _default;
-    std::vector<double> _distance_to;
-    std::vector<Directed_edge> _edge_to;
-
 public:
     Acyclic_sp() = default;
 
@@ -33,7 +28,16 @@ public:
     Stack<Directed_edge> path_to(int vertex);
 
 private:
-    void _relax(Directed_edge& edge);
+    std::vector<double> _distance_to;
+    std::vector<Directed_edge> _edge_to;
+
+    void _relax(Directed_edge const & edge);
+
+    Directed_edge _default()
+    {
+        static const auto default_edge = Directed_edge{};
+        return default_edge;
+    }
 
 };
 

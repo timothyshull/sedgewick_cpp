@@ -8,11 +8,13 @@ int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
     auto white = in.read_all_ints();
-    Static_set_of_ints set{white};
+    auto set = Static_set_of_ints{white};
 
     while (!Std_in::is_empty()) {
         auto key = Std_in::read_int();
-        if (!set.contains(key)) { Std_out::print_line(key); }
+        if (!set.contains(key)) {
+            Std_out::print_line(key);
+        }
     }
     return 0;
 }

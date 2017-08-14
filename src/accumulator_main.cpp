@@ -2,13 +2,12 @@
 #include "Std_in.h"
 #include "Std_out.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    Accumulator stats;
+    auto stats = Accumulator{};
 
-    double x;
     while (!Std_in::is_empty()) {
-        x = Std_in::read_double();
+        auto x = Std_in::read_double();
         stats.add_data_value(x);
     }
 

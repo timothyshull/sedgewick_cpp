@@ -2,14 +2,16 @@
 #include "Std_in.h"
 #include "Std_out.h"
 
-int main(int argc, char* argv[])
+int main()
 {
     auto n = Std_in::read_int();
-    Weighted_quick_union_uf uf{n};
+    auto uf = Weighted_quick_union_uf{n};
     while (!Std_in::is_empty()) {
         auto p = Std_in::read_int();
         auto q = Std_in::read_int();
-        if (uf.connected(p, q)) { continue; }
+        if (uf.connected(p, q)) {
+            continue;
+        }
         uf.create_union(p, q);
         Std_out::printf("%d %d\n", p, q);
     }

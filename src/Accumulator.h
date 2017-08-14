@@ -3,18 +3,26 @@
 
 #include <cmath>
 
-// removed SFINAE with enable_if for float types
 class Accumulator {
 public:
     void add_data_value(double x);
 
-    inline double mean() const noexcept { return _mean; }
+    double mean() const noexcept
+    {
+        return _mean;
+    }
 
     double var() const;
 
-    inline double std_dev() const { return std::sqrt(this->var()); }
+    double std_dev() const
+    {
+        return std::sqrt(this->var());
+    }
 
-    inline int count() const noexcept { return _count; }
+    int count() const noexcept
+    {
+        return _count;
+    }
 
 private:
     int _count{0};

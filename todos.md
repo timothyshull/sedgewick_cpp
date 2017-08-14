@@ -145,6 +145,9 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - use std::iota to fill a container with increasing values
 
 
+- replace all stringstreams where possible
+
+
 
 
 # Edge classes

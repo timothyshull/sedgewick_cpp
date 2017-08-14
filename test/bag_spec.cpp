@@ -7,7 +7,7 @@ using namespace testing;
 
 TEST(Bag, add_5_check_size)
 {
-    Bag<int> bag;
+    auto bag = Bag<int>{};
     bag.add(1);
     bag.add(2);
     bag.add(3);
@@ -19,14 +19,14 @@ TEST(Bag, add_5_check_size)
 
 TEST(Bag, add_5_check_iterator)
 {
-    Bag<int> bag;
+    auto bag = Bag<int>{};
     bag.add(1);
     bag.add(2);
     bag.add(3);
     bag.add(4);
     bag.add(5);
 
-    std::vector<int> v;
+    auto v = std::vector<int>{};
     auto it = bag.begin();
     v.push_back(*it);
     ++it;
@@ -44,7 +44,7 @@ TEST(Bag, add_5_check_iterator)
 
 TEST(Bag, add_5_to_str)
 {
-    Bag<int> bag;
+    auto bag = Bag<int>{};
     bag.add(1);
     bag.add(2);
     bag.add(3);

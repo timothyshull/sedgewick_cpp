@@ -1,5 +1,6 @@
 test/googletest
 GSL
+fmt
 cmake-build-debug
 .idea
 .DS_Store

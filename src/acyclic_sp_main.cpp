@@ -6,9 +6,9 @@ int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
     auto s = utility::str_to_num<int>(argv[2]);
-    Edge_weighted_digraph digraph{in};
+    auto digraph = Edge_weighted_digraph{in};
 
-    Acyclic_sp sp{digraph, s};
+    auto sp = Acyclic_sp{digraph, s};
     for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (sp.has_path_to(v)) {
             Std_out::printf("%d to %d (%.2f)  ", s, v, sp.distance_to(v));

@@ -1,29 +1,35 @@
 #include "Acyclic_sp.h"
 #include "Topological.h"
 
-const Directed_edge Acyclic_sp::_default = Directed_edge{};
-
-Acyclic_sp::Acyclic_sp(Edge_weighted_digraph& digraph, int source)
+Acyclic_sp::Acyclic_sp(Edge_weighted_digraph &digraph, int source)
         : _distance_to(digraph.num_vertices(), -std::numeric_limits<double>::infinity()),
           _edge_to(digraph.num_vertices())
 {
     _distance_to[source] = 0.0;
-    Topological topological{digraph};
-    if (!topological.has_order()) { throw utility::Illegal_argument_exception{"Digraph is not acyclic."}; }
+    auto topological = Topological{digraph};
+    if (!topological.has_order()) {
+        throw utility::Illegal_argument_exception{"Digraph is not acyclic."};
+    }
     for (auto v : topological.order()) {
-        for (auto e : digraph.adjacent(v)) { _relax(e); }
+        for (auto e : digraph.adjacent(v)) {
+            _relax(e);
+        }
     }
 }
 
 Stack<Directed_edge> Acyclic_sp::path_to(int vertex)
 {
-    if (!has_path_to(vertex)) { return {}; }
-    Stack<Directed_edge> path;
-    for (Directed_edge e{_edge_to[vertex]}; e != _default; e = _edge_to[e.from()]) { path.push(e); }
+    if (!has_path_to(vertex)) {
+        return {};
+    }
+    auto path = Stack<Directed_edge>{};
+    for (auto e = _edge_to[vertex]; e != _default(); e = _edge_to[e.from()]) {
+        path.push(e);
+    }
     return path;
 }
 
-void Acyclic_sp::_relax(Directed_edge& edge)
+void Acyclic_sp::_relax(Directed_edge const &edge)
 {
     auto v = edge.from();
     auto w = edge.to();

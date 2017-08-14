@@ -7,7 +7,7 @@
 int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
-    Set<std::string> set;
+    auto set = Set<std::string>{};
     while (!in.is_empty()) {
         auto word = in.read_string();
         set.add(word);

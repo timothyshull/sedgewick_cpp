@@ -5,7 +5,7 @@
 void Accumulator::add_data_value(double x)
 {
     ++_count;
-    double delta{x - _mean};
+    auto delta = x - _mean;
     _mean += delta / _count;
     _sum += static_cast<double>(_count - 1) / _count * delta * delta;
 }
