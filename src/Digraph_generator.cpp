@@ -40,8 +40,8 @@ Digraph Digraph_generator::simple(int num_vertices, double probability)
         throw utility::Illegal_argument_exception{"Probability must be between 0 and 1"};
     }
     Digraph digraph{num_vertices};
-    for (int v{0}; v < num_vertices; ++v) {
-        for (int w{0}; w < num_vertices; ++w) {
+    for (auto v = 0; v < num_vertices; ++v) {
+        for (auto w = 0; w < num_vertices; ++w) {
             if (v != w) {
                 if (Std_random::bernoulli(probability)) {
                     digraph.add_edge(v, w);
@@ -66,7 +66,7 @@ Digraph Digraph_generator::dag(int num_vertices, int num_edges)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
@@ -89,8 +89,8 @@ Digraph Digraph_generator::dag(int num_vertices, int num_edges)
 Digraph Digraph_generator::tournament(int num_vertices)
 {
     Digraph digraph{num_vertices};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
-        for (int w{v + 1}; w < digraph.num_vertices(); ++w) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
+        for (auto w = v + 1; w < digraph.num_vertices(); ++w) {
             if (Std_random::bernoulli(0.5)) { digraph.add_edge(v, w); }
             else { digraph.add_edge(w, v); }
         }
@@ -107,7 +107,7 @@ Digraph Digraph_generator::rooted_in_dag(int num_vertices, int num_edges)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
@@ -142,7 +142,7 @@ Digraph Digraph_generator::rooted_out_dag(int num_vertices, int num_edges)
 
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
@@ -185,13 +185,13 @@ Digraph Digraph_generator::path(int num_vertices)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
     Std_random::shuffle(vertices);
 
-    for (int i{0}; i < num_vertices - 1; ++i) {
+    for (auto i = 0; i < num_vertices - 1; ++i) {
         digraph.add_edge(vertices[i], vertices[i + 1]);
     }
 
@@ -204,13 +204,13 @@ Digraph Digraph_generator::binary_tree(int num_vertices)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
     Std_random::shuffle(vertices);
 
-    for (int i{1}; i < num_vertices; ++i) {
+    for (auto i = 1; i < num_vertices; ++i) {
         digraph.add_edge(vertices[i], vertices[(i - 1) / 2]);
     }
 
@@ -223,13 +223,13 @@ Digraph Digraph_generator::cycle(int num_vertices)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
 
     Std_random::shuffle(vertices);
 
-    for (int i{0}; i < num_vertices - 1; ++i) {
+    for (auto i = 0; i < num_vertices - 1; ++i) {
         digraph.add_edge(vertices[i], vertices[i + 1]);
     }
 
@@ -251,10 +251,10 @@ Digraph Digraph_generator::eulerian_cycle(int num_vertices, int num_edges)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         vertices[i] = Std_random::uniform(num_vertices);
     }
-    for (int i{0}; i < num_edges - 1; ++i) {
+    for (auto i = 0; i < num_edges - 1; ++i) {
         digraph.add_edge(vertices[i], vertices[i + 1]);
     }
     digraph.add_edge(vertices[num_edges - 1], vertices[0]);
@@ -275,10 +275,10 @@ Digraph Digraph_generator::eulerian_path(int num_vertices, int num_edges)
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-    for (int i{0}; i < num_edges + 1; ++i) {
+    for (auto i = 0; i < num_edges + 1; ++i) {
         vertices[i] = Std_random::uniform(num_vertices);
     }
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         digraph.add_edge(vertices[i], vertices[i + 1]);
     }
     return digraph;
@@ -310,7 +310,7 @@ Digraph Digraph_generator::strong(int num_vertices, int num_edges, int c)
     }
 
     int count;
-    for (int i{0}; i < c; ++i) {
+    for (auto i = 0; i < c; ++i) {
         count = 0;
         for (v = 0; v < digraph.num_vertices(); ++v) {
             if (label[v] == i) { ++count; }
@@ -319,7 +319,7 @@ Digraph Digraph_generator::strong(int num_vertices, int num_edges, int c)
         std::vector<int> vertices;
         vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
 
-        int j{0};
+        auto j = 0;
         for (v = 0; v < num_vertices; ++v) {
             if (label[v] == i) { vertices[j++] = v; }
         }

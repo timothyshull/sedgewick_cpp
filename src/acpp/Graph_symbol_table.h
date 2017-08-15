@@ -51,7 +51,7 @@ private:
 
     Raw_node_pointer _index_r(Raw_node_pointer node, const std::string& s, int w)
     {
-        int i{static_cast<int>(s[w])};
+        auto i = static_cast<int>(s[w]);
         if (node == nullptr) { node = new Graph_symbol_table_node{i}; }
         if (i == 0) {
             if (node->value == -1) { node->value = _size++; }

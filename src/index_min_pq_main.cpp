@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     std::vector<std::string> strings{"it", "was", "the", "best", "of", "times", "it", "was", "the", "worst"};
 
     Index_min_pq<std::string> pq{strings.size()};
-    for (int i{0}; i < strings.size(); ++i) {
+    for (auto i = 0; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     }
     Std_out::print_line();
 
-    for (int i{0}; i < strings.size(); ++i) {
+    for (auto i = 0; i < strings.size(); ++i) {
         pq.insert(i, strings[i]);
     }
 

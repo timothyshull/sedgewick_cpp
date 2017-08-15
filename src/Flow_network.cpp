@@ -8,7 +8,7 @@ Flow_network::Flow_network(int num_vertices)
           _adjacency_lists(static_cast<std::vector<std::vector<Flow_edge>>::size_type>(num_vertices))
 {
     if (num_vertices < 0) { throw utility::Illegal_argument_exception{"Number of vertices _in a Graph must be nonnegative"}; }
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Flow_edge>{};
     }
 }
@@ -23,7 +23,7 @@ Flow_network::Flow_network(int num_vertices, int num_edges)
     int v;
     int w;
     double capacity;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         v = Std_random::uniform(num_vertices);
         w = Std_random::uniform(num_vertices);
         capacity = Std_random::uniform(100);
@@ -33,12 +33,12 @@ Flow_network::Flow_network(int num_vertices, int num_edges)
 
 Flow_network::Flow_network(In& in) : Flow_network{in.read_int()}
 {
-    int num_edges{in.read_int()};
+    auto num_edges = in.read_int();
     if (num_edges < 0) { throw utility::Illegal_argument_exception{"Number of edges must be nonnegative"}; }
     int v;
     int w;
     double capacity;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         v = in.read_int();
         w = in.read_int();
         if (v < 0 || v >= _num_vertices) {
@@ -56,8 +56,8 @@ Flow_network::Flow_network(In& in) : Flow_network{in.read_int()}
 
 void Flow_network::add_edge(Flow_edge& e)
 {
-    int v{e.from()};
-    int w{e.to()};
+    auto v = e.from();
+    auto w = e.to();
     _validate_vertex(v);
     _validate_vertex(w);
     _adjacency_lists[v].emplace_back(e);
@@ -83,7 +83,7 @@ std::vector<Flow_edge> Flow_network::adjacent(int v)
 std::vector<Flow_edge> Flow_network::edges()
 {
     std::vector<Flow_edge> list;
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         for (auto e : adjacent(v)) {
             if (e.to() != v) {
                 list.emplace_back(e);
@@ -97,7 +97,7 @@ std::string Flow_network::to_string()
 {
     std::stringstream ss;
     ss << "Flow_network(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         ss << "    vertex " << v + ":  ";
         for (auto e : _adjacency_lists[v]) {
             if (e.to() != v) {

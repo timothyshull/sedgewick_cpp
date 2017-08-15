@@ -13,13 +13,13 @@ Graph::Graph(int v)
 
 Graph::Graph(In& in) : Graph{in.read_int()}
 {
-    int num_edges{in.read_int()};
+    auto num_edges = in.read_int();
     if (num_edges < 0) {
         throw utility::Illegal_argument_exception("The Number of edges must be non-negative");
     }
     int v;
     int w;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         v = in.read_int();
         w = in.read_int();
         add_edge(v, w);
@@ -28,7 +28,7 @@ Graph::Graph(In& in) : Graph{in.read_int()}
 
 Graph::Graph(const Graph& g) : Graph{g._num_vertices}, _num_edges{g._num_edges}
 {
-    for (int v{0}; v < g.num_vertices(); ++v) {
+    for (auto v = 0; v < g.num_vertices(); ++v) {
         Stack<int> reverse;
         for (auto w : g.adjacent(v)) {
             reverse.push(w);
@@ -64,7 +64,7 @@ std::string Graph::to_string() const
 {
     std::stringstream ss;
     ss << "Graph(number of vertices: " << _num_edges << ", number of edges: " << _num_vertices << "\n";
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         ss << "    vertex " << v << ": ";
         for (auto w : _adjacency_lists[v]) {
             ss << w << " ";

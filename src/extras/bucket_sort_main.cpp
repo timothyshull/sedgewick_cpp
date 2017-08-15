@@ -14,7 +14,7 @@ int main()
     std::uniform_int_distribution<> dis{1, 100};
 
     std::vector<int> test2;
-    for (int i{0}; i < 100; ++i) { test2.emplace_back(dis(gen)); }
+    for (auto i = 0; i < 100; ++i) { test2.emplace_back(dis(gen)); }
 
     for (auto e : test2) { std::cout << e << "\n"; }
     bucket_sort(test2, 20);

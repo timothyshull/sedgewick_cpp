@@ -22,33 +22,33 @@ void ::MSD_radix_sort::sort(std::vector<std::string>& a, int lo, int hi, int d, 
 
     std::vector<int> count{};
     count.reserve(radix + 2);
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         int c = char_at(a[i], d);
         count[c + 2]++;
     }
 
-    for (int r{0}; r < radix + 1; ++r) {
+    for (auto r = 0; r < radix + 1; ++r) {
         count[r + 1] += count[r];
     }
 
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         int c = char_at(a[i], d);
         aux[count[c + 1]++] = a[i];
     }
 
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         a[i] = aux[i - lo];
     }
 
-    for (int r{0}; r < radix; ++r) {
+    for (auto r = 0; r < radix; ++r) {
         sort(a, lo + count[r], lo + count[r + 1] - 1, d + 1, aux);
     }
 }
 
 void ::MSD_radix_sort::insertion(std::vector<std::string>& a, int lo, int hi, int d)
 {
-    for (int i{lo}; i <= hi; ++i) {
-        for (int j{i}; j > lo && less(a[j], a[j - 1], d); j--) {
+    for (auto i = lo; i <= hi; ++i) {
+        for (auto j = i; j > lo && less(a[j], a[j - 1], d); j--) {
             exch(a, j, j - 1);
         }
     }
@@ -63,7 +63,7 @@ void ::MSD_radix_sort::exch(std::vector<std::string>& a, int i, int j)
 
 bool ::MSD_radix_sort::less(std::string& v, std::string& w, int d)
 {
-    for (int i{d}; i < std::min(v.length(), w.length()); ++i) {
+    for (auto i = d; i < std::min(v.length(), w.length()); ++i) {
         if (v[i] < w[i]) { return true; }
         if (v[i] > w[i]) { return false; }
     }

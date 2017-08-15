@@ -49,8 +49,8 @@ Graph Graph_generator::simple(int num_vertices, double probability)
         throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
     }
     Graph graph{num_vertices};
-    for (int v{0}; v < num_vertices; ++v) {
-        for (int w{v + 1}; w < num_vertices; ++w) {
+    for (auto v = 0; v < num_vertices; ++v) {
+        for (auto w = v + 1; w < num_vertices; ++w) {
             if (Std_random::bernoulli(probability)) {
                 graph.add_edge(v, w);
             }
@@ -77,7 +77,7 @@ Graph Graph_generator::bipartite(int v1, int v2, int num_edges)
 
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(v1 + v2));
-    for (int i{0}; i < v1 + v2; ++i) {
+    for (auto i = 0; i < v1 + v2; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
@@ -102,13 +102,13 @@ Graph Graph_generator::bipartite(int v1, int v2, double probability)
     }
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(v1 + v2));
-    for (int i{0}; i < v1 + v2; ++i) {
+    for (auto i = 0; i < v1 + v2; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
     Graph graph{v1 + v2};
-    for (int i{0}; i < v1; ++i) {
-        for (int j{0}; j < v2; ++j) {
+    for (auto i = 0; i < v1; ++i) {
+        for (auto j = 0; j < v2; ++j) {
             if (Std_random::bernoulli(probability)) {
                 graph.add_edge(vertices[i], vertices[v1 + j]);
             }
@@ -122,11 +122,11 @@ Graph Graph_generator::path(int num_vertices)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i{0}; i < num_vertices - 1; ++i) {
+    for (auto i = 0; i < num_vertices - 1; ++i) {
         graph.add_edge(vertices[i], vertices[i + 1]);
     }
     return graph;
@@ -137,11 +137,11 @@ Graph Graph_generator::binary_tree(int num_vertices)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i{1}; i < num_vertices; ++i) {
+    for (auto i = 1; i < num_vertices; ++i) {
         graph.add_edge(vertices[i], vertices[(i - 1) / 2]);
     }
     return graph;
@@ -152,11 +152,11 @@ Graph Graph_generator::cycle(int num_vertices)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
-    for (int i{0}; i < num_vertices - 1; ++i) {
+    for (auto i = 0; i < num_vertices - 1; ++i) {
         graph.add_edge(vertices[i], vertices[i + 1]);
     }
     graph.add_edge(vertices[num_vertices - 1], vertices[0]);
@@ -174,10 +174,10 @@ Graph Graph_generator::eulerian_cycle(int num_vertices, int num_edges)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         vertices[i] = Std_random::uniform(num_vertices);
     }
-    for (int i{0}; i < num_edges - 1; ++i) {
+    for (auto i = 0; i < num_edges - 1; ++i) {
         graph.add_edge(vertices[i], vertices[i + 1]);
     }
     graph.add_edge(vertices[num_edges - 1], vertices[0]);
@@ -195,10 +195,10 @@ Graph Graph_generator::eulerian_path(int num_vertices, int num_edges)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_edges + 1));
-    for (int i{0}; i < num_edges + 1; ++i) {
+    for (auto i = 0; i < num_edges + 1; ++i) {
         vertices[i] = Std_random::uniform(num_vertices);
     }
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         graph.add_edge(vertices[i], vertices[i + 1]);
     }
     return graph;
@@ -210,17 +210,17 @@ Graph Graph_generator::wheel(int num_vertices)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
 
-    for (int i{1}; i < num_vertices - 1; ++i) {
+    for (auto i = 1; i < num_vertices - 1; ++i) {
         graph.add_edge(vertices[i], vertices[i + 1]);
     }
     graph.add_edge(vertices[num_vertices - 1], vertices[1]);
 
-    for (int i{1}; i < num_vertices; ++i) {
+    for (auto i = 1; i < num_vertices; ++i) {
         graph.add_edge(vertices[0], vertices[i]);
     }
 
@@ -233,12 +233,12 @@ Graph Graph_generator::star(int num_vertices)
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
 
-    for (int i{1}; i < num_vertices; ++i) {
+    for (auto i = 1; i < num_vertices; ++i) {
         graph.add_edge(vertices[0], vertices[i]);
     }
 
@@ -252,14 +252,14 @@ Graph Graph_generator::regular(int num_vertices, int k)
 
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices * k));
-    for (int v{0}; v < num_vertices; ++v) {
-        for (int j{0}; j < k; ++j) {
+    for (auto v = 0; v < num_vertices; ++v) {
+        for (auto j = 0; j < k; ++j) {
             vertices[v + num_vertices * j] = v;
         }
     }
 
     Std_random::shuffle(vertices);
-    for (int i{0}; i < num_vertices * k / 2; ++i) {
+    for (auto i = 0; i < num_vertices * k / 2; ++i) {
         graph.add_edge(vertices[2 * i], vertices[2 * i + 1]);
     }
     return graph;
@@ -273,25 +273,25 @@ Graph Graph_generator::tree(int num_vertices)
 
     std::vector<int> prufer;
     prufer.reserve(static_cast<std::vector<int>::size_type>(num_vertices - 2));
-    for (int i{0}; i < num_vertices - 2; ++i) {
+    for (auto i = 0; i < num_vertices - 2; ++i) {
         prufer[i] = Std_random::uniform(num_vertices);
     }
 
     std::vector<int> degree;
     degree.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         degree[v] = 1;
     }
-    for (int i{0}; i < num_vertices - 2; ++i) {
+    for (auto i = 0; i < num_vertices - 2; ++i) {
         degree[prufer[i]]++;
     }
 
     Min_pq<int> pq;
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         if (degree[v] == 1) { pq.insert(v); }
     }
 
-    for (int i{0}; i < num_vertices - 2; ++i) {
+    for (auto i = 0; i < num_vertices - 2; ++i) {
         int v = pq.delete_min();
         graph.add_edge(v, prufer[i]);
         degree[v]--;

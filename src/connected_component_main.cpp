@@ -12,19 +12,19 @@ int main(int argc, char* argv[])
     Graph graph{in};
     Connected_component cc{graph};
 
-    int m{cc.count()};
+    auto m = cc.count();
     Std_out::print_line(std::to_string(m) + " components");
 
     std::vector<Queue<int>> components;
     components.reserve(static_cast<std::vector<Queue<int>>::size_type>(m));
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         components[i] = Queue<int>{};
     }
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         components[cc.id(v)].enqueue(v);
     }
 
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         for (auto v : components[i]) {
             Std_out::print(std::to_string(v) + " ");
         }

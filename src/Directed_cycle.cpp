@@ -5,7 +5,7 @@ Directed_cycle::Directed_cycle(Digraph& g)
           _on_stack(g.num_vertices()),
           _edge_to(g.num_vertices())
 {
-    for (int v{0}; v < g.num_vertices(); ++v) {
+    for (auto v = 0; v < g.num_vertices(); ++v) {
         if (!_marked[v] && _cycle.is_empty()) {
             _dfs(g, v);
         }
@@ -25,7 +25,7 @@ void Directed_cycle::_dfs(Digraph& g, int v)
             _dfs(g, w);
         } else if (_on_stack[w]) {
             _cycle = Stack<int>();
-            for (int x{v}; x != w; x = _edge_to[x]) {
+            for (auto x = v; x != w; x = _edge_to[x]) {
                 _cycle.push(x);
             }
             _cycle.push(w);

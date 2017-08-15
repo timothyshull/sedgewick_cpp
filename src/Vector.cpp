@@ -15,7 +15,7 @@ double Vector::dot(Vector& that)
 {
     if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
     double sum{0.0};
-    for (int i{0}; i < _dimension; ++i) {
+    for (auto i = 0; i < _dimension; ++i) {
         sum = sum + (_data[i] * that._data[i]);
     }
     return sum;
@@ -36,7 +36,7 @@ Vector Vector::plus(Vector& rhs)
 {
     if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
     Vector c{_dimension};
-    for (int i{0}; i < _dimension; ++i) {
+    for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = _data[i] + rhs._data[i];
     }
     return c;
@@ -46,7 +46,7 @@ Vector Vector::minus(Vector& rhs)
 {
     if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
     Vector c{_dimension};
-    for (int i{0}; i < _dimension; ++i) {
+    for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = _data[i] - rhs._data[i];
     }
     return c;
@@ -55,7 +55,7 @@ Vector Vector::minus(Vector& rhs)
 Vector Vector::times(double alpha)
 {
     Vector c{_dimension};
-    for (int i{0}; i < _dimension; ++i) {
+    for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = alpha * _data[i];
     }
     return c;
@@ -64,7 +64,7 @@ Vector Vector::times(double alpha)
 Vector Vector::scale(double alpha)
 {
     Vector c{_dimension};
-    for (int i{0}; i < _dimension; ++i) {
+    for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = alpha * _data[i];
     }
     return c;

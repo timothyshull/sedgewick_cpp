@@ -6,8 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-    int key_field{utility::str_to_num(argv[1])};
-    int value_field{utility::str_to_num(argv[2])};
+    auto key_field = utility::str_to_num(argv[1]);
+    auto value_field = utility::str_to_num(argv[2]);
 
     Symbol_table<std::string, std::string> st;
 

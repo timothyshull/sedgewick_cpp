@@ -10,7 +10,7 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
     // initialize empty matching
     this.V = G.num_vertices();
     _mate = new int[_num_vertices];
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         _mate[v] = _unmatched;
     }
 
@@ -22,12 +22,12 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
         Iterator<Integer>[]
         adj = (Iterator<Integer>[])
         new Iterator[G.num_vertices()];
-        for (int v{0}; v < G.num_vertices(); ++v) {
+        for (auto v = 0; v < G.num_vertices(); ++v) {
             adj[v] = G.adj(v).iterator();
         }
 
         // for each unmatched vertex s on one side of _bipartition
-        for (int s{0}; s < _num_vertices; ++s) {
+        for (auto s = 0; s < _num_vertices; ++s) {
             if (is_matched(s) || !_bipartition.color(s)) { continue; }   // or use _distance_to[s] == 0
 
             // find augmenting path from s using nonrecursive DFS
@@ -68,7 +68,7 @@ Hopcroft_karp::Hopcroft_karp(Graph& G)
 
     // also find a min vertex cover
     in_min_vertex_cover = new boolean[_num_vertices];
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (_bipartition.color(v) && !_marked[v]) { in_min_vertex_cover[v] = true; }
         if (!_bipartition.color(v) && _marked[v]) { in_min_vertex_cover[v] = true; }
     }
@@ -131,13 +131,13 @@ bool Hopcroft_karp::_has_augmenting_path(Graph& G)
 {
     _marked = new boolean[_num_vertices];
     _distance_to = new int[_num_vertices];
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         _distance_to[v] = Integer.MAX_VALUE;
     }
 
     // breadth-first search (starting from all unmatched vertices on one side of _bipartition)
     Queue <Integer> queue = new Queue<Integer>();
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (_bipartition.color(v) && !is_matched(v)) {
             queue.enqueue(v);
             _marked[v] = true;
@@ -181,21 +181,21 @@ void Hopcroft_karp::validate(int v)
 
 bool Hopcroft_karp::_certify_solution(Graph& G)
 {
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (_mate(v) == -1) { continue; }
         if (_mate(_mate(v)) != v) { return false; }
     }
 
     // _check that size() is consistent with _mate()
     int matchedVertices = 0;
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (_mate(v) != -1) { ++matchedVertices; }
     }
     if (2 * size() != matchedVertices) { return false; }
 
     // _check that size() is consistent with minVertexCover()
     int sizeOfMinVertexCover = 0;
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (in_min_vertex_cover(v)) { ++sizeOfMinVertexCover; }
     }
     if (size() != sizeOfMinVertexCover) { return false; }
@@ -203,7 +203,7 @@ bool Hopcroft_karp::_certify_solution(Graph& G)
     // _check that _mate() uses each vertex at most once
     std::deque<bool>
     isMatched = new boolean[_num_vertices];
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         int w = _mate[v];
         if (w == -1) { continue; }
         if (v == w) { return false; }
@@ -214,7 +214,7 @@ bool Hopcroft_karp::_certify_solution(Graph& G)
     }
 
     // _check that _mate() uses only edges that appear _in the graph
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         if (_mate(v) == -1) { continue; }
         bool isEdge = false;
         for (int w : G.adj(v)) {
@@ -224,7 +224,7 @@ bool Hopcroft_karp::_certify_solution(Graph& G)
     }
 
     // _check that in_min_vertex_cover() is a vertex cover
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         for (int w : G.adj(v)) {
             if (!in_min_vertex_cover(v) && !in_min_vertex_cover(w)) { return false; }
         }

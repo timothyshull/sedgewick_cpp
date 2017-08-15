@@ -7,7 +7,7 @@ Edge_weighted_directed_cycle::Edge_weighted_directed_cycle(Edge_weighted_digraph
           _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
           _cycle{}
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(digraph, v);
         }

@@ -7,7 +7,7 @@ bool Suffix::operator<(const Suffix& rhs) const
 {
     if (*this == rhs) { return false; }
     auto n = std::min(_length(), rhs._size());
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if ((*this)[i] < rhs[i]) { return true; }
         if ((*this)[i] > rhs[i]) { return false; }
     }
@@ -18,7 +18,7 @@ Suffix_array::Suffix_array(std::string& text)
         : _suffixes(text.size())
 {
     auto n = text.size();
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         _suffixes[i] = Suffix(text, i);
     }
     std::sort(_suffixes.begin(), _suffixes.end());
@@ -79,7 +79,7 @@ int Suffix_array::rank(std::string&& query)
 int Suffix_array::_lcp(Suffix& s, Suffix& t)
 {
     auto n = std::min(s._size(), t._size());
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (s[i] != t[i]) { return i; }
     }
     return static_cast<int>(n);
@@ -88,7 +88,7 @@ int Suffix_array::_lcp(Suffix& s, Suffix& t)
 bool bool Suffix_array::operator<(std::string& query, Suffix& suffix)
 {
     auto n = std::min(query.size(), suffix._size());
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (query[i] < suffix[i]) { return true; }
         if (query[i] > suffix[i]) { return false; }
     }

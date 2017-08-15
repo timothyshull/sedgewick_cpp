@@ -15,7 +15,7 @@ void radix_lsd(std::vector<Item_type>& coll, int l, int r)
 
     int i;
     int j;
-    for (int d{bytes_per_word - 1}; d >= 0; --d) {
+    for (auto d = bytes_per_word - 1; d >= 0; --d) {
         std::vector<int> count(static_cast<std::vector<int>::size_type>(radix + 1), 0);
         for (i = l; i <= r; ++i) { count[digit(coll[i], d) + 1]++; }
         for (j = 1; j < radix; ++j) { count[j] += count[j - 1]; }
@@ -27,7 +27,7 @@ void radix_lsd(std::vector<Item_type>& coll, int l, int r)
 template<typename Item_type>
 void radix_sort(std::vector<Item_type>& coll, int n, int max)
 {
-    for (int x{0}; x < max; ++x) {
+    for (auto x = 0; x < max; ++x) {
         std::vector<std::vector<Item_type>> bins(
                 static_cast<typename std::vector<std::vector<Item_type>>::size_type>(n),
                 std::vector<Item_type>{}

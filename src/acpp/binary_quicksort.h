@@ -10,8 +10,8 @@
 template<typename Item_type>
 void quicksort_b(std::vector<Item_type>& coll, int l, int r, int d)
 {
-    int i{l};
-    int j{r};
+    auto i = l;
+    auto j = r;
     if (r <= l || d > bits_per_word) { return; }
     while (j != i) {
         while (digit(coll[i], d) == 0 && (i < j)) { ++i; }

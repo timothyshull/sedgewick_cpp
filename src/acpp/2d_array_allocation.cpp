@@ -4,7 +4,7 @@
 int** malloc2d(int rows, int columns)
 {
     int** a{new int* [rows]};
-    for (int i{0}; i < rows; ++i) {
+    for (auto i = 0; i < rows; ++i) {
         a[i] = new int[columns];
     }
     return a;
@@ -15,7 +15,7 @@ int** malloc2d(int rows, int columns)
 //{
 //    int** a{new int* [rows]};
 //    int* pool{new int[rows][columns]};
-//    for (int i{0}; i < rows; ++i, pool += columns) {
+//    for (auto i = 0; i < rows; ++i, pool += columns) {
 //        a[i] = pool;
 //    }
 //    return a;

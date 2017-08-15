@@ -2,20 +2,17 @@
 #include "Binomial_min_pq.h"
 #include "Std_in.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    Binomial_min_pq<std::string> pq;
-    std::string item;
+    auto pq = Binomial_min_pq<std::string>{};
     while (!Std_in::is_empty()) {
-        item = Std_in::read_string();
+        auto item = Std_in::read_string();
         if (item != "-") {
             pq.insert(item);
         } else if (!pq.is_empty()) {
             Std_out::print_line(pq.delete_min() + " ");
         }
     }
-    std::stringstream ss;
-    ss << "(" << pq.size() << " left on _priority_queue)";
-    Std_out::print_line(ss.str());
+    Std_out::print_line("(" + std::to_string(pq.size()) + " left on priority queue)");
     return 0;
 }

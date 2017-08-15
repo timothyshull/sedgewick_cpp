@@ -59,7 +59,7 @@ void ::In_tests::test5(std::string&& filename)
 void ::In_tests::test6(std::string&& filename)
 {
     In<std::ifstream> in{filename};
-    int i{in.read_int()};
+    auto i = in.read_int();
     float f{in.read_float()};
     double d{in.read_double()};
     short s{in.read_short()};

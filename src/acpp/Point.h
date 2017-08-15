@@ -5,7 +5,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-struct Point {
+struct Poauto  =
     Point();
 
     Point(const Point&) = default;
@@ -20,7 +20,7 @@ struct Point {
 
     float distance(Point& rhs) const;
 
-    inline float distance(Point&& rhs) const { return distance(rhs); }
+    inline float distance(Point&& rhs) const { return distance(rhs);
 
     // members
     float x;

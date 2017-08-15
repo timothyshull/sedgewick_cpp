@@ -16,8 +16,8 @@ private:
 
     void _search_c(Edge& e)
     {
-        int v{e.source()};
-        int w{e.destination()};
+        auto v = e.source();
+        auto w = e.destination();
         _order[w] = _count++;
         std::cout << "-" << w;
         // typename Graph_type::adjIterator A(G, w);

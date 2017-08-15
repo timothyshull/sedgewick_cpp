@@ -13,11 +13,11 @@ public:
               _distances(graph.num_vertices())
     {
         auto num_vertices = graph.num_vertices();
-        for (int i{0}; i < num_vertices; ++i) {
+        for (auto i = 0; i < num_vertices; ++i) {
             _paths[i].assign(num_vertices, nullptr);
             _distances[i].assign(num_vertices, num_vertices);
         }
-        for (int s{0}; s < num_vertices; ++s) {
+        for (auto s = 0; s < num_vertices; ++s) {
             if (_paths[s][s] == nullptr) { _dfs_r(s); }
         }
     }
@@ -35,14 +35,14 @@ private:
     {
         // typename Graph_type::adjIterator A(_graph, s);
         for (auto e : _graph.adjacent(s)) {
-            int t{e->dest()};
+            auto t = e->dest();
             double w{e->weight()};
             if (_distances[s][t] > w) {
                 _distances[s][t] = w;
                 _paths[s][t] = e;
             }
             if (_paths[t][t] == nullptr) { _dfs_r(t); }
-            for (int i{0}; i < _graph.num_vertices(); ++i) {
+            for (auto i = 0; i < _graph.num_vertices(); ++i) {
                 if (_paths[t][i]) {
                     if (_distances[s][i] > w + _distances[t][i]) {
                         _distances[s][i] = w + _distances[t][i];

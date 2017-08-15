@@ -5,11 +5,11 @@
 
 int main(int argc, char* argv[])
 {
-    int n{utility::str_to_num<int>(argv[1])};
+    auto n = utility::str_to_num<int>(argv[1]);
     std::vector<Complex> x;
     x.reserve(static_cast<std::vector<Complex>::size_type>(n));
 
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         x[i] = Complex{i, 0};
         x[i] = Complex{Std_random::uniform(-1.0, 1.0), 0};
     }

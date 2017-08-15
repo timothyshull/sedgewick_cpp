@@ -9,10 +9,10 @@ void counting_sort(std::vector<Item_type>& coll, int k)
 {
     std::vector<Item_type> aux1(k, 0);
     for (auto e : coll) { ++aux1[e]; }
-    for (int i{1}; i < k; i++) { aux1[i] += aux1[i - 1]; }
+    for (auto i = 1; i < k; i++) { aux1[i] += aux1[i - 1]; }
 
     std::vector<Item_type> aux2(coll.size());
-    for (int i{static_cast<int>(coll.size() - 1)}; i >= 0; --i) {
+    for (auto i = static_cast<int>(coll.size() - 1); i >= 0; --i) {
         aux2[--aux1[coll[i]]] = coll[i];
     }
     coll = aux2;

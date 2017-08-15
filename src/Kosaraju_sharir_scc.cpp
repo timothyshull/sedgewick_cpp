@@ -31,8 +31,8 @@ void Kosaraju_sharir_scc::_dfs(Digraph& digraph, int vertex)
 bool Kosaraju_sharir_scc::_check(Digraph& digraph)
 {
     Transitive_closure tc{digraph};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
-        for (int w{0}; w < digraph.num_vertices(); ++w) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
+        for (auto w = 0; w < digraph.num_vertices(); ++w) {
             if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }

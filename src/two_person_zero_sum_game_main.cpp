@@ -15,10 +15,10 @@ int main(int argc, char* argv[])
     std::size_t n{std::stoul(argv[2])};
     std::vector<std::vector<double>> payoff;
     payoff.reserve(m);
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         payoff[i] = std::vector<double>{};
         payoff[i].reserve(n);
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             payoff[i][j] = Std_random::uniform(-0.5, 0.5);
         }
     }

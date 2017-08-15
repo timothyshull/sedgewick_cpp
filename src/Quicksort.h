@@ -55,8 +55,8 @@ public:
             throw utility::Index_out_of_bounds_exception("Selected element out of bounds");
         }
         Std_random::shuffle(a);
-        int lo{0};
-        int hi{static_cast<int>(a.size() - 1)}; // narrow_cast
+        auto lo = 0;
+        auto hi = static_cast<int>(a.size() - 1); // narrow_cast
         while (hi > lo) {
             int i = partition(a, lo, hi);
             if (i > k) { hi = i - 1; }
@@ -90,7 +90,7 @@ public:
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i{lo + 1}; i <= hi; ++i) {
+        for (auto i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -99,7 +99,7 @@ public:
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i{0}; i < a.size(); ++i) {
+        for (auto i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

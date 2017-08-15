@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    int bits_per_line{16};
+    auto bits_per_line = 16;
     if (argc > 1) {
         bits_per_line = utility::str_to_num(argv[1]);
     }

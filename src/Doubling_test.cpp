@@ -8,7 +8,7 @@ double Doubling_test::time_trial(int n)
 {
     std::vector<int> a;
     a.reserve(static_cast<std::vector<int>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         a[i] = Std_random::uniform(-max_int, max_int);
     }
     Stopwatch timer;

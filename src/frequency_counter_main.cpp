@@ -5,9 +5,9 @@
 
 int main(int argc, char* argv[])
 {
-    int distinct{0};
-    int words{0};
-    int min_length{utility::str_to_num(argv[1])};
+    auto distinct = 0;
+    auto words = 0;
+    auto min_length = utility::str_to_num(argv[1]);
     Symbol_table<std::string, int> st;
 
     while (!Std_in::is_empty()) {

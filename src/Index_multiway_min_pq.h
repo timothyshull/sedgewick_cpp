@@ -15,7 +15,7 @@ public:
         qp = new int[nmax + D];
         keys = (Key[])
         new Comparable[nmax + D];
-        for (int i{0}; i < nmax + D; qp[i++] = -1) {}
+        for (auto i = 0; i < nmax + D; qp[i++] = -1) {}
         comp = new MyComparator();
     }
 
@@ -29,7 +29,7 @@ public:
         qp = new int[nmax + D];
         keys = (Key[])
         new Comparable[nmax + D];
-        for (int i{0}; i < nmax + D; qp[i++] = -1) {}
+        for (auto i = 0; i < nmax + D; qp[i++] = -1) {}
         comp = C;
     }
 
@@ -184,7 +184,7 @@ private:
     {
         int loBound = d * i + 1, hiBound = d * i + d;
         int min = loBound;
-        for (int cur{loBound}; cur <= hiBound; ++cur) {
+        for (auto cur = loBound; cur <= hiBound; ++cur) {
             if (cur < n && greater(min, cur)) { min = cur; }
         }
         return min;

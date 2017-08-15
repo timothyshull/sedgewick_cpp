@@ -24,7 +24,7 @@ protected:
 
     void _search()
     {
-        for (int v{0}; v < _graph.num_vertices(); ++v) {
+        for (auto v = 0; v < _graph.num_vertices(); ++v) {
             if (_order[v] == -1) { _search_c(Edge(v, v)); }
         }
     }

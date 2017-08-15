@@ -28,8 +28,8 @@ namespace Shellsort {
 
         while (h >= 1) {
             // h-sort the array
-            for (int i{h}; i < n; ++i) {
-                for (int j{i}; j >= h && less(a[j], a[j - h]); j -= h) {
+            for (auto i = h; i < n; ++i) {
+                for (auto j = i; j >= h && less(a[j], a[j - h]); j -= h) {
                     exch(a, j, j - h);
                 }
             }
@@ -56,7 +56,7 @@ namespace Shellsort {
     template<typename T>
     bool is_sorted(std::vector<T>& a)
     {
-        for (int i{1}; i < a.size(); ++i) {
+        for (auto i = 1; i < a.size(); ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -65,7 +65,7 @@ namespace Shellsort {
     template<typename T>
     bool is_h_sorted(std::vector<T>& a, int h)
     {
-        for (int i{h}; i < a.size(); ++i) {
+        for (auto i = h; i < a.size(); ++i) {
             if (less(a[i], a[i - h])) { return false; }
         }
         return true;

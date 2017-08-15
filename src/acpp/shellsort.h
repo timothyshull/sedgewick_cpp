@@ -11,8 +11,8 @@ void shellsort(std::vector<Item_type> coll, int l, int r)
     for (h = 1; h <= (r - l) / 9; h = 3 * h + 1) {}
 
     for (; h > 0; h /= 3) {
-        for (int i{l + h}; i <= r; ++i) {
-            int j{i};
+        for (auto i = l + h; i <= r; ++i) {
+            auto j = i;
 
             Item_type v = coll[i];
             while (j >= l + h && v < coll[j - h]) {

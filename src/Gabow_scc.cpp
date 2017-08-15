@@ -8,11 +8,11 @@ Gabow_scc::Gabow_scc(Digraph& G)
           _id(static_cast<std::vector<int>::size_type>(G.num_vertices())),
           _preorder(static_cast<std::vector<int>::size_type>(G.num_vertices()))
 {
-    for (int v{0}; v < G.num_vertices(); ++v) {
+    for (auto v = 0; v < G.num_vertices(); ++v) {
         _id[v] = -1;
     }
 
-    for (int v{0}; v < G.num_vertices(); ++v) {
+    for (auto v = 0; v < G.num_vertices(); ++v) {
         if (!_marked[v]) { _dfs(G, v); }
     }
 
@@ -48,8 +48,8 @@ void Gabow_scc::_dfs(Digraph& G, int v)
 bool Gabow_scc::_check(Digraph& digraph)
 {
     Transitive_closure tc{digraph};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
-        for (int w{0}; w < digraph.num_vertices(); ++w) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
+        for (auto w = 0; w < digraph.num_vertices(); ++w) {
             if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }

@@ -7,9 +7,9 @@ int main(int argc, char* argv[])
 {
     std::size_t size{std::stoul(argv[1])};
     float distance{std::stof(argv[2])};
-    int grid_dimension{static_cast<int>(1 / distance)};
+    auto grid_dimension = static_cast<int>(1 / distance);
     init_grid(distance, grid_dimension);
-    for (int i{0}; i < size; ++i) {
+    for (auto i = 0; i < size; ++i) {
         grid_insert(rand_float(), rand_float());
     }
     std::cout << get_grid_count() << " pairs within " << distance << "\n";

@@ -10,7 +10,7 @@ void construct(std::size_t size)
 {
     free_list.clear();
     free_list.reserve(size + 1);
-    for (int i{0}; i < size; ++i) {
+    for (auto i = 0; i < size; ++i) {
         free_list[i].next = &free_list[i + 1];
     }
     free_list[size].next = nullptr;

@@ -10,8 +10,8 @@ void init_grid(float distance, std::size_t grid_dimension)
     global_grid.distance = distance;
     global_grid.grid_dimension = grid_dimension;
     global_grid.grid.reserve(grid_dimension + 2);
-    for (int i{0}; i < grid_dimension + 2; ++i) {
-        for (int j{0}; j < grid_dimension + 2; ++j) {
+    for (auto i = 0; i < grid_dimension + 2; ++i) {
+        for (auto j = 0; j < grid_dimension + 2; ++j) {
             global_grid.grid[i][j] = nullptr;
         }
     }
@@ -19,8 +19,8 @@ void init_grid(float distance, std::size_t grid_dimension)
 
 void grid_insert(float x, float y)
 {
-    int x2{static_cast<int>(x * global_grid.grid_dimension) + 1};
-    int y2{static_cast<int>(y * global_grid.grid_dimension) + 1};
+    auto x2 = static_cast<int>(x * global_grid.grid_dimension) + 1;
+    auto y2 = static_cast<int>(y * global_grid.grid_dimension) + 1;
     Point p;
     p.x = x;
     p.y = y;

@@ -6,7 +6,7 @@ Nonrecursive_directed_dfs::Nonrecursive_directed_dfs(Digraph& digraph, int sourc
 {
     std::vector<std::vector<int>::iterator> adj;
     adj.reserve(static_cast<std::vector<std::vector<int>::iterator>::size_type>(digraph.num_vertices()));
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         adj[v] = digraph.adjacent(v).begin();
     }
 

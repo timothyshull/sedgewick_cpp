@@ -6,7 +6,7 @@ Bipartite::Bipartite(Graph& graph)
           _marked(graph.num_vertices()),
           _marked(graph.num_vertices())
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(graph, v);
         }
@@ -37,7 +37,7 @@ void Bipartite::_dfs(Graph& graph, int vertex)
             _is_bipartite = false;
             _cycle = Stack<int>{};
             _cycle.push(w);
-            for (int x{vertex}; x != w; x = _edge_to[x]) {
+            for (auto x = vertex; x != w; x = _edge_to[x]) {
                 _cycle.push(x);
             }
             _cycle.push(w);
@@ -48,7 +48,7 @@ void Bipartite::_dfs(Graph& graph, int vertex)
 bool Bipartite::_check(Graph& graph) const
 {
     if (_is_bipartite) {
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             for (int w : graph.adjacent(v)) {
                 if (_color[v] == _color[w]) {
                     std::cerr << "There is an edge " << v << "-" << w << " with " << v << " and " << w << " in the same side of bipartition\n";
@@ -57,8 +57,8 @@ bool Bipartite::_check(Graph& graph) const
             }
         }
     } else {
-        int first{-1};
-        int last{-1};
+        auto first = -1;
+        auto last = -1;
         for (int v : odd_cycle()) {
             if (first == -1) { first = v; }
             last = v;

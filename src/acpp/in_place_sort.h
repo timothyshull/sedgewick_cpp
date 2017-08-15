@@ -7,7 +7,7 @@
 template<typename Item_type, typename Index_type>
 void in_place_sort(std::vector<Item_type>& data, std::vector<Index_type>& a, int size)
 {
-    for (int i{0}; i < size; ++i) {
+    for (auto i = 0; i < size; ++i) {
         Item_type v = data[i];
         int j;
         int k;

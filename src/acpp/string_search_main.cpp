@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     }
     a.shrink_to_fit();
 
-    int index{string_search(p, a)};
+    auto index = string_search(p, a);
     if (index != -1) {
         std::cout << "The string " << p << " occurred at index " << index << "\n";
     } else {

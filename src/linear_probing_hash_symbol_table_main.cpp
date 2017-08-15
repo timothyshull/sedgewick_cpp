@@ -5,7 +5,7 @@
 int main()
 {
     Linear_probing_hash_symbol_table<std::string, int> st;
-    int i{0};
+    auto i = 0;
     std::string key;
     while (!Std_in::is_empty()) {
         key = Std_in::read_string();

@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         utility::split_string(line, separator, fields);
         std::string key{fields[0]};
         std::string val;
-        for (int i{1}; i < fields.size(); ++i) {
+        for (auto i = 1; i < fields.size(); ++i) {
             val = fields[i];
             if (!st.contains(key)) { st.put(key, Queue<std::string>()); }
             if (!ts.contains(val)) { ts.put(val, Queue<std::string>()); }

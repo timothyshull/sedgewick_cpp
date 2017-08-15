@@ -7,16 +7,16 @@ Directed_cycle_x::Directed_cycle_x(Digraph& digraph)
 {
     std::vector<int> indegree;
     indegree.reserve(static_cast<std::vector<int>::size_type>(digraph.num_vertices()));
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         indegree[v] = digraph.indegree(v);
     }
 
     Queue<int> queue;
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (indegree[v] == 0) { queue.enqueue(v); }
     }
 
-    for (int j{0}; !queue.is_empty(); ++j) {
+    for (auto j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         for (auto w : digraph.adjacent(v)) {
             indegree[w]--;
@@ -26,8 +26,8 @@ Directed_cycle_x::Directed_cycle_x(Digraph& digraph)
 
     std::vector<int> edge_to;
     edge_to.reserve(static_cast<std::vector<int>::size_type>(digraph.num_vertices()));
-    int root{-1};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    auto root = -1;
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (indegree[v] == 0) { continue; }
         else { root = v; }
         for (auto w : digraph.adjacent(v)) {
@@ -59,8 +59,8 @@ Directed_cycle_x::Directed_cycle_x(Digraph& digraph)
 bool Directed_cycle_x::_check()
 {
     if (has_cycle()) {
-        int first{-1};
-        int last{-1};
+        auto first = -1;
+        auto last = -1;
         for (auto v : _cycle()) {
             if (first == -1) { first = v; }
             last = v;

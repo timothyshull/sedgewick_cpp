@@ -9,7 +9,7 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices)
           _adjacency_lists(static_cast<std::vector<std::vector<Edge>>::size_type>(num_vertices))
 {
     if (num_vertices < 0) { throw utility::Illegal_argument_exception("Number of vertices must be nonnegative"); }
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Edge>{};
     }
 }
@@ -20,7 +20,7 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices, int num_edges) : Edge
     int v;
     int w;
     double weight;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         v = Std_random::uniform(num_vertices);
         w = Std_random::uniform(num_vertices);
         weight = std::round(100 * Std_random::uniform()) / 100.0;
@@ -30,12 +30,12 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices, int num_edges) : Edge
 
 Edge_weighted_graph::Edge_weighted_graph(In& in) : Edge_weighted_graph{in.read_int()}
 {
-    int num_edges{in.read_int()};
+    auto num_edges = in.read_int();
     if (num_edges < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
     int v;
     int w;
     double weight;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         v = in.read_int();
         w = in.read_int();
         weight = in.read_double();
@@ -47,7 +47,7 @@ Edge_weighted_graph::Edge_weighted_graph(Edge_weighted_graph& graph)
         : Edge_weighted_graph{graph.num_vertices()},
           _num_edges{graph.num_edges()}
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         Stack<Edge> reverse;
         for (auto e : graph._adjacency_lists[v]) {
             reverse.push(e);
@@ -85,7 +85,7 @@ std::vector<Edge> Edge_weighted_graph::edges()
 {
     std::vector<Edge> list;
     int self_loops;
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         self_loops = 0;
         for (auto e : adjacent(v)) {
             if (e.other(v) > v) {
@@ -103,7 +103,7 @@ std::string Edge_weighted_graph::to_string()
 {
     std::stringstream ss;
     ss << "Edge_weighted_graph(number of vertices: " << _num_vertices + ", number of edges: " << _num_edges << "\n";
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         ss << "vertex " << v << ": ";
         for (auto e : _adjacency_lists[v]) {
             ss << e << "  ";

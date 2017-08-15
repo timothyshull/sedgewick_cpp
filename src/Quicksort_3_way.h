@@ -71,7 +71,7 @@ namespace Quicksort_3_way {
     template<typename T>
     bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i{lo + 1}; i <= hi; ++i) {
+        for (auto i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;
@@ -80,7 +80,7 @@ namespace Quicksort_3_way {
     template<typename T>
     void show(std::vector<T>& a)
     {
-        for (int i{0}; i < a.size(); ++i) {
+        for (auto i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

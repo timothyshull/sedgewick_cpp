@@ -11,7 +11,7 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
     double sum_x{0.0};
     double sum_y{0.0};
     double sum_x_2{0.0};
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         sum_x += x[i];
         sum_x_2 += x[i] * x[i];
         sum_y += y[i];
@@ -22,7 +22,7 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
     double xx_bar = 0.0;
     double yy_bar = 0.0;
     double xy_bar = 0.0;
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         xx_bar += (x[i] - x_bar) * (x[i] - x_bar);
         yy_bar += (y[i] - y_bar) * (y[i] - y_bar);
         xy_bar += (x[i] - x_bar) * (y[i] - y_bar);
@@ -33,13 +33,13 @@ Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>
     double rss{0.0};
     double ssr{0.0};
     double fit;
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         fit = _slope * x[i] + _intercept;
         rss += (fit - y[i]) * (fit - y[i]);
         ssr += (fit - y_bar) * (fit - y_bar);
     }
 
-    int degrees_of_freedom{_size - 2};
+    auto degrees_of_freedom = _size - 2;
     _r2 = ssr / yy_bar;
     _s_var = rss / degrees_of_freedom;
     _s_var_1 = _s_var / xx_bar;

@@ -4,10 +4,10 @@
 
 std::vector<double> Std_array_io::read_double1D()
 {
-    int n{Std_in::read_int()};
+    auto n = Std_in::read_int();
     std::vector<double> a;
     a.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         a[i] = Std_in::read_double();
     }
     return a;
@@ -17,7 +17,7 @@ void ::Std_array_io::print(std::vector<double>& a)
 {
     auto n = a.size();
     Std_out::print_line(n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         Std_out::printf("%9.5f ", a[i]);
     }
     Std_out::print_line();
@@ -25,13 +25,13 @@ void ::Std_array_io::print(std::vector<double>& a)
 
 std::vector<std::vector<double>> Std_array_io::read_double2D()
 {
-    int m{Std_in::read_int()};
-    int n{Std_in::read_int()};
+    auto m = Std_in::read_int();
+    auto n = Std_in::read_int();
     std::vector<std::vector<double>> a;
     a.reserve(static_cast<std::vector<std::vector<double>>::size_type>(m));
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         a[i] = std::vector<double>{static_cast<std::vector<double>::size_type>(n)};
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_in::read_double();
         }
     }
@@ -43,8 +43,8 @@ void ::Std_array_io::print(std::vector<std::vector<double>>& a)
     auto m = a.size();
     auto n = a[0].size();
     Std_out::print_line(m + " " + n);
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             Std_out::printf("%9.5f ", a[i][j]);
         }
         Std_out::print_line();
@@ -53,10 +53,10 @@ void ::Std_array_io::print(std::vector<std::vector<double>>& a)
 
 std::vector<int> Std_array_io::read_int1D()
 {
-    int n{Std_in::read_int()};
+    auto n = Std_in::read_int();
     std::vector<int> a;
     a.reserve(static_cast<std::vector<int>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         a[i] = Std_in::read_int();
     }
     return a;
@@ -66,7 +66,7 @@ void ::Std_array_io::print(std::vector<int>& a)
 {
     auto n = a.size();
     Std_out::print_line(n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         Std_out::printf("%9d ", a[i]);
     }
     Std_out::print_line();
@@ -74,15 +74,15 @@ void ::Std_array_io::print(std::vector<int>& a)
 
 std::vector<std::vector<int>> Std_array_io::read_int2D()
 {
-    int m{Std_in::read_int()};
-    int n{Std_in::read_int()};
+    auto m = Std_in::read_int();
+    auto n = Std_in::read_int();
     std::vector<std::vector<int>> a;
     a.reserve(m);
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         a[i].reserve(n);
     }
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_in::read_int();
         }
     }
@@ -94,8 +94,8 @@ void ::Std_array_io::print(std::vector<std::vector<int>>& a)
     auto m = a.size();
     auto n = a[0].size();
     Std_out::print_line(m + " " + n);
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             Std_out::printf("%9d ", a[i][j]);
         }
         Std_out::print_line();
@@ -106,7 +106,7 @@ void ::Std_array_io::print(std::deque<bool>& a)
 {
     auto n = a.size();
     Std_out::print_line(n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (a[i]) { Std_out::print("1 "); }
         else { Std_out::print("0 "); }
     }
@@ -115,13 +115,13 @@ void ::Std_array_io::print(std::deque<bool>& a)
 
 std::vector<std::deque<bool>> Std_array_io::read_boolean2D()
 {
-    int m{Std_in::read_int()};
-    int n{Std_in::read_int()};
+    auto m = Std_in::read_int();
+    auto n = Std_in::read_int();
     std::vector<std::deque<bool>> a;
     a.reserve(static_cast<std::vector<std::deque<bool>>::size_type>(m));
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         a[i] = std::deque<bool>{static_cast<std::deque<bool>::size_type>(n)};
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_in::read_boolean();
         }
     }
@@ -133,8 +133,8 @@ void ::Std_array_io::print(std::vector<std::deque<bool>>& a)
     auto m = a.size();
     auto n = a[0].size();
     Std_out::print_line(m + " " + n);
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             if (a[i][j]) { Std_out::print("1 "); }
             else { Std_out::print("0 "); }
         }

@@ -31,7 +31,7 @@ void Bipartite_x::_bfs(Graph& graph, int source)
     q.enqueue(source);
 
     while (!q.is_empty()) {
-        int v{q.dequeue()};
+        auto v = q.dequeue();
         for (auto w : graph.adjacent(v)) {
             if (!_marked[w]) {
                 _marked[w] = true;
@@ -43,8 +43,8 @@ void Bipartite_x::_bfs(Graph& graph, int source)
 
                 _cycle = Queue<int>{};
                 Stack<int> stack;
-                int x{v};
-                int y{w};
+                auto x = v;
+                auto y = w;
                 while (x != y) {
                     stack.push(x);
                     _cycle.enqueue(y);
@@ -74,8 +74,8 @@ bool Bipartite_x::_check(Graph& graph) const
             }
         }
     } else {
-        int first{-1};
-        int last{-1};
+        auto first = -1;
+        auto last = -1;
         for (auto v : odd_cycle()) {
             if (first == -1) { first = v; }
             last = v;

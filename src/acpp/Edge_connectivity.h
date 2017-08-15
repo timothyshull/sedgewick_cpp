@@ -20,7 +20,7 @@ private:
 
     void _search_c(Edge&& e)
     {
-        int w{e.destination()};
+        auto w = e.destination();
         _order[w] = _count++;
         _low[w] = _order[w];
         // typename Graph_type::adjIterator A(G, w);

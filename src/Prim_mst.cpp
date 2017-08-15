@@ -7,11 +7,11 @@ Prim_mst::Prim_mst(Edge_weighted_graph& graph)
           _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices())),
           _pq{graph.num_vertices()}
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         _distance_to[v] = std::numeric_limits<double>::infinity();
     }
 
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) { _prim(graph, v); }
     }
 
@@ -21,7 +21,7 @@ Prim_mst::Prim_mst(Edge_weighted_graph& graph)
 Queue<Edge> Prim_mst::edges()
 {
     Queue<Edge> mst;
-    for (int v{0}; v < _edge_to.size(); ++v) {
+    for (auto v = 0; v < _edge_to.size(); ++v) {
         Edge e = _edge_to[v];
         if (e != nullptr) {
             mst.enqueue(e);

@@ -181,7 +181,7 @@ private:
         }
 
         if (x->_val != nullptr) { return x; }
-        for (int c{0}; c < _radix; ++c) {
+        for (auto c = 0; c < _radix; ++c) {
             if (x->_next[c] != nullptr) {
                 return x;
             }

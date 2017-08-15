@@ -15,7 +15,7 @@ void merge(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l, int
     int j;
     for (j = m; j < r; ++j) { aux[r + m - j] = coll[j + 1]; }
 
-    for (int k{l}; k <= r; ++k) {
+    for (auto k = l; k <= r; ++k) {
         if (aux[j] < aux[i]) { coll[k] = aux[j--]; }
         else { coll[k] = aux[i++]; }
     }
@@ -25,7 +25,7 @@ template<typename Item_type>
 void mergesort(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l, int r)
 {
     if (r <= l) { return; }
-    int m{(r + l) / 2};
+    auto m = (r + l) / 2;
     mergesort(coll, aux, l, m);
     mergesort(coll, aux, m + 1, r);
     merge(coll, aux, l, m, r);
@@ -42,11 +42,11 @@ void mergesort(std::vector<Item_type>& coll)
 //template<typename Item_type>
 //static void merge(std::vector<Item_type>& a, std::vector<Item_type>& aux, int lo, int mid, int hi)
 //{
-//    for (int k{lo}; k <= hi; ++k) { aux[k] = a[k]; }
+//    for (auto k = lo; k <= hi; ++k) { aux[k] = a[k]; }
 //
 //    int i = lo;
 //    int j = mid + 1;
-//    for (int k{lo}; k <= hi; ++k) {
+//    for (auto k = lo; k <= hi; ++k) {
 //        if (i > mid) {
 //            a[k] = aux[j++];
 //        } else if (j > hi) {

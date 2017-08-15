@@ -11,10 +11,10 @@ int main(int argc, char* argv[])
     std::vector<Point> coll(size, Point{});
 
     double distance{std::stod(argv[2])};
-    int count{0};
+    auto count = 0;
 
-    for (int i{0}; i < size; ++i) {
-        for (int j{i + 1}; j < size; ++j) {
+    for (auto i = 0; i < size; ++i) {
+        for (auto j = i + 1; j < size; ++j) {
             if (coll[i].distance(coll[j]) < distance) { ++count; }
         }
     }

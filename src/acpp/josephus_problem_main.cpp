@@ -5,8 +5,8 @@
 
 int main(int argc, char* argv[])
 {
-    int n{std::stoi(argv[1])};
-    int m{std::stoi(argv[2])};
+    auto n = std::stoi(argv[1]);
+    auto m = std::stoi(argv[2]);
     Raw_node_pointer t{new Node{1, nullptr}};
     t->next = t;
     Raw_node_pointer x{t};

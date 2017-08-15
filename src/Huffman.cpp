@@ -28,7 +28,7 @@ void Huffman::compress()
 
     std::vector<int> freq;
     freq.reserve(static_cast<std::vector<int>::size_type>(radix));
-    for (int i{0}; i < input.size(); ++i) {
+    for (auto i = 0; i < input.size(); ++i) {
         freq[input[i]]++;
     }
 
@@ -42,9 +42,9 @@ void Huffman::compress()
 
     Binary_std_out::write(input.size());
 
-    for (int i{0}; i < input.size(); ++i) {
+    for (auto i = 0; i < input.size(); ++i) {
         std::string code = st[input[i]];
-        for (int j{0}; j < code.size(); ++j) {
+        for (auto j = 0; j < code.size(); ++j) {
             if (code[j] == '0') {
                 Binary_std_out::write(false);
             } else if (code[j] == '1') {
@@ -120,9 +120,9 @@ void ::Huffman::expand()
 {
     Raw_node_pointer root = read_trie();
 
-    int length{Binary_std_in::read_int()};
+    auto length = Binary_std_in::read_int();
 
-    for (int i{0}; i < length; ++i) {
+    for (auto i = 0; i < length; ++i) {
         Raw_node_pointer x = root;
         while (!x->_is_leaf()) {
             bool bit = Binary_std_in::read_boolean();

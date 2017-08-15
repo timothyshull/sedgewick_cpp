@@ -6,7 +6,7 @@ Suffix_array_x::Suffix_array_x(std::string& text)
           _text{text + '\0'},
           _index(static_cast<std::vector<int>::size_type>(_size))
 {
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         _index[i] = i;
     }
 
@@ -97,8 +97,8 @@ void Suffix_array_x::_sort(int lo, int hi, int d)
 
 void Suffix_array_x::_insertion(int lo, int hi, int d)
 {
-    for (int i{lo}; i <= hi; ++i) {
-        for (int j{i}; j > lo && _less(_index[j], _index[j - 1], d); j--) {
+    for (auto i = lo; i <= hi; ++i) {
+        for (auto j = i; j > lo && _less(_index[j], _index[j - 1], d); j--) {
             _exch(j, j - 1);
         }
     }

@@ -5,9 +5,9 @@
 
 int main(int argc, char* argv[])
 {
-    int v1{utility::str_to_num(argv[1])};
-    int v2{utility::str_to_num(argv[2])};
-    int num_edges{utility::str_to_num(argv[3])};
+    auto v1 = utility::str_to_num(argv[1]);
+    auto v2 = utility::str_to_num(argv[2]);
+    auto num_edges = utility::str_to_num(argv[3]);
     Graph graph{Graph_generator::bipartite(v1, v2, num_edges)};
     if (graph.num_vertices() < 1000) { Std_out::print_line(graph); }
 
@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
     Std_out::print("Max matching: ");
     int w;
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         w = matching.mate(v);
         if (matching.is_matched(v) && v < w) {
             Std_out::print(std::to_string(v) + "-" + std::to_string(w) + " ");
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
     Std_out::print_line();
 
     Std_out::print("Min vertex cover: ");
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (matching.in_min_vertex_cover(v)) {
             Std_out::print(v + " ");
         }

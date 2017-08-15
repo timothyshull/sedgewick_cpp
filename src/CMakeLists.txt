@@ -38,9 +38,15 @@ find_package(Boost COMPONENTS filesystem system)
 #include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} /usr/local/Cellar/GSL/master/include)
 include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
 
-add_library(std_io STATIC Std_in.h Std_in.cpp Std_out.h Std_out.cpp)
-add_library(std_random STATIC Std_random.h Std_random.cpp)
-add_library(utility STATIC utility.h utility.cpp)
+add_library(std_out INTERFACE)
+add_library(std_io STATIC Std_in.cpp)
+target_link_libraries(std_io PUBLIC std_out)
+target_link_libraries(std_io PRIVATE fmt)
+
+add_library(std_random STATIC Std_random.cpp)
+
+add_library(utility STATIC utility.cpp)
+target_link_libraries(utility PRIVATE fmt)
 
 
 # subdirectories with CMakeLists.txt

@@ -10,11 +10,11 @@ void ::LZW_compression::compress()
     std::string input{Binary_std_in::read_string()};
     TST<int> st;
     std::string s;
-    for (int i{0}; i < radix; ++i) {
+    for (auto i = 0; i < radix; ++i) {
         s = static_cast<char>(i);
         st.put(s, i);
     }
-    int code{radix + 1};
+    auto code = radix + 1;
 
     std::string prefix;
     std::string sub;
@@ -45,7 +45,7 @@ void ::LZW_compression::expand()
     }
     st[i++] = "";
 
-    int codeword{Binary_std_in::read_int(codeword_width)};
+    auto codeword = Binary_std_in::read_int(codeword_width);
     if (codeword == radix) { return; }
     std::string val{st[codeword]};
 

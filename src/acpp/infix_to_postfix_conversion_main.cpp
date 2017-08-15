@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     auto size = str.size();
     // Stack<char> ops{size};
     Stack<char> ops;
-    for (int i{0}; i < size; i++) {
+    for (auto i = 0; i < size; i++) {
         if (str[i] == ')') {
             std::cout << ops.pop() << " ";
         }

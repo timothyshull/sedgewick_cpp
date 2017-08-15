@@ -14,13 +14,13 @@ public:
               _topological_sort_inverse(dag.num_vertices(), -1)
     {
         std::queue<int> queue;
-        for (int v{0}; v < dag.num_vertices(); ++v) {
+        for (auto v = 0; v < dag.num_vertices(); ++v) {
             // typename Dag_type::adjIterator A(dag, v);
             for (auto t : dag.adjacent(v)) {
                 _inorder[t]++;
             }
         }
-        for (int v{0}; v < dag.num_vertices(); ++v) {
+        for (auto v = 0; v < dag.num_vertices(); ++v) {
             if (_inorder[v] == 0) { queue.push(v); }
         }
         for (int j = 0; !queue.empty(); ++j) {

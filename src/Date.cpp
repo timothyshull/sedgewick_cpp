@@ -41,7 +41,7 @@ bool Date::operator<(const Date& rhs) const
 
 int Date::hash_code() const
 {
-    int hash{17};
+    auto hash = 17;
     hash = 31 * hash + _month;
     hash = 31 * hash + _day;
     hash = 31 * hash + _year;

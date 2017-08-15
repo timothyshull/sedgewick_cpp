@@ -21,7 +21,7 @@ namespace Binary_insertion_sort {
     static void sort(std::vector<T>& a)
     {
         auto n = a.size();
-        for (int i{1}; i < n; ++i) {
+        for (auto i = 1; i < n; ++i) {
             T v = a[i];
             int lo = 0, hi = i;
             while (lo < hi) {
@@ -30,7 +30,7 @@ namespace Binary_insertion_sort {
                 else { lo = mid + 1; }
             }
 
-            for (int j{i}; j > lo; --j) {
+            for (auto j = i; j > lo; --j) {
                 a[j] = a[j - 1];
             }
             a[lo] = v;
@@ -53,7 +53,7 @@ namespace Binary_insertion_sort {
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i{lo + 1}; i <= hi; ++i) {
+        for (auto i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }

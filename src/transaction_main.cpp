@@ -11,28 +11,28 @@ int main(int argc, char* argv[])
     a.emplace_back("Dijkstra 8/22/2007 2678.40");
 
     Std_out::print_line("Unsorted");
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         Std_out::print_line(a[i]);
     }
     Std_out::print_line();
 
     Std_out::print_line("Sort by date");
     std::sort(a.begin(), a.end(), Transaction::When_order{});
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         Std_out::print_line(a[i]);
     }
     Std_out::print_line();
 
     Std_out::print_line("Sort by customer");
     std::sort(a.begin(), a.end(), Transaction::Who_order{});
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         Std_out::print_line(a[i]);
     }
     Std_out::print_line();
 
     Std_out::print_line("Sort by amount");
     std::sort(a.begin(), a.end(), Transaction::How_much_order{});
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         Std_out::print_line(a[i]);
     }
     Std_out::print_line();

@@ -24,8 +24,8 @@ private:
             tmp = queue.front();
             queue.pop();
             if (_order[tmp.destination()] == -1) {
-                int v{e.source()};
-                int w{e.destination()};
+                auto v = e.source();
+                auto w = e.destination();
                 _order[w] = _count++;
                 _search_tree[w] = v;
                 // typename Graph_type::adjIterator A(G, w);

@@ -42,27 +42,27 @@ namespace MSD_radix_sort {
         }
 
         std::vector<int> count(static_cast<std::vector<int>::size_type>(radix + 1));
-        int mask{radix - 1};
-        int shift{bits_per_int - bits_per_byte * d - bits_per_byte};
-        for (int i{lo}; i <= hi; ++i) {
-            int c{(a[i] >> shift) & mask};
+        auto mask = radix - 1;
+        auto shift = bits_per_int - bits_per_byte * d - bits_per_byte;
+        for (auto i = lo; i <= hi; ++i) {
+            auto c = (a[i] >> shift) & mask;
             count[c + 1]++;
         }
 
-        for (int r{0}; r < radix; ++r) { count[r + 1] += count[r]; }
+        for (auto r = 0; r < radix; ++r) { count[r + 1] += count[r]; }
 
         // Sedgewick labeled as buggy -> review
-        for (int i{lo}; i <= hi; ++i) {
-            int c{(a[i] >> shift) & mask};
+        for (auto i = lo; i <= hi; ++i) {
+            auto c = (a[i] >> shift) & mask;
             aux[count[c]++] = a[i];
         }
 
-        for (int i{lo}; i <= hi; ++i) { a[i] = aux[i - lo]; }
+        for (auto i = lo; i <= hi; ++i) { a[i] = aux[i - lo]; }
 
         if (d == 4) { return; }
 
         if (count[0] > 0) { sort(a, lo, lo + count[0] - 1, d + 1, aux); }
-        for (int r{0}; r < radix; ++r) {
+        for (auto r = 0; r < radix; ++r) {
             if (count[r + 1] > count[r]) { sort(a, lo + count[r], lo + count[r + 1] - 1, d + 1, aux); }
         }
     }
@@ -70,8 +70,8 @@ namespace MSD_radix_sort {
     template<typename Item_type>
     void insertion(std::vector<Item_type>& a, int lo, int hi, int d)
     {
-        for (int i{lo}; i <= hi; ++i) {
-            for (int j{i}; j > lo && a[j] < a[j - 1]; j--) {
+        for (auto i = lo; i <= hi; ++i) {
+            for (auto j = i; j > lo && a[j] < a[j - 1]; j--) {
                 exch(a, j, j - 1);
             }
         }

@@ -27,14 +27,14 @@ private:
     
     void augment(int s, int t)
     {
-        int d{_search_tree[t]->cap_r_to(t)};
-        for (int v{_resolve_st(t)}; v != s; v = _resolve_st(v)) {
+        auto d = _search_tree[t]->cap_r_to(t);
+        for (auto v = _resolve_st(t); v != s; v = _resolve_st(v)) {
             if (_search_tree[v]->cap_r_to(v) < d) {
                 d = _search_tree[v]->cap_r_to(v);
             }
         }
         _search_tree[t]->add_flow_r_to(t, d);
-        for (int v{_resolve_st(t)}; v != s; v = _resolve_st(v)) {
+        for (auto v = _resolve_st(t); v != s; v = _resolve_st(v)) {
             _search_tree[v]->add_flow_r_to(v, d);
         }
     }
@@ -42,7 +42,7 @@ private:
     bool _pfs()
     {
         Priority_queue_prim_pfs<int> priority_queue{_graph.num_vertices(), _weights};
-        for (int v{0}; v < _graph.num_vertices(); ++v) {
+        for (auto v = 0; v < _graph.num_vertices(); ++v) {
             _weights[v] = 0;
             _search_tree[v] = 0;
             priority_queue.insert(v);
@@ -50,14 +50,14 @@ private:
         _weights[_source] = std::numeric_limits<int>::min();
         priority_queue.lower(_source);
         while (!priority_queue.empty()) {
-            int v{priority_queue.get_min()};
+            auto v = priority_queue.get_min();
             _weights[v] = std::numeric_limits<int>::min();
             if (v == _sink || (v != _source && _search_tree[v] == 0)) { break; }
             // typename Graph::adjIterator A(_graph, v);
             for (auto e : _graph.adjacent(v)) {
-                int w{e->other(v)};
-                int cap{e->cap_r_to(w)};
-                int p{cap < -_weights[v] ? cap : -_weights[v]};
+                auto w = e->other(v);
+                auto cap = e->cap_r_to(w);
+                auto p = cap < -_weights[v] ? cap : -_weights[v];
                 if (cap > 0 && -p < _weights[w]) {
                     _weights[w] = -p;
                     priority_queue.lower(w);

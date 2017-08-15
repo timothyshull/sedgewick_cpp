@@ -7,7 +7,7 @@
 int main(int argc, char* argv[])
 {
     In<std::ifstream> in{argv[1]};
-    int context{utility::str_to_num(argv[1])};
+    auto context = utility::str_to_num(argv[1]);
 
     std::vector<std::string> all_strings{in.read_all_strings()};
     std::stringstream ss;
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
         ss << s << " ";
     }
     std::string text{ss.str()};
-    int n{static_cast<int>(text.length())};
+    auto n = static_cast<int>(text.length());
 
     Suffix_array sa{text};
 
@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     int to2;
     while (!Std_in::is_empty()) {
         std::string query = Std_in::read_line();
-        for (int i{sa.rank(query)}; i < n; ++i) {
+        for (auto i = sa.rank(query); i < n; ++i) {
             from1 = sa.index(i);
             to1 = std::min(n, from1 + query.length());
             if (query != text.substr(from1, to1)) { break; }

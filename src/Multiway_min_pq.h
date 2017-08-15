@@ -113,7 +113,7 @@ private:
     {
         int loBound = _dimension * i + 1, hiBound = _dimension * i + _dimension;
         int min = loBound;
-        for (int cur{loBound}; cur <= hiBound; ++cur) {
+        for (auto cur = loBound; cur <= hiBound; ++cur) {
             if (cur < _size && greater(min, cur)) { min = cur; }
         }
         return min;
@@ -123,7 +123,7 @@ private:
     {
         std::vector<Key> array;
         array.reserve(size);
-        for (int i{0}; i < std::min(_keys.size(), array.size()); ++i) {
+        for (auto i = 0; i < std::min(_keys.size(), array.size()); ++i) {
             array[i] = _keys[i];
             _keys[i] = nullptr;
         }

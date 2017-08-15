@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     Std_out::print_line("  i ind lcp rnk select");
     Std_out::print_line("---------------------------");
 
-    for (int i{0}; i < s.length(); ++i) {
+    for (auto i = 0; i < s.length(); ++i) {
         int index = suffix.index(i);
         std::string ith = "\"" + s.substr(index, std::min(index + 50, s.length())) + "\"";
         utility::alg_assert(s.substr(index) == suffix.select(i), "");

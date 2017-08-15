@@ -20,11 +20,11 @@ void quicksort_x(std::vector<Item_type>& coll, int l, int r, int d)
         return;
     }
 
-    int v{ch(coll[r])};
-    int i{l - 1};
-    int j{r};
-    int p{l - 1};
-    int q{r};
+    auto v = ch(coll[r]);
+    auto i = l - 1;
+    auto j = r;
+    auto p = l - 1;
+    auto q = r;
     while (i < j) {
         while (ch(coll[++i]) < v) {}
 

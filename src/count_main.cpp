@@ -5,7 +5,7 @@
 int main(int argc, char* argv[])
 {
     Alphabet alphabet{argv[1]};
-    int r{alphabet.radix()};
+    auto r = alphabet.radix();
     std::vector<int> count;
     count.reserve(static_cast<std::vector<int>::size_type>(r));
 
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     }
 
     std::stringstream ss;
-    for (int i{0}; i < r; ++i) {
+    for (auto i = 0; i < r; ++i) {
         ss.str("");
         ss << "Count for char " << alphabet.to_char(i) << ": " << count[i];
         Std_out::print_line(ss.str());

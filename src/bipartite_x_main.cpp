@@ -7,14 +7,14 @@
 
 int main(int argc, char* argv[])
 {
-    int v1{utility::str_to_num<int>(argv[1])};
-    int v2{utility::str_to_num<int>(argv[2])};
-    int e{utility::str_to_num<int>(argv[3])};
-    int f{utility::str_to_num<int>(argv[4])};
+    auto v1 = utility::str_to_num<int>(argv[1]);
+    auto v2 = utility::str_to_num<int>(argv[2]);
+    auto e = utility::str_to_num<int>(argv[3]);
+    auto f = utility::str_to_num<int>(argv[4]);
 
     Graph graph{Graph_generator::bipartite(v1, v2, e)};
 
-    for (int i{0}; i < f; ++i) {
+    for (auto i = 0; i < f; ++i) {
         int v = Std_random::uniform(v1 + v2);
         int w = Std_random::uniform(v1 + v2);
         graph.add_edge(v, w);
@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     Bipartite_x b{graph};
     if (b.is_bipartite()) {
         Std_out::print_line("Graph is bipartite");
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             Std_out::print_line(v + ": " + static_cast<bool>(b.color(v)));
         }
     } else {

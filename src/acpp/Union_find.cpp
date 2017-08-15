@@ -5,7 +5,7 @@ Union_find::Union_find(std::size_t size)
         : _id(size),
           _size(size)
 {
-    for (int i{0}; i < size; ++i) {
+    for (auto i = 0; i < size; ++i) {
         _id[i] = i;
         _size[i] = 1;
     }
@@ -13,8 +13,8 @@ Union_find::Union_find(std::size_t size)
 
 void Union_find::unite(int p, int q)
 {
-    int i{_find(p)};
-    int j{_find(q)};
+    auto i = _find(p);
+    auto j = _find(q);
     if (i == j) { return; }
     if (_size[i] < _size[j]) {
         _id[i] = j;

@@ -16,7 +16,7 @@ std::vector<double> Two_person_zero_sum_game::row()
 {
     double scale = _scale();
     std::vector<double> x = _lp.primal();
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         x[j] /= scale;
     }
     return x;
@@ -26,7 +26,7 @@ std::vector<double> Two_person_zero_sum_game::column()
 {
     double scale = _scale();
     std::vector<double> y = _lp.dual();
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         y[i] /= scale;
     }
     return y;
@@ -42,7 +42,7 @@ double Two_person_zero_sum_game::_scale()
 {
     std::vector<double> x = _lp.primal();
     double sum = 0.0;
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         sum += x[j];
     }
     return sum;
@@ -52,7 +52,7 @@ bool Two_person_zero_sum_game::_is_primal_feasible()
 {
     std::vector<double> x = row();
     double sum = 0.0;
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         if (x[j] < 0) {
             Std_out::print_line("row vector not a probability distribution");
             Std_out::printf("    x[%d] = %f\n", j, x[j]);
@@ -72,7 +72,7 @@ bool Two_person_zero_sum_game::_is_dual_feasible()
 {
     std::vector<double> y = column();
     double sum = 0.0;
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         if (y[i] < 0) {
             Std_out::print_line("column vector y[] is not a probability distribution");
             Std_out::printf("    y[%d] = %f\n", i, y[i]);
@@ -95,9 +95,9 @@ bool Two_person_zero_sum_game::_is_nash_equilibrium(std::vector<std::vector<doub
     double value = value();
 
     double opt1 = std::numeric_limits<double>::infinity();
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         double sum = 0.0;
-        for (int j{0}; j < _n; ++j) {
+        for (auto j = 0; j < _n; ++j) {
             sum += payoff[i][j] * x[j];
         }
         if (sum > opt1) { opt1 = sum; }
@@ -109,9 +109,9 @@ bool Two_person_zero_sum_game::_is_nash_equilibrium(std::vector<std::vector<doub
     }
 
     double opt2 = std::numeric_limits<double>::infinity();
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         double sum = 0.0;
-        for (int i{0}; i < _m; ++i) {
+        for (auto i = 0; i < _m; ++i) {
             sum += payoff[i][j] * y[i];
         }
         if (sum < opt2) { opt2 = sum; }
@@ -140,19 +140,19 @@ std::tuple<int, int, Linear_programming, double> Two_person_zero_sum_game::_prep
     b.reserve(m);
     std::vector<std::vector<double>> a;
     a.reserve(m);
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         a.reserve(n);
     }
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         b[i] = 1.0;
     }
-    for (int j{0}; j < n; ++j) {
+    for (auto j = 0; j < n; ++j) {
         c[j] = 1.0;
     }
 
     double constant{std::numeric_limits<double>::infinity()};
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             if (payoff[i][j] < constant) {
                 constant = payoff[i][j];
             }
@@ -161,8 +161,8 @@ std::tuple<int, int, Linear_programming, double> Two_person_zero_sum_game::_prep
 
     if (constant <= 0) { constant = -constant + 1; }
     else { constant = 0; }
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = payoff[i][j] + constant;
         }
     }
@@ -183,13 +183,13 @@ void Tpzsg_tests::test(std::string&& description, std::vector<std::vector<double
     std::vector<double> y = zero_sum_game.column();
 
     Std_out::print("x[] = [");
-    for (int j{0}; j < n - 1; ++j) {
+    for (auto j = 0; j < n - 1; ++j) {
         Std_out::printf("%8.4f, ", x[j]);
     }
     Std_out::printf("%8.4f]\n", x[n - 1]);
 
     Std_out::print("y[] = [");
-    for (int i{0}; i < m - 1; ++i) {
+    for (auto i = 0; i < m - 1; ++i) {
         Std_out::printf("%8.4f, ", y[i]);
     }
     Std_out::printf("%8.4f]\n", y[m - 1]);

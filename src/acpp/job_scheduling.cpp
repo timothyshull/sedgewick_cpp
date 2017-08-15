@@ -12,11 +12,11 @@ int main(int argc, char* argv[])
     int i;
     int s;
     int t;
-    int num_vertices{std::stoi(argv[1])};
+    auto num_vertices = std::stoi(argv[1]);
     std::vector<double> duration;
     duration.reserve(static_cast<std::vector<double>::size_type>(num_vertices));
     Dense_graph graph{num_vertices, true};
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         std::cin >> duration[i];
     }
     while (std::cin >> s >> t) {

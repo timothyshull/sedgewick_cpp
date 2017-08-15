@@ -6,7 +6,7 @@ Lazy_prim_mst::Lazy_prim_mst(Edge_weighted_graph& graph)
           _pq{},
           _marked(static_cast<std::deque<bool>::size_type>(graph.num_vertices()))
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) { prim(graph, v); }
     }
 

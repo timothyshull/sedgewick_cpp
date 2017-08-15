@@ -14,7 +14,7 @@ public:
               _postorder(dag.num_vertices(), -1),
               _postorder_inverse(dag.num_vertices(), -1)
     {
-        for (int v{0}; v < dag.num_vertices(); ++v) { if (_preorder[v] == -1) { _topological_sort_r(v); }}
+        for (auto v = 0; v < dag.num_vertices(); ++v) { if (_preorder[v] == -1) { _topological_sort_r(v); }}
     }
 
     inline int operator[](int v) const { return _postorder_inverse[v]; }

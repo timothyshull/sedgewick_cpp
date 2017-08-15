@@ -25,7 +25,7 @@ public:
     }
 
 private:
-    int _count{0};
+    int _count = 0;
     double _sum{0.0};
     double _mean{0.0};
 };

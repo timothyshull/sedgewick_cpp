@@ -75,9 +75,9 @@ void Bellman_ford_sp::_relax(Edge_weighted_digraph digraph, int vertex)
 
 void Bellman_ford_sp::_find_negative_cycle()
 {
-    int num_vertices{gsl::narrow<int, std::vector<Directed_edge>::size_type>(_edge_to.size())};
+    auto num_vertices = gsl::narrow<int, std::vector<Directed_edge>::size_type>(_edge_to.size());
     Edge_weighted_digraph spt{num_vertices};
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         if (_edge_to[v] != Directed_edge{}) {
             spt.add_edge(_edge_to[v]);
         }
@@ -105,7 +105,7 @@ bool Bellman_ford_sp::_check(Edge_weighted_digraph digraph, int source)
             return false;
         }
 
-        for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto v = 0; v < digraph.num_vertices(); ++v) {
             if (v == source) { continue; }
             if (_edge_to[v] == Directed_edge{} && _distance_to[v] != std::numeric_limits<double>::infinity()) {
                 std::cerr << "_distance_to[] and _edge_to[] inconsistent";
@@ -113,7 +113,7 @@ bool Bellman_ford_sp::_check(Edge_weighted_digraph digraph, int source)
             }
         }
 
-        for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto v = 0; v < digraph.num_vertices(); ++v) {
             for (Directed_edge e : digraph.adjacent(v)) {
                 int w = e.to();
                 if (_distance_to[v] + e.weight() < _distance_to[w]) {
@@ -123,7 +123,7 @@ bool Bellman_ford_sp::_check(Edge_weighted_digraph digraph, int source)
             }
         }
 
-        for (int w{0}; w < digraph.num_vertices(); ++w) {
+        for (auto w = 0; w < digraph.num_vertices(); ++w) {
             if (_edge_to[w] == Directed_edge{}) { continue; }
             Directed_edge e = _edge_to[w];
             int v = e.from();

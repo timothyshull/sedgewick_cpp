@@ -4,7 +4,7 @@
 Static_set_of_ints::Static_set_of_ints(std::vector<int>& keys) : _set{keys}
 {
     std::sort(_set.begin(), _set.end());
-    for (int i{1}; i < _set.size(); ++i) {
+    for (auto i = 1; i < _set.size(); ++i) {
         if (_set[i] == _set[i - 1]) {
             throw utility::Illegal_argument_exception("Argument vector contains duplicate keys");
         }

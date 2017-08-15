@@ -21,7 +21,7 @@ template<typename Item_type>
 void heapsort(std::vector<Item_type>& coll, int l, int r)
 {
     int k;
-    int n{r - l + 1};
+    auto n = r - l + 1;
     // Item_type* pq = coll + l - 1;
     for (k = n / 2; k >= 1; k--) {
         fix_down(coll, k, n);

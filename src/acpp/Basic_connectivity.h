@@ -9,7 +9,7 @@ class Basic_connectivity {
 public:
     Basic_connectivity(const Graph_type& graph) : _graph{graph}, _component_count{0}, _id(graph.num_vertices(), -1)
     {
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             if (_id[v] == -1) {
                 _connected_component_r(v);
                 ++_component_count;

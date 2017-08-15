@@ -14,7 +14,7 @@ Edge_weighted_digraph::Edge_weighted_digraph(std::size_t num_vertices, std::size
           _adjacency_lists(static_cast<std::vector<std::vector<Directed_edge>>::size_type>(num_vertices)),
           _indegree(static_cast<std::vector<int>::size_type>(num_vertices))
 {
-    for (int i{0}; i < _num_edges; ++i) {
+    for (auto i = 0; i < _num_edges; ++i) {
         auto v = Std_random::uniform(static_cast<int>(_num_vertices));
         auto w = Std_random::uniform(static_cast<int>(_num_vertices));
         auto weight = 0.01 * Std_random::uniform(100);
@@ -104,7 +104,7 @@ std::string Edge_weighted_digraph::to_string() const
 {
     std::stringstream ss;
     ss << "Edge_weighted_digraph(number of vertices: " << _num_vertices << ", number of edges: " << _num_edges << "\n";
-    for (int v{0}; v < _num_vertices; ++v) {
+    for (auto v = 0; v < _num_vertices; ++v) {
         ss << "    vertex " << v << ": ";
         for (auto e : _adjacency_lists[v]) {
             ss << e << " ";

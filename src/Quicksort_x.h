@@ -78,10 +78,10 @@ namespace Quicksort_x {
         }
 
         i = j + 1;
-        for (int k{lo}; k <= p; ++k) {
+        for (auto k = lo; k <= p; ++k) {
             exch(a, k, j--);
         }
-        for (int k{hi}; k >= q; k--) {
+        for (auto k = hi; k >= q; k--) {
             exch(a, k, i++);
         }
 
@@ -92,8 +92,8 @@ namespace Quicksort_x {
     template<typename T>
     void insertion_sort(std::vector<T>& a, int lo, int hi)
     {
-        for (int i{lo}; i <= hi; ++i) {
-            for (int j{i}; j > lo && less(a[j], a[j - 1]); j--) {
+        for (auto i = lo; i <= hi; ++i) {
+            for (auto j = i; j > lo && less(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
         }
@@ -128,7 +128,7 @@ namespace Quicksort_x {
     template<typename T>
     bool is_sorted(std::vector<T>& a)
     {
-        for (int i{1}; i < a.size(); ++i) {
+        for (auto i = 1; i < a.size(); ++i) {
             if (less(a[i], a[i - 1])) { return false; }
         }
         return true;

@@ -9,7 +9,7 @@ public:
     template<typename T>
     static void sort(std::vector<T>& a)
     {
-        int n{static_cast<int>(a.size())}; // narrow_cast
+        auto n = static_cast<int>(a.size()); // narrow_cast
         for (int i = 0; i < n; ++i) {
             int exchanges = 0;
             for (int j = n - 1; j > i; j--) {
@@ -25,7 +25,7 @@ public:
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i{0}; i < a.size(); ++i) {
+        for (auto i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

@@ -5,7 +5,7 @@ Connected_component::Connected_component(Graph& graph)
           _id(static_cast<std::vector<int>::size_type>(graph.num_vertices())),
           _size(static_cast<std::vector<int>::size_type>(graph.num_vertices()))
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(graph, v);
             ++_count;

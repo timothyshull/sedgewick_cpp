@@ -12,10 +12,10 @@ Stack<int> Depth_first_directed_paths::path_to(int vertex) const
 {
     if (!has_path_to(vertex)) { return {}; }
     Stack<int> path;
-    for (int x{vertex}; x != _source; x = _edge_to[x]) {
+    for (auto x = vertex; x != _source; x = _edge_to[x]) {
         path.push(x);
     }
-    int tmp{_source};
+    auto tmp = _source;
     path.push(tmp);
     return path;
 }

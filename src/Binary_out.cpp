@@ -87,7 +87,7 @@ void Binary_out::write(int x, int r)
     }
     if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value for r = " + std::to_string(r)); }
     if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + std::to_string(r) + "-bit char = " + std::to_string(x)); }
-    for (int i{0}; i < r; ++i) {
+    for (auto i = 0; i < r; ++i) {
         bool bit = ((x >> (r - i - 1)) & 1) == 1;
         write_bit(bit);
     }
@@ -139,7 +139,7 @@ void Binary_out::write(char x, int r)
     }
     if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value for r = " + std::to_string(r)); }
     if (x >= (1 << r)) { throw utility::Illegal_argument_exception("Illegal " + std::to_string(r) + "-bit char = " + std::to_string(x)); }
-    for (int i{0}; i < r; ++i) {
+    for (auto i = 0; i < r; ++i) {
         bool bit = ((x >> (r - i - 1)) & 1) == 1;
         write_bit(bit);
     }
@@ -147,14 +147,14 @@ void Binary_out::write(char x, int r)
 
 void Binary_out::write(std::string& s)
 {
-    for (int i{0}; i < s.length(); ++i) {
+    for (auto i = 0; i < s.length(); ++i) {
         write(s[i]);
     }
 }
 
 void Binary_out::write(std::string& s, int r)
 {
-    for (int i{0}; i < s.length(); ++i) {
+    for (auto i = 0; i < s.length(); ++i) {
         write(s[i], r);
     }
 }
@@ -181,7 +181,7 @@ void Binary_out::_write_byte(int x)
         return;
     }
 
-    for (int i{0}; i < 8; ++i) {
+    for (auto i = 0; i < 8; ++i) {
         bool bit = ((x >> (8 - i - 1)) & 1) == 1;
         write_bit(bit);
     }

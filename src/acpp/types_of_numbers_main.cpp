@@ -12,12 +12,12 @@ int random_number()
 
 int main(int argc, char* argv[])
 {
-    int n{std::stoi(argv[1])};
+    auto n = std::stoi(argv[1]);
     float m1{0.0};
     float m2{0.0};
 
-    for (int i{0}; i < n; ++i) {
-        int x{random_number()};
+    for (auto i = 0; i < n; ++i) {
+        auto x = random_number();
         m1 += static_cast<float>(x) / n;
         m2 += static_cast<float>(x * x) / n;
     }

@@ -99,7 +99,7 @@ public:
     {
 
         using Traits_type = std::ifstream::traits_type;
-        int c{_input.peek()};
+        auto c = _input.peek();
         return c != '\0' && c != Traits_type::eof();
     }
 
@@ -274,7 +274,7 @@ public:
     {
 
         using Traits_type = std::ifstream::traits_type;
-        int c{_ss.peek()};
+        auto c = _ss.peek();
         return c != '\0' && c != Traits_type::eof();
     };
 

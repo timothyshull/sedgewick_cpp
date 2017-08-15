@@ -4,10 +4,10 @@
 
 int main(int argc, char* argv[])
 {
-    int num_vertices{utility::str_to_num(argv[1])};
-    int num_edges{utility::str_to_num(argv[2])};
-    int v1{num_vertices / 2};
-    int v2{num_vertices - v1};
+    auto num_vertices = utility::str_to_num(argv[1]);
+    auto num_edges = utility::str_to_num(argv[2]);
+    auto v1 = num_vertices / 2;
+    auto v2 = num_vertices - v1;
 
     Std_out::print_line("complete graph");
     Std_out::print_line(Graph_generator::complete(num_vertices));

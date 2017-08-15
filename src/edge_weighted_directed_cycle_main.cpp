@@ -6,20 +6,20 @@
 int main(int argc, char* argv[])
 {
 
-    int num_vertices{utility::str_to_num<int>(argv[1])};
-    int num_edges{utility::str_to_num<int>(argv[2])};
-    int extra_edges{utility::str_to_num<int>(argv[3])};
+    auto num_vertices = utility::str_to_num<int>(argv[1]);
+    auto num_edges = utility::str_to_num<int>(argv[2]);
+    auto extra_edges = utility::str_to_num<int>(argv[3]);
     Edge_weighted_digraph digraph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
-    for (int i{0}; i < num_vertices; ++i) {
+    for (auto i = 0; i < num_vertices; ++i) {
         vertices[i] = i;
     }
     Std_random::shuffle(vertices);
     int v;
     int w;
     double weight;
-    for (int i{0}; i < num_edges; ++i) {
+    for (auto i = 0; i < num_edges; ++i) {
         do {
             v = Std_random::uniform(num_vertices);
             w = Std_random::uniform(num_vertices);
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
         digraph.add_edge(v, w, weight);
     }
 
-    for (int i{0}; i < extra_edges; ++i) {
+    for (auto i = 0; i < extra_edges; ++i) {
         v = Std_random::uniform(num_vertices);
         w = Std_random::uniform(num_vertices);
         weight = Std_random::uniform(0.0, 1.0);

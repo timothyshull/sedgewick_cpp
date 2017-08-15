@@ -4,9 +4,9 @@
 
 Directed_eulerian_path::Directed_eulerian_path(Digraph& digraph)
 {
-    int deficit{0};
-    int s{_non_isolated_vertex(digraph)};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    auto deficit = 0;
+    auto s = _non_isolated_vertex(digraph);
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) > digraph.indegree(v)) {
             deficit += (digraph.outdegree(v) - digraph.indegree(v));
             s = v;
@@ -19,7 +19,7 @@ Directed_eulerian_path::Directed_eulerian_path(Digraph& digraph)
 
     std::vector<std::vector<int>::iterator> adj;
     adj.reserve(static_cast<std::vector<std::vector<int>::iterator>::size_type>(digraph.num_vertices()));
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         adj[v] = digraph.adjacent(v).begin();
     }
 
@@ -46,7 +46,7 @@ Directed_eulerian_path::Directed_eulerian_path(Digraph& digraph)
 
 int Directed_eulerian_path::_non_isolated_vertex(Digraph& digraph)
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) > 0) {
             return v;
         }
@@ -58,8 +58,8 @@ bool Directed_eulerian_path::_has_eulerian_path(Digraph& digraph)
 {
     if (digraph.num_edges() == 0) { return true; }
 
-    int deficit{0};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    auto deficit = 0;
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) > digraph.indegree(v)) {
             deficit += (digraph.outdegree(v) - digraph.indegree(v));
         }
@@ -67,15 +67,15 @@ bool Directed_eulerian_path::_has_eulerian_path(Digraph& digraph)
     if (deficit > 1) { return false; }
 
     Graph graph{digraph.num_vertices()};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         for (auto w : digraph.adjacent(v)) {
             graph.add_edge(v, w);
         }
     }
 
-    int s{_non_isolated_vertex(digraph)};
+    auto s = _non_isolated_vertex(digraph);
     Breadth_first_paths bfs{graph, s};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }

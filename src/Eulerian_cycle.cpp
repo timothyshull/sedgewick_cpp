@@ -16,7 +16,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& graph)
 {
     if (graph.num_edges() == 0) { return; }
 
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) % 2 != 0) {
             return;
         }
@@ -24,12 +24,12 @@ Eulerian_cycle::Eulerian_cycle(Graph& graph)
 
     std::vector<Queue<Edge>> adj;
     adj.reserve(static_cast<std::vector<Queue<int>>::size_type>(graph.num_vertices()));
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         adj[v] = Queue<Edge>{};
     }
 
     int self_loops;
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         self_loops = 0;
         for (auto w : graph.adjacent(v)) {
             if (v == w) {
@@ -47,7 +47,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& graph)
         }
     }
 
-    int s{_non_isolated_vertex(graph)};
+    auto s = _non_isolated_vertex(graph);
     Stack<int> stack;
     stack.push(s);
 
@@ -74,7 +74,7 @@ Eulerian_cycle::Eulerian_cycle(Graph& graph)
 
 int Eulerian_cycle::_non_isolated_vertex(Graph& graph)
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) > 0) {
             return v;
         }
@@ -86,15 +86,15 @@ bool Eulerian_cycle::_has_eulerian_cycle(Graph& graph)
 {
     if (graph.num_edges() == 0) { return false; }
 
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) % 2 != 0) {
             return false;
         }
     }
 
-    int s{_non_isolated_vertex(graph)};
+    auto s = _non_isolated_vertex(graph);
     Breadth_first_paths bfs{graph, s};
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }

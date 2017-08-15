@@ -17,11 +17,11 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& network, int source, int dest)
     double bottle;
     while (_has_augmenting_path(network, source, dest)) {
         bottle = std::numeric_limits<double>::infinity();
-        for (int v{dest}; v != source; v = _edge_to[v].other(v)) {
+        for (auto v = dest; v != source; v = _edge_to[v].other(v)) {
             bottle = std::min(bottle, _edge_to[v].residual_capacity_to(v));
         }
 
-        for (int v{dest}; v != source; v = _edge_to[v].other(v)) {
+        for (auto v = dest; v != source; v = _edge_to[v].other(v)) {
             _edge_to[v].add_residual_flow_to(v, bottle);
         }
 
@@ -87,7 +87,7 @@ double Ford_fulkerson::_excess(Flow_network& network, int vertex)
 
 bool Ford_fulkerson::_is_feasible(Flow_network& network, int source, int dest)
 {
-    for (int v{0}; v < network.num_vertices(); ++v) {
+    for (auto v = 0; v < network.num_vertices(); ++v) {
         for (auto e : network.adjacent(v)) {
             if (e.flow() < -floating_point_epsilon || e.flow() > e.capacity() + floating_point_epsilon) {
                 std::cerr << "Edge does not satisfy capacity constraints: " << e;
@@ -106,7 +106,7 @@ bool Ford_fulkerson::_is_feasible(Flow_network& network, int source, int dest)
         std::cerr << "Max flow         = " << _value;
         return false;
     }
-    for (int v{0}; v < network.num_vertices(); ++v) {
+    for (auto v = 0; v < network.num_vertices(); ++v) {
         if (v == source || v == dest) { continue; }
         else if (std::abs(_excess(network, v)) > floating_point_epsilon) {
             std::cerr << "Net flow out of " << v << " doesn't equal zero";
@@ -133,7 +133,7 @@ bool Ford_fulkerson::_check(Flow_network& G, int s, int t)
     }
 
     double mincut_value{0.0};
-    for (int v{0}; v < G.num_vertices(); ++v) {
+    for (auto v = 0; v < G.num_vertices(); ++v) {
         for (auto e : G.adjacent(v)) {
             if ((v == e.from()) && in_cut(e.from()) && !in_cut(e.to())) {
                 mincut_value += e.capacity();

@@ -69,7 +69,7 @@ private:
         utility::alg_assert(capacity >= _size, "Resizing_array_queue resize called with capacity less than current size");
         utility::alg_assert(capacity < _queue.max_size(), "Resizing_array_queue resize called with capacity greater than or equal to the max size");
         std::vector<T> temp(capacity);
-        for (int i{0}; i < _size; ++i) {
+        for (auto i = 0; i < _size; ++i) {
             temp[i] = _queue[(_first + i) % _queue.size()];
         }
         _queue = temp;

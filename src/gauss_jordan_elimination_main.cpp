@@ -10,40 +10,40 @@ int main(int argc, char* argv[])
     Gje_tests::test5();
     Gje_tests::test6();
 
-    int n{utility::str_to_num(argv[1])};
+    auto n = utility::str_to_num(argv[1]);
     std::vector<std::vector<double>> a;
     a.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         a[i] = std::vector<double>{};
         a[i].reserve(static_cast<std::vector<double>::size_type>(n));
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_random::uniform(1000);
         }
     }
     std::vector<double> b;
     b.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
     }
     Gje_tests::test("random " + std::to_string(n) + "-by-" + std::to_string(n) + " (likely full rank)", a, b);
 
     a.clear();
     a.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n - 1; ++i) {
+    for (auto i = 0; i < n - 1; ++i) {
         a[i] = std::vector<double>{};
         a[i].reserve(static_cast<std::vector<double>::size_type>(n));
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_random::uniform(1000);
         }
     }
-    for (int i{0}; i < n - 1; ++i) {
+    for (auto i = 0; i < n - 1; ++i) {
         double alpha = Std_random::uniform(11) - 5.0;
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[n - 1][j] += alpha * a[i][j];
         }
     }
     b = std::vector<double>(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
     }
     Gje_tests::test("random " + std::to_string(n) + "-by-" + std::to_string(n) + " (likely infeasible)", a, b);

@@ -3,7 +3,7 @@
 Transitive_closure::Transitive_closure(Digraph& digraph)
         : _tc(digraph.num_vertices())
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         _tc.emplace_back(digraph, v);
     }
 }

@@ -19,10 +19,10 @@ public:
     Min_pq(std::vector<T>& keys) : _size{keys.size()}, _priority_queue{}
     {
         _priority_queue.reserve(keys.size() + 1);
-        for (int i{0}; i < _size; ++i) {
+        for (auto i = 0; i < _size; ++i) {
             _priority_queue[i + 1] = keys[i];
         }
-        for (int k{_size / 2}; k >= 1; --k) {
+        for (auto k = _size / 2; k >= 1; --k) {
             _sink(k);
         }
         utility::alg_assert(_is_min_heap(), "Min_pq is_min_heap _check failed");
@@ -74,7 +74,7 @@ private:
         utility::alg_assert(capacity > _size, "Min_pq capacity _check failed");
         std::vector<T> temp{};
         temp.reserve(capacity);
-        for (int i{1}; i <= _size; ++i) {
+        for (auto i = 1; i <= _size; ++i) {
             temp[i] = _priority_queue[i];
         }
         _priority_queue = temp;

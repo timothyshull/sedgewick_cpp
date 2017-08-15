@@ -822,7 +822,7 @@ private:
 
     bool _is_rank_consistent() const
     {
-        for (int i{0}; i < size(); ++i) {
+        for (auto i = 0; i < size(); ++i) {
             if (i != rank(*(select(i)))) {
                 return false;
             }

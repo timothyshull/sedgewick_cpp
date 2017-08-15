@@ -8,12 +8,12 @@ int main(int argc, char* argv[])
     std::string txt{argv[2]};
 
     Rabin_karp searcher{pat};
-    int offset{searcher.search(txt)};
+    auto offset = searcher.search(txt);
 
     Std_out::print_line("text:    " + txt);
 
     Std_out::print("pattern: ");
-    for (int i{0}; i < offset; ++i) {
+    for (auto i = 0; i < offset; ++i) {
         Std_out::print(" ");
     }
     Std_out::print_line(pat);

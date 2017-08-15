@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
         bytes_per_line = utility::str_to_num(argv[1]);
     }
 
-    for (int i{0}; !Binary_std_in::is_empty(); ++i) {
+    for (auto i = 0; !Binary_std_in::is_empty(); ++i) {
         if (bytes_per_line == 0) {
             Binary_std_in::read_char();
             continue;

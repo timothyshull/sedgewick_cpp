@@ -21,7 +21,7 @@ public:
         static std::random_device rd;
         static std::default_random_engine gen{rd()};
         std::uniform_int_distribution<> dis{0, _size};
-        int i{dis(gen)};
+        auto i = dis(gen);
         Item_type t = _coll[i];
         _coll[i] = _coll[_size - 1];
         _coll[_size - 1] = t;

@@ -16,7 +16,7 @@ public:
               _preorder(graph.num_vertices(), -1),
               _postorder(graph.num_vertices(), -1)
     {
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             if (_preorder[v] == -1) {
                 Edge e{v, v};
                 _dfs_r(e);
@@ -40,7 +40,7 @@ private:
 
     void _dfs_r(Edge& e)
     {
-        int w{e.destination()};
+        auto w = e.destination();
         _show(" tree", e);
         _preorder[w] = _count_pre++;
         ++_depth;

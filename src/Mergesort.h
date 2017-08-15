@@ -30,11 +30,11 @@ namespace Mergesort {
         utility::alg_assert(is_sorted(a, lo, mid), "Mergesort is_sorted check failed for lo to mid");
         utility::alg_assert(is_sorted(a, mid + 1, hi), "Mergesort is_sorted check failed for mid + 1 to hi");
 
-        for (int k{lo}; k <= hi; ++k) { aux[k] = a[k]; }
+        for (auto k = lo; k <= hi; ++k) { aux[k] = a[k]; }
 
         int i = lo;
         int j = mid + 1;
-        for (int k{lo}; k <= hi; ++k) {
+        for (auto k = lo; k <= hi; ++k) {
             if (i > mid) {
                 a[k] = aux[j++];
             } else if (j > hi) {
@@ -85,7 +85,7 @@ namespace Mergesort {
     template<typename T>
     static bool is_sorted(std::vector<T>& a, int lo, int hi)
     {
-        for (int i{lo + 1}; i <= hi; ++i) {
+        for (auto i = lo + 1; i <= hi; ++i) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }
@@ -96,13 +96,13 @@ namespace Mergesort {
     template<typename T>
     static void merge(std::vector<T>& a, std::vector<int>& index, std::vector<int>& aux, int lo, int mid, int hi)
     {
-        for (int k{lo}; k <= hi; ++k) {
+        for (auto k = lo; k <= hi; ++k) {
             aux[k] = index[k];
         }
 
         int i = lo;
         int j = mid + 1;
-        for (int k{lo}; k <= hi; ++k) {
+        for (auto k = lo; k <= hi; ++k) {
             if (i > mid) {
                 index[k] = aux[j++];
             } else if (j > hi) {
@@ -121,7 +121,7 @@ namespace Mergesort {
         int n = a.size();
         std::vector<int> index{};
         index.reserve(static_cast<std::vector<int>::size_type>(n));
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             index[i] = i;
         }
 
@@ -146,7 +146,7 @@ namespace Mergesort {
     template<typename T>
     static void show(std::vector<T>& a)
     {
-        for (int i{0}; i < a.size(); ++i) {
+        for (auto i = 0; i < a.size(); ++i) {
             Std_out::print_line(a[i]);
         }
     }

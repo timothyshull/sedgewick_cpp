@@ -13,12 +13,12 @@ Closest_pair::Closest_pair(std::vector<Point_2d>& points)
 
     std::vector<Point_2d> points_by_x;
     points_by_x.reserve(n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         points_by_x[i] = points[i];
     }
     std::sort(points_by_x.begin(), points_by_x.end(), Point_2d::x_order);
 
-    for (int i{0}; i < n - 1; ++i) {
+    for (auto i = 0; i < n - 1; ++i) {
         if (points_by_x[i] == points_by_x[i + 1]) {
             _best_distance = 0.0;
             _best1 = points_by_x[i];
@@ -29,7 +29,7 @@ Closest_pair::Closest_pair(std::vector<Point_2d>& points)
 
     std::vector<Point_2d> points_by_y;
     points_by_y.reserve(n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         points_by_y[i] = points_by_x[i];
     }
 
@@ -53,14 +53,14 @@ double Closest_pair::closest(std::vector<Point_2d>& points_by_x, std::vector<Poi
     merge(points_by_y, aux, lo, mid, hi);
 
     int m = 0;
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         if (std::abs(points_by_y[i].x() - median.x()) < delta) {
             aux[m++] = points_by_y[i];
         }
     }
 
-    for (int i{0}; i < m; ++i) {
-        for (int j{i + 1}; (j < m) && (aux[j].y() - aux[i].y() < delta); ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = i + 1; (j < m) && (aux[j].y() - aux[i].y() < delta); ++j) {
             double distance{aux[i].distance_to(aux[j])};
             if (distance < delta) {
                 delta = distance;

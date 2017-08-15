@@ -7,7 +7,7 @@ Tarjan_scc::Tarjan_scc(Digraph& digraph)
           _id(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
           _low(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (!_marked[v]) { _dfs(digraph, v); }
     }
 
@@ -40,8 +40,8 @@ void Tarjan_scc::_dfs(Digraph& digraph, int vertex)
 bool Tarjan_scc::_check(Digraph& digraph)
 {
     Transitive_closure tc{digraph};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
-        for (int w{0}; w < digraph.num_vertices(); ++w) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
+        for (auto w = 0; w < digraph.num_vertices(); ++w) {
             if (strongly_connected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v))) {
                 return false;
             }

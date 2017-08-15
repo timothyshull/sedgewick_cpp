@@ -135,7 +135,7 @@ Trie_set::Raw_node_pointer Trie_set::_remove(Trie_set::Raw_node_pointer x, std::
     }
 
     if (x->_is_string) { return x; }
-    for (int c{0}; c < _radix; ++c) {
+    for (auto c = 0; c < _radix; ++c) {
         if (x->_next[c] != nullptr) {
             return x;
         }

@@ -18,7 +18,7 @@ public:
               _destination{destination}
     {
         Vertex_degrees<Graph> deg{graph};
-        int t{deg[source] + deg[destination]};
+        auto t = deg[source] + deg[destination];
         if ((t % 2) != 0) {
             _found = false;
             return;

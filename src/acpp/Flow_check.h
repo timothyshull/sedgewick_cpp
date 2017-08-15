@@ -6,7 +6,7 @@ namespace Flow_check {
     template<typename Graph_type, typename Edge_type>
     static int flow(Graph_type& graph, int vertex)
     {
-        int x{0};
+        auto x = 0;
         typename Graph_type::adjIterator A(graph, vertex);
         for (auto e : graph.adjacent(vertex)) {
             x += e->from(vertex) ? e->flow() : -e->flow();
@@ -17,12 +17,12 @@ namespace Flow_check {
     template<typename Graph_type>
     static bool flow(Graph_type& graph, int source, int sink)
     {
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             if ((v != source) && (v != sink)) {
                 if (flow(graph, v) != 0) { return false; }
             }
         }
-        int s_flow{flow(graph, source)};
+        auto s_flow = flow(graph, source);
         if (s_flow < 0) { return false; }
 
         return  !(s_flow + flow(graph, sink));

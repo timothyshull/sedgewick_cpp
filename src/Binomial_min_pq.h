@@ -181,7 +181,7 @@ public:
 
     int size()
     {
-        int result{0};
+        auto result = 0;
         int tmp;
         for (Node_raw_pointer node = _head; node != nullptr; node = node->_sibling) {
             if (node->_order > 30) {

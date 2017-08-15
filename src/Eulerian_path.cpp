@@ -14,9 +14,9 @@ int Eulerian_path::Edge::other(int vertex)
 
 Eulerian_path::Eulerian_path(Graph& graph)
 {
-    int odd_degree_vertices{0};
-    int s{_non_isolated_vertex(graph)};
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    auto odd_degree_vertices = 0;
+    auto s = _non_isolated_vertex(graph);
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) % 2 != 0) {
             ++odd_degree_vertices;
             s = v;
@@ -29,12 +29,12 @@ Eulerian_path::Eulerian_path(Graph& graph)
 
     std::vector<Queue<Edge>> adj;
     adj.reserve(static_cast<std::vector<Queue<Edge>>::size_type>(graph.num_vertices()));
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         adj[v] = Queue<Edge>{};
     }
 
     int self_loops;
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         self_loops = 0;
         for (int w : graph.adjacent(v)) {
             if (v == w) {
@@ -78,7 +78,7 @@ Eulerian_path::Eulerian_path(Graph& graph)
 
 int Eulerian_path::_non_isolated_vertex(Graph& graph)
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) > 0) {
             return v;
         }
@@ -91,7 +91,7 @@ bool Eulerian_path::_has_eulerian_path(Graph& graph)
     if (graph.num_edges() == 0) { return true; }
 
     int oddDegreeVertices = 0;
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) % 2 != 0) {
             ++oddDegreeVertices;
         }
@@ -100,7 +100,7 @@ bool Eulerian_path::_has_eulerian_path(Graph& graph)
 
     int s = _non_isolated_vertex(graph);
     Breadth_first_paths bfs{graph, s};
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }

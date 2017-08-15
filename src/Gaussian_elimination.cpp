@@ -14,12 +14,12 @@ Gaussian_elimination::Gaussian_elimination(std::vector<std::vector<double>>& a, 
     for (auto v : _a) {
         v.reserve(a.size() + 1);
     }
-    for (int i{0}; i < _m; ++i) {
-        for (int j{0}; j < _n; ++j) {
+    for (auto i = 0; i < _m; ++i) {
+        for (auto j = 0; j < _n; ++j) {
             _a[i][j] = a[i][j];
         }
     }
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         _a[i][_n] = b[i];
     }
 
@@ -32,9 +32,9 @@ std::vector<double> Gaussian_elimination::primal()
 {
     std::vector<double> x;
     x.reserve(static_cast<std::vector<double>::size_type>(_n));
-    for (int i{std::min(_n - 1, _m - 1)}; i >= 0; i--) {
+    for (auto i = std::min(_n - 1, _m - 1); i >= 0; i--) {
         double sum = 0.0;
-        for (int j{i + 1}; j < _n; ++j) {
+        for (auto j = i + 1; j < _n; ++j) {
             sum += _a[i][j] * x[j];
         }
 
@@ -45,9 +45,9 @@ std::vector<double> Gaussian_elimination::primal()
         }
     }
 
-    for (int i{_n}; i < _m; ++i) {
+    for (auto i = _n; i < _m; ++i) {
         double sum = 0.0;
-        for (int j{0}; j < _n; ++j) {
+        for (auto j = 0; j < _n; ++j) {
             sum += _a[i][j] * x[j];
         }
         if (std::abs(_a[i][_n] - sum) > _epsilon) {
@@ -64,10 +64,10 @@ bool Gaussian_elimination::is_feasible()
 
 void Gaussian_elimination::_forward_elimination()
 {
-    for (int p{0}; p < std::min(_m, _n); ++p) {
+    for (auto p = 0; p < std::min(_m, _n); ++p) {
 
-        int max{p};
-        for (int i{p + 1}; i < _m; ++i) {
+        auto max = p;
+        for (auto i = p + 1; i < _m; ++i) {
             if (std::abs(_a[i][p]) > std::abs(_a[max][p])) {
                 max = i;
             }
@@ -92,9 +92,9 @@ void Gaussian_elimination::_swap(int row1, int row2)
 
 void Gaussian_elimination::_pivot(int p)
 {
-    for (int i{p + 1}; i < _m; ++i) {
+    for (auto i = p + 1; i < _m; ++i) {
         double alpha = _a[i][p] / _a[p][p];
-        for (int j{p}; j <= _n; ++j) {
+        for (auto j = p; j <= _n; ++j) {
             _a[i][j] -= alpha * _a[p][j];
         }
     }
@@ -104,9 +104,9 @@ bool Gaussian_elimination::_certify_solution(std::vector<std::vector<double>>& A
 {
     if (!is_feasible()) { return true; }
     std::vector<double> x = primal();
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         double sum = 0.0;
-        for (int j{0}; j < _n; ++j) {
+        for (auto j = 0; j < _n; ++j) {
             sum += A[i][j] * x[j];
         }
         if (std::abs(sum - b[i]) > _epsilon) {
@@ -127,7 +127,7 @@ void Ge_tests::test(std::string&& name, std::vector<std::vector<double>>& A, std
     Gaussian_elimination gaussian{A, b};
     std::vector<double> x{gaussian.primal()};
     if (gaussian.is_feasible()) {
-        for (int i{0}; i < x.size(); ++i) {
+        for (auto i = 0; i < x.size(); ++i) {
             Std_out::printf("%.6f\n", x[i]);
         }
     } else {

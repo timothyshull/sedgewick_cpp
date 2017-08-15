@@ -147,7 +147,7 @@ namespace Std_random {
         double epsilon = 1E-14;
         double sum = 0.0;
         int n = probabilities.size();
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             if (probabilities[i] < 0.0) {
                 std::stringstream ss;
                 ss << "The \"probabilities\" entry " << i << " must be non-negative: " << probabilities[i];
@@ -164,7 +164,7 @@ namespace Std_random {
         while (true) {
             double r = uniform();
             sum = 0.0;
-            for (int i{0}; i < n; ++i) {
+            for (auto i = 0; i < n; ++i) {
                 sum = sum + probabilities[i];
                 if (sum > r) {
                     return i;
@@ -180,7 +180,7 @@ namespace Std_random {
         }
         long sum = 0;
         int n = frequencies.size();
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             if (frequencies[i] < 0) {
                 std::stringstream ss;
                 ss << "The \"frequencies\" vector entry " << i << " must be non-negative: " << frequencies[i];
@@ -197,7 +197,7 @@ namespace Std_random {
 
         double r = uniform(static_cast<int>(sum));
         sum = 0;
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             sum += frequencies[i];
             if (sum > r) {
                 return i;

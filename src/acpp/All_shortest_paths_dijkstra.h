@@ -11,7 +11,7 @@ class All_shortest_paths_dijkstra {
 public:
     All_shortest_paths_dijkstra(const Graph_type& graph) : _graph{graph}, _all_shortest_paths(graph.num_vertices())
     {
-        for (int s{0}; s < graph.num_vertices(); ++s) {
+        for (auto s = 0; s < graph.num_vertices(); ++s) {
             _all_shortest_paths[s] = new Shortest_paths_dijkstra_pfs<Graph_type, Edge_type>(graph, s);
         }
     }

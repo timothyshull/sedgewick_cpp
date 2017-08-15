@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    int s{sg.index_of(source)};
+    auto s = sg.index_of(source);
     Breadth_first_paths bfs{graph, s};
 
     while (!Std_in::is_empty()) {

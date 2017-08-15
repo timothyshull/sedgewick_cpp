@@ -13,19 +13,19 @@ int main(int argc, char* argv[])
     Ge_tests::test8();
     Ge_tests::test9();
 
-    int n{utility::str_to_num(argv[1])};
+    auto n = utility::str_to_num(argv[1]);
     std::vector<std::vector<double>> a;
     a.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         a[i] = std::vector<double>{};
         a[i].reserve(static_cast<std::vector<double>::size_type>(n));
-        for (int j{0}; j < n; ++j) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_random::uniform(1000);
         }
     }
     std::vector<double> b;
     b.reserve(static_cast<std::vector<double>::size_type>(n));
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         b[i] = Std_random::uniform(1000);
     }
 

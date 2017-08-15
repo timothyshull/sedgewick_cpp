@@ -24,7 +24,7 @@ Graham_scan::Graham_scan(std::vector<Point_2d>& pts)
     }
     _hull.push(points[k2 - 1]);
 
-    for (int i{k2}; i < n; ++i) {
+    for (auto i = k2; i < n; ++i) {
         Point_2d top = _hull.pop();
         while (Point_2d::ccw(_hull.peek(), top, points[i]) <= 0) {
             top = _hull.pop();
@@ -54,7 +54,7 @@ bool Graham_scan::_is_convex()
         points[k++] = p;
     }
 
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (Point_2d::ccw(points[i], points[(i + 1) % n], points[(i + 2) % n]) <= 0) {
             return false;
         }

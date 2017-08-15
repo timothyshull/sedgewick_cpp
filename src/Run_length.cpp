@@ -8,7 +8,7 @@ void ::Run_length::expand()
     int run;
     while (!Binary_std_in::is_empty()) {
         run = Binary_std_in::read_int(lg_r);
-        for (int i{0}; i < run; ++i) {
+        for (auto i = 0; i < run; ++i) {
             Binary_std_out::write(b);
         }
         b = !b;

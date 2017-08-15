@@ -361,7 +361,7 @@ private:
             return;
         }
         Comparator<T> new_c{_comparator};
-        int new_min_gallop{_min_gallop};
+        auto new_min_gallop = _min_gallop;
         outer:
         while (true) {
             int count1 = 0;
@@ -460,7 +460,7 @@ private:
             return;
         }
         Comparator<T> new_c{_comparator};
-        int new_min_gallop{_min_gallop};
+        auto new_min_gallop = _min_gallop;
         outer:
         while (true) {
             int count1 = 0;

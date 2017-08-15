@@ -15,7 +15,7 @@ public:
               _weights(graph.num_vertices(), graph.num_vertices())
     {
         Priority_queue_prim_pfs<double> priority_queue(graph.num_vertices(), _weights);
-        for (int v{0}; v < graph.num_vertices(); ++v) { priority_queue.insert(v); }
+        for (auto v = 0; v < graph.num_vertices(); ++v) { priority_queue.insert(v); }
         _weights[source] = 0.0;
         priority_queue.lower(source);
         int v;
@@ -24,7 +24,7 @@ public:
             if (v != source && _shortest_path[v] == 0) { return; }
             // typename Graph::adjIterator A(graph, v);
             for (auto e : graph.adjacent(v)) {
-                int w{e->destination()};
+                auto w = e->destination();
                 double p = _weights[v] + e->weight();
                 if (p < _weights[w]) {
                     _weights[w] = p;

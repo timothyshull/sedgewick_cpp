@@ -5,9 +5,9 @@
 
 int main(int argc, char* argv[])
 {
-    int i{std::stoi(argv[1])};
+    auto i = std::stoi(argv[1]);
     std::size_t size{std::stoul(argv[1])};
-    int skip_size{std::stoi(argv[2])};
+    auto skip_size = std::stoi(argv[2]);
 
     Raw_node_pointer t;
     Raw_node_pointer x;

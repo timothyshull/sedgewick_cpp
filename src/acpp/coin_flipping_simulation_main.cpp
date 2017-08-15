@@ -14,7 +14,7 @@ bool heads()
 int main(int argc, char* argv[])
 {
     std::size_t n{std::stoul(argv[1])};
-    int m{std::stoi(argv[2])};
+    auto m = std::stoi(argv[2]);
     std::vector<int> f;
     f.reserve(n + 1);
 

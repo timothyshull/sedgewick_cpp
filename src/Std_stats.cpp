@@ -8,7 +8,7 @@
 double ::Std_stats::max(std::vector<double>& a)
 {
     double max = -std::numeric_limits<double>::infinity();
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         if (std::isnan(a[i])) { return std::numeric_limits<double>::quiet_NaN(); }
         if (a[i] > max) { max = a[i]; }
     }
@@ -21,7 +21,7 @@ double ::Std_stats::max(std::vector<double>& a, int lo, int hi)
         throw utility::Index_out_of_bounds_exception{"Subarray indices out of bounds"};
     };
     double max = -std::numeric_limits<double>::infinity();
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         if (std::isnan(a[i])) { return std::numeric_limits<double>::quiet_NaN(); }
         if (a[i] > max) { max = a[i]; }
     }
@@ -31,7 +31,7 @@ double ::Std_stats::max(std::vector<double>& a, int lo, int hi)
 int ::Std_stats::max(std::vector<int>& a)
 {
     int max = std::numeric_limits<int>::min();
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         if (a[i] > max) { max = a[i]; }
     }
     return max;
@@ -40,7 +40,7 @@ int ::Std_stats::max(std::vector<int>& a)
 double ::Std_stats::min(std::vector<double>& a)
 {
     double min = std::numeric_limits<double>::infinity();
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         if (std::isnan(a[i])) { return std::numeric_limits<double>::quiet_NaN(); }
         if (a[i] < min) { min = a[i]; }
     }
@@ -53,7 +53,7 @@ double ::Std_stats::min(std::vector<double>& a, int lo, int hi)
         throw utility::Index_out_of_bounds_exception{"Subarray indices out of bounds"};
     };
     double min = std::numeric_limits<double>::infinity();
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         if (std::isnan(a[i])) { return std::numeric_limits<double>::quiet_NaN(); }
         if (a[i] < min) { min = a[i]; }
     }
@@ -63,7 +63,7 @@ double ::Std_stats::min(std::vector<double>& a, int lo, int hi)
 int ::Std_stats::min(std::vector<int>& a)
 {
     int min = std::numeric_limits<int>::max();
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         if (a[i] < min) { min = a[i]; }
     }
     return min;
@@ -99,7 +99,7 @@ double ::Std_stats::var(std::vector<double>& a)
     if (a.size() == 0) { return std::numeric_limits<double>::quiet_NaN(); }
     double avg = mean(a);
     double sum = 0.0;
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         sum += (a[i] - avg) * (a[i] - avg);
     }
     return sum / (a.size() - 1);
@@ -114,7 +114,7 @@ double ::Std_stats::var(std::vector<double>& a, int lo, int hi)
     if (length == 0) { return std::numeric_limits<double>::quiet_NaN(); }
     double avg = mean(a, lo, hi);
     double sum = 0.0;
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         sum += (a[i] - avg) * (a[i] - avg);
     }
     return sum / (length - 1);
@@ -125,7 +125,7 @@ double ::Std_stats::var(std::vector<int>& a)
     if (a.size() == 0) { return std::numeric_limits<double>::quiet_NaN(); }
     double avg = mean(a);
     double sum = 0.0;
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         sum += (a[i] - avg) * (a[i] - avg);
     }
     return sum / (a.size() - 1);
@@ -136,7 +136,7 @@ double ::Std_stats::var_p(std::vector<double>& a)
     if (a.size() == 0) { return std::numeric_limits<double>::quiet_NaN(); }
     double avg = mean(a);
     double sum = 0.0;
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         sum += (a[i] - avg) * (a[i] - avg);
     }
     return sum / a.size();
@@ -151,7 +151,7 @@ double ::Std_stats::var_p(std::vector<double>& a, int lo, int hi)
     if (length == 0) { return std::numeric_limits<double>::quiet_NaN(); }
     double avg = mean(a, lo, hi);
     double sum = 0.0;
-    for (int i{lo}; i <= hi; ++i) {
+    for (auto i = lo; i <= hi; ++i) {
         sum += (a[i] - avg) * (a[i] - avg);
     }
     return sum / length;
@@ -201,7 +201,7 @@ double ::Std_stats::sum(std::vector<double>& a, int lo, int hi)
 double ::Std_stats::sum(std::vector<int>& a)
 {
     double sum = 0.0;
-    for (int i{0}; i < a.size(); ++i) {
+    for (auto i = 0; i < a.size(); ++i) {
         sum += a[i];
     }
     return sum;
@@ -222,7 +222,7 @@ double ::Std_stats::plot_lines(std::vector<double>& a)
     auto n = a.size();
     Std_draw::set_x_scale(-1, n);
     Std_draw::set_pen_radius();
-    for (int i{1}; i < n; ++i) {
+    for (auto i = 1; i < n; ++i) {
         Std_draw::line(i - 1, a[i - 1], i, a[i]);
     }
 }
@@ -231,7 +231,7 @@ double ::Std_stats::plot_bars(std::vector<double>& a)
 {
     auto n = a.size();
     Std_draw::set_x_scale(-1, n);
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         Std_draw::filled_rectangle(i, a[i] / 2, 0.25, a[i] / 2);
     }
 }

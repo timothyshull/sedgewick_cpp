@@ -39,8 +39,8 @@ int Segment_tree::_rsq(int v, int from, int to)
 
     if (_intersects(from, to, n._from, n._to)) {
         _propagate(v);
-        int left_sum{_rsq(2 * v, from, to)};
-        int right_sum{_rsq(2 * v + 1, from, to)};
+        auto left_sum = _rsq(2 * v, from, to);
+        auto right_sum = _rsq(2 * v + 1, from, to);
 
         return left_sum + right_sum;
     }
@@ -80,8 +80,8 @@ int Segment_tree::_r_min_q(int v, int from, int to)
 
     if (_intersects(from, to, n._from, n._to)) {
         _propagate(v);
-        int left_min{_r_min_q(2 * v, from, to)};
-        int right_min{_r_min_q(2 * v + 1, from, to)};
+        auto left_min = _r_min_q(2 * v, from, to);
+        auto right_min = _r_min_q(2 * v + 1, from, to);
 
         return std::min(left_min, right_min);
     }

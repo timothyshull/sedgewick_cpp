@@ -6,7 +6,7 @@ Nonrecursive_dfs::Nonrecursive_dfs(Graph& graph, int source)
 {
     std::vector<std::vector<int>::iterator> adj;
     adj.reserve(static_cast<std::vector<std::vector<int>::iterator>::size_type>(graph.num_vertices()));
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         adj[v] = graph.adjacent(v).begin();
     }
 

@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    int n{Std_in::read_int()};
+    auto n = Std_in::read_int();
     Quick_find_uf uf{n};
     int p;
     int q;

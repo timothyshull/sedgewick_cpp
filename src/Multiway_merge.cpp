@@ -6,7 +6,7 @@ void ::Multiway_merge::merge(std::vector<In>& streams)
 {
     auto n = streams.size();
     Index_min_pq<std::string> pq{n};
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         if (!streams[i].is_empty()) {
             pq.insert(i, streams[i].read_string());
         }

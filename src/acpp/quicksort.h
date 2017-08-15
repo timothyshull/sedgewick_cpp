@@ -18,8 +18,8 @@ inline void comp_exch(std::vector<Item_type>& coll, int index_a, int index_b) { 
 template<typename Item_type>
 int partition(std::vector<Item_type>& coll, int l, int r)
 {
-    int i{l};
-    int j{r + 1};
+    auto i = l;
+    auto j = r + 1;
 
     Item_type v{coll[l]};
     while (true) {
@@ -36,7 +36,7 @@ template<class Item_type>
 void quicksort(std::vector<Item_type>& coll, int l, int r)
 {
     if (r <= l) { return; }
-    int i{partition(coll, l, r)};
+    auto i = partition(coll, l, r);
     quicksort(coll, l, i - 1);
     quicksort(coll, i + 1, r);
 }
@@ -85,7 +85,7 @@ void insertion_sort(std::vector<Item_type>& coll, int l, int r)
         if (coll[i] < coll[i - 1]) { std::swap(coll[i - 1], coll[i]); }
     }
     for (i = l + 2; i <= r; ++i) {
-        int j{i};
+        auto j = i;
         Item_type v = coll[i];
         while (v < coll[j - 1]) {
             coll[j] = coll[j - 1];
@@ -98,14 +98,14 @@ void insertion_sort(std::vector<Item_type>& coll, int l, int r)
 template<class Item_type>
 void quicksort_m3(std::vector<Item_type>& coll, int l, int r)
 {
-    static const int cutoff{10};
+    static const auto cutoff = 10;
     if (r - l <= cutoff) { return; }
     std::swap(coll[(l + r) / 2], coll[r - 1]);
     comp_exch(coll, l, r - 1);
     comp_exch(coll, l, r);
     comp_exch(coll, r - 1, r);
 
-    int i{partition(coll, l + 1, r - 1)};
+    auto i = partition(coll, l + 1, r - 1);
     quicksort_m3(coll, l, i - 1);
     quicksort_m3(coll, i + 1, r);
 }
@@ -127,10 +127,10 @@ void quicksort_3_way(std::vector<Item_type>& coll, int l, int r)
     Item_type v{coll[r]};
     if (r <= l) { return; }
 
-    int i{l - 1};
-    int j{r};
-    int p{l - 1};
-    int q{r};
+    auto i = l - 1;
+    auto j = r;
+    auto p = l - 1;
+    auto q = r;
 
     for (;;) {
         while (coll[++i] < v) {}

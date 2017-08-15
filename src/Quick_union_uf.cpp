@@ -5,7 +5,7 @@ Quick_union_uf::Quick_union_uf(int n)
         : _count{n},
           _parent(static_cast<std::vector<int>::size_type>(n))
 {
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         _parent[i] = i;
     }
 }

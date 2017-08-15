@@ -5,7 +5,7 @@ Quick_find_uf::Quick_find_uf(int n)
         : _count{n},
           _id(static_cast<std::vector<int>::size_type>(n))
 {
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         _id[i] = i;
     }
 }
@@ -32,7 +32,7 @@ void Quick_find_uf::create_union(int p, int q)
 
     if (id_p == id_q) { return; }
 
-    for (int i{0}; i < _id.size(); ++i) {
+    for (auto i = 0; i < _id.size(); ++i) {
         if (_id[i] == id_p) { _id[i] = id_q; }
     }
     --_count;

@@ -36,9 +36,9 @@ namespace Selection_sort {
         Comparator_type comp;
 
         auto n = a.size();
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             int min = i;
-            for (int j{i + 1}; j < n; ++j) {
+            for (auto j = i + 1; j < n; ++j) {
                 if (comp(a[j], a[min])) { min = j; }
             }
             std::swap(a[i], a[min]);
@@ -57,7 +57,7 @@ namespace Selection_sort {
 //    template<typename Item_type>
 //    bool is_sorted(std::vector<Item_type>& a, int lo, int hi)
 //    {
-//        for (int i{lo + 1}; i <= hi; ++i) {
+//        for (auto i = lo + 1; i <= hi; ++i) {
 //            if (std::less<Item_type>{}(a[i], a[i - 1])) { return false; }
 //        }
 //        return true;

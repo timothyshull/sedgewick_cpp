@@ -37,7 +37,7 @@ public:
               _num_edges(0),
               _is_directed(digraph)
     {
-        for (int i{0}; i < num_vertices; ++i) {
+        for (auto i = 0; i < num_vertices; ++i) {
             _adjacency_matrix[i].assign(num_vertices, false);
         }
     }
@@ -50,8 +50,8 @@ public:
 
     void insert(Edge& e)
     {
-        int v{e.source()};
-        int w{e.destination()};
+        auto v = e.source();
+        auto w = e.destination();
         if (_adjacency_matrix[v][w] == false) { _num_edges++; }
         _adjacency_matrix[v][w] = true;
         if (!_is_directed) { _adjacency_matrix[w][v] = true; }
@@ -59,8 +59,8 @@ public:
 
     void remove(Edge& e)
     {
-        int v{e.source()};
-        int w{e.destination()};
+        auto v = e.source();
+        auto w = e.destination();
         if (_adjacency_matrix[v][w] == true) { --_num_edges; }
         _adjacency_matrix[v][w] = false;
         if (!_is_directed) { _adjacency_matrix[w][v] = false; }

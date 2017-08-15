@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
     Depth_first_order dfs{g};
     Std_out::print_line("   v  pre post");
     Std_out::print_line("--------------");
-    for (int v{0}; v < g.num_vertices(); ++v) {
+    for (auto v = 0; v < g.num_vertices(); ++v) {
         Std_out::printf("%4d %4d %4d\n", v, dfs.pre(v), dfs.post(v));
     }
 

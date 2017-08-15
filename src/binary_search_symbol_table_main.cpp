@@ -6,7 +6,7 @@ int main()
 {
     Binary_search_symbol_table<std::string, int> st;
     std::vector<std::string> vs = Std_in::read_all_strings();
-    for (int i{0}; i < vs.size(); ++i) {
+    for (auto i = 0; i < vs.size(); ++i) {
         st.put(vs[i], i);
     }
     for (auto s : st.keys()) {

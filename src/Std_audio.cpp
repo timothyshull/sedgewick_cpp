@@ -184,7 +184,7 @@ static std::vector<char> _read_byte(std::string& filename)
 
 static std::vector<double> note(double hz, double duration, double amplitude)
 {
-    int n{static_cast<int>(sample_rate * duration)};
+    auto n = static_cast<int>(sample_rate * duration);
     std::vector<double> a;
     a.reserve(static_cast<std::vector<double>::size_type>(n));
     for (int i = 0; i <= n; i++) {

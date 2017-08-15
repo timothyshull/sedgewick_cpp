@@ -15,7 +15,7 @@ public:
     {
         _numbers.reserve(size + 1);
         _numbers[size] = c;
-        for (int i{0}; i < size; ++i) { _numbers[i] = 0; }
+        for (auto i = 0; i < size; ++i) { _numbers[i] = 0; }
     }
 
     inline std::size_t size() const noexcept { return _numbers.size(); }
@@ -32,10 +32,10 @@ public:
     friend Polynomial operator+(Polynomial& lhs, Polynomial& rhs)
     {
         Polynomial t{0, lhs.size() > rhs.size() ? lhs.size() - 1 : rhs.size() - 1};
-        for (int i{0}; i < lhs.size(); ++i) {
+        for (auto i = 0; i < lhs.size(); ++i) {
             t._numbers[i] += lhs._numbers[i];
         }
-        for (int j{0}; j < rhs.size(); ++j) {
+        for (auto j = 0; j < rhs.size(); ++j) {
             t._numbers[j] += rhs._numbers[j];
         }
         return t;
@@ -44,8 +44,8 @@ public:
     friend Polynomial operator*(Polynomial& p, Polynomial& q)
     {
         Polynomial t{0, (p.size() - 1) + (q.size() - 1)};
-        for (int i{0}; i < p.size(); ++i) {
-            for (int j{0}; j < q.size(); ++j) {
+        for (auto i = 0; i < p.size(); ++i) {
+            for (auto j = 0; j < q.size(); ++j) {
                 t._numbers[i + j] += p._numbers[i] * q._numbers[j];
             }
         }

@@ -7,18 +7,18 @@ Topological_x::Topological_x(Digraph& digraph)
 {
     std::vector<int> indegree;
     indegree.reserve(digraph.num_vertices());
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         indegree[v] = digraph.indegree(v);
     }
 
-    int count{0};
+    auto count = 0;
 
     Queue<int> queue;
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (indegree[v] == 0) { queue.enqueue(v); }
     }
 
-    for (int j{0}; !queue.is_empty(); ++j) {
+    for (auto j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         _order.enqueue(v);
         _rank[v] = ++count;
@@ -41,18 +41,18 @@ Topological_x::Topological_x(Edge_weighted_digraph& digraph)
 {
     std::vector<int> indegree;
     indegree.reserve(digraph.num_vertices());
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         indegree[v] = digraph.indegree(v);
     }
 
-    int count{0};
+    auto count = 0;
 
     Queue<int> queue;
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (indegree[v] == 0) { queue.enqueue(v); }
     }
 
-    for (int j{0}; !queue.is_empty(); ++j) {
+    for (auto j = 0; !queue.is_empty(); ++j) {
         int v = queue.dequeue();
         _order.enqueue(v);
         _rank[v] = ++count;
@@ -81,17 +81,17 @@ bool Topological_x::_check(Digraph& digraph)
 {
     if (has_order()) {
         std::deque<bool> found{static_cast<std::deque<bool>::size_type>(digraph.num_vertices())};
-        for (int i{0}; i < digraph.num_vertices(); ++i) {
+        for (auto i = 0; i < digraph.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i{0}; i < digraph.num_vertices(); ++i) {
+        for (auto i = 0; i < digraph.num_vertices(); ++i) {
             if (!found[i]) {
                 std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
 
-        for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto v = 0; v < digraph.num_vertices(); ++v) {
             for (auto w : digraph.adjacent(v)) {
                 if (rank(v) > rank(w)) {
                     std::cerr << v << "-" << w << ": rank(" << v << ") = " << rank(v) << ", rank(" << w << ") = " << rank(w) << "\n";
@@ -100,7 +100,7 @@ bool Topological_x::_check(Digraph& digraph)
             }
         }
 
-        int r{0};
+        auto r = 0;
         for (auto v : order()) {
             if (rank(v) != r) {
                 std::cerr << "_order() and rank() inconsistent";
@@ -117,17 +117,17 @@ bool Topological_x::_check(Edge_weighted_digraph& digraph)
 {
     if (has_order()) {
         std::deque<bool> found(digraph.num_vertices());
-        for (int i{0}; i < digraph.num_vertices(); ++i) {
+        for (auto i = 0; i < digraph.num_vertices(); ++i) {
             found[rank(i)] = true;
         }
-        for (int i{0}; i < digraph.num_vertices(); ++i) {
+        for (auto i = 0; i < digraph.num_vertices(); ++i) {
             if (!found[i]) {
                 std::cerr << "No vertex with rank " + i;
                 return false;
             }
         }
 
-        for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto v = 0; v < digraph.num_vertices(); ++v) {
             for (Directed_edge e : digraph.adjacent(v)) {
                 int w = e.to();
                 if (rank(v) > rank(w)) {
@@ -137,7 +137,7 @@ bool Topological_x::_check(Edge_weighted_digraph& digraph)
             }
         }
 
-        int r{0};
+        auto r = 0;
         for (auto v : order()) {
             if (rank(v) != r) {
                 std::cerr << "_order() and rank() inconsistent";

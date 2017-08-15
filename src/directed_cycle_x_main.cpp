@@ -7,14 +7,14 @@
 
 int main(int argc, char* argv[])
 {
-    int num_vertices{utility::str_to_num(argv[1])};
-    int num_edges{utility::str_to_num(argv[2])};
-    int additional_edges{utility::str_to_num(argv[3])};
+    auto num_vertices = utility::str_to_num(argv[1]);
+    auto num_edges = utility::str_to_num(argv[2]);
+    auto additional_edges = utility::str_to_num(argv[3]);
     Digraph digraph = Digraph_generator::dag(num_vertices, num_edges);
 
     int v;
     int w;
-    for (int i{0}; i < additional_edges; ++i) {
+    for (auto i = 0; i < additional_edges; ++i) {
         v = Std_random::uniform(num_vertices);
         w = Std_random::uniform(num_vertices);
         digraph.add_edge(v, w);

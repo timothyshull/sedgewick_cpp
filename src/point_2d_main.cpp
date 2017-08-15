@@ -4,9 +4,9 @@
 
 int main(int argc, char* argv[])
 {
-    int x0{utility::str_to_num(argv[1])};
-    int y0{utility::str_to_num(argv[2])};
-    int n{utility::str_to_num(argv[3])};
+    auto x0 = utility::str_to_num(argv[1]);
+    auto y0 = utility::str_to_num(argv[2]);
+    auto n = utility::str_to_num(argv[3]);
 
     Std_draw::set_canvas_size(800, 800);
     Std_draw::set_x_scale(0, 100);
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     points.reserve(n);
     int x;
     int y;
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         x = Std_random::uniform(100);
         y = Std_random::uniform(100);
         points[i] = Point_2d{x, y};
@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     Std_draw::set_pen_radius();
     Std_draw::set_pen_color(Std_draw::blue);
     std::sort(points.begin(), points.end(), Point_2d::polar_order());
-    for (int i{0}; i < n; ++i) {
+    for (auto i = 0; i < n; ++i) {
         p.draw_to(points[i]);
         Std_draw::show();
         Std_draw::pause(100);

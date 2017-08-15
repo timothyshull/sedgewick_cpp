@@ -13,7 +13,7 @@ Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& digraph, i
         }
     }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         _distance_to[v] = std::numeric_limits<double>::infinity();
     }
     _distance_to[source] = 0.0;
@@ -33,7 +33,7 @@ Stack<Directed_edge> Dijkstra_undirected_sp::path_to(int v)
 {
     if (!has_path_to(v)) { return nullptr; }
     Stack<Edge> path;
-    int x{v};
+    auto x = v;
     for (Edge e{_edge_to[v]}; e != nullptr; e = _edge_to[x]) {
         path.push(e);
         x = e.other(x);
@@ -43,7 +43,7 @@ Stack<Directed_edge> Dijkstra_undirected_sp::path_to(int v)
 
 void Dijkstra_undirected_sp::_relax(Directed_edge& e, int v)
 {
-    int w{e.other(v)};
+    auto w = e.other(v);
     if (_distance_to[w] > _distance_to[v] + e.weight()) {
         _distance_to[w] = _distance_to[v] + e.weight();
         _edge_to[w] = e;
@@ -65,7 +65,7 @@ bool Dijkstra_undirected_sp::_check(Edge_weighted_digraph& digraph, int source)
         std::cerr << "_distance_to[s] and _edge_to[s] inconsistent";
         return false;
     }
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (v == source) { continue; }
         if (_edge_to[v] == nullptr && _distance_to[v] != std::numeric_limits<double>::infinity()) {
             std::cerr << "_distance_to[] and _edge_to[] inconsistent";
@@ -73,7 +73,7 @@ bool Dijkstra_undirected_sp::_check(Edge_weighted_digraph& digraph, int source)
         }
     }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         for (auto e : digraph.adjacent(v)) {
             int w = e.other(v);
             if (_distance_to[v] + e.weight() < _distance_to[w]) {
@@ -83,7 +83,7 @@ bool Dijkstra_undirected_sp::_check(Edge_weighted_digraph& digraph, int source)
         }
     }
 
-    for (int w{0}; w < digraph.num_vertices(); ++w) {
+    for (auto w = 0; w < digraph.num_vertices(); ++w) {
         if (_edge_to[w] == nullptr) { continue; }
         Edge e = _edge_to[w];
         if (w != e.either() && w != e.other(e.either())) { return false; }

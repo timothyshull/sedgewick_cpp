@@ -14,7 +14,7 @@ public:
               _weights(graph.num_vertices(), graph.num_vertices())
     {
         std::queue<int> queue;
-        int count{0};
+        auto count = 0;
         _weights[source] = 0.0;
         queue.push(source);
         queue.push(graph.num_vertices());
@@ -30,7 +30,7 @@ public:
             }
             // typename Graph_type::adjIterator A(graph, v);
             for (auto e : graph.adjacent(v)) {
-                int w{e->destination()};
+                auto w = e->destination();
                 double p = _weights[v] + e->weight();
                 if (p < _weights[w]) {
                     _weights[w] = p;

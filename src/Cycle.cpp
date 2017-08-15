@@ -6,7 +6,7 @@ Cycle::Cycle(Graph& graph)
 {
     if (_has_self_loop(graph)) { throw utility::Illegal_argument_exception{"The graph passed to the Cycle object has a self loop"}; }
     if (_has_parallel_edges(graph)) { throw utility::Illegal_argument_exception{"The graph passed to the Cycle object has parallel edges"}; }
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         if (!_marked[v]) {
             _dfs(graph, -1, v);
         }
@@ -15,7 +15,7 @@ Cycle::Cycle(Graph& graph)
 
 bool Cycle::_has_self_loop(Graph& graph)
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         for (auto w : graph.adjacent(v)) {
             if (v == w) {
                 _cycle = Stack<int>{};
@@ -32,7 +32,7 @@ bool Cycle::_has_parallel_edges(Graph& graph)
 {
     _marked = std::deque<bool>(graph.num_vertices());
 
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
 
         for (auto w : graph.adjacent(v)) {
             if (_marked[w]) {
@@ -64,7 +64,7 @@ void Cycle::_dfs(Graph& graph, int u, int v)
             _dfs(graph, v, w);
         } else if (w != u) {
             _cycle = Stack<int>{};
-            for (int x{v}; x != w; x = _edge_to[x]) {
+            for (auto x = v; x != w; x = _edge_to[x]) {
                 _cycle.push(x);
             }
             _cycle.push(w);

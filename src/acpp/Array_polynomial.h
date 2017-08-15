@@ -24,10 +24,10 @@ public:
     friend Array_polynomial operator+(Array_polynomial& p, Array_polynomial& q)
     {
         Array_polynomial t{0, p._coll.size() > q._coll.size() ? p._coll.size() - 1 : q._coll.size() - 1};
-        for (int i{0}; i < p._coll.size(); ++i) {
+        for (auto i = 0; i < p._coll.size(); ++i) {
             t._coll[i] += p._coll[i];
         }
-        for (int j{0}; j < q._coll.size(); ++j) {
+        for (auto j = 0; j < q._coll.size(); ++j) {
             t._coll[j] += q._coll[j];
         }
         return t;
@@ -36,8 +36,8 @@ public:
     friend Array_polynomial operator*(Array_polynomial& p, Array_polynomial& q)
     {
         Array_polynomial t{0, (p._coll.size() - 1) + (q._coll.size() - 1)};
-        for (int i{0}; i < p._coll.size(); ++i) {
-            for (int j{0}; j < q._coll.size(); ++j) {
+        for (auto i = 0; i < p._coll.size(); ++i) {
+            for (auto j = 0; j < q._coll.size(); ++j) {
                 t._coll[i + j] += p._coll[i] * q._coll[j];
             }
         }

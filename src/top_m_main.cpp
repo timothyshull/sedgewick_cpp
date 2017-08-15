@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-    int m{utility::str_to_num(argv[1])};
+    auto m = utility::str_to_num(argv[1]);
     Min_pq<Transaction> pq{m + 1};
 
     while (!Std_in::is_empty()) {

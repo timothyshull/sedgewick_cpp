@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     // }
 
     int i;
-    int cnt{0};
+    auto cnt = 0;
     for (i = 0; i < size; ++i) {
         for (int j = i + 1; j < size; ++j) {
             if (distance(a[i], a[j]) < d) { ++cnt; }

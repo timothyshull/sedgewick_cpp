@@ -8,12 +8,12 @@ NFA::NFA(std::string& regexp)
           _graph{_size + 1}
 {
     Stack<int> ops;
-    for (int i{0}; i < _size; ++i) {
-        int lp{i};
+    for (auto i = 0; i < _size; ++i) {
+        auto lp = i;
         if (regexp[i] == '(' || regexp[i] == '|') {
             ops.push(i);
         } else if (regexp[i] == ')') {
-            int op_or{ops.pop()};
+            auto op_or = ops.pop();
             if (regexp[op_or] == '|') {
                 lp = ops.pop();
                 _graph.add_edge(lp, op_or + 1);
@@ -40,11 +40,11 @@ bool NFA::recognizes(std::string& txt)
 {
     Directed_dfs dfs{_graph, 0};
     std::vector<int> pc;
-    for (int v{0}; v < _graph.num_vertices(); ++v) {
+    for (auto v = 0; v < _graph.num_vertices(); ++v) {
         if (dfs.marked(v)) { pc.emplace_back(v); }
     }
 
-    for (int i{0}; i < txt.length(); ++i) {
+    for (auto i = 0; i < txt.length(); ++i) {
         if (txt[i] == '*' || txt[i] == '|' || txt[i] == '(' || txt[i] == ')') {
             throw utility::Illegal_argument_exception("text contains the metacharacter '" + std::to_string(txt[i]) + "'");
         }
@@ -59,7 +59,7 @@ bool NFA::recognizes(std::string& txt)
         }
         dfs = Directed_dfs{_graph, match};
         pc.clear();
-        for (int v{0}; v < _graph.num_vertices(); ++v) {
+        for (auto v = 0; v < _graph.num_vertices(); ++v) {
             if (dfs.marked(v)) { pc.emplace_back(v); }
         }
 

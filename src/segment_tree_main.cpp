@@ -15,9 +15,9 @@ int main(int argc, char* argv[])
 
         if (lines[0] == "exit") { break; }
 
-        int arg1{0};
-        int arg2{0};
-        int arg3{0};
+        auto arg1 = 0;
+        auto arg2 = 0;
+        auto arg3 = 0;
 
         if (lines.size() > 1) {
             arg1 = utility::str_to_num(lines[1].c_str());
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
         std::vector<int> vector;
         if (lines[0] == "set") {
             vector.reserve(lines.size() - 1);
-            for (int i{0}; i < lines.size() - 1; ++i) {
+            for (auto i = 0; i < lines.size() - 1; ++i) {
                 vector[i] = utility::str_to_num(lines[i + 1].c_str());
             }
             st = Segment_tree{vector};
@@ -46,13 +46,13 @@ int main(int argc, char* argv[])
             std::fill(vector.begin(), vector.end(), arg2);
             st = Segment_tree{vector};
 
-            for (int i{0}; i < st.size(); ++i) {
+            for (auto i = 0; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();
         } else if (lines[0] == "up") {
             st.update(arg1, arg2, arg3);
-            for (int i{0}; i < st.size(); ++i) {
+            for (auto i = 0; i < st.size(); ++i) {
                 Std_out::print(st.rsq(i, i) + " ");
             }
             Std_out::print_line();

@@ -8,13 +8,13 @@ Floyd_warshall::Floyd_warshall(Adj_matrix_edge_weighted_digraph& digraph)
 {
     int num_vertices = digraph.num_vertices();
 
-    for (int v{0}; v < num_vertices; ++v) {
-        for (int w{0}; w < num_vertices; ++w) {
+    for (auto v = 0; v < num_vertices; ++v) {
+        for (auto w = 0; w < num_vertices; ++w) {
             _distances[v][w] = std::numeric_limits<double>::infinity();
         }
     }
 
-    for (int v{0}; v < num_vertices; ++v) {
+    for (auto v = 0; v < num_vertices; ++v) {
         for (auto e : digraph.adjacent(v)) {
             _distances[e.from()][e.to()] = e.weight();
             _edge_to[e.from()][e.to()] = e;
@@ -25,10 +25,10 @@ Floyd_warshall::Floyd_warshall(Adj_matrix_edge_weighted_digraph& digraph)
         }
     }
 
-    for (int i{0}; i < num_vertices; ++i) {
-        for (int v{0}; v < num_vertices; ++v) {
+    for (auto i = 0; i < num_vertices; ++i) {
+        for (auto v = 0; v < num_vertices; ++v) {
             if (_edge_to[v][i] == nullptr) { continue; }
-            for (int w{0}; w < num_vertices; ++w) {
+            for (auto w = 0; w < num_vertices; ++w) {
                 if (_distances[v][w] > _distances[v][i] + _distances[i][w]) {
                     _distances[v][w] = _distances[v][i] + _distances[i][w];
                     _edge_to[v][w] = _edge_to[i][w];
@@ -46,11 +46,11 @@ Floyd_warshall::Floyd_warshall(Adj_matrix_edge_weighted_digraph& digraph)
 Stack<Directed_edge> Floyd_warshall::negative_cycle()
 {
     int num_vertices;
-    for (int v{0}; v < _distances.size(); ++v) {
+    for (auto v = 0; v < _distances.size(); ++v) {
         if (_distances[v][v] < 0.0) {
             num_vertices = static_cast<int>(_edge_to.size());
             Edge_weighted_digraph spt{num_vertices};
-            for (int w{0}; w < num_vertices; ++w) {
+            for (auto w = 0; w < num_vertices; ++w) {
                 if (_edge_to[v][w] != Directed_edge{}) {
                     spt.add_edge(_edge_to[v][w]);
                 }
@@ -87,10 +87,10 @@ std::vector<Directed_edge> Floyd_warshall::path(int source, int dest)
 bool Floyd_warshall::_check(Adj_matrix_edge_weighted_digraph& digraph)
 {
     if (!has_negative_cycle()) {
-        for (int v{0}; v < digraph.num_vertices(); ++v) {
+        for (auto v = 0; v < digraph.num_vertices(); ++v) {
             for (Directed_edge e : digraph.adjacent(v)) {
                 int w = e.to();
-                for (int i{0}; i < digraph.num_vertices(); ++i) {
+                for (auto i = 0; i < digraph.num_vertices(); ++i) {
                     if (_distances[i][w] > _distances[i][v] + e.weight()) {
                         std::cerr << "edge " << e << " is eligible";
                         return false;

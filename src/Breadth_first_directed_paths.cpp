@@ -6,7 +6,7 @@ Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& digraph, int
           _distance_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
           _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         _distance_to[v] = _infinity;
     }
     _bfs(digraph, source);
@@ -17,7 +17,7 @@ Breadth_first_directed_paths::Breadth_first_directed_paths(Digraph& digraph, std
           _distance_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices())),
           _edge_to(static_cast<std::vector<int>::size_type>(digraph.num_vertices()))
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         _distance_to[v] = _infinity;
     }
     _bfs(digraph, sources);

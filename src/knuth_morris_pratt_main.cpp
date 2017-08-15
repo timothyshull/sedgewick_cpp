@@ -8,13 +8,13 @@ int main(int argc, char* argv[])
 
     std::vector<char> pattern;
     pattern.reserve(pat.size());
-    for (int i{0}; i < pat.size(); ++i) {
+    for (auto i = 0; i < pat.size(); ++i) {
         pattern.emplace_back(pat[i]);
     }
 
     std::vector<char> text;
     text.reserve(txt.size());
-    for (int i{0}; i < txt.size(); ++i) {
+    for (auto i = 0; i < txt.size(); ++i) {
         pattern.emplace_back(txt[i]);
     }
 
@@ -27,13 +27,13 @@ int main(int argc, char* argv[])
     Std_out::print_line("text:    " + txt);
 
     Std_out::print("pattern: ");
-    for (int i{0}; i < offset1; ++i) {
+    for (auto i = 0; i < offset1; ++i) {
         Std_out::print(" ");
     }
     Std_out::print_line(pat);
 
     Std_out::print("pattern: ");
-    for (int i{0}; i < offset2; ++i) {
+    for (auto i = 0; i < offset2; ++i) {
         Std_out::print(" ");
     }
     Std_out::print_line(pat);

@@ -12,7 +12,7 @@ void insertion(std::vector<Item_type>& coll, int l, int r)
         if (coll[i] < coll[i - 1]) { std::swap(coll[i - 1], coll[i]); }
     }
     for (i = l + 2; i <= r; ++i) {
-        int j{i};
+        auto j = i;
         Item_type v = coll[i];
         while (v < coll[j - 1]) {
             coll[j] = coll[j - 1];

@@ -27,7 +27,7 @@ Collision_system::~Collision_system()
 void Collision_system::simulate(double limit)
 {
     _pq = Min_pq<Event>{};
-    for (int i{0}; i < _particles.size(); ++i) {
+    for (auto i = 0; i < _particles.size(); ++i) {
         _predict(_particles[i], limit);
     }
     Event tmp{0, nullptr, nullptr};
@@ -39,7 +39,7 @@ void Collision_system::simulate(double limit)
         Raw_particle_pointer a = e._a;
         Raw_particle_pointer b = e._b;
 
-        for (int i{0}; i < _particles.size(); ++i) {
+        for (auto i = 0; i < _particles.size(); ++i) {
             if (_particles[i]) {
                 _particles[i]->move(e._time - _time);
             }
@@ -59,7 +59,7 @@ void Collision_system::simulate(double limit)
 void Collision_system::_predict(Raw_particle_pointer a, double limit)
 {
     if (a == nullptr) { return; }
-    for (int i{0}; i < _particles.size(); ++i) {
+    for (auto i = 0; i < _particles.size(); ++i) {
         if (_particles[i]) {
             double dt{a->time_to_hit(*_particles[i])};
             if (_time + dt <= limit) {
@@ -84,7 +84,7 @@ void Collision_system::_predict(Raw_particle_pointer a, double limit)
 void Collision_system::_redraw(double limit)
 {
     Std_draw::clear();
-    for (int i{0}; i < _particles.size(); ++i) {
+    for (auto i = 0; i < _particles.size(); ++i) {
         if (_particles[i]) {
             _particles[i]->draw();
         }

@@ -80,8 +80,8 @@ template<typename Item_type>
 int height(Tree_node<Item_type>* root)
 {
     if (root == nullptr) { return -1; }
-    int u{height(root->left)};
-    int v{height(root->right)};
+    auto u = height(root->left);
+    auto v = height(root->right);
     if (u > v) { return u + 1; } else { return v + 1; }
 }
 
@@ -108,7 +108,7 @@ void show(Tree_node<Item_type>* node, int h)
 template<typename Item_type>
 Tree_node<Item_type>* max(std::vector<Item_type>& a, int l, int r)
 {
-    int m{(l + r) / 2};
+    auto m = (l + r) / 2;
     Tree_node<Item_type>* x{new Tree_node<Item_type>{a[m]}};
     if (l == r) { return x; }
     x->left = max(a, l, m);

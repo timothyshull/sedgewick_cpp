@@ -5,8 +5,8 @@
 template<typename Graph_type>
 static int cost(Graph_type& graph)
 {
-    int x{0};
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    auto x = 0;
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         // typename Graph_type::adjIterator A(graph, v);
         for (auto e : graph.adjacent(v)) {
             if (e->from(v) && e->cost_r_to(e->destination()) < C) {

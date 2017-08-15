@@ -27,7 +27,7 @@ int knapsack(int m)
     int i;
     int space;
     int max;
-    int max_i{0};
+    auto max_i = 0;
     int t;
     if (max_known[m] != unknown) { return max_known[m]; }
     for (i = 0, max = 0; i < n; ++i) {
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
     std::default_random_engine gen{rd()};
     std::uniform_int_distribution<> dis1(1, 1000);
     std::uniform_int_distribution<> dis2(1, static_cast<int>(max_weight)); // narrow_cast
-    for (int n{1}; n <= n1; ++n) {
+    for (auto n = 1; n <= n1; ++n) {
         profit[n] = dis1(gen);
         weight[n] = dis2(gen);
     }
@@ -70,8 +70,8 @@ int main(int argc, char* argv[])
 
     int option1;
     int option2;
-    for (int n{1}; n <= n1; ++n) {
-        for (int w{1}; w <= max_weight; ++w) {
+    for (auto n = 1; n <= n1; ++n) {
+        for (auto w = 1; w <= max_weight; ++w) {
             option1 = options[n - 1][w];
 
             option2 = std::numeric_limits<int>::min();
@@ -98,7 +98,7 @@ int main(int argc, char* argv[])
               << std::setw(8) << "profit"
               << std::setw(8) << "weight"
               << std::setw(8) << "take\n";
-    for (int n{1}; n <= n1; ++n) {
+    for (auto n = 1; n <= n1; ++n) {
         std::cout << std::setw(2) << n
                   << std::setw(8) << profit[n]
                   << std::setw(8) << weight[n]

@@ -165,7 +165,7 @@ public:
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
         pq = new int[maxN + 1];
         qp = new int[maxN + 1];                   // make this of length maxN??
-        for (int i{0}; i <= maxN; ++i) {
+        for (auto i = 0; i <= maxN; ++i) {
             qp[i] = -1;
         }
     }

@@ -23,7 +23,7 @@ int main()
 {
     Red_black_bst<std::string, int, String_comparator> st{};
 
-    int i{0};
+    auto i = 0;
     std::string key;
     while (!Std_in::is_empty()) {
         key = Std_in::read_string();

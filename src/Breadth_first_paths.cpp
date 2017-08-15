@@ -18,7 +18,7 @@ Breadth_first_paths::Breadth_first_paths(Graph& graph, std::vector<int>& sources
           _distance_to(static_cast<std::vector<int>::size_type>(graph.num_vertices())),
           _edge_to(static_cast<std::vector<int>::size_type>(graph.num_vertices()))
 {
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         _distance_to[v] = _infinity;
     }
     _bfs(graph, sources);
@@ -39,7 +39,7 @@ Stack<int> Breadth_first_paths::path_to(int v)
 void Breadth_first_paths::_bfs(Graph& graph, int source)
 {
     Queue<int> q;
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         _distance_to[v] = _infinity;
     }
     _distance_to[source] = 0;
@@ -87,7 +87,7 @@ bool Breadth_first_paths::_check(Graph& graph, int source)
         return false;
     }
 
-    for (int v{0}; v < graph.num_vertices(); ++v) {
+    for (auto v = 0; v < graph.num_vertices(); ++v) {
         for (int w : graph.adjacent(v)) {
             if (has_path_to(v) != has_path_to(w)) {
                 std::stringstream ss;
@@ -106,7 +106,7 @@ bool Breadth_first_paths::_check(Graph& graph, int source)
         }
     }
 
-    for (int w{0}; w < graph.num_vertices(); ++w) {
+    for (auto w = 0; w < graph.num_vertices(); ++w) {
         if (!has_path_to(w) || w == source) { continue; }
         int v = _edge_to[w];
         if (_distance_to[w] != _distance_to[v] + 1) {

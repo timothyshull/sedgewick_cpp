@@ -10,16 +10,16 @@ Gauss_jordan_elimination::Gauss_jordan_elimination(std::vector<std::vector<doubl
     for (auto v : _aux) {
         v.reserve((b.size() * 2) + 1);
     }
-    for (int i{0}; i < _size; ++i) {
-        for (int j{0}; j < _size; ++j) {
+    for (auto i = 0; i < _size; ++i) {
+        for (auto j = 0; j < _size; ++j) {
             _aux[i][j] = a[i][j];
         }
     }
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         _aux[i][_size + i] = 1.0;
     }
 
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         _aux[i][_size + _size] = b[i];
     }
 
@@ -32,7 +32,7 @@ std::vector<double> Gauss_jordan_elimination::primal()
 {
     std::vector<double> x;
     x.reserve(static_cast<std::vector<double>::size_type>(_size));
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         if (std::abs(_aux[i][i]) > _epsilon) {
             x[i] = _aux[i][_size + _size] / _aux[i][i];
         } else if (std::abs(_aux[i][_size + _size]) > _epsilon) {
@@ -46,9 +46,9 @@ std::vector<double> Gauss_jordan_elimination::dual()
 {
     std::vector<double> y;
     y.reserve(static_cast<std::vector<double>::size_type>(_size));
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         if ((std::abs(_aux[i][i]) <= _epsilon) && (std::abs(_aux[i][_size + _size]) > _epsilon)) {
-            for (int j{0}; j < _size; ++j) {
+            for (auto j = 0; j < _size; ++j) {
                 y[j] = _aux[i][_size + j];
             }
             return y;
@@ -64,11 +64,11 @@ bool Gauss_jordan_elimination::is_feasible()
 
 void Gauss_jordan_elimination::_solve()
 {
-    for (int p{0}; p < _size; ++p) {
+    for (auto p = 0; p < _size; ++p) {
         // show();
 
-        int max{p};
-        for (int i{p + 1}; i < _size; ++i) {
+        auto max = p;
+        for (auto i = p + 1; i < _size; ++i) {
             if (std::abs(_aux[i][p]) > std::abs(_aux[max][p])) {
                 max = i;
             }
@@ -96,18 +96,18 @@ void Gauss_jordan_elimination::_swap(int row1, int row2)
 
 void Gauss_jordan_elimination::_pivot(int p, int q)
 {
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         double alpha = _aux[i][q] / _aux[p][q];
-        for (int j{0}; j <= _size + _size; ++j) {
+        for (auto j = 0; j <= _size + _size; ++j) {
             if (i != p && j != q) { _aux[i][j] -= alpha * _aux[p][j]; }
         }
     }
 
-    for (int i{0}; i < _size; ++i) {
+    for (auto i = 0; i < _size; ++i) {
         if (i != p) { _aux[i][q] = 0.0; }
     }
 
-    for (int j{0}; j <= _size + _size; ++j) {
+    for (auto j = 0; j <= _size + _size; ++j) {
         if (j != q) { _aux[p][j] /= _aux[p][q]; }
     }
     _aux[p][q] = 1.0;
@@ -115,12 +115,12 @@ void Gauss_jordan_elimination::_pivot(int p, int q)
 
 void Gauss_jordan_elimination::_show()
 {
-    for (int i{0}; i < _size; ++i) {
-        for (int j{0}; j < _size; ++j) {
+    for (auto i = 0; i < _size; ++i) {
+        for (auto j = 0; j < _size; ++j) {
             Std_out::printf("%8.3f ", _aux[i][j]);
         }
         Std_out::printf("| ");
-        for (int j{_size}; j < _size + _size; ++j) {
+        for (auto j = _size; j < _size + _size; ++j) {
             Std_out::printf("%8.3f ", _aux[i][j]);
         }
         Std_out::printf("| %8.3f\n", _aux[i][_size + _size]);
@@ -179,13 +179,13 @@ void Gje_tests::test(std::string&& name, std::vector<std::vector<double>>& a, st
     if (gaussian.is_feasible()) {
         Std_out::print_line("Solution to Ax = b");
         std::vector<double> x = gaussian.primal();
-        for (int i{0}; i < x.size(); ++i) {
+        for (auto i = 0; i < x.size(); ++i) {
             Std_out::printf("%10.6f\n", x[i]);
         }
     } else {
         Std_out::print_line("Certificate of infeasibility");
         std::vector<double> y = gaussian.dual();
-        for (int j{0}; j < y.size(); ++j) {
+        for (auto j = 0; j < y.size(); ++j) {
             Std_out::printf("%10.6f\n", y[j]);
         }
     }

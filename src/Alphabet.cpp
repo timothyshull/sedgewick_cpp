@@ -12,7 +12,7 @@ Alphabet::Alphabet(std::string alpha)
 {
     std::deque<bool> unicode(static_cast<std::deque<bool>::size_type>(std::numeric_limits<char>::max()));
     char c;
-    for (int i{0}; i < alpha.length(); ++i) {
+    for (auto i = 0; i < alpha.length(); ++i) {
         c = alpha[i];
         if (unicode[c]) {
             std::stringstream ss;
@@ -22,7 +22,7 @@ Alphabet::Alphabet(std::string alpha)
         unicode[c] = true;
     }
 
-    for (int i{0}; i < _radix; ++i) {
+    for (auto i = 0; i < _radix; ++i) {
         _inverse[_alphabet[i]] = i;
     }
 }
@@ -40,8 +40,8 @@ Alphabet::Alphabet(int radix)
 
 int Alphabet::lg_r() const
 {
-    int lg_r{0};
-    for (int t{_radix - 1}; t >= 1; t /= 2) {
+    auto lg_r = 0;
+    for (auto t = _radix - 1; t >= 1; t /= 2) {
         ++lg_r;
     }
     return lg_r;
@@ -51,7 +51,7 @@ std::vector<int> Alphabet::to_indices(std::string s) const
 {
     std::vector<int> target;
     target.reserve(s.length());
-    for (int i{0}; i < s.length(); ++i) {
+    for (auto i = 0; i < s.length(); ++i) {
         target[i] = to_index(s[i]);
     }
     return target;

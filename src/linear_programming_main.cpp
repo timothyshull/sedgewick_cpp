@@ -19,26 +19,26 @@ int main(int argc, char* argv[])
     Lp_tests::test4();
 
     Std_out::print_line("----- test random ---------------");
-    int m{utility::str_to_num(argv[1])};
-    int n{utility::str_to_num(argv[2])};
+    auto m = utility::str_to_num(argv[1]);
+    auto n = utility::str_to_num(argv[2]);
     std::vector<double> c;
     c.reserve(static_cast<std::vector<double>::size_type>(n));
     std::vector<double> b;
     b.reserve(static_cast<std::vector<double>::size_type>(m));
     std::vector<std::vector<double>> a;
     a.reserve(static_cast<std::vector<std::vector<double>>::size_type>(m));
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         a[i] = std::vector<double>{};
         a[i].reserve(static_cast<std::vector<double>::size_type>(n));
     }
-    for (int j{0}; j < n; ++j) {
+    for (auto j = 0; j < n; ++j) {
         c[j] = Std_random::uniform(1000);
     }
-    for (int i{0}; i < m; ++i) {
+    for (auto i = 0; i < m; ++i) {
         b[i] = Std_random::uniform(1000);
     }
-    for (int i{0}; i < m; ++i) {
-        for (int j{0}; j < n; ++j) {
+    for (auto i = 0; i < m; ++i) {
+        for (auto j = 0; j < n; ++j) {
             a[i][j] = Std_random::uniform(100);
         }
     }

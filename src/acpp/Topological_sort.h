@@ -16,7 +16,7 @@ public:
               _postorder(dag.V(), -1),
               _postorder_inverse(dag.V(), -1)
     {
-        for (int v{0}; v < dag.num_vertices(); ++v) {
+        for (auto v = 0; v < dag.num_vertices(); ++v) {
             if (_preorder[v] == -1) { _topological_sort_r(v); }
         }
     }
@@ -36,7 +36,7 @@ private:
     void _topological_sort_r(int v)
     {
         _preorder[v] = _count++;
-        for (int w{0}; w < _dag.num_vertices(); ++w) {
+        for (auto w = 0; w < _dag.num_vertices(); ++w) {
             if (_dag.edge(w, v)) {
                 if (_preorder[w] == -1) { _topological_sort_r(w); }
             }

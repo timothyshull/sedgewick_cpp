@@ -7,7 +7,7 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& digraph)
 {
     if (digraph.num_edges() == 0) { return; }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) != digraph.indegree(v)) {
             return;
         }
@@ -15,11 +15,11 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& digraph)
 
     std::vector<typename std::vector<int>::iterator> adj;
     adj.reserve(static_cast<std::vector<int>::size_type>(digraph.num_vertices()));
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         adj[v] = digraph.adjacent(v).begin();
     }
 
-    int s{_non_isolated_vertex(digraph)};
+    auto s = _non_isolated_vertex(digraph);
     Stack<int> stack;
     stack.push(s);
 
@@ -43,7 +43,7 @@ Directed_eulerian_cycle::Directed_eulerian_cycle(Digraph& digraph)
 
 int Directed_eulerian_cycle::_non_isolated_vertex(Digraph& digraph)
 {
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) > 0) {
             return v;
         }
@@ -55,22 +55,22 @@ bool Directed_eulerian_cycle::_has_eulerian_cycle(Digraph& digraph)
 {
     if (digraph.num_edges() == 0) { return false; }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (digraph.outdegree(v) != digraph.indegree(v)) {
             return false;
         }
     }
 
     Graph graph{digraph.num_vertices()};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         for (auto w : digraph.adjacent(v)) {
             graph.add_edge(v, w);
         }
     }
 
-    int s{_non_isolated_vertex(digraph)};
+    auto s = _non_isolated_vertex(digraph);
     Breadth_first_paths bfs{graph, s};
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (graph.degree(v) > 0 && !bfs.has_path_to(v)) {
             return false;
         }

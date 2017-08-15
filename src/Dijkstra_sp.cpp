@@ -11,7 +11,7 @@ Dijkstra_sp::Dijkstra_sp(Edge_weighted_digraph& digraph, int source)
         }
     }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         _distance_to[v] = std::numeric_limits<double>::infinity();
     }
     _distance_to[source] = 0.0;
@@ -40,8 +40,8 @@ Stack<Directed_edge> Dijkstra_sp::path_to(int vertex)
 
 void Dijkstra_sp::_relax(Directed_edge& edge)
 {
-    int v{edge.from()};
-    int w{edge.to()};
+    auto v = edge.from();
+    auto w = edge.to();
     if (_distance_to[w] > _distance_to[v] + edge.weight()) {
         _distance_to[w] = _distance_to[v] + edge.weight();
         _edge_to[w] = edge;
@@ -63,7 +63,7 @@ bool Dijkstra_sp::_check(Edge_weighted_digraph& digraph, int source)
         std::cerr << "_distance_to[s] and _edge_to[s] inconsistent";
         return false;
     }
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         if (v == source) { continue; }
         if (_edge_to[v] == nullptr && _distance_to[v] != std::numeric_limits<double>::infinity()) {
             std::cerr << "_distance_to[] and _edge_to[] inconsistent";
@@ -71,7 +71,7 @@ bool Dijkstra_sp::_check(Edge_weighted_digraph& digraph, int source)
         }
     }
 
-    for (int v{0}; v < digraph.num_vertices(); ++v) {
+    for (auto v = 0; v < digraph.num_vertices(); ++v) {
         for (auto e : digraph.adjacent(v)) {
             int w = e.to();
             if (_distance_to[v] + e.weight() < _distance_to[w]) {
@@ -81,10 +81,10 @@ bool Dijkstra_sp::_check(Edge_weighted_digraph& digraph, int source)
         }
     }
 
-    for (int w{0}; w < digraph.num_vertices(); ++w) {
+    for (auto w = 0; w < digraph.num_vertices(); ++w) {
         if (_edge_to[w] == nullptr) { continue; }
         Directed_edge e{_edge_to[w]};
-        int v{e.from()};
+        auto v = e.from();
         if (w != e.to()) { return false; }
         if (_distance_to[v] + e.weight() != _distance_to[w]) {
             std::cerr << "edge " << e << " on shortest path not tight";

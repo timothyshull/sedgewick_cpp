@@ -8,7 +8,7 @@ Linear_programming::Linear_programming(std::vector<std::vector<double>>& a, std:
           _aux(static_cast<std::vector<std::vector<double>>::size_type>(_m + 1)),
           _basis(static_cast<std::vector<int>::size_type>(_m))
 {
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         if (b[i] < 0) { throw utility::Illegal_argument_exception{"RHS must be nonnegative"}; }
     }
 
@@ -16,22 +16,22 @@ Linear_programming::Linear_programming(std::vector<std::vector<double>>& a, std:
         v.reserve(static_cast<std::vector<double>::size_type>(_n + _m + 1));
     }
 
-    for (int i{0}; i < _m; ++i) {
-        for (int j{0}; j < _n; ++j) {
+    for (auto i = 0; i < _m; ++i) {
+        for (auto j = 0; j < _n; ++j) {
             _aux[i][j] = a[i][j];
         }
     }
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         _aux[i][_n + i] = 1.0;
     }
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         _aux[_m][j] = c[j];
     }
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         _aux[i][_m + _n] = b[i];
     }
 
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         _basis[i] = _n + i;
     }
 
@@ -60,7 +60,7 @@ void Linear_programming::solve()
 
 int Linear_programming::bland()
 {
-    for (int j{0}; j < _m + _n; ++j) {
+    for (auto j = 0; j < _m + _n; ++j) {
         if (_aux[_m][j] > 0) { return j; }
     }
     return -1;
@@ -68,8 +68,8 @@ int Linear_programming::bland()
 
 int Linear_programming::dantzig()
 {
-    int q{0};
-    for (int j{1}; j < _m + _n; ++j) {
+    auto q = 0;
+    for (auto j = 1; j < _m + _n; ++j) {
         if (_aux[_m][j] > _aux[_m][q]) { q = j; }
     }
 
@@ -81,7 +81,7 @@ int Linear_programming::dantzig()
 int Linear_programming::min_ratio_rule(int q)
 {
     int p = -1;
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         if (_aux[i][q] <= _epsilon) { continue; }
         else if (p == -1) { p = i; }
         else if ((_aux[i][_m + _n] / _aux[i][q]) < (_aux[p][_m + _n] / _aux[p][q])) { p = i; }
@@ -91,17 +91,17 @@ int Linear_programming::min_ratio_rule(int q)
 
 void Linear_programming::pivot(int p, int q)
 {
-    for (int i{0}; i <= _m; ++i) {
-        for (int j{0}; j <= _m + _n; ++j) {
+    for (auto i = 0; i <= _m; ++i) {
+        for (auto j = 0; j <= _m + _n; ++j) {
             if (i != p && j != q) { _aux[i][j] -= _aux[p][j] * _aux[i][q] / _aux[p][q]; }
         }
     }
 
-    for (int i{0}; i <= _m; ++i) {
+    for (auto i = 0; i <= _m; ++i) {
         if (i != p) { _aux[i][q] = 0.0; }
     }
 
-    for (int j{0}; j <= _m + _n; ++j) {
+    for (auto j = 0; j <= _m + _n; ++j) {
         if (j != q) { _aux[p][j] /= _aux[p][q]; }
     }
     _aux[p][q] = 1.0;
@@ -116,7 +116,7 @@ std::vector<double> Linear_programming::primal()
 {
     std::vector<double> x;
     x.reserve(static_cast<std::vector<double>::size_type>(_n));
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         if (_basis[i] < _n) { x[_basis[i]] = _aux[i][_m + _n]; }
     }
     return x;
@@ -126,7 +126,7 @@ std::vector<double> Linear_programming::dual()
 {
     std::vector<double> y;
     y.reserve(static_cast<std::vector<double>::size_type>(_m));
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         y[i] = -_aux[_m][_n + i];
     }
     return y;
@@ -136,16 +136,16 @@ bool Linear_programming::_is_primal_feasible(std::vector<std::vector<double>>& a
 {
     std::vector<double> x{primal()};
 
-    for (int j{0}; j < x.size(); ++j) {
+    for (auto j = 0; j < x.size(); ++j) {
         if (x[j] < 0.0) {
             Std_out::print_line("x[" + std::to_string(j) + "] = " + std::to_string(x[j]) + " is negative");
             return false;
         }
     }
 
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         double sum = 0.0;
-        for (int j{0}; j < _n; ++j) {
+        for (auto j = 0; j < _n; ++j) {
             sum += a[i][j] * x[j];
         }
         if (sum > b[i] + _epsilon) {
@@ -161,7 +161,7 @@ bool Linear_programming::_is_dual_feasible(std::vector<std::vector<double>>& A, 
 {
     std::vector<double> y = dual();
 
-    for (int i{0}; i < y.size(); ++i) {
+    for (auto i = 0; i < y.size(); ++i) {
         if (y[i] < 0.0) {
             Std_out::print_line("y[" + std::to_string(i) + "] = " + std::to_string(y[i]) + " is negative");
             return false;
@@ -169,9 +169,9 @@ bool Linear_programming::_is_dual_feasible(std::vector<std::vector<double>>& A, 
     }
 
     double sum;
-    for (int j{0}; j < _n; ++j) {
+    for (auto j = 0; j < _n; ++j) {
         sum = 0.0;
-        for (int i{0}; i < _m; ++i) {
+        for (auto i = 0; i < _m; ++i) {
             sum += A[i][j] * y[i];
         }
         if (sum < c[j] - _epsilon) {
@@ -190,11 +190,11 @@ bool Linear_programming::_is_optimal(std::vector<double>& b, std::vector<double>
     double val{value()};
 
     double value1{0.0};
-    for (int j{0}; j < x.size(); ++j) {
+    for (auto j = 0; j < x.size(); ++j) {
         value1 += c[j] * x[j];
     }
     double value2{0.0};
-    for (int i{0}; i < y.size(); ++i) {
+    for (auto i = 0; i < y.size(); ++i) {
         value2 += y[i] * b[i];
     }
     if (std::abs(val - value1) > _epsilon || std::abs(val - value2) > _epsilon) {
@@ -214,15 +214,15 @@ void Linear_programming::_show()
 {
     Std_out::print_line("m = " + _m);
     Std_out::print_line("_size = " + _n);
-    for (int i{0}; i <= _m; ++i) {
-        for (int j{0}; j <= _m + _n; ++j) {
+    for (auto i = 0; i <= _m; ++i) {
+        for (auto j = 0; j <= _m + _n; ++j) {
             Std_out::printf("%7.2f ", _aux[i][j]);
             // Std_out::printf("%10.7f ", a[i][j]);
         }
         Std_out::print_line();
     }
     Std_out::print_line("value = " + std::to_string(value()));
-    for (int i{0}; i < _m; ++i) {
+    for (auto i = 0; i < _m; ++i) {
         if (_basis[i] < _n) { Std_out::print_line("x_" + std::to_string(_basis[i]) + " = " + std::to_string(_aux[i][_m + _n])); }
     }
     Std_out::print_line();
@@ -233,11 +233,11 @@ void Lp_tests::test(std::vector<std::vector<double>>& A, std::vector<double>& b,
     Linear_programming lp{A, b, c};
     Std_out::print_line("value = " + std::to_string(lp.value()));
     std::vector<double> x{lp.primal()};
-    for (int i{0}; i < x.size(); ++i) {
+    for (auto i = 0; i < x.size(); ++i) {
         Std_out::print_line("x[" + std::to_string(i) + "] = " + std::to_string(x[i]));
     }
     std::vector<double> y{lp.dual()};
-    for (int j{0}; j < y.size(); ++j) {
+    for (auto j = 0; j < y.size(); ++j) {
         Std_out::print_line("y[" + std::to_string(j) + "] = " + std::to_string(y[j]));
     }
 }

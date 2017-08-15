@@ -186,7 +186,7 @@ public:
 
     int size()
     {
-        int result{0};
+        auto result = 0;
         int tmp;
         for (Raw_node_pointer node{_head}; node != nullptr; node = node->_sibling) {
             if (node->_order > 30) {
@@ -349,7 +349,7 @@ private:
         x->_key = y->_key;
         y->_key = temp_key;
 
-        int temp_int{x->_index};
+        auto temp_int = x->_index;
         x->_index = y->_index;
         y->_index = temp_int;
         _nodes[x->_index] = x;

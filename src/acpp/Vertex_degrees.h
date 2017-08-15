@@ -9,7 +9,7 @@ class Vertex_degrees {
 public:
     Vertex_degrees(const Graph_type& graph) : _graph{graph}, _degree(graph.num_vertices(), 0)
     {
-        for (int v{0}; v < graph.num_vertices(); ++v) {
+        for (auto v = 0; v < graph.num_vertices(); ++v) {
             // typename Graph_type::adjIterator A(graph, v);
             for (auto w : graph.adjacent(v)) {
                 _degree[v]++;

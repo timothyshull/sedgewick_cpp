@@ -12,12 +12,12 @@ int main(int argc, char* argv[])
     std::default_random_engine gen{rd()};
     std::uniform_int_distribution<> dis{0, std::numeric_limits<int>::max()};
 
-    int size{std::stoi(argv[1])};
+    auto size = std::stoi(argv[1]);
     std::vector<Queue<int>> queues(max_size);
 
     int in;
     int out;
-    for (int i{0}; i < size; ++i, std::cout << "\n") {
+    for (auto i = 0; i < size; ++i, std::cout << "\n") {
         in = dis(gen) % max_size;
         out = dis(gen) % max_size;
         queues[in].put(i);

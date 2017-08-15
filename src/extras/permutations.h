@@ -47,7 +47,7 @@ void heap_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
     }
     for (c = 1; c <= n; ++c) {
         heap_r(v, n - 1, visit);
-        int k{n % 2 ? 1 : c};
+        auto k = n % 2 ? 1 : c;
         std::swap(k, n);
     }
 }
@@ -63,7 +63,7 @@ void heap_i(std::vector<Item_type>& v, int n, Visitor_type& visit)
 
     visit(v);
     int k;
-    int i{1};
+    auto i = 1;
     while (i <= n) {
         if (c[i] < i) {
             k = n % 2 ? 1 : c;
@@ -105,7 +105,7 @@ void heap_i(std::vector<Item_type>& v, int n, Visitor_type& visit)
 //    }
 //    for (c = 1; c <= n; c++) {
 //        improved_heap_r(v, n - 1, visit);
-//        int k{n % 2 ? 1 : c};
+//        auto k = n % 2 ? 1 : c;
 //        std::swap(k, n);
 //    }
 //}
@@ -215,7 +215,7 @@ private:
             std::cout << "\n";
             return;
         }
-        for (int i{0}; i < n; ++i) {
+        for (auto i = 0; i < n; ++i) {
             std::swap(a[i], a[n - 1]);
             perm2(a, n - 1);
             std::swap(a[i], a[n - 1]);

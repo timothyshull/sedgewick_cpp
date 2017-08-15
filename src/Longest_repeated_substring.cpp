@@ -6,7 +6,7 @@ std::string Longest_repeated_substring::lrs(std::string& text){
     auto n = text.length();
     Suffix_array sa{text};
     std::string lrs{""};
-    for (int i{1}; i < n; ++i) {
+    for (auto i = 1; i < n; ++i) {
         int length = sa.lcp(i);
         if (length > lrs.length()) {
             // lrs = sa.select(i).substr(0, length);

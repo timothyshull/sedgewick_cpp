@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     auto size = str.size();
     // Stack<int> save{size};
     Stack<int> save;
-    for (int i{0}; i < size; ++i) {
+    for (auto i = 0; i < size; ++i) {
         if (str[i] == '+') {
             save.push(save.pop() + save.pop());
         }

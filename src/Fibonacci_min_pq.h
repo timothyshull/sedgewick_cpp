@@ -233,7 +233,7 @@ private:
     {
         _table.clear();
         Node_raw_pointer x{_head};
-        int max_order{0};
+        auto max_order = 0;
         _min = _head;
         Node_raw_pointer y{nullptr};
         Node_raw_pointer z{nullptr};

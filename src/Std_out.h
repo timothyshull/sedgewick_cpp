@@ -4,80 +4,25 @@
 #include <ostream>
 #include <vector>
 #include <iostream>
+#include <fmt/format.h>
+#include <fmt/printf.h>
 
 namespace Std_out {
-    static std::ostream& std_out = std::cout;
+    // alias to format for print and printf
+    using fmt::printf;
+    using fmt::print;
 
-    void close();
-
-    template<typename... Args>
-    void printf(const char* format, const Args& ... argv)
+    template<typename ...Args>
+    void print_line(Args &&...args)
     {
-        int sz = std::snprintf(nullptr, 0, format, argv...);
-        std::vector<char> buf(sz + 1);
-        std::snprintf(&buf[0], buf.size(), format, argv...);
-        std::cout << std::string(buf.begin(), buf.end() - 1) << "\n";
+        fmt::print(std::forward<Args...>(args)...);
+        fmt::print("\n");
     }
 
-    // these should be template specializations
-    void print_line(bool b);
-
-    void print_line(char c);
-
-    void print_line(double d);
-
-    void print_line(float f);
-
-    void print_line(int i);
-
-    void print_line(long l);
-
-    void print_line(short s);
-
-    template<typename T>
-    void print_line(const T& t)
+    inline void print_line()
     {
-        std_out << t;
-        std_out << "\n";
+        fmt::print("\n");
     }
-
-    template<typename T>
-    void print_line(T&& t)
-    {
-        std_out << t;
-        std_out << "\n";
-    }
-
-    void print_line();
-
-    void print(bool b);
-
-    void print(char c);
-
-    void print(double d);
-
-    void print(float f);
-
-    void print(int i);
-
-    void print(long l);
-
-    void print(short s);
-
-    template<typename T>
-    void print(const T& t)
-    {
-        std_out << t;
-    }
-
-    template<typename T>
-    void print(T&& t)
-    {
-        std_out << t;
-    }
-
-    void print();
-
 };
 
 #endif // STD_OUT_H

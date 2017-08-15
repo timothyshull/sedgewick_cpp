@@ -6,7 +6,7 @@ Recursive_prefix_expression::Recursive_prefix_expression(std::string& input)
 
 int Recursive_prefix_expression::eval()
 {
-    int x{0};
+    auto x = 0;
 
     while (_index < _input.size() && _input[_index] == ' ') { ++_index; }
 
