@@ -2,41 +2,44 @@ project(collected_sources)
 
 # for Qt
 # Use Qt CMAKE macros instead
-#set(CMAKE_INCLUDE_CURRENT_DIR ON)
-#set(CMAKE_AUTOMOC ON)
-#set(CMAKE_AUTOUIC ON)
-#set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
-#set(QT_PATH "/usr/local/opt/qt5")
-#
-#set(QT_LIB_DIR ${QT_PATH}/lib/cmake)
-#
-#set(Qt5Core_DIR "${QT_LIB_DIR}/Qt5Core")
-#set(Qt5Gui_DIR "${QT_LIB_DIR}/Qt5Gui")
-#set(Qt5Multimedia_DIR "${QT_LIB_DIR}/Qt5Multimedia")
-#set(Qt5Widgets_DIR "${QT_LIB_DIR}/Qt5Widgets")
-#
-#set(QT_LIBRARIES
-#        Qt5::Core
-#        Qt5::Gui
-#        Qt5::Multimedia
-#        Qt5::Widgets)
-#
-#set(QT_LIBRARIES_REQUIRED
-#        Qt5Core
-#        Qt5Gui
-#        Qt5Multimedia
-#        Qt5Widgets)
-#
-#foreach (QT_LIBRARIES_REQUIRED ${QT_LIBRARIES_REQUIRED})
-#    find_package(${QT_LIBRARIES_REQUIRED} REQUIRED)
-#endforeach ()
+set(QT_PATH "/usr/local/opt/qt5")
+
+set(QT_LIB_DIR ${QT_PATH}/lib/cmake)
+
+set(Qt5Core_DIR "${QT_LIB_DIR}/Qt5Core")
+set(Qt5Gui_DIR "${QT_LIB_DIR}/Qt5Gui")
+set(Qt5Multimedia_DIR "${QT_LIB_DIR}/Qt5Multimedia")
+set(Qt5Widgets_DIR "${QT_LIB_DIR}/Qt5Widgets")
+
+# TODO: have to add OpenGL and more
+set(QT_LIBRARIES
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Multimedia
+        Qt5::Widgets
+        # Qt5::OpenGL
+        )
+
+set(QT_LIBRARIES_REQUIRED
+        Qt5Core
+        Qt5Gui
+        Qt5Multimedia
+        Qt5Widgets)
+
+foreach (QT_LIBRARIES_REQUIRED ${QT_LIBRARIES_REQUIRED})
+    find_package(${QT_LIBRARIES_REQUIRED} REQUIRED)
+endforeach ()
 
 #find_package(Boost REQUIRED COMPONENTS system)
 find_package(Boost COMPONENTS filesystem system)
 
-#include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} /usr/local/Cellar/GSL/master/include)
-include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
+include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} /usr/local/Cellar/GSL/master/include)
+# include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
 
 add_library(std_out INTERFACE)
 add_library(std_io STATIC Std_in.cpp)

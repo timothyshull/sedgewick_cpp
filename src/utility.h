@@ -12,10 +12,69 @@
 #include <vector>
 #include <sstream>
 
-#include <fmt/format.h>
+#include <fmt/printf.h>
 
 namespace utility {
     const static int max_num_str_len = 25;
+
+    class Bad_lexical_cast : public std::bad_cast {
+    public:
+        explicit Bad_lexical_cast(std::string const &s) : _what{s} {}
+
+        explicit Bad_lexical_cast(char *const s) : _what{s} {}
+
+    private:
+        std::string _what;
+    };
+
+    class No_such_element_exception : public std::range_error {
+    public:
+        explicit No_such_element_exception(std::string const &s) : std::range_error{s} {}
+
+        explicit No_such_element_exception(char const *s) : std::range_error{s} {}
+    };
+
+    class Illegal_argument_exception : public std::invalid_argument {
+    public:
+        inline explicit Illegal_argument_exception(std::string const &s) : std::invalid_argument{s} {}
+
+        inline explicit Illegal_argument_exception(char const *s) : std::invalid_argument{s} {}
+    };
+
+    class Index_out_of_bounds_exception : public std::range_error {
+    public:
+        explicit Index_out_of_bounds_exception(std::string const &s) : std::range_error{s} {}
+
+        explicit Index_out_of_bounds_exception(char const *s) : std::range_error{s} {}
+    };
+
+    class Runtime_exception : public std::runtime_error {
+    public:
+        explicit Runtime_exception(std::string const &s) : std::runtime_error{s} {}
+
+        explicit Runtime_exception(char const *s) : std::runtime_error{s} {}
+    };
+
+    class Unsupported_operation_exception : public std::runtime_error {
+    public:
+        explicit Unsupported_operation_exception(std::string const &s) : std::runtime_error{s} {}
+
+        explicit Unsupported_operation_exception(char const *s) : std::runtime_error{s} {}
+    };
+
+    class Arithmetic_exception : public std::runtime_error {
+    public:
+        explicit Arithmetic_exception(std::string const &s) : std::runtime_error{s} {}
+
+        explicit Arithmetic_exception(char const *s) : std::runtime_error{s} {}
+    };
+
+    class Null_pointer_exception : public std::runtime_error {
+    public:
+        explicit Null_pointer_exception(std::string const &s) : std::runtime_error{s} {}
+
+        explicit Null_pointer_exception(char const *s) : std::runtime_error{s} {}
+    };
 
     // not portable
     // TODO: prefer reinterpret_cast over union
@@ -41,7 +100,7 @@ namespace utility {
         auto result = Target{};
 
         if (!(interpreter << arg) || !(interpreter >> result) || !(interpreter >> std::ws).eof()) {
-            throw Bad_lexical_cast{};
+            throw Bad_lexical_cast{"Unable to perform lexical cast"};
         }
 
         return result;
@@ -54,7 +113,7 @@ namespace utility {
             return lexical_cast<T>(str);
         }
         catch (const Bad_lexical_cast &e) {
-            fmt::fprintf(stderr, "An error occurred while parsing the number: %s, %s\n", str, e.what());
+            fmt::print(stderr, "An error occurred while parsing the number: %s, %s\n", str, e.what());
             std::exit(-1);
         }
     }
@@ -109,62 +168,6 @@ namespace utility {
     }
 
     std::vector<char> str_to_char_vector(std::string const &str);
-
-    class Bad_lexical_cast : public std::exception {
-    public:
-        explicit Bad_lexical_cast(std::string const &s) : std::range_error{s} {}
-
-        explicit Bad_lexical_cast(char *const s) : std::range_error{s} {}
-    };
-
-    class No_such_element_exception : public std::range_error {
-    public:
-        explicit No_such_element_exception(std::string const &s) : std::range_error{s} {}
-
-        explicit No_such_element_exception(char const *s) : std::range_error{s} {}
-    };
-
-    class Illegal_argument_exception : public std::invalid_argument {
-    public:
-        inline explicit Illegal_argument_exception(std::string const &s) : std::invalid_argument{s} {}
-
-        inline explicit Illegal_argument_exception(char const *s) : std::invalid_argument{s} {}
-    };
-
-    class Index_out_of_bounds_exception : public std::range_error {
-    public:
-        explicit Index_out_of_bounds_exception(std::string const &s) : std::range_error{s} {}
-
-        explicit Index_out_of_bounds_exception(char const *s) : std::range_error{s} {}
-    };
-
-    class Runtime_exception : public std::runtime_error {
-    public:
-        explicit Runtime_exception(std::string const &s) : std::runtime_error{s} {}
-
-        explicit Runtime_exception(char const *s) : std::runtime_error{s} {}
-    };
-
-    class Unsupported_operation_exception : public std::runtime_error {
-    public:
-        explicit Unsupported_operation_exception(std::string const &s) : std::runtime_error{s} {}
-
-        explicit Unsupported_operation_exception(char const *s) : std::runtime_error{s} {}
-    };
-
-    class Arithmetic_exception : public std::runtime_error {
-    public:
-        explicit Arithmetic_exception(std::string const &s) : std::runtime_error{s} {}
-
-        explicit Arithmetic_exception(char const *s) : std::runtime_error{s} {}
-    };
-
-    class Null_pointer_exception : public std::runtime_error {
-    public:
-        explicit Null_pointer_exception(std::string const &s) : std::runtime_error{s} {}
-
-        explicit Null_pointer_exception(char const *s) : std::runtime_error{s} {}
-    };
 
 }
 

@@ -21,7 +21,7 @@ private:
     std::vector<Flow_edge> _edge_to;
     double _value;
 
-    void _validate(int vertex, int num_vertices);
+    void _validate(int vertex, std::size_t num_vertices);
 
     bool _has_augmenting_path(Flow_network& network, int source, int dest);
 
@@ -29,7 +29,7 @@ private:
 
     bool _is_feasible(Flow_network& network, int source, int dest);
 
-    bool _check(Flow_network& G, int s, int t);
+    bool _check(Flow_network& flow_network, int s, int t);
 };
 
 #endif // FORD_FULKERSON_H

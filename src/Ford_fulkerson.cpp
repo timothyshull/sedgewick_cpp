@@ -1,6 +1,6 @@
 #include "Ford_fulkerson.h"
 #include "Queue.h"
-#include "utility.h"
+#include "Std_out.h"
 
 Ford_fulkerson::Ford_fulkerson(Flow_network& network, int source, int dest)
 {
@@ -14,9 +14,8 @@ Ford_fulkerson::Ford_fulkerson(Flow_network& network, int source, int dest)
     }
 
     _value = _excess(network, dest);
-    double bottle;
     while (_has_augmenting_path(network, source, dest)) {
-        bottle = std::numeric_limits<double>::infinity();
+        auto bottle = std::numeric_limits<double>::infinity();
         for (auto v = dest; v != source; v = _edge_to[v].other(v)) {
             bottle = std::min(bottle, _edge_to[v].residual_capacity_to(v));
         }
@@ -37,30 +36,29 @@ bool Ford_fulkerson::in_cut(int vertex)
     return _marked[vertex];
 }
 
-void Ford_fulkerson::_validate(int vertex, int num_vertices)
+void Ford_fulkerson::_validate(int vertex, std::size_t num_vertices)
 {
     if (vertex < 0 || vertex >= num_vertices) {
-        std::string s{"vertex " + std::to_string(vertex) + " is not between 0 and " + std::to_string(num_vertices - 1)};
-        throw utility::Index_out_of_bounds_exception{s};
+        throw utility::Index_out_of_bounds_exception{
+                "vertex " + std::to_string(vertex) + " is not between 0 and " + std::to_string(num_vertices - 1)
+        };
     }
 }
 
 bool Ford_fulkerson::_has_augmenting_path(Flow_network& network, int source, int dest)
 {
     _edge_to = std::vector<Flow_edge>{};
-    _edge_to.reserve(static_cast<std::vector<Flow_edge>::size_type>(network.num_vertices()));
-    _marked = std::deque<bool>(static_cast<std::deque<bool>::size_type>(network.num_vertices()));
+    _edge_to.reserve(network.num_vertices());
+    _marked = std::deque<bool>(network.num_vertices());
 
-    Queue<int> queue;
+    auto queue = Queue<int>{};
     queue.enqueue(source);
     _marked[source] = true;
-    int v;
-    int w;
     while (!queue.is_empty() && !_marked[dest]) {
-        v = queue.dequeue();
+        auto v = queue.dequeue();
 
         for (auto e : network.adjacent(v)) {
-            w = e.other(v);
+            auto w = e.other(v);
 
             if (e.residual_capacity_to(w) > 0) {
                 if (!_marked[w]) {
@@ -79,8 +77,11 @@ double Ford_fulkerson::_excess(Flow_network& network, int vertex)
 {
     double excess{0.0};
     for (auto e : network.adjacent(vertex)) {
-        if (vertex == e.from()) { excess -= e.flow(); }
-        else { excess += e.flow(); }
+        if (vertex == e.from()) {
+            excess -= e.flow();
+        } else {
+            excess += e.flow();
+        }
     }
     return excess;
 }
@@ -90,7 +91,7 @@ bool Ford_fulkerson::_is_feasible(Flow_network& network, int source, int dest)
     for (auto v = 0; v < network.num_vertices(); ++v) {
         for (auto e : network.adjacent(v)) {
             if (e.flow() < -floating_point_epsilon || e.flow() > e.capacity() + floating_point_epsilon) {
-                std::cerr << "Edge does not satisfy capacity constraints: " << e;
+                Std_out::print(stderr, "Edge does not satisfy capacity constraints: {}", e);
                 return false;
             }
         }
@@ -108,7 +109,7 @@ bool Ford_fulkerson::_is_feasible(Flow_network& network, int source, int dest)
     }
     for (auto v = 0; v < network.num_vertices(); ++v) {
         if (v == source || v == dest) { continue; }
-        else if (std::abs(_excess(network, v)) > floating_point_epsilon) {
+        if (std::abs(_excess(network, v)) > floating_point_epsilon) {
             std::cerr << "Net flow out of " << v << " doesn't equal zero";
             return false;
         }
@@ -116,9 +117,9 @@ bool Ford_fulkerson::_is_feasible(Flow_network& network, int source, int dest)
     return true;
 }
 
-bool Ford_fulkerson::_check(Flow_network& G, int s, int t)
+bool Ford_fulkerson::_check(Flow_network& flow_network, int s, int t)
 {
-    if (!_is_feasible(G, s, t)) {
+    if (!_is_feasible(flow_network, s, t)) {
         std::cerr << "Flow is infeasible";
         return false;
     }
@@ -132,9 +133,9 @@ bool Ford_fulkerson::_check(Flow_network& G, int s, int t)
         return false;
     }
 
-    double mincut_value{0.0};
-    for (auto v = 0; v < G.num_vertices(); ++v) {
-        for (auto e : G.adjacent(v)) {
+    auto mincut_value = 0.0;
+    for (auto v = 0; v < flow_network.num_vertices(); ++v) {
+        for (auto e : flow_network.adjacent(v)) {
             if ((v == e.from()) && in_cut(e.from()) && !in_cut(e.to())) {
                 mincut_value += e.capacity();
             }

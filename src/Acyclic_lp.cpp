@@ -7,7 +7,9 @@ Acyclic_lp::Acyclic_lp(Edge_weighted_digraph &g, int source)
     _distance_to[source] = 0.0;
 
     auto topological = Topological{g};
-    if (!topological.has_order()) { throw utility::Illegal_argument_exception{"Digraph is not acyclic."}; }
+    if (!topological.has_order()) {
+        throw utility::Illegal_argument_exception{"Digraph is not acyclic."};
+    }
     for (auto v : topological.order()) {
         for (auto const &e : g.adjacent(v)) {
             _relax(e);
