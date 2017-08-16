@@ -2,77 +2,41 @@
 #define INSERTION_X_H
 
 #include <vector>
+#include <gsl/gsl_util>
+
+#include "sort_utility.h"
 #include "utility.h"
-#include "Std_out.h"
 
 namespace Insertion_sort_x {
-    template<typename T>
-    static void exch(std::vector<T>& a, int i, int j);
+    using namespace Sort_utility;
 
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a);
-
-    template<typename T>
-    static bool less(T v, T w);
-
-    template<typename T>
-    static void sort(std::vector<T>& a)
+    template<typename Item_t>
+    static void sort(std::vector<Item_t> &coll)
     {
-        int n = a.size();
+        auto n = gsl::narrow_cast<int>(coll.size());
 
-        int exchanges = 0;
+        auto exchanges = 0;
         for (auto i = n - 1; i > 0; i--) {
-            if (less(a[i], a[i - 1])) {
-                exch<T>(a, i, i - 1);
+            if (coll[i] < coll[i - 1]) {
+                std::swap(coll[i], coll[i - 1]);
                 ++exchanges;
             }
         }
-        if (exchanges == 0) { return; }
+        if (exchanges == 0) {
+            return;
+        }
 
         for (auto i = 2; i < n; ++i) {
-            T v = a[i];
-            int j = i;
-            while (less(v, a[j - 1])) {
-                a[j] = a[j - 1];
-                j--;
+            auto v = coll[i];
+            auto j = i;
+            while (v < coll[j - 1]) {
+                coll[j] = coll[j - 1];
+                --j;
             }
-            a[j] = v;
+            coll[j] = v;
         }
 
-        utility::alg_assert(is_sorted(a), "Insertion_sort_x is_sorted _check failed");
-    }
-
-    template<typename T>
-    static bool less(T v, T w)
-    {
-        return v < w;
-    }
-
-    template<typename T>
-    static void exch(std::vector<T>& a, int i, int j)
-    {
-        T swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a)
-    {
-        for (auto i = 1; i < a.size(); ++i) {
-            if (less(a[i], a[i - 1])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    template<typename T>
-    static void show(std::vector<T>& a)
-    {
-        for (auto i = 0; i < a.size(); ++i) {
-            Std_out::print_line(a[i]);
-        }
+        utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "Insertion_sort_x is_sorted check failed");
     }
 };
 

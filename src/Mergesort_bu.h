@@ -1,70 +1,50 @@
 #ifndef MERGESORT_BU_H
 #define MERGESORT_BU_H
 
+#include <vector>
+#include <gsl/gsl_util>
+
+#include "sort_utility.h"
 #include "utility.h"
-#include "Std_out.h"
 
 namespace Mergesort_bu {
-    template<typename T>
-    static void merge(std::vector<T>& a, std::vector<T>& aux, int lo, int mid, int hi)
+    using namespace Sort_utility;
+
+    template<typename Item_t>
+    static void merge(std::vector<Item_t> &coll, std::vector<Item_t> &aux, int lo, int mid, int hi)
     {
         for (auto k = lo; k <= hi; ++k) {
-            aux[k] = a[k];
+            aux[k] = coll[k];
         }
 
-        int i = lo, j = mid + 1;
+        auto i = lo;
+        auto j = mid + 1;
         for (auto k = lo; k <= hi; ++k) {
-            if (i > mid) {
-                a[k] = aux[j++];
-            } else if (j > hi) {
-                a[k] = aux[i++];
-            } else if (less(aux[j], aux[i])) {
-                a[k] = aux[j++];
+            if (mid < i) {
+                coll[k] = aux[j++];
+            } else if (hi < j) {
+                coll[k] = aux[i++];
+            } else if (aux[j] < aux[i]) {
+                coll[k] = aux[j++];
             } else {
-                a[k] = aux[i++];
+                coll[k] = aux[i++];
             }
         }
     }
 
-    template<typename T>
-    static void sort(std::vector<T>& a)
+    template<typename Item_t>
+    static void sort(std::vector<Item_t> &coll)
     {
-        int n = a.size();
-        std::vector<T> aux{};
-        aux.reserve(a.size());
+        auto n = gsl::narrow_cast<int>(coll.size());
+        auto aux = std::vector<Item_t>(static_cast<typename std::vector<Item_t>::size_type>(n));
         for (auto len = 1; len < n; len *= 2) {
             for (auto lo = 0; lo < n - len; lo += len + len) {
-                int mid = lo + len - 1;
-                int hi = std::min<T>(lo + len + len - 1, n - 1);
-                merge(a, aux, lo, mid, hi);
+                auto mid = lo + len - 1;
+                auto hi = std::min(lo + len + len - 1, n - 1);
+                merge(coll, aux, lo, mid, hi);
             }
         }
-        utility::alg_assert(is_sorted(a), "Mergesort_bu is_sorted _check failed");
-    }
-
-    template<typename T>
-    static bool less(T& v, T& w)
-    {
-        return v < w;
-    }
-
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a)
-    {
-        for (auto i = 1; i < a.size(); ++i) {
-            if (less(a[i], a[i - 1])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    template<typename T>
-    static void show(std::vector<T>& a)
-    {
-        for (auto i = 0; i < a.size(); ++i) {
-            Std_out::print_line(a[i]);
-        }
+        utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "Mergesort_bu is_sorted check failed");
     }
 };
 
