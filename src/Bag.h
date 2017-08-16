@@ -6,22 +6,22 @@
 
 #include "utility.h"
 
-template<typename Item_type>
+template<typename Item_t>
 class Bag;
 
-template<typename Item_type>
+template<typename Item_t>
 class Bag_node;
 
-template<typename Item_type>
+template<typename Item_t>
 class Bag_iterator;
 
-template<typename Item_type>
+template<typename Item_t>
 class Bag_node {
 public:
-    using Node = Bag_node<Item_type>;
+    using Node = Bag_node<Item_t>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item = Item_type;
+    using Item = Item_t;
 
 private:
     Item _item;
@@ -32,7 +32,7 @@ public:
 
     ~Bag_node() { if (_next != nullptr) { delete _next; }}
 
-    explicit Bag_node(Item_type item) : _item{item}, _next{nullptr} {}
+    explicit Bag_node(Item_t item) : _item{item}, _next{nullptr} {}
 
     Bag_node(Item item, Raw_node_pointer next) : _item{item}, _next{next} {}
 
@@ -64,7 +64,7 @@ public:
     using iterator_category = std::forward_iterator_tag;
     using Node = Bag_node<T>;
     using Raw_node_pointer = Node*;
-    using Item_type = T;
+    using Item_t = T;
 
 private:
     Raw_node_pointer _current;
@@ -86,7 +86,7 @@ public:
 
     inline bool has_next() const noexcept { return _current->_next != nullptr; }
 
-    Item_type next()
+    Item_t next()
     {
         if (!has_next()) { throw utility::No_such_element_exception{"next() called on Bag_iterator at end"}; }
         auto item = _current->_item;
@@ -94,9 +94,9 @@ public:
         return item;
     }
 
-    inline Item_type& operator*() const { return _current->_item; }
+    inline Item_t& operator*() const { return _current->_item; }
 
-    inline Item_type* operator->() const { return std::addressof(_current->_item); }
+    inline Item_t* operator->() const { return std::addressof(_current->_item); }
 
     Bag_iterator& operator++()
     {
@@ -126,7 +126,7 @@ public:
     using Node = Bag_node<T>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item_type = T;
+    using Item_t = T;
     using Iterator_type = Bag_iterator<T>;
 
 private:
@@ -150,19 +150,19 @@ public:
 
     inline int size() const noexcept { return _size; }
 
-    void add(const Item_type& item)
+    void add(const Item_t& item)
     {
         auto old_first = _first;
-        _first = new Bag_node<Item_type>;
+        _first = new Bag_node<Item_t>;
         _first->_item = item;
         _first->_next = old_first;
         ++_size;
     }
 
-    void add(Item_type&& item)
+    void add(Item_t&& item)
     {
         auto old_first = _first;
-        _first = new Bag_node<Item_type>;
+        _first = new Bag_node<Item_t>;
         _first->_item = item;
         _first->_next = old_first;
         ++_size;
@@ -179,16 +179,16 @@ public:
         return ss.str();
     }
 
-    inline Iterator_type begin() const { return Bag_iterator<Item_type>{_first}; }
+    inline Iterator_type begin() const { return Bag_iterator<Item_t>{_first}; }
 
-    inline Iterator_type end() const { return Bag_iterator<Item_type>{nullptr}; }
+    inline Iterator_type end() const { return Bag_iterator<Item_t>{nullptr}; }
 
-    inline const Iterator_type cbegin() const { return Bag_iterator<Item_type>{_first}; }
+    inline const Iterator_type cbegin() const { return Bag_iterator<Item_t>{_first}; }
 
-    inline const Iterator_type cend() const { return Bag_iterator<Item_type>{nullptr}; }
+    inline const Iterator_type cend() const { return Bag_iterator<Item_t>{nullptr}; }
 };
 
-template<typename Item_type>
-inline std::ostream& operator<<(std::ostream& os, const Bag<Item_type>& out) { return os << out.to_string(); }
+template<typename Item_t>
+inline std::ostream& operator<<(std::ostream& os, const Bag<Item_t>& out) { return os << out.to_string(); }
 
 #endif // BAG_H

@@ -11,8 +11,8 @@
 
 // Compute all perms of a global array by exchanging each
 // element to the end, then recursively permuting the others
-template<typename Item_type, typename Visitor_type>
-void perms_backtracking(std::vector<Item_type>& v, int n, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void perms_backtracking(std::vector<Item_t>& v, int n, Visitor_type& visit)
 {
     int c;
     if (n == 1) { visit(v); }
@@ -24,8 +24,8 @@ void perms_backtracking(std::vector<Item_type>& v, int n, Visitor_type& visit)
 }
 
 // assumes index table v
-template<typename Item_type, typename Visitor_type>
-void perms_single_exch_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void perms_single_exch_r(std::vector<Item_t>& v, int n, Visitor_type& visit)
 {
     int c;
     if (n == 1) { visit(v); }
@@ -36,8 +36,8 @@ void perms_single_exch_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
 }
 
 // Heap's algorithm -> does not need index table
-template<typename Item_type, typename Visitor_type>
-void heap_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void heap_r(std::vector<Item_t>& v, int n, Visitor_type& visit)
 {
     int c;
     // or if (test(n)) { return; }
@@ -52,13 +52,13 @@ void heap_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
     }
 }
 
-template<typename Item_type, typename Visitor_type>
-void heap_i(std::vector<Item_type>& v, int n, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void heap_i(std::vector<Item_t>& v, int n, Visitor_type& visit)
 {
 
-    std::vector<Item_type> c(v.size(), 1);
+    std::vector<Item_t> c(v.size(), 1);
 
-    std::vector<Item_type> p(v.size());
+    std::vector<Item_t> p(v.size());
     std::iota(p.begin(), p.end(), 1);
 
     visit(v);
@@ -77,8 +77,8 @@ void heap_i(std::vector<Item_type>& v, int n, Visitor_type& visit)
     }
 }
 
-//template<typename Item_type, typename Visitor_type>
-//void improved_heap_r(std::vector<Item_type>& v, int n, Visitor_type& visit)
+//template<typename Item_t, typename Visitor_type>
+//void improved_heap_r(std::vector<Item_t>& v, int n, Visitor_type& visit)
 //{
 //    int c;
 //    if (n == 3) {
@@ -111,18 +111,18 @@ void heap_i(std::vector<Item_type>& v, int n, Visitor_type& visit)
 //}
 
 // from fxt -> www.jjj.de/fxt
-template<typename Item_type>
+template<typename Item_t>
 class Perm_heap
 // Gray code for permutations.
 // Algorithm following
 //   B. R. Heap: "Permutations by interchanges" (1963)
 {
 public:
-    std::vector<Item_type> _digits;  // mixed radix digits with radix = [2, 3, 4, ..., n-1, (sentinel=-1)]
-    std::vector<Item_type> _permutation;  // permutation
+    std::vector<Item_t> _digits;  // mixed radix digits with radix = [2, 3, 4, ..., n-1, (sentinel=-1)]
+    std::vector<Item_t> _permutation;  // permutation
     std::size_t _size;   // permutations of n elements
-    Item_type _sw1;
-    Item_type _sw2;   // indices of swapped elements
+    Item_t _sw1;
+    Item_t _sw2;   // indices of swapped elements
 
 private:  // have pointer data
     Perm_heap(const Perm_heap&) = delete;
@@ -143,7 +143,7 @@ public:
 
     ~Perm_heap() = default;
 
-    const std::vector<Item_type> data() const { return _permutation; }
+    const std::vector<Item_t> data() const { return _permutation; }
 
     bool next()
     {
@@ -167,7 +167,7 @@ public:
         return true;
     }
 
-    void get_swap(Item_type& s1, Item_type& s2) const
+    void get_swap(Item_t& s1, Item_t& s2) const
     {
         s1 = _sw1;
         s2 = _sw2;

@@ -4,25 +4,25 @@
 #include <stack>
 #include <iostream>
 
-template<typename Item_type>
-class Stack : public std::deque<Item_type> {
+template<typename Item_t>
+class Stack : public std::deque<Item_t> {
 public:
     Stack(std::size_t capacity) : std::deque{capacity} {}
 
     // inline bool is_full() const { return size() == max_size(); }
 
-    inline void push(Item_type& item) { push_back(item); }
+    inline void push(Item_t& item) { push_back(item); }
 
-    inline void push(Item_type&& item) { push_back(item); }
+    inline void push(Item_t&& item) { push_back(item); }
 
-    Item_type pop() { return pop_back(); }
+    Item_t pop() { return pop_back(); }
 };
 
-template<typename Item_type>
-inline void show_movement(Item_type disk, std::string& from, std::string& to) { std::cout << "Moving the disk " << disk << " from " << from << " to " << to << "\n"; }
+template<typename Item_t>
+inline void show_movement(Item_t disk, std::string& from, std::string& to) { std::cout << "Moving the disk " << disk << " from " << from << " to " << to << "\n"; }
 
-template<typename Item_type>
-void shift(Stack<Item_type>& src, Stack<Item_type>& dest, std::string& s_label, std::string& d_label)
+template<typename Item_t>
+void shift(Stack<Item_t>& src, Stack<Item_t>& dest, std::string& s_label, std::string& d_label)
 {
     if (src.empty()) {
         show_movement(dest.back(), d_label, s_label);
@@ -39,8 +39,8 @@ void shift(Stack<Item_type>& src, Stack<Item_type>& dest, std::string& s_label, 
     }
 }
 
-template<typename Item_type>
-void iterative_towers_of_hanoi(std::size_t num_disks, Stack<Item_type>& src, Stack<Item_type>& aux, Stack<Item_type>& dest)
+template<typename Item_t>
+void iterative_towers_of_hanoi(std::size_t num_disks, Stack<Item_t>& src, Stack<Item_t>& aux, Stack<Item_t>& dest)
 {
     int i;
     int moves;

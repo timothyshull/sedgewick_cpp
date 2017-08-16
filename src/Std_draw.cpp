@@ -3,6 +3,9 @@
 
 #include "Std_draw.h"
 
+QApplication *Std_draw::app_ptr = nullptr;
+
+Window *Std_draw::window_ptr = nullptr;
 //void Std_draw::set_canvas_size()
 //{
 //
@@ -13,17 +16,21 @@
 //
 //}
 
-int Std_draw::init(int argc, char *argv[])
+void Std_draw::init(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-
-    QSurfaceFormat fmt;
+    static QApplication app{argc, argv};
+    Std_draw::app_ptr = &app;
+    auto fmt = QSurfaceFormat{};
     fmt.setSamples(4);
     QSurfaceFormat::setDefaultFormat(fmt);
+    static Window window{};
+    Std_draw::window_ptr = &window;
+}
 
-    Window window;
-    window.show();
-    return app.exec();
+int Std_draw::exec()
+{
+    Std_draw::window_ptr->show();
+    return Std_draw::app_ptr->exec();
 }
 
 //JMenuBar Std_draw::create_menu_bar()

@@ -5,8 +5,8 @@
 
 
 // TODO: check this
-template<typename Item_type>
-void fix_down(std::vector<Item_type>& coll, int k, int n) // aka sink
+template<typename Item_t>
+void fix_down(std::vector<Item_t>& coll, int k, int n) // aka sink
 {
     while (2 * k <= n) {
         int j = 2 * k;
@@ -17,12 +17,12 @@ void fix_down(std::vector<Item_type>& coll, int k, int n) // aka sink
     }
 }
 
-template<typename Item_type>
-void heapsort(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+void heapsort(std::vector<Item_t>& coll, int l, int r)
 {
     int k;
     auto n = r - l + 1;
-    // Item_type* pq = coll + l - 1;
+    // Item_t* pq = coll + l - 1;
     for (k = n / 2; k >= 1; k--) {
         fix_down(coll, k, n);
     }

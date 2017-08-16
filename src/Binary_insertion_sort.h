@@ -2,71 +2,39 @@
 #define BINARY_INSERTION_H
 
 #include <vector>
-#include <gsl/gsl_util>
 
+#include "sort_utility.h"
 #include "utility.h"
-#include "Std_out.h"
+
 
 namespace Binary_insertion_sort {
-    template<typename T>
-    static inline bool less(T& v, T& w);
+    using namespace Sort_utility;
 
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a);
-
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a, int lo, int hi);
-
-    template<typename T>
-    static void sort(std::vector<T>& a)
+    template<typename Item_t>
+    static void sort(std::vector<Item_t> &coll)
     {
-        auto n = a.size();
-        for (auto i = 1; i < n; ++i) {
-            T v = a[i];
-            int lo = 0, hi = i;
+        for (auto i = 1; i < coll.size(); ++i) {
+            auto v = coll[i];
+            auto lo = 0;
+            auto hi = i;
             while (lo < hi) {
-                int mid = lo + (hi - lo) / 2;
-                if (less(v, a[mid])) { hi = mid; }
-                else { lo = mid + 1; }
+                auto mid = (hi + lo) / 2;
+                if (v < coll[mid]) {
+                    hi = mid;
+                } else {
+                    lo = mid + 1;
+                }
             }
 
             for (auto j = i; j > lo; --j) {
-                a[j] = a[j - 1];
+                coll[j] = coll[j - 1];
             }
-            a[lo] = v;
+            coll[lo] = v;
         }
-        utility::alg_assert(is_sorted(a), "The Binary_insertion_sort is_sorted _check failed");
-    }
-
-    template<typename T>
-    static inline bool less(T& v, T& w)
-    {
-        return v < w;
-    }
-
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a)
-    {
-        return is_sorted(a, 0, gsl::narrow<int, typename std::vector<T>::size_type>(a.size()) - 1);
-    }
-
-    template<typename T>
-    static bool is_sorted(std::vector<T>& a, int lo, int hi)
-    {
-        for (auto i = lo + 1; i <= hi; ++i) {
-            if (less(a[i], a[i - 1])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    template<typename T>
-    static void show(std::vector<T>& a)
-    {
-        for (auto t : a) {
-            Std_out::print_line(t);
-        }
+        utility::alg_assert(
+                std::is_sorted(coll.begin(), coll.end()),
+                "The Binary_insertion_sort is_sorted check failed"
+        );
     }
 };
 

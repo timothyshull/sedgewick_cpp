@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <vector>
 
-template<typename Item_type>
+template<typename Item_t>
 class Array_stack {
 public:
     Array_stack() = default;
@@ -22,14 +22,14 @@ public:
 
     inline bool empty() const noexcept { return _stack.empty(); }
 
-    inline void push(Item_type& item) { _stack.push_back(item); }
+    inline void push(Item_t& item) { _stack.push_back(item); }
 
-    inline void push(Item_type&& item) { _stack.push_back(item); }
+    inline void push(Item_t&& item) { _stack.push_back(item); }
 
-    inline Item_type pop() { return _stack.pop_back(); }
+    inline Item_t pop() { return _stack.pop_back(); }
 
 private:
-    std::vector<Item_type> _stack;
+    std::vector<Item_t> _stack;
 };
 
 #endif // ARRAY_STACK_H

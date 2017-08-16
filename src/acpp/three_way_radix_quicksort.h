@@ -10,8 +10,8 @@
 static const int qsort_cutoff = 10;
 
 // TODO: check this -> is it assuming C-style strings
-template<typename Item_type>
-void quicksort_x(std::vector<Item_type>& coll, int l, int r, int d)
+template<typename Item_t>
+void quicksort_x(std::vector<Item_t>& coll, int l, int r, int d)
 {
     auto ch = [d](long a) { return digit(a, d); };
 

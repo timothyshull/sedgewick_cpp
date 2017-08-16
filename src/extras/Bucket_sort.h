@@ -15,18 +15,18 @@
 
 #include <vector>
 
-template<typename Item_type>
-void bucket_sort(std::vector<Item_type>& coll)
+template<typename Item_t>
+void bucket_sort(std::vector<Item_t>& coll)
 {
     if (coll.size() == 0) { return; }
 
     auto result = std::minmax_element(coll.begin(), coll.end());
-    Item_type min{*result.first};
-    Item_type max{*result.second};
+    Item_t min{*result.first};
+    Item_t max{*result.second};
 
     if (max == min) { return; }
 
-    std::vector<std::vector<Item_type>> buckets(((max - min) / coll.size() + 1), std::vector<Item_type>{});
+    std::vector<std::vector<Item_t>> buckets(((max - min) / coll.size() + 1), std::vector<Item_t>{});
 
     for (auto e : coll) { buckets[(e - min) / buckets.size()].emplace_back(e); }
 
@@ -38,20 +38,20 @@ void bucket_sort(std::vector<Item_type>& coll)
 }
 
 // does extra work if bucket_size is greater than max - min
-template<typename Item_type>
-void bucket_sort(std::vector<Item_type>& coll, int bucket_size)
+template<typename Item_t>
+void bucket_sort(std::vector<Item_t>& coll, int bucket_size)
 {
     if (coll.size() == 0 || bucket_size <= 0) { return; }
 
     auto result = std::minmax_element(coll.begin(), coll.end());
-    Item_type min{*result.first};
-    Item_type max{*result.second};
+    Item_t min{*result.first};
+    Item_t max{*result.second};
 
     if (max == min) { return; }
 
-    std::vector<std::vector<Item_type>> buckets(
-            static_cast<typename std::vector<std::vector<Item_type>>::size_type>((max - min) / bucket_size + 1),
-            std::vector<Item_type>{}
+    std::vector<std::vector<Item_t>> buckets(
+            static_cast<typename std::vector<std::vector<Item_t>>::size_type>((max - min) / bucket_size + 1),
+            std::vector<Item_t>{}
     );
 
     for (auto e : coll) { buckets[(e - min) / bucket_size].emplace_back(e); }

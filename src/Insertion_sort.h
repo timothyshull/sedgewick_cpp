@@ -2,111 +2,55 @@
 #define INSERTION_H
 
 #include <vector>
+#include <gsl/gsl_util>
+
+#include "sort_utility.h"
 #include "utility.h"
-#include "Std_out.h"
 
 namespace Insertion_sort {
-    static void exch(std::vector<int> a, int i, int j);
+    using namespace Sort_utility;
 
-    template<typename T, typename Comparator = std::less<T>>
-    static bool less(T& v, T& w);
-
-    template<typename T>
-    static void exch(std::vector<T>& a, int i, int j);
-
-    template<typename T, typename Comparator = std::less<T>>
-    static bool is_sorted(std::vector<T>& a);
-
-    template<typename T, typename Comparator = std::less<T>>
-    static bool is_sorted(std::vector<T>& a, int lo, int hi);
-
-    template<typename T, typename Comparator = std::less<T>>
-    static void sort(std::vector<T>& a)
+    template<typename Item_t, typename Comparator_t = std::less<Item_t>>
+    static void sort(std::vector<Item_t> &coll)
     {
-        int n = a.size();
+        auto comp = Comparator_t{};
+        auto n = gsl::narrow_cast<int>(coll.size());
         for (auto i = 0; i < n; ++i) {
-            for (auto j = i; j > 0 && less<T, Comparator>(a[j], a[j - 1]); j--) {
-                exch(a, j, j - 1);
+            for (auto j = i; 0 < j && comp(coll[j], coll[j - 1]); --j) {
+                std::swap(coll[j], coll[j - 1]);
             }
-            // utility::alg_assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
         }
-        utility::alg_assert(is_sorted<T, Comparator>(a), "The Insertion_sort is_sorted _check failed");
+        utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "The Insertion_sort is_sorted check failed");
     }
 
-    template<typename T, typename Comparator>
-    static void sort(std::vector<T>& a, int lo, int hi)
+    template<typename T, typename Comparator_t>
+    static void sort(std::vector<T> &coll, int lo, int hi)
     {
+        auto comp = Comparator_t{};
         for (auto i = lo; i <= hi; ++i) {
-            for (auto j = i; j > lo && less<T, Comparator>(a[j], a[j - 1]); j--) {
-                exch(a, j, j - 1);
+            for (auto j = i; lo < j && comp(coll[j], coll[j - 1]); --j) {
+                std::swap(coll[j], coll[j - 1]);
             }
-            // utility::alg_assert(is_sorted<T, Comparator>(a, 0, i), "The Insertion_sort is_sorted _check failed before completing");
         }
-        utility::alg_assert(is_sorted<T, Comparator>(a, lo, hi), "The Insertion_sort is_sorted _check failed");
+        utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "The Insertion_sort is_sorted check failed");
     }
 
     template<typename T>
-    static std::vector<int> index_sort(std::vector<T>& a)
+    static std::vector<int> index_sort(std::vector<T> &coll)
     {
-        int n = a.size();
-        std::vector<int> index{};
-        index.reserve(n);
+        auto n = gsl::narrow_cast<int>(coll.size());
+        auto index = std::vector<int>(coll.size());
         for (auto i = 0; i < n; ++i) {
             index[i] = i;
         }
 
         for (auto i = 0; i < n; ++i) {
-            for (auto j = i; j > 0 && less(a[index[j]], a[index[j - 1]]); j--) {
-                exch(index, j, j - 1);
+            for (auto j = i; 0 < j && coll[index[j]] < coll[index[j - 1]]; --j) {
+                std::swap(index[j], index[j - 1]);
             }
         }
 
         return index;
-    }
-
-    template<typename T>
-    static bool less(T& v, T& w)
-    {
-        return v < w;
-    }
-
-    template<typename T, typename Comparator>
-    static bool less(T& v, T& w)
-    {
-        return Comparator{}(v, w);
-    }
-
-    template<typename T>
-    static void exch(std::vector<T>& a, int i, int j)
-    {
-        T swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    template<typename T, typename Comparator>
-    static bool is_sorted(std::vector<T>& a)
-    {
-        return is_sorted<T, Comparator>(a, 0, a.size() - 1);
-    }
-
-    template<typename T, typename Comparator>
-    static bool is_sorted(std::vector<T>& a, int lo, int hi)
-    {
-        for (auto i = lo + 1; i <= hi; ++i) {
-            if (less<T, Comparator>(a[i], a[i - 1])) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    template<typename T>
-    static void show(std::vector<T>& a)
-    {
-        for (auto t : a) {
-            Std_out::print_line(t);
-        }
     }
 };
 

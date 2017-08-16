@@ -4,14 +4,14 @@
 #include <vector>
 
 // from http://opendatastructures.org/ods-cpp/11_2_Counting_Sort_Radix_So.html
-template<typename Item_type>
-void counting_sort(std::vector<Item_type>& coll, int k)
+template<typename Item_t>
+void counting_sort(std::vector<Item_t>& coll, int k)
 {
-    std::vector<Item_type> aux1(k, 0);
+    std::vector<Item_t> aux1(k, 0);
     for (auto e : coll) { ++aux1[e]; }
     for (auto i = 1; i < k; i++) { aux1[i] += aux1[i - 1]; }
 
-    std::vector<Item_type> aux2(coll.size());
+    std::vector<Item_t> aux2(coll.size());
     for (auto i = static_cast<int>(coll.size() - 1); i >= 0; --i) {
         aux2[--aux1[coll[i]]] = coll[i];
     }

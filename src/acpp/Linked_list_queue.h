@@ -2,27 +2,27 @@
 #ifndef LINKED_LIST_QUEUE_H
 #define LINKED_LIST_QUEUE_H
 
-template<typename Item_type>
+template<typename Item_t>
 struct Queue_node;
 
-template<typename Item_type>
+template<typename Item_t>
 struct Queue_node {
-    using Raw_node_pointer = Queue_node<Item_type>*;
-    Item_type item;
+    using Raw_node_pointer = Queue_node<Item_t>*;
+    Item_t item;
     Raw_node_pointer next;
 
-    Queue_node(Item_type& x) : item{x}, next{nullptr} {}
+    Queue_node(Item_t& x) : item{x}, next{nullptr} {}
 
     Queue_node() = default;
 
     ~Queue_node() = default;
 };
 
-template<typename Item_type>
+template<typename Item_t>
 class Queue {
 public:
-    using Raw_node_pointer = Queue_node<Item_type>*;
-    using Owning_node_pointer = Queue_node<Item_type>*;
+    using Raw_node_pointer = Queue_node<Item_t>*;
+    using Owning_node_pointer = Queue_node<Item_t>*;
 
     Queue() : _head{nullptr} {}
 
@@ -38,27 +38,27 @@ public:
 
     bool empty() const { return _head == nullptr; }
 
-    void put(Item_type& x)
+    void put(Item_t& x)
     {
         Raw_node_pointer t{_tail};
-        _tail = new Queue_node<Item_type>{x};
+        _tail = new Queue_node<Item_t>{x};
         if (_head == nullptr) {
             _head = _tail;
         } else { t->next = _tail; }
     }
 
-    void put(Item_type&& x)
+    void put(Item_t&& x)
     {
         Raw_node_pointer t{_tail};
-        _tail = new Queue_node<Item_type>{x};
+        _tail = new Queue_node<Item_t>{x};
         if (_head == nullptr) {
             _head = _tail;
         } else { t->next = _tail; }
     }
 
-    Item_type get()
+    Item_t get()
     {
-        Item_type v = _head->item;
+        Item_t v = _head->item;
         Raw_node_pointer t = _head->next;
         delete _head;
         _head = t;

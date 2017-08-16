@@ -26,15 +26,15 @@ namespace MSD_radix_sort {
 
     bool less(std::string& v, std::string& w, int d);
 
-    template<typename Item_type>
-    void sort(std::vector<Item_type>& a)
+    template<typename Item_t>
+    void sort(std::vector<Item_t>& a)
     {
-        std::vector<Item_type> aux(a.size());
-        sort(a, 0, static_cast<Item_type>(a.size() - 1), 0, aux); // narrow_cast
+        std::vector<Item_t> aux(a.size());
+        sort(a, 0, static_cast<Item_t>(a.size() - 1), 0, aux); // narrow_cast
     }
 
-    template<typename Item_type>
-    void sort(std::vector<Item_type>& a, int lo, int hi, int d, std::vector<int>& aux)
+    template<typename Item_t>
+    void sort(std::vector<Item_t>& a, int lo, int hi, int d, std::vector<int>& aux)
     {
         if (hi <= lo + cutoff) {
             insertion(a, lo, hi, d);
@@ -67,8 +67,8 @@ namespace MSD_radix_sort {
         }
     }
 
-    template<typename Item_type>
-    void insertion(std::vector<Item_type>& a, int lo, int hi, int d)
+    template<typename Item_t>
+    void insertion(std::vector<Item_t>& a, int lo, int hi, int d)
     {
         for (auto i = lo; i <= hi; ++i) {
             for (auto j = i; j > lo && a[j] < a[j - 1]; j--) {
@@ -77,10 +77,10 @@ namespace MSD_radix_sort {
         }
     }
 
-    template<typename Item_type>
-    void exch(std::vector<Item_type>& a, int i, int j)
+    template<typename Item_t>
+    void exch(std::vector<Item_t>& a, int i, int j)
     {
-        Item_type temp = a[i];
+        Item_t temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }

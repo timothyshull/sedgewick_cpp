@@ -4,8 +4,8 @@
 
 #include <vector>
 
-template<typename Item_type>
-void insertion(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+void insertion(std::vector<Item_t>& coll, int l, int r)
 {
     int i;
     for (i = r; i > l; --i) {
@@ -13,7 +13,7 @@ void insertion(std::vector<Item_type>& coll, int l, int r)
     }
     for (i = l + 2; i <= r; ++i) {
         auto j = i;
-        Item_type v = coll[i];
+        Item_t v = coll[i];
         while (v < coll[j - 1]) {
             coll[j] = coll[j - 1];
             --j;

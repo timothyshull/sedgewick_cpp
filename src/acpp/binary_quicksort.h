@@ -7,8 +7,8 @@
 #include "radix_util.h"
 
 
-template<typename Item_type>
-void quicksort_b(std::vector<Item_type>& coll, int l, int r, int d)
+template<typename Item_t>
+void quicksort_b(std::vector<Item_t>& coll, int l, int r, int d)
 {
     auto i = l;
     auto j = r;
@@ -23,7 +23,7 @@ void quicksort_b(std::vector<Item_type>& coll, int l, int r, int d)
     quicksort_b(coll, j, r, d + 1);
 }
 
-template<typename Item_type>
-void sort(std::vector<Item_type>& coll, int l, int r) { quicksort_b(coll, l, r, 0); }
+template<typename Item_t>
+void sort(std::vector<Item_t>& coll, int l, int r) { quicksort_b(coll, l, r, 0); }
 
 #endif // BINARY_QUICKSORT_H

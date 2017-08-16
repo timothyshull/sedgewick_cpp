@@ -18,14 +18,14 @@ namespace LSD_radix_sort {
 
     void sort(std::vector<std::string>& a, int w);
 
-    template<typename Item_type>
-    void sort(std::vector<Item_type>& a)
+    template<typename Item_t>
+    void sort(std::vector<Item_t>& a)
     {
         auto n = a.size();
-        std::vector<Item_type> aux(n);
+        std::vector<Item_t> aux(n);
 
         for (auto d = 0; d < word; ++d) {
-            std::vector<int> count(static_cast<typename std::vector<Item_type>::size_type>(radix + 1));
+            std::vector<int> count(static_cast<typename std::vector<Item_t>::size_type>(radix + 1));
             for (auto i = 0; i < n; ++i) {
                 int c = (a[i] >> bits_per_byte * d) & mask;
                 count[c + 1] += 1;

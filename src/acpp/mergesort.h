@@ -6,8 +6,8 @@
 // modified from original ACPP version
 #include <vector>
 
-template<typename Item_type>
-void merge(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l, int m, int r)
+template<typename Item_t>
+void merge(std::vector<Item_t>& coll, std::vector<Item_t>& aux, int l, int m, int r)
 {
     int i;
     for (i = m + 1; i > l; --i) { aux[i - 1] = coll[i - 1]; }
@@ -21,8 +21,8 @@ void merge(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l, int
     }
 }
 
-template<typename Item_type>
-void mergesort(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l, int r)
+template<typename Item_t>
+void mergesort(std::vector<Item_t>& coll, std::vector<Item_t>& aux, int l, int r)
 {
     if (r <= l) { return; }
     auto m = (r + l) / 2;
@@ -31,16 +31,16 @@ void mergesort(std::vector<Item_type>& coll, std::vector<Item_type>& aux, int l,
     merge(coll, aux, l, m, r);
 }
 
-template<typename Item_type>
-void mergesort(std::vector<Item_type>& coll)
+template<typename Item_t>
+void mergesort(std::vector<Item_t>& coll)
 {
-    std::vector<Item_type> aux;
+    std::vector<Item_t> aux;
     aux.reserve(coll.size());
     mergesort(coll, aux, 0, static_cast<int>(coll.size() - 1)); // narrow_cast
 }
 
-//template<typename Item_type>
-//static void merge(std::vector<Item_type>& a, std::vector<Item_type>& aux, int lo, int mid, int hi)
+//template<typename Item_t>
+//static void merge(std::vector<Item_t>& a, std::vector<Item_t>& aux, int lo, int mid, int hi)
 //{
 //    for (auto k = lo; k <= hi; ++k) { aux[k] = a[k]; }
 //

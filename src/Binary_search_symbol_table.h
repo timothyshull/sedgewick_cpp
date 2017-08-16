@@ -257,7 +257,7 @@ private:
 
     bool _is_sorted() const
     {
-        Comparator_type comp;
+        auto comp = Comparator_type{};
         for (auto i = 1; i < _n; ++i) {
             if (comp(_keys[i], _keys[i - 1]) < 0) {
                 return false;

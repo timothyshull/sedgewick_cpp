@@ -1,10 +1,10 @@
 #include "Std_in.h"
 #include "Bubblesort.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    std::vector<std::string> a{Std_in::read_all_strings()};
-    Bubblesort::sort<std::string>(a);
-    Bubblesort::show<std::string>(a);
+    auto a = Std_in::read_all_strings();
+    Bubblesort::sort(a);
+    Bubblesort::show(a);
     return 0;
 }

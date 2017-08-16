@@ -7,10 +7,10 @@
 
 #include "radix_util.h"
 
-template<typename Item_type>
-void radix_lsd(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+void radix_lsd(std::vector<Item_t>& coll, int l, int r)
 {
-    static std::vector<Item_type> aux;
+    static std::vector<Item_t> aux;
     aux.reserve(aux.max_size() / 2);
 
     int i;
@@ -24,13 +24,13 @@ void radix_lsd(std::vector<Item_type>& coll, int l, int r)
     }
 }
 
-template<typename Item_type>
-void radix_sort(std::vector<Item_type>& coll, int n, int max)
+template<typename Item_t>
+void radix_sort(std::vector<Item_t>& coll, int n, int max)
 {
     for (auto x = 0; x < max; ++x) {
-        std::vector<std::vector<Item_type>> bins(
-                static_cast<typename std::vector<std::vector<Item_type>>::size_type>(n),
-                std::vector<Item_type>{}
+        std::vector<std::vector<Item_t>> bins(
+                static_cast<typename std::vector<std::vector<Item_t>>::size_type>(n),
+                std::vector<Item_t>{}
         );
         for (auto y : coll) { bins[(y / static_cast<int>(std::pow(10, x))) % n].emplace_back(y); } // narrow_cast
         coll.clear();

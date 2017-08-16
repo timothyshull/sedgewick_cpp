@@ -2,7 +2,12 @@
 #include "Std_draw.h"
 
 int main(int argc, char *argv[]) {
-    return Std_draw::init(argc, argv);
+    Std_draw::init(argc, argv);
+    Std_draw::setup_widgets();
+    Std_draw::setup_labels();
+    Std_draw::set_layout();
+    Std_draw::set_timers();
+    return Std_draw::exec();
 //    Std_draw::square(.2, .8, .1);
 //    Std_draw::filled_square(.8, .8, .2);
 //    Std_draw::circle(.8, .2, .2);

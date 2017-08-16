@@ -11,17 +11,17 @@
 #include <stack>
 
 // utility function
-template<typename Item_type>
-inline void comp_exch(std::vector<Item_type>& coll, int index_a, int index_b) { if (coll[index_b] < coll[index_a]) { std::swap(coll[index_a], coll[index_b]); }}
+template<typename Item_t>
+inline void comp_exch(std::vector<Item_t>& coll, int index_a, int index_b) { if (coll[index_b] < coll[index_a]) { std::swap(coll[index_a], coll[index_b]); }}
 
 // basic -> combination of AJ and ACPP
-template<typename Item_type>
-int partition(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+int partition(std::vector<Item_t>& coll, int l, int r)
 {
     auto i = l;
     auto j = r + 1;
 
-    Item_type v{coll[l]};
+    Item_t v{coll[l]};
     while (true) {
         while (coll[++i] < v) { if (i == r) { break; }}
         while (v < coll[--j]) { if (j == l) { break; }}
@@ -32,8 +32,8 @@ int partition(std::vector<Item_type>& coll, int l, int r)
     return j;
 }
 
-template<class Item_type>
-void quicksort(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void quicksort(std::vector<Item_t>& coll, int l, int r)
 {
     if (r <= l) { return; }
     auto i = partition(coll, l, r);
@@ -41,8 +41,8 @@ void quicksort(std::vector<Item_type>& coll, int l, int r)
     quicksort(coll, i + 1, r);
 }
 
-template<class Item_type>
-inline void quicksort(std::vector<Item_type>& coll) { quicksort(coll, 0, static_cast<int>(coll.size() - 1)); }
+template<class Item_t>
+inline void quicksort(std::vector<Item_t>& coll) { quicksort(coll, 0, static_cast<int>(coll.size() - 1)); }
 
 // Non-recursive
 inline void push2(std::stack<int>& s, int a, int b)
@@ -51,8 +51,8 @@ inline void push2(std::stack<int>& s, int a, int b)
     s.push(a);
 }
 
-template<class Item_type>
-void iterative_quicksort(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void iterative_quicksort(std::vector<Item_t>& coll, int l, int r)
 {
     std::stack<int> s;
     push2(s, l, r);
@@ -77,8 +77,8 @@ void iterative_quicksort(std::vector<Item_type>& coll, int l, int r)
 
 
 // improved quicksort - median-of-3
-template<class Item_type>
-void insertion_sort(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void insertion_sort(std::vector<Item_t>& coll, int l, int r)
 {
     int i;
     for (i = r; i > l; --i) {
@@ -86,7 +86,7 @@ void insertion_sort(std::vector<Item_type>& coll, int l, int r)
     }
     for (i = l + 2; i <= r; ++i) {
         auto j = i;
-        Item_type v = coll[i];
+        Item_t v = coll[i];
         while (v < coll[j - 1]) {
             coll[j] = coll[j - 1];
             --j;
@@ -95,8 +95,8 @@ void insertion_sort(std::vector<Item_type>& coll, int l, int r)
     }
 }
 
-template<class Item_type>
-void quicksort_m3(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void quicksort_m3(std::vector<Item_t>& coll, int l, int r)
 {
     static const auto cutoff = 10;
     if (r - l <= cutoff) { return; }
@@ -110,8 +110,8 @@ void quicksort_m3(std::vector<Item_type>& coll, int l, int r)
     quicksort_m3(coll, i + 1, r);
 }
 
-template<class Item_type>
-void hybridsort(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void hybridsort(std::vector<Item_t>& coll, int l, int r)
 {
     quicksort_m3(coll, l, r);
     insertion_sort(coll, l, r);
@@ -120,11 +120,11 @@ void hybridsort(std::vector<Item_type>& coll, int l, int r)
 
 
 // quicksort with 3-way partitioning
-template<class Item_type>
-void quicksort_3_way(std::vector<Item_type>& coll, int l, int r)
+template<class Item_t>
+void quicksort_3_way(std::vector<Item_t>& coll, int l, int r)
 {
     int k;
-    Item_type v{coll[r]};
+    Item_t v{coll[r]};
     if (r <= l) { return; }
 
     auto i = l - 1;

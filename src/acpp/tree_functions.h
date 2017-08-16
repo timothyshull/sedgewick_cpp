@@ -14,32 +14,32 @@
 #include <stack>
 #include <iostream>
 
-template<typename Item_type>
+template<typename Item_t>
 struct Tree_node;
 
-template<typename Item_type>
+template<typename Item_t>
 struct Tree_node {
-    Item_type item;
-    Tree_node<Item_type>* left;
-    Tree_node<Item_type>* right;
+    Item_t item;
+    Tree_node<Item_t>* left;
+    Tree_node<Item_t>* right;
 };
 
-template<typename Item_type, typename Visitor_type>
-void preorder_recursive(Tree_node<Item_type>* root, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void preorder_recursive(Tree_node<Item_t>* root, Visitor_type& visit)
 {
     if (root == nullptr) { return; }
     visit(root);
-    preorder_recursive<Item_type, Visitor_type>(root->left, visit);
-    preorder_recursive<Item_type, Visitor_type>(root->right, visit);
+    preorder_recursive<Item_t, Visitor_type>(root->left, visit);
+    preorder_recursive<Item_t, Visitor_type>(root->right, visit);
 }
 
-template<typename Item_type, typename Visitor_type>
-void preorder_iterative(Tree_node<Item_type>* root, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void preorder_iterative(Tree_node<Item_t>* root, Visitor_type& visit)
 {
     if (root == nullptr) { return; }
 
-    std::stack<Tree_node<Item_type>*> stack;
-    Tree_node<Item_type>* tmp;
+    std::stack<Tree_node<Item_t>*> stack;
+    Tree_node<Item_t>* tmp;
 
     stack.push(root);
     while (!stack.empty()) {
@@ -51,13 +51,13 @@ void preorder_iterative(Tree_node<Item_type>* root, Visitor_type& visit)
     }
 }
 
-template<typename Item_type, typename Visitor_type>
-void level_order(Tree_node<Item_type>* root, Visitor_type& visit)
+template<typename Item_t, typename Visitor_type>
+void level_order(Tree_node<Item_t>* root, Visitor_type& visit)
 {
     if (root == nullptr) { return; }
 
-    std::queue<Tree_node<Item_type>*> queue;
-    Tree_node<Item_type>* tmp;
+    std::queue<Tree_node<Item_t>*> queue;
+    Tree_node<Item_t>* tmp;
 
     queue.push(root);
     while (!queue.empty()) {
@@ -69,15 +69,15 @@ void level_order(Tree_node<Item_type>* root, Visitor_type& visit)
     }
 }
 
-template<typename Item_type>
-int count(Tree_node<Item_type>* root)
+template<typename Item_t>
+int count(Tree_node<Item_t>* root)
 {
     if (root == nullptr) { return 0; }
     return count(root->left) + count(root->right) + 1;
 }
 
-template<typename Item_type>
-int height(Tree_node<Item_type>* root)
+template<typename Item_t>
+int height(Tree_node<Item_t>* root)
 {
     if (root == nullptr) { return -1; }
     auto u = height(root->left);
@@ -85,15 +85,15 @@ int height(Tree_node<Item_type>* root)
     if (u > v) { return u + 1; } else { return v + 1; }
 }
 
-template<typename Item_type>
-void print_node(Item_type x, int h)
+template<typename Item_t>
+void print_node(Item_t x, int h)
 {
     for (int i = 0; i < h; i++) { std::cout << "  "; }
     std::cout << x << "\n";
 }
 
-template<typename Item_type>
-void show(Tree_node<Item_type>* node, int h)
+template<typename Item_t>
+void show(Tree_node<Item_t>* node, int h)
 {
     if (node == nullptr) {
         print_node('*', h);
@@ -105,27 +105,27 @@ void show(Tree_node<Item_type>* node, int h)
 }
 
 // TODO: sort these out
-template<typename Item_type>
-Tree_node<Item_type>* max(std::vector<Item_type>& a, int l, int r)
+template<typename Item_t>
+Tree_node<Item_t>* max(std::vector<Item_t>& a, int l, int r)
 {
     auto m = (l + r) / 2;
-    Tree_node<Item_type>* x{new Tree_node<Item_type>{a[m]}};
+    Tree_node<Item_t>* x{new Tree_node<Item_t>{a[m]}};
     if (l == r) { return x; }
     x->left = max(a, l, m);
     x->right = max(a, m + 1, r);
-    Item_type u = x->left->item;
-    Item_type v = x->right->item;
+    Item_t u = x->left->item;
+    Item_t v = x->right->item;
     if (u > v) {
         x->item = u;
     } else { x->item = v; }
     return x;
 }
 
-template<typename Item_type>
-Tree_node<Item_type>* parse()
+template<typename Item_t>
+Tree_node<Item_t>* parse()
 {
     char t = a[i++];
-    Tree_node<Item_type>* x{new Tree_node<Item_type>{t}};
+    Tree_node<Item_t>* x{new Tree_node<Item_t>{t}};
     if ((t == '+') || (t == '*')) {
         x->left = parse();
         x->right = parse();
@@ -133,7 +133,7 @@ Tree_node<Item_type>* parse()
     return x;
 }
 
-template<typename Item_type, typename Visitor_type>
+template<typename Item_t, typename Visitor_type>
 void depth_first_traverse(int k, Visitor_type& visit)
 {
     visit(k);
@@ -143,7 +143,7 @@ void depth_first_traverse(int k, Visitor_type& visit)
     }
 }
 
-template<typename Item_type, typename Visitor_type>
+template<typename Item_t, typename Visitor_type>
 void breadth_first_traverse(int k, Visitor_type& visit)
 {
     std::queue<int> q(V * V);

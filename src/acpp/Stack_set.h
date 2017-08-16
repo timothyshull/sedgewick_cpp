@@ -6,7 +6,7 @@
 #include <vector>
 #include <deque>
 
-template<typename Item_type> // Item_type must be an integer type
+template<typename Item_t> // Item_t must be an integer type
 class Stack_set {
 public:
     Stack_set(std::size_t size)
@@ -16,28 +16,28 @@ public:
 
     inline bool empty() const noexcept { return _size == 0; }
 
-    void push(Item_type& item)
+    void push(Item_t& item)
     {
         if (_on_stack[item]) { return; }
         _stack[_size++] = item;
         _on_stack[item] = true;
     }
 
-    void push(Item_type&& item)
+    void push(Item_t&& item)
     {
         if (_on_stack[item]) { return; }
         _stack[_size++] = item;
         _on_stack[item] = true;
     }
 
-    Item_type pop()
+    Item_t pop()
     {
         _on_stack[_stack[--_size]] = false;
         return _stack[_size];
     }
 
 private:
-    std::vector<Item_type> _stack;
+    std::vector<Item_t> _stack;
     std::deque<bool> _on_stack; // used to test whether the item is already on the stack
     std::size_t _size;
 };

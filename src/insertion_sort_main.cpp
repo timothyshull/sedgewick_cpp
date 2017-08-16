@@ -1,12 +1,10 @@
-#include <string>
-#include <vector>
 #include "Std_in.h"
 #include "Insertion_sort.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    std::vector<std::string> a{Std_in::read_all_strings()};
-    Insertion_sort::sort<std::string>(a);
+    auto a = Std_in::read_all_strings();
+    Insertion_sort::sort(a);
     Insertion_sort::show(a);
     return 0;
 }

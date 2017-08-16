@@ -21,10 +21,10 @@ public:
     using Node = Stack_node<T>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item_type = T;
+    using Item_t = T;
 
 private:
-    Item_type _item;
+    Item_t _item;
     Owning_node_pointer _next = nullptr;
 
 public:
@@ -46,7 +46,7 @@ public:
     using Node = Stack_node<T>;
     using Owning_node_pointer = Node*;
     using Raw_node_pointer = Node*;
-    using Item_type = T;
+    using Item_t = T;
     using Raw_item_pointer = T*;
 
 private:
@@ -69,7 +69,7 @@ public:
 
     inline bool has_next() const noexcept { return _current->_next != nullptr; }
 
-    Item_type next()
+    Item_t next()
     {
         if (!has_next()) { throw utility::No_such_element_exception{"next() called on Stack_iterator at end"}; }
         auto item = _current->_item;
@@ -77,7 +77,7 @@ public:
         return item;
     }
 
-    inline Item_type& operator*() const { return _current->_item; }
+    inline Item_t& operator*() const { return _current->_item; }
 
     inline Raw_item_pointer operator->() const { return std::addressof(_current->_item); }
 

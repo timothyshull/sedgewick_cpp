@@ -1,5 +1,7 @@
 project(collected_sources)
 
+# TODO: can remove Boost libraries in many locations and can remove many headers included in add_executable
+
 # for Qt
 # Use Qt CMAKE macros instead
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -15,21 +17,23 @@ set(Qt5Core_DIR "${QT_LIB_DIR}/Qt5Core")
 set(Qt5Gui_DIR "${QT_LIB_DIR}/Qt5Gui")
 set(Qt5Multimedia_DIR "${QT_LIB_DIR}/Qt5Multimedia")
 set(Qt5Widgets_DIR "${QT_LIB_DIR}/Qt5Widgets")
+set(Qt5OpenGL_DIR "${QT_LIB_DIR}/Qt5OpenGL")
 
-# TODO: have to add OpenGL and more
 set(QT_LIBRARIES
         Qt5::Core
         Qt5::Gui
         Qt5::Multimedia
         Qt5::Widgets
-        # Qt5::OpenGL
+        Qt5::OpenGL
         )
 
 set(QT_LIBRARIES_REQUIRED
         Qt5Core
         Qt5Gui
         Qt5Multimedia
-        Qt5Widgets)
+        Qt5Widgets
+        Qt5OpenGL
+        )
 
 foreach (QT_LIBRARIES_REQUIRED ${QT_LIBRARIES_REQUIRED})
     find_package(${QT_LIBRARIES_REQUIRED} REQUIRED)
@@ -38,7 +42,7 @@ endforeach ()
 #find_package(Boost REQUIRED COMPONENTS system)
 find_package(Boost COMPONENTS filesystem system)
 
-include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} /usr/local/Cellar/GSL/master/include)
+include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
 # include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
 
 add_library(std_out INTERFACE)
@@ -400,8 +404,8 @@ target_link_libraries(index_min_pq_main std_io utility ${Boost_LIBRARIES})
 add_executable(index_multiway_min_pq_main index_multiway_min_pq_main.cpp Index_multiway_min_pq.cpp Index_multiway_min_pq.h) # TODO
 target_link_libraries(index_multiway_min_pq_main std_io utility ${Boost_LIBRARIES})
 
-add_executable(insertion_sort_main insertion_sort_main.cpp Insertion_sort.h Insertion_sort.cpp)
-target_link_libraries(insertion_sort_main std_io utility ${Boost_LIBRARIES})
+add_executable(insertion_sort_main insertion_sort_main.cpp)
+target_link_libraries(insertion_sort_main std_io utility)
 
 add_executable(insertion_sort_x_main insertion_sort_x_main.cpp Insertion_sort_x.h)
 target_link_libraries(insertion_sort_x_main std_io utility ${Boost_LIBRARIES})
@@ -600,8 +604,8 @@ target_link_libraries(std_array_io_main std_io utility ${Boost_LIBRARIES})
 add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp Std_audio.h) # TODO
 target_link_libraries(std_audio_main utility ${Boost_LIBRARIES} ${QT_LIBRARIES})
 
-add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h) # TODO
-target_link_libraries(std_draw_main std_io utility ${Boost_LIBRARIES})
+add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h)
+target_link_libraries(std_draw_main std_io utility ${Boost_LIBRARIES} ${QT_LIBRARIES})
 
 add_executable(std_in_main std_in_main.cpp)
 target_link_libraries(std_in_main std_io)

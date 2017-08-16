@@ -7,10 +7,10 @@
 
 static const int rsort_cutoff = 10;
 
-template<typename Item_type>
-void radix_msd(std::vector<Item_type> coll, int l, int r, int d)
+template<typename Item_t>
+void radix_msd(std::vector<Item_t> coll, int l, int r, int d)
 {
-    static std::vector<Item_type> aux;
+    static std::vector<Item_t> aux;
     aux.reserve(aux.max_size() / 2);
 
     std::vector<int> count;

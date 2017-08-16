@@ -4,8 +4,8 @@
 
 #include <vector>
 
-template<typename Item_type>
-void selection(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+void selection(std::vector<Item_t>& coll, int l, int r)
 {
     for (int i = l; i < r; ++i) {
         auto min = i;

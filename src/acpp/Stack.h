@@ -4,7 +4,7 @@
 
 #include <cstddef>
 
-template<typename Item_type>
+template<typename Item_t>
 class Stack {
 private:
     // Implementation-dependent code
@@ -13,11 +13,11 @@ public:
 
     bool empty() const;
 
-    void push(Item_type& item);
+    void push(Item_t& item);
 
-    void push(Item_type&& item);
+    void push(Item_t&& item);
 
-    Item_type pop();
+    Item_t pop();
 };
 
 #endif // STACK_H

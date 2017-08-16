@@ -16,7 +16,7 @@ void construct(std::size_t size)
     free_list[size].next = nullptr;
 }
 
-Raw_node_pointer new_node(Item_type item)
+Raw_node_pointer new_node(Item_t item)
 {
     Raw_node_pointer x{remove(&free_list[0])};
     x->item = item;

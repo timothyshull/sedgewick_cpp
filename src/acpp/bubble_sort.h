@@ -4,8 +4,8 @@
 
 #include <vector>
 
-template<typename Item_type>
-void bubble(std::vector<Item_type>& coll, int l, int r)
+template<typename Item_t>
+void bubble(std::vector<Item_t>& coll, int l, int r)
 {
     for (auto i = l; i < r; ++i) {
         for (auto j = r; j > i; --j) {

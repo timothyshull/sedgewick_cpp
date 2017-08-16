@@ -21,7 +21,7 @@ class Helper {
 public:
     Helper()
     {
-        QLinearGradient gradient(QPointF(50, -20), QPointF(80, 20));
+        auto gradient = QLinearGradient{QPointF(50, -20), QPointF(80, 20)};
         gradient.setColorAt(0.0, Qt::white);
         gradient.setColorAt(1.0, QColor(0xa6, 0xce, 0x39));
 
@@ -145,23 +145,37 @@ Q_OBJECT
 public:
     Window()
     {
-        setWindowTitle(tr("2D Painting on Native and OpenGL Widgets"));
+        // setWindowTitle(tr("2D Painting on Native and OpenGL Widgets"));
 
-        Widget *native = new Widget(&helper, this);
-        GLWidget *openGL = new GLWidget(&helper, this);
-        QLabel *nativeLabel = new QLabel(tr("Native"));
-        nativeLabel->setAlignment(Qt::AlignHCenter);
-        QLabel *openGLLabel = new QLabel(tr("OpenGL"));
-        openGLLabel->setAlignment(Qt::AlignHCenter);
+        native = new Widget(&helper, this);
+        openGL = new GLWidget(&helper, this);
+        layout = new QGridLayout;
+    }
 
-        QGridLayout *layout = new QGridLayout;
+    void setup_widgets()
+    {
         layout->addWidget(native, 0, 0);
         layout->addWidget(openGL, 0, 1);
+    }
+
+    void setup_labels()
+    {
+        auto nativeLabel = new QLabel(tr("Native"));
+        nativeLabel->setAlignment(Qt::AlignHCenter);
+        auto openGLLabel = new QLabel(tr("OpenGL"));
+        openGLLabel->setAlignment(Qt::AlignHCenter);
         layout->addWidget(nativeLabel, 1, 0);
         layout->addWidget(openGLLabel, 1, 1);
-        setLayout(layout);
+    }
 
-        QTimer *timer = new QTimer(this);
+    void set_layout()
+    {
+        setLayout(layout);
+    }
+
+    void set_timers()
+    {
+        auto timer = new QTimer(this);
         connect(timer, &QTimer::timeout, native, &Widget::animate);
         connect(timer, &QTimer::timeout, openGL, &GLWidget::animate);
         timer->start(50);
@@ -169,11 +183,17 @@ public:
 
 private:
     Helper helper;
+    Widget *native;
+    GLWidget *openGL;
+    QGridLayout *layout;
 };
 
 class Std_draw {
 private:
     using Color = QColor;
+    static QApplication *app_ptr;
+//    static QSurfaceFormat fmt;
+    static Window *window_ptr;
 
 public:
 //    static const Color black = Color{0, 0, 0};
@@ -199,7 +219,26 @@ public:
 //
 //    static void set_canvas_size(int canvas_width, int canvas_height);
 //
-    static int init(int argc, char *argv[]);
+    static void init(int argc, char *argv[]);
+
+    static int exec();
+
+
+    static void setup_widgets() {
+        window_ptr->setup_widgets();
+    }
+
+    static void setup_labels() {
+        window_ptr->setup_labels();
+    }
+
+    static void set_layout() {
+        window_ptr->set_layout();
+    }
+
+    static void set_timers() {
+        window_ptr->set_timers();
+    }
 //
 //    static JMenuBar create_menu_bar();
 //

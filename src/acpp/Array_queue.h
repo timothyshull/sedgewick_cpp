@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <deque>
 
-template<typename Item_type>
+template<typename Item_t>
 class Array_queue {
 public:
     Array_queue() = default;
@@ -22,14 +22,14 @@ public:
 
     inline bool empty() const noexcept { return _queue.empty(); }
 
-    void push(Item_type& item) { _queue.push_back(item); }
+    void push(Item_t& item) { _queue.push_back(item); }
 
-    void push(Item_type&& item) { _queue.push_back(item); }
+    void push(Item_t&& item) { _queue.push_back(item); }
 
-    Item_type pop() { return _queue.pop_front(); }
+    Item_t pop() { return _queue.pop_front(); }
 
 private:
-    std::deque<Item_type> _queue;
+    std::deque<Item_t> _queue;
 };
 
 #endif // ARRAY_QUEUE_H
