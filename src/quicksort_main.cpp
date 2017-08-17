@@ -1,18 +1,17 @@
 #include "Std_in.h"
 #include "Quicksort.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    std::vector<std::string> a{Std_in::read_all_strings()};
-    Quicksort::sort(a);
-    Quicksort::show(a);
-    utility::alg_assert(Quicksort::is_sorted(a), "Quicksort is_sorted _check failed");
+    auto strings = Std_in::read_all_strings();
+    Quicksort::sort(strings);
+    Quicksort::show(strings);
 
-    Std_random::shuffle(a);
+    Std_random::shuffle(strings);
 
     Std_out::print_line();
-    for (auto i = 0; i < a.size(); ++i) {
-        std::string ith = Quicksort::select(a, i);
+    for (auto i = 0; i < strings.size(); ++i) {
+        auto ith = Quicksort::select(strings, i);
         Std_out::print_line(ith);
     }
     return 0;

@@ -11,13 +11,13 @@
 namespace LSD_radix_sort {
     using namespace Sort_utility;
 
-    static const int bits_per_byte = std::numeric_limits<unsigned char>::digits;
-    static const int bits = bits_per_byte * sizeof(int);
-    static const int radix = 1 << bits_per_byte;
-    static const int mask = radix - 1;
-    static const int word = bits / bits_per_byte;
+    static int const bits_per_byte = std::numeric_limits<unsigned char>::digits;
+    static int const bits = bits_per_byte * sizeof(int);
+    static int const radix = 1 << bits_per_byte;
+    static int const mask = radix - 1;
+    static int const word = bits / bits_per_byte;
 
-    void sort(std::vector<std::string> &a, int w);
+    void sort(std::vector<std::string> &coll, int w);
 
     template<typename Item_t>
     void sort(std::vector<Item_t> &coll)
