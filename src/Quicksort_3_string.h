@@ -3,24 +3,19 @@
 
 #include <string>
 #include <vector>
-#include "Std_random.h"
+
+#include "sort_utility.h"
 
 namespace Quicksort_3_string {
+    using namespace Sort_utility;
+
     static const int cutoff = 15;
 
-    void sort(std::vector<std::string>& a);
+    void sort(std::vector<std::string>& coll);
 
-    int char_at(std::string& s, int d);
+    int char_at(std::string const& s, int d);
 
     void sort(std::vector<std::string>& a, int lo, int hi, int d);
-
-    void insertion(std::vector<std::string>& a, int lo, int hi, int d);
-
-    void exch(std::vector<std::string>& a, int i, int j);
-
-    bool less(std::string& v, std::string w, int d);
-
-    bool is_sorted(std::vector<std::string>& a);
 };
 
 #endif // QUICKSORT_3_STRING_H

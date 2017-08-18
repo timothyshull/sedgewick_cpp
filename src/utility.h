@@ -1,7 +1,7 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
-#include <cstdio>
+//#include <cstdio>
 #include <cstdlib>
 #include <stdexcept>
 #include <memory>
@@ -88,7 +88,15 @@ namespace utility {
         int i;
     };
 
-    void alg_assert(bool test, const char *msg);
+    inline void alg_assert(bool test, char const* msg)
+    {
+#ifndef NDEBUG
+        if (!test) {
+            fmt::fprintf(stderr, "%s\n", msg);
+            std::abort();
+        }
+#endif
+    }
 
     class Bad_lexical_cast;
 

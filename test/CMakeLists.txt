@@ -23,4 +23,7 @@ target_link_libraries(selection_sort_spec std_io gtest gmock gtest_main) # selec
 #add_executable(acyclic_lp_spec acyclic_lp_spec.cpp)
 #target_link_libraries(acyclic_lp_spec googletest)
 
+add_executable(sort_spec sort_spec.cpp)
+target_link_libraries(sort_spec std_io gtest gmock gtest_main) # selection lib
+
 

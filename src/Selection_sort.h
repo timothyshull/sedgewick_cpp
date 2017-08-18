@@ -23,12 +23,10 @@ namespace Selection_sort {
                 }
             }
             std::swap(coll[i], coll[min]);
-#ifndef NDEBUG
             utility::alg_assert(
                     std::is_sorted<decltype(coll.begin()), Comparator_t>(coll.begin(), coll.begin() + i, comp),
                     "Selection_sort is_sorted range check failed"
             );
-#endif
         }
 #ifndef NDEBUG
         utility::alg_assert(

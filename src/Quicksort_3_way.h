@@ -2,87 +2,46 @@
 #define QUICKSORT_3_WAY_H
 
 #include <vector>
-#include "utility.h"
+#include <gsl/gsl_util>
+
 #include "Std_random.h"
-#include "Std_out.h"
+#include "sort_utility.h"
+#include "utility.h"
 
 namespace Quicksort_3_way {
-    template<typename T>
-    void sort(std::vector<T>& a, int lo, int hi);
+    using namespace Sort_utility;
 
-    template<typename T>
-    bool less(T v, T w);
-
-    template<typename T>
-    void exch(std::vector<T>& a, int i, int j);
-
-    template<typename T>
-    bool is_sorted(std::vector<T>& a);
-
-    template<typename T>
-    bool is_sorted(std::vector<T>& a, int lo, int hi);
-
-    template<typename T>
-    void sort(std::vector<T>& a)
+    template<typename Item_t>
+    void sort(std::vector<Item_t> &coll)
     {
-        Std_random::shuffle(a);
-        sort(a, 0, a.size() - 1);
-        utility::alg_assert(is_sorted(a), "Quicksort_3_way is_sorted _check failed");
+        Std_random::shuffle(coll);
+        sort(coll, 0, gsl::narrow_cast<int>(coll.size()) - 1);
+        utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "Quicksort_3_way is_sorted check failed");
     }
 
-    template<typename T>
-    void sort(std::vector<T>& a, int lo, int hi)
+    template<typename Item_t>
+    void sort(std::vector<Item_t> &coll, int lo, int hi)
     {
         if (hi <= lo) { return; }
-        int lt = lo, gt = hi;
-        T v = a[lo];
-        int i = lo;
+        auto lt = lo;
+        auto gt = hi;
+        auto v = coll[lo];
+        auto i = lo;
         while (i <= gt) {
-            if (a[i] < v) { exch(a, lt++, i++); }
-            else if (a[i] > v) { exch(a, i, gt--); }
-            else { ++i; }
+            if (coll[i] < v) {
+                std::swap(coll[lt++], coll[i++]);
+            } else if (v < coll[i]) {
+                std::swap(coll[i], coll[gt--]);
+            } else {
+                ++i;
+            }
         }
 
-        sort(a, lo, lt - 1);
-        sort(a, gt + 1, hi);
-        utility::alg_assert(is_sorted(a, lo, hi), "Quicksort_3_way is_sorted _check failed");
-    }
-
-    template<typename T>
-    bool less(T v, T w)
-    {
-        return v < w;
-    }
-
-    template<typename T>
-    void exch(std::vector<T>& a, int i, int j)
-    {
-        T swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    template<typename T>
-    bool is_sorted(std::vector<T>& a)
-    {
-        return is_sorted(a, 0, a.size() - 1);
-    }
-
-    template<typename T>
-    bool is_sorted(std::vector<T>& a, int lo, int hi)
-    {
-        for (auto i = lo + 1; i <= hi; ++i) {
-            if (less(a[i], a[i - 1])) { return false; }
-        }
-        return true;
-    }
-
-    template<typename T>
-    void show(std::vector<T>& a)
-    {
-        for (auto i = 0; i < a.size(); ++i) {
-            Std_out::print_line(a[i]);
-        }
+        sort(coll, lo, lt - 1);
+        sort(coll, gt + 1, hi);
+#ifndef NDEBUG
+        utility::alg_assert(std::is_sorted(coll.begin() + lo, coll.begin() + hi), "Quicksort_3_way is_sorted check failed");
+#endif
     }
 };
 

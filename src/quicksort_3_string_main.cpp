@@ -1,13 +1,10 @@
 #include "Std_in.h"
 #include "Quicksort_3_string.h"
-#include "Std_out.h"
 
-int main(int argc, char* argv[])
+int main()
 {
-    std::vector<std::string> a{Std_in::read_all_strings()};
+    auto a = Std_in::read_all_strings();
     Quicksort_3_string::sort(a);
-    for (auto s : a) {
-        Std_out::print_line(s);
-    }
+    Quicksort_3_string::show(a);
     return 0;
 }

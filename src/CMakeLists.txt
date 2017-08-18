@@ -5,45 +5,11 @@ project(collected_sources)
 # for Qt
 # Use Qt CMAKE macros instead
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+#set(CMAKE_AUTOMOC ON)
+#set(CMAKE_AUTOUIC ON)
+#set(CMAKE_AUTORCC ON)
 
-set(QT_PATH "/usr/local/opt/qt5")
 
-set(QT_LIB_DIR ${QT_PATH}/lib/cmake)
-
-set(Qt5Core_DIR "${QT_LIB_DIR}/Qt5Core")
-set(Qt5Gui_DIR "${QT_LIB_DIR}/Qt5Gui")
-set(Qt5Multimedia_DIR "${QT_LIB_DIR}/Qt5Multimedia")
-set(Qt5Widgets_DIR "${QT_LIB_DIR}/Qt5Widgets")
-set(Qt5OpenGL_DIR "${QT_LIB_DIR}/Qt5OpenGL")
-
-set(QT_LIBRARIES
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Multimedia
-        Qt5::Widgets
-        Qt5::OpenGL
-        )
-
-set(QT_LIBRARIES_REQUIRED
-        Qt5Core
-        Qt5Gui
-        Qt5Multimedia
-        Qt5Widgets
-        Qt5OpenGL
-        )
-
-foreach (QT_LIBRARIES_REQUIRED ${QT_LIBRARIES_REQUIRED})
-    find_package(${QT_LIBRARIES_REQUIRED} REQUIRED)
-endforeach ()
-
-#find_package(Boost REQUIRED COMPONENTS system)
-find_package(Boost COMPONENTS filesystem system)
-
-include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
-# include_directories(${Boost_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${GSL_INCLUDE_DIR})
 
 add_library(std_out INTERFACE)
 add_library(std_io STATIC Std_in.cpp)
@@ -537,7 +503,7 @@ add_executable(quick_union_uf_main quick_union_uf_main.cpp Quick_union_uf.cpp Qu
 target_link_libraries(quick_union_uf_main std_io utility)
 
 add_executable(quicksort_3_string_main quicksort_3_string_main.cpp Quicksort_3_string.h Quicksort_3_string.cpp)
-target_link_libraries(quicksort_3_string_main std_io utility)
+target_link_libraries(quicksort_3_string_main std_io std_random utility)
 
 add_executable(quicksort_3_way_main quicksort_3_way_main.cpp Quicksort_3_way.h)
 target_link_libraries(quicksort_3_way_main std_io utility)
@@ -601,11 +567,20 @@ target_link_libraries(stack_main std_io)
 add_executable(std_array_io_main std_array_io_main.cpp Std_array_io.cpp Std_array_io.h)
 target_link_libraries(std_array_io_main std_io utility)
 
-add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp Std_audio.h) # TODO
+# does not work correctly to set these on individual targets using set_property or set_target_properties
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+add_executable(std_audio_main std_audio_main.cpp Std_audio.cpp) # TODO
 target_link_libraries(std_audio_main utility ${QT_LIBRARIES})
 
-add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp Std_draw.h)
+add_executable(std_draw_main std_draw_main.cpp Std_draw.cpp)
 target_link_libraries(std_draw_main std_io utility ${QT_LIBRARIES})
+
+set(CMAKE_AUTOMOC OFF)
+set(CMAKE_AUTOUIC OFF)
+set(CMAKE_AUTORCC OFF)
 
 add_executable(std_in_main std_in_main.cpp)
 target_link_libraries(std_in_main std_io)
