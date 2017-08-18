@@ -26,13 +26,17 @@ namespace Shellsort {
                     std::swap(coll[j], coll[j - h]);
                 }
             }
-            utility::alg_assert(
-                    std::is_sorted(coll.begin() + h, coll.end()),
-                    "Shellsort is_h_sorted check failed"
-            ); // is_h_sorted
+#ifndef NDEBUG
+//            utility::alg_assert(
+//                    std::is_sorted(coll.begin() + h, coll.end()),
+//                    "Shellsort is_h_sorted check failed"
+//            ); // is_h_sorted
+#endif
             h /= 3;
         }
+#ifndef NDEBUG
         utility::alg_assert(std::is_sorted(coll.begin(), coll.end()), "Shellsort is_sorted check failed");
+#endif
     }
 };
 
