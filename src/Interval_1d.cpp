@@ -29,7 +29,7 @@ Interval_1d::Interval_1d(double min, double max) : _min{min == 0.0 ? 0.0 : min},
         throw utility::Illegal_argument_exception{"Endpoints cannot be NaN"};
     }
 
-    if (min > max) { throw utility::Illegal_argument_exception("Illegal interval"); }
+    if (min > max) { throw utility::Illegal_argument_exception{"Illegal interval"}; }
 }
 
 bool Interval_1d::intersects(const Interval_1d& rhs) const

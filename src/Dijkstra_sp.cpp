@@ -7,7 +7,7 @@ Dijkstra_sp::Dijkstra_sp(Edge_weighted_digraph& digraph, int source)
 {
     for (auto e : digraph.edges()) {
         if (e.weight() < 0) {
-            throw utility::Illegal_argument_exception("edge " + e.to_string() + " has negative weight");
+            throw utility::Illegal_argument_exception{"edge " + e.to_string() + " has negative weight"};
         }
     }
 

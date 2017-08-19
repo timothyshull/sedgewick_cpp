@@ -20,7 +20,7 @@ Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(int num_verti
 Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(unsigned num_vertices, unsigned num_edges) : Adj_matrix_edge_weighted_digraph::Adj_matrix_edge_weighted_digraph(num_vertices)
 {
     if (num_edges > num_vertices * num_vertices) {
-        throw utility::Runtime_exception("The number of edges specified is too large");
+        throw utility::Runtime_exception{"The number of edges specified is too large"};
     }
 
     int v;
@@ -102,7 +102,7 @@ std::ostream& operator<<(std::ostream& os, const Adj_matrix_edge_weighted_digrap
 void Adj_matrix_edge_weighted_digraph::_check_vertex(int v)
 {
     if (v < 0 || v >= _num_vertices) {
-        throw utility::Runtime_exception("Bad vertex value");
+        throw utility::Runtime_exception{"Bad vertex value"};
     }
 }
 
@@ -133,7 +133,7 @@ Adj_iterator::Value_type Adj_iterator::operator->() const
 Adj_iterator& Adj_iterator::operator++()
 {
     if (_v == -1 || _w == -1) {
-        throw utility::No_such_element_exception("Cannot iterate past end");
+        throw utility::No_such_element_exception{"Cannot iterate past end"};
     }
     if (_w == _graph._num_vertices - 1 && _v == _graph._num_vertices - 1) {
         // at end
@@ -160,7 +160,7 @@ Adj_iterator Adj_iterator::operator++(int)
 Adj_iterator& Adj_iterator::operator--()
 {
     if (_v == 0 || _w == 0) {
-        throw utility::No_such_element_exception("Cannot decrement iterator before the _start");
+        throw utility::No_such_element_exception{"Cannot decrement iterator before the _start"};
     }
     if (_v == -1 && _w == -1) {
         // at end

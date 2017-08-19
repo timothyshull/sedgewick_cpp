@@ -7,7 +7,7 @@ Graph::Graph(int v)
           _adjacency_lists(static_cast<std::vector<std::vector<int>>::size_type>(v))
 {
     if (v < 0) {
-        throw utility::Illegal_argument_exception("The Number of vertices must be non-negative");
+        throw utility::Illegal_argument_exception{"The Number of vertices must be non-negative"};
     }
 }
 
@@ -15,7 +15,7 @@ Graph::Graph(In& in) : Graph{in.read_int()}
 {
     auto num_edges = in.read_int();
     if (num_edges < 0) {
-        throw utility::Illegal_argument_exception("The Number of edges must be non-negative");
+        throw utility::Illegal_argument_exception{"The Number of edges must be non-negative"};
     }
     int v;
     int w;
@@ -80,7 +80,7 @@ void Graph::_validate_vertex(int v) const
     if (v < 0 || v >= _num_vertices) {
         std::stringstream ss;
         ss << "The vertex " << v << " is not between 0 and " << _num_vertices - 1;
-        throw utility::Index_out_of_bounds_exception(ss.str());
+        throw utility::Index_out_of_bounds_exception{ss.str()};
     }
 }
 

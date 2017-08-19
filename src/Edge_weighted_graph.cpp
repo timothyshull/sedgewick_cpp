@@ -8,7 +8,7 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices)
           _num_edges{0},
           _adjacency_lists(static_cast<std::vector<std::vector<Edge>>::size_type>(num_vertices))
 {
-    if (num_vertices < 0) { throw utility::Illegal_argument_exception("Number of vertices must be nonnegative"); }
+    if (num_vertices < 0) { throw utility::Illegal_argument_exception{"Number of vertices must be nonnegative"}; }
     for (auto v = 0; v < num_vertices; ++v) {
         _adjacency_lists[v] = std::vector<Edge>{};
     }
@@ -16,7 +16,7 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices)
 
 Edge_weighted_graph::Edge_weighted_graph(int num_vertices, int num_edges) : Edge_weighted_graph{num_vertices}
 {
-    if (num_edges < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
+    if (num_edges < 0) { throw utility::Illegal_argument_exception{"Number of edges must be nonnegative"}; }
     int v;
     int w;
     double weight;
@@ -31,7 +31,7 @@ Edge_weighted_graph::Edge_weighted_graph(int num_vertices, int num_edges) : Edge
 Edge_weighted_graph::Edge_weighted_graph(In& in) : Edge_weighted_graph{in.read_int()}
 {
     auto num_edges = in.read_int();
-    if (num_edges < 0) { throw utility::Illegal_argument_exception("Number of edges must be nonnegative"); }
+    if (num_edges < 0) { throw utility::Illegal_argument_exception{"Number of edges must be nonnegative"}; }
     int v;
     int w;
     double weight;

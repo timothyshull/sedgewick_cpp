@@ -148,6 +148,9 @@ std::string tmp(tmpPtrVal ? tmpPtrVal : "");
 - replace all stringstreams where possible
 
 
+- AVL_tree_symbol_table needs clean-up -> use release in recursive up calls, fix double free
+
+
 
 
 # Edge classes

@@ -13,9 +13,8 @@ Bellman_ford_sp::Bellman_ford_sp(Edge_weighted_digraph digraph, int source)
     _distance_to[source] = 0.0;
     _queue.enqueue(source);
     _on_queue[source] = true;
-    int v;
     while (!_queue.is_empty() && !has_negative_cycle()) {
-        v = _queue.dequeue();
+        auto v = _queue.dequeue();
         _on_queue[v] = false;
         _relax(digraph, v);
     }
@@ -44,7 +43,7 @@ double Bellman_ford_sp::distance_to(int vertex)
 Stack<Directed_edge> Bellman_ford_sp::path_to(int vertex)
 {
     if (has_negative_cycle()) {
-        throw utility::Unsupported_operation_exception("Negative _cost _cycle exists");
+        throw utility::Unsupported_operation_exception{"Negative _cost _cycle exists"};
     }
     if (!has_path_to(vertex)) { return {}; }
     Stack<Directed_edge> path;

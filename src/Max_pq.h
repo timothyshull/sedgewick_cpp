@@ -41,7 +41,7 @@ public:
 
     T& max()
     {
-        if (is_empty()) { throw utility::No_such_element_exception("Priority _queue underflow"); }
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue underflow"}; }
         return _priority_queue[1];
     }
 
@@ -56,7 +56,7 @@ public:
 
     T delete_max()
     {
-        if (is_empty()) { throw utility::No_such_element_exception("Priority _queue underflow"); }
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue underflow"}; }
         T max = _priority_queue[1];
         _exch(1, _size--);
         _sink(1);

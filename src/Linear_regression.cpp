@@ -4,7 +4,7 @@
 Linear_regression::Linear_regression(std::vector<double>& x, std::vector<double>& y)
 {
     if (x.size() != y.size()) {
-        throw utility::Illegal_argument_exception("array lengths are not equal");
+        throw utility::Illegal_argument_exception{"array lengths are not equal"};
     }
     _size = static_cast<int>(x.size());
 

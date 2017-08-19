@@ -41,6 +41,6 @@ void Topological::_validate_vertex(int v) const
     if (v < 0 || v >= sz) {
         std::stringstream ss;
         ss << "Vertex " << v << " is not between 0 and " << sz - 1;
-        throw utility::Index_out_of_bounds_exception(ss.str());
+        throw utility::Index_out_of_bounds_exception{ss.str()};
     }
 }

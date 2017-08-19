@@ -19,7 +19,7 @@ namespace utility {
 
     class Bad_lexical_cast : public std::bad_cast {
     public:
-        explicit Bad_lexical_cast(std::string const &s) : _what{s} {}
+        explicit Bad_lexical_cast(std::string s) : _what{std::move(s)} {}
 
         explicit Bad_lexical_cast(char *const s) : _what{s} {}
 

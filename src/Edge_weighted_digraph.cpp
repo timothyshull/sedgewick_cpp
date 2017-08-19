@@ -26,13 +26,13 @@ Edge_weighted_digraph::Edge_weighted_digraph(In<std::ifstream>& in)
         : Edge_weighted_digraph{static_cast<std::size_t>(in.read_int())}
 {
     auto num_edges = in.read_int();
-    if (num_edges < 0) { throw utility::Index_out_of_bounds_exception("The number of edges must be non-negative"); }
+    if (num_edges < 0) { throw utility::Index_out_of_bounds_exception{"The number of edges must be non-negative"}; }
 
     for (auto i = 0; i < num_edges; ++i) {
         auto v = in.read_int();
         auto w = in.read_int();
         if (v < 0 || v >= _num_vertices || w < 0 || w >= _num_vertices) {
-            throw utility::Index_out_of_bounds_exception("The vertex must be between 0 and the number of vertices - 1");
+            throw utility::Index_out_of_bounds_exception{"The vertex must be between 0 and the number of vertices - 1"};
         }
         auto weight = in.read_double();
         add_edge(v, w, weight);
@@ -118,7 +118,7 @@ std::string Edge_weighted_digraph::to_string() const
 void Edge_weighted_digraph::_validate_vertex(int vertex) const
 {
     if (vertex < 0 || vertex >= _num_vertices) {
-        throw utility::Index_out_of_bounds_exception("The vertex is not between 0 and the number of vertices");
+        throw utility::Index_out_of_bounds_exception{"The vertex is not between 0 and the number of vertices"};
     }
 }
 

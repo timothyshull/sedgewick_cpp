@@ -64,7 +64,7 @@ namespace Std_random {
     {
         int n = a.size();
         if (lo < 0 || lo > hi || hi >= n) {
-            throw utility::Index_out_of_bounds_exception("Illegal subarray range");
+            throw utility::Index_out_of_bounds_exception{"Illegal subarray range"};
         }
 
         int r;

@@ -108,7 +108,7 @@ public:
     {
         _construct_in_order(_tree->_get_root());
         if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
+            throw utility::Illegal_argument_exception{"The index is out of range"};
         }
     }
 
@@ -209,7 +209,7 @@ class Binary_search_tree_reverse_iterator {
     {
         _construct_in_order(_tree->_get_root());
         if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
+            throw utility::Illegal_argument_exception{"The index is out of range"};
         }
     }
 
@@ -360,7 +360,7 @@ public:
     void delete_min()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"delete_min()\" was called on an empty symbol table"};
         }
         _root = _delete_min(_get_root());
         utility::alg_assert(_check(), "Binary_search_tree invariant _check failed after \"delete_min()\"");
@@ -369,7 +369,7 @@ public:
     void delete_max()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"delete_max()\" was called on an empty symbol table"};
         }
         _root = _delete_max(_get_root());
         utility::alg_assert(_check(), "Binary_search_tree invariant _check failed after \"delete_max()\"");
@@ -378,7 +378,7 @@ public:
     Key_type min() const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"min()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"min()\" was called on an empty symbol table"};
         }
         return *(_min(_get_root())->_key);
     }
@@ -386,7 +386,7 @@ public:
     Key_type max() const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"max()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"max()\" was called on an empty symbol table"};
         }
         return *(_max(_get_root())->_key);
     }
@@ -395,7 +395,7 @@ public:
     Key_type floor(Key_type key) const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"floor()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"floor()\" was called on an empty symbol table"};
         }
         Node_raw_pointer x = _floor(_get_root(), key);
         if (x == nullptr) {
@@ -408,7 +408,7 @@ public:
     Shared_key_pointer ceiling(Key_type key) const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"ceiling()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"ceiling()\" was called on an empty symbol table"};
         }
         Node_raw_pointer x = _ceiling(_get_root(), key);
         if (x == nullptr) {
@@ -423,7 +423,7 @@ public:
         if (k < 0 || k >= size()) {
             std::stringstream ss;
             ss << "The argument \"k\" is not _in the range 0-" << size() - 1;
-            throw utility::Illegal_argument_exception(ss.str());
+            throw utility::Illegal_argument_exception{ss.str()};
         }
         Node_raw_pointer x = _select(_get_root(), k);
         if (x == nullptr) {

@@ -42,7 +42,7 @@ public:
     {
         _construct_in_order(_tree->_get_root());
         if (index > _in_order.size()) {
-            throw utility::Illegal_argument_exception("The index is out of range");
+            throw utility::Illegal_argument_exception{"The index is out of range"};
         }
     }
 
@@ -146,7 +146,7 @@ public:
 
     Index_max_pq(int maxN)
     {
-        if (maxN < 0) { throw utility::Illegal_argument_exception(); }
+        if (maxN < 0) { throw utility::Illegal_argument_exception{}; }
         n = 0;
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
         pq = new int[maxN + 1];
@@ -173,7 +173,7 @@ public:
 
     void insert(int i, Key key)
     {
-        if (contains(i)) { throw utility::Illegal_argument_exception("index is already _in the priority _queue"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception{"index is already _in the priority _queue"}; }
         ++n;
         qp[i] = n;
         pq[n] = i;
@@ -231,7 +231,7 @@ public:
     {
         if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         if (keys[i].compareTo(key) >= 0) {
-            throw utility::Illegal_argument_exception("Calling increaseKey() with given argument would not strictly increase the key");
+            throw utility::Illegal_argument_exception{"Calling increaseKey() with given argument would not strictly increase the key"};
         }
 
         keys[i] = key;
@@ -242,7 +242,7 @@ public:
     {
         if (!contains(i)) { throw new NoSuchElementException("index is not _in the priority _queue"); }
         if (keys[i].compareTo(key) <= 0) {
-            throw utility::Illegal_argument_exception("Calling decreaseKey() with given argument would not strictly decrease the key");
+            throw utility::Illegal_argument_exception{"Calling decreaseKey() with given argument would not strictly decrease the key"};
         }
 
         keys[i] = key;

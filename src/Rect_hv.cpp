@@ -9,13 +9,13 @@ Rect_hv::Rect_hv(double x_min, double y_min, double x_max, double y_max)
           _y_max{y_max}
 {
     if (std::isnan(x_min) || std::isnan(x_max)) {
-        throw utility::Illegal_argument_exception("x-coordinate cannot be NaN");
+        throw utility::Illegal_argument_exception{"x-coordinate cannot be NaN"};
     }
     if (std::isnan(y_min) || std::isnan(y_max)) {
-        throw utility::Illegal_argument_exception("y-coordinates cannot be NaN");
+        throw utility::Illegal_argument_exception{"y-coordinates cannot be NaN"};
     }
     if (x_max < x_min || y_max < y_min) {
-        throw utility::Illegal_argument_exception("Invalid rectangle");
+        throw utility::Illegal_argument_exception{"Invalid rectangle"};
     }
 }
 

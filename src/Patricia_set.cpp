@@ -14,7 +14,7 @@ Patricia_set::Patricia_set() : count{0}
 void Patricia_set::add(std::string& key)
 {
     if (key == nullptr) { throw utility::Null_pointer_exception{"called add(nullptr)"}; }
-    if (key.size() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+    if (key.size() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
     Raw_node_pointer p;
     Raw_node_pointer x{head};
 
@@ -53,7 +53,7 @@ void Patricia_set::add(std::string& key)
 bool Patricia_set::contains(std::string& key)
 {
     if (key == nullptr) { throw utility::Null_pointer_exception{"called contains(nullptr)"}; }
-    if (key.size() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+    if (key.size() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
     Raw_node_pointer p;
     Raw_node_pointer x = head;
     do {
@@ -67,7 +67,7 @@ bool Patricia_set::contains(std::string& key)
 void Patricia_set::remove(std::string& key)
 {
     if (key == nullptr) { throw utility::Null_pointer_exception{"called delete(nullptr)"}; }
-    if (key.size() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+    if (key.size() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
     Raw_node_pointer g;             // previous previous (grandparent)
     Raw_node_pointer p = head;      // previous (parent)
     Raw_node_pointer x = head;      // node to delete

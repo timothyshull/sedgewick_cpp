@@ -133,7 +133,7 @@ public:
     void delete_min()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("Symbol table underflow error");
+            throw utility::No_such_element_exception{"Symbol table underflow error"};
         }
         remove(min());
     }
@@ -141,7 +141,7 @@ public:
     void delete_max()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("Symbol table underflow error");
+            throw utility::No_such_element_exception{"Symbol table underflow error"};
         }
         remove(max());
     }
@@ -169,7 +169,7 @@ public:
     Key_type floor(Key_type key) const
     {
         if (key == nullptr) {
-            throw utility::Illegal_argument_exception("The key argument to floor() is null");
+            throw utility::Illegal_argument_exception{"The key argument to floor() is null"};
         }
         int i = rank(key);
         if (i < _n && Comparator_type()(key, _keys[i]) == 0) {
@@ -185,7 +185,7 @@ public:
     Key_type ceiling(Key_type key) const
     {
         if (key == nullptr) {
-            throw utility::Illegal_argument_exception("The key argument to ceiling() is null");
+            throw utility::Illegal_argument_exception{"The key argument to ceiling() is null"};
         }
         int i = rank(key);
 
@@ -199,10 +199,10 @@ public:
     int size(Key_type lo, Key_type hi) const
     {
         if (lo == nullptr) {
-            throw utility::Illegal_argument_exception("The first argument to size() is null");
+            throw utility::Illegal_argument_exception{"The first argument to size() is null"};
         }
         if (hi == nullptr) {
-            throw utility::Illegal_argument_exception("The second argument to size() is null");
+            throw utility::Illegal_argument_exception{"The second argument to size() is null"};
         }
 
         if (Comparator_type()(lo, hi) > 0) {
@@ -218,10 +218,10 @@ public:
     Queue<Key_type> keys(Key_type lo, Key_type hi) const
     {
         if (lo == nullptr) {
-            throw utility::Illegal_argument_exception("The first argument to keys() is null");
+            throw utility::Illegal_argument_exception{"The first argument to keys() is null"};
         }
         if (hi == nullptr) {
-            throw utility::Illegal_argument_exception("The second argument to keys() is null");
+            throw utility::Illegal_argument_exception{"The second argument to keys() is null"};
         }
 
         Queue<Key> queue;

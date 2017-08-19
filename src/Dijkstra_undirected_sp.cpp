@@ -9,7 +9,7 @@ Dijkstra_undirected_sp::Dijkstra_undirected_sp(Edge_weighted_digraph& digraph, i
     for (auto e : digraph.edges()) {
         if (e.weight() < 0) {
             std::string s{"edge " + e.to_string() + " has negative weight"};
-            throw utility::Illegal_argument_exception(s);
+            throw utility::Illegal_argument_exception{s};
         }
     }
 

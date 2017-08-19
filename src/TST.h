@@ -46,7 +46,7 @@ public:
     Value get(std::string& key)
     {
         if (key == nullptr) { throw utility::Null_pointer_exception{""}; }
-        if (key.size() == 0) { throw utility::Illegal_argument_exception("key must have length >= 1"); }
+        if (key.size() == 0) { throw utility::Illegal_argument_exception{"key must have length >= 1"}; }
         Raw_node_pointer x = get(root, key, 0);
         if (x == nullptr) { return nullptr; }
         return x->val;
@@ -111,7 +111,7 @@ private:
     Raw_node_pointer get(Raw_node_pointer x, std::string& key, int d)
     {
         if (key == nullptr) { throw utility::Null_pointer_exception{""}; }
-        if (key.size() == 0) { throw utility::Illegal_argument_exception("key must have length >= 1"); }
+        if (key.size() == 0) { throw utility::Illegal_argument_exception{"key must have length >= 1"}; }
         if (x == nullptr) { return nullptr; }
         char c = key[d];
         if (c < x->c) { return get(x->left, key, d); }

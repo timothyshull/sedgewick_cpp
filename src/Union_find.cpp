@@ -9,7 +9,7 @@ Union_find::Union_find(int n)
           _rank(static_cast<std::vector<short>::size_type>(n), 0)
 {
     if (n < 0) {
-        throw utility::Illegal_argument_exception("The number of sites _in a Weighted_quick_union_uf must be non-negative");
+        throw utility::Illegal_argument_exception{"The number of sites _in a Weighted_quick_union_uf must be non-negative"};
     }
     for (auto i = 0; i < n; ++i) { _parent[i] = i; }
 }
@@ -49,6 +49,6 @@ void Union_find::_validate(int p) const
     if (p < 0 || p >= n) {
         std::stringstream ss;
         ss << "Index " << p << " is not between 0 and " << (n - 1);
-        throw utility::Index_out_of_bounds_exception(ss.str());
+        throw utility::Index_out_of_bounds_exception{ss.str()};
     }
 }

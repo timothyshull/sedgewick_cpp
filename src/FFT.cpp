@@ -13,7 +13,7 @@ std::vector<Complex> FFT::fft(std::vector<Complex>& x)
     }
 
     if (n % 2 != 0) {
-        throw utility::Illegal_argument_exception("_size is not a power of 2");
+        throw utility::Illegal_argument_exception{"_size is not a power of 2"};
     }
 
     std::vector<Complex> even;
@@ -67,7 +67,7 @@ std::vector<Complex> FFT::ifft(std::vector<Complex>& x)
 std::vector<Complex> FFT::cconvolve(std::vector<Complex>& x, std::vector<Complex>& y)
 {
     if (x.size() != y.size()) {
-        throw utility::Illegal_argument_exception("Dimensions don't agree");
+        throw utility::Illegal_argument_exception{"Dimensions don't agree"};
     }
 
     auto n = x.size();

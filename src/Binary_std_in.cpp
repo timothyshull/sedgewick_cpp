@@ -7,7 +7,7 @@ void Binary_std_in::close()
         _in.close();
     } catch (IOException e) {
         e.printStackTrace();
-        throw utility::Runtime_exception("Could not close BinaryStdIn");
+        throw utility::Runtime_exception{"Could not close BinaryStdIn"};
     }
 }
 
@@ -18,7 +18,7 @@ bool Binary_std_in::is_empty()
 
 bool Binary_std_in::read_boolean()
 {
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
     _size--;
     bool bit = ((_buffer >> _size) & 1) == 1;
     if (_size == 0) { _fill_buffer(); }
@@ -38,7 +38,7 @@ char Binary_std_in::read_char()
     x <<= (8 - _size);
     int oldN = _size;
     _fill_buffer();
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
     _size = oldN;
     x |= (_buffer >> _size);
     return (char) (x & 0xff);
@@ -46,7 +46,7 @@ char Binary_std_in::read_char()
 
 char Binary_std_in::read_char(int r)
 {
-    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception("Illegal value of r = " + r); }
+    if (r < 1 || r > 16) { throw utility::Illegal_argument_exception{"Illegal value of r = " + r}; }
 
     // optimize r = 8 case
     if (r == 8) { return read_char(); }
@@ -62,7 +62,7 @@ char Binary_std_in::read_char(int r)
 
 std::string Binary_std_in::read_string()
 {
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
 
     std::stringstream sb = new std::stringstream();
     while (!is_empty()) {
@@ -96,7 +96,7 @@ int Binary_std_in::read_int()
 
 int Binary_std_in::read_int(int r)
 {
-    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception("Illegal value of r = " + r); }
+    if (r < 1 || r > 32) { throw utility::Illegal_argument_exception{"Illegal value of r = " + r}; }
 
     // optimize r = 32 case
     if (r == 32) { return read_int(); }

@@ -32,7 +32,7 @@ NFA::NFA(std::string& regexp)
         }
     }
     if (ops.size() != 0) {
-        throw utility::Illegal_argument_exception("Invalid regular expression");
+        throw utility::Illegal_argument_exception{"Invalid regular expression"};
     }
 }
 
@@ -46,7 +46,7 @@ bool NFA::recognizes(std::string& txt)
 
     for (auto i = 0; i < txt.length(); ++i) {
         if (txt[i] == '*' || txt[i] == '|' || txt[i] == '(' || txt[i] == ')') {
-            throw utility::Illegal_argument_exception("text contains the metacharacter '" + std::to_string(txt[i]) + "'");
+            throw utility::Illegal_argument_exception{"text contains the metacharacter '" + std::to_string(txt[i]) + "'"};
         }
 
         std::vector<int> match;

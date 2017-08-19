@@ -9,7 +9,7 @@ int Eulerian_cycle::Edge::other(int vertex)
 {
     if (vertex == _v) { return _w; }
     else if (vertex == _w) { return _v; }
-    else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
+    else { throw utility::Illegal_argument_exception{"Illegal endpoint"}; }
 }
 
 Eulerian_cycle::Eulerian_cycle(Graph& graph)

@@ -13,7 +13,7 @@ Vector::Vector(std::initializer_list<double>& a)
 
 double Vector::dot(Vector& that)
 {
-    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception{"Dimensions don't agree"}; }
     double sum{0.0};
     for (auto i = 0; i < _dimension; ++i) {
         sum = sum + (_data[i] * that._data[i]);
@@ -28,13 +28,13 @@ double Vector::magnitude()
 
 double Vector::distance_to(Vector& rhs)
 {
-    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception{"Dimensions don't agree"}; }
     return minus(rhs).magnitude();
 }
 
 Vector Vector::plus(Vector& rhs)
 {
-    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception{"Dimensions don't agree"}; }
     Vector c{_dimension};
     for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = _data[i] + rhs._data[i];
@@ -44,7 +44,7 @@ Vector Vector::plus(Vector& rhs)
 
 Vector Vector::minus(Vector& rhs)
 {
-    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception("Dimensions don't agree"); }
+    if (_dimension != rhs._dimension) { throw utility::Illegal_argument_exception{"Dimensions don't agree"}; }
     Vector c{_dimension};
     for (auto i = 0; i < _dimension; ++i) {
         c._data[i] = _data[i] - rhs._data[i];

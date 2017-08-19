@@ -91,7 +91,7 @@ void Digraph::_validate_vertex(int v) const
     if (v < 0 || v >= _num_vertices) {
         std::stringstream ss;
         ss << "Vertex " << v << " is not between 0 and " << _num_vertices;
-        throw utility::Index_out_of_bounds_exception(ss.str());
+        throw utility::Index_out_of_bounds_exception{ss.str()};
     }
 
 }

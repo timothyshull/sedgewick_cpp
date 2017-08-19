@@ -37,7 +37,7 @@ bool Binary_in::is_empty()
 
 bool Binary_in::read_boolean()
 {
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
     _size--;
     bool bit = ((_buffer >> _size) & 1) == 1;
     if (_size == 0) { _fill_buffer(); }
@@ -57,7 +57,7 @@ char Binary_in::read_char()
     x <<= (8 - _size);
     int oldN = _size;
     _fill_buffer();
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
     _size = oldN;
     x |= (_buffer >> _size);
     return (char) (x & 0xff);
@@ -65,7 +65,7 @@ char Binary_in::read_char()
 
 char Binary_in::read_char(int r)
 {
-    if (r < 1 || r > 16) { throw utility::Runtime_exception("Illegal value of r = " + r); }
+    if (r < 1 || r > 16) { throw utility::Runtime_exception{"Illegal value of r = " + r}; }
 
     if (r == 8) { return read_char(); }
 
@@ -80,7 +80,7 @@ char Binary_in::read_char(int r)
 
 std::string Binary_in::read_string()
 {
-    if (is_empty()) { throw utility::Runtime_exception("Reading from empty input stream"); }
+    if (is_empty()) { throw utility::Runtime_exception{"Reading from empty input stream"}; }
 
     std::stringstream ss;
     while (!is_empty()) {
@@ -114,7 +114,7 @@ int Binary_in::read_int()
 
 int Binary_in::read_int(int r)
 {
-    if (r < 1 || r > 32) { throw utility::Runtime_exception("Illegal value of r = " + r); }
+    if (r < 1 || r > 32) { throw utility::Runtime_exception{"Illegal value of r = " + r}; }
     if (r == 32) { return read_int(); }
 
     int x = 0;

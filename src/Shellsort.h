@@ -27,6 +27,7 @@ namespace Shellsort {
                 }
             }
 #ifndef NDEBUG
+            // TODO: fix and add back
 //            utility::alg_assert(
 //                    std::is_sorted(coll.begin() + h, coll.end()),
 //                    "Shellsort is_h_sorted check failed"

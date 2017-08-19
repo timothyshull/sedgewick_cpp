@@ -14,7 +14,7 @@ public:
               _keys(static_cast<std::vector<Key>::size_type>(dimension << 1)),
               _comp{}
     {
-        if (dimension < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
+        if (dimension < 2) { throw utility::Illegal_argument_exception{"Dimension should be 2 or over"}; }
     }
 
     Multiway_min_pq(std::vector<Key>& a, int dimension)
@@ -23,7 +23,7 @@ public:
               _keys{a},
               _comp{}
     {
-        if (dimension < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
+        if (dimension < 2) { throw utility::Illegal_argument_exception{"Dimension should be 2 or over"}; }
     }
 
     bool is_empty() { return _size == 0; };

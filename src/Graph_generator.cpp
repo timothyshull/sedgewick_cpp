@@ -25,8 +25,8 @@ bool Graph_generator::Edge::operator<(Graph_generator::Edge& rhs)
 
 Graph Graph_generator::simple(int num_vertices, int num_edges)
 {
-    if (num_edges > (long) num_vertices * (num_vertices - 1) / 2) { throw utility::Illegal_argument_exception("Too many edges"); }
-    if (num_edges < 0) { throw utility::Illegal_argument_exception("Too few edges"); }
+    if (num_edges > (long) num_vertices * (num_vertices - 1) / 2) { throw utility::Illegal_argument_exception{"Too many edges"}; }
+    if (num_edges < 0) { throw utility::Illegal_argument_exception{"Too few edges"}; }
     Graph G{num_vertices};
     Set<Edge> set;
     int v;
@@ -46,7 +46,7 @@ Graph Graph_generator::simple(int num_vertices, int num_edges)
 Graph Graph_generator::simple(int num_vertices, double probability)
 {
     if (probability < 0.0 || probability > 1.0) {
-        throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
+        throw utility::Illegal_argument_exception{"Probability must be between 0 and 1"};
     }
     Graph graph{num_vertices};
     for (auto v = 0; v < num_vertices; ++v) {
@@ -71,8 +71,8 @@ Graph Graph_generator::complete_bipartite(int v1, int v2)
 
 Graph Graph_generator::bipartite(int v1, int v2, int num_edges)
 {
-    if (num_edges > (long) v1 * v2) { throw utility::Illegal_argument_exception("Too many edges"); }
-    if (num_edges < 0) { throw utility::Illegal_argument_exception("Too few edges"); }
+    if (num_edges > (long) v1 * v2) { throw utility::Illegal_argument_exception{"Too many edges"}; }
+    if (num_edges < 0) { throw utility::Illegal_argument_exception{"Too few edges"}; }
     Graph graph{v1 + v2};
 
     std::vector<int> vertices;
@@ -98,7 +98,7 @@ Graph Graph_generator::bipartite(int v1, int v2, int num_edges)
 Graph Graph_generator::bipartite(int v1, int v2, double probability)
 {
     if (probability < 0.0 || probability > 1.0) {
-        throw utility::Illegal_argument_exception("Probability must be between 0 and 1");
+        throw utility::Illegal_argument_exception{"Probability must be between 0 and 1"};
     }
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(v1 + v2));
@@ -166,10 +166,10 @@ Graph Graph_generator::cycle(int num_vertices)
 Graph Graph_generator::eulerian_cycle(int num_vertices, int num_edges)
 {
     if (num_edges <= 0) {
-        throw utility::Illegal_argument_exception("An Eulerian _cycle must have at least one edge");
+        throw utility::Illegal_argument_exception{"An Eulerian _cycle must have at least one edge"};
     }
     if (num_vertices <= 0) {
-        throw utility::Illegal_argument_exception("An Eulerian _cycle must have at least one vertex");
+        throw utility::Illegal_argument_exception{"An Eulerian _cycle must have at least one vertex"};
     }
     Graph graph{num_vertices};
     std::vector<int> vertices;
@@ -187,10 +187,10 @@ Graph Graph_generator::eulerian_cycle(int num_vertices, int num_edges)
 Graph Graph_generator::eulerian_path(int num_vertices, int num_edges)
 {
     if (num_edges < 0) {
-        throw utility::Illegal_argument_exception("negative number of edges");
+        throw utility::Illegal_argument_exception{"negative number of edges"};
     }
     if (num_vertices <= 0) {
-        throw utility::Illegal_argument_exception("An Eulerian path must have at least one vertex");
+        throw utility::Illegal_argument_exception{"An Eulerian path must have at least one vertex"};
     }
     Graph graph{num_vertices};
     std::vector<int> vertices;
@@ -206,7 +206,7 @@ Graph Graph_generator::eulerian_path(int num_vertices, int num_edges)
 
 Graph Graph_generator::wheel(int num_vertices)
 {
-    if (num_vertices <= 1) { throw utility::Illegal_argument_exception("Number of vertices must be at least 2"); }
+    if (num_vertices <= 1) { throw utility::Illegal_argument_exception{"Number of vertices must be at least 2"}; }
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
@@ -229,7 +229,7 @@ Graph Graph_generator::wheel(int num_vertices)
 
 Graph Graph_generator::star(int num_vertices)
 {
-    if (num_vertices <= 0) { throw utility::Illegal_argument_exception("Number of vertices must be at least 1"); }
+    if (num_vertices <= 0) { throw utility::Illegal_argument_exception{"Number of vertices must be at least 1"}; }
     Graph graph{num_vertices};
     std::vector<int> vertices;
     vertices.reserve(static_cast<std::vector<int>::size_type>(num_vertices));
@@ -247,7 +247,7 @@ Graph Graph_generator::star(int num_vertices)
 
 Graph Graph_generator::regular(int num_vertices, int k)
 {
-    if (num_vertices * k % 2 != 0) { throw utility::Illegal_argument_exception("Number of vertices * k must be even"); }
+    if (num_vertices * k % 2 != 0) { throw utility::Illegal_argument_exception{"Number of vertices * k must be even"}; }
     Graph graph{num_vertices};
 
     std::vector<int> vertices;

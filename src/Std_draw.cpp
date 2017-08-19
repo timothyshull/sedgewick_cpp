@@ -474,7 +474,7 @@ int Std_draw::exec()
 //    static void set_x_scale(double min, double max)
 //    {
 //        double size = max - min;
-//        if (size == 0.0) { throw utility::Illegal_argument_exception("the min and max are the same"); }
+//        if (size == 0.0) { throw utility::Illegal_argument_exception{"the min and max are the same"}; }
 //        synchronized(_mouse_lock)
 //        {
 //            xmin = min - BORDER * size;
@@ -485,7 +485,7 @@ int Std_draw::exec()
 //    static void set_y_scale(double min, double max)
 //    {
 //        double size = max - min;
-//        if (size == 0.0) { throw utility::Illegal_argument_exception("the min and max are the same"); }
+//        if (size == 0.0) { throw utility::Illegal_argument_exception{"the min and max are the same"}; }
 //        synchronized(_mouse_lock)
 //        {
 //            ymin = min - BORDER * size;
@@ -496,7 +496,7 @@ int Std_draw::exec()
 //    static void set_scale(double min, double max)
 //    {
 //        double size = max - min;
-//        if (size == 0.0) { throw utility::Illegal_argument_exception("the min and max are the same"); }
+//        if (size == 0.0) { throw utility::Illegal_argument_exception{"the min and max are the same"}; }
 //        synchronized(_mouse_lock)
 //        {
 //            xmin = min - BORDER * size;
@@ -531,7 +531,7 @@ int Std_draw::exec()
 //
 //    static void set_pen_radius(double radius)
 //    {
-//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception("pen radius must be nonnegative"); }
+//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception{"pen radius must be nonnegative"}; }
 //        penRadius = radius;
 //        float scaledPenRadius = (float) (radius * DEFAULT_SIZE);
 //        BasicStroke stroke = new BasicStroke(scaledPenRadius, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
@@ -551,16 +551,16 @@ int Std_draw::exec()
 //
 //    static void set_pen_color(Color& color)
 //    {
-//        if (color == nullptr) { throw utility::Null_pointer_exception(); }
+//        if (color == nullptr) { throw utility::Null_pointer_exception{}; }
 //        penColor = color;
 //        _offscreen.setColor(penColor);
 //    }
 //
 //    static void set_pen_color(int red, int green, int blue)
 //    {
-//        if (red < 0 || red >= 256) { throw utility::Illegal_argument_exception("amount of red must be between 0 and 255"); }
-//        if (green < 0 || green >= 256) { throw utility::Illegal_argument_exception("amount of green must be between 0 and 255"); }
-//        if (blue < 0 || blue >= 256) { throw utility::Illegal_argument_exception("amount of blue must be between 0 and 255"); }
+//        if (red < 0 || red >= 256) { throw utility::Illegal_argument_exception{"amount of red must be between 0 and 255"}; }
+//        if (green < 0 || green >= 256) { throw utility::Illegal_argument_exception{"amount of green must be between 0 and 255"}; }
+//        if (blue < 0 || blue >= 256) { throw utility::Illegal_argument_exception{"amount of blue must be between 0 and 255"}; }
 //        set_pen_color(new Color(red, green, blue));
 //    }
 //
@@ -576,7 +576,7 @@ int Std_draw::exec()
 //
 //    static void set_font(Font font)
 //    {
-//        if (font == null) { throw utility::Null_pointer_exception(); }
+//        if (font == null) { throw utility::Null_pointer_exception{}; }
 //        StdDraw.font = font;
 //    }
 //
@@ -611,7 +611,7 @@ int Std_draw::exec()
 //
 //    static void circle(double x, double y, double radius)
 //    {
-//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception("radius must be nonnegative"); }
+//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception{"radius must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * radius);
@@ -623,7 +623,7 @@ int Std_draw::exec()
 //
 //    static void filled_circle(double x, double y, double radius)
 //    {
-//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception("radius must be nonnegative"); }
+//        if (!(radius >= 0)) { throw utility::Illegal_argument_exception{"radius must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * radius);
@@ -635,8 +635,8 @@ int Std_draw::exec()
 //
 //    static void ellipse(double x, double y, double semiMajorAxis, double semiMinorAxis)
 //    {
-//        if (!(semiMajorAxis >= 0)) { throw utility::Illegal_argument_exception("ellipse semimajor axis must be nonnegative"); }
-//        if (!(semiMinorAxis >= 0)) { throw utility::Illegal_argument_exception("ellipse semiminor axis must be nonnegative"); }
+//        if (!(semiMajorAxis >= 0)) { throw utility::Illegal_argument_exception{"ellipse semimajor axis must be nonnegative"}; }
+//        if (!(semiMinorAxis >= 0)) { throw utility::Illegal_argument_exception{"ellipse semiminor axis must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * semiMajorAxis);
@@ -648,8 +648,8 @@ int Std_draw::exec()
 //
 //    static void filled_ellipse(double x, double y, double semiMajorAxis, double semiMinorAxis)
 //    {
-//        if (!(semiMajorAxis >= 0)) { throw utility::Illegal_argument_exception("ellipse semimajor axis must be nonnegative"); }
-//        if (!(semiMinorAxis >= 0)) { throw utility::Illegal_argument_exception("ellipse semiminor axis must be nonnegative"); }
+//        if (!(semiMajorAxis >= 0)) { throw utility::Illegal_argument_exception{"ellipse semimajor axis must be nonnegative"}; }
+//        if (!(semiMinorAxis >= 0)) { throw utility::Illegal_argument_exception{"ellipse semiminor axis must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * semiMajorAxis);
@@ -661,7 +661,7 @@ int Std_draw::exec()
 //
 //    static void arc(double x, double y, double radius, double angle1, double angle2)
 //    {
-//        if (radius < 0) { throw utility::Illegal_argument_exception("arc radius must be nonnegative"); }
+//        if (radius < 0) { throw utility::Illegal_argument_exception{"arc radius must be nonnegative"}; }
 //        while (angle2 < angle1) { angle2 += 360; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
@@ -674,7 +674,7 @@ int Std_draw::exec()
 //
 //    static void square(double x, double y, double halfLength)
 //    {
-//        if (!(halfLength >= 0)) { throw utility::Illegal_argument_exception("half length must be nonnegative"); }
+//        if (!(halfLength >= 0)) { throw utility::Illegal_argument_exception{"half length must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * halfLength);
@@ -686,7 +686,7 @@ int Std_draw::exec()
 //
 //    static void filled_square(double x, double y, double halfLength)
 //    {
-//        if (!(halfLength >= 0)) { throw utility::Illegal_argument_exception("half length must be nonnegative"); }
+//        if (!(halfLength >= 0)) { throw utility::Illegal_argument_exception{"half length must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * halfLength);
@@ -698,8 +698,8 @@ int Std_draw::exec()
 //
 //    static void rectangle(double x, double y, double halfWidth, double halfHeight)
 //    {
-//        if (!(halfWidth >= 0)) { throw utility::Illegal_argument_exception("half width must be nonnegative"); }
-//        if (!(halfHeight >= 0)) { throw utility::Illegal_argument_exception("half height must be nonnegative"); }
+//        if (!(halfWidth >= 0)) { throw utility::Illegal_argument_exception{"half width must be nonnegative"}; }
+//        if (!(halfHeight >= 0)) { throw utility::Illegal_argument_exception{"half height must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * halfWidth);
@@ -711,8 +711,8 @@ int Std_draw::exec()
 //
 //    static void filled_rectangle(double x, double y, double halfWidth, double halfHeight)
 //    {
-//        if (!(halfWidth >= 0)) { throw utility::Illegal_argument_exception("half width must be nonnegative"); }
-//        if (!(halfHeight >= 0)) { throw utility::Illegal_argument_exception("half height must be nonnegative"); }
+//        if (!(halfWidth >= 0)) { throw utility::Illegal_argument_exception{"half width must be nonnegative"}; }
+//        if (!(halfHeight >= 0)) { throw utility::Illegal_argument_exception{"half height must be nonnegative"}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(2 * halfWidth);
@@ -724,11 +724,11 @@ int Std_draw::exec()
 //
 //    static void polygon(double[] x, double[] y)
 //    {
-//        if (x == null) { throw utility::Null_pointer_exception(); }
-//        if (y == null) { throw utility::Null_pointer_exception(); }
+//        if (x == null) { throw utility::Null_pointer_exception{}; }
+//        if (y == null) { throw utility::Null_pointer_exception{}; }
 //        int n1 = x.length;
 //        int n2 = y.length;
-//        if (n1 != n2) { throw utility::Illegal_argument_exception("arrays must be of the same length"); }
+//        if (n1 != n2) { throw utility::Illegal_argument_exception{"arrays must be of the same length"}; }
 //        int n = n1;
 //        GeneralPath path = new GeneralPath();
 //        path.moveTo((float) _scale_x(x[0]), (float) _scale_y(y[0]));
@@ -742,11 +742,11 @@ int Std_draw::exec()
 //
 //    static void filled_polygon(double x, double y)
 //    {
-//        if (x == null) { throw utility::Null_pointer_exception(); }
-//        if (y == null) { throw utility::Null_pointer_exception(); }
+//        if (x == null) { throw utility::Null_pointer_exception{}; }
+//        if (y == null) { throw utility::Null_pointer_exception{}; }
 //        int n1 = x.length;
 //        int n2 = y.length;
-//        if (n1 != n2) { throw utility::Illegal_argument_exception("arrays must be of the same length"); }
+//        if (n1 != n2) { throw utility::Illegal_argument_exception{"arrays must be of the same length"}; }
 //        int n = n1;
 //        GeneralPath path = new GeneralPath();
 //        path.moveTo((float) _scale_x(x[0]), (float) _scale_y(y[0]));
@@ -760,7 +760,7 @@ int Std_draw::exec()
 //
 //    static BufferedImage get_image(std::string& filename)
 //    {
-//        if (filename == null) { throw utility::Null_pointer_exception(); }
+//        if (filename == null) { throw utility::Null_pointer_exception{}; }
 //
 //        // from a file or URL
 //        try {
@@ -792,7 +792,7 @@ int Std_draw::exec()
 //        } catch (IOException e) {
 //            // ignore
 //        }
-//        throw utility::Illegal_argument_exception("image " + filename + " not found");
+//        throw utility::Illegal_argument_exception{"image " + filename + " not found"};
 //    }
 //
 //    static void picture(double x, double y, std::string filename)
@@ -802,7 +802,7 @@ int Std_draw::exec()
 //        double ys = _scale_y(y);
 //        int ws = image.getWidth();
 //        int hs = image.getHeight();
-//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception("image " + filename + " is corrupt"); }
+//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception{"image " + filename + " is corrupt"}; }
 //
 //        _offscreen.drawImage(image, (int) std::round(xs - ws / 2.0), (int) std::round(ys - hs / 2.0), null);
 //        draw();
@@ -815,7 +815,7 @@ int Std_draw::exec()
 //        double ys = _scale_y(y);
 //        int ws = image.getWidth();
 //        int hs = image.getHeight();
-//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception("image " + filename + " is corrupt"); }
+//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception{"image " + filename + " is corrupt"}; }
 //
 //        _offscreen.rotate(std::toRadians(-degrees), xs, ys);
 //        _offscreen.drawImage(image, (int) std::round(xs - ws / 2.0), (int) std::round(ys - hs / 2.0), null);
@@ -827,13 +827,13 @@ int Std_draw::exec()
 //    static void picture(double x, double y, std::string filename, double scaledWidth, double scaledHeight)
 //    {
 //        Image image = get_image(filename);
-//        if (scaledWidth < 0) { throw utility::Illegal_argument_exception("width is negative: " + scaledWidth); }
-//        if (scaledHeight < 0) { throw utility::Illegal_argument_exception("height is negative: " + scaledHeight); }
+//        if (scaledWidth < 0) { throw utility::Illegal_argument_exception{"width is negative: " + scaledWidth}; }
+//        if (scaledHeight < 0) { throw utility::Illegal_argument_exception{"height is negative: " + scaledHeight}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(scaledWidth);
 //        double hs = _factor_y(scaledHeight);
-//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception("image " + filename + " is corrupt"); }
+//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception{"image " + filename + " is corrupt"}; }
 //        if (ws <= 1 && hs <= 1) { pixel(x, y); }
 //        else {
 //            _offscreen.drawImage(image, (int) std::round(xs - ws / 2.0),
@@ -846,14 +846,14 @@ int Std_draw::exec()
 //
 //    static void picture(double x, double y, std::string filename, double scaledWidth, double scaledHeight, double degrees)
 //    {
-//        if (scaledWidth < 0) { throw utility::Illegal_argument_exception("width is negative: " + scaledWidth); }
-//        if (scaledHeight < 0) { throw utility::Illegal_argument_exception("height is negative: " + scaledHeight); }
+//        if (scaledWidth < 0) { throw utility::Illegal_argument_exception{"width is negative: " + scaledWidth}; }
+//        if (scaledHeight < 0) { throw utility::Illegal_argument_exception{"height is negative: " + scaledHeight}; }
 //        Image image = get_image(filename);
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        double ws = _factor_x(scaledWidth);
 //        double hs = _factor_y(scaledHeight);
-//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception("image " + filename + " is corrupt"); }
+//        if (ws < 0 || hs < 0) { throw utility::Illegal_argument_exception{"image " + filename + " is corrupt"}; }
 //        if (ws <= 1 && hs <= 1) { pixel(x, y); }
 //
 //        _offscreen.rotate(std::toRadians(-degrees), xs, ys);
@@ -868,7 +868,7 @@ int Std_draw::exec()
 //
 //    static void text(double x, double y, std::string text)
 //    {
-//        if (text == null) { throw utility::Null_pointer_exception(); }
+//        if (text == null) { throw utility::Null_pointer_exception{}; }
 //        _offscreen.setFont(_font);
 //        FontMetrics metrics = _offscreen.getFontMetrics();
 //        double xs = _scale_x(x);
@@ -881,7 +881,7 @@ int Std_draw::exec()
 //
 //    static void text(double x, double y, std::string text, double degrees)
 //    {
-//        if (text == null) { throw utility::Null_pointer_exception(); }
+//        if (text == null) { throw utility::Null_pointer_exception{}; }
 //        double xs = _scale_x(x);
 //        double ys = _scale_y(y);
 //        _offscreen.rotate(std::toRadians(-degrees), xs, ys);
@@ -891,7 +891,7 @@ int Std_draw::exec()
 //
 //    static void text_left(double x, double y, std::string text)
 //    {
-//        if (text == null) { throw utility::Null_pointer_exception(); }
+//        if (text == null) { throw utility::Null_pointer_exception{}; }
 //        _offscreen.setFont(_font);
 //        FontMetrics metrics = _offscreen.getFontMetrics();
 //        double xs = _scale_x(x);
@@ -903,7 +903,7 @@ int Std_draw::exec()
 //
 //    static void text_right(double x, double y, std::string text)
 //    {
-//        if (text == null) { throw utility::Null_pointer_exception(); }
+//        if (text == null) { throw utility::Null_pointer_exception{}; }
 //        _offscreen.setFont(_font);
 //        FontMetrics metrics = _offscreen.getFontMetrics();
 //        double xs = _scale_x(x);
@@ -974,7 +974,7 @@ int Std_draw::exec()
 //
 //    static void save(std::string filename)
 //    {
-//        if (filename == null) { throw utility::Null_pointer_exception(); }
+//        if (filename == null) { throw utility::Null_pointer_exception{}; }
 //        File file = new File(filename);
 //        std::string suffix = filename.substring(filename.lastIndexOf('.') + 1);
 //

@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     } else if (argv[2] == "+") {
         LZW_compression::expand();
     } else {
-        throw utility::Illegal_argument_exception("Illegal command line argument");
+        throw utility::Illegal_argument_exception{"Illegal command line argument"};
     }
     return 0;
 }

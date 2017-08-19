@@ -34,7 +34,7 @@ public:
 
     T& min()
     {
-        if (is_empty()) { throw utility::No_such_element_exception("Priority _queue underflow"); }
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue underflow"}; }
         return _priority_queue[1];
     }
 
@@ -49,7 +49,7 @@ public:
 
     T delete_min()
     {
-        if (is_empty()) { throw utility::No_such_element_exception("Priority _queue underflow"); }
+        if (is_empty()) { throw utility::No_such_element_exception{"Priority _queue underflow"}; }
         _exch(1, _size);
         T min = _priority_queue[_size--];
         _sink(1);

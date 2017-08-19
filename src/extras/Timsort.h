@@ -430,7 +430,7 @@ private:
             std::copy_n(new_a.begin() + cursor2, len2, new_a.begin() + dest);
             new_a[dest + len2] = new_tmp[cursor1];
         } else if (len1 == 0) {
-            throw utility::Illegal_argument_exception("Comparison method violates its general contract!");
+            throw utility::Illegal_argument_exception{"Comparison method violates its general contract!"};
         } else {
             if (_debug) { utility::alg_assert(len2 == 0, ""); }
             if (_debug) { utility::alg_assert(len1 > 1, ""); }
@@ -532,7 +532,7 @@ private:
             std::copy_n(new_a.begin() + cursor1 + 1, len1, new_a.begin() + dest + 1);
             new_a[dest] = new_tmp[cursor2];
         } else if (len2 == 0) {
-            throw utility::Illegal_argument_exception("Comparison method violates its general contract!");
+            throw utility::Illegal_argument_exception{"Comparison method violates its general contract!"};
         } else {
             if (_debug) { utility::alg_assert(len1 == 0, ""); }
             if (_debug) { utility::alg_assert(len2 > 0, ""); }
@@ -566,16 +566,16 @@ private:
         std::stringstream ss;
         if (from_index > to_index) {
             ss << "from_index(" << from_index << ") > to_index(" << to_index + ")";
-            throw utility::Illegal_argument_exception(ss.str());
+            throw utility::Illegal_argument_exception{ss.str()};
         }
         if (from_index < 0) {
             ss << from_index;
-            throw utility::Index_out_of_bounds_exception(ss.str());
+            throw utility::Index_out_of_bounds_exception{ss.str()};
             // throw ArrayIndexOutOfBoundsException(from_index);
         }
         if (to_index > vector_size) {
             ss << to_index;
-            throw utility::Index_out_of_bounds_exception(ss.str());
+            throw utility::Index_out_of_bounds_exception{ss.str()};
             // throw ArrayIndexOutOfBoundsException(to_index);
         }
     }

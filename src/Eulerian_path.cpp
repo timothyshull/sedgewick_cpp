@@ -9,7 +9,7 @@ int Eulerian_path::Edge::other(int vertex)
 {
     if (vertex == _v) { return _w; }
     else if (vertex == _w) { return _v; }
-    else { throw utility::Illegal_argument_exception("Illegal endpoint"); }
+    else { throw utility::Illegal_argument_exception{"Illegal endpoint"}; }
 }
 
 Eulerian_path::Eulerian_path(Graph& graph)

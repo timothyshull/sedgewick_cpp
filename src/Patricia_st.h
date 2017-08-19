@@ -49,7 +49,7 @@ public:
     void put(std::string& key, Value val)
     {
         if (key == nullptr) { throw utility::Null_pointer_exception{"called put(nullptr)"}; }
-        if (key.length() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+        if (key.length() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
         if (val == nullptr) { delete (key); }
         Raw_node_pointer p;
         Raw_node_pointer x = _head;
@@ -83,7 +83,7 @@ public:
     Value get(std::string& key)
     {
         if (key == nullptr) { throw utility::Null_pointer_exception{"called get(nullptr)"}; }
-        if (key.length() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+        if (key.length() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
         Raw_node_pointer p;
         Raw_node_pointer x = _head;
         do {
@@ -98,7 +98,7 @@ public:
     void remove(std::string& key)
     {
         if (key == nullptr) { throw utility::Null_pointer_exception{"called delete(nullptr)"}; }
-        if (key.length() == 0) { throw utility::Illegal_argument_exception("invalid key"); }
+        if (key.length() == 0) { throw utility::Illegal_argument_exception{"invalid key"}; }
         Raw_node_pointer g;
         Raw_node_pointer p = _head;
         Raw_node_pointer x = _head;

@@ -19,7 +19,7 @@ double Sparse_vector::get(int i)
 
 double Sparse_vector::dot(Sparse_vector that)
 {
-    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception{"Vector lengths disagree"}; }
     double sum = 0.0;
 
     if (_st.size() <= that._st.size()) {
@@ -62,7 +62,7 @@ Sparse_vector Sparse_vector::scale(double alpha)
 
 Sparse_vector Sparse_vector::plus(Sparse_vector& that)
 {
-    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception("Vector lengths disagree"); }
+    if (_dimension != that._dimension) { throw utility::Illegal_argument_exception{"Vector lengths disagree"}; }
     Sparse_vector c{_dimension};
     for (int i : _st.keys()) { c.put(i, get(i)); }
     for (int i : that._st.keys()) { c.put(i, that.get(i) + c.get(i)); }

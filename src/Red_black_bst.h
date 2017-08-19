@@ -190,7 +190,7 @@ public:
     void delete_min()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"delete_min()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"delete_min()\" was called on an empty symbol table"};
         }
 
         if (!is_red(_root->_left) && is_red(_root->_right)) {
@@ -208,7 +208,7 @@ public:
     void delete_max()
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"delete_max()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"delete_max()\" was called on an empty symbol table"};
         }
 
         if (!is_red(_root->_left) && is_red(_root->_right)) {
@@ -242,7 +242,7 @@ public:
     Raw_key_pointer min() const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"min()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"min()\" was called on an empty symbol table"};
         }
         return _min(_root)->_key;
     }
@@ -250,7 +250,7 @@ public:
     Raw_key_pointer max() const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"max()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"max()\" was called on an empty symbol table"};
         }
         return _max(_root)->_key;
     }
@@ -258,7 +258,7 @@ public:
     Raw_key_pointer floor(Key_type& key) const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"floor()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"floor()\" was called on an empty symbol table"};
         }
         Raw_node_pointer x = _floor(_root, key);
         if (x == nullptr) {
@@ -271,7 +271,7 @@ public:
     Raw_key_pointer ceiling(Key_type& key) const
     {
         if (is_empty()) {
-            throw utility::No_such_element_exception("The method \"ceiling()\" was called on an empty symbol table");
+            throw utility::No_such_element_exception{"The method \"ceiling()\" was called on an empty symbol table"};
         }
         Raw_node_pointer x = _ceiling(_root, key);
         if (x == nullptr) {
@@ -286,7 +286,7 @@ public:
         if (k < 0 || k >= size()) {
             std::stringstream ss;
             ss << "The argument \"k\" is not _in the range 0-" << size() - 1;
-            throw utility::Illegal_argument_exception(ss.str());
+            throw utility::Illegal_argument_exception{ss.str()};
         }
         Raw_node_pointer x = _select(_root, k);
         if (x == nullptr) {

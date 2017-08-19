@@ -38,7 +38,7 @@ namespace Std_random {
     int uniform(int n)
     {
         if (n <= 0) {
-            throw utility::Illegal_argument_exception("Parameter size must be positive");
+            throw utility::Illegal_argument_exception{"Parameter size must be positive"};
         }
         std::uniform_int_distribution<int> dist(0, n - 1);
         return dist(engine);
@@ -52,10 +52,10 @@ namespace Std_random {
     int uniform(int a, int b)
     {
         if (a >= b) {
-            throw utility::Illegal_argument_exception("Invalid range");
+            throw utility::Illegal_argument_exception{"Invalid range"};
         }
         if (static_cast<long>(b - a) >= std::numeric_limits<int>::max()) {
-            throw utility::Illegal_argument_exception("Invalid range");
+            throw utility::Illegal_argument_exception{"Invalid range"};
         }
         return a + uniform(b - a);
     }
@@ -63,7 +63,7 @@ namespace Std_random {
     double uniform(double a, double b)
     {
         if (a >= b) {
-            throw utility::Illegal_argument_exception("Invalid range");
+            throw utility::Illegal_argument_exception{"Invalid range"};
         }
         return a + uniform() * (b - a);
     }
@@ -71,7 +71,7 @@ namespace Std_random {
     bool bernoulli(double p)
     {
         if (!(p >= 0.0 && p <= 1.0)) {
-            throw utility::Illegal_argument_exception("Probability must be between 0.0 and 1.0");
+            throw utility::Illegal_argument_exception{"Probability must be between 0.0 and 1.0"};
         }
         return uniform() < p;
     }
@@ -101,7 +101,7 @@ namespace Std_random {
     int geometric(double p)
     {
         if (!(p >= 0.0 && p <= 1.0)) {
-            throw utility::Illegal_argument_exception("Probability must be between 0.0 and 1.0");
+            throw utility::Illegal_argument_exception{"Probability must be between 0.0 and 1.0"};
         }
         return static_cast<int>(ceil(log10(uniform() / log10(1.0 - p))));
     }
@@ -109,10 +109,10 @@ namespace Std_random {
     int poisson(double lambda)
     {
         if (lambda <= 0.0) {
-            throw utility::Illegal_argument_exception("Parameter lambda must be positive");
+            throw utility::Illegal_argument_exception{"Parameter lambda must be positive"};
         }
         if (lambda == std::numeric_limits<double>::infinity()) {
-            throw utility::Illegal_argument_exception("Parameter lambda must not be infinite");
+            throw utility::Illegal_argument_exception{"Parameter lambda must not be infinite"};
         }
         int k = 0;
         double p = 1.0;
@@ -132,7 +132,7 @@ namespace Std_random {
     double pareto(double alpha)
     {
         if (alpha <= 0.0) {
-            throw utility::Illegal_argument_exception("Shape parameter alpha must be positive");
+            throw utility::Illegal_argument_exception{"Shape parameter alpha must be positive"};
         }
         return pow(1 - uniform(), -1.0 / alpha) - 1.0;
     }
@@ -142,7 +142,7 @@ namespace Std_random {
     int discrete(std::vector<double>& probabilities)
     {
         if (probabilities.empty()) {
-            throw utility::Illegal_argument_exception("The \"probabilities\" vector argument cannot be is_empty");
+            throw utility::Illegal_argument_exception{"The \"probabilities\" vector argument cannot be is_empty"};
         }
         double epsilon = 1E-14;
         double sum = 0.0;
@@ -151,14 +151,14 @@ namespace Std_random {
             if (probabilities[i] < 0.0) {
                 std::stringstream ss;
                 ss << "The \"probabilities\" entry " << i << " must be non-negative: " << probabilities[i];
-                throw utility::Illegal_argument_exception(ss.str());
+                throw utility::Illegal_argument_exception{ss.str()};
             }
             sum += probabilities[i];
         }
         if (sum > 1.0 + epsilon || sum < 1.0 - epsilon) {
             std::stringstream ss;
             ss << "The _sum of the array entries does not approximately equal 1.0: " << sum;
-            throw utility::Illegal_argument_exception(ss.str());
+            throw utility::Illegal_argument_exception{ss.str()};
         }
 
         while (true) {
@@ -176,7 +176,7 @@ namespace Std_random {
     int discrete(std::vector<int>& frequencies)
     {
         if (frequencies.empty()) {
-            throw utility::Illegal_argument_exception("The \"frequencies\" argument vector is null");
+            throw utility::Illegal_argument_exception{"The \"frequencies\" argument vector is null"};
         }
         long sum = 0;
         int n = frequencies.size();
@@ -184,15 +184,15 @@ namespace Std_random {
             if (frequencies[i] < 0) {
                 std::stringstream ss;
                 ss << "The \"frequencies\" vector entry " << i << " must be non-negative: " << frequencies[i];
-                throw utility::Illegal_argument_exception(ss.str());
+                throw utility::Illegal_argument_exception{ss.str()};
             }
             sum += frequencies[i];
         }
         if (sum == 0) {
-            throw utility::Illegal_argument_exception("At least one array entry must be positive");
+            throw utility::Illegal_argument_exception{"At least one array entry must be positive"};
         }
         if (sum >= std::numeric_limits<int>::max()) {
-            throw utility::Illegal_argument_exception("The _sum of \"frequencies\" overflows an the int type");
+            throw utility::Illegal_argument_exception{"The _sum of \"frequencies\" overflows an the int type"};
         }
 
         double r = uniform(static_cast<int>(sum));
@@ -211,7 +211,7 @@ namespace Std_random {
     double exp(double lambda)
     {
         if (lambda <= 0.0) {
-            throw utility::Illegal_argument_exception("Rate lambda must be positive");
+            throw utility::Illegal_argument_exception{"Rate lambda must be positive"};
         }
         return -std::log10(1 - uniform()) / lambda;
     }

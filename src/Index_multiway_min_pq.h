@@ -7,8 +7,8 @@ class Index_multiway_min_pq {
 public:
     Index_multiway_min_pq(int N, int D)
     {
-        if (N < 0) { throw utility::Illegal_argument_exception("Maximum number of elements cannot be negative"); }
-        if (D < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
+        if (N < 0) { throw utility::Illegal_argument_exception{"Maximum number of elements cannot be negative"}; }
+        if (D < 2) { throw utility::Illegal_argument_exception{"Dimension should be 2 or over"}; }
         this.d = D;
         nmax = N;
         pq = new int[nmax + D];
@@ -21,8 +21,8 @@ public:
 
     Index_multiway_min_pq(int N, Comparator <Key> C, int D)
     {
-        if (N < 0) { throw utility::Illegal_argument_exception("Maximum number of elements cannot be negative"); }
-        if (D < 2) { throw utility::Illegal_argument_exception("Dimension should be 2 or over"); }
+        if (N < 0) { throw utility::Illegal_argument_exception{"Maximum number of elements cannot be negative"}; }
+        if (D < 2) { throw utility::Illegal_argument_exception{"Dimension should be 2 or over"}; }
         this.d = D;
         nmax = N;
         pq = new int[nmax + D];
@@ -52,7 +52,7 @@ public:
     void insert(int i, Key key)
     {
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
-        if (contains(i)) { throw utility::Illegal_argument_exception("Index already there"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception{"Index already there"}; }
         keys[i + d] = key;
         pq[n + d] = i;
         qp[i + d] = n;
@@ -108,7 +108,7 @@ public:
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
         if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (comp.compare(keys[i + d], key) <= 0) {
-            throw utility::Illegal_argument_exception("Calling with this argument would not decrease the Key");
+            throw utility::Illegal_argument_exception{"Calling with this argument would not decrease the Key"};
         }
         keys[i + d] = key;
         swim(qp[i + d]);
@@ -119,7 +119,7 @@ public:
         if (i < 0 || i >= nmax) { throw new IndexOutOfBoundsException(); }
         if (!contains(i)) { throw new NoSuchElementException("Specified index is not _in the _queue"); }
         if (comp.compare(keys[i + d], key) >= 0) {
-            throw utility::Illegal_argument_exception("Calling with this argument would not increase the Key");
+            throw utility::Illegal_argument_exception{"Calling with this argument would not increase the Key"};
         }
         keys[i + d] = key;
         sink(qp[i + d]);

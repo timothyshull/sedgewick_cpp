@@ -154,7 +154,7 @@ public:
               _comp{}
     {
         // will throw before this
-        // if (size < 0) { throw utility::Illegal_argument_exception("Cannot create a priority _queue of negative size"); }
+        // if (size < 0) { throw utility::Illegal_argument_exception{"Cannot create a priority _queue of negative size"}; }
     }
 
     inline bool is_empty() const noexcept { return _size == 0; }
@@ -170,7 +170,7 @@ public:
     void insert(int i, Key key)
     {
         if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
-        if (contains(i)) { throw utility::Illegal_argument_exception("Specified index is already _in the _queue"); }
+        if (contains(i)) { throw utility::Illegal_argument_exception{"Specified index is already _in the _queue"}; }
         Raw_node_pointer x = new Index_fibonacci_min_pq_node<Key_type>();
         x->_key = key;
         x->_index = i;
@@ -235,7 +235,7 @@ public:
         if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
         if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
         if (_greater(key, _nodes[i]->key)) {
-            throw utility::Illegal_argument_exception("Calling with this argument would not decrease the key");
+            throw utility::Illegal_argument_exception{"Calling with this argument would not decrease the key"};
         }
         Raw_node_pointer x = _nodes[i];
         x->_key = key;
@@ -250,7 +250,7 @@ public:
         if (i < 0 || i >= _num) { throw utility::Index_out_of_bounds_exception{""}; }
         if (!contains(i)) { throw utility::No_such_element_exception{"Specified index is not _in the _queue"}; }
         if (_greater(_nodes[i]->key, key)) {
-            throw utility::Illegal_argument_exception("Calling with this argument would not increase the key");
+            throw utility::Illegal_argument_exception{"Calling with this argument would not increase the key"};
         }
         delete (i);
         insert(i, key);

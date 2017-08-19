@@ -125,7 +125,7 @@ double Assignment_problem::_reduced_cost(int i, int j) const
 void Assignment_problem::_validate(int i) const
 {
     if (i < 0 || i >= _dimension) {
-        throw utility::Index_out_of_bounds_exception("");
+        throw utility::Index_out_of_bounds_exception{""};
     }
 }
 
