@@ -92,7 +92,7 @@ namespace utility {
     {
 #ifndef NDEBUG
         if (!test) {
-            fmt::fprintf(stderr, "%s\n", msg);
+            fmt::print(stderr, "%s\n", msg);
             std::abort();
         }
 #endif

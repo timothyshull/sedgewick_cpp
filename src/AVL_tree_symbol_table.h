@@ -6,12 +6,12 @@
 #include <memory>
 
 #include "Queue.h"
-#include "utility.h"
 #include "Std_out.h"
+#include "utility.h"
 
 // NOTE: removed iterators because they require parent node links
 
-template<typename Key, typename Value>
+template<typename Key_t, typename Value_t>
 class AVL_tree_node;
 
 template<typename Key_t, typename Value_t, typename Comparator_t = std::less<Key_t>>
@@ -28,10 +28,10 @@ struct AVL_tree_node_pointer_traits {
 
 // remove use of shared_ptr for keys and values to make implementation
 // more lightweight
-template<typename Key, typename Value>
+template<typename Key_t, typename Value_t>
 class AVL_tree_node {
 public:
-    using Node_traits = AVL_tree_node_pointer_traits<Key, Value>;
+    using Node_traits = AVL_tree_node_pointer_traits<Key_t, Value_t>;
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
     using Node_type = typename Node_traits::Node_type;
@@ -41,18 +41,31 @@ public:
     AVL_tree_node(Key_type const &key, Value_type const &val, int height, int size)
             : _key{key},
               _value{val},
+              _height{height},
               _size{size},
-              _height{height} {}
+              _left{nullptr},
+              _right{nullptr} {}
 
-    AVL_tree_node(AVL_tree_node const &) = default;
-
-    AVL_tree_node(AVL_tree_node &&) noexcept = default;
+    AVL_tree_node(AVL_tree_node &&rhs) noexcept
+            : _key{rhs._key},
+              _value{rhs._value},
+              _height{rhs._height},
+              _size{rhs._size},
+              _left{std::move(rhs._left)},
+              _right{std::move(rhs._right)} {}
 
     ~AVL_tree_node() = default;
 
-    AVL_tree_node &operator=(AVL_tree_node const &) = default;
-
-    AVL_tree_node &operator=(AVL_tree_node &&) noexcept = default;
+    AVL_tree_node &operator=(AVL_tree_node &&rhs) noexcept
+    {
+        _key = rhs._key;
+        _value = rhs._value;
+        _height = rhs._height;
+        _size = rhs._size;
+        _left = std::move(rhs._left);
+        _right = std::move(rhs._right);
+        return *this;
+    }
 
 private:
     Key_type _key;
@@ -79,18 +92,17 @@ public:
     using Key_type = typename Node_traits::Key_type;
     using Value_type = typename Node_traits::Value_type;
 
-    AVL_tree_symbol_table() = default;
+    AVL_tree_symbol_table() : _root{nullptr} {}
 
-//    AVL_tree_symbol_table(const AVL_tree_symbol_table &) = default;
+    AVL_tree_symbol_table(AVL_tree_symbol_table &&rhs) noexcept : _root{std::move(rhs._root)} {}
 
-//    AVL_tree_symbol_table(AVL_tree_symbol_table &&) noexcept = default;
-
-    // TODO: has memory error on destruction -> destructor called twice
     ~AVL_tree_symbol_table() = default;
 
-//    AVL_tree_symbol_table &operator=(const AVL_tree_symbol_table &) = default;
-
-//    AVL_tree_symbol_table &operator=(AVL_tree_symbol_table &&) noexcept = default;
+    AVL_tree_symbol_table &operator=(AVL_tree_symbol_table &&rhs) noexcept
+    {
+        _root = std::move(rhs._root);
+        return *this;
+    }
 
     bool is_empty() const noexcept
     {
@@ -131,9 +143,10 @@ public:
 
     void put(Key_type const &key, Value_type const &val)
     {
-        _root = Owning_node_ptr{_put(_get_root(), key, val)};
+        _update_root(_put(_get_root(), key, val));
 #ifndef NDEBUG
-        utility::alg_assert(_check(), "AVL_tree_symbol_table invariant check failed after \"put()\"");
+        auto b = _check();
+        utility::alg_assert(b, "AVL_tree_symbol_table invariant check failed after \"put()\"");
 #endif
     }
 
@@ -142,7 +155,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception{"The method \"delete_min()\" was called on an empty symbol table"};
         }
-        _root = _delete_min(_get_root());
+        _update_root(_delete_min(_get_root()));
 #ifndef NDEBUG
         utility::alg_assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_min()\"");
 #endif
@@ -153,7 +166,7 @@ public:
         if (is_empty()) {
             throw utility::No_such_element_exception{"The method \"delete_max()\" was called on an empty symbol table"};
         }
-        _root = _delete_max(_get_root());
+        _update_root(_delete_max(_get_root()));
 #ifndef NDEBUG
         utility::alg_assert(_check(), "AVL_tree_symbol_table invariant check failed after \"delete_max()\"");
 #endif
@@ -207,14 +220,10 @@ public:
             };
         }
         auto x = _select(_get_root(), k);
-        // TODO: fix this
-        if (x == nullptr) {
-            throw utility::Illegal_argument_exception{"The input value to select is invalid"};
-        }
         return x->_key;
     }
 
-    int rank(Key_type const&key) const
+    int rank(Key_type const &key) const
     {
         return _rank(key, _get_root());
     }
@@ -262,7 +271,7 @@ public:
         return queue;
     }
 
-    int size(Key_type &lo, Key_type &hi) const
+    int size(Key_type const &lo, Key_type const &hi) const
     {
         if (Comparator_t{}(lo, hi) > 0) {
             return 0;
@@ -279,6 +288,13 @@ private:
     Unowned_node_ptr _get_root() const
     {
         return _root.get();
+    }
+
+    void _update_root(Unowned_node_ptr new_root)
+    {
+        if (new_root != _get_root()) {
+            _root = Owning_node_ptr{new_root};
+        }
     }
 
     int _size(Unowned_node_ptr n) const
@@ -312,6 +328,7 @@ private:
         return n;
     }
 
+    // possibly reseats _left and _right
     Unowned_node_ptr _put(Unowned_node_ptr x, Key_type const &key, Value_type const &val)
     {
         if (x == nullptr) {
@@ -319,9 +336,9 @@ private:
         }
         auto comp = Comparator_t{};
         if (comp(key, x->_key)) {
-            x->_left = Owning_node_ptr{_put(x->_left.release(), key, val)};
+            x->_left = Owning_node_ptr{_put(x->_left.get(), key, val)};
         } else if (comp(x->_key, key)) {
-            x->_right = Owning_node_ptr{_put(x->_right.release(), key, val)};
+            x->_right = Owning_node_ptr{_put(x->_right.get(), key, val)};
         } else {
             x->_value = val;
             return x;
@@ -331,6 +348,7 @@ private:
         return _balance(x);
     }
 
+    // possibly reseats _left and _right
     Unowned_node_ptr _balance(Unowned_node_ptr x)
     {
         if (_balance_factor(x) < -1) {
@@ -352,6 +370,7 @@ private:
         return _height(x->_left.get()) - _height(x->_right.get());
     }
 
+    // possibly reseats _left and _right
     Unowned_node_ptr _rotate_right(Unowned_node_ptr x)
     {
         auto y = x->_left.get();
@@ -364,6 +383,7 @@ private:
         return y;
     }
 
+    // possibly reseats _left and _right
     Unowned_node_ptr _rotate_left(Unowned_node_ptr x)
     {
         auto y = x->_right.get();
@@ -376,6 +396,7 @@ private:
         return y;
     }
 
+    // possibly reseats _left and _right
     Unowned_node_ptr _delete(Unowned_node_ptr x, Key_type &key)
     {
         auto comp = Comparator_t{};
@@ -400,6 +421,7 @@ private:
         return _balance(x);
     }
 
+    // possibly reseats _left
     Unowned_node_ptr _delete_min(Unowned_node_ptr x)
     {
         if (x->_left == nullptr) {
@@ -411,6 +433,7 @@ private:
         return _balance(x);
     }
 
+    // possibly reseats _right
     Unowned_node_ptr _delete_max(Unowned_node_ptr x)
     {
         if (x->_right == nullptr) {
@@ -476,13 +499,14 @@ private:
         return x;
     }
 
+    // basic test leads to condition where size of node is 2 but both left and right are null
     Unowned_node_ptr _select(Unowned_node_ptr x, int k) const
     {
         if (x == nullptr) {
             return nullptr;
         }
         auto t = _size(x->_left.get());
-        if (t > k) {
+        if (k < t) {
             return _select(x->_left.get(), k);
         }
         if (t < k) {
@@ -491,7 +515,7 @@ private:
         return x;
     }
 
-    int _rank(Key_type const&key, Unowned_node_ptr x) const
+    int _rank(Key_type const &key, Unowned_node_ptr x) const
     {
         if (x == nullptr) {
             return 0;
@@ -543,16 +567,16 @@ private:
         auto rank_check = _is_rank_consistent();
 
         if (!bst_check) {
-            Std_out::fprintf(stderr, "AVL_tree_symbol_table symmetric _order is not consistent");
+            Std_out::print(stderr, "AVL_tree_symbol_table symmetric order is not consistent");
         }
         if (!avl_check) {
-            Std_out::fprintf(stderr, "AVL_tree_symbol_table AVL property is not consistent");
+            Std_out::print(stderr, "AVL_tree_symbol_table AVL property is not consistent");
         }
         if (!size_check) {
-            Std_out::fprintf(stderr, "AVL_tree_symbol_table subtree size counts are not consistent");
+            Std_out::print(stderr, "AVL_tree_symbol_table subtree size counts are not consistent");
         }
         if (!rank_check) {
-            Std_out::fprintf(stderr, "AVL_tree_symbol_table ranks are not consistent");
+            Std_out::print(stderr, "AVL_tree_symbol_table ranks are not consistent");
         }
 
         return bst_check && avl_check && size_check && rank_check;
@@ -560,24 +584,22 @@ private:
 
     bool _is_bst() const
     {
-        auto min_key = min();
-        auto max_key = max();
-        return _is_bst(_get_root(), min_key, max_key);
+        return _is_bst(_get_root(), nullptr, nullptr);
     }
 
-    bool _is_bst(Unowned_node_ptr x, Key_type const&min, Key_type const&max) const
+    bool _is_bst(Unowned_node_ptr x, Key_type *min, Key_type *max) const
     {
         if (x == nullptr) {
             return true;
         }
         auto comp = Comparator_t{};
-        if (!comp(min, x->_key) && _size(x) != 1) {
+        if (min != nullptr && !comp(*min, x->_key)) {
             return false;
         }
-        if (!comp(min, x->_key) && _size(x) != 1) {
+        if (max != nullptr && !comp(x->_key, *max)) {
             return false;
         }
-        return _is_bst(x->_left.get(), min, x->_key) && _is_bst(x->_right.get(), x->_key, max);
+        return _is_bst(x->_left.get(), min, &x->_key) && _is_bst(x->_right.get(), &x->_key, max);
     }
 
     bool _is_avl() const
@@ -612,7 +634,8 @@ private:
 
     bool _is_rank_consistent() const
     {
-        for (auto i = 0; i < size(); ++i) {
+        auto sz = size();
+        for (auto i = 0; i < sz; ++i) {
             // TODO: this now throws
             auto k = select(i);
             if (i != rank(k)) {

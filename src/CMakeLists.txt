@@ -105,7 +105,7 @@ target_link_libraries(assignment_problem_main std_io)
 add_executable(average_main average_main.cpp)
 
 add_executable(avl_tree_symbol_table_main avl_tree_symbol_table_main.cpp AVL_tree_symbol_table.h)
-target_link_libraries(avl_tree_symbol_table_main std_io std_random)
+target_link_libraries(avl_tree_symbol_table_main std_io)
 
 add_executable(b_tree_main b_tree_main.cpp B_tree.h)
 target_link_libraries(b_tree_main std_io)

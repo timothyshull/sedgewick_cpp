@@ -6,7 +6,7 @@
 
 int main()
 {
-    AVL_tree_symbol_table<std::string, int> st{};
+    auto st = AVL_tree_symbol_table<std::string, int>{};
     auto vs = Std_in::read_all_strings();
 
     for (auto i = 0; i < vs.size(); ++i) {
